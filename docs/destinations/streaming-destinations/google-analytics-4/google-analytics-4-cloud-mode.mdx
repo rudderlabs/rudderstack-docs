@@ -1,16 +1,12 @@
 ---
 title: "Cloud Mode"
-description:  Detailed technical documentation on sending events to Google Analytics 4 using the RudderStack cloud mode.
+description:  Detailed technical documentation on sending events to Google Analytics 4 using the RudderStack Cloud mode.
 ---
 
-RudderStack lets you send your event data to Google Analytics 4 via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> by leveraging the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a>.
+RudderStack lets you send your event data to Google Analytics 4 via the [cloud mode](https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#cloud-mode).
 
-<div class="infoBlock">
+<div class="successBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repository</a>.
-</div>
-
-<div class="infoBlock">
-Google Analytics 4 does not officially support a complete server-to-server integration. RudderStack monitors the GA4 Measurement Protocol API capabilities and accordingly sends a reasonable level of reporting data for the customers to Google Analytics 4.
 </div>
 
 <GhBadge
@@ -21,12 +17,12 @@ Google Analytics 4 does not officially support a complete server-to-server integ
 
 ## Identify
 
-The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/identify/">`identify`</Link> call lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
 A sample `identify` call using `gtag` is shown below:
 
 ```javascript
-rudderanalytics.identify("1hKOmRA4GRlm", {
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
     firstLogin: true,
     method: "Google",
     value: 10,
@@ -37,7 +33,7 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 A sample `identify` call using `firebase` is shown below:
 
 ```javascript
-rudderanalytics.identify("1hKOmRA4GRlm", {
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
     firstLogin: true,
     method: "Google",
     value: 10,
@@ -51,12 +47,12 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 ```
 
 <div class="infoBlock">
-For more information on the dashboard settings related to <code class="inline-code">identify</code> events, refer to the <Link to="/destinations/streaming-destinations/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify settings</Link> section.
+Refer to the <Link to="/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify</Link> section for more information on its dashboard settings.
 </div>
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/track/">`track`</Link> call lets you capture user events along with the properties associated with them.
 
 RudderStack supports both the `gtag` and `firebase` ways for tagging in websites in the cloud mode. However, note that:
 
@@ -71,7 +67,7 @@ The mappings for the above-mentioned mandatory parameters are listed in the foll
 
 | Parameters    | Mapping value  |
 | :-------------| :-----------------|
-| `client_id`         |  from `externalID` `ga4ClientId` or `anonymousId` or `messageId` |
+| `client_id`         |  from `externalID` `ga4ClientId`  or `anonymousId` or `messageId` |
 | `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  | 
 
 <div class="infoBlock">
@@ -84,7 +80,7 @@ The mappings for the optional parameters (common for `gtag` and `firebase` both)
 | :-------------| :-----------------|:-----------------|
 | `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
 | `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Timestamp in ISO 8601 format.|
-| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. If `context.device.adTrackingEnabled` is set as `true`, `non_personalised_ads` will be set to `false`. |
+| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. If `context.device.adTrackingEnabled` is set as `true`, `non_personalised_ads` will be set to `false`.|
 
 <div class="infoBlock">
 Google Analytics 4 Measurement Protocol only supports timestamps 72 hours into the past and 15 minutes into the future. RudderStack discards any event with a timestamp out of this range.
@@ -94,29 +90,29 @@ A sample `track` call using `gtag` is shown below:
 
 ```javascript
 rudderanalytics.track('Product List Viewed', {
-  list_id: "related_products",
-  category: "Related_products",
-  products: [{
-    product_id: "507f1f77bcf86cd799439011",
-    name: "Monopoly: 3rd Edition",
-    coupon: "SUMMER_FUN",
-    category: "Apparel",
-    brand: "Google",
-    variant: "green",
-    price: "19",
-    quantity: "2",
-    position: "1",
-    affiliation: "Google Merchandise Store",
-    currency: "USD",
-    discount: 2.22,
-    item_category2: "Adult",
-    item_category3: "Shirts",
-    item_category4: "Crew",
-    item_category5: "Short sleeve",
-    item_list_id: "related_products",
-    item_list_name: "Related Products",
-    location_id: "L_12345"
-  }]
+    list_id: "related_products",
+    category: "Related_products",
+    products: [{
+        product_id: "507f1f77bcf86cd799439011",
+        name: "Monopoly: 3rd Edition",
+        coupon: "SUMMER_FUN",
+        category: "Apparel",
+        brand: "Google",
+        variant: "green",
+        price: "19",
+        quantity: "2",
+        position: "1",
+        affiliation: "Google Merchandise Store",
+        currency: "USD",
+        discount: 2.22,
+        item_category2: "Adult",
+        item_category3: "Shirts",
+        item_category4: "Crew",
+        item_category5: "Short sleeve",
+        item_list_id: "related_products",
+        item_list_name: "Related Products",
+        location_id: "L_12345"
+    }]
 }, {
     externalId: [{
         type: "ga4ClientId",
@@ -162,7 +158,7 @@ rudderanalytics.track('Product List Viewed', {
 
 ## Page
 
-The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page. 
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/page/">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page. 
 
 RudderStack maps the `page` call to a `page_view` event by default, and passes it to Google Analytics 4 as a custom event. 
 
@@ -185,9 +181,17 @@ rudderanalytics.page({}, {
 });
 ```
 
+The following table lists the property mappings between RudderStack and Google Analytics 4: 
+
+| RudderStack property    | Google Analytics 4 property  |
+| :-------------| :-----------------|
+| `context.page.referrer`       | `page_referrer`      |
+| `context.page.title`          | `page_title`         |
+| `context.page.url`            | `page_location`      |
+
 ## Group
 
-The <Link to="/event-spec/standard-events/group/">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, for example, company name, number of employees, etc.
+The <Link to="/rudderstack-api/api-specification/rudderstack-spec/group/">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, for example, company name, number of employees, etc.
 
 RudderStack maps the `group` call to the `join_group` event by default.
 
@@ -216,7 +220,7 @@ rudderanalytics.group("1hKOmRA4", {
 
 ## E-commerce event tracking
 
-RudderStack supports e-commerce tracking for Google Analytics 4. You can refer to the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for sending events while instrumenting your site with the RudderStack SDK.
+RudderStack supports e-commerce tracking for Google Analytics 4. You can refer to the [RudderStack E-commerce Specification](https://rudderstack.com/docs/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/) guide for sending events while instrumenting your site with the RudderStack SDK.
 
 The following table lists the mappings between the RudderStack and Google Analytics 4 events:
 
@@ -444,6 +448,7 @@ Most of the above mentioned events include [`items`](https://developers.google.c
 | properties.products.$.variant           | `item_variant`  |
 | properties.products.$.quantity           | `quantity`  |
 
+
 The below mentioned e-commerce events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. 
 
 | RudderStack    | Presence of `items` parameter |
@@ -502,7 +507,7 @@ The following table details the parameter mappings present in the `Items` array,
 | properties.products.$.promotion_id           | `promotion_id`  |
 | properties.products.$.promotion_name           | `promotion_name`  |
 
-## Non e-commerce events tracking
+### Non e-commerce events
 
 The below table lists the mappings of the non e-commerce `track` events and properties that are passed to Google Analytics 4 events and properties:
 
@@ -547,11 +552,12 @@ The below table lists the mappings of the non e-commerce `track` events and prop
 The <code class="inline-code">&#123;currency&#125;</code>, <code class="inline-code">&#123;value&#125;</code>, and <code class="inline-code">&#123;method&#125;</code> properties mentioned above are dynamic and their actual value depends on the key name passed in the dashboard. Refer to the <Link to="/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify</Link> section for more information.
 </div>
 
+
 <div class="infoBlock">
-You can pass the custom user properties to any of the events by passing them as <code class="inline-code">properties.user_properties</code>. Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=gtag">Google Analytics 4 documentation</a> for more information.
+You can pass the custom user properties to any of the events by passing them as `properties.user_properties`. Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=gtag">Google Analytics 4 documentation</a> for more information.
 </div>
 
-## Rules for naming custom events
+### Rules for naming custom events
 
 You must follow the below rules while choosing a name for the custom events:
 
@@ -560,16 +566,6 @@ You must follow the below rules while choosing a name for the custom events:
 - Do not use reserved prefixes and event names. Refer to the <a href="#faq">FAQ</a> section to know more about the reserved event names and prefixes.
 
 ## FAQ
-
-### I’ve set up GA4 as a destination in RudderStack but I’m not seeing the expected data flow through in the GA4 dashboard. What should I do?
-
-To view the events sent to GA4, go to your [Google Analytics](https://analytics.google.com/) dashboard and navigate to **Reports** > **Realtime**.
-
-While the events typically show up within a few seconds, note that it can take GA4 up to 24 hours to process their data and appear on other reports. Also, not all types of data flow through to its realtime dashboard. It may be best to consult GA4’s FAQs for the most up-to-date information on its latest capabilities and limitations.
-
-<div class="infoBlock">
-For more information on checking the realtime view or verifying your implementation, refer to this <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/verify-implementation?client_type=gtag#realtime">GA4 documentation</a>. You can also refer to this <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting?client_type=gtag">Troubleshooting guide</a> for steps on fixing any implementation errors.
-</div>
 
 ### What are the reserved prefixes in Google Analytics 4?
 
@@ -581,7 +577,7 @@ The reserved prefixes in Google Analytics 4 cannot be used for custom events. Th
 - google_
 - gtag.
 
-Refer to the [GA4 documentation](https://support.google.com/analytics/answer/10085872#zippy=%2Cweb%2Cin-this-article%2Creserved-prefixes-and-event-names) for more information.
+Refer to the [GA4 document](https://support.google.com/analytics/answer/10085872#zippy=%2Cweb%2Cin-this-article%2Creserved-prefixes-and-event-names) for more information.
 
 ### What are the reserved event, parameter, and user property names in Google Analytics 4?
 
@@ -598,6 +594,9 @@ You can retrieve the `app_instance_id` through the Firebase SDK depending on the
 - [C++: `GetAnalyticsInstanceId()`](https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#getanalyticsinstanceid)
 - [Unity: `GetAnalyticsInstanceIdAsync()`](https://firebase.google.com/docs/reference/unity/class/firebase/analytics/firebase-analytics#getanalyticsinstanceidasync)
 
+Refer to the [GA4 document](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=firebase#payload_post_body) for more information.
+
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
+
