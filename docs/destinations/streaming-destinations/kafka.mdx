@@ -93,6 +93,12 @@ To use this feature, you need to pass the `schemaId` in your event's `integratio
 }
 ```
 
+The corresponding schema is shown below:
+
+```json
+{"name":"MyClass","type":"record","namespace":"com.acme.avro","fields":[{"name":"anonymousId","type":"string"},{"name":"event","type":"string"},{"name":"messageId","type":"string"},{"name":"originalTimestamp","type":"string"},{"name":"receivedAt","type":"string"},{"name":"request_ip","type":"string"},{"name":"rudderId","type":"string"},{"name":"sentAt","type":"string"},{"name":"timestamp","type":"string"},{"name":"type","type":"string"},{"name":"context","type":"record","fields":[{"name":"traits","type":"record","fields":[{"name":"email","type":"string"}]},{"name":"ip","type":"string"}]},{"name":"integrations","type":"record","fields":[{"name":"KAFKA","type":"record","fields":[{"name":"schemaId","type":"string"}]}]}]}
+```
+
 ## FAQ
 
 ### Does my Kafka server require Client Authentication?
