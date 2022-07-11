@@ -1,0 +1,39 @@
+---
+# slug: "/docs/user-guides/how-to-guides/switch-to-rudderstack-hosted-data-plane"
+title: "How to Switch from Self-hosted to RudderStack-hosted Data Plane"
+description: >-
+  Step-by-step guide on switching from self-hosted data plane to RudderStack-hosted data plane.
+---
+
+The steps in this guide assume that you are using the RudderStack-hosted control plane and lists out the detailed steps to switch from self-hosted data plane to the RudderStack-hosted data plane.
+
+## Self-hosted to RudderStack-hosted data plane 
+
+Follow the steps below to switch from self-hosted to RudderStack-hosted data plane:
+
+1. Update the `dataPlaneUrl` in all the SDKs to point to the RudderStack-hosted hosted data plane URL. Refer to the <Link to="/sources/sdks/">SDK documentation</Link> for details on how to obtain the data plane URL.
+
+2. Verify that the self-hosted data plane is not getting any requests.
+**{{Steps, if any}}**
+
+3. Verify that all the events received in the self-hosted data plane are delivered. 
+**{{`rudder-cli` commands for this}}**
+
+4. Shut down the self-hosted data plane.
+**{{Steps, if any}}**
+
+
+## Best practices
+
+* In case of mobile SDKs, your customers need to update their mobile applications. You can keep the self-hosted data plane online until a sufficient number of customers have updated their mobile application or there are no more events coming in to the self-hosted data plane.
+
+  Alternatively, you can also add an alias DNS record for your self-hosted data plane URL to point to the RudderStack-hosted data plane URL.
+**{{Steps to add an alias DNS record, if any}}**
+
+* In case of mobile SDKs, if you are using Firebase to serve the values like `writeKey` and `dataPlaneUrl`, there is no need to update the mobile application to point to the RudderStack-hosted data plane.
+
+* This process of switching the data plane can hamper the order of events as the events are sent both from the RudderStack-hosted and self-hosted data plane at the same time for a while. Hence, it is recommended to choose a low-traffic time slot to carry out this activity.
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can, [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
