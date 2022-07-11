@@ -2051,6 +2051,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "switch-to-rudderstack-hosted-data-plane",
+    title: "How to Switch from Self-hosted to RudderStack-hosted Data Plane",
+    link: "/user-guides/how-to-guides/switch-to-rudderstack-hosted-data-plane/",
+    content: [],
+  },
+  {
     key: "using-aws-lambda-functions-with-rudderstack",
     title: "How to Use AWS Lambda Functions with RudderStack",
     link:
