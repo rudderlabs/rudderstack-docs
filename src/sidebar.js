@@ -160,9 +160,9 @@ export const jsonData = [
                         content: []
                     },
                     {
-                        key: "send-event-payloads-beacon",
-                        title: "Send Event Payloads using Beacon",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/send-event-payloads-beacon/",
+                        key: "send-events-beacon",
+                        title: "Send Events using Beacon",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/send-events-beacon/",
                         content: [],
                     },
                     {

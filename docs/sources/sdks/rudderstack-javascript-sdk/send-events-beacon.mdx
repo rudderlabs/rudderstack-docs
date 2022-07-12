@@ -1,12 +1,12 @@
 ---
-title: "Send Event Payloads using Beacon"
+title: "Send Events using Beacon"
 description: >-
   Detailed technical description of the navigator.sendBeacon utility to send event payloads using JavaScript SDK.
 ---
 
-The [JavaScript SDK v1.1](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) lets you send the event payloads using the **XHR** (XMLHttpRequest) API and `navigator.sendBeacon` utility.
+The [JavaScript SDK v1.1](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) sends the event payloads using the **XHR** (XMLHttpRequest) API by default.
 
-The [`navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) browser utility asynchronously sends a small amount of data over HTTP to the RudderStack server. The `useBeacon` field in the [`load()`](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#the-options-parameter) call options can be set to `true` to send the SDK events using the `navigator.sendBeacon` utility.
+However, you can choose to send the event payloads using the [`navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) browser utility. It asynchronously sends a small amount of data over HTTP to the RudderStack server. To send the SDK events using the `navigator.sendBeacon` utility, set the `useBeacon` field in the [`load()`](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#the-options-parameter) call options to `true`.
 
 <div class="warningBlock">
 The <code class="inline-code">sendBeacon</code> version of the JavaScript SDK located <a href="https://cdn.rudderlabs.com/v2/rudder-analytics.min.js?transport=beacon">here</a> and its XMLHTTP version located <a href="https://cdn.rudderlabs.com/v2/rudder-analytics.min.js">here</a> are <strong>not supported</strong> anymore. 
@@ -23,30 +23,30 @@ The JavaScript SDK internally uses a separate queue (`BeaconQueueOpts`) to hold 
 
 | Parameter        | Type          | Description             | Default Value    |
 | :-------------------- | :------------------ | :-------------| :----------------|
-| `maxItems`            | Integer            | The SDK flushes the queue when this number of payloads is reached.    | `10`             |
-| `flushQueueInterval`  | Integer       | The SDK flushes the queue after this time interval (in milliseconds). | `600000`         |
+| `maxItems`            | Integer            | SDK flushes the queue when the default number of payloads is reached.    | `10`             |
+| `flushQueueInterval`  | Integer       | SDK flushes the queue after the default time interval (in milliseconds). | `600000`         |
 
 
 <div class="infoBlock">
-The SDK flushes the Beacon queue if the total size of the payload exceeds 64 KB before reaching the <code class="inline-code">maxItems</code>/<code class="inline-code">flushQueueInterval</code> value in the configuration.
+JavaScript SDK flushes the Beacon queue if the total size of the payload exceeds 64 KB before reaching the <code class="inline-code">maxItems</code>/<code class="inline-code">flushQueueInterval</code> value in the configuration.
 </div>
 
-###  Advantages of Beacon transport mechanism
+## Advantages
 
 There are two key advantages of using the [`navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) utility to send your event payload:
 
 - Pushing events to the Beacon queue is faster as compared to the XHR instrumentation, so there are some performance improvements in the JavaScript SDK.
-- The Beacon requests are optimized so that the browser waits until the CPU load is lower, or until the network is free before making the actual requests. This leads to better website performance.
+- The Beacon requests are optimized so that the browser waits until the CPU load is lower, or until the network is free before making the actual requests. This leads to a better website performance.
 
 <div class="infoBlock">
 The Beacon queue maintained by the browsers has a limitation on the total size of the elements present in the queue at any point and <strong>peaks at 64 KB</strong>.
 </div>
 
-### Event delivery and retry mechanism
+## Event delivery and retry mechanism
 
-This section highlights some noteworthy points before you opt to use `navigator.sendBeacon` for sending your event payloads:
+This section highlights some important points which will help you choose whether to use `navigator.sendBeacon` for sending your event payloads:
 
-- The Beacon requests sent from the SDK using `navigator.sendBeacon` only pushes the events to browser's Beacon queue. It further depends on the browser's engine to send these events from the queue, hence RudderStack **does not guarantee** if any events get discarded due to the 5xx and other network-related errors (request timed out, end resource unavailable, etc.).
+- The Beacon requests sent from the SDK using the `navigator.sendBeacon` utility only pushes the events to browser's Beacon queue. Further, it depends on the browser's engine to send these events from the queue. Hence, RudderStack **does not guarantee** if any events get discarded due to the 5xx or other network-related errors (request timed out, end resource unavailable, etc.).
 
 <div class="warningBlock">
 If event delivery and retry is an important requirement for your website, it is highly recommended to use the XHR API of the JavaScript SDK, where RudderStack retries event delivery based on the status codes and other errors.
