@@ -784,23 +784,34 @@ export const jsonData = [
                 title: "Lytics",
                 link: "/destinations/streaming-destinations/lytics/",
                 content: []
-            }, {
+            },
+            {
+                key: "matomo",
+                title: "Matomo",
+                link: "/destinations/streaming-destinations/matomo/",
+                content: [],
+            },
+            {
                 title: "Mixpanel",
                 link: "/destinations/streaming-destinations/mixpanel/",
                 content: []
-            }, {
+            },
+            {
                 title: "New Relic",
                 link: "/destinations/streaming-destinations/new-relic/",
                 content: []
-            }, {
+            },
+            {
                 title: "Pendo",
                 link: "/destinations/streaming-destinations/pendo/",
                 content: []
-            }, {
+            },
+            {
                 title: "PostHog",
                 link: "/destinations/streaming-destinations/posthog/",
                 content: []
-            }, {
+            },
+            {
                 title: "Profitwell",
                 link: "/destinations/streaming-destinations/profitwell/",
                 content: [
