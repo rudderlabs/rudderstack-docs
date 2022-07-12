@@ -5,9 +5,9 @@ description: Detailed description of the permissions management options in Rudde
 
 RudderStack's permissions management feature lets you manage users and the permissions assigned to them in your RudderStack workspace. 
 
-This feature allows also you to:
+This feature allows you to:
 - Enable easier collaboration between you and other members of your organization.
-- <Link to="#restricting-edit-permissions-for-individual-objects">Restrict edit permissions</Link> for business-critical objects in the workspace.
+- <Link to="#restricting-edit-permissions-for-individual-objects">Restrict edit permissions</Link> for business-critical objects in your workspace.
 - <Link to="#limiting-access-to-pii-related-features">Limit access</Link> to product features where PII is exposed (for example, Live Events, debug logs, etc.) for compliance purposes.
 
 ## Inviting users
@@ -17,7 +17,7 @@ To invite a member to your RudderStack workspace, follow these steps:
 
 <img src="../../assets/rs-cloud/permissions-management-1.png" alt="Invite teammates option" />
 
-2. Enter the **Email** of the member and select a role from the dropdown.
+2. Enter the member's **Email** and select an appropriate role from the dropdown.
 
 <div class="infoBlock">
 Refer to the <Link to="#role-permissions">Role permissions</Link> section below for more information on the Read-Only, Read-Write, and Admin roles.
@@ -40,7 +40,7 @@ You can assign any of the following three roles to the member you want to invite
 The following sections list the **default permissions** associated with each role.
 
 <div class="successBlock">
-You can also set granular access controls and lock down access to specific RudderStack objects and features to a select list of members in your workspace. For more information, refer to the <Link to=""></Link> section below.
+You can also set granular access controls and lock down access to specific RudderStack objects and features to a select list of members in your workspace. For more information, refer to the <Link to="#setting-granular-access-controls">Setting granular access controls</Link> section below.
 </div>
 
 ### Read-Only
@@ -64,7 +64,7 @@ Some things to note regarding the read-only user permissions:
 
 ### Read-Write
 
-A read-write user has all the permissions of a read-only user in addition to modifying the key workspace features and options, as listed below:
+A read-write user has all the permissions of a read-only user in addition to modifying the key workspace features and options listed below:
 
 | Feature          | View | Add | Modify | Delete |
 | :-------------- | :--- | :-- | :----- | :----- |
@@ -93,16 +93,16 @@ This user role has complete access to the RudderStack workspace, including all t
 | <Link to="/sources/reverse-etl/features/models/">Models</Link> | Yes  | Yes | Yes    | Yes    |
 
 <div class="infoBlock">
-The Admin role also has some additional permissions related to configuring the workspace settings, including managing users, modifying user permissions, enforcing MFA (multi-factor authentication), and more. This role also has the required permissions to <Link to="#setting-granular-access-controls">set granular access controls</Link> for certain business-critical objects and <Link to="#limiting-access-to-pii-related-features">limit PII access</Link> to certain users.
+The Admin role also has some additional permissions related to configuring the workspace settings, including managing users, modifying user permissions, enforcing MFA(multi-factor authentication), and more. This role also has the required permissions to <Link to="#setting-granular-access-controls">set granular access controls</Link> for certain business-critical objects and <Link to="#limiting-access-to-pii-related-features">limit PII access</Link> to certain users.
 </div>
 
 ## Setting granular access controls
 
-When you add a member to your workspace, RudderStack lets you assign any of the three default global roles - <Link to="#read-only">Real-Only</Link>, <Link to="#read-write">Real-Write</Link>, and <Link to="#admin">Admin</Link>. 
+When you add a member to your workspace, RudderStack lets you assign any of the three default global roles - <Link to="#read-only">Read-Only</Link>, <Link to="#read-write">Read-Write</Link>, and <Link to="#admin">Admin</Link>. 
 
-Although these permissions provide basic controls, they can end up being too broad or too narrow for certain use-cases. For example, admins cannot restrict access to modifying a certain destination's settings without removing edit permissions for the user entirely. 
+Although these permissions provide basic controls, they can end up being too broad or too narrow for certain use-cases. For example, admins cannot restrict access to modify a destination's settings without removing edit permissions for the user entirely. 
 
-With RudderStack's latest granular access control features, admins can lock down business-critical objects to a select list of people. You can also restrict PII(Personally Identifiable Information) access to certain users.
+With RudderStack's latest granular access control features, admins can lock down business-critical objects to a select list of people. They can also restrict PII(Personally Identifiable Information) access to certain users.
 
 <div class="successBlock">
 With these features, you can allow certain data pipelines to be edited <strong>only</strong> by the users who have the required access. Also, you can ensure your access controls are in compliance with the major data regulations like SOC2, GDPR, CCPA, HIPAA, etc.
@@ -113,7 +113,7 @@ This is an enterprise-only feature.
 </div>
 
 <div class="infoBlock">
-All the access changes are recorded in the <Link to="/dashboard-guides/audit-logs/">audit log</Link>.
+All the access-related changes are recorded in the <Link to="/dashboard-guides/audit-logs/">audit log</Link>.
 </div>
 
 ### Restricting edit permissions for individual objects
@@ -132,7 +132,7 @@ Any action involving setting up a connection between two resources or linking/de
 Only users with the Admin role have access to the <strong>Permissions</strong> tab. This tab is visible for every source, destination, and model present in the workspace.
 </div>
 
-To specify who can make changes to a given resource, follow these steps:
+To specify the list of users who can make changes to a given resource, follow these steps:
 
 1. Go to the resource and click on the **Permissions** tab, as shown:
 
@@ -141,7 +141,7 @@ To specify who can make changes to a given resource, follow these steps:
 2. Under **Who can make changes?**, select any of the following two options:
 
     - **Anyone with write access**: All the members with the **Read-Write** or **Admin** role can make changes to the resource.
-    - **Only people you select**: With this option, only the members who are given the permission can make changes to the resource.
+    - **Only people you select**: With this option, only the members who are given the edit permission can make changes to the resource.
 3. To allow specific members of your team to edit the resource, click **Only people you select**, followed by **Add member**.
 4. Finally, select the team members from the drop-down and click **Add Members**, as shown:
 
@@ -153,7 +153,7 @@ Members with Read-Only permissions cannot be added as they do not have permissio
 
 ### Limiting access to PII-related features
 
-With this feature, you can safeguard your customers' privacy by controlling who has access to the raw event data containing the PII. You can allow everyone on your team to access the PII, or restrict access to a select list of members.
+With this feature, you can safeguard your customers' privacy by controlling who has access to the raw event data containing the PII. You can allow everyone on your team to access the PII or allow access to a select list of members.
 
 Anyone with the access can view the customers' PII in the <Link to="/dashboard-guides/live-events/">Live Events</Link> and the error logs under the <strong>Events</strong> tab for your <Link to="/dashboard-guides/destinations/#destination-details">destination</Link>, as shown:
 
