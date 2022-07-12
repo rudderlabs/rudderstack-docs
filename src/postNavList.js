@@ -1386,9 +1386,33 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "storage-platforms",
-    title: "Storage Platforms",
+    key: "streaming-destinations",
+    title: "Streaming Destinations",
     link: "/destinations/streaming-destinations/",
+    content: [],
+  },
+  {
+    key: "vero",
+    title: "Vero",
+    link: "/destinations/streaming-destinations/vero/",
+    content: [],
+  },
+  {
+    key: "setting-up-vero",
+    title: "Setting up Vero",
+    link: "/destinations/streaming-destinations/setting-up-vero/",
+    content: [],
+  },
+  {
+    key: "cloud-mode",
+    title: "Cloud Mode",
+    link: "/destinations/streaming-destinations/cloud-mode/",
+    content: [],
+  },
+  {
+    key: "device-mode",
+    title: "Device Mode",
+    link: "/destinations/streaming-destinations/device-mode/",
     content: [],
   },
   {

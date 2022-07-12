@@ -1054,19 +1054,44 @@ export const jsonData = [
                 title: "Salesforce Marketing Cloud",
                 link: "/destinations/streaming-destinations/sfmc/",
                 content: []
-            }, {
+            },
+            {
                 title: "Salesforce Pardot",
                 link: "/destinations/streaming-destinations/pardot/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "SendGrid",
                 link: "/destinations/streaming-destinations/sendgrid/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Userlist",
                 link: "/destinations/streaming-destinations/userlist/",
                 content: []
-            }, {
+            },
+            {
+                title: "Vero",
+                link: "/destinations/streaming-destinations/vero/",
+                content: [
+                    {
+                        title: "Setting up Vero",
+                        link: "/destinations/streaming-destinations/vero/setting-up-vero/",
+                        content: []
+                    },
+                    {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/vero/cloud-mode/",
+                        content: []
+                    },
+                    {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/vero/device-mode/",
+                        content: []
+                    },
+                ]
+            },
+            {
                 title: "WebEngage",
                 link: "/destinations/streaming-destinations/webengage/",
                 content: []
