@@ -546,12 +546,6 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "xero",
-    title: "Xero",
-    link: "/sources/extract/xero/",
-    content: [],
-  },
-  {
     key: "zendesk",
     title: "Zendesk",
     link: "/sources/extract/zendesk/",

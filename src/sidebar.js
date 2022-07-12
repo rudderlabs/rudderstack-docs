@@ -437,11 +437,8 @@ export const jsonData = [
                 title: "Stripe",
                 link: "/sources/extract/stripe/",
                 content: []
-            }, {
-                title: "Xero",
-                link: "/sources/extract/xero/",
-                content: []
-            }, {
+            }, 
+            {
                 title: "Zendesk",
                 link: "/sources/extract/zendesk/",
                 content: []
