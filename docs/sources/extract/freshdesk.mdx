@@ -8,7 +8,7 @@ description: Step-by-step guide on ingesting data from Freshdesk into RudderStac
 This document guides you in setting up Freshdesk as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Freshdesk data, which can then be routed to your RudderStack-supported data warehouse destination.
 
 <div class="warningBlock">
-All the Cloud Extract sources support sending data only to a <Link to="/data-warehouse-integrations/">data warehouse destination</Link>.
+All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
 </div>
 
 ## Getting Started
@@ -26,12 +26,12 @@ To set up Freshdesk as a source in RudderStack, follow these steps:
 <img src="../../assets/cloud-extract-sources/freshdesk-connection-settings.png" alt="Freshdesk credentials" />
 
 2. Enter the following connection credentials to authenticate your Freshdesk account with RudderStack:
-  - **Account Name**: Enter your Freshdesk account name (email used to sign up for Freshdesk).
-  - **Subdomain**: Enter your Freshdesk subdomain (portion of URL before `.freshdesk.com/`)
+  - **Account Name**: Enter your Freshdesk account name. This should be the email you used to sign up for Freshdesk.
+  - **Subdomain**: Enter your Freshdesk subdomain (portion of the URL before `.freshdesk.com/`)
   - **API Key**: Enter your Freshdesk API key which can be obtained by logging into your Freshdesk account, clicking on your profile and navigating to the **Profile Settings**.
 
 <div class="successBlock">
-Refer to the <a href="#faq">FAQ</a> section to know more about how to obtain the API key.
+Refer to the <a href="#faq">FAQ</a> section for more information on obtaining the Freshdesk API key.
 </div>
 
 ### Destination settings
@@ -71,7 +71,7 @@ Use the <strong>Use Existing Destination</strong> option if you have an already-
 To get your Freshdesk API key, follow these steps:
 
 1. Log into your [Freshdesk account](https://freshdesk.com/login).
-2. Click on your profile at the top right and go to **Profile Settings**.
+2. Click on your profile in the top right section of the dashboard and go to **Profile Settings**.
 3. You can find the Freshdesk API key in the right sidebar, as shown:
 
 <img src="../../assets/cloud-extract-sources/freshdesk-connection-settings-2.png" alt="Freshdesk API key" />
@@ -82,6 +82,6 @@ Yes, it is.
 
 We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
 
-## Contact Us
+## Contact us
 
 If you come across any issues while configuring Freshdesk as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
