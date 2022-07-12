@@ -106,14 +106,14 @@ When you add a member to your workspace, RudderStack lets you assign any of the 
 
 Although these permissions provide basic controls, they can end up being too broad or too narrow for certain use-cases. For example, admins cannot restrict access to modifying a certain destination's settings without removing edit permissions for the user entirely. 
 
-With RudderStack's latest granular access control features, admins can lock down business-critical objects to a select list of people. You can also restrict PII (Personally Identifiable Information) access to certain users.
-
-<div class="infoBlock">
-This is an enterprise-only feature.
-</div>
+With RudderStack's latest granular access control features, admins can lock down business-critical objects to a select list of people. You can also restrict PII(Personally Identifiable Information) access to certain users.
 
 <div class="successBlock">
 With these features, you can allow certain data pipelines to be edited <strong>only</strong> by the users who have the required access. Also, you can ensure your access controls are in compliance with the major data regulations like SOC2, GDPR, CCPA, HIPAA, etc.
+</div>
+
+<div class="infoBlock">
+This is an enterprise-only feature.
 </div>
 
 <div class="infoBlock">
@@ -122,33 +122,37 @@ All the access changes are recorded in the <Link to="/dashboard-guides/audit-log
 
 ### Restricting edit permissions for individual objects
 
-This tab lets you specify the list of members having edit permissions to a given object. These permissions include:
+This tab lets you specify the list of members having edit permissions to a given object or resource. These permissions include:
 
-- Connecting / disconnecting an object with other objects. For example, source to destination, source to tracking plan, transformation to destination, model to reverse ETL source, etc.
-- Enabling, disabling, or deleting the object
-- Editing or changing the object-specific configuration
+- Connecting/disconnecting a resource with another resource. For example, source to destination, source to tracking plan, transformation to destination, model to reverse ETL source, etc.
+- Enabling, disabling, or deleting the resource
+- Editing or changing the resource-specific configuration
+
+<div class="infoBlock">
+Any action involving setting up a connection between two resources or linking/de-linking a resource with another resource requires edit permissions for both the resources. The only exception is the SQL model which can used without explicitly setting any edit permissions.
+</div>
 
 <div class="infoBlock">
 Only users with the Admin role have access to the <strong>Permissions</strong> tab. This tab is visible for every source, destination, and model present in the workspace.
 </div>
 
-To specify who can make changes to a given object, follow these steps:
+To specify who can make changes to a given resource, follow these steps:
 
-1. Go to the object and click on the **Permissions** tab, as shown:
+1. Go to the resource and click on the **Permissions** tab, as shown:
 
 <img src="../../assets/rs-cloud/permissions-management-2.png" alt="Permissions tab" />
 
 2. Under **Who can make changes?**, select any of the following two options:
 
-    - **Anyone with write access**: All the members having the Read-Write or Admin role can make changes to the object.
-    - **Only people you select**: With this option, only the members who are given the permission can make changes to the object.
-3. To allow specific members of your team to edit the object, click **Only people you select**, followed by **Add member**.
+    - **Anyone with write access**: All the members with the **Read-Write** or **Admin** role can make changes to the resource.
+    - **Only people you select**: With this option, only the members who are given the permission can make changes to the resource.
+3. To allow specific members of your team to edit the resource, click **Only people you select**, followed by **Add member**.
 4. Finally, select the team members from the drop-down and click **Add Members**, as shown:
 
 <img src="../../assets/rs-cloud/permissions-management-3.png" alt="Add members option" />
 
 <div class="warningBlock">
-Members with Read-Only permissions cannot be added as they do not have permissions to modify an object, by default.
+Members with Read-Only permissions cannot be added as they do not have permissions to modify a resource, by default.
 </div>
 
 ## Limiting access to PII-related features

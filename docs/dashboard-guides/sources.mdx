@@ -60,7 +60,6 @@ To get details about a configured source, click on it to see the following optio
 <img src="../assets/rs-cloud/rename-source.png" align="left" alt="Rename source" />
 
 - **Live Events**: Lets you view the real-time event data flowing through RudderStack. Refer to <Link to="/dashboard-guides/live-events/">Live Events</Link> for more information.
-
 - **Write Key**: Required to send the data from your source. For example, you can load the <Link to="/sources/sdks/rudderstack-javascript-sdk/">RudderStack's JavaScript SDK</Link> on your website to track and collect the events by running the following snippet:
 
 ```javascript
@@ -70,7 +69,7 @@ To get details about a configured source, click on it to see the following optio
 - **Add Destination**: Lets you add a new destination connected to this source.
 
 <div class="infoBlock">
-If you have already configured a destination in RudderStack, you can also use it by clicking on **Add Destination** > **Use Existing Destination**.
+If you have already configured a destination in RudderStack, you can also use it by clicking on <strong>Add Destination</strong> > <strong>Use Existing Destination</strong>.
 </div>
 
 - **Events**: Displays all the latest metrics related to the event delivery such as number of events successfully delivered, failed events, etc. You can also filter these by the time period (past 1 day, 7 days, or 30 days).
@@ -84,6 +83,11 @@ Before deleting a source, make sure there are no destinations connected to it.
 </div>
 
 - **Tracking Plans**: Lets you link a <Link to="/features/data-governance/tracking-plans/">tracking plan</Link> with the source.
+- **Permissions**: Lets you determine which members in your workspace can make changes to this source.
+
+<div class="infoBlock">
+Refer to the <Link to="/dashboard-guides/permissions-management/#restricting-edit-permissions-for-individual objects">Permissions Management</Link> guide for more details on this option.
+</div>
 
 ## FAQ
 

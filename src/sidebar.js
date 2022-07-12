@@ -65,51 +65,37 @@ export const jsonData = [
 // Dashboard guides section
 
 {
-    key: "overview",
     title: "Overview",
     sectionTitle: "Dashboard Guides",
     link: "/dashboard-guides/overview/",
     content: []
 },
 {
-    key: "sources",
     title: "Sources",
     link: "/dashboard-guides/sources/",
     content: []
 },
 {
-    key: "destinations",
     title: "Destinations",
     link: "/dashboard-guides/destinations/",
     content: []
 },
 {
-    key: "live-events",
     title: "Live Events",
     link: "/dashboard-guides/live-events/",
     content: []
 },
 {
-    key: "permissions-management",
     title: "Permissions Management",
     link: "/dashboard-guides/permissions-management/",
-    content: [
-        {
-            key: "permissions-matrix",
-            title: "Permissions Matrix",
-            link: "/dashboard-guides/permissions-management/permissions-matrix",
-            content: [],
-          },
-    ]
+    content: []
 },
 {
-    key: "audit-logs",
     title: "Audit Logs",
     link: "/dashboard-guides/audit-logs/",
     content: []
 },
 {
-    key: "personal-access-token",
     title: "Personal Access Token",
     link: "/dashboard-guides/personal-access-token/",
     content: []
