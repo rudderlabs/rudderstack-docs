@@ -45,7 +45,7 @@ For more information, refer to the <Link to="/sources/sdks/rudderstack-ios-sdk/i
 To set up the RudderStack iOS SDK, the following prerequisites must be met:
 
 - You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
-- Once signed up, set up an iOS source in the dashboard. For more information, follow [**this guide**](https://www.rudderstack.com/docs/rudderstack-cloud/sources/#adding-a-source).  You should then see a **Write Key** for this source, as shown below:
+- Once signed up, set up an iOS source in the dashboard. For more information, see <Link to="/dashboard-guides/sources/#adding-a-source">Adding a source</Link>.  You should then see a **Write Key** for this source, as shown below:
 
 <img src="../../../assets/event-stream-sources/ios-sdk-1.png" alt="iOS source write key" />
 
@@ -633,7 +633,7 @@ An example of setting the `anonymousId` is shown below:
 
 ## Filtering events
 
-When sending events to a destination via the [**device mode**](https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode), you can explicitly specify which events should be discarded or allowed to flow through - by allowlisting or denylisting them.
+When sending events to a destination via the [**device mode**](https://rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode), you can explicitly specify which events should be discarded or allowed to flow through - by allowlisting or denylisting them.
 
 <div class="infoBlock">
 
@@ -831,7 +831,7 @@ You can easily develop a device mode destination in case RudderStack doesn't sup
 
 <div class="infoBlock">
 
-More information on the RudderStack device mode can be found in the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
+More information on the RudderStack device mode can be found in the <a href="https://rudderstack.com/docs/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
 - Create a `CustomFactory.h` file by extending [`RSIntegrationFactory`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Rudder/RSIntegrationFactory.h), as shown:

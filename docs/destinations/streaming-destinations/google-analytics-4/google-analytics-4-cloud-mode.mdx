@@ -1,12 +1,16 @@
 ---
 title: "Cloud Mode"
-description:  Detailed technical documentation on sending events to Google Analytics 4 using the RudderStack Cloud mode.
+description:  Detailed technical documentation on sending events to Google Analytics 4 using the RudderStack cloud mode.
 ---
 
-RudderStack lets you send your event data to Google Analytics 4 via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+RudderStack lets you send your event data to Google Analytics 4 via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> by leveraging the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a>.
 
 <div class="infoBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repository</a>.
+</div>
+
+<div class="infoBlock">
+Google Analytics 4 does not officially support a complete server-to-server integration. RudderStack monitors the GA4 Measurement Protocol API capabilities and accordingly sends a reasonable level of reporting data for the customers to Google Analytics 4.
 </div>
 
 <GhBadge
@@ -14,6 +18,41 @@ Find the open source transformer code for this destination in the <a href="https
   message={'Beta'}
   color={'blueviolet'}
 />
+
+## Identify
+
+The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
+
+A sample `identify` call using `gtag` is shown below:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4GRlm", {
+    firstLogin: true,
+    method: "Google",
+    value: 10,
+    currency: "USD"
+});
+```
+
+A sample `identify` call using `firebase` is shown below:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4GRlm", {
+    firstLogin: true,
+    method: "Google",
+    value: 10,
+    currency: "USD"
+}, {
+    externalId: [{
+        type: "ga4AppInstanceId",
+        id: "f0dd99b6f979fb551ce583373900f937"
+    }],
+});
+```
+
+<div class="infoBlock">
+For more information on the dashboard settings related to <code class="inline-code">identify</code> events, refer to the <Link to="/destinations/streaming-destinations/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify settings</Link> section.
+</div>
 
 ## Track
 
@@ -25,7 +64,6 @@ RudderStack supports both the `gtag` and `firebase` ways for tagging in websites
 - If you use `firebase`, passing the `app_instance_id` parameter is mandatory.
 
 <div class="infoBlock">
-
 Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a> guide for more information.
 </div>
 
@@ -33,11 +71,10 @@ The mappings for the above-mentioned mandatory parameters are listed in the foll
 
 | Parameters    | Mapping value  |
 | :-------------| :-----------------|
-| `client_id`         |  `context.client_id`  or `messageId` |
+| `client_id`         |  from `externalID` `ga4ClientId` or `anonymousId` or `messageId` |
 | `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  | 
 
 <div class="infoBlock">
-  
 Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
 </div>
 
@@ -47,10 +84,9 @@ The mappings for the optional parameters (common for `gtag` and `firebase` both)
 | :-------------| :-----------------|:-----------------|
 | `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
 | `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Timestamp in ISO 8601 format.|
-| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads.|
+| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. If `context.device.adTrackingEnabled` is set as `true`, `non_personalised_ads` will be set to `false`. |
 
 <div class="infoBlock">
-  
 Google Analytics 4 Measurement Protocol only supports timestamps 72 hours into the past and 15 minutes into the future. RudderStack discards any event with a timestamp out of this range.
 </div>
 
@@ -82,7 +118,10 @@ rudderanalytics.track('Product List Viewed', {
     location_id: "L_12345"
   }]
 }, {
-  client_id: "client_id"
+    externalId: [{
+        type: "ga4ClientId",
+        id: "client_id"
+    }],
 });
 ```
 
@@ -146,7 +185,36 @@ rudderanalytics.page({}, {
 });
 ```
 
-## E-commerce
+## Group
+
+The <Link to="/event-spec/standard-events/group/">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, for example, company name, number of employees, etc.
+
+RudderStack maps the `group` call to the `join_group` event by default.
+
+A sample `group` call using `gtag` is shown below:
+
+```javascript
+rudderanalytics.group("1hKOmRA4", {
+    "custom1": 1234,
+    "custom2": "custom2"
+});
+```
+
+A sample `group` call using `firebase` is shown below:
+
+```javascript
+rudderanalytics.group("1hKOmRA4", {
+    "custom1": 1234,
+    "custom2": "custom2"
+}, {
+    externalId: [{
+        type: "ga4AppInstanceId",
+        id: "f0dd99b6f979fb551ce583373900f937"
+    }],
+});
+```
+
+## E-commerce event tracking
 
 RudderStack supports e-commerce tracking for Google Analytics 4. You can refer to the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for sending events while instrumenting your site with the RudderStack SDK.
 
@@ -217,20 +285,15 @@ The following table lists the mappings between the RudderStack and Google Analyt
     <td>Cart Shared</td>
     <td><code class="inline-code">share</code></td>
   </tr>
-   <tr>
-    <td>Group</td>
-    <td><code class="inline-code">join_group</code></td>
-  </tr>
   <tr>
     <td>Payment Info Entered</td>
-    <td><code class="inline-code">add_payment_info</code><br/>OR<br/><code class="inline-code">add_shipping_info</code></td>
+    <td><code class="inline-code">add_payment_info</code></td>
+  </tr>
+  <tr>
+    <td>Checkout Step Completed</td>
+    <td><code class="inline-code">add_shipping_info</code></td>
   </tr>
 </table>
-
-<div class="infoBlock">
-
-The mapping of the <strong>Payment Info Entered</strong> event to the <code class="inline-code">add_payment_info</code> or <code class="inline-code">add_shipping_info</code> event is determined on the basis of parameters passed to it.
-</div>
 
 The following table lists the RudderStack and Google Analytics 4 properties mappings based on the specific RudderStack events:
 
@@ -242,7 +305,7 @@ The following table lists the RudderStack and Google Analytics 4 properties mapp
   </tr>
   <tr>
     <td>Products Searched</td>
-    <td><code class="inline-code">query</code></td>
+    <td><code class="inline-code">properties.query</code></td>
     <td><code class="inline-code">search_term</code></td>
   </tr>
   <tr>
@@ -251,55 +314,121 @@ The following table lists the RudderStack and Google Analytics 4 properties mapp
     <td><code class="inline-code">item_list_id</code><br /><code class="inline-code">item_list_name</code></td>
   </tr>
   <tr>
-    <td>Promotion Viewed<br />Promotion Clicked</td>
-    <td><code class="inline-code">properties.position</code><br /><code class="inline-code">properties.creative_name</code><br /><code class="inline-code">properties.creative_slot</code><br /><code class="inline-code">properties.promotion_id</code><br /><code class="inline-code">properties.promotion_name</code></td>
-    <td><code class="inline-code">location_id</code><br /><code class="inline-code">creative_name</code><br /><code class="inline-code">creative_slot</code><br /><code class="inline-code">promotion_id</code><br /><code class="inline-code">promotion_name</code></td>
+    <td rowspan="5">Promotion Viewed<br />Promotion Clicked</td>
+   <td><code class="inline-code">properties.creative_name</code><br /><code class="inline-code">properties.creative</code></td>
+    <td><code class="inline-code">creative_name</code></td>
+    </tr>
+  <tr>
+    <td><code class="inline-code">properties.creative_slot</code><br /><code class="inline-code">properties.position</code></td>
+    <td><code class="inline-code">creative_slot</code></td>
+  </tr>
+  <tr>
+    <td><code class="inline-code">properties.location_id</code></td>
+    <td><code class="inline-code">location_id</code></td>
+  </tr>
+  <tr>
+    <td><code class="inline-code">properties.promotion_name</code><br /><code class="inline-code">properties.name</code></td>
+    <td><code class="inline-code">promotion_name</code></td>
+  </tr>
+  <tr>
+    <td><code class="inline-code">properties.promotion_id</code></td>
+    <td><code class="inline-code">promotion_id</code></td>
   </tr>
    <tr>
-    <td>Product Viewed<br />Product Added<br />Product Removed<br />Cart Viewed<br />Product Added to Wishlist</td>
-    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.currency</code></td>
-    <td><code class="inline-code">value</code><br /><code class="inline-code">currency</code></td>
+    <td rowspan="2">Product Viewed<br />Product Added to Wishlist</td>
+    <td><code class="inline-code">properties.currency</code></td>
+    <td><code class="inline-code">currency</code></td>
   </tr>
    <tr>
-    <td>Checkout Started</td>
-    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.currency</code><br /><code class="inline-code">properties.coupon</code></td>
-    <td><code class="inline-code">value</code><br /><code class="inline-code">currency</code><br /><code class="inline-code">coupon</code></td>
+    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.price</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.revenue</code></td>
+    <td><code class="inline-code">value</code></td>
   </tr>
    <tr>
-    <td>Order Completed<br/>Order Refunded</td>
-    <td><code class="inline-code">properties.currency</code><br /><code class="inline-code">properties.order_id</code><br /><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.affiliation</code><br /><code class="inline-code">properties.coupon</code><br /><code class="inline-code">properties.shipping</code><br /><code class="inline-code">properties.tax</code></td>
-    <td><code class="inline-code">currency</code><br /><code class="inline-code">transaction_id</code><br /><code class="inline-code">value</code><br /><code class="inline-code">affiliation</code><br /><code class="inline-code">coupon</code><br /><code class="inline-code">shipping</code><br /><code class="inline-code">tax</code></td>
+    <td rowspan="2">Product Added<br />Product Removed</td>
+    <td><code class="inline-code">properties.currency</code></td>
+    <td><code class="inline-code">currency</code></td>
   </tr>
-    <tr>
-    <td>Product Shared<br/>Cart Shared</td>
-    <td><code class="inline-code">properties.share_via</code><br /><code class="inline-code">properties.content_type</code><br /><code class="inline-code">properties.item_id</code></td>
-    <td><code class="inline-code">method</code><br /><code class="inline-code">content_type</code><br /><code class="inline-code">item_id</code></td>
+   <tr>
+    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.revenue</code><br /><code class="inline-code">properties.price</code> X <code class="inline-code">properties.quantity</code></td>
+    <td><code class="inline-code">value</code></td>
+  </tr>
+   <tr>
+    <td rowspan="2">Cart Viewed</td>
+    <td><code class="inline-code">properties.currency</code></td>
+    <td><code class="inline-code">currency</code></td>
+  </tr>
+   <tr>
+    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.revenue</code></td>
+    <td><code class="inline-code">value</code></td>
+  </tr>
+   <tr>
+    <td rowspan="2">Checkout Started</td>
+    <td><code class="inline-code">properties.currency</code><br /><code class="inline-code">properties.coupon</code></td>
+    <td><code class="inline-code">currency</code><br /><code class="inline-code">coupon</code></td>
+  </tr>
+     <tr>
+    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.revenue</code></td>
+    <td><code class="inline-code">value</code></td>
+  </tr>
+  <tr>
+    <td rowspan="2">Order Completed<br/>Order Refunded</td>
+   <td><code class="inline-code">properties.currency</code><br /><code class="inline-code">properties.order_id</code><br /><code class="inline-code">properties.affiliation</code><br /><code class="inline-code">properties.coupon</code><br /><code class="inline-code">properties.shipping</code><br /><code class="inline-code">properties.tax</code></td>
+   <td><code class="inline-code">currency</code><br /><code class="inline-code">transaction_id</code><br /><code class="inline-code">affiliation</code><br /><code class="inline-code">coupon</code><br /><code class="inline-code">shipping</code><br /><code class="inline-code">tax</code></td>
+  </tr>
+     <tr>
+    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.revenue</code></td>
+    <td><code class="inline-code">value</code></td>
+  </tr>
+   <tr>
+    <td rowspan="2">Product Shared</td>
+     <td><code class="inline-code">properties.share_via</code><br /><code class="inline-code">properties.content_type</code></td>
+    <td><code class="inline-code">method</code><br /><code class="inline-code">content_type</code></td>
+  </tr>
+     <tr>
+    <td><code class="inline-code">properties.item_id</code><br /><code class="inline-code">properties.product_id</code><br /><code class="inline-code">properties.sku</code></td>
+    <td><code class="inline-code">item_id</code></td>
+  </tr>
+  <tr>
+    <td rowspan="2">Cart Shared</td>
+     <td><code class="inline-code">properties.share_via</code><br /><code class="inline-code">properties.content_type</code></td>
+    <td><code class="inline-code">method</code><br /><code class="inline-code">content_type</code></td>
+  </tr>
+     <tr>
+    <td><code class="inline-code">properties.item_id</code><br /><code class="inline-code">properties.cart_id</code></td>
+    <td><code class="inline-code">item_id</code></td>
   </tr>
    <tr>
     <td>Group</td>
-    <td><code class="inline-code">groupId</code><br /><code class="inline-code">properties.groupId</code><br /><code class="inline-code">properties.group_id</code></td>
+    <td><code class="inline-code">groupId</code></td>
     <td><code class="inline-code">group_id</code></td>
   </tr>
   <tr>
-    <td>Payment Info Entered</td>
-    <td><code class="inline-code">properties.payment_method</code><br /><code class="inline-code">properties.coupon</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.currency</code></td>
-    <td><code class="inline-code">payment_type</code><br /><code class="inline-code">coupon</code><br /><code class="inline-code">value</code><br /><code class="inline-code">currency</code></td>
+    <td rowspan="2">Payment Info Entered</td>
+    <td><code class="inline-code">properties.payment_method</code><br /><code class="inline-code">properties.coupon</code><br /><code class="inline-code">properties.currency</code></td>
+    <td><code class="inline-code">payment_type</code><br /><code class="inline-code">coupon</code><br /><code class="inline-code">currency</code></td>
+  </tr>
+   <tr>
+    <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.revenue</code></td>
+    <td><code class="inline-code">value</code></td>
   </tr>
   <tr>
-    <td>Payment Info Entered</td>
-    <td><code class="inline-code">properties.shipping_method</code><br /><code class="inline-code">properties.coupon</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.currency</code></td>
-    <td><code class="inline-code">shipping_tier</code><br /><code class="inline-code">coupon</code><br /><code class="inline-code">value</code><br /><code class="inline-code">currency</code></td>
+    <td rowspan="4">Checkout Step Completed</td>
+   <td><code class="inline-code">properties.currency</code></td>
+    <td><code class="inline-code">currency</code></td>
+    </tr>
+  <tr>
+   <td><code class="inline-code">properties.total</code><br /><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.revenue</code></td>
+    <td><code class="inline-code">value</code></td>
+  </tr>
+  <tr>
+    <td><code class="inline-code">properties.coupon</code></td>
+    <td><code class="inline-code">coupon</code></td>
+  </tr>
+  <tr>
+    <td><code class="inline-code">properties.shipping_method</code></td>
+    <td><code class="inline-code">shipping_tier</code></td>
   </tr>
 </table>
-
-<div class="infoBlock">
-
-The <strong>Payment Info Entered</strong> event is mapped on the basis of parameters passed to it:
-<ul>
-  <li>If <code class="inline-code">payment_method</code> is passed along with the other fields, it maps to <code class="inline-code">add_payment_info</code> event.</li>
- <li>If <code class="inline-code">shipping_method</code> is passed along with the other fields, it maps to <code class="inline-code">add_shipping_info</code> event.</li>
-  </ul>
-</div>
 
 Most of the above mentioned events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. The below table details out the common mappings for `Items` array:
 
@@ -314,7 +443,6 @@ Most of the above mentioned events include [`items`](https://developers.google.c
 | properties.products.$.brand           | `item_brand`  |
 | properties.products.$.variant           | `item_variant`  |
 | properties.products.$.quantity           | `quantity`  |
-
 
 The below mentioned e-commerce events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. 
 
@@ -374,7 +502,7 @@ The following table details the parameter mappings present in the `Items` array,
 | properties.products.$.promotion_id           | `promotion_id`  |
 | properties.products.$.promotion_name           | `promotion_name`  |
 
-### Non e-commerce events
+## Non e-commerce events tracking
 
 The below table lists the mappings of the non e-commerce `track` events and properties that are passed to Google Analytics 4 events and properties:
 
@@ -390,70 +518,22 @@ The below table lists the mappings of the non e-commerce `track` events and prop
     <th>Google Analytics 4</th>
   </tr>
   <tr>
-    <td>earn_virtual_currency </td>
-    <td><code class="inline-code">earn_virtual_currency </code></td>
-    <td><code class="inline-code">properties.virtual_currency_name</code><br /><code class="inline-code">properties.value</code></td>
-    <td><code class="inline-code">virtual_currency_name</code><br /><code class="inline-code">value</code></td>
-  </tr>
-  <tr>
     <td>generate_lead</td>
     <td><code class="inline-code">generate_lead</code></td>
-    <td><code class="inline-code">properties.currency</code><br /><code class="inline-code">properties.value</code></td>
+    <td><code class="inline-code">properties.$&#123;currency&#125;</code><br /><code class="inline-code">properties.$&#123;value&#125;</code></td>
     <td><code class="inline-code">currency</code><br /><code class="inline-code">value</code></td>
-  </tr>
-  <tr>
-    <td>level_up</td>
-    <td><code class="inline-code">level_up</code></td>
-    <td><code class="inline-code">properties.level</code><br /><code class="inline-code">properties.character</code></td>
-    <td><code class="inline-code">level</code><br /><code class="inline-code">character</code></td>
-  </tr>
+  </tr>  
     <tr>
     <td>login</td>
     <td><code class="inline-code">login</code></td>
-    <td><code class="inline-code">properties.method</code></td>
+    <td><code class="inline-code">properties.$&#123;method&#125;</code></td>
     <td><code class="inline-code">method</code></td>
-  </tr>
-    <tr>
-    <td>post_score</td>
-    <td><code class="inline-code">post_score</code></td>
-     <td><code class="inline-code">properties.level</code><br /><code class="inline-code">properties.score</code><br /><code class="inline-code">properties.character</code></td>
-    <td><code class="inline-code">level</code><br /><code class="inline-code">properties.score</code><br /><code class="inline-code">character</code></td>
-  </tr>
-    <tr>
-    <td>select_content</td>
-    <td><code class="inline-code">select_content</code></td>
-    <td><code class="inline-code">properties.content_type</code><br /><code class="inline-code">properties.item_id</code></td>
-    <td><code class="inline-code">content_type</code><br /><code class="inline-code">item_id</code></td>
   </tr>
     <tr>
     <td>sign_up</td>
     <td><code class="inline-code">sign_up</code></td>
-    <td><code class="inline-code">properties.method</code></td>
+    <td><code class="inline-code">properties.$&#123;method&#125;</code></td>
     <td><code class="inline-code">method</code></td>
-  </tr>
-    <tr>
-    <td>spend_virtual_currency</td>
-    <td><code class="inline-code">spend_virtual_currency</code></td>
-    <td><code class="inline-code">properties.value</code><br /><code class="inline-code">properties.virtual_currency_name</code><br /><code class="inline-code">properties.item_name</code></td>
-    <td><code class="inline-code">value</code><br /><code class="inline-code">virtual_currency_name</code><br /><code class="inline-code">properties.item_name</code></td>
-  </tr>
-    <tr>
-    <td>tutorial_begin</td>
-    <td><code class="inline-code">tutorial_begin</code></td>
-    <td>-</td>
-    <td>-</td>
-  </tr>
-      <tr>
-    <td>tutorial_complete</td>
-    <td><code class="inline-code">tutorial_complete</code></td>
-     <td>-</td>
-     <td>-</td>
-  </tr>
-    <tr>
-    <td>unlock_achievement</td>
-    <td><code class="inline-code">unlock_achievement</code></td>
-    <td><code class="inline-code">properties.achievement_id</code></td>
-    <td><code class="inline-code">achievement_id</code></td>
   </tr>
     <tr>
     <td>view_search_results</td>
@@ -464,11 +544,14 @@ The below table lists the mappings of the non e-commerce `track` events and prop
 </table>
 
 <div class="infoBlock">
-  
-You can pass the custom user properties to any of the events by passing them as `properties.user_properties`. Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=gtag">Google Analytics 4 documentation</a> for more information.
+The <code class="inline-code">&#123;currency&#125;</code>, <code class="inline-code">&#123;value&#125;</code>, and <code class="inline-code">&#123;method&#125;</code> properties mentioned above are dynamic and their actual value depends on the key name passed in the dashboard. Refer to the <Link to="/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify</Link> section for more information.
 </div>
 
-### Rules for naming custom events
+<div class="infoBlock">
+You can pass the custom user properties to any of the events by passing them as <code class="inline-code">properties.user_properties</code>. Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/user-properties?client_type=gtag">Google Analytics 4 documentation</a> for more information.
+</div>
+
+## Rules for naming custom events
 
 You must follow the below rules while choosing a name for the custom events:
 
@@ -477,6 +560,16 @@ You must follow the below rules while choosing a name for the custom events:
 - Do not use reserved prefixes and event names. Refer to the <a href="#faq">FAQ</a> section to know more about the reserved event names and prefixes.
 
 ## FAQ
+
+### I’ve set up GA4 as a destination in RudderStack but I’m not seeing the expected data flow through in the GA4 dashboard. What should I do?
+
+To view the events sent to GA4, go to your [Google Analytics](https://analytics.google.com/) dashboard and navigate to **Reports** > **Realtime**.
+
+While the events typically show up within a few seconds, note that it can take GA4 up to 24 hours to process their data and appear on other reports. Also, not all types of data flow through to its realtime dashboard. It may be best to consult GA4’s FAQs for the most up-to-date information on its latest capabilities and limitations.
+
+<div class="infoBlock">
+For more information on checking the realtime view or verifying your implementation, refer to this <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/verify-implementation?client_type=gtag#realtime">GA4 documentation</a>. You can also refer to this <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/troubleshooting?client_type=gtag">Troubleshooting guide</a> for steps on fixing any implementation errors.
+</div>
 
 ### What are the reserved prefixes in Google Analytics 4?
 
@@ -488,7 +581,7 @@ The reserved prefixes in Google Analytics 4 cannot be used for custom events. Th
 - google_
 - gtag.
 
-Refer to the [GA4 document](https://support.google.com/analytics/answer/10085872#zippy=%2Cweb%2Cin-this-article%2Creserved-prefixes-and-event-names) for more information.
+Refer to the [GA4 documentation](https://support.google.com/analytics/answer/10085872#zippy=%2Cweb%2Cin-this-article%2Creserved-prefixes-and-event-names) for more information.
 
 ### What are the reserved event, parameter, and user property names in Google Analytics 4?
 
@@ -508,4 +601,3 @@ You can retrieve the `app_instance_id` through the Firebase SDK depending on the
 ## Contact us
 
 For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
-

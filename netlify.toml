@@ -6,6 +6,43 @@ CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
 # set TERM variable for terminal output
 TERM = "xterm"
 
+# post-launch redirects (wip)
+
+[[redirects]]
+from ="/administrators-guide/config-parameters"
+to = "/docs/user-guides/administrators-guide/config-parameters/"
+status = 301
+[[redirects]]
+from ="/get-started/installing-and-setting-up-rudderstack/sending-test-events/"
+to = "/docs/get-started/rudderstack-open-source/sending-test-events/"
+status = 301
+[[redirects]]
+from ="/data-warehouse-integrations/json-column-support/"
+to = "/docs/destinations/warehouse-destinations/json-column-support/"
+status = 301
+[[redirects]]
+from ="/destinations/mixpanel"
+to = "/docs/streaming-destinations/mixpanel/"
+status = 301
+[[redirects]]
+from ="/destinations/data-ingestion/kafka/"
+to = "/docs/destinations/streaming-destinations/kafka/"
+status = 301
+[[redirects]]
+from ="/data-warehouse-integrations/snowflake/"
+to = "/docs/destinations/warehouse-destinations/snowflake/"
+status = 301
+[[redirects]]
+from ="/get-started/adding-source-and-destination-rudderstack"
+to = "/docs/dashboard-guides/overview/"
+status = 301
+[[redirects]]
+from ="/identity-resolution/data-warehouse-integrations/google-bigquery"
+to = "/docs/destinations/warehouse-destinations/bigquery/"
+status = 301
+
+
+
 # Docs restructuring week of June 27 2022
 
 # Get started section
@@ -19,6 +56,10 @@ to = "/docs/resources/rudderstack-architecture/"
 status = 301
 [[redirects]]
 from = "/faqs/"
+to = "/docs/resources/faq/"
+status = 301
+[[redirects]]
+from = "/resources/faqs/"
 to = "/docs/resources/faq/"
 status = 301
 [[redirects]]
@@ -42,6 +83,10 @@ to = "/docs/features/transformations/"
 status = 301
 [[redirects]]
 from = "/data-governance/ruddertyper/"
+to = "/docs/features/data-governance/ruddertyper/"
+status = 301
+[[redirects]]
+from = "/data-governance/rudder-typer/"
 to = "/docs/features/data-governance/ruddertyper/"
 status = 301
 [[redirects]]
@@ -1007,6 +1052,10 @@ from = "/data-warehouse-integrations/warehouse-schemas/"
 to = "/docs/destinations/warehouse-destinations/warehouse-schema/"
 status = 301
 [[redirects]]
+from = "/destinations/warehouse-destinations/warehouse-schemas/"
+to = "/docs/destinations/warehouse-destinations/warehouse-schema/"
+status = 301
+[[redirects]]
 from = "/data-warehouse-integrations/azure-datalake/"
 to = "/docs/destinations/warehouse-destinations/azure-datalake/"
 status = 301
@@ -1018,6 +1067,11 @@ status = 301
 from = "/data-warehouse-integrations/s3-datalake/"
 to = "/docs/destinations/warehouse-destinations/s3-datalake/"
 status = 301
+[[redirects]]
+from = "/data-warehouse-integrations/json-column-support/"
+to = "/docs/destinations/warehouse-destinations/json-column-support/"
+status = 301
+
 # Get started
 
 [[redirects]]
@@ -1053,6 +1107,10 @@ to = "/docs/sources/sdks/event-filtering/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application/"
+to = "/docs/sources/sdks/rudderstack-android-sdk/adding-an-application-class/"
+status = 301
+[[redirects]]
+from = "/sources/sdks/rudderstack-android-sdk/add-an-application-class-to-you-android-application/"
 to = "/docs/sources/sdks/rudderstack-android-sdk/adding-an-application-class/"
 status = 301
 [[redirects]]
@@ -1125,6 +1183,10 @@ to = "/docs/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/"
+to = "/docs/sources/sdks/rudderstack-javascript-sdk/faq/"
+status = 301
+[[redirects]]
+from = "/sources/sdks/rudderstack-javascript-sdk/js-sdk-faqs/"
 to = "/docs/sources/sdks/rudderstack-javascript-sdk/faq/"
 status = 301
 [[redirects]]
@@ -1501,10 +1563,10 @@ status = 301
 from = "/get-started/installing-and-setting-up-rudderstack/docker"
 to = "/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/"
 status = 301
-# [[redirects]]
-# from = "/data-warehouse-integrations/identity-resolution-in-rudderstack/"
-# to = "/docs/identity-resolution/"
-# status = 301
+[[redirects]]
+from = "/data-warehouse-integrations/identity-resolution-in-rudderstack/"
+to = "/docs/features/identity-resolution/"
+status = 301
 # [[redirects]]
 # from = "/rudderstack-api/user-suppression/"
 # to = "/docs/rudderstack-api/data-regulation-api/"

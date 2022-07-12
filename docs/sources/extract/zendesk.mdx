@@ -1,92 +1,103 @@
 ---
 title: "Zendesk"
-description: Step-by-step guide to ingest data from Zendesk into RudderStack
+description: Step-by-step guide on ingesting data from Zendesk into RudderStack.
 ---
 
-[Zendesk](https://www.zendesk.com/) is a popular customer support, sales and service platform that lets you serve and engage with your customers effectively. Zendesk offers integrated customer support, a modern sales CRM, as well as a smart, self-serve knowledge base. In addition, its analytics and reporting capabilities lets you understand your customers better. In addition, you can also engage with them more effectively through Zendesk's personalized live chats and messaging service.
+[Zendesk](https://www.zendesk.com/) is a popular customer support, sales and service platform that lets you serve and engage with your customers effectively. Zendesk offers integrated customer support, a modern sales CRM, as well as a smart, self-serve knowledge base.
 
-This document guides you in setting up Zendesk as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Zendesk data, which can then be routed to your data warehouse destination supported by RudderStack.
-
-<div class="infoBlock">
-
-**All the Cloud Extract sources support sending data only to a data warehouse destination.**
-
-</div>
-
-## Getting Started
-
-To set up Zendesk as a source on the RudderStack dashboard, follow these steps:
-
-- Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-- From the left panel, select **Sources**. Then, click on **Add Source**, as shown:
-
-<img src="../../assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2) (1).png" alt="Add Source" />
-
-- Next, select **Zendesk** from the list of **Cloud Sources**, and click on **Next**.
-
-<img src="../../assets/2 (4).png" alt="Cloud Sources" />
-
-- Assign a name to your source, and click on **Next**.
-
-<img src="../../assets/3 (6).png" alt="Assign a name" />
-
-### Specifying Connection Credentials
-
-- Next, enter your Zendesk credentials. This includes your Zendesk **Subdomain**, your **Zendesk username**, and the API **Token**.
-
-<img src="../../assets/4 (2).png" alt="Zendesk username" />
+This document guides you in setting up Zendesk as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Zendesk data and routes it to your data warehouse.
 
 <div class="warningBlock">
-
-For the **Subdomain** input, do not include `.zendesk.com` as part of the subdomain. Just include the subdomain name.
+All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
 </div>
+
+## Getting started
+
+To set up Zendesk as a source in RudderStack, follow these steps:
+
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **Zendesk** from the list of sources.
+3. Assign a name to your source and click on **Continue**.
+
+### Connection settings
+
+1. Click **Create Credentials from Scratch** and enter your Zendesk credentials, as shown:
+
+<img src="../../assets/cloud-extract-sources/zendesk-connection-settings-1.png" alt="Zendesk connection settings" />
+
+- **Subdomain**: Enter the prefix your Zendesk subdomain.
+
+<div class="warningBlock">
+If your Zendesk subdomain is <code class="inline-code">example.zendesk.com</code>, enter <code class="inline-code">example</code> in this field.
+</div>
+
+- **Zendesk username (Email)**: Enter the email used to sign up for your Zendesk account.
+- **Token**: Enter your Zendesk app token.
 
 <div class="infoBlock">
-
-To create a Zendesk API token, log into your Zendesk dashboard, and navigate to **Admin** - **Channels** - **API** in the Zendesk admin interface, and click the **Add New Token** link.
-
+For more information on obtaining your Zendesk subdomain and API token, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
-
-<div class="infoBlock">
-
-If you've already configured Zendesk as a source before, you can choose the account visible under the **Use existing credentials** tab.
-
-</div>
-
-### Setting the Data Update Schedule
-
-- Next, you will be required to set the **Run Frequency** to schedule the data import from your Zendesk account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option.
-
-<img src="../../assets/5 (6).png" alt="Run Frequency" />
-
-### Selecting the Data to Import
-
-- Finally, choose the Zendesk data that you wish to ingest via RudderStack. You can either select all the data, or choose specific Zendesk data attributes, as per your requirement.
-
-<img src="../../assets/6 (3).png" alt="Choose Zendesk data" />
-
-That's it! Zendesk is now successfully configured as a source on your RudderStack dashboard.
-
-RudderStack will start ingesting data from your Zendesk source as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
-
-<img src="../../assets/7.png" alt="Add Destination" />
 
 <div class="successBlock">
-
-  Use the **Connect Destinations** option if you have already
-  configured a data warehouse destination in RudderStack. To configure a data
-  warehouse destination from scratch, click on the
-  **Add Destination** button.
+Your Zendesk account and the related details will then automatically appear under <strong>Choose an account</strong> for future use.
 </div>
 
-## FAQs
+### Destination settings
 
-#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+The following settings specify how RudderStack sends the ingested data from Zendesk to the warehouse destination:
+
+- **Table prefix**: RudderStack uses this prefix to create a table in your data warehouse and loads all your Zendesk data into it.
+- **Schedule Settings**: RudderStack gives you three options to ingest the data from Zendesk:
+    - **Basic**: Runs the syncs at the specified time interval. 
+    - **CRON**: Runs the syncs based on the user-defined CRON expression.
+    - **Manual**: You are required to run the syncs manually.
+
+<div class="infoBlock">
+For more information on the schedule types, refer to the <Link to="/sources/extract/common-settings/">Common Settings</Link> guide.
+</div>
+
+### Selecting the data to import
+
+Choose the Zendesk data that you wish to ingest via RudderStack. You can either select all the data or choose specific Zendesk data attributes as per your requirement.
+
+<img src="../../assets/cloud-extract-sources/zendesk-connection-settings-2.png" alt="Selecting the data to import" />
+
+Zendesk is now configured as a source. RudderStack will start ingesting data from Zendesk as per your specified schedule and frequency.
+
+You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
+
+<img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
+
+<div class="successBlock">
+Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
+</div>
+
+## FAQ
+
+### Where do I find my Zendesk subdomain and API token?
+
+Your Zendesk subdomain is a part of the URL once you sign into your Zendesk account. It is of the format `subdomain.zendesk.com`. An example is shown below:
+
+<img src="../../assets/cloud-extract-sources/zendesk-subdomain.png" alt="Zendesk subdomain" />
+
+To find your Zendesk API token, follow these steps:
+
+1. Log into your Zendesk account.
+2. In the left sidebar, go to **Apps and integrations** > **Zendesk API**.
+3. You should be able to find all your Zendesk API tokens listed under **Active API tokens**. To create a new token, click **Add API token**, as shown:
+
+<img src="../../assets/cloud-extract-sources/zendesk-api-token.png" alt="Zendesk API token" />
+
+### Can I connect my Zendesk source to multiple data warehouse destinations?
+
+You can connect your Zendesk source to **only one** data warehouse destination. If you wish to send data to multiple warehouses, you can configure multiple Zendesk sources with the same settings and connect them to each data warehouse.
+
+### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is.
 
-We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
 
-## Contact Us
+## Contact us
 
-If you come across any issues while configuring Zendesk as a source on the RudderStack dashboard, please feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community; we will be happy to talk to you!
+If you come across any issues while configuring Zendesk as a source in RudderStack, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

@@ -12,34 +12,62 @@ const formatHighlight = str => str.replace(new RegExp("<ais-highlight-0000000000
 
 const truncateExcerpt = str => str.substring(0, 150) + "..."
 
+// This function searches for the slug in sidebar.js
+const recursiveSearch = (object, key, value) => {
+  if (Array.isArray(object)) {
+    for (const obj of object) {
+      const result = recursiveSearch(obj, key, value)
+      if (result) return obj
+    }
+  } else {
+    if (object.hasOwnProperty(key) && object[key] === value) {
+      return object
+    }
+
+    for (const k of Object.keys(object)) {
+      if (typeof object[k] === "object") {
+        const o = recursiveSearch(object[k], key, value);
+        if (o !== null && typeof o !== "undefined") return o
+      }
+    }
+
+    return null
+  }
+}
+
 // sidebar.js file is used to generate breadcrumb from slug
 const generateBreadcrumb = slug => {
-  if (slug === "/") return jsonData.find(x => x.link === slug).title
-
-  let slugArray = slug.split("/").filter(x => x)
   let breadcrumb = []
+  let result = recursiveSearch(jsonData, "link", slug)
 
-  // Get item by matching key. If no match found, link is used for matching the item
-  let key = jsonData.find(x => x.key === slugArray[0])
-  let link = "/" + slugArray[0]
+  if (result) {
+    // Get preceding sectionTitle
+    let index = jsonData.findIndex(x => x === result)
+    for (let i = index; i > 0; i--) {
+      if (jsonData[i].sectionTitle) {
+        breadcrumb.push(jsonData[i].sectionTitle)
+        break
+      }
+    }
 
-  if (key) {
-    breadcrumb.push(key.title)
+    breadcrumb.push(result.title)
 
-    while (breadcrumb.length < slugArray.length) {
-      let tempKey = key.content.find(x => x.key === slugArray[breadcrumb.length])
+    if (result.link !== slug) {
+      while (result.content.length > 0) {
+        let tempResult = result.content.find(x => x.link === slug)
+        if (tempResult) {
+          result = tempResult
+        } else {
+          tempResult = result.content.find(x => slug.startsWith(x.link))
+          if (tempResult) result = tempResult
+        }
 
-      if (tempKey) {
-        link += "/" + slugArray[breadcrumb.length]
-        key = tempKey
-
-        breadcrumb.push(key.title)
-      } else {
-        link += "/" + slugArray[breadcrumb.length]
-        key = key.content.find(x => x.link.startsWith(link))
-
-        if (key) breadcrumb.push(key.title)
-        else break
+        if (result) {
+          breadcrumb.push(result.title)
+          if (result.link === slug) break
+        } else {
+          break
+        }
       }
     }
   }

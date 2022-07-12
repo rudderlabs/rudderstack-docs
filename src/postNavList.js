@@ -546,12 +546,6 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "xero",
-    title: "Xero",
-    link: "/sources/extract/xero/",
-    content: [],
-  },
-  {
     key: "zendesk",
     title: "Zendesk",
     link: "/sources/extract/zendesk/",
@@ -1635,7 +1629,7 @@ export const postNavList = [
   {
     key: "json-column-support",
     title: "JSON Column Support",
-    link: "/data-warehouse-integrations/json-column-support/",
+    link: "/destinations/warehouse-destinations/json-column-support/",
     content: [],
   },
   {

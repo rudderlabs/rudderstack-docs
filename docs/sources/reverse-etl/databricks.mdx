@@ -1,0 +1,142 @@
+---
+title: "Databricks"
+description: Step-by-step guide to ingest data from your Databricks cluster into RudderStack.
+---
+
+[Databricks](https://databricks.com/) is a data analytics platform that lets you easily integrate with open source libraries. It offers a simple collaborative environment to run interactive and scheduled data analysis workloads.
+
+RudderStack supports Databricks as a source from which you can ingest data and route it to your desired downstream destinations.
+
+## Granting permissions
+
+RudderStack requires you to grant certain user permissions on Databricks to successfully access data from it.
+
+Follow the steps listed in the following sections in the  **exact order** to grant these permissions:
+
+### Step 1: Add a user
+
+- Add a new user (for example, user@example.com) by following the steps in the [Databricks documentation](https://docs.databricks.com/administration-guide/users-groups/users.html#add-a-user).
+
+### Step 2: Creating the RudderStack schema and granting permissions
+
+1. Create a dedicated schema `_rudderstack`.
+
+```sql
+CREATE SCHEMA `_rudderstack`;
+```
+
+<div class="warningBlock">
+The <code class="inline-code">_rudderstack</code> schema is used by RudderStack for storing the state of each data sync. <strong>This name should not be changed</strong>.
+</div>
+
+2. Grant full access to the schema `_rudderstack` for the user created in step 1.
+
+```sql
+GRANT ALL PRIVILEGES ON SCHEMA `_rudderstack` TO `user@example.com`
+```
+**Replace `user@example.com` with the user created in step 1.**
+
+## Setting up the Databricks source in RudderStack
+
+To set up Databricks as a source in RudderStack, follow these steps:
+
+### Naming the source
+
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com).
+2. From the left panel, go to **Source** > **New Source** > **Reverse ETL**. Then, select **Databricks**, as shown:
+
+<img src="../../assets/warehouse-actions-sources/select-source-databricks.png" alt="Select Databricks source in RudderStack" />
+
+3. Assign a name to your source.
+
+### Configuring the connection credentials
+
+1. Enter the relevant settings from Databricks in the **Connection Credentials** section as shown below:
+   - **Host** - Enter the server hostname.
+   - **Port** - Enter the port number.
+   - **Path** - Enter the HTTP path.
+   - **Token** - Enter the personal access token.
+
+<div class="infoBlock">
+For more information on getting these settings in Databricks, refer to the <Link to="#faq">FAQ</Link> section below.
+</div>
+
+<div class="successBlock">
+If you've already configured Databricks as a source before, your existing credentials will automatically appear under <strong>Use Existing Credentials</strong>.
+</div>
+
+2. Click on **Continue** to proceed.
+
+### Schedule settings
+
+1. Specify the **Schedule Settings** to schedule the data syncs from your Databricks source.
+
+<div class="infoBlock">
+RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <Link to="/sources/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule Settings</Link> guide.
+</div>
+
+2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
+
+Databricks is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destination** button, as shown:
+
+<img src="../../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
+
+<div class="infoBlock">
+If you have already configured a destination in RudderStack, choose the <strong>Use Existing Destination</strong> option which will take you to the <strong>Schema</strong> tab in the source settings. To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the destination configuration page.
+</div>
+
+## Specifying the data to import
+
+While connecting a destination to your Databricks source, you can use the default JSON mapping feature.
+
+<div class="infoBlock">
+Note that the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapping</Link> feature is not supported for Databricks currently.
+</div>
+
+<div class="infoBlock">
+For more information on the data import settings, refer to the <Link to="/sources/reverse-etl/common-settings/importing-data-using-tables/">Importing Data using Tables</Link> guide.
+</div>
+
+## FAQ
+
+### Where can I obtain the connection credentials for Databricks?
+
+To obtain the **Host**, **Path**, and **Port** number, go to your Databricks account and follow these steps:
+
+1. Go to the **Compute** tab and select your Databricks cluster.
+2. Click on **Advanced options** > **JDBC/ODBC** tab to find the required settings:
+
+<img src="../../assets/warehouse-actions-sources/connection-settings-databricks.png" alt="Select Databricks source in RudderStack" />
+
+To obtain the **Token**, go to the **Settings** > **User Settings** in your Databricks account and generate a new personal access token, as shown:
+
+<img src="../../assets/warehouse-actions-sources/connection-settings-databricks-2.png" alt="Select Databricks source in RudderStack" />
+
+<div class="infoBlock">
+Refer to the <a href="https://docs.databricks.com/dev-tools/api/latest/authentication.html#generate-a-personal-access-token">Databricks documentation</a> for more details on generating a personal access token.
+</div>
+
+### What do the three validations under Verifying Credentials imply?
+
+When setting up a Reverse ETL source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
+
+<img src="../../assets/warehouse-actions-sources/validations.png" alt="Validations" />
+
+These options are explained below:
+
+* **Verifying Connection**: This option indicates that RudderStack is trying to connect to the warehouse with the information specified in the connection credentials. 
+
+<div class="warningBlock">
+If this option gives an error, it means that one or more fields specified in the connection credentials are incorrect. Verify your credentials in this case.
+</div>
+
+* **Able to List Schema**: This option checks if RudderStack is able to fetch all the schema details using the provided credentials. 
+* **Able to Access RudderStack Schema**: This option implies that RudderStack is able to access the `_rudderstack` schema you have created by successfully running all the commands in the <Link to="#step-2-creating-the-rudderstack-schema-and-granting-permissions">Creating the RudderStack schema and granting permissions</Link> section. 
+
+<div class="warningBlock">
+If this option gives an error, verify if you have successfully created the <code class="inline-code">_rudderstack</code> schema and given RudderStack the required permissions to access it. For more information, refer to the <Link to="#step-2-creating-the-rudderstack-schema-and-granting-permissions">Creating the RudderStack schema and granting permissions</Link> section.
+</div>
+
+## Contact us
+
+For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
