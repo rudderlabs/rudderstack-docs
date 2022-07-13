@@ -1,73 +1,9 @@
 ---
-title: "Supported API"
+title: "JavaScript Supported API"
 description: Detailed technical documentation on the JavaScript SDK API.
 ---
 
 The JavaScript SDK lets you send your event data to any destination without implementing a new API every time.
-
-## Load
-
-The `load` method loads the `rudder-analytics.js` file with the source write key. It is defined as follows:
-
-```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, [options]);
-```
-
-<div class="infoBlock">
-You need to replace the <Link to="/get-started/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link>.
-</div>
-
-### Load options 
-
-You can use the `options` parameter in the `load` call to specify different options while loading the JavaScript SDK. It includes the following parameters:
-
-```javascript
-{
-  logLevel: "DEBUG" | "INFO" | "WARN",
-  integrations: IntegrationOpts,
-  configUrl: string,  // defaults to https://api.rudderlabs.com
-  queueOptions: QueueOpts,
-  loadIntegration: boolean, // defaults to true.
-  secureCookie: boolean, // defaults to false.
-  destSDKBaseURL: string, // defaults to https://cdn.rudderlabs.com/v1.1/js-integrations
-  useBeacon: boolean, // defaults to false.
-  beaconQueueOptions: BeaconQueueOpts,
-  cookieConsentManager: cookieConsentManager,
-  anonymousIdOptions: AnonymousIdOptions
-}
-```
-
-The parameter type and description is as follows:
-
-| Parameter             | Type                                | Description                                              |
-| :-------------------- | :---------------------------------- | :------------------------------------------------------- |
-|  `logLevel`           | String                              | Options include `DEBUG`, `INFO`, and `WARN`.             |
-|  `integrations`       | [**IntegrationOpts**](#integrationopts) | Refer to the [`IntegrationOpts`](#integrationopts) section. More information on how to use this parameter can be found [**here**](#filtering-selective-destinations).                                               |
-|  `configUrl`          | String                              | Defaults to `https://api.rudderlabs.com`. You need to provide the server (Control Plane) endpoint serving your destination configurations. Note that `sourceConfig` is automatically appended to this endpoint by the SDK. |
-|  `queueOpts`          | [**QueueOpts**](#queueopts)         | Refer to the [`QueueOpts`](#queueopts) section.          |
-|  `loadIntegration`    | Boolean                             | Defaults to `true`. If set to `false`, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                                                    |
-| `secureCookie`        | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the cookie to the storage backend via HTTPS.|
-| `destSDKBaseURL`      | String                              | Defaults to `https://cdn.rudderlabs.com/v1.1/js-integrations`. The SDK will load the integrations from this path. You can also set your own integrations path using this field. For more information, refer to [**this section**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn).                                                    | 
-| `useBeacon`           | Boolean                             | Defaults to `false`. If set to `true`, the SDK sends the event payloads via the  `navigator.sendBeacon()` utility.  Refer to [Beacon transport mechanism](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#sendbeacon-as-a-transport-mechanism) for more details. |
-| `beaconQueueOptions`  | [**BeaconQueueOpts**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) | Refer to the [**BeaconQueueOpts**](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) section. |
-| `cookieConsentManager` | Object       |  Refer to the [`cookieConsentManager`](#cookieconsentmanager) section for more information. |
-| `anonymousIdOptions` | Object       |  Refer to the [Capturing `anonymousId` automatically](#capturing-anonymousid-automatically) section for more information. |
-
-For more details, refer to the [**`options`**](#options) parameter section.
-
-### Loading SDK for self-hosted control plane
-
-If you are self-hosting the control plane using the [Control Plane Lite](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility, your `load` call should be as below:
-
-```javascript
-rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
-  configUrl: <CONTROL_PLANE_URL>,
-});
-```
-
-<div class="infoBlock">
-Refer to the <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/#control-plane-url">Control plane URL section</a> to get the <code class="inline-code">CONTROL_PLANE_URL</code>.
-</div>
 
 ## Identify
 
@@ -198,7 +134,7 @@ rudderanalytics.setAnonymousId(
 );
 ```
 
-Here, the second parameter is the AMP Linker ID format in accordance with the [**specified structure**](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format). For the links decorated with the [**RudderStack Linker parameter**](https://docs.rudderstack.com/rudderstack-sdk-integration-guides/amp-analytics/#amp-linker), the `<idName1>` value will be `rs_amp_id`.
+Here, the second parameter is the AMP Linker ID format in accordance with the [**specified structure**](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format). For the links decorated with the [**RudderStack Linker parameter**](https://www.rudderstack.com/docs/sources/sdks/rudderstack-amp-analytics/#amp-linker), the `<idName1>` value will be `rs_amp_id`.
 
 Calling the above method will parse the Linker ID and set the `anonymousId` as the value of the `rs_amp_id` key.
 
@@ -411,131 +347,6 @@ rudderanalytics.reset(true);
   
 The <code class="inline-code">reset()</code> method only clears the cookies and local storage set by RudderStack. It does not clear the information stored by the integrated destinations. To completely clear the user session, refer to the destination-specific documentation.
 </div>
-
-## Parameter definitions
-
-This section details the type definitions of the parameters used in some of the API methods described above:
-
-### `options`
-
-The structure of **`options`** parameter is as shown:
-
-```javascript
-{
-  integrations: IntegrationOpts,
-  anonymousId: string,
-  originalTimestamp: ISO 8601 date string,
-  <other keys>: <value> // merged with event's contextual information
-}
-```
-The following table describes each of the above parameters in detail:
-
-| **Parameter**                   | **Type**                                | **Description**  |
-| :-------------------------- | :---------------------------------- | :----------------------- |
-| `integrations`         | [**IntegrationOpts**](#integrationopts) | Refer to the [`IntegrationOpts`](#integrationopts) section. More information on how to use this parameter can be found [**here**](#filtering-selective-destinations). |
-| `anonymousId`           | String                              | Overrides the current event's `anonymousId` at the top level. |
-| `originalTimestamp`     | ISO 8601 Date string                | Overrides the current event's `originalTimestamp` at the top level. |
-| `<other keys>: <value>` | -                                   | Merged with the event's contextual information. |
-
-### `IntegrationOpts`
-
-The structure of **`IntegrationOpts`** looks like the following:
-
-```javascript
-{
-  All: boolean, // default true
-  <Destination1>: boolean,
-  <Destination2>: boolean,
-  ...
-}
-```
-
-The following table describes each of the above parameters in detail:
-
-| **Parameter**       | **Type**| **Presence**  | **Description**  |
-| :------------------ | :------ |:--------------| :----------------------- |
-| `All`               | Boolean | Optional      | Corresponds to all the destinations to which the event is to be sent. The default value is set to `true`. `All: false` will lead to RudderStack not sending the event data to any destination. |
-| `<Destination>`     | Boolean | Optional      | Specific destination to which the event is to be sent or not sent, depending on the Boolean value assigned to it. |
-
-More information on using `IntegrationOpts` can be found in the [**Filtering selective destinations**](#filtering-selective-destinations) section.
-
-### `QueueOpts`
-
-The structure of **`QueueOpts`** is shown below:
-
-```javascript
-{
-  maxRetryDelay: 360000,
-  minRetryDelay: 1000,
-  backoffFactor: 2,
-  maxAttempts: 10,
-  maxItems: 100,
-}
-```
-
-The following table describes each of the above parameters in detail:
-
-| **Parameter**   | **Type**| **Description**                                                      | **Default value** |
-| :-------------- | :------ | :--------------------------------------------------------------------|:------------------|
-| `maxRetryDelay` | Integer | The upper limit on the maximum delay for an event (in ms)            | 360000            |
-| `minRetryDelay` | Integer | The minimum delay expected before sending an event (in ms)           | 1000              |
-| `backoffFactor` | Integer | Refers to the exponential base.                                      | 2                 |
-| `maxAttempts`   | Integer | Maximum number of attempts to send the event to the destination.     | 10                |
-| `maxItems`      | Integer | Maximum number of events kept in the storage.                        | 100               |
-
-#### cookieConsentManager
-
-Once the user provides the consent, you can load the JavaScript SDK and enable the OneTrust integration via the `cookieConsentManager` object, as shown:
-
-```javascript
-rudderanalytics.load(
-  <WRITE_KEY>,
-  <DATA_PLANE_URL>, {
-    cookieConsentManager: {
-      oneTrust: {
-        enabled: true
-      }
-    }
-  }
-);
-```
-
-<div class="infoBlock">
-  
-For more information on the consent managers supported by RudderStack, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/">this section</a>.
-</div>
-
-#### Capturing `anonymousId` automatically 
-
-The JavaScript SDK provides `anonymousIdOptions` object in the [`load()`](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#the-options-parameter) call options. It automatically captures the anonymous ID from a source and sets it as Rudderstack’s `anonymousId`.
-
-The structure of `anonymousIdOptions` object is shown below:
-
-```javascript
-{
-  autoCapture: {
-    enabled: true,
-    source: "segment",
-  }
-}
-```
-
-| Parameter  | Type  | Description    |   
-| :--------| :---- | :----------------| 
-| `enabled` | Boolean  | Identifies if the auto-capturing of anonymous ID is enabled. | 
-| `source`  | String   | Identifies the external source of the anonymous ID. | 
-
-<div class="infoBlock">
-  
-  If the RudderStack <code class="inline-code">anonymousId</code> is already set in your browser, then <code class="inline-code">anonymousIdOptions</code> will not take effect.
-</div>
-
-<div class="infoBlock">
-  
-  You can use the <strong>Reset</strong> method to generate a new <code class="inline-code">anonymousId</code> whether the <code class="inline-code">anonymousIdOptions</code> object is enabled or not.
-  
-  However, if the <code class="inline-code">anonymousIdOptions</code> object is enabled and you reset the <code class="inline-code">anonymousId</code> and then reload the page, Rudderstack <code class="inline-code">anonymousId</code> will be set as the provided source's <code class="inline-code">anonymousId</code>.
-  </div>
 
 ## Adding callbacks to standard methods
 

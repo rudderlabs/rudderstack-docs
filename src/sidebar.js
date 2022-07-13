@@ -148,6 +148,12 @@ export const jsonData = [
                         content: []
                     },
                     {
+                        key: "load-js-sdk",
+                        title: "Load JS SDK",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/",
+                        content: []
+                    },
+                    {
                         key: "supported-api",
                         title: "Supported API",
                         link: "/sources/sdks/rudderstack-javascript-sdk/supported-api/",
