@@ -6,6 +6,29 @@ CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
 # set TERM variable for terminal output
 TERM = "xterm"
 
+
+# Hubspot
+[[redirects]]
+from = "/cloud-extract-sources/hubspot-v2/"
+to = "/docs/sources/extract/hubspot-v2/"
+status = 301
+[[redirects]]
+from = "/destinations/crm/hubspot/"
+to = "/docs/destinations/streaming-destinations/hubspot/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/hubspot/hubspot-data-model-and-schema-information/"
+to = "/docs/sources/extract/hubspot/hubspot-data-model-and-schema-information/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/hubspot/"
+to = "/docs/sources/extract/hubspot-v2/"
+status = 301
+[[redirects]]
+from ="/sources/extract/hubspot/"
+to = "/docs/sources/extract/hubspot-v2/"
+status = 301
+
 # post-launch redirects (wip)
 
 [[redirects]]
@@ -736,10 +759,6 @@ from = "/destinations/customer-data-platform/segment/"
 to = "/docs/destinations/streaming-destinations/segment/"
 status = 301
 [[redirects]]
-from = "/destinations/crm/hubspot/"
-to = "/docs/destinations/streaming-destinations/hubspot/"
-status = 301
-[[redirects]]
 from = "/destinations/crm/"
 to = "/docs/destinations/streaming-destinations/delighted/"
 status = 301
@@ -1330,18 +1349,6 @@ status = 301
 [[redirects]]
 from = "/cloud-extract-sources/google-sheets/"
 to = "/docs/sources/extract/google-sheets/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/hubspot-v2/"
-to = "/docs/sources/extract/hubspot-v2/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/hubspot/hubspot-data-model-and-schema-information/"
-to = "/docs/sources/extract/hubspot/hubspot-data-model-and-schema-information/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/hubspot/"
-to = "/docs/sources/extract/hubspot/"
 status = 301
 [[redirects]]
 from = "/cloud-extract-sources/"
