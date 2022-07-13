@@ -245,6 +245,10 @@ RudderStack maps the `Product Viewed` event to <a href="https://developer.matomo
 | `properties.category` | `categoryName` |Required |
 | `properties.price` (Multiplied by quantity) | `price` |Required |
 
+<div class="infoBlock">
+The <code class="inline-code">Product Viewed</code> event can be observed in the destination dashboard only when followed by a <code class="inline-code">page</code> call.
+</div>
+
 #### Product Added
 
 RudderStack maps the `Product Added` event name to <a href="https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=category%20page%20view.-,addEcommerceItem,-(%20productSKU%2C%20%5BproductName%5D%2C%20%5BproductCategory"><code class="inline-code">addEcommerceItem</code></a>. The following event properties are mapped to the Matomo properties:
@@ -257,6 +261,10 @@ RudderStack maps the `Product Added` event name to <a href="https://developer.ma
 | `properties.price` (Multiplied by quantity) | `price` |Optional |
 | `properties.quantity` | `quantity` |Optional |
 
+<div class="infoBlock">
+The <code class="inline-code">Product Added</code> event can be observed in the destination dashboard only when followed by an <code class="inline-code">Update Cart</code> or <code class="inline-code">Order Completed</code> event.
+</div>
+
 #### Product Removed
 
 RudderStack maps the `Product Removed` event name to <a href="https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=in%20the%20order.-,removeEcommerceItem,-(%20productSKU%20)%20%2D%20Remove"><code class="inline-code">removeEcommerceItem</code></a>. The following event properties are mapped to the Matomo properties:
@@ -264,6 +272,10 @@ RudderStack maps the `Product Removed` event name to <a href="https://developer.
 | RudderStack property | Matomo property | Presence |
 |:---------------------|:-------------|:--------------|
 | `properties.sku`/`properties.product_id` | `productSKU` | Required |
+
+<div class="infoBlock">
+The <code class="inline-code">Product Removed</code> event can be observed in the destination dashboard only when followed by an <code class="inline-code">Update Cart</code> or <code class="inline-code">Order Completed</code> event.
+</div>
 
 #### Order Completed
 
