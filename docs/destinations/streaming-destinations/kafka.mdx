@@ -41,14 +41,13 @@ To configure Kafka as a destination in RudderStack, you need to configure the fo
 - **SSL Enabled**: Enable this option if you have enabled SSL to connect to your broker.
    - **CA Certificate**: If SSL is enabled, enter the CA certificate.
 - **Enable SASL with SSL**: If you have enabled SSL, you can use SASL for client authentication by enabling this option.
+   - **SASL Type**: Choose the SASL authentication type from **Plain**, **SCRAM SHA-512**, and **SCRAM SHA-256**.
+   - **Username**: Enter the username configured in Kafka for authenticating clients with SASL.
+   - **Password**: Enter the password configured in Kafka for authenticating clients with SASL.
 
 <div class="warningBlock">
 You need to enable SSL to use SASL authentication.
 </div>
-
-   - **SASL Type**: Choose the SASL authentication type from **Plain**, **SCRAM SHA-512**, and **SCRAM SHA-256**.
-   - **Username**: Enter the username configured in Kafka for authenticating clients with SASL.
-   - **Password**: Enter the password configured in Kafka for authenticating clients with SASL.
 
 <div class="infoBlock">
 For more information on the SASL authentication, refer to the <a href="https://kafka.apache.org/documentation/#security_sasl">Apache Kafka documentation</a>.
@@ -57,20 +56,6 @@ For more information on the SASL authentication, refer to the <a href="https://k
 - **Convert Data to AVRO format**: Enable this setting to serialize your data using Avro and send it to the specified Kafka topic.
    - **Schema ID**: Enter the schema ID for the schema list.
    - **Schema**: Enter the schema corresponding to the above-mentioned ID.
-
-<div class="infoBlock">
-For more information on this setting, refer to the <Link to="#serializing-data-using-avro">Serializing data using Avro</Link> section below.
-</div>
-
-## Partition key
-
-RudderStack uses the `userId` in the event as the partition key of the message.
-
-<div class="infoBlock">
-If <code class="inline-code">userId</code> is not present in payload, then RudderStack uses <code class="inline-code">anonymousId</code> instead.
-</div>
-
-So, if you have a multi-partitioned topic, then the records of the same `userId` \(or `anonymousId` in absence of `userId`\) will always go to the same partition.
 
 ## Serializing data using Avro
 
@@ -108,6 +93,16 @@ The corresponding schema is shown below:
 {"name":"MyClass","type":"record","namespace":"com.acme.avro","fields":[{"name":"anonymousId","type":"string"},{"name":"event","type":"string"},{"name":"messageId","type":"string"},{"name":"originalTimestamp","type":"string"},{"name":"receivedAt","type":"string"},{"name":"request_ip","type":"string"},{"name":"rudderId","type":"string"},{"name":"sentAt","type":"string"},{"name":"timestamp","type":"string"},{"name":"type","type":"string"},{"name":"context","type":"record","fields":[{"name":"traits","type":"record","fields":[{"name":"email","type":"string"}]},{"name":"ip","type":"string"}]},{"name":"integrations","type":"record","fields":[{"name":"KAFKA","type":"record","fields":[{"name":"schemaId","type":"string"}]}]}]}
 ```
 
+## Partition key
+
+RudderStack uses the `userId` in the event as the partition key of the message.
+
+<div class="infoBlock">
+If <code class="inline-code">userId</code> is not present in payload, then RudderStack uses <code class="inline-code">anonymousId</code> instead.
+</div>
+
+So, if you have a multi-partitioned topic, then the records of the same `userId` (or `anonymousId` in absence of `userId`) will always go to the same partition.
+
 ## FAQ
 
 ### Does my Kafka server require Client Authentication?
@@ -123,30 +118,30 @@ Follow the below steps to make use of Java's **keytool** utility to enable two-w
 ```
 keytool -keystore kafka.server.keystore.jks -alias localhost -keyalg RSA -genkey
 ```
-2. **Create your own CA**:
+2. **Create your own CA**: Follow these steps to create your own CA:
 
-   - Generate a CA that is a public-private key pair and a certificate. **Enter the contents of this certificate in the RudderStack dashboard under the CA certificate setting**.
+   1. Generate a CA that is a public-private key pair and a certificate by running the command below. **Enter the contents of this certificate in the RudderStack dashboard under the CA certificate setting**.
 
 ```
 openssl req -new -x509 -keyout ca-key -out ca-cert -days {validity}
 ```
 
-   - Add the generated CA to the **broker's truststore** so that the brokers can trust this CA.
+   2. Add the generated CA to the **broker's truststore** so that the brokers can trust this CA.
 
    ```
    keytool -keystore kafka.server.truststore.jks -alias CARoot -importcert -file ca-cert
    ```
-3. **Sign the certificates**:
+3. **Sign the certificate**: Follow the steps below:
 
-   - Export the certificate from the keystore, as shown: 
+   1. Export the certificate from the keystore, as shown: 
 ```
 keytool -keystore kafka.server.keystore.jks -alias localhost -certreq -file cert-file
 ```
-   - Sign it with the CA, as shown:
+   2. Sign it with the CA, as shown:
 ```
 openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days {validity} -CAcreateserial -passin pass:{ca-password}
 ```
-   - Import both the certificate of the CA and the signed certificate into the broker keystore, as shown: 
+   3. Import both the certificate of the CA and the signed certificate into the broker keystore, as shown: 
 
 ```
 keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert 
@@ -155,9 +150,9 @@ keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert
 keytool -keystore kafka.server.keystore.jks -alias localhost -import -file cert-signed
 ```
 
-By following all the steps described above, the script to create the CA and broker and client truststores and keystores is obtained, as shown:
+To summarize, the script to create the CA as well as the broker and client truststores and keystores is obtained with the following commands:
 
-```bash
+```
 keytool -keystore kafka.server.keystore.jks -alias localhost -keyalg RSA -validity {validity} -genkey
 openssl req -new -x509 -keyout ca-key -out ca-cert -days {validity}
 keytool -keystore kafka.server.truststore.jks -alias CARoot -importcert -file ca-cert
@@ -169,7 +164,7 @@ keytool -keystore kafka.server.keystore.jks -alias localhost -import -file cert-
 
 4. Enter the below parameters in your `server.properties`:
 
-```markup
+```
 ssl.keystore.location=<keystore location>
 ssl.keystore.password=<keystore password>
 ssl.key.password=<ca key password>
@@ -181,14 +176,14 @@ ssl.truststore.type=JKS
 ssl.keystore.type=JKS
 ```
 
-5. You also need to put RudderStack's CA certificate to your truststore, as shown:
+5. Add RudderStack's CA certificate to your truststore, as shown:
 
-```bash
+```
 keytool -keystore kafka.server.truststore.jks -alias CARootRudder -import -file ca-cert-rudder
 // here ca-cert-rudder is the rudder CA certificate
 ```
 
-The CA certificate that you need to add to your trust store is shown below:
+The resulting CA certificate that you need to add to your trust store is shown below:
 
 ```bash
 -----BEGIN CERTIFICATE-----
@@ -241,7 +236,7 @@ RudderStack does not support `SASL_PLAINTEXT` authentication. You can use `SASL_
 
 ### Why is the connection between Kafka and Zookeeper is failing for `SASL`?
 
-Configure your Zookeeper with `SASL_SSL` to resolve this issue.
+You can try configuring your Zookeeper with `SASL_SSL` to resolve this issue.
 
 ## Contact us
 
