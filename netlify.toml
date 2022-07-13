@@ -32,6 +32,38 @@ status = 301
 # post-launch redirects (wip)
 
 [[redirects]]
+from ="/rudderstack-api/video-specification/"
+to ="/docs/event-spec/video-events-spec/"
+[[redirects]]
+from ="/rudderstack-api/api-specification/alias/"
+to ="/docs/event-spec/standard-events/alias/"
+status = 301
+[[redirects]]
+from ="/storage-platforms/amazon-s3/"
+to ="/docs/destinations/streaming-destinations/amazon-s3/"
+status = 301
+[[redirects]]
+from ="/clickhouse/"
+to ="/docs/destinations/warehouse-destinations/clickhouse/"
+status = 301
+[[redirects]]
+from ="/google-bigquery/"
+to ="/docs/destinations/warehouse-destinations/bigquery/"
+status = 301
+[[redirects]]
+from ="/posthog/"
+to = "/docs/destinations/streaming-destinations/posthog/"
+status = 301
+[[redirects]]
+from ="/warehouse-schemas/"
+to = "/docs/destinations/warehouse-destinations/warehouse-schema/"
+status = 301
+[[redirects]]
+from ="/rudderstack-react-native-sdk/"
+to ="/docs/sources/sdks/rudderstack-react-native-sdk/"
+status = 301
+
+[[redirects]]
 from ="/administrators-guide/config-parameters"
 to = "/docs/user-guides/administrators-guide/config-parameters/"
 status = 301
