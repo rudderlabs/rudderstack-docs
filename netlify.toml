@@ -32,6 +32,30 @@ status = 301
 # post-launch redirects (wip)
 
 [[redirects]]
+from = "/data-governance/"
+to = "/docs/features/data-governance/"
+status = 301
+[[redirects]]
+from ="/destinations/minio/"
+to ="/docs/destinations/streaming-destinations/minio/"
+status = 301
+[[redirects]]
+from ="/destinations/sources/"
+to ="/docs/sources/"
+status = 301
+[[redirects]]
+from ="/destinations/warehouse-destinations/identity-resolution/"
+to ="/docs/features/identity-resolution/"
+status = 301
+[[redirects]]
+from ="/extensions/auth0-authentication-api-webhooks"
+to ="/docs/sources/cloud-apps/auth0/"
+status = 301
+[[redirects]]
+from ="/rudderstack-api-spec"
+to ="/docs/api/"
+status = 301
+[[redirects]]
 from ="/rudderstack-api/video-specification/"
 to ="/docs/event-spec/video-events-spec/"
 [[redirects]]
