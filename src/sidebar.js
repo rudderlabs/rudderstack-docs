@@ -160,12 +160,6 @@ export const jsonData = [
                         content: []
                     },
                     {
-                        key: "send-events-beacon",
-                        title: "Send Events using Beacon",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/send-events-beacon/",
-                        content: [],
-                    },
-                    {
                         key: "data-storage-cookies",
                         title: "Data Storage",
                         link: "/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
@@ -175,6 +169,12 @@ export const jsonData = [
                         key: "filtering",
                         title: "Filtering",
                         link: "/sources/sdks/rudderstack-javascript-sdk/filtering/",
+                        content: [],
+                    },
+                    {
+                        key: "send-events-beacon",
+                        title: "Send Events using Beacon",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/send-events-beacon/",
                         content: [],
                     },
                     {
@@ -196,6 +196,7 @@ export const jsonData = [
                           "/sources/sdks/rudderstack-javascript-sdk/context-traits/",
                         content: [],
                      },
+                     
                       {
                         key: "faq",
                         title: "FAQ",
