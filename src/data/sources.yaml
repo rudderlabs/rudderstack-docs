@@ -218,7 +218,7 @@
   id: 1nO0FaUQ0vce2QtWHNbphk1z6eu
   name: bing_ads
   link: /sources/extract/bing-ads/
-  displayName: Bing ads
+  displayName: Bing Ads
   category: cloud
   type: extract
   createdAt: '2021-01-21T16:15:26.719Z'
@@ -349,7 +349,7 @@
   id: 1sl3ublVAB0JY2Pyb6Nnfb54k4v
   name: active_campaign
   link: /sources/extract/activecampaign/
-  displayName: Active campaign
+  displayName: ActiveCampaign
   category: cloud
   type: extract
   createdAt: '2021-05-19T14:12:52.696Z'
@@ -382,11 +382,11 @@
     - upsert
     - mirror
     isSqlModelSupported: true
-  id: 1lKfm47IlzXQNXD3C3pk6mZtb1S
   name: snowflake
-  link:
+  link: /sources/reverse-etl/snowflake/
   displayName: Snowflake
   category: warehouse
+  type: reverse ETL
   createdAt: '2020-12-07T14:20:58.237Z'
   updatedAt: '2022-02-25T10:58:36.169Z'
 - options:
@@ -484,7 +484,7 @@
   id: 1lKflMWR2Ut7piaZepcFEsBVXQj
   name: postgres
   link: /sources/reverse-etl/postgresql/
-  displayName: Postgres
+  displayName: PostgreSQL
   category: warehouse
   type: reverse ETL
   createdAt: '2020-12-07T14:20:53.049Z'
@@ -526,17 +526,17 @@
   type: reverse ETL
   createdAt: '2020-12-07T14:20:36.438Z'
   updatedAt: '2022-05-16T04:44:11.305Z'
-- options:
-    auth:
-      provider: Xero
-  id: 1nvBDW6Jpo28nQqcKzJjzRpcVSV
-  name: xero
-  link: /sources/extract/xero/
-  displayName: Xero
-  category: cloud
-  type: extract
-  createdAt: '2021-02-02T10:09:24.363Z'
-  updatedAt: '2022-05-17T11:55:41.972Z'
+# - options:
+#     auth:
+#       provider: Xero
+#   id: 1nvBDW6Jpo28nQqcKzJjzRpcVSV
+#   name: xero
+#   link: /sources/extract/xero/
+#   displayName: Xero
+#   category: cloud
+#   type: extract
+#   createdAt: '2021-02-02T10:09:24.363Z'
+#   updatedAt: '2022-05-17T11:55:41.972Z'
 # - options:
 #     image: rudderstack/source-klaviyo:v1.1
 #     digest: sha256:cf5f0ff0bb5fb23d5a2d37b3e6cb580faccd545b31383fe1a9193527f65346af
@@ -603,7 +603,19 @@
   id: 2ANLvHkKBYMDGzj8rU8KI4H3gpA
   name: mysql
   link: /sources/reverse-etl/mysql/
-  displayName: MySql
+  displayName: MySQL
+  category: warehouse
+  type: reverse ETL
+  createdAt: '2022-06-10T07:15:24.802Z'
+  updatedAt: '2022-06-10T07:15:24.802Z'
+- options:
+    syncBehaviours:
+    - upsert
+    - mirror
+    isSqlModelSupported: false
+  name: databricks
+  link: /sources/reverse-etl/databricks/
+  displayName: Databricks
   category: warehouse
   type: reverse ETL
   createdAt: '2022-06-10T07:15:24.802Z'
