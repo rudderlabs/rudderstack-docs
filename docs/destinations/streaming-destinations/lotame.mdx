@@ -284,58 +284,6 @@ A sample `screen` call is as shown:
 
 To get a track of every sync Pixel call \(once in every 7 days\), you may register a function that will be executed when the syncing of DSP Pixels takes place from the SDK.
 
-<!--{% tabs %}
-{% tab title="Web" %}
-Use the web SDK [`ready` A](https://github.com/rudderlabs/rudder-sdk-js#step-4-check-ready-state)[PI](https://github.com/rudderlabs/rudder-sdk-js#step-4-check-ready-state) to register the callback. We execute the function provided in `LOTAME_SYNCH_CALLBACK` window object after calling the sync pixels.
-
-An example of the above is as shown:
-
-```javascript
-rudderanalytics.ready(() => {
-  window.LOTAME_SYNCH_CALLBACK = () => {
-    rudderanalytics.track(
-      "synch lotame",
-      {},
-      {
-        integrations: { All: false, S3: true },
-      }
-    )
-  }
-})
-```
-
-The above callback triggers a call to RudderStack SDK's <Link to="/event-spec/standard-events/track">`track`</Link> API which dumps the `track` call payload to a configured S3 destination in your RudderStack dashboard, each time the syncing of the DSP Pixels happens.
-{% endtab %}
-
-{% tab title="Android" %}
-Use the `onIntegrationReady` method to register the `onSync` callback \(which will be called every time the DSP URLs are synced\).
-
-You'll get notified for all the sync pixels through this callback. You'll receive the type of the pixel and the final compiled URL through the callback.
-
-```kotlin
-rudderClient!!.onIntegrationReady("Lotame Mobile") {
-    (it as LotameIntegration).registerCallback { urlType, url ->
-        // urlType => "bcp", "dsp"
-        // url => complete url with all values replaced
-        println("LotameSync: $urlType : $url")
-    }
-}
-```
-
-{% endtab %}
-
-{% tab title="iOS" %}
-Register your callback to get notified when the pixel has been synced
-
-```objectivec
-[LotameIntegration registerCallback:^{
-    // your custom code
-}];
-```
-
-{% endtab %}
-{% endtabs %}-->
-
 <Tabs>
   <TabList>
     <Tab>Web</Tab>
