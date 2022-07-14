@@ -328,6 +328,40 @@ Make sure you have defined the property mapping in the <strong>RudderStack Param
 
 RudderStack uses the property mappings specified in the **RudderStack Parameters to Partner Parameters** setting to check if a key is present in the `track` event properties and maps it to the corresponding Adjust partner parameter object.
 
+Suppose a customer sets the following mapping in the RudderStack dashboard:
+
+| RudderStack property | Adjust partner parameter |
+| :----| :----|
+| `revenue` | `price` |
+| `quantity` | `quantity` |
+
+A sample `track` call with the above properties is shown below:
+
+```objectivec
+[[RudderClient sharedInstance] track:@"purchase"
+                          properties:@{@"revenue":@20.99, 
+                          @"currency": @"USD",
+                          @"quantity": @10}];
+```
+
+The corresponding Adjust payload highlighting the parameters is shown below:
+
+```json
+"params": {
+  "android_id": "3f034872-5e28-45a1-9eda-ce22a3e36d1a",
+  "gps_adid": "3f034872-5e28-45a1-9eda-ce22a3e36d1a",
+  "att_status": 3,
+  "tracking_enabled": true,
+  "currency": "USD",
+  "ip_address": "[::1]",
+  "s2s": 1,
+  "app_token": "t1yurrb968zk",
+  "event_token": "tf4gm5",
+  "environment": "production",
+  "partner_params": "{\"price\":20.99,\"quantity\":10}"
+},
+```
+
 ### Sending revenue tracking events to Adjust
 
 To send [revenue tracking](https://help.adjust.com/en/article/event-tracking-ios-sdk?src=search_page#revenue-tracking) events to Adjust, your can add `total` and `currency` to your event properties, as shown:
