@@ -5,17 +5,19 @@ description: Step-by-step guide on sending your event data from RudderStack to A
 
 [Adjust](https://adjust.com) is an industry-leading mobile attribution provider that allows you to bring all your business data together to get powerful insights from it.
 
-RudderStack allows you to configure your mobile devices with our SDKs to send your customer event data to Adjust - without any hassle. You can check the code for Adjust destination on our GitHub for [Android](https://github.com/rudderlabs/rudder-integration-adjust-android) and [iOS](https://github.com/rudderlabs/rudder-integration-adjust-ios).
+RudderStack supports Adjust as a destination to which you can seamlessly send your event data.
+
+RudderStack allows you to configure your mobile devices with our SDKs to send your customer event data to Adjust - without any hassle. You can refer to the code for [Android]() and [iOS]() in the GitHub repository.
 
 <div class="successBlock">
-Find the open source transformer code for this destination in our <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/adj">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/adj">GitHub repository</a>. You can also refer to the specific repositories for the <a href="https://github.com/rudderlabs/rudder-integration-adjust-android">Android</a> and <a href="https://github.com/rudderlabs/rudder-integration-adjust-ios">iOS</a> implementations.
 </div>
 
 ## Getting started
 
-Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Adjust. Refer to the table below:
+Before configuring Adjust as a destination in RudderStack, verify if the source platform is supported by Adjust by referring to the table below:
 
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| Connection Mode | Web       | Mobile    | Server    |
 | :------------------ | :------------ | :------------ | :------------ |
 | **Device mode**     | -             | **Supported** | -             |
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
@@ -24,19 +26,54 @@ Before configuring your source and destination on the RudderStack app, please ch
 To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
-Once you have confirmed that the platform supports sending events to Adjust, perform the steps below:
+Once you have confirmed that the platform supports sending events to Adjust, follow these steps:
 
-- From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and **Adjust** as a destination.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Adjust**.
+2. Assign a name to the destination and click **Continue**.
+
+## Connection settings
+
+To successfully configure Adjust as a destination, you will need to configure the following settings:
+
+<img src="../../assets/event-stream-destinations/adjust-connection-settings.png" alt="Adjust connection settings"/>
+<img src="../../assets/event-stream-destinations/adjust-connection-settings.png" alt="Adjust connection settings"/>
+
+- **APP Token**: Enter your Adjust app token.
+
+<div class="infoBlock">
+For more information on obtaining your Adjust app token, refer to the <Link to="#faq">FAQ</Link> section below.
+</div>
+
+- **Send to Production Environment on Adjust**: Enable this setting to send the data to the <a href="https://help.adjust.com/en/article/server-to-server-events?src=search#:~:text=event%20currency%20code-,environment,-Environment%20to%20post">production environment</a> in Adjust. 
+
+<div class="infoBlock">
+By default, RudderStack sends the data in the sandbox environment.
+</div>
+
+<div class="infoBlock">
+The <strong>Client-side Events Filtering</strong> setting is applicable only for the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> integrations. It lets you specify which events should be blocked or allowed to flow through to Adjust. For more information, refer to the <Link to="https://www.rudderstack.com/docs/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+</div>
+
+- **Map events to Adjust Event Tokens**: This setting lets you map the RudderStack events to Adjust's [event tokens](https://help.adjust.com/en/article/basic-event-setup#create-an-event-token).
+
+<div class="infoBlock">
+For more information on creating an event token in Adjust, refer to the <Link to="#faq">FAQ</Link> section below.
+</div>
+
+- **Map Rudderstack Parameters to Partner Parameters**: This setting lets you map your event properties to specific Adjust [partner parameters](https://help.adjust.com/en/article/event-tracking-ios-sdk?src=search_page#partner-parameters).
+- **Delay Time before SDK initialization**: Use this setting to initiate a delay in loading the SDK for the first time.
+
+<div class="infoBlock">
+For more information on delaying the SDK's first launch, refer to the <a href="https://help.adjust.com/en/article/ios-sdk-adjconfig-class?src=search#delay-launch">Adjust documentation</a>.
+</div>
 
 <div class="warningBlock">
 Do not add native Adjust SDK to your project as it will prevent you from successful integration.
 </div>
 
-<img src="../../assets/adjust.png" />
-
 ## Adding device mode integration
 
-Once you add Adjust as a destination in the [RudderStack dashboard](https://app.rudderstack.com/), follow these steps to add it to your project depending on your integration platform:
+Follow the below steps to add Adjust to your project depending on your integration platform:
 
 <Tabs>
   <TabList>
@@ -297,6 +334,36 @@ Install Attribution is not supported in <code class="inline-code">cloud-mode</co
 ## Environment and logging
 
 The Adjust environment depends on the `RudderLogLevel`. `RudderLogLevel.DEBUG` or higher will set the environment to `Sandbox` and `logLevel` to `VERBOSE` . For anything below that, the environment will be set to `Production` and `logLevel` to `ERROR`.
+
+## FAQ
+
+### Where can I find the Adjust app token?
+
+To get your Adjust app token, follow these steps:
+
+1. Log into your [Adjust dashboard](https://dash.adjust.com/#/).
+2. Find your app and select the app options caret (^), as shown:
+
+<img src="../../assets/event-stream-destinations/adjust-app-token-1.png" alt="Adjust app token" />
+
+3. You will find your app token listed here.
+
+<img src="../../assets/event-stream-destinations/adjust-connection-settings.png" alt="Adjust app token"/>
+
+### How can I create a new event token in Adjust?
+
+To create a new event token, follow these steps:
+
+1. Log into your [Adjust dashboard](https://dash.adjust.com/#/).
+2. Find your app and select the app options caret (^), as shown:
+
+<img src="../../assets/event-stream-destinations/adjust-app-token-1.png" alt="Adjust app token" />
+
+3. Go to **All Settings** > **Events**, as shown:
+
+<img src="../../assets/event-stream-destinations/adjust-event-token.png" alt="Adjust event token" />
+
+4. Under **CREATE NEW EVENT**, enter the name of the event token and click **CREATE**.
 
 ## Contact us
 
