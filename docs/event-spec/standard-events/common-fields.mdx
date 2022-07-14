@@ -146,7 +146,7 @@ For Android SDK V1.6.0 and above, the bluetooth status is collected in the <code
 For iOS SDK V1.6.3 and above, the bluetooth status is not collected in the <code class="inline-code">network.bluetooth</code> field as it’s a run time permission.
 </div>
 
-The following sample payload highlights the usage of common and contextual fields in web and mobile modes:
+The following sample payload highlights the usage of the common and contextual fields in web and mobile modes:
 
 <Tabs>
   <TabList>
@@ -229,7 +229,7 @@ The following sample payload highlights the usage of common and contextual field
       "name": "com.rudderstack.android.sdk.core",
       "version": "0.1.4"
     },
-    "ip": "",
+    "ip": "192.168.1.1",
     "locale": "en-US",
     "network": {
       "bluetooth": false,
@@ -258,6 +258,10 @@ The following sample payload highlights the usage of common and contextual field
 }
 ```
 </span>
+
+<div class="infoBlock">
+The <code class="inline-code">screen.density</code>, <code class="inline-code">ip</code>, <code class="inline-code">network.bluetooth</code>, and <code class="inline-code">userAgent</code> fields are only applicable for the Android SDK whereas <code class="inline-code">device.adTrackingEnabled</code> is only applicable for the iOS SDK in the above sample payload.
+</div>
       </TabPanel>
     </TabPanels>
 </Tabs>
