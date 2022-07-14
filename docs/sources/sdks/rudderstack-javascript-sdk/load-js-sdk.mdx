@@ -53,9 +53,6 @@ The detailed description of these parameters is as follows:
 | `cookieConsentManager` | Object       |  Use to enable the consent manager integration. Reference((#queueopts)) |
 | `anonymousIdOptions` | Object       |  Automatically captures the anonymous ID from a source and sets it as Rudderstack’s anonymousId. [Reference](#capturing-anonymousid-automatically). |
 
-
-## Parameter definitions
-
 This section details the type definitions of the parameters used in some of the API methods described above:
 
 ### `options`
@@ -179,9 +176,9 @@ The structure of `anonymousIdOptions` object is shown below:
   However, if the <code class="inline-code">anonymousIdOptions</code> object is enabled and you reset the <code class="inline-code">anonymousId</code> and then reload the page, Rudderstack <code class="inline-code">anonymousId</code> will be set as the provided source's <code class="inline-code">anonymousId</code>.
   </div>
 
-## Loading SDK for self-hosted control plane
+## Loading JavaScript SDK for self-hosted control plane
 
-If you are self-hosting the control plane using the [Control Plane Lite](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility, your `load` call should be as below:
+If you are self-hosting the control plane using the [Control Plane Lite](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility, the `load` call should be as below:
 
 ```javascript
 rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
@@ -190,5 +187,5 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
 ```
 
 <div class="infoBlock">
-Replace the <Link to="/get-started/rudderstack-open-source/control-plane-lite/#control-plane-url">Control plane URL</Link> in the above snippet with actual value.
+Replace the <Link to="/resources/glossary/#write-key">Write key</Link>, <Link to="/dashboard-guides/overview/#data-plane-url">data plane URL</Link> and <Link to="/get-started/rudderstack-open-source/control-plane-lite/#control-plane-url">Control plane URL</Link> in the above snippet with actual values.
 </div>
