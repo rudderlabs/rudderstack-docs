@@ -156,12 +156,15 @@ keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert
 keytool -keystore kafka.server.keystore.jks -alias localhost -import -file cert-signed
 ```
 
-To summarize, the script to create the CA as well as the broker and client truststores and keystores is obtained with the following commands:
+All the above commands to generate the key and certificate, create the CA, and sign the certificate are summarized below:
 
 ```
+// Step 1: Generate the key and the certificate
 keytool -keystore kafka.server.keystore.jks -alias localhost -keyalg RSA -validity {validity} -genkey
+// Step 2: Create your own CA
 openssl req -new -x509 -keyout ca-key -out ca-cert -days {validity}
 keytool -keystore kafka.server.truststore.jks -alias CARoot -importcert -file ca-cert
+// Step 3: Sign the certificate
 keytool -keystore kafka.server.keystore.jks -alias localhost -certreq -file cert-file
 openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days {validity} -CAcreateserial -passin pass:{ca-password}
 keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert
@@ -184,18 +187,11 @@ ssl.truststore.type=JKS
 ssl.keystore.type=JKS
 ```
 
-#### Step 5: Add RudderStack CA to your truststore
+#### Step 5: Save the RudderStack certificate
 
-Add RudderStack's CA certificate to your truststore, as shown:
+Save the below RudderStack certificate as `ca-cert-rudder` (or any other name of your choice) on your system:
 
 ```
-keytool -keystore kafka.server.truststore.jks -alias CARootRudder -import -file ca-cert-rudder
-// here ca-cert-rudder is the rudder CA certificate
-```
-
-The resulting CA certificate that you need to add to your trust store is shown below:
-
-```bash
 -----BEGIN CERTIFICATE-----
 MIIEDzCCAvegAwIBAgIUByH8aYuRqjCyz5yZZ91fcJOsW+0wDQYJKoZIhvcNAQEL
 BQAwgZYxCzAJBgNVBAYTAklOMRQwEgYDVQQIDAtXZXN0IEJlbmdhbDEQMA4GA1UE
@@ -220,6 +216,15 @@ xHaTVaC1ThV5MmecsC7kS3mNCkhO1IVxy5KAJCftYzjni+O0U0wkcmUnZjJyN0l9
 hAegB6VLwodW3FqFJ7hMlSZOxE9hYjl9/FlqDdS3KPtn8qh9uliq9V8NELK2jROh
 vWJxTpadFmHwCTtKNrfnm2PgokxX3pVtkFu7xQhl26+87RQ=
 -----END CERTIFICATE-----
+```
+
+#### Step 6: Add the RudderStack CA certificate to your truststore
+
+Add the above RudderStack CA certificate to your truststore by using the certificate's location in the following command:
+
+```
+keytool -keystore kafka.server.truststore.jks -alias CARootRudder -import -file ca-cert-rudder
+// here ca-cert-rudder is the RudderStack CA certificate
 ```
 
 ### How can I connect to RudderStack if my Kafka server is running in a Kubernetes cluster?
