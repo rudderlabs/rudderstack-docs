@@ -97,10 +97,10 @@ The following table lists all the contextual fields with their detailed descript
 
 The following section highlights all the contextual fields that are **automatically collected** and populated by each of the RudderStack SDKs:
 
-| Field | JavaScript | Android | iOS | Description |
+| Field | JavaScript | Android | iOS | Description | 
 | :--- | :--- |:--- |:--- |:--- |
 | `app.name`         | -   | Yes | Yes | Name of the application. |
-| `app.version`      | -   | Yes | Yes | Version of the application. |
+| `app.version`      | -   | Yes | Yes | Version of the application. | 
 | `app.build`        | -   | Yes | Yes | Build of the application. |
 | `campaign.name`    | Yes | -   | -   | Name of the campaign.  |
 | `campaign.source`  | Yes | -   | -   | Source of the campaign. |
@@ -146,50 +146,45 @@ For Android SDK V1.6.0 and above, the bluetooth status is collected in the <code
 For iOS SDK V1.6.3 and above, the bluetooth status is not collected in the <code class="inline-code">network.bluetooth</code> field as it’s a run time permission.
 </div>
 
-## Sample payload with common fields
+The following sample payload highlights the usage of common and contextual fields in web and mobile modes:
 
-The following sample payload highlights how the above common and contextual fields are used:
+<Tabs>
+  <TabList>
+    <Tab>Web</Tab>
+    <Tab>Mobile</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
 
 ```json
 {
-  "anonymousId": "7e32188a4dab669f",
-  "channel": "mobile",
+  "anonymousId": "7e22166a4dab652f",
+  "channel": "web",
   "context": {
-    "app": {
-      "build": "1",
-      "name": "RudderAndroidClient",
-      "namespace": "com.rudderstack.demo.android",
-      "version": "1.0"
-    },
-    "device": {
-      "id": "7e32188a4dab669f",
-      "manufacturer": "Google",
-      "model": "Android SDK built for x86",
-      "name": "generic_x86",
-      "type": "android"
-    },
-    "library": {
-      "name": "com.rudderstack.android.sdk.core",
-      "version": "0.1.4"
-    },
-    "locale": "en-US",
-    "network": {
-      "carrier": "Android",
-      "bluetooth": false,
-      "cellular": true,
-      "wifi": true
-    },
     "campaign": {
+      "name": "sales campaign",
       "source": "google",
       "medium": "medium",
-      "term": "keyword",
-      "content": "some content",
-      "name": "some campaign"
+      "term": "event data",
+      "content": "Make sense of the modern data stack"
     },
-    "os": { "name": "Android", "version": "9" },
-    "screen": { "density": 420, "height": 1794, "width": 1080 },
-    "timezone": "Asia/Mumbai",
-    "traits": { "anonymousId": "7e32188a4dab669f" },
+    "library": {
+      "name": "com.rudderstack.javascript.sdk.core",
+      "version": "1.0.0"
+    },
+    "locale": "en-US",
+    "page": {
+      "path": "/best-seller/1",
+      "initial_referrer": "https://www.google.com/search",
+      "initial_referring_domain": "google.com",
+      "referrer": "https://www.google.com/search?q=estore+bestseller",
+      "referring_domain": "google.com",
+      "search": "estore bestseller",
+      "title": "The best sellers offered by EStore",
+      "url": "https://www.estore.com/best-seller/1"
+    },
+    "screen": { "density": 420, "height": 1794, "width": 1080, "innerHeight": 200, "innerWidth": 100 },
     "userAgent": "Dalvik/2.1.0 (Linux; U; Android 9; Android SDK built for x86 Build/PSR1.180720.075)"
   },
   "event": "Product Reviewed",
@@ -206,6 +201,66 @@ The following sample payload highlights how the above common and contextual fiel
   "sentAt": "2020-01-09T10:02:03.257Z"
 }
 ```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```json
+{
+  "anonymousId": "7e32188a4dab669f",
+  "channel": "mobile",
+  "context": {
+    "app": {
+      "name": "RudderAndroidClient",
+      "version": "1.0",
+      "build": "1"
+    },
+    "device": {
+      "type": "android",
+      "id": "7e32188a4dab669f",
+      "advertisingId":"435o4GRlm",
+      "adTrackingEnabled": false,
+      "manufacturer": "Google",
+      "model": "Android SDK built for x86",
+      "name": "generic_x86",
+    },
+    "library": {
+      "name": "com.rudderstack.android.sdk.core",
+      "version": "0.1.4"
+    },
+    "ip": "",
+    "locale": "en-US",
+    "network": {
+      "bluetooth": false,
+      "carrier": "Android",
+      "cellular": true,
+      "wifi": true
+    },
+    "os": { "name": "Android", "version": "9" },
+    "screen": { "density": 420, "height": 1794, "width": 1080 },
+     "traits": { "anonymousId": "7e32188a4dab669f" },
+    "timezone": "Asia/Mumbai",
+    "userAgent": "Dalvik/2.1.0 (Linux; U; Android 9; Android SDK built for x86 Build/PSR1.180720.075)"
+  },
+  "event": "Product Reviewed",
+  "integrations": { "All": true },
+  "messageId": "1578564113557-af022c68-429e-4af4-b99b-2b9174056383",
+  "properties": {
+    "review_id": "review_id_1",
+    "product_id": "product_id_1",
+    "rating": 2.0,
+    "review_body": "Sample Review Body"
+  },
+  "originalTimestamp": "2020-01-09T10:01:53.558Z",
+  "type": "track",
+  "sentAt": "2020-01-09T10:02:03.257Z"
+}
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
 ## Contact us
 
