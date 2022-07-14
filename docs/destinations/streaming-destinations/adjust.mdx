@@ -328,6 +328,10 @@ Make sure you have defined the property mapping in the <strong>RudderStack Param
 
 RudderStack uses the property mappings specified in the **RudderStack Parameters to Partner Parameters** setting to check if a key is present in the `track` event properties and maps it to the corresponding Adjust partner parameter object.
 
+<div class="infoBlock">
+The partner parameters only accept data of type String.
+</div>
+
 Suppose a customer sets the following mapping in the RudderStack dashboard:
 
 | RudderStack property | Adjust partner parameter |
@@ -358,9 +362,13 @@ The corresponding Adjust payload highlighting the parameters is shown below:
   "app_token": "t1yurrb968zk",
   "event_token": "tf4gm5",
   "environment": "production",
-  "partner_params": "{\"price\":20.99,\"quantity\":10}"
+  "partner_params": {"price":"20.99","quantity":"10"}
 },
 ```
+
+<div class="infoBlock">
+RudderStack converts numeric values into strings before sending the data to Adjust.
+</div>
 
 ### Sending revenue tracking events to Adjust
 
