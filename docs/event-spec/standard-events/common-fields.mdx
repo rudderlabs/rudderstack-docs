@@ -118,7 +118,7 @@ The following section highlights all the contextual fields that are **automatica
 | `library.version` | Yes | Yes | Yes |
 | `ip` | - | Yes | - |
 | `locale` | Yes | Yes | Yes |
-| `network.bluetooth` | - | Yes | Yes | 
+| `network.bluetooth` | - | Yes, if permission is present | No | 
 | `network.carrier` | - | Yes | Yes |
 | `network.cellular` | - | Yes | Yes |
 | `network.wifi` | - | Yes | Yes |
@@ -140,6 +140,11 @@ The following section highlights all the contextual fields that are **automatica
 | `traits` | - | Yes | Yes |
 | `userAgent` | Yes | Yes | - |
 | `timezone` | - | Yes | Yes |
+
+<div class="infoBlock">
+From Android SDK V1.6.0, the bluetooth status is included in the <code class="inline-code">network.bluetooth</code> field only if the bluetooth permission is present in the app.
+From iOS SDK V1.6.3, the bluetooth status is not included in the <code class="inline-code">network.bluetooth</code> field as it’s a run time permission.
+</div>
 
 ## Sample payload with common fields
 
