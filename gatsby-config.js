@@ -99,7 +99,6 @@ module.exports = {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               elements: [`h2`, `h3`, `h4`],
-              offsetY: `100`
             },
           },
           `gatsby-remark-embedder`,
