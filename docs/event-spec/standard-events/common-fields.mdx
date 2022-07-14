@@ -97,49 +97,49 @@ The following table lists all the contextual fields with their detailed descript
 
 The following section highlights all the contextual fields that are **automatically collected** and populated by each of the RudderStack SDKs:
 
-| Field | JavaScript | Android | iOS |
-| :--- | :--- |:--- |:--- |
-| `app.name`         | -   | Yes | Yes |
-| `app.version`      | -   | Yes | Yes |
-| `app.build`        | -   | Yes | Yes |
-| `campaign.name`    | Yes | -   | -   |
-| `campaign.source`  | Yes | -   | -   |
-| `campaign.medium`  | Yes | -   | -   |
-| `campaign.term`    | Yes | -   | -   |
-| `campaign.content` | Yes | -   | -   |
-| `device.type`      | -   | Yes | Yes   |
-| `device.id`        | -   | Yes | Yes |
-| `device.advertisingId` | - | Yes | Yes |
-| `device.adTrackingEnabled` | - | - | Yes |
-| `device.manufacturer` | - | Yes | Yes |
-| `device.model` | - | Yes | Yes |
-| `device.name` | - | Yes | Yes |
-| `library.name` | Yes | Yes | Yes |
-| `library.version` | Yes | Yes | Yes |
-| `ip` | - | Yes | - |
-| `locale` | Yes | Yes | Yes |
-| `network.bluetooth` | - | Yes (if permission is granted) | No | 
-| `network.carrier` | - | Yes | Yes |
-| `network.cellular` | - | Yes | Yes |
-| `network.wifi` | - | Yes | Yes |
-| `os.name` | - | Yes | Yes |
-| `os.version` | - | Yes | Yes |
-| `page.path` | Yes | - |  - |
-| `page.initial_referrer` | Yes | - |  - |
-| `page.initial_referring_domain` | Yes | - |  - |
-| `page.referrer` | Yes | - |  - |
-| `page.referring_domain` | Yes | - |  - |
-| `page.search` | Yes | - |  - |
-| `page.title` | Yes | - |  - |
-| `page.url` | Yes | - |  - |
-| `screen.density` | Yes | Yes | - |
-| `screen.height` | Yes | Yes | Yes |
-| `screen.width` | Yes | Yes | Yes |
-| `screen.innerWidth` | Yes |   -   |   -   |
-| `screen.innerHeight` | Yes |   -   |   -   |
-| `traits` | - | Yes | Yes |
-| `userAgent` | Yes | Yes | - |
-| `timezone` | - | Yes | Yes |
+| Field | JavaScript | Android | iOS | Description |
+| :--- | :--- |:--- |:--- |:--- |
+| `app.name`         | -   | Yes | Yes | Name of the application. |
+| `app.version`      | -   | Yes | Yes | Version of the application. |
+| `app.build`        | -   | Yes | Yes | Build of the application. |
+| `campaign.name`    | Yes | -   | -   | Name of the campaign.  |
+| `campaign.source`  | Yes | -   | -   | Source of the campaign. |
+| `campaign.medium`  | Yes | -   | -   | Medium of the campaign. |
+| `campaign.term`    | Yes | -   | -   | Term of the campaign. |
+| `campaign.content` | Yes | -   | -   | Content of the campaign. |
+| `device.type`      | -   | Yes | Yes   | Type of the device. |
+| `device.id`        | -   | Yes | Yes | ID of the device. |
+| `device.advertisingId` | - | Yes | Yes | Advertising ID of the device. |
+| `device.adTrackingEnabled` | - | - | Yes | If ad tracking is enabled on the device.   |
+| `device.manufacturer` | - | Yes | Yes | Manufacturer of the device.|
+| `device.model` | - | Yes | Yes | Model of the device. |
+| `device.name` | - | Yes | Yes | Name of the device. |
+| `library.name` | Yes | Yes | Yes | Name of the library. |
+| `library.version` | Yes | Yes | Yes | Version of the library. |
+| `ip` | - | Yes | - |  IP address of the user. |
+| `locale` | Yes | Yes | Yes | Locale string of the user. |
+| `network.bluetooth` | - | Yes (if permission is granted) | No | Bluetooth information about the network connection. |
+| `network.carrier` | - | Yes | Yes | Carrier information about the network connection. |
+| `network.cellular` | - | Yes | Yes | Cellular information about the network connection. |
+| `network.wifi` | - | Yes | Yes | Wifi information about the network connection. |
+| `os.name` | - | Yes | Yes | Name of the operating system. |
+| `os.version` | - | Yes | Yes | Version of the operating system. |
+| `page.path` | Yes | - |  - | Path of the current page in the browser. |
+| `page.initial_referrer` | Yes | - |  - | Initial referrer of the current page in the browser. |
+| `page.initial_referring_domain` | Yes | - |  - | Initial referring domain of the current page in the browser. |
+| `page.referrer` | Yes | - |  - | Referrer of the current page in the browser. |
+| `page.referring_domain` | Yes | - |  - | Referring domain of the current page in the browser. |
+| `page.search` | Yes | - |  - | Search of the current page in the browser.
+| `page.title` | Yes | - |  - | Title of the current page in the browser. |
+| `page.url` | Yes | - |  - | URL of the current page in the browser. |
+| `screen.density` | Yes | Yes | - | Density of the device's screen. |
+| `screen.height` | Yes | Yes | Yes | Height of the device's screen. |
+| `screen.width` | Yes | Yes | Yes | Width of the device's screen. |
+| `screen.innerWidth` | Yes |   -   |   -   | Inner width of the device's screen. |
+| `screen.innerHeight` | Yes |   -   |   -   | Inner height of the device's screen. |
+| `traits` | - | Yes | Yes | Traits of the user. |
+| `userAgent` | Yes | Yes | - | User agent of the device making the request. |
+| `timezone` | - | Yes | Yes | Information about the user's timezone. |
 
 <div class="infoBlock">
 For Android SDK V1.6.0 and above, the bluetooth status is collected in the <code class="inline-code">network.bluetooth</code> field only if the bluetooth permission is present in the app.
