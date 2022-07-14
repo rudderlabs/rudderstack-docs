@@ -148,8 +148,9 @@ The following sample payload highlights the usage of the common and contextual f
 
 <Tabs>
   <TabList>
-    <Tab>Web</Tab>
-    <Tab>Mobile</Tab>
+    <Tab>JavaScript</Tab>
+    <Tab>Android</Tab>
+    <Tab>iOS</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -218,7 +219,6 @@ The following sample payload highlights the usage of the common and contextual f
       "type": "android",
       "id": "7e32188a4dab669f",
       "advertisingId":"435o4GRlm",
-      "adTrackingEnabled": false,
       "manufacturer": "Google",
       "model": "Android SDK built for x86",
       "name": "generic_x86",
@@ -256,10 +256,59 @@ The following sample payload highlights the usage of the common and contextual f
 }
 ```
 </span>
+      </TabPanel>
+      <TabPanel>
+<span>
 
-<div class="infoBlock">
-<code class="inline-code">screen.density</code>, <code class="inline-code">ip</code>, <code class="inline-code">network.bluetooth</code>, and <code class="inline-code">userAgent</code> fields are only applicable for the Android SDK whereas the <code class="inline-code">device.adTrackingEnabled</code> field is only applicable for the iOS SDK in the above sample payload.
-</div>
+```json
+{
+  "anonymousId": "7e32188a4dab669f",
+  "channel": "mobile",
+  "context": {
+    "app": {
+      "name": "RudderiOSClient",
+      "version": "1.0",
+      "build": "1"
+    },
+    "device": {
+      "type": "iOS",
+      "id": "7e32188a4dab669f",
+      "advertisingId":"435o4GRlm",
+      "adTrackingEnabled": false,
+      "manufacturer": "Google",
+      "model": "iOS SDK built for x86",
+      "name": "generic_x86",
+    },
+    "library": {
+      "name": "com.rudderstack.iOS.sdk.core",
+      "version": "0.1.4"
+    },
+    "locale": "en-US",
+    "network": {
+      "carrier": "iOS",
+      "cellular": true,
+      "wifi": true
+    },
+    "os": { "name": "iOS", "version": "9" },
+    "screen": { "height": 1794, "width": 1080 },
+     "traits": { "anonymousId": "7e32188a4dab669f" },
+    "timezone": "Asia/Mumbai"
+  },
+  "event": "Product Reviewed",
+  "integrations": { "All": true },
+  "messageId": "1578564113557-af022c68-429e-4af4-b99b-2b9174056383",
+  "properties": {
+    "review_id": "review_id_1",
+    "product_id": "product_id_1",
+    "rating": 2.0,
+    "review_body": "Sample Review Body"
+  },
+  "originalTimestamp": "2020-01-09T10:01:53.558Z",
+  "type": "track",
+  "sentAt": "2020-01-09T10:02:03.257Z"
+}
+```
+</span>
       </TabPanel>
     </TabPanels>
 </Tabs>
