@@ -7,8 +7,6 @@ description: Step-by-step guide on sending your event data from RudderStack to A
 
 RudderStack supports Adjust as a destination to which you can seamlessly send your event data.
 
-RudderStack allows you to configure your mobile devices with our SDKs to send your customer event data to Adjust - without any hassle. You can refer to the code for [Android]() and [iOS]() in the GitHub repository.
-
 <div class="infoBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/adj">GitHub repository</a>. You can also refer to the specific repositories for the <a href="https://github.com/rudderlabs/rudder-integration-adjust-android">Android</a> and <a href="https://github.com/rudderlabs/rudder-integration-adjust-ios">iOS</a> implementations.
 </div>
@@ -44,14 +42,11 @@ To successfully configure Adjust as a destination, you will need to configure th
 For more information on obtaining your Adjust app token, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
-- **Send to Production Environment on Adjust**: Enable this setting to send the data to the <a href="https://help.adjust.com/en/article/server-to-server-events?src=search#:~:text=event%20currency%20code-,environment,-Environment%20to%20post">production environment</a> in Adjust. 
+- **Send to Production Environment on Adjust**: Enable this setting to send the data to the <a href="https://help.adjust.com/en/article/server-to-server-events?src=search#:~:text=event%20currency%20code-,environment,-Environment%20to%20post">production environment</a> in Adjust. By default, RudderStack sends the data to the Adjust sandbox environment.
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Adjust.
 
 <div class="infoBlock">
-By default, RudderStack sends the data in the sandbox environment.
-</div>
-
-<div class="infoBlock">
-The <strong>Client-side Events Filtering</strong> setting is applicable only for the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> integrations. It lets you specify which events should be blocked or allowed to flow through to Adjust. For more information, refer to the <Link to="https://www.rudderstack.com/docs/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+This setting is applicable only when sending events to Adjust via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>. For more information, refer to the <Link to="https://www.rudderstack.com/docs/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
 </div>
 
 - **Map events to Adjust Event Tokens**: This setting lets you map the RudderStack events to Adjust's [event tokens](https://help.adjust.com/en/article/basic-event-setup#create-an-event-token).
@@ -67,7 +62,7 @@ For more information on creating an event token in Adjust, refer to the <Link to
 For more information on delaying the SDK's first launch, refer to the <a href="https://help.adjust.com/en/article/ios-sdk-adjconfig-class?src=search#delay-launch">Adjust documentation</a>.
 </div>
 
-- **Use device mode to send events**: Enable this setting to send events to Adjust via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+- **Use device mode to send events**: Enable this setting for the Android/iOS SDK to send events to Adjust via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 <div class="warningBlock">
 Do not add native Adjust SDK to your project as it will prevent you from integrating it successfully.
@@ -391,7 +386,7 @@ A sample `reset` call is shown below:
 
 ## Install attribution
 
-Adjust's native SDK handles install attribution out of the box with RudderStack.
+Adjust's native SDK handles app install attribution out of the box with RudderStack.
 
 <div class="warningBlock">
 This feature is not supported when sending events via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
@@ -403,7 +398,12 @@ For testing install attribution and troubleshooting tips, refer to the <a href="
 
 ## Adjust environment dependency on log level 
 
-RudderStack sends data to the Adjust environment depending on the `RudderLogLevel` set in the SDK.
+RudderStack sends data to the Adjust environment depending on the `RudderLogLevel` set in the SDK, as listed in the below table:
+
+| `RudderLogLevel` | Adjust Environment | Adjust SDK `LogLevel ` |
+| :----------------| :-------------------| :-----------------|
+| `DEBUG` / `VERBOSE` | Sandbox | `VERBOSE` | 
+| `NONE`/ `ERROR` / `WARN`/ `INFO` | Production | `ERROR` |
 
 <div class="infoBlock">
 For more information on the <code class="inline-code">RudderLogLevel</code>, refer to the following SDK documentation:
@@ -412,8 +412,6 @@ For more information on the <code class="inline-code">RudderLogLevel</code>, ref
   <li><a href="/sources/sdks/rudderstack-ios-sdk/#configuring-the-rudderstack-client">iOS</a></li>
 </ul>
 </div>
-
-`RudderLogLevel.DEBUG` or higher will set the Adjust environment to **Sandbox** and `logLevel` to `VERBOSE`. For anything below that, RudderStack sets the Adjust environment to **Production** and `logLevel` to `ERROR`.
 
 ## FAQ
 
