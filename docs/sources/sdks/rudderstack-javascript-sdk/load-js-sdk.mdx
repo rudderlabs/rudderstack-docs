@@ -50,14 +50,12 @@ The detailed description of these parameters is as follows:
 | `destSDKBaseURL`      | String                              | Path used by the SDK to load the integrations. Its default value is `https://cdn.rudderlabs.com/v1.1/js-integrations`. <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">Reference</Link>.    | 
 | `useBeacon`           | Boolean                             | Determines whether the SDK sends the event payloads via the  `navigator.sendBeacon()` utility (false by default).  <Link to="/sources/sdks/rudderstack-javascript-sdk/send-events-beacon/">Reference</Link>. |
 | `beaconQueueOptions`  | <Link to="/sources/sdks/rudderstack-javascript-sdk/send-events-beacon/">BeaconQueueOpts</Link> | Internal queue to hold the data and send it through the `sendBeacon` utility in batches. |
-| `cookieConsentManager` | Object       |  Use to enable the consent manager integration. Reference((#queueopts)) |
+| `cookieConsentManager` | Object       |  Use to enable the consent manager integration. <Link to="/sources/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/">Reference</Link> |
 | `anonymousIdOptions` | Object       |  Automatically captures the anonymous ID from a source and sets it as Rudderstack’s anonymousId. [Reference](#capturing-anonymousid-automatically). |
 
-This section details the type definitions of the parameters used in some of the API methods described above:
+This detailed definitions and usage of some of the above parameters are explained below:
 
-### `options`
-
-The structure of **`options`** parameter is as shown:
+* `options`: The structure of `options` parameter is as shown:
 
 ```javascript
 {
@@ -67,7 +65,7 @@ The structure of **`options`** parameter is as shown:
   <other keys>: <value> // merged with event's contextual information
 }
 ```
-The following table describes each of the above parameters in detail:
+The following table describes the above parameters in detail:
 
 | **Parameter**                   | **Type**                                | **Description**  |
 | :-------------------------- | :---------------------------------- | :----------------------- |
@@ -76,9 +74,7 @@ The following table describes each of the above parameters in detail:
 | `originalTimestamp`     | ISO 8601 Date string                | Overrides the current event's `originalTimestamp` at the top level. |
 | `<other keys>: <value>` | -                                   | Merged with the event's contextual information. |
 
-### `IntegrationOpts`
-
-The structure of **`IntegrationOpts`** looks like the following:
+* `IntegrationOpts`: You can use this parameter to send the event data only to the <Link to="/sources/sdks/rudderstack-javascript-sdk/filtering/#filtering-destinations">selective destinations</Link>. Its structure is defined as follows:
 
 ```javascript
 {
@@ -89,18 +85,14 @@ The structure of **`IntegrationOpts`** looks like the following:
 }
 ```
 
-The following table describes each of the above parameters in detail:
+The following table describes the above (optional) parameters in detail:
 
-| **Parameter**       | **Type**| **Presence**  | **Description**  |
-| :------------------ | :------ |:--------------| :----------------------- |
-| `All`               | Boolean | Optional      | Corresponds to all the destinations to which the event is to be sent. The default value is set to `true`. `All: false` will lead to RudderStack not sending the event data to any destination. |
-| `<Destination>`     | Boolean | Optional      | Specific destination to which the event is to be sent or not sent, depending on the Boolean value assigned to it. |
+| **Parameter**       | **Type**|  **Description**  |
+| :------------------ | :------ | :----------------------- |
+| `All`               | Boolean |  All destinations to which the event data must be sent. The default value is `true`. If set to `false`, RudderStack will not send the event data to any destination. |
+| `<Destination>`     | Boolean |  Specific destination to which the event must be sent/not, depending on its Boolean value. |
 
-More information on using `IntegrationOpts` can be found in the [**Filtering selective destinations**](#filtering-selective-destinations) section.
-
-### `QueueOpts`
-
-The structure of **`QueueOpts`** is shown below:
+* `QueueOpts`: (definition) . Its structure is defined as follows:
 
 ```javascript
 {
@@ -112,19 +104,17 @@ The structure of **`QueueOpts`** is shown below:
 }
 ```
 
-The following table describes each of the above parameters in detail:
+The following table describes the above `integer` type parameters in detail:
 
-| **Parameter**   | **Type**| **Description**                                                      | **Default value** |
-| :-------------- | :------ | :--------------------------------------------------------------------|:------------------|
-| `maxRetryDelay` | Integer | The upper limit on the maximum delay for an event (in ms)            | 360000            |
-| `minRetryDelay` | Integer | The minimum delay expected before sending an event (in ms)           | 1000              |
-| `backoffFactor` | Integer | Refers to the exponential base.                                      | 2                 |
-| `maxAttempts`   | Integer | Maximum number of attempts to send the event to the destination.     | 10                |
-| `maxItems`      | Integer | Maximum number of events kept in the storage.                        | 100               |
+| **Parameter**   | **Description**                                                      | **Default value** |
+| :-------------- |  :--------------------------------------------------------------------|:------------------|
+| `maxRetryDelay` |  Upper limit on the maximum delay for an event (in ms).          | 360000            |
+| `minRetryDelay` |  Minimum delay expected before sending an event (in ms).           | 1000              |
+| `backoffFactor` |  Exponential base.                                      | 2                 |
+| `maxAttempts`   |  Maximum number of attempts to send the event to the destination.     | 10                |
+| `maxItems`      |  Maximum number of events kept in the storage.                        | 100               |
 
-#### cookieConsentManager
-
-Once the user provides the consent, you can load the JavaScript SDK and enable the OneTrust integration via the `cookieConsentManager` object, as shown:
+* `cookieConsentManager`: Once a user provides the consent, you can load the JavaScript SDK and enable the <Link to="/sources/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/">OneTrust integration</Link> via the `cookieConsentManager` object, as shown:
 
 ```javascript
 rudderanalytics.load(
@@ -139,16 +129,9 @@ rudderanalytics.load(
 );
 ```
 
-<div class="infoBlock">
-  
-For more information on the consent managers supported by RudderStack, refer to <a href="https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/">this section</a>.
-</div>
+* `anonymousIdOptions`: The JavaScript SDK provides `anonymousIdOptions` object in the `load` call options which automatically captures the anonymous ID from a source and sets it as Rudderstack's `anonymousId`.
 
-#### Capturing `anonymousId` automatically 
-
-The JavaScript SDK provides `anonymousIdOptions` object in the [`load()`](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#the-options-parameter) call options. It automatically captures the anonymous ID from a source and sets it as Rudderstack’s `anonymousId`.
-
-The structure of `anonymousIdOptions` object is shown below:
+Its structure is defined as follows:
 
 ```javascript
 {
@@ -158,22 +141,19 @@ The structure of `anonymousIdOptions` object is shown below:
   }
 }
 ```
+  The following table describes the above parameters in detail:
 
-| Parameter  | Type  | Description    |   
-| :--------| :---- | :----------------| 
-| `enabled` | Boolean  | Identifies if the auto-capturing of anonymous ID is enabled. | 
-| `source`  | String   | Identifies the external source of the anonymous ID. | 
+  | Parameter  | Type  | Description    |   
+  | :--------| :---- | :----------------| 
+  | `enabled` | Boolean  | Determines if auto-capturing of anonymous ID is enabled. | 
+  | `source`  | String   | Determines the external source of anonymous ID. | 
 
-<div class="infoBlock">
-  
-  If the RudderStack <code class="inline-code">anonymousId</code> is already set in your browser, then <code class="inline-code">anonymousIdOptions</code> will not take effect.
-</div>
+  <div class="infoBlock">
+  If the RudderStack <code class="inline-code">anonymousId</code> is already set in your browser, <code class="inline-code">anonymousIdOptions</code> will not take effect.
+  </div>
 
-<div class="infoBlock">
-  
-  You can use the <strong>Reset</strong> method to generate a new <code class="inline-code">anonymousId</code> whether the <code class="inline-code">anonymousIdOptions</code> object is enabled or not.
-  
-  However, if the <code class="inline-code">anonymousIdOptions</code> object is enabled and you reset the <code class="inline-code">anonymousId</code> and then reload the page, Rudderstack <code class="inline-code">anonymousId</code> will be set as the provided source's <code class="inline-code">anonymousId</code>.
+  <div class="infoBlock">
+  You can use the <strong>Reset</strong> method to generate a new <code class="inline-code">anonymousId</code> whether the <code class="inline-code">anonymousIdOptions</code> object is enabled or not. However, if the <code class="inline-code">anonymousIdOptions</code> object is enabled and you reset the <code class="inline-code">anonymousId</code> and then reload the page, Rudderstack <code class="inline-code">anonymousId</code> will be set as the provided source's <code class="inline-code">anonymousId</code>.
   </div>
 
 ## Loading JavaScript SDK for self-hosted control plane
