@@ -60,7 +60,7 @@ The <strong>Client-side Events Filtering</strong> setting is applicable only for
 For more information on creating an event token in Adjust, refer to the <Link to="#how-can-i-create-a-new-event-token-in-adjust">FAQ</Link> section below.
 </div>
 
-- **Map Rudderstack Parameters to Partner Parameters**: This setting lets you map your event properties to specific Adjust [partner parameters](https://help.adjust.com/en/article/event-tracking-ios-sdk?src=search_page#partner-parameters).
+- **Rudderstack Parameters to Partner Parameters**: This setting lets you map your event properties to specific Adjust [partner parameters](https://help.adjust.com/en/article/event-tracking-ios-sdk?src=search_page#partner-parameters).
 - **Delay Time before SDK initialization**: This setting is applicable only for sending events via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>. You can use it to initiate a delay in loading the SDK for the first time.
 
 <div class="infoBlock">
@@ -70,7 +70,7 @@ For more information on delaying the SDK's first launch, refer to the <a href="h
 - **Use device mode to send events**: Enable this setting to send events to Adjust via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 <div class="warningBlock">
-Do not add native Adjust SDK to your project as it will prevent you from successful integration.
+Do not add native Adjust SDK to your project as it will prevent you from integrating it successfully.
 </div>
 
 ## Adding device mode integration
@@ -329,7 +329,7 @@ Make sure you have defined the property mapping in the <strong>RudderStack Param
 RudderStack uses the property mappings specified in the **RudderStack Parameters to Partner Parameters** setting to check if a key is present in the `track` event properties and maps it to the corresponding Adjust partner parameter object.
 
 <div class="infoBlock">
-The partner parameters only accept data of type String.
+The partner parameters only accept the String data type.
 </div>
 
 Suppose a customer sets the following mapping in the RudderStack dashboard:
@@ -401,7 +401,7 @@ This feature is not supported when sending events via the <Link to="/destination
 For testing install attribution and troubleshooting tips, refer to the <a href="https://help.adjust.com/en/article/testing-console">Adjust documentation</a>.
 </div>
 
-## Adjust environment and logging
+## Adjust environment dependency on log level 
 
 RudderStack sends data to the Adjust environment depending on the `RudderLogLevel` set in the SDK.
 
@@ -428,7 +428,7 @@ To get your Adjust app token, follow these steps:
 
 3. You will find your app token listed here.
 
-<img src="../../assets/event-stream-destinations/adjust-connection-settings.png" alt="Adjust app token"/>
+<img src="../../assets/event-stream-destinations/adjust-app-token-2.png" alt="Adjust app token"/>
 
 ### How can I create a new event token in Adjust?
 
