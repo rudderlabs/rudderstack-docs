@@ -1,6 +1,6 @@
 ---
 title: "Permissions Matrix"
-description: Detailed role-specific permissions for Read-Only, Read-Write, and Admin roles.
+description: Detailed permissions for Read-Only, Read-Write, and Admin roles.
 ---
 
 This guide lists the detailed role-specific permissions for various RudderStack features and settings. 
@@ -27,7 +27,7 @@ As mentioned in the <Link to="/dashboard-guides/permissions-management/">Permiss
 | Edit source schema | No | Yes | Yes | 
 | Edit source configuration | No | Yes | Yes | 
 | Edit source credentials | No | Yes | Yes | 
-| Edit resources | No | Yes | Yes |
+| Edit resources (in case of <Link to="/sources/extract/">Cloud Extract</Link> sources) | No | Yes | Yes |
 
 ### Destinations
 
@@ -96,7 +96,7 @@ Read-Only users can view the events that might contain sensitive user informatio
 | Permission  | Read-Only | Read-Write | Admin |
 | :-------| :---------| :----------| :------|
 | View sync and history details | Yes  | Yes | Yes  |
-| Sync Extract and Reverse ETL sources | No  | Yes | Yes  |
+| Sync <Link to="/sources/extract/">Cloud Extract</Link> and <Link to="/sources/reverse-etl/">Reverse ETL</Link> sources | No  | Yes | Yes  |
 
 ### Audit logs
 

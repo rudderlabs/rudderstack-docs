@@ -13,13 +13,15 @@ This option helps you easily get started with RudderStack. You can set up a sour
 
 <img src="../assets/rs-cloud/get-started.png" alt="RudderStack Dashboard" />
 
+## Directory
+
+**Directory** acts as a catalogue for all the sources (<Link to="/sources/cloud-apps/">Cloud Apps</Link>, <Link to="/sources/extract/">Cloud Extract</Link> and <Link to="/sources/reverse-etl/">Reverse ETL</Link>) and destinations (<Link to="/destinations/warehouse-destinations/">Warehouse</Link> and <Link to="/destinations/streaming-destinations/">Streaming destinations</Link>) supported by RudderStack.
+
 ## Connections
 
 This option lets you set up your data pipelines by connecting different sources and destinations across your entire customer data stack.
 
 <img src="../assets/rs-cloud/connections-dashboard.png" alt="RudderStack Dashboard" />
-
-<br />
 
 ### Data plane URL
 
@@ -39,17 +41,17 @@ Here's how to get the Data Plane URL:
 An open source data plane URL looks like `http:localhost:8080` where `8080` is typically the port where your RudderStack data plane is hosted.
 </div>
 
-## Sources
+### Sources
 
 This option lists all the configured sources in your workspace. You can add a new source by clicking on the **New Source** button, as shown:
 
-<img src="../assets/rs-cloud/rudderstack-sources.png" alt="RudderStack sources" />
+<img src="../assets/rs-cloud/sources.png" alt="RudderStack sources" />
 
 <div class="infoBlock">
 Refer to the <Link to="/sources/">Sources</Link> guide for more details on setting up a source in RudderStack.
 </div>
 
-## Destinations
+### Destinations
 
 This option lists all the configured destinations where you can send your event data. You can add a new destination by clicking on the **New Destination** button, as shown:
 
@@ -69,23 +71,15 @@ This option provides detailed metrics on the events synced to the warehouse dest
 
 This feature lets you define custom SQL queries which can be executed on your warehouse. You can then use RudderStack to send the resulting data to specific destinations.
 
-<img src="../assets/warehouse-actions-sources/models-view-dashboard.png" alt="RudderStack Models" />
-
 <div class="infoBlock">
 Refer to the <Link to="/sources/reverse-etl/features/models/">Models</Link> guide for more details on setting up a new model in RudderStack.
 </div>
-
-## Directory
-
-**Directory** acts as a catalogue for all the sources (<Link to="/sources/cloud-apps/">Cloud Apps</Link>, <Link to="/sources/extract/">Cloud Extract</Link> and <Link to="/sources/reverse-etl/">Reverse ETL</Link>) and destinations (<Link to="/destinations/warehouse-destinations/">Warehouse</Link> and <Link to="/destinations/streaming-destinations/">Streaming destinations</Link>) supported by RudderStack.
-
-<img src="../assets/rs-cloud/directory.png" alt="Directory in RudderStack Dashboard" />
 
 ## Transformations
 
 With this option, you can write your own JavaScript functions to transform your events. You can also create your own **Libraries** to reuse a transformation's code for other transformations.
 
-<img src="../assets/rs-cloud/transformations-dashboard.png" alt="Transformations" />
+<img src="../assets/rs-cloud/transformations.png" alt="RudderStack Transformations and Libraries option" />
 
 <div class="infoBlock">
 Refer to the <Link to="/features/transformations/">Transformations</Link> guide to learn more about this feature.
@@ -93,12 +87,16 @@ Refer to the <Link to="/features/transformations/">Transformations</Link> guide 
 
 ## Audit Logs
 
-Audit logs can be used to track the user activities within your RudderStack workspace. It is available only for the [Enterprise users](https://www.rudderstack.com/pricing/).
+Audit logs can be used to track the user activities within your RudderStack workspace.
+
+<div class="infoBlock">
+Audit logs is an <a href="https://www.rudderstack.com/pricing/">enterprise</a> feature.
+</div>
 
 <img src="../assets/rs-cloud/audit-logs-dashboard.png" alt="Audit Logs" />
 
 <div class="infoBlock">
-Refer to the <Link to="/dashboard-guides/audit-logs/">Audit Logs</Link> guide to learn more about this feature.
+Refer to the <Link to="/dashboard-guides/audit-logs/">Audit Logs</Link> guide for more information on this feature.
 </div>
 
 ## Tracking Plans
@@ -117,11 +115,11 @@ This option lets you manage the settings and various details related to your Rud
 
 ### Account
 
-It displays the general account settings like name, email and password. You can also change your account name and password, set up and enforce two-factor authentication.
+It displays the general account settings like name, email, and password. You can change your account name and password, set up and enforce two-factor authentication.
 
-You can also add a <Link to="/dashboard-guides/personal-access-token/">Personal Access Token</Link> required to use the RudderStack APIs.
+You can also generate a <Link to="/dashboard-guides/personal-access-token/">Personal Access Token</Link> required to use the RudderStack APIs.
 
-### Teammates
+### Members
 
 This option displays all your teammates with their access permissions in the current RudderStack workspace. You can also invite new teammates by using the **Invite Teammate** button.
 
