@@ -255,7 +255,7 @@ In the dashboard, you have the option to **map your events to standard Facebook 
 Refer to the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for more information.
 </div>
 
-The mapping is done as follows in RudderStack:
+RudderStack maps the following events to the Facebook standard events:
 
 | RudderStack Event          | Facebook Standard Event |
 | :-------------------- | :---------------------- |
@@ -266,11 +266,10 @@ The mapping is done as follows in RudderStack:
 | `Products Searched`   | `Search`                |
 | `Checkout Started`    | `InitiateCheckout`      |
 
-<div class="infoBlock">
-For the <code class="inline-code">Products Searched</code> event, the <code class="inline-code">query</code> property must be a string.
-</div>
+Note that:
 
-In Facebook Pixel, you need to specify the `currency` in the **Purchase** events. If not specified, the default value will be set to `USD`.
+- For the <code class="inline-code">Products Searched</code> event, the <code class="inline-code">query</code> property must be a string.
+- You need to specify `currency` in the `Order Completed` event. If not specified, RudderStack will set the default value to `USD`.
 
 ### Other standard events
 
