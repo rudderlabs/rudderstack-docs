@@ -1681,6 +1681,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "permissions-management",
+    title: "Permissions Management",
+    link: "/dashboard-guides/permissions-management/",
+    content: [],
+  },
+  {
     key: "personal-access-token",
     title: "Personal Access Token",
     link: "/dashboard-guides/personal-access-token/",

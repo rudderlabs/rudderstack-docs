@@ -61,43 +61,45 @@ export const jsonData = [
         link: "/get-started/cloud-vs-open-source/",
         content: []
     },
-    // Dashboard guides section
-    {
-        title: "Overview",
-        sectionTitle: "Dashboard Guides",
-        link: "/dashboard-guides/overview/",
-        content: []
-    },
-    {
-        title: "Sources",
-        link: "/dashboard-guides/sources/",
-        content: []
-    },
-    {
-        title: "Destinations",
-        link: "/dashboard-guides/destinations/",
-        content: []
-    },
-    {
-        title: "Live Events",
-        link: "/dashboard-guides/live-events/",
-        content: []
-    },
-    {
-        title: "Teammates (User Management)",
-        link: "/dashboard-guides/teammates/",
-        content: []
-    },
-    {
-        title: "Audit Logs",
-        link: "/dashboard-guides/audit-logs/",
-        content: []
-    },
-    {
-        title: "Personal Access Token",
-        link: "/dashboard-guides/personal-access-token/",
-        content: []
-    },
+
+// Dashboard guides section
+
+{
+    title: "Overview",
+    sectionTitle: "Dashboard Guides",
+    link: "/dashboard-guides/overview/",
+    content: []
+},
+{
+    title: "Sources",
+    link: "/dashboard-guides/sources/",
+    content: []
+},
+{
+    title: "Destinations",
+    link: "/dashboard-guides/destinations/",
+    content: []
+},
+{
+    title: "Live Events",
+    link: "/dashboard-guides/live-events/",
+    content: []
+},
+{
+    title: "Permissions Management",
+    link: "/dashboard-guides/permissions-management/",
+    content: []
+},
+{
+    title: "Audit Logs",
+    link: "/dashboard-guides/audit-logs/",
+    content: []
+},
+{
+    title: "Personal Access Token",
+    link: "/dashboard-guides/personal-access-token/",
+    content: []
+},
     // Sources section
     {
         title: "Overview",
