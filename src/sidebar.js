@@ -149,7 +149,7 @@ export const jsonData = [
                     },
                     {
                         key: "load-js-sdk",
-                        title: "Load JS SDK",
+                        title: "Load SDK",
                         link: "/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/",
                         content: []
                     },
@@ -178,12 +178,6 @@ export const jsonData = [
                         content: [],
                     },
                     {
-                        key: "send-events-beacon",
-                        title: "Send Events using Beacon",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/send-events-beacon/",
-                        content: [],
-                    },
-                    {
                         key: "onetrust-consent-manager",
                         title: "OneTrust Consent Manager",
                         link: "/sources/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/",
@@ -202,7 +196,12 @@ export const jsonData = [
                           "/sources/sdks/rudderstack-javascript-sdk/context-traits/",
                         content: [],
                      },
-                     
+                     {
+                        key: "send-events-beacon",
+                        title: "Send Events using Beacon",
+                        link: "/sources/sdks/rudderstack-javascript-sdk/send-events-beacon/",
+                        content: [],
+                    },
                       {
                         key: "faq",
                         title: "FAQ",
