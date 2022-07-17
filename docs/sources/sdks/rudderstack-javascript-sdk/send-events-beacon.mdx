@@ -1,18 +1,18 @@
 ---
 title: "Send Events using Beacon"
 description: >-
-  Detailed technical description of the navigator.sendBeacon utility to send event payloads using JavaScript SDK.
+  Detailed technical description of the navigator.sendBeacon utility to send event payloads using the JavaScript SDK.
 ---
 
-The [JavaScript SDK v1.1](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) sends the event payloads using the **XHR** (XMLHttpRequest) API by default.
+The [JavaScript SDK v1.1](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) lets you send the event payloads using the **XHR** (XMLHttpRequest) API (default) or [`navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) browser utility.
 
-However, you can choose to send the event payloads using the [`navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) browser utility. It asynchronously sends a small amount of data over HTTP to the RudderStack server. To send the SDK events using the `navigator.sendBeacon` utility, set the `useBeacon` field in the [`load()`](https://rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#the-options-parameter) call options to `true`.
+The `navigator.sendBeacon` browser utility asynchronously sends a small amount of data over HTTP to the RudderStack server. To send the SDK events using this utility, set the `useBeacon` field in the <Link to="/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/#loading-options">`load()`</Link> call options to `true`.
 
 <div class="warningBlock">
-The <code class="inline-code">sendBeacon</code> version of the JavaScript SDK located <a href="https://cdn.rudderlabs.com/v2/rudder-analytics.min.js?transport=beacon">here</a> and its XMLHTTP version located <a href="https://cdn.rudderlabs.com/v2/rudder-analytics.min.js">here</a> are <strong>not supported</strong> anymore. 
+The <code class="inline-code">sendBeacon</code> version of the JavaScript SDK located <a href="https://cdn.rudderlabs.com/v2/rudder-analytics.min.js?transport=beacon">here</a> and its XMLHTTP version located <a href="https://cdn.rudderlabs.com/v2/rudder-analytics.min.js">here</a> are <strong>no longer supported</strong>. 
 </div>
 
-The JavaScript SDK internally uses a separate queue (`BeaconQueueOpts`) to hold the data and sends it through the `navigator.sendBeacon` utility in batches. The structure of `BeaconQueueOpts` is shown below:
+The JavaScript SDK internally uses a separate queue (`BeaconQueueOpts`) to hold the data and send it through the `navigator.sendBeacon` utility in batches. The structure of `BeaconQueueOpts` is shown below:
 
 ```javascript
 {
@@ -20,15 +20,16 @@ The JavaScript SDK internally uses a separate queue (`BeaconQueueOpts`) to hold 
   flushQueueInterval: 600000
 }
 ```
+The following table describes the above `integer` type parameters in detail:
 
-| Parameter        | Type          | Description             | Default Value    |
-| :-------------------- | :------------------ | :-------------| :----------------|
-| `maxItems`            | Integer            | SDK flushes the queue when the default number of payloads is reached.    | `10`             |
-| `flushQueueInterval`  | Integer       | SDK flushes the queue after the default time interval (in milliseconds). | `600000`         |
+| Parameter        | Description             | Default Value    |
+| :-------------------- |  :-------------| :----------------|
+| `maxItems`            | SDK flushes the queue when the default number of payloads is reached.    | `10`             |
+| `flushQueueInterval`  | SDK flushes the queue after the default time interval (in milliseconds) is reached. | `600000`         |
 
 
 <div class="infoBlock">
-JavaScript SDK flushes the Beacon queue if the total size of the payload exceeds 64 KB before reaching the <code class="inline-code">maxItems</code>/<code class="inline-code">flushQueueInterval</code> value in the configuration.
+JavaScript SDK also flushes the Beacon queue in case the total size of the payload exceeds 64 KB before even reaching the default <code class="inline-code">maxItems</code>/<code class="inline-code">flushQueueInterval</code> values.
 </div>
 
 ## Advantages

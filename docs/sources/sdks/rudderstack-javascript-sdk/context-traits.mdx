@@ -1,12 +1,12 @@
 ---
 title: "Context and traits"
 description: >-
-  Detailed technical documentation on capturing the event-specific and user-specific data using the context and trait dictionaries.
+  Detailed guide on capturing the event-specific and user-specific data using the context and trait dictionaries.
 ---
 
-RudderStack provides the option to automatically capture certain event-specific and user-specific data, based on the type of the event.
+RudderStack provides the option to automatically capture the certain event-specific and user-specific data, based on the type of the event.
 
-The `context` and `traits` dictionaries are provided in the [`options`](#options) parameter of the API methods.
+The `context` and `traits` dictionaries are provided in the `options` parameter of the <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/">supported API</Link> methods.
 
 ## Context
 
@@ -18,20 +18,20 @@ A context is a complete and specific piece of information. Any other information
 
 ## Traits
 
-The `traits` is an optional dictionary included within [`context`](#context) which specifies the user's unique traits. This is a very useful field for linking the user's information from a previously made [`identify()`](#identify) call to the subsequent [`track()`](#track) or [`page()`](#page) calls.
+The `traits` is an optional dictionary included within <Link to="#context">`context`</Link> which specifies the user's unique traits. This is a very useful field for linking the user's information from a previously made <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/#identify">`identify`</Link> call to the subsequent <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/#track">`track`</Link> or <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/#page">`page`</Link> calls.
 
 ### Use-case
 
 To understand the concept of context and traits better, refer to the following `identify` event:
 
 ```javascript
-rudderanalytics.identify("userId", {
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
   plan: "Paid, Premium",
-  email: "name@surname.org"
+  email: "alex@example.com"
 });
 ```
 
-The trait in the above event is `plan`. If you wish to include this trait in a subsequent `track()` or `page()`event triggered by the user, you can establish the association by passing it in `context.traits` as shown:
+The trait in the above event is `plan`. If you wish to include this trait in a subsequent `track` or `page` event triggered by the user, you can establish the association by passing it in `context.traits` as shown:
 
 ```javascript
 rudderanalytics.track(

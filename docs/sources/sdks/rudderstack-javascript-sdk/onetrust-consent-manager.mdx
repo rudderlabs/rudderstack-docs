@@ -12,7 +12,7 @@ Data protection laws such as GDPR, CCPA, etc. require the websites to get user c
 
 [OneTrust](https://www.onetrust.com/) is a popular consent management platform that provides data governance, privacy management, and security solutions to thousands of businesses around the world. 
 
-The JavaScript SDK integrates seamlessly with the OneTrust SDK and lets you map OneTrust cookie/consent groups to RudderStack's consent purposes. RudderStack, in turn, uses this consent information to enable/disable tracking and sending the data.
+The JavaScript SDK seamlessly integrates with the OneTrust SDK and lets you map the OneTrust cookie/consent groups to RudderStack's consent purposes. RudderStack, in turn, uses this consent information to enable/disable the tracking and sending of data.
 
 <div class="warningBlock">
 The OneTrust integration with the JavaScript SDK is applicable only for the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a> connections.
@@ -22,7 +22,7 @@ The OneTrust integration with the JavaScript SDK is applicable only for the <a h
 
 Whenever a user starts browsing a website, OneTrust pops up a modal to take consent from the user. This modal contains a list of cookie groups representing the GDPR consent purposes that the user needs to decline or accept.
 
-The JavaScript SDK fetches these consented groups as well as the destination - OneTrust category mappings specified in the RudderStack dashboard. Depending on these settings, the SDK will filter the destinations.
+The JavaScript SDK fetches these consented groups as well as the destination (OneTrust category) mappings specified in the RudderStack dashboard. Depending on these settings, the SDK filters the destinations.
 
 ## Setting up the integration
 
@@ -44,9 +44,9 @@ The categories should be associated with/attached to at least one cookie for the
 
 ### Step 2: Specifying the OneTrust Cookie Categories
 
-You need to enable OneTrust for a given JavaScript source. To do so, specify the consent category names as defined in OneTrust (**Step 1**) for each destination that is connected to **that** JavaScript source.
+You need to enable OneTrust for a given JavaScript source. To do so, specify the consent category names as defined in OneTrust (**Step 1**) for each destination that is connected to that JavaScript source.
 
-<img src="../../../../assets/event-stream-sources/onetrust-1.png" alt="OneTrust category names" />
+<img src="../../../assets/event-stream-sources/onetrust-1.png" alt="OneTrust category names" />
 
 ### Step 3: Setting up your web site/app
 
@@ -108,6 +108,10 @@ rudderanalytics.load(
 ```
 
 Once completed, RudderStack reads the consented categories and filters the destinations accordingly.
+
+<div class="infoBlock">
+Replace the <Link to="/resources/glossary/#write-key">Write key</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">Data plane URL</Link> in the above snippets with actual values.
+</div>
 
 ## Contact us
 

@@ -5,48 +5,43 @@ description: Solutions to some of the commonly faced issues while using the Rudd
 
 This guide contains the answers to some of the commonly-asked questions around setting up, using, and troubleshooting the JavaScript SDK.
 
-## Should I disable ad-blockers on my browser?
+### Should I disable ad-blockers on my browser?
 
-Yes, it is important that you ensure no ad blockers are running on your browser, as they restrict the`rudder-analytics.js` script from executing and storing user information in the browser.
+Yes, it is important to ensure that no ad blockers are running on your browser, as they restrict the `analytics.js` script from executing and storing user information in the browser.
 
-## Can I load multiple instances of `rudder-analytics.js`?
+### Can I load multiple instances of `rudder-analytics.js`?
 
 No, it is not possible to load multiple instances of `rudder-analytics.js`, as it is bound to exceed the maximum stack call size and give you an error.
 
-## How to check if the data is being transmitted to the desired destinations?
+### How to check if the data is being transmitted to the desired destinations?
 
-To check if data is being transmitted to the specified destinations, go to the **Network** tab of your JavaScript console in your browser.
+To check if data is being transmitted to the specified destinations, go to the **Network** tab of the JavaScript console in your browser.
 
 <img src="../../../assets/sample-page-call.png" alt="Sample page call" />
-
 <img src="../../../assets/sample-track-call.png" alt="Sample track call" />
 
-<div class="infoBlock">
-  
-  If the outbound request is not shown, check if you have installed and set up the RudderStack JavaScript SDK correctly. Also, check if any ad blockers are enabled in your browser.
-</div>
+If the outbound request is not shown, check if you have installed and set up the JavaScript SDK correctly. Also, check if any ad blockers are enabled in your browser.
 
-## What is the size limit on the requests?
+### What is the size limit on the requests?
 
 The size limit on requests is 32KB per message and 4MB per batch request.
 
 
-## What is an anonymous ID? How do I retrieve it?
+### What is an anonymous ID? How do I retrieve it?
 
-An anonymous ID is an auto-generated **UUID** \(Universally Unique Identifier\) that gets assigned to each unique, unidentified visitor to your website.
+Anonymous ID is an auto-generated **UUID** \(Universally Unique Identifier\) that gets assigned to each unique, unidentified visitor to your website.
 
-To retrieve the anonymous ID of any visitor, call the following:
+To retrieve the anonymous ID of any visitor, run the following:
 
 ```javascript
 rudderanalytics.getAnonymousId();
 ```
 
 <div class="infoBlock">
-  
-If the <code class="inline-code">anonymousId</code> value is null in the SDK, calling the above function will lead to RudderStack automatically setting a new <code class="inline-code">anonymousId</code>.
+If the <code class="inline-code">anonymousId</code> is null in the SDK and you call the above function, RudderStack will automatically set a new <code class="inline-code">anonymousId</code>.
 </div>
 
-## What is the `Reserved Keyword` error?
+### What is the "Reserved Keyword" error?
 
 When using the JavaScript SDK, you may run into the following error: 
 
@@ -54,9 +49,9 @@ When using the JavaScript SDK, you may run into the following error:
 Warning! : Reserved keyword used in traits -->  id with track call.
 ```
 
-This is because one or more of the keys in your `traits` and/or `properties` object is the same value as a reserved keyword.
+This is because one or more keys in your `traits` and/or `properties` object has the same value as a reserved keyword.
 
-RudderStack has reserved the following keywords as keys for a standard event payload:
+RudderStack reserves the following keywords as keys for a standard event payload and you should avoid using these while naming your event traits and properties:
 
 ```javascript
 "anonymous_id";
@@ -69,13 +64,6 @@ RudderStack has reserved the following keywords as keys for a standard event pay
 "event";
 ```
 
-<div class="warningBlock">
-  
-The above-mentioned keywords should be avoided when naming your event traits and properties.
-</div>
-
 ## Contact us
 
-For more information on the RudderStack JavaScript SDK, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
-
-If you come across any issues while using this SDK, feel free to submit them on our [**GitHub issues page**](https://github.com/rudderlabs/rudder-sdk-js/issues).
+For queries on any of the sections in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

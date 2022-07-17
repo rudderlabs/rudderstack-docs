@@ -1,10 +1,10 @@
 ---
 title: "Filtering"
-description: Detailed technical description of different types of filtering supported in the JavaScript SDK.
+description: Detailed guide on different types of filtering operations supported by the JavaScript SDK.
 ---
-This guide covers how to filter the events and destinations as below:
-* Filter events while sending them to the specified destinations.
-* Filter destinations where the event data should be sent.
+This guide covers how to achieve the following filtering operations:
+* Filtering events while sending them to the specified destinations.
+* Filtering destinations where the event data should be sent.
 
 ## Filtering events
 
@@ -17,7 +17,7 @@ You can send the event data only to the selective destinations by passing an [in
 * A sample snippet to send event data only to the **Google Analytics** and **Intercom** destinations:
 
 ```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
   integrations: {
     All: false,
     "Google Analytics": true,
@@ -30,7 +30,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 
 ```javascript
 rudderanalytics.track(
-  "test track event GA3",
+  "Order Completed",
   {
     revenue: 30,
     currency: "USD",
@@ -44,49 +44,27 @@ rudderanalytics.track(
   }
 );
 ```
-The destinaton name inside the `integrations` object should be in the format as specified in the below table:
+The destinaton name inside the `integrations` object should be in the specified format as listed in the below table:
 
 | Destination          | Supported Names     |
 | :------------------- | :------------------------- |
-| Google Analytics     | `Google Analytics`         |
-|                      | `GoogleAnalytics`          |
-|                      | `GA`                       |
-| Google Analytics 4   | `Google Analytics 4`       |
-|                      | `GoogleAnalytics4`         |
-|                      | `GA4`                      |
-| Google Ads           | `Google Ads`               |
-|                      | `GoogleAds`                |
-|                      | `GOOGLEADS`                |
-| Braze                | `Braze`                    |
-|                      | `BRAZE`                    |
-| Chartbeat            | `Chartbeat`                |
-|                      | `CHARTBEAT`                |
-| Customer.io          | `Customer.io`              |
-|                      | `CUSTOMERIO`               |
-| Facebook Pixel       | `FB Pixel`                 |
-|                      | `Facebook Pixel`           |
-|                      | `FB_PIXEL`                 |
-| Google Tag Manager   | `Google Tag Manager`       |
-|                      | `GTM`                      |
-| Hotjar               | `Hotjar`                   |
-|                      | `HOTJAR`                   |
-| Hubspot              | `Hubspot`                  |
-|                      | `HUBSPOT`                  |
-| Intercom             | `Intercom`                 |
-|                      | `INTERCOM`                 |
-| Keen.IO              | `Keen`                     |
-|                      | `KEEN`                     |
-|                      | `Keen.io`                  |
-| Kissmetrics          | `Kissmetrics`              |
-|                      | `KISSMETRICS`              |
-| Lotame               | `Lotame`                   |
-|                      | `LOTAME`                   |
-| VWO                  | `Visual Website Optimizer` |
-|                      | `VWO`                      |
-| Optimizely           | `OPTIMIZELY`               |
-|                      | `Optimizely`               |
-| Amplitude            | `Amplitude`                |
-|                      | `AMPLITUDE`                |
+| Google Analytics     | `Google Analytics` <br/> `GoogleAnalytics`  <br/>  `GA`     |
+| Google Analytics 4   | `Google Analytics 4`   <br/> `GoogleAnalytics4`  <br/>  `GA4`    |
+| Google Ads           | `Google Ads` <br/>`GoogleAds`  <br/> `GOOGLEADS`                |
+| Braze                | `Braze`       <br/> `BRAZE`           |
+| Chartbeat            | `Chartbeat`      <br/> `CHARTBEAT`                |
+| Customer.io          | `Customer.io`     <br/>`CUSTOMERIO`               |
+| Facebook Pixel       | `FB Pixel`          <br/> `Facebook Pixel`     <br/> `FB_PIXEL`                 |
+| Google Tag Manager   | `Google Tag Manager`    <br/> `GTM`                      |
+| Hotjar               | `Hotjar`          <br/> `HOTJAR`                   |
+| Hubspot              | `Hubspot`       <br/> `HUBSPOT`                  |
+| Intercom             | `Intercom`    <br/> `INTERCOM`                 |
+| Keen.IO              | `Keen`         <br/> `KEEN`     <br/> `Keen.io`                  |
+| Kissmetrics          | `Kissmetrics`          <br/>  `KISSMETRICS`              |
+| Lotame               | `Lotame`       <br/> `LOTAME`                   |
+| VWO                  | `Visual Website Optimizer` <br/> `VWO`                      |
+| Optimizely           | `OPTIMIZELY`         <br/> `Optimizely`               |
+| Amplitude            | `Amplitude`       <br/> `AMPLITUDE`                |
 | Mixpanel             | `Mixpanel`                 |
 | Facebook App Events  | `Facebook App Events`      |
 | Amazon S3            | `Amazon S3`                |
@@ -106,18 +84,10 @@ The destinaton name inside the `integrations` object should be in the format as 
 | Zendesk              | `Zendesk`                  |
 | AWS Personalize      | `AWS Personalize`          |
 | Amazon Kinesis       | `Amazon Kinesis`           |
-| CleverTap            | `CLEVERTAP`                |
-|                      | `Clevertap`                |
-| Adobe Analytics      | `Adobe Analytics`          |
-|                      | `AdobeAnalytics`           |
-|                      | `ADOBE_ANALYTICS`          |
-|                      | `adobeanalytics`           |
-| DCM Floodlight       | `dcm floodlight`           |
-|                      | `dcm_floodlight`           |
-|                      | `dcmfloodlight`            |
-|                      | `DCM Floodlight`           |
-|                      | `DCM_Floodlight`           |
-|                      | `DCMFloodlight`            |
+| CleverTap            | `CLEVERTAP` <br/> `Clevertap`  |
+| Adobe Analytics      | `Adobe Analytics` <br/> `AdobeAnalytics` <br/> `ADOBE_ANALYTICS` <br/> `adobeanalytics`  |
+| DCM Floodlight       | `dcm floodlight`  <br/> `dcm_floodlight`  <br/> `dcmfloodlight`   <br/> `DCM Floodlight`   <br/>  `DCM_Floodlight` <br/> `DCMFloodlight`  |
+
 
 ## Contact us
 

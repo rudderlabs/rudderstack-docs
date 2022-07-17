@@ -1,10 +1,10 @@
 ---
 title: "Data Storage"
 description: >-
-  Detailed technical documentation on persistent user data stored in cookies or local storage by the JavaScript SDK.
+  Detailed technical documentation on how the JavaScript SDK stores persistent user data in cookies or local storage.
 ---
 
-The JavaScript SDK stores persistent user data in the cookies by default. However, if the cookies are not supported, local storage is used instead. 
+The JavaScript SDK stores persistent user data in the cookies by default. If the cookies are not supported, local storage is used instead. 
 
 All the cookies are stored in the top-level domain by default. It helps you to identify the users visiting from websites hosted under a particular sub-domain. For example, if you include the JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in `samplewebsite.com`. However, you can specify the cookie storage location by using the `setCookieDomain` parameter in the `load` API options as shown:
 
@@ -15,7 +15,7 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
 ```
 
 <div class="infoBlock">
-Replace the <Link to="/resources/glossary/#write-key">Write key</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">data plane URL</Link> in the above snippet with actual values.
+Replace the <Link to="/resources/glossary/#write-key">Write key</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">Data plane URL</Link> in the above snippet with actual values.
 </div>
 
 
@@ -42,7 +42,7 @@ The cookie values are encrypted and their length is directly proportional to the
 
 ## Local storage 
 
-The local storage is used by the JavaScript SDK to keep track of the events sent to the RudderStack backend. They are listed in the below table:
+The JavaScript SDK uses local storage to keep track of the events sent to the RudderStack backend, as listed in the below table:
 
 | Name             | Description       | Example    |
 | :------------- |:---------- | :----------- | 

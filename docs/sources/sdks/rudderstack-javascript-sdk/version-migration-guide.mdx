@@ -32,9 +32,11 @@ To **v1.1**:
 <script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js" />
 ```
 
-## Case 2: Forwarding/proxying the RudderStack CDN
+<div class="infoBlock">
+Refer to loading device mode destinations <Link to="#loading-from-rudderstack-cdn"> from RudderStack CDN</Link> for further information.
+</div>
 
-Follow these steps:
+## Case 2: Forwarding/proxying the RudderStack CDN
 
 1. Log into your CDN provider account.
 2. Go to the distribution and set the origin to RudderStack's CDN. Ensure that the entire domain (`https://cdn.rudderlabs.com`) is set as the origin.
@@ -63,6 +65,10 @@ To **v1.1**:
 <script src="https://<subdomain>.<yourdomain>.com/v1.1/rudder-analytics.min.js" />
 ```
 
+<div class="infoBlock">
+Refer to loading device mode destinations <Link to="#forwardingproxying-the-rudderstack-cdn">from forwarded/proxied RudderStack CDN</Link> for further information.
+</div>
+
 ## Case 3: Self-hosting RudderStack's CDN
 
 If you have cloned RudderStack's JavaScript SDK and are self-hosting it via your own CDN, follow the steps below:
@@ -75,7 +81,7 @@ It is recommended to maintain the following structure:
 
 <img src="../../../assets/js-sdk-version-migration.png" alt="Recommended structure for self-hosting RudderStack's CDN" />
 
-4. Next, check the core SDK's file name:
+4. Check the core SDK's file name:
 - If it is **not** `rudder-analytics.min.js`, update the script tag in your website, as shown:
 
 ```html
@@ -119,6 +125,10 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
       <script src="https://cdn.<yourdomain>.com/rudder-analytics.min.js"></script>
       ```
 
+<div class="infoBlock">
+Refer to loading device mode destinations <Link to="#self-hosting-rudderstacks-device-mode-sdks">from self-hosted RudderStack CDN</Link> for further information.
+</div>
+
 ## Case 4: Migrating version using NPM
 
 The latest NPM package is based on JavaScript SDK v1.1 architecture and is released with the 2.x.x version. To update the SDK package using NPM, use any of the following options:
@@ -146,7 +156,7 @@ npm install rudder-sdk-js@2.x.x
 
 The device mode destinations are not bundled in the core JavaScript SDK v1.1 by default and needs to be loaded using any of the below-mentioned ways: 
 
-### Forwarding/proxying the RudderStack CDN
+### From forwarded/proxied RudderStack CDN
 
 If you are forwarding or proxying RudderStack's CDN, follow the steps 1, 2 and 3 from <Link to="#case-2-forwardingproxying-the-rudderstack-cdn">here</Link> and finally use the `destSDKBaseURL` option in the SDK's `load()` call, as shown:
 
@@ -157,7 +167,7 @@ rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
 });
 ```
 
-### Self-hosting RudderStack's device mode SDKs
+### From self-hosted RudderStack CDN
 
 If you have cloned RudderStack's JavaScript SDK and are self-hosting it, follow the steps 2 and 3 from <Link to="#case-3-self-hosting-rudderstacks-cdn">here</Link> and finally use the `destSDKBaseURL` option in the SDK's `load()` call, as shown:
 
@@ -168,7 +178,12 @@ rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
 });
 ```
 
-### Loading from RudderStack CDN
+
+<div class="infoBlock">
+Replace the <Link to="/resources/glossary/#write-key">Write key</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">Data plane URL</Link> in the above snippets with actual values.
+</div>
+
+### From RudderStack CDN
 
 You can load the device mode destinations from https://cdn.rudderlabs.com/v1.1/js-integrations/ path. The individual paths for each destination are listed in the table below:
 
@@ -226,23 +241,13 @@ The destination SDK names should not be changed as the custom names are not supp
 
 ## FAQ
 
-### How are the destination SDKs loaded in v1.1?
+### How does RudderStack determine the root location of the destination SDK?
 
-The core JavaScript SDK v1.1 does not contain any destination-specific SDKs by default. Depending on the device mode destinations configured in your dashboard (control plane), the required SDKs are dynamically fetched from the hosted location.
+RudderStack follows the below precedence order while determining the root location of the destination SDK:
 
-The hosted location can be either of the following:
-
-* RudderStack CDN
-* Your CDN that proxies the RudderStack CDN
-* Self-hosted domain
-
-### How does RudderStack determine the destination SDKs' root location?
-
-RudderStack follows the below precedence order while determining the root location of the destination SDKs:
-
-1. Refers the `destSDKBaseURL` value in the `options` parameter of the `load` API call.
-2. If absent, checks the `src` attribute of the `<script>` tag that adds the core JavaScript SDK to your website. `/js-integrations` is automatically appended to the root location.
-3. If none of the above options are applicable, uses the default CDN URL `https://cdn.rudderlabs.com/v1.1/js-integrations/`.
+1. It refers to the `destSDKBaseURL` value in the `options` parameter of the `load` API call.
+2. If absent, it checks the `src` attribute of the `<script>` tag that adds the core JavaScript SDK to your website. `/js-integrations` is automatically appended to the root location.
+3. If none of the above options are applicable, it uses the default CDN URL `https://cdn.rudderlabs.com/v1.1/js-integrations/`.
 
 ## Contact us
 
