@@ -3,10 +3,10 @@ title: "Load JavaScript SDK"
 description: Detailed technical documentation on how to load the JavaScript SDK with various options.
 ---
 
-You can load the JavaScript SDK using the `load` API method. It loads the `analytics.js` file which tracks and sends events from your website to RudderStack and can be defined as:
+You can load the JavaScript SDK using the `load` API method to track and send events from your website to RudderStack. It can be defined as:
 
 ```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, [load_options]);
+rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, [load_options]);
 ```
 
 <div class="infoBlock">
@@ -44,8 +44,8 @@ The detailed description of these parameters is as follows:
 |  `loadIntegration`    | Boolean                             | Determines whether the destination SDKs are fetched by the SDK or not (true by default). Supported for **Amplitude** and **Google Analytics**.                      |
 | `secureCookie`        | Boolean                             | Determines whether the SDK sends the cookie to the storage backend via HTTPS (false by default).|
 | `destSDKBaseURL`      | String                              | Path used by the SDK to load the integrations. Default value: `https://cdn.rudderlabs.com/v1.1/js-integrations`. <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">Reference</Link>.    | 
-| `useBeacon`           | Boolean                             | Determines whether the SDK <Link to="/sources/sdks/rudderstack-javascript-sdk/send-events-beacon/">sends the event payloads via the  `navigator.sendBeacon()` utility</Link> (false by default).  |
-| `beaconQueueOptions`  | <Link to="/sources/sdks/rudderstack-javascript-sdk/send-events-beacon/">BeaconQueueOpts</Link> | Internal queue to hold the data and send it through the `sendBeacon` utility in batches. |
+| `useBeacon`           | Boolean                             | Determines whether the SDK <Link to="/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#send-events-using-beacon">sends event payloads via Beacon</Link> (false by default).  |
+| `beaconQueueOptions`  | <Link to="/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#send-events-using-beacon">BeaconQueueOpts</Link> | Internal queue to hold the data and send it through the Beacon utility in batches. |
 | `cookieConsentManager` | Object       |  <Link to="#cookieconsentmanager">Consent manager integration</Link>. |
 | `anonymousIdOptions` | Object       |  <Link to="#anonymousidoptions">Automatically captures the anonymous ID</Link> from a source and sets it as Rudderstack’s anonymousId.  |
 
