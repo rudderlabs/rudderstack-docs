@@ -105,7 +105,7 @@ export default function Layout({ children, title, headings, description }) {
               )}
               {children}
               <div>
-              <hr></hr>
+              <hr />
               <h2>Contact us</h2><p>
                 For more information on the topics covered on this page, <a href="mailto:docs@rudderstack.com">email us</a> or start a conversation in our <a href="https://rudderstack.com/join-rudderstack-slack-community">Slack community</a>.</p>
               </div>
