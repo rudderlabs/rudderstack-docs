@@ -13,15 +13,23 @@ Follow the steps below to switch from self-hosted to RudderStack-hosted data pla
 
 1. Update the `dataPlaneUrl` in all the SDKs to point to the RudderStack-hosted hosted data plane URL. Refer to the <Link to="/sources/sdks/">SDK documentation</Link> for details on how to obtain the data plane URL.
 
-2. Verify that the self-hosted data plane is not getting any requests.
-**{{Steps, if any}}**
+2. Verify that the self-hosted data plane is no longer getting any requests. One way is to check the load balancer metrics to verify if any requests are still received on your data plane.
 
 3. Verify that all the events received in the self-hosted data plane are delivered. 
-**{{`rudder-cli` commands for this}}**
 
-4. Shut down the self-hosted data plane.
-**{{Steps, if any}}**
+<div class="infoBlock">
+It is recommended to keep the self-hosted plane running for a day or two to ensure that all the events are delievered.
+</div>
 
+4. Shut down the self-hosted data plane dpending on the way of your deployment. For example, if you have deployed the data plane using helm, run the following command:
+
+```BASH
+helm delete <rudderstack-release-name>
+```
+
+<div class="infoBlock">
+Replace the <code class="inline-code">rudderstack-release-name</code> with the release name of the chart you want to delete.
+</div>
 
 ## Best practices
 
