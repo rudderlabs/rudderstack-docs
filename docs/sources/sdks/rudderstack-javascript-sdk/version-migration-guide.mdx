@@ -3,18 +3,12 @@ title: "Version Migration"
 description: Step-by-step guide on migrating the RudderStack JavaScript SDK from v1 to v1.1.
 ---
 
-The latest version of **JavaScript SDK (v1.1)** is lightweight, efficient, and optimized as compared to v1:
+The **JavaScript SDK (v1.1)** is the latest lightweight, efficient, and optimized version of the SDK. Its size is reduced by approximately 70% which considerably increases its loading speed.
 
-|Features|v1.1|v1|
-|---------|--|----|
-|Size|34 KB<sup>*</sup>|114 KB<sup>*</sup>|
-|<Link to="/destinations/rudderstack-connection-modes/#device-mode">Device mode</Link> destinations| Published as individual plugins and loaded dynamically as per the specified dashboard configurations.| Bundled with the core SDK.|
+Another major improvement in the latest version (v1.1) is that the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations are published as individual plugins and loaded dynamically as per the specified dashboard configurations. In v1, the the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations were bundled with the core SDK.
 
-<div class="infoBlock">
-The SDK size may vary in future with more functionalities being added.
-</div>
 
-The below section covers the steps to migrate to JavaScript SDK v1.1 depending on your JavaScript SDK v1 installation.
+The below section covers the detailed steps to migrate to JavaScript SDK v1.1 depending on your JavaScript SDK v1 installation.
 
 ## Case 1: Loading the SDK from RudderStack CDN
 
@@ -31,10 +25,6 @@ To **v1.1**:
 ```html
 <script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js" />
 ```
-
-<div class="infoBlock">
-Refer to loading device mode destinations <Link to="#loading-from-rudderstack-cdn"> from RudderStack CDN</Link> for further information.
-</div>
 
 ## Case 2: Forwarding/proxying the RudderStack CDN
 
@@ -64,10 +54,6 @@ To **v1.1**:
 ```html
 <script src="https://<subdomain>.<yourdomain>.com/v1.1/rudder-analytics.min.js" />
 ```
-
-<div class="infoBlock">
-Refer to loading device mode destinations <Link to="#forwardingproxying-the-rudderstack-cdn">from forwarded/proxied RudderStack CDN</Link> for further information.
-</div>
 
 ## Case 3: Self-hosting RudderStack's CDN
 
@@ -125,10 +111,6 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
       <script src="https://cdn.<yourdomain>.com/rudder-analytics.min.js"></script>
       ```
 
-<div class="infoBlock">
-Refer to loading device mode destinations <Link to="#self-hosting-rudderstacks-device-mode-sdks">from self-hosted RudderStack CDN</Link> for further information.
-</div>
-
 ## Case 4: Migrating version using NPM
 
 The latest NPM package is based on JavaScript SDK v1.1 architecture and is released with the 2.x.x version. To update the SDK package using NPM, use any of the following options:
@@ -154,7 +136,15 @@ npm install rudder-sdk-js@2.x.x
 ```
 ## Loading device mode destinations
 
-The device mode destinations are not bundled in the core JavaScript SDK v1.1 by default and needs to be loaded using any of the below-mentioned ways: 
+The device mode destinations are not bundled in the core JavaScript SDK v1.1 and needs to be loaded using any of the below-mentioned ways: 
+
+### From RudderStack CDN
+
+You can load the device mode destinations from https://cdn.rudderlabs.com/v1.1/js-integrations/ path by appending the name of the required destination as:
+https://cdn.rudderlabs.com/v1.1/js-integrations/{dest-name.min.js}
+
+
+For example, if you want to load Hubspot, the download path will be: https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js, for Google Analytics, the download path will be: https://cdn.rudderlabs.com/v1.1/js-integrations/GA.min.js, etc.
 
 ### From forwarded/proxied RudderStack CDN
 
@@ -183,62 +173,6 @@ rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
 Replace the <Link to="/resources/glossary/#write-key">Write key</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">Data plane URL</Link> in the above snippets with actual values.
 </div>
 
-### From RudderStack CDN
-
-You can load the device mode destinations from https://cdn.rudderlabs.com/v1.1/js-integrations/ path. The individual paths for each destination are listed in the table below:
-
-<div class="warningBlock">
-The destination SDK names should not be changed as the custom names are not supported by RudderStack.
-</div>
-
-| Destination name     | Download path                                                             |
-|:---------------------|:--------------------------------------------------------------------------|
-| HubSpot              | https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js            |
-| Google Analytics     | https://cdn.rudderlabs.com/v1.1/js-integrations/GA.min.js                 |
-| Hotjar               | https://cdn.rudderlabs.com/v1.1/js-integrations/Hotjar.min.js             |
-| Google Ads           | https://cdn.rudderlabs.com/v1.1/js-integrations/GoogleAds.min.js          |
-| VWO                  | https://cdn.rudderlabs.com/v1.1/js-integrations/VWO.min.js                |
-| Google Tag Manager   | https://cdn.rudderlabs.com/v1.1/js-integrations/GoogleTagManager.min.js   |
-| Braze                | https://cdn.rudderlabs.com/v1.1/js-integrations/Braze.min.js              |
-| Intercom             | https://cdn.rudderlabs.com/v1.1/js-integrations/INTERCOM.min.js           |
-| Keen.io              | https://cdn.rudderlabs.com/v1.1/js-integrations/Keen.min.js               |
-| Kissmetrics          | https://cdn.rudderlabs.com/v1.1/js-integrations/Kissmetrics.min.js        |
-| Customer.io          | https://cdn.rudderlabs.com/v1.1/js-integrations/CustomerIO.min.js         |
-| Chartbeat            | https://cdn.rudderlabs.com/v1.1/js-integrations/Chartbeat.min.js          |
-| Comscore             | https://cdn.rudderlabs.com/v1.1/js-integrations/Comscore.min.js           |
-| Facebook Pixel       | https://cdn.rudderlabs.com/v1.1/js-integrations/FacebookPixel.min.js      |
-| Lotame               | https://cdn.rudderlabs.com/v1.1/js-integrations/Lotame.min.js             |
-| Optimizely           | https://cdn.rudderlabs.com/v1.1/js-integrations/Optimizely.min.js         |
-| BugSnag              | https://cdn.rudderlabs.com/v1.1/js-integrations/Bugsnag.min.js            |
-| FullStory            | https://cdn.rudderlabs.com/v1.1/js-integrations/Fullstory.min.js          |
-| TVSquared            | https://cdn.rudderlabs.com/v1.1/js-integrations/TVSquared.min.js          |
-| Google Analytics 4   | https://cdn.rudderlabs.com/v1.1/js-integrations/GA4.min.js                |
-| MoEngage             | https://cdn.rudderlabs.com/v1.1/js-integrations/MoEngage.min.js           |
-| Amplitude            | https://cdn.rudderlabs.com/v1.1/js-integrations/Amplitude.min.js          |
-| Pendo                | https://cdn.rudderlabs.com/v1.1/js-integrations/Pendo.min.js              |
-| Lytics               | https://cdn.rudderlabs.com/v1.1/js-integrations/Lytics.min.js             |
-| Appcues              | https://cdn.rudderlabs.com/v1.1/js-integrations/Appcues.min.js            |
-| PostHog              | https://cdn.rudderlabs.com/v1.1/js-integrations/Posthog.min.js            |
-| Klaviyo              | https://cdn.rudderlabs.com/v1.1/js-integrations/Klaviyo.min.js            |
-| CleverTap            | https://cdn.rudderlabs.com/v1.1/js-integrations/Clevertap.min.js          |
-| Bing Ads             | https://cdn.rudderlabs.com/v1.1/js-integrations/BingAds.min.js            |
-| Pinterest Tag        | https://cdn.rudderlabs.com/v1.1/js-integrations/PinterestTag.min.js       |
-| Adobe Analytics      | https://cdn.rudderlabs.com/v1.1/js-integrations/AdobeAnalytics.min.js     |
-| LinkedIn Insight Tag | https://cdn.rudderlabs.com/v1.1/js-integrations/LinkedInInsightTag.min.js |
-| Reddit Pixel         | https://cdn.rudderlabs.com/v1.1/js-integrations/RedditPixel.min.js        |
-| Drip                 | https://cdn.rudderlabs.com/v1.1/js-integrations/Drip.min.js               |
-| Heap                 | https://cdn.rudderlabs.com/v1.1/js-integrations/Heap.min.js               |
-| Criteo               | https://cdn.rudderlabs.com/v1.1/js-integrations/Criteo.min.js             |
-| Mixpanel             | https://cdn.rudderlabs.com/v1.1/js-integrations/Mixpanel.min.js           |
-| Qualtrics            | https://cdn.rudderlabs.com/v1.1/js-integrations/Qualtrics.min.js          |
-| Quantum Metric       | https://cdn.rudderlabs.com/v1.1/js-integrations/QuantumMetric.min.js      |
-| ProfitWell           | https://cdn.rudderlabs.com/v1.1/js-integrations/ProfitWell.min.js         |
-| Sentry               | https://cdn.rudderlabs.com/v1.1/js-integrations/Sentry.min.js             |
-| Google Optimize      | https://cdn.rudderlabs.com/v1.1/js-integrations/GoogleOptimize.min.js     |
-| Post Affiliate Pro   | https://cdn.rudderlabs.com/v1.1/js-integrations/PostAffiliatePro.min.js   |
-| LaunchDarkly         | https://cdn.rudderlabs.com/v1.1/js-integrations/LaunchDarkly.min.js       |
-| Google Analytics 360 | https://cdn.rudderlabs.com/v1.1/js-integrations/GA360.min.js              |
-
 ## FAQ
 
 ### How does RudderStack determine the root location of the destination SDK?
@@ -247,7 +181,7 @@ RudderStack follows the below precedence order while determining the root locati
 
 1. It refers to the `destSDKBaseURL` value in the `options` parameter of the `load` API call.
 2. If absent, it checks the `src` attribute of the `<script>` tag that adds the core JavaScript SDK to your website. `/js-integrations` is automatically appended to the root location.
-3. If none of the above options are applicable, it uses the default CDN URL `https://cdn.rudderlabs.com/v1.1/js-integrations/`.
+3. If none of the above options are applicable, it uses the default CDN URL: `https://cdn.rudderlabs.com/v1.1/js-integrations/`.
 
 ## Contact us
 

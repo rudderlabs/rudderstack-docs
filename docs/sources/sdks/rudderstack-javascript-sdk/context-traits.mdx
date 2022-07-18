@@ -6,7 +6,7 @@ description: >-
 
 RudderStack provides the option to automatically capture the certain event-specific and user-specific data, based on the type of the event.
 
-The `context` and `traits` dictionaries are provided in the `options` parameter of the <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/">supported API</Link> methods.
+The `context` and `traits` dictionaries are provided in the <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#api_options">`api_options`</Link> parameter of the supported API methods.
 
 ## Context
 
@@ -31,7 +31,7 @@ rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
 });
 ```
 
-The trait in the above event is `plan`. If you wish to include this trait in a subsequent `track` or `page` event triggered by the user, you can establish the association by passing it in `context.traits` as shown:
+The `plan` and `email` are traits in the above event. If you wish to include this trait in a subsequent `track` or `page` event triggered by the user, you can establish the association by passing it in `context.traits` as shown:
 
 ```javascript
 rudderanalytics.track(

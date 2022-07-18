@@ -6,7 +6,7 @@ description: Detailed technical documentation on how to load the JavaScript SDK 
 You can load the JavaScript SDK using the `load` API method. It loads the `analytics.js` file which tracks and sends events from your website to RudderStack and can be defined as:
 
 ```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, [options]);
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, [load_options]);
 ```
 
 <div class="infoBlock">
@@ -15,7 +15,7 @@ Replace the <Link to="/resources/glossary/#write-key">Write key</Link> and <Link
 
 ## Loading options 
 
-The `options` parameter in the `load` call above can be used to define various options while loading the SDK. It includes the following parameters:
+The **load_options** in the `load` call above can be used to define various options while loading the SDK. It includes the following parameters:
 
 ```javascript
 {
