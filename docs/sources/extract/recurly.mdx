@@ -1,0 +1,97 @@
+---
+title: "Recurly Source"
+description: Step-by-step guide on ingesting data from Recurly into RudderStack.
+---
+
+[Recurly](https://recurly.com/) is an email delivery and marketing tool that lets you build and deliver personalized experiences through their API and marketing automation flows.
+
+This document guides you in setting up Sendgrid as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Sendgrid data, which can then be routed to your RudderStack-supported data warehouse destination.
+
+<div class="warningBlock">
+All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
+</div>
+
+## Getting started
+
+To set up Recurly as a source in RudderStack, follow these steps:
+
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **Recurly** from the list of sources.
+3. Assign a name to your source and click on **Continue**.
+
+### Connection settings
+
+<img src="../../assets/cloud-extract-sources/recurly-connection-settings.png" alt="Recurly credentials" />
+
+- **API Key**: Enter your Recurly API key by going to your Recurly dashboard and navigating to **Settings** > **API Keys**.
+- **begin_time**: Enter the ISO8601 timestamp from where the replication from Recurly API should start. 
+- **end_time**: Enter the ISO8601 timestamp at which the replication from Recurly API should stop. The data records after this date are not imported.
+
+<div class="infoBlock">
+For more information on how to obtain the API key, refer to the <a href="#faq">FAQ</a> section below.
+</div>
+
+### Destination settings
+
+The following settings specify how RudderStack sends the data ingested from Recurly to the connected warehouse destination:
+
+- **Table prefix**: RudderStack uses this prefix to create a table in your data warehouse and loads all your Recurly data into it.
+- **Schedule Settings**: RudderStack gives you three options to ingest the data from Recurly:
+    - **Basic**: Runs the syncs at the specified time interval. 
+    - **CRON**: Runs the syncs based on the user-defined CRON expression.
+    - **Manual**: You are required to run the syncs manually.
+
+<div class="infoBlock">
+For more information on the schedule types, refer to the <Link to="/sources/extract/common-settings/">Common Settings</Link> guide.
+</div>
+
+### Selecting the data to import
+
+Choose the Recurly data that you wish to ingest via RudderStack. You can either select all the data or choose specific Recurly data attributes as per your requirement.
+
+<img src="../../assets/cloud-extract-sources/recurly-connection-settings-1.png" alt="Selecting the data to import" />
+
+Recurly is now configured as a source. RudderStack will start ingesting data from Recurly as per your specified schedule and frequency.
+
+You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
+
+<img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
+
+<div class="successBlock">
+Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
+</div>
+
+## FAQ
+
+### How do I obtain the Recurly API key?
+
+To obtain the API key for configuring the Recurly Cloud Extract source, follow these steps:
+
+1. Log into your Sendgrid dashboard.
+2. Go to **Settings** > **API keys**.
+3. Click on the **Create API key** option, as shown:
+
+<img src="../../assets/cloud-extract-sources/sendgrid-api-key.png" alt="Sendgrid API key" />
+
+4. Enter the name of the API key under the **API Key Name** field. In **API Key Permissions**, select **Restricted Access**.
+
+<img src="../../assets/cloud-extract-sources/sendgrid-api-key-permissions.png" alt="Sendgrid API key permissions" />
+
+5.  Set the permissions as shown below:
+
+<img src="../../assets/cloud-extract-sources/sendgrid-api-permissions.png" alt="Sendgrid required permissions" />
+
+6. Finally, click on **Create & View**. Use these credentials to configure the source.
+
+<img src="../../assets/cloud-extract-sources/sendgrid-api-key-details.png" alt="Sendgrid API details" />
+
+<div class="warningBlock">
+
+Copy the API key and store it securely. Sendgrid will not display the API key again once you click on <strong>Done</strong>.
+</div>
+
+### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+
+Yes, it is.
+
+RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
