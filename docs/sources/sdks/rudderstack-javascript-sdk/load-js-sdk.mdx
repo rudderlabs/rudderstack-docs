@@ -39,8 +39,8 @@ The detailed description of these parameters is as follows:
 | :-------------------- | :---------------------------------- | :------------------------------------------------------- |
 |  `logLevel`           | String                              | Values include `DEBUG`, `INFO`, and `WARN`.             |
 |  `integrations`       | <Link to="#integrationopts">IntegrationOpts</Link> | Send event data to the <Link to="/sources/sdks/rudderstack-javascript-sdk/filtering/">selective destinations</Link>.                                          |
-|  `configUrl`          | String                              |  Server (<Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane</Link>) endpoint serving your destination configurations. Note that `sourceConfig` is automatically appended to this endpoint. Default value: `https://api.rudderlabs.com`. |
-|  `queueOpts`          | <Link to="#queueopts">QueueOpts</Link>         | definition          |
+|  `configUrl`          | String                              |  Server (<Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane</Link>) endpoint serving your destination configurations. Note that the source config is automatically appended to this endpoint. Default value: `https://api.rudderlabs.com`. |
+|  `queueOpts`          | <Link to="#queueopts">QueueOpts</Link>         | Internal queue to hold the data and send it as XMLHttpRequest.          |
 |  `loadIntegration`    | Boolean                             | Determines whether the destination SDKs are fetched by the SDK or not (true by default). Supported for **Amplitude** and **Google Analytics**.                      |
 | `secureCookie`        | Boolean                             | Determines whether the SDK sends the cookie to the storage backend via HTTPS (false by default).|
 | `destSDKBaseURL`      | String                              | Path used by the SDK to load the integrations. Default value: `https://cdn.rudderlabs.com/v1.1/js-integrations`. <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">Reference</Link>.    | 
@@ -74,7 +74,7 @@ The following table describes the above (optional) parameters in detail:
 
 #### `QueueOpts`
 
-(definition) . Its structure is defined as follows:
+It is an internal queue to hold the data and send it as XMLHttpRequest . Its structure is defined as follows:
 
 ```javascript
 {
@@ -86,7 +86,7 @@ The following table describes the above (optional) parameters in detail:
 }
 ```
 
-The following table describes the above `integer` type parameters in detail:
+The following table describes the above `integer` type (optional) parameters in detail:
 
 | **Parameter**   | **Description**                                                      | **Default value** |
 | :-------------- |  :--------------------------------------------------------------------|:------------------|
@@ -127,7 +127,7 @@ Its structure is defined as follows:
   }
 }
 ```
-  The following table describes the above parameters in detail:
+  The following table describes the above (required) parameters in detail:
 
   | Parameter  | Type  | Description    |   
   | :--------| :---- | :----------------| 

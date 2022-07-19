@@ -53,7 +53,16 @@ This code snippet:
 | <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#page">`page()`</Link>     | Records page views whenever a user visits a page.    |
 | <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#track">`track()`</Link>   | Tracks user actions and other events.            |
 | <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#identify">`identify()`</Link> | Associates users and their traits or actions.        |
+|<Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#alias">`alias()`</Link>    | Maps a new user ID with an old user.       |
+|<Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#group">`group()`</Link>    |  Link an identified user with a group such as a company, organization, or an account.       |
+| <Link to="/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/#step-2-check-ready-state">`ready()`</Link>   | Takes a callback as a parameter that fires when the SDK is done initializing itself and the other third-party native SDK destinations.       |
 |<Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#reset">`reset()`</Link>    | Resets the `userid` and the associated traits.       |
+|`getAnonymousId`   |  Fetches the current `anonymousId`.       |
+|`setAnonymousId`   | Sets the `anonymousId`.       |
+| `getUserId`   | Fetches the current `userId`.      |
+|`getUserTraits` |  Fetches the current user traits.       |
+| `getGroupId`    | Fetches the current `groupId.       |
+| `getGroupTraits`  | Fetches the current group traits.       |
 
 - Loads the analytics object with the specified write key.
 - Makes the `page()`call to track the page views. It auto-captures properties such as `path`, `referrer`, `search`, `title`, and `URL`. Refer to the <Link to="/event-spec/standard-events/page/">`page`</Link> method to override these properties. 
