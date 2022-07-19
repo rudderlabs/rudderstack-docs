@@ -21,7 +21,7 @@ To use this feature, enter the path of the payload along with a default value in
 The format in which the setting should be specified is shown below:
 
 ```javascript
-{{event.path.config.name || "default_config_value"}}
+{{message.path.config.name || "default_config_value"}}
 ```
 
 You can also use this feature to dynamically configure complex input types like field mappings, as seen in the following example:
@@ -54,21 +54,21 @@ Suppose you want to send your event data to different Google Analytics instances
 To populate the configuration values from the event payload, you need to <Link to="/features/transformations/#adding-a-transformation">add a transformation function</Link>. A sample function is shown below:
 
 ```javascript
-export function transformEvent(event, metadata) {
-  let updatedEvent = event;
-  const met = metadata(event);
+export function transformEvent(message, metadata) {
+  let updatedEvent = message;
+  const met = metadata(message);
   if (
     met &&
     met.sourceId === "example_source_id_1" &&
-    event &&
-    event.properties
+    message &&
+    message.properties
   ) {
     updatedEvent.properties.trackingId = "UA-Custom-TrackingID_1";
   } else if (
     met &&
     met.sourceId === "example_source_id_2" &&
-    event &&
-    event.properties
+    message &&
+    message.properties
   ) {
     updatedEvent.properties.trackingId = "UA-Custom-TrackingID_2";
   }
@@ -224,7 +224,7 @@ This feature is very useful if you want to configure multiple instances of the s
 In the text field of a particular connection setting that you want to configure, enter the path of the payload along with a default value in the following format:
 
 ```javascript
-{{ event.path.config.name || "default_config_value" }}
+{{ message.path.config.name || "default_config_value" }}
 ```
 
 If you don't want to use this feature, you can enter the configuration setting in the dashboard as you normally would.
