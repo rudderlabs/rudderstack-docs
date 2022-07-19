@@ -137,7 +137,6 @@ module.exports = {
             queries: require("./src/utils/docs-algolia"),
             enablePartialUpdates: true,
             matchFields: [
-              "objectID",
               "title",
               "aliases",
               "slug",
