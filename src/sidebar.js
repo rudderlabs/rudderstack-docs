@@ -657,7 +657,12 @@ export const jsonData = [
                 title: "Pinterest Tag",
                 link: "/destinations/streaming-destinations/pinterest-ads/",
                 content: []
-            }, {
+            },{
+                title: "Recurly",
+                link: "/destinations/streaming-destinations/recurly/",
+                content: []
+            }, 
+            {
                 title: "Reddit Pixel",
                 link: "/destinations/streaming-destinations/reddit-pixel/",
                 content: []
