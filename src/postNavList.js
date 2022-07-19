@@ -514,6 +514,12 @@ export const postNavList = [
     link: "/sources/extract/quickbooks/",
     content: [],
   },
+    {
+    key: "recurly",
+    title: "Recurly",
+    link: "/sources/extract/recurly/",
+    content: [],
+  },
   {
     key: "salesforce",
     title: "Salesforce",
@@ -1257,12 +1263,6 @@ export const postNavList = [
     key: "linkedin-insight-tag",
     title: "LinkedIn Insight Tag",
     link: "/destinations/streaming-destinations/linkedin-insight-tag/",
-    content: [],
-  },
-   {
-    key: "recurly",
-    title: "Recurly",
-    link: "/destinations/streaming-destinations/recurly/",
     content: [],
   },
   {
