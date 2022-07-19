@@ -60,15 +60,15 @@ export function transformEvent(event, metadata) {
   if (
     met &&
     met.sourceId === "example_source_id_1" &&
-    event.message &&
-    event.message.properties
+    event &&
+    event.properties
   ) {
     updatedEvent.properties.trackingId = "UA-Custom-TrackingID_1";
   } else if (
     met &&
     met.sourceId === "example_source_id_2" &&
-    event.message &&
-    event.message.properties
+    event &&
+    event.properties
   ) {
     updatedEvent.properties.trackingId = "UA-Custom-TrackingID_2";
   }
