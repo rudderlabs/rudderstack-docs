@@ -1259,6 +1259,12 @@ export const postNavList = [
     link: "/destinations/streaming-destinations/linkedin-insight-tag/",
     content: [],
   },
+   {
+    key: "recurly",
+    title: "Recurly",
+    link: "/destinations/streaming-destinations/recurly/",
+    content: [],
+  },
   {
     key: "reddit-pixel",
     title: "Reddit Pixel",
