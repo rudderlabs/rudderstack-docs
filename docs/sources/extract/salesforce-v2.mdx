@@ -1,0 +1,127 @@
+---
+title: "Salesforce v2"
+description: Step-by-step guide on ingesting data from Salesforce into RudderStack.
+---
+
+[Salesforce](https://salesforce.com/) is an industry leader in enterprise CRM. It offers a suite of enterprise applications revolving around marketing automation, customer support, application development, and analytics.
+
+This document guides you in setting up Salesforce as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Salesforce data, which can then be routed to your RudderStack-supported data warehouse destination.
+
+<div class="warningBlock">
+All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
+</div>
+
+## Getting started
+
+To set up Salesforce as a source in RudderStack, follow these steps:
+
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **Salesforce V2** from the list of sources.
+3. Assign a name to your source and click on **Continue**.
+
+### Connection settings
+
+To set up Salesforce as a Cloud Extract source, you need to configure the following settings:
+
+<img src="../../assets/cloud-extract-sources/salesforce-connection-settings-1.png" alt="Salesforce credentials" />
+
+- Enable the **Sandbox** checkbox if your app is in the Salesforce [sandbox](https://help.salesforce.com/s/articleView?id=sf.create_test_instance.htm&type=5) mode.
+
+<div class="warningBlock">
+It is highly recommended to not check this box if you're unsure whether your app is in a Salesforce sandbox.
+</div>
+
+- Click **Connect with Salesforce V2** and connect your Salesforce account with RudderStack.
+- **Start Date**: Select the start date from when you want RudderStack to ingest the Salesforce data.
+
+<div class="warningBlock">
+RudderStack will not replicate any data before this date. Also, RudderStack will replicate all your data by default if you do not set this field.
+</div>
+
+<div class="infoBlock">
+Once you specify the start date, RudderStack selects all the Salesforce data associated with the <code class="inline-code">updated</code> field available from that date, otherwise it picks the data associated with the <code class="inline-code">created</code> field.
+</div>
+
+- **Salesforce Object filtering criteria**: This optional setting lets you add the filtering criteria to read and ingest only the Salesforce objects relevant to you.
+
+<img src="../../assets/cloud-extract-sources/salesforce-connection-settings-2.png" alt="Salesforce credentials" />
+
+### Destination settings
+
+The following settings specify how RudderStack sends the data ingested from Salesforce to the connected warehouse destination:
+
+- **Table prefix**: RudderStack uses this prefix to create a table in your data warehouse and loads all your Salesforce data into it.
+- **Schedule Settings**: RudderStack gives you three options to ingest the data from Salesforce:
+    - **Basic**: Runs the syncs at the specified time interval. 
+    - **CRON**: Runs the syncs based on the user-defined CRON expression.
+    - **Manual**: You are required to run the syncs manually.
+
+<div class="infoBlock">
+For more information on the schedule types, refer to the <Link to="/sources/extract/common-settings/">Common Settings</Link> guide.
+</div>
+
+### Selecting the data to import
+
+Choose the Salesforce data that you wish to ingest via RudderStack. You can either select all the data or choose specific Salesforce data attributes as per your requirement.
+
+<img src="../../assets/cloud-extract-sources/salesforce-connection-settings-3.png" alt="Selecting the data to import" />
+
+<div class="infoBlock">
+For more information on how RudderStack syncs your Salesforce data, refer to the <Link to="#faq">FAQ</Link> section below.
+</div>
+
+Salesforce is now configured as a source. RudderStack will start ingesting data from Salesforce as per your specified schedule and frequency.
+
+You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
+
+<img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
+
+<div class="successBlock">
+Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
+</div>
+
+## Sync dependency on Salesforce API quota
+
+Salesforce imposes [strict API limits](https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm) that regulate its API usage. These limits correspond to the total number of API requests that can be made over a period of time.
+
+<div class="infoBlock">
+<strong>The Salesforce API usage includes RudderStack and any other apps you may use.</strong>
+</div>
+
+RudderStack handles these API quotas as described below:
+
+- If a single replication attempt utilizes 20% of your daily quota, then the replication process will stop.
+- If more than 80% of your daily API quota has been utilized(by RudderStack or any other apps), then the replication will stop. RudderStack resumes the syncs once the API limit is lifted.
+
+<div class="warningBlock">
+Because of Salesforce's API quotas and the data volume to be synced, RudderStack can take some time to complete the first sync.
+</div>
+
+<div class="infoBlock">
+To calculate and increase your total API calls, refer to the <a href="https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm">Salesforce documentation</a>.
+</div>
+
+## FAQ
+
+### Can I connect my Salesforce source to multiple data warehouse destinations?
+
+You can connect <strong>only one data warehouse destination</strong> per Cloud Extract source. If you wish to send data to multiple warehouses, you can configure multiple Cloud Extract sources with the same settings and connect them to each data warehouse.
+
+### How does RudderStack sync my Salesforce data?
+
+- When RudderStack first connects to your Salesforce data source, it will sync the historical data from the <Link to="#connection-settings">**Start Date**</Link> specified in the dashboard. If no start date is specified, RudderStack will sync **all** your historical data.
+- RudderStack then syncs with your Salesforce source based on the specified schedule and run frequency and incrementally replicates your data, that is, it syncs only the new or updated rows to the connected warehouse destination.
+
+<div class="infoBlock">
+RudderStack will only read your data.
+</div>
+
+### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+
+Yes, it is.
+
+RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
+
+<div class="infoBlock">
+For more information on setting a table prefix, refer to the <Link to="#destination-settings">Destination settings</Link> section above.
+</div>

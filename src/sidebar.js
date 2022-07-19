@@ -417,7 +417,8 @@ export const jsonData = [
                 title: "QuickBooks",
                 link: "/sources/extract/quickbooks/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Salesforce",
                 link: "/sources/extract/salesforce/",
                 content: [
@@ -427,7 +428,13 @@ export const jsonData = [
                         content: []
                     },
                 ]
-            }, {
+            },
+            {
+                title: "Salesforce v2",
+                link: "/sources/extract/salesforce-v2/",
+                content: []
+            },
+            {
                 title: "Salesforce Pardot",
                 link: "/sources/extract/salesforce-pardot/",
                 content: []
