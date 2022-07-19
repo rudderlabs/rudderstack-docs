@@ -112,10 +112,22 @@ export const postNavList = [
   },
   {
     key: "quick-start-guide",
-    title: "Quick Start Guide",
+    title: "Quick Start",
     link: "/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/",
     content: [],
   },
+  {
+    key: "load-js-sdk",
+    title: "Load SDK",
+    link: "/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/",
+    content: [],
+  },
+  {
+     key: "supported-api",
+     title: "Supported API",
+     link: "/sources/sdks/rudderstack-javascript-sdk/supported-api/",
+     content: [],
+ },
   {
     key: "javascript-sdk-enhancements",
     title: "JavaScript SDK Enhancements",
@@ -124,14 +136,14 @@ export const postNavList = [
   },
   {
     key: "data-storage-cookies",
-    title: "Data Storage in Cookies",
+    title: "Data Storage",
     link: "/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
     content: [],
   },
   {
-    key: "querystring-api",
-    title: "Querystring API",
-    link: "/sources/sdks/rudderstack-javascript-sdk/querystring-api/",
+    key: "filtering",
+    title: "Filtering",
+    link: "/sources/sdks/rudderstack-javascript-sdk/filtering/",
     content: [],
   },
   {
@@ -140,31 +152,28 @@ export const postNavList = [
     link: "/sources/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
     content: [],
   },
+   {
+     key: "context-traits",
+     title: "Context and Traits",
+     link: "/sources/sdks/rudderstack-javascript-sdk/context-traits/",
+     content: [],
+  },
   {
     key: "version-migration-guide",
-    title: "Version Migration Guide",
+    title: "Version Migration",
     link: "/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/",
     content: [],
   },
   {
-    key: "consent-managers",
-    title: "Consent Managers",
-    link:
-      "/sources/sdks/rudderstack-javascript-sdk/consent-managers/",
-    content: [],
-  },
-  {
-    key: "onetrust",
-    title: "OneTrust",
-    link:
-      "/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/",
+    key: "onetrust-consent-manager",
+    title: "OneTrust Consent Manager",
+    link: "/sources/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/",
     content: [],
   },
   {
     key: "faq",
     title: "JavaScript SDK FAQs",
-    link:
-      "/sources/sdks/rudderstack-javascript-sdk/faq/",
+    link: "/sources/sdks/rudderstack-javascript-sdk/faq/",
     content: [],
   },
   {
