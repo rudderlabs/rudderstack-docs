@@ -136,19 +136,16 @@ npm install rudder-sdk-js@2.x.x
 ```
 ## Loading device mode destinations
 
-The device mode destinations are not bundled in the core JavaScript SDK v1.1 and needs to be loaded using any of the below-mentioned ways: 
-
-### From RudderStack CDN
-
-You can load the device mode destinations from https://cdn.rudderlabs.com/v1.1/js-integrations/ path by appending the name of the required destination as:
+By default, the device mode destinations are loaded from https://cdn.rudderlabs.com/v1.1/js-integrations/ in 2.x.x, depending on the dashboard settings. The name of the destination is appended to the URL as:
 https://cdn.rudderlabs.com/v1.1/js-integrations/{dest-name.min.js}
 
+For example, the path for Hubspot is: https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js, and Google Analytics is: https://cdn.rudderlabs.com/v1.1/js-integrations/GA.min.js, etc.
 
-For example, if you want to load Hubspot, the download path will be: https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js, for Google Analytics, the download path will be: https://cdn.rudderlabs.com/v1.1/js-integrations/GA.min.js, etc.
+If you are loading the device mode destinations from a custom path, use any of the below-mentioned ways: 
 
-### From forwarded/proxied RudderStack CDN
+### Forwarded/proxied RudderStack CDN
 
-If you are forwarding or proxying RudderStack's CDN, follow the steps 1, 2 and 3 from <Link to="#case-2-forwardingproxying-the-rudderstack-cdn">here</Link> and finally use the `destSDKBaseURL` option in the SDK's `load()` call, as shown:
+Follow the  <Link to="#case-2-forwardingproxying-the-rudderstack-cdn">steps 1, 2 and 3</Link> and finally use the `destSDKBaseURL` option in the SDK's `load()` call, as shown:
 
 ```javascript
 rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
@@ -157,9 +154,9 @@ rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
 });
 ```
 
-### From self-hosted RudderStack CDN
+### Self-hosted RudderStack CDN
 
-If you have cloned RudderStack's JavaScript SDK and are self-hosting it, follow the steps 2 and 3 from <Link to="#case-3-self-hosting-rudderstacks-cdn">here</Link> and finally use the `destSDKBaseURL` option in the SDK's `load()` call, as shown:
+Follow the <Link to="#case-3-self-hosting-rudderstacks-cdn">steps 2 and 3</Link> and finally use the `destSDKBaseURL` option in the SDK's `load()` call, as shown:
 
 ```javascript
 rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
