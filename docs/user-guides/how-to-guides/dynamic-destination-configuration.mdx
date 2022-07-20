@@ -11,7 +11,7 @@ Simply pass the path of your event payload from which the configuration value wi
 <img src="../../assets/user-guides/dynamic-destination-configuration.png" />
 
 <div class="successBlock">
-This feature is supported for all the destinations that support sending data via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, including <Link to="/destinations/warehouse-destinations/">warehouse destinations</Link>.
+This feature is supported for all the destinations that support sending data via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
 </div>
 
 ## Supported format
@@ -21,7 +21,7 @@ To use this feature, enter the path of the payload along with a default value in
 The format in which the setting should be specified is shown below:
 
 ```javascript
-{{event.path.config.name || "default_config_value"}}
+{{message.path.config.name || "default_config_value"}}
 ```
 
 You can also use this feature to dynamically configure complex input types like field mappings, as seen in the following example:
@@ -60,15 +60,15 @@ export function transformEvent(event, metadata) {
   if (
     met &&
     met.sourceId === "example_source_id_1" &&
-    event.message &&
-    event.message.properties
+    event &&
+    event.properties
   ) {
     updatedEvent.properties.trackingId = "UA-Custom-TrackingID_1";
   } else if (
     met &&
     met.sourceId === "example_source_id_2" &&
-    event.message &&
-    event.message.properties
+    event &&
+    event.properties
   ) {
     updatedEvent.properties.trackingId = "UA-Custom-TrackingID_2";
   }
@@ -224,14 +224,10 @@ This feature is very useful if you want to configure multiple instances of the s
 In the text field of a particular connection setting that you want to configure, enter the path of the payload along with a default value in the following format:
 
 ```javascript
-{{ event.path.config.name || "default_config_value" }}
+{{ message.path.config.name || "default_config_value" }}
 ```
 
 If you don't want to use this feature, you can enter the configuration setting in the dashboard as you normally would.
-
-### Can I use this feature to dynamically configure a warehouse destination?
-
-Yes, you can. Make sure that the warehouse credentials that you use to configure the destination are applicable for the dynamic project ID/database/any other configuration values from the event payload.
 
 ### Can I specify only the payload path without a default value?
 
