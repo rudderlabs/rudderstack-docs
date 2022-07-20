@@ -6,7 +6,7 @@ description: Detailed technical documentation on how to load the JavaScript SDK 
 You can load the JavaScript SDK using the `load` API method to track and send events from your website to RudderStack. It can be defined as:
 
 ```javascript
-rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, [loadOptions]);
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, [loadOptions]);
 ```
 
 <div class="infoBlock">
@@ -35,8 +35,8 @@ The **loadOptions** in the `load` call above can be used to define various optio
 
 The detailed description of these parameters is as follows:
 
-| Parameter             | Type                                | Description                                              |
-| :-------------------- | :---------------------------------- | :------------------------------------------------------- |
+| Parameter             | Type                                | Description                    |
+| :-------------------- | :---------------------------------- | :------------------------ |
 |  `logLevel`           | String                              | Values include `DEBUG`, `INFO`, and `WARN`.             |
 |  `integrations`       | <Link to="#integrationopts">IntegrationOpts</Link> | Send event data to the <Link to="/sources/sdks/rudderstack-javascript-sdk/filtering/">selective destinations</Link>.                                          |
 |  `configUrl`          | String                              |  Server (<Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane</Link>) endpoint serving your destination configurations. Default value: `https://api.rudderlabs.com`. Note that the source config is automatically appended to this endpoint, `https://api.rudderlabs.com/<source_config_url>/sourceConfig`  |
@@ -101,15 +101,13 @@ The following table describes the above `integer` type (optional) parameters in 
 Once a user provides the consent, you can load the JavaScript SDK and enable the <Link to="/sources/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/">OneTrust integration</Link> via the `cookieConsentManager` object, as shown:
 
 ```javascript
-rudderanalytics.load(
-  <WRITE_KEY>,
-  <DATA_PLANE_URL>, {
-    cookieConsentManager: {
-      oneTrust: {
-        enabled: true
-      }
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+        cookieConsentManager: {
+            oneTrust: {
+                enabled: true
+            }
+        }
     }
-  }
 );
 ```
 
@@ -121,10 +119,10 @@ Its structure is defined as follows:
 
 ```javascript
 {
-  autoCapture: {
-    enabled: true,
-    source: "segment",
-  }
+    autoCapture: {
+        enabled: true,
+        source: "segment",
+    }
 }
 ```
   The following table describes the above (required) parameters in detail:
@@ -147,8 +145,8 @@ Its structure is defined as follows:
 If you are self-hosting the control plane using the [Control Plane Lite](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility, the `load` call should be as below:
 
 ```javascript
-rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
-  configUrl: <CONTROL_PLANE_URL>,
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    configUrl: < CONTROL_PLANE_URL > ,
 });
 ```
 
@@ -172,7 +170,3 @@ Run `rudderanalytics` command in the console,. If it returns the following code 
 ```
 
 If it gives an `undefined` error, you need to verify the SDK installation again.
-
-## Contact us
-
-For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

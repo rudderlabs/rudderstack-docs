@@ -76,7 +76,7 @@ It is recommended to maintain the following structure:
 // ...
 // ...
 // provide the location of the destination SDKs in the load options
-rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
     destSDKBaseURL: "https://cdn.<yourdomain>.com/js-integrations"
 });
 // ...
@@ -101,7 +101,7 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
       // ...
       // ...
       // provide the location of the destination SDKs in the load options
-      rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
+      rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
           destSDKBaseURL: "https://cdn.<yourdomain>.com/custom-js-integrations"
       });
       // ...
@@ -148,9 +148,9 @@ If you are loading the device mode destinations from a custom path, use any of t
 Follow the  <Link to="#case-2-forwardingproxying-the-rudderstack-cdn">steps 1, 2 and 3</Link> and finally use the `destSDKBaseURL` option in the SDK's `load()` call, as shown:
 
 ```javascript
-rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
-  destSDKBaseURL: "<custom-path-for-device-mode-destination>", // ex: "https://cdn.<yourdomain>.com/js-integrations"
-  ...otherOptions
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    destSDKBaseURL: "<custom-path-for-device-mode-destination>", // ex: "https://cdn.<yourdomain>.com/js-integrations"
+    ...otherOptions
 });
 ```
 
@@ -159,9 +159,9 @@ rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
 Follow the <Link to="#case-3-self-hosting-rudderstacks-cdn">steps 2 and 3</Link> and finally use the `destSDKBaseURL` option in the SDK's `load()` call, as shown:
 
 ```javascript
-rudderanalytics.load( <WRITE_KEY> , <DATA_PLANE_URL> , {
-  destSDKBaseURL: "<custom-path-for-device-mode-destination>", // ex: "https://cdn.<yourdomain>.com/js-integrations"
-  ...otherOptions
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    destSDKBaseURL: "<custom-path-for-device-mode-destination>", // ex: "https://cdn.<yourdomain>.com/js-integrations"
+    ...otherOptions
 });
 ```
 
@@ -179,7 +179,3 @@ RudderStack follows the below precedence order while determining the root locati
 1. It refers to the `destSDKBaseURL` value in the `options` parameter of the `load` API call.
 2. If absent, it checks the `src` attribute of the `<script>` tag that adds the core JavaScript SDK to your website. `/js-integrations` is automatically appended to the root location.
 3. If none of the above options are applicable, it uses the default CDN URL: `https://cdn.rudderlabs.com/v1.1/js-integrations/`.
-
-## Contact us
-
-In case of any issues or questions on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

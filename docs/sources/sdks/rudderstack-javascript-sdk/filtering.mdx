@@ -17,12 +17,12 @@ You can send the event data only to the selective destinations by passing an <Li
 * A sample snippet to send event data only to the **Google Analytics** and **Intercom** destinations:
 
 ```javascript
-rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
-  integrations: {
-    All: false,
-    "Google Analytics": true,
-    Intercom: true
-  }
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    integrations: {
+        All: false,
+        "Google Analytics": true,
+        Intercom: true
+    }
 });
 ```
 
@@ -30,18 +30,16 @@ rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
 
 ```javascript
 rudderanalytics.track(
-  "Order Completed",
-  {
-    revenue: 30,
-    currency: "USD",
-    user_actual_id: 12345
-  },
-  {
-    integrations: {
-      All: false,
-      "Google Analytics": true
+    "Order Completed", {
+        revenue: 30,
+        currency: "USD",
+        user_actual_id: 12345
+    }, {
+        integrations: {
+            All: false,
+            "Google Analytics": true
+        }
     }
-  }
 );
 ```
 The destinaton name inside the `integrations` object should be in the specified format, such as:
@@ -49,8 +47,3 @@ The destinaton name inside the `integrations` object should be in the specified 
 * Google Analytics: `Google Analytics`/`GoogleAnalytics`/`GA`
 * Kochava:     `Kochava`    
 * Amplitude: `Amplitude`/`AMPLITUDE`                
-
-
-## Contact us
-
-For more information or queries on this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

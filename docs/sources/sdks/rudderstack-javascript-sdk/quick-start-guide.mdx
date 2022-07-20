@@ -33,7 +33,7 @@ To integrate the SDK with your website and load it **asynchronously**, add the f
 ```javascript
 <script type="text/javascript">
 !function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
-e.load(<WRITE_KEY>,<DATA_PLANE_URL>),
+e.load(WRITE_KEY,DATA_PLANE_URL),
 e.page()}();
 </script>
 ```
@@ -73,7 +73,7 @@ To integrate the SDK with your website and load it **synchronously**, add any of
 
 ```javascript
 <script>
-rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits"],i=0;i<methods.length;i++){var method=methods[i];rudderanalytics[method]=function(a){return function(){rudderanalytics.push([a].concat(Array.prototype.slice.call(arguments)))}}(method)}rudderanalytics.load(<WRITE_KEY>,<DATA_PLANE_URL>),rudderanalytics.page();
+rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits"],i=0;i<methods.length;i++){var method=methods[i];rudderanalytics[method]=function(a){return function(){rudderanalytics.push([a].concat(Array.prototype.slice.call(arguments)))}}(method)}rudderanalytics.load(WRITE_KEY,DATA_PLANE_URL),rudderanalytics.page();
 </script>
 
 <script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js"></script>
@@ -111,7 +111,7 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
     })(method);
   }
 
-  rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>);
+  rudderanalytics.load(WRITE_KEY,DATA_PLANE_URL);
   rudderanalytics.page();
 </script>
 
@@ -140,7 +140,7 @@ Since the NPM module exports the related APIs on an already-defined object combi
 
 ```jsx
 import * as rudderanalytics from "rudder-sdk-js";
-rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>);
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL);
 rudderanalytics.ready(() => {
   console.log("We are all set!!!");
 });
@@ -151,7 +151,7 @@ Altrnatively, you can do this with **ES5** using the `require` method, as shown:
 
 ```jsx
 var rudderanalytics = require("rudder-sdk-js");
-rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>);
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL);
 rudderanalytics.ready(() => {
   console.log("We are all set!!!");
 });
@@ -187,7 +187,7 @@ An example is shown below:
 
 ```javascript
 rudderanalytics.ready(() => {
-  console.log("All set!");
+    console.log("All set!");
 });
 ```
 
@@ -199,22 +199,20 @@ A sample `identify` call is shown below:
 
 ```javascript
 rudderanalytics.identify(
-  "1hKOmRA4el9Zt1WSfVJIVo4GRlm",
-  {
-    email: "alex@example.com"
-  },
-  {
-    page: {
-      path: "/best-seller/1",
-      referrer: "https://www.google.com/search?q=estore+bestseller",
-      search: "estore bestseller",
-      title: "The best sellers offered by EStore",
-      url: "https://www.estore.com/best-seller/1"
+    "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+        email: "alex@example.com"
+    }, {
+        page: {
+            path: "/best-seller/1",
+            referrer: "https://www.google.com/search?q=estore+bestseller",
+            search: "estore bestseller",
+            title: "The best sellers offered by EStore",
+            url: "https://www.estore.com/best-seller/1"
+        }
+    },
+    () => {
+        console.log("identify call");
     }
-  },
-  () => {
-    console.log("identify call");
-  }
 );
 ```
 
@@ -232,21 +230,17 @@ A sample `track` call is shown below:
 
 ```javascript
 rudderanalytics.track(
-  "Order Completed", {
-    revenue: 77.6,
-    currency: "USD",
-    user_actual_id: 1hKOmRA4el9Zt1WSfVJIVo4GRlm,
-  },
-  () => {
-    console.log("track call");
-  }
+    "Order Completed", {
+        revenue: 77.6,
+        currency: "USD",
+        user_actual_id: 1 hKOmRA4el9Zt1WSfVJIVo4GRlm,
+    },
+    () => {
+        console.log("track call");
+    }
 );
 ```
 
 The JavaScript SDK captures the `Order Completed` event along with `revenue`, `currency`, and `anonymousId` from the above snippet.
 
 You can use this method to track various success metrics for your website like user signups, item purchases, article bookmarks, and more.
-
-## Contact us
-
-For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

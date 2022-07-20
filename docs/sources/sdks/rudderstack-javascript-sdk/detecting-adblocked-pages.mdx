@@ -10,14 +10,14 @@ The JavaScript SDK lets you send a page view containing the relevant markers tha
 To send an ad-blocked page view, load the JavaScript SDK as shown:
 
 ```javascript
-rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
-  sendAdblockPage: true,
-  sendAdblockPageOptions: {
-    integrations: {
-      All: false,
-      Amplitude: true
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    sendAdblockPage: true,
+    sendAdblockPageOptions: {
+        integrations: {
+            All: false,
+            Amplitude: true
+        }
     }
-  }
 });
 ```
 
@@ -45,17 +45,11 @@ The implicit `page` call semantics is shown below:
 
 ```javascript
 rudderanalytics.page(
-  "RudderJS-Initiated",
-  "ad-block page request",
-  {
-    path: "/ad-blocked",
-    title:
-      "error in script loading:: src::  http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js id:: ad-block"
-  },
-  sendAdblockPageOptions
+    "RudderJS-Initiated",
+    "ad-block page request", {
+        path: "/ad-blocked",
+        title: "error in script loading:: src::  http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js id:: ad-block"
+    },
+    sendAdblockPageOptions
 );
 ```
-
-## Contact us
-
-For queries on any of the sections in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

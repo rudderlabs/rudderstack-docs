@@ -52,20 +52,20 @@ A sample `identify` call is shown below:
 
 ```javascript
 rudderanalytics.identify(
-  "1hKOmRA4el9Zt1WSfVJIVo4GRlm",
-  { email: "alex@example.com" },
-  {
-    page: {
-      path: "/best-seller/1",
-      referrer: "https://www.google.com/search?q=estore+bestseller",
-      search: "estore bestseller",
-      title: "The best sellers offered by EStore",
-      url: "https://www.estore.com/best-seller/1"
+    "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+        email: "alex@example.com"
+    }, {
+        page: {
+            path: "/best-seller/1",
+            referrer: "https://www.google.com/search?q=estore+bestseller",
+            search: "estore bestseller",
+            title: "The best sellers offered by EStore",
+            url: "https://www.estore.com/best-seller/1"
+        }
+    },
+    () => {
+        console.log("Sample identify call");
     }
-  },
-  () => {
-    console.log("Sample identify call");
-  }
 );
 ```
 
@@ -101,14 +101,14 @@ An example is shown below:
 
 ```javascript
 rudderanalytics.identify(
-  "1hKOmRA4el9Zt1WSfVJIVo4GRlm",
-  { email: "alex@example.com" },
-  {
-    anonymousId: "my-anonymous-id"
-  },
-  () => {
-    console.log("identify call");
-  }
+    "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+        email: "alex@example.com"
+    }, {
+        anonymousId: "my-anonymous-id"
+    },
+    () => {
+        console.log("identify call");
+    }
 );
 ```
 
@@ -127,8 +127,8 @@ rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", { email1: "alex@example.
 
 ```javascript
 rudderanalytics.setAnonymousId(
-  null,
-  "<version>*<checkSum>*<idName1>*<idValue1>*<idName2>*<idValue2>..."
+    null,
+    "<version>*<checkSum>*<idName1>*<idValue1>*<idName2>*<idValue2>..."
 );
 ```
 
@@ -210,18 +210,17 @@ A sample `page` call is shown below:
 
 ```javascript
 rudderanalytics.page(
-  "Cart",
-  "Cart Viewed",
-  {
-      path: "/best-seller/1",
-      referrer: "https://www.google.com/search?q=estore+bestseller",
-      search: "estore bestseller",
-      title: "The best sellers offered by EStore",
-      url: "https://www.estore.com/best-seller/1"
-  },
-  () => {
-    console.log("page call");
-  }
+    "Cart",
+    "Cart Viewed", {
+        path: "/best-seller/1",
+        referrer: "https://www.google.com/search?q=estore+bestseller",
+        search: "estore bestseller",
+        title: "The best sellers offered by EStore",
+        url: "https://www.estore.com/best-seller/1"
+    },
+    () => {
+        console.log("page call");
+    }
 );
 ```
 
@@ -250,15 +249,14 @@ A sample `track` call is shown below:
 
 ```javascript
 rudderanalytics.track(
-  "Order Completed",
-  {
-    revenue: 30,
-    currency: "USD",
-    user_actual_id: 12345
-  },
-  () => {
-    console.log("track call");
-  }
+    "Order Completed", {
+        revenue: 30,
+        currency: "USD",
+        user_actual_id: 12345
+    },
+    () => {
+        console.log("track call");
+    }
 );
 ```
 
@@ -287,7 +285,7 @@ A sample `alias` call is shown below:
 
 ```javascript
 rudderanalytics.alias("new_id", "old_id", () => {
-  console.log("alias call");
+    console.log("alias call");
 });
 ```
 
@@ -314,8 +312,8 @@ A sample `group` call is shown:
 
 ```javascript
 rudderanalytics.group("sample_group_id", {
-  name: "Apple Inc.",
-  location: "USA",
+    name: "Apple Inc.",
+    location: "USA",
 });
 ```
 
@@ -352,18 +350,16 @@ An example is shown below:
 ```javascript
 <script>
 rudderanalytics.syncPixelCallback = obj => {
-  rudderanalytics.track(
-    "sync lotame",
-    {
-      destination: obj.destination
-    },
-    {
-      integrations: {
-        All: false,
-        S3: true
-      }
-    }
-  );
+    rudderanalytics.track(
+        "sync lotame", {
+            destination: obj.destination
+        }, {
+            integrations: {
+                All: false,
+                S3: true
+            }
+        }
+    );
 };
 </script>
 
@@ -375,12 +371,12 @@ Here, RudderStack defines `syncPixelCallback` on the `rudderanalytics` object wh
 You can also add the callback in the **loadOptions** parameter as shown below:
 
 ```javascript
-rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
-  clientSuppliedCallbacks: {
-    syncPixelCallback: () => {
-      console.log("sync done");
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    clientSuppliedCallbacks: {
+        syncPixelCallback: () => {
+            console.log("sync done");
+        },
     },
-  },
 });
 ```
 
@@ -413,7 +409,3 @@ rudderanalytics.setAnonymousId("abcde");
 rudderanalytics.identify("12345", { name: "Firstname Lastname" });
 rudderanalytics.track("test event", { testProp: "prop1" });
 ```
-
-## Contact us
-
-For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

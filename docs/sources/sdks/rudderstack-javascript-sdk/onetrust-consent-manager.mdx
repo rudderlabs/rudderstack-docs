@@ -74,15 +74,13 @@ One way to load the JavaScript SDK after the user provides the consent is to mod
 
 ```javascript
 function OptanonWrapper() {
-  if (window.OneTrust.IsAlertBoxClosed()) {
-    // Load the SDK
-    rudderanalytics.load( 
-     <WRITE_KEY>, 
-     <DATA_PLANE_URL>, {
-        ...otherOptions //optional
-      }
-    );
-  }
+    if (window.OneTrust.IsAlertBoxClosed()) {
+        // Load the SDK
+        rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+                ...otherOptions //optional
+            }
+        );
+    }
 }
 ```
 
@@ -94,16 +92,14 @@ If the consent is updated, you need to refresh the page to load the SDK.
 3. Add the `cookieConsentManager` option in the `load()` call as shown:
 
 ```javascript
-rudderanalytics.load(
-  <WRITE_KEY>,
-  <DATA_PLANE_URL>, {
-    cookieConsentManager: {
-      oneTrust: {
-        enabled: true
-      }
-    },
-    ...otherOptions //optional
-  }
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+        cookieConsentManager: {
+            oneTrust: {
+                enabled: true
+            }
+        },
+        ...otherOptions //optional
+    }
 );
 ```
 
@@ -112,7 +108,3 @@ Once completed, RudderStack reads the consented categories and filters the desti
 <div class="infoBlock">
 Replace the <Link to="/resources/glossary/#write-key">Write key</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">Data plane URL</Link> in the above snippets with actual values.
 </div>
-
-## Contact us
-
-For queries on any of the sections in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

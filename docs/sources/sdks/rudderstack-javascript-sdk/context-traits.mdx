@@ -26,8 +26,8 @@ To understand the concept of context and traits better, refer to the following `
 
 ```javascript
 rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
-  plan: "Paid, Premium",
-  email: "alex@example.com"
+    plan: "Paid, Premium",
+    email: "alex@example.com"
 });
 ```
 
@@ -35,22 +35,16 @@ The `plan` and `email` are traits in the above event. If you wish to include thi
 
 ```javascript
 rudderanalytics.track(
-  "Subscribed",
-  {
-    campaign: "Subscribe"
-  },
-  {
-    context: {
-      traits: {
-        plan: "Paid, Premium"
-      }
+    "Subscribed", {
+        campaign: "Subscribe"
+    }, {
+        context: {
+            traits: {
+                plan: "Paid, Premium"
+            }
+        }
     }
-  }
 );
 ```
 
 The above snippet will append `plan` as a trait to the `track` event. Note that the `email` trait will not be appended, as it is not specified in the `context.traits` field.
-
-## Contact us
-
-For queries on any of the sections in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

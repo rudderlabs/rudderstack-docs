@@ -9,8 +9,8 @@ The JavaScript SDK stores persistent user data in the cookies by default. If the
 All the cookies are stored in the top-level domain by default. It helps you to identify the users visiting from websites hosted under a particular sub-domain. For example, if you include the JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in `samplewebsite.com`. However, you can specify the cookie storage location by using the `setCookieDomain` parameter in the `load` API options as shown:
 
 ```javascript
-rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
-  setCookieDomain: "samplewebsite.com",
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    setCookieDomain: "samplewebsite.com",
 });
 ```
 
@@ -35,7 +35,6 @@ The following table lists the cookies used by the JavaScript SDK to store persis
 | `test_rudder_cookie`      | Checks whether the cookie storage of a browser is accessible or not. Once checked, this cookie is removed immediately.  |  `test_rudder_cookie:true` | Cleared automatically. |
 
 <div class="infoBlock">
-
 The cookie values are encrypted and their length is directly proportional to the values provided to the SDK. Also, all the cookie names are prefixed with <code class="inline-code">rl_</code> and the values are prefixed with <code class="inline-code">RudderEncrypt:</code>. For example, <code class="inline-code">rl_user_id —> RudderEncrypt:U2FsdGVkX1+UKmiooYoGmKdNws7sgmWgGfHe</code>.
 </div>
 
@@ -55,7 +54,3 @@ The JavaScript SDK uses local storage to keep track of the events sent to the Ru
 All the local storage cookie names are prefixed with <code class="inline-code">rudder.&lt;uuid&gt;.</code> For example,
 <code class="inline-code">rudder.2dc2aee6-2836-4273-be69-79c90c04ddec.reclaimEnd</code>.
 </div>
-
-## Contact us
-
-For more information or queries on this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.

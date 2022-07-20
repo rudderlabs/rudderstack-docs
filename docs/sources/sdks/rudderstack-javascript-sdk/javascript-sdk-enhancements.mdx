@@ -81,8 +81,7 @@ The `requireIntegration` method contains the following two parameters:
 - The first parameter is a **string** or an **array of strings** containing the destination names.
 
 <div class="infoBlock">
-
-  You can also pass <code class="inline-code">rudderanalytics.requireIntegration(“All”)</code>. This will fetch all the plugins for the native destinations that are connected to the source in your RudderStack dashboard.
+You can also pass <code class="inline-code">rudderanalytics.requireIntegration(“All”)</code>. This will fetch all the plugins for the native destinations that are connected to the source in your RudderStack dashboard.
 </div>
 
 - The second parameter is a **callback** that accepts an object containing the names of the destinations that were successfully or unsuccessfully loaded on the page.
@@ -91,10 +90,10 @@ An example is shown below:
 
 ```javascript
 rudderanalytics.requireIntegration(
-  ["GoogleAnalytics", "Hotjar", "Hubspot"],
-  function(object) {
-    console.log(JSON.stringify(object));
-  }
+    ["GoogleAnalytics", "Hotjar", "Hubspot"],
+    function(object) {
+        console.log(JSON.stringify(object));
+    }
 );
 ```
 
@@ -121,8 +120,3 @@ For this example, Google Analytics' <code class="inline-code">trackingId</code> 
 The following workflow sums up the flow of the event payload when the user calls `requireIntegration()`:
 
 <img src="../../../assets/requireintegration-call-flow.png" alt="requireIntegration call flow" />
-
-
-## Contact us
-
-For queries on any of the sections in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
