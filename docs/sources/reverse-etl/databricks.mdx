@@ -116,6 +116,10 @@ To obtain the **Token**, go to the **Settings** > **User Settings** in your Data
 Refer to the <a href="https://docs.databricks.com/dev-tools/api/latest/authentication.html#generate-a-personal-access-token">Databricks documentation</a> for more details on generating a personal access token.
 </div>
 
+###  Does Rudderstack spin the Databricks cluster/sql end point everytime it needs to write?
+
+No, it is something providede by the Databricks. We need to configure automatic termination in the Auto Termination field in the Autopilot Options box on the cluster creation page. Refer to <Link to="https://docs.databricks.com/clusters/clusters-manage.html#automatic-termination-1">Databricks documentation</Link> for more information.
+
 ### What do the three validations under Verifying Credentials imply?
 
 When setting up a Reverse ETL source, once you proceed after entering the connection credentials, you will see the following three validations under the **Verifying Credentials** option:
