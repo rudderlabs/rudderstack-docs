@@ -116,9 +116,9 @@ To obtain the **Token**, go to the **Settings** > **User Settings** in your Data
 Refer to the <a href="https://docs.databricks.com/dev-tools/api/latest/authentication.html#generate-a-personal-access-token">Databricks documentation</a> for more details on generating a personal access token.
 </div>
 
-###  Does Rudderstack spin the Databricks cluster/sql end point everytime it needs to write?
+###  Does Rudderstack spin the Databricks cluster/sql endpoint everytime it needs to write?
 
-No, it is something providede by the Databricks. We need to configure automatic termination in the Auto Termination field in the Autopilot Options box on the cluster creation page. Refer to <Link to="https://docs.databricks.com/clusters/clusters-manage.html#automatic-termination-1">Databricks documentation</Link> for more information.
+No, Rudderstack does not spin the Databricks cluster/sql endpoint everytime it needs to write. Databricks itself starts up the cluster/sql endpoint when the connection is established. You need to configure the <Link to="https://docs.databricks.com/clusters/clusters-manage.html#automatic-termination-1">Automatic Termination</Link> in the **Auto Termination** field in the **Autopilot Options box** on the cluster creation page.
 
 ### What do the three validations under Verifying Credentials imply?
 
