@@ -389,8 +389,4 @@ If the callback returns with an error, we recommend retrying calling `createPers
 - There might be a scenario where the node process dies with the jobs still in active state \(not completed nor failed but in the process of sending/retrying\). Since the RudderStack SDK has only **1 processor for sending events** \(this count should always be **1**\), the next time the SDK is initialized and `createPersistenceQueue` is called, **the jobs will be picked up first by the processor to get processed to maintain event ordering based on the value of `QueueOpts.isMultiProcessor`**.
 - For multiple servers \(SDK\) connecting to the same queue \(`QueueOpts.queueName`\), there will be multiple processors fetching events from the same queue and event ordering won’t be implemented. Hence, `QueueOpts.isMultiProcessor` should be set to **`true`.**
 
-## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
-
-If you come across any issues while using the Node.js SDK, you can open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-node/issues/new).
