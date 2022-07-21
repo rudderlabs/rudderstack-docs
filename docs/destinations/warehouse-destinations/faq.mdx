@@ -52,7 +52,7 @@ You can view the warehouse upload status in the <Link to="/dashboard-guides/live
 
 If a warehouse destination is down or unavailable, RudderStack will continue to retry sending the events (on an exponential backoff basis, for up to 3 hours).
 
-RudderStack stores the syncs as staging files retries sending them at a later time when the cluster is up again. This allows for a successful delivery without any missing data.
+RudderStack stores the syncs as staging files and retries sending them at a later time when the cluster is up again. This allows for a successful delivery without any missing data.
 
 ### Does RudderStack keep retrying sending events indefinitely? How long can a service be down without losing any data?
 
@@ -63,7 +63,7 @@ After retrying for up to 3 hours, RudderStack marks the syncs as aborted. Once t
 RudderStack stores the data in the form of staging files in the object storage associated with the warehouse destination. Usually, the data is stored in the bucket for 30 days. **However, it completely depends on the retention policy you have set for the bucket.**
 
 <div class="infoBlock">
-RudderStack also has the event replay feature for the <a href="https://www.rudderstack.com/enterprise-quote/">enterprise customers</a> wherein you can back up your event data and replay it in case of any failures.
+RudderStack also provides the <Link to="/user-guides/administrators-guide/event-replay/">event replay</Link> feature for the <a href="https://www.rudderstack.com/enterprise-quote/">enterprise customers</a> wherein you can back up your event data and replay it in case of any failures.
 </div>
 
 ## Staging
