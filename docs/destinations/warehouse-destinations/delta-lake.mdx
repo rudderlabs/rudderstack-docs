@@ -388,6 +388,14 @@ All the outbound traffic is routed through these RudderStack IPs.
 
 Refer to this [documentation](https://docs.microsoft.com/bs-cyrl-ba/azure/databricks/sql/language-manual/sql-ref-reserved-words) for a complete list of the reserved keywords.
 
+###  Does RudderStack automatically spin the Databricks cluster/SQL endpoint every time it needs to write?
+
+No, RudderStack does not spin the Databricks cluster or the SQL endpoint on its own every time it needs to write to the cluster. 
+
+Databricks itself starts up the cluster/endpoint when the connection is established. You just need to configure the <Link to="https://docs.databricks.com/clusters/clusters-manage.html#automatic-termination-1">automatic termination</Link> settings in the **Autopilot Options** on the cluster creation page, as shown:
+
+<img src="../../assets/dw-integrations/databricks-autopilot-options.png" alt="Databricks autopilot options" />
+
 ### How does RudderStack handle the reserved words in a column, table, or schema?
 
 There are some limitations when it comes to using reserved words as a schema, table, or column name. If such words are used in event names, traits or properties, they will be prefixed with a `_` when RudderStack creates tables or columns for them in your schema.
