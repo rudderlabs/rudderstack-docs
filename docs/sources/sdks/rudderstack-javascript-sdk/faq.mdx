@@ -26,21 +26,6 @@ If the outbound request is not shown, check if you have installed and set up the
 
 The size limit on requests is 32KB per message and 4MB per batch request.
 
-
-### What is an anonymous ID? How do I retrieve it?
-
-Anonymous ID is an auto-generated **UUID** \(Universally Unique Identifier\) that gets assigned to each unique, unidentified visitor to your website.
-
-To retrieve the anonymous ID of any visitor, run the following:
-
-```javascript
-rudderanalytics.getAnonymousId();
-```
-
-<div class="infoBlock">
-If the <code class="inline-code">anonymousId</code> is null in the SDK and you call the above function, RudderStack will automatically set a new <code class="inline-code">anonymousId</code>.
-</div>
-
 ### What is the "Reserved Keyword" error?
 
 When using the JavaScript SDK, you may run into the following error: 
