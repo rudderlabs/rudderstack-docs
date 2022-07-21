@@ -28,6 +28,10 @@ To successfully send data to your S3 data lake, you need to set the following pe
 ]
 ```
 
+<div class="infoBlock">
+For detailed steps on creating the IAM user credentials from scratch, refer to the <Link to="/destinations/streaming-destinations/amazon-s3/#permissions">Amazon S3 permissions</Link> section.
+</div>
+
 ## Configuring S3 Data Lake destination in RudderStack
 
 To set up S3 data lake as a destination in RudderStack, follow these steps:
@@ -42,7 +46,7 @@ Enter the following settings in the **Connection Credentials** page:
 <img src="../../assets/dw-integrations/s3-datalake-connection-settings.png" alt="S3 data lake destination settings in RudderStack" />
 
 * **S3 Storage Bucket Name**: Enter the name of the S3 bucket used to store the data before loading it into the S3 data lake.
-* **Register schema on AWS Glue**: If you enable this option, RudderStack registers the schema of your incoming data on AWS Glue's data catalog.
+* **Register schema on AWS Glue**: Enable this option to register the schema of your incoming data on AWS Glue's data catalog.
 
 <div class="infoBlock">
 For more information on registering your schema in AWS Glue, refer to the <a href="https://docs.aws.amazon.com/glue/latest/dg/schema-registry.html">AWS Glue documentation</a>.
