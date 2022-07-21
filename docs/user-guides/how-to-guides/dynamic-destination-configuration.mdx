@@ -1,42 +1,25 @@
 ---
 title: "How to Configure a Destination via the Event Payload"
 description: >-
-  Step-by-step guide on dynamically configuring your destination in RudderStack via the event payload.
+  Configure your RudderStack destination dynamically via event payload properties.
 ---
 
-While setting a destination in RudderStack is quite straightforward, you might encounter a scenario where you need to configure multiple instances of a destination with different configurations for specific fields. RudderStack lets you pass these configuration values **via the event payload** dynamically.
+Dynamic settings configuration is supported in <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> RudderStack destinations, allowing you to configure destinations based on data from an event payload.
+## Create the configuration setting template
 
-Simply pass the path of your event payload from which the configuration value will be fetched, along with a default value for the field, as shown below:
+To use this feature, enter the path of your desired configuration value from the event payload using object notation in a [handlbars.js](https://handlebarsjs.com/guide/expressions.html) expression, as well as a default value for the setting in case the value is not present:
 
-<img src="../../assets/user-guides/dynamic-destination-configuration.png" />
+For example: `{{ event.path.to.key || "default_config_value" }}`, where
 
-<div class="successBlock">
-This feature is supported for all the destinations that support sending data via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
-</div>
+- `event` is the top level object for the event payload
+- `path.to.key` is the location of the property you want to make configurable for your destination, e.g., `properties.url`
+- `"default_config_value"` is the default value for the property
 
-## Supported format
+Any value present in the path will be passed as a configuration setting to your destination. If no value is present in the payload path, the default value will be used to configure the destination.
 
-To use this feature, enter the path of the payload along with a default value in the text field of a connection setting that you want to configure. 
 
-The format in which the setting should be specified is shown below:
 
-```javascript
-{{message.path.config.name || "default_config_value"}}
-```
-
-You can also use this feature to dynamically configure complex input types like field mappings, as seen in the following example:
-
-<img src="../../assets/user-guides/dynamic-config-field-mapping.png" />
-
-Any value present in the path will be passed as a configuration value in the dashboard settings. If no value is present in the payload path, the default value will be used to configure the destination.
-
-<div class="infoBlock">
-You will need to add a transformation that populates the configuration values for the payload path. Refer to the <Link to="#use-case">use-case</Link> below for more information.
-</div>
-
-### Default value format
-
-You can set the default configuration value as per your requirement.
+If `event.path.to.key` exists, its value will be sent as a destination config setting. If not present, we will send the default value that you supply in the expression.
 
 <div class="infoBlock">
   <ul>
@@ -45,13 +28,26 @@ You can set the default configuration value as per your requirement.
   </ul>
 </div>
 
-## Use-case
+In the next section we'll walk through an example of dynamic configuration using multiple Google Analytics tracking IDs.
+## Use Case: Dynamically configure your destination by Google Analytics Tracking ID
 
-Suppose you want to send your event data to different Google Analytics instances based on the source ID. In this scenario, setting a dynamic tracking ID helps you set up different Google Analytics destinations, each configured with a specific tracking ID.
+Suppose you have two web properties with `rudderanalytics.js` implemented, each with a unique Universal Analtyics (UA) tracking ID. You don't want to set up different RudderStack destinations for each property; rather, you would like to pass the event data to the appropriate tracking ID in your Google Analytics instance.
+
+To achieve this you will:
+
+1. Create a transformation that:
+    - adds a `trackingId` property to your event
+    - sets the appropriate `trackingId` value based on the RudderStack `sourceId` for the given web property.<br /><br />
+
+1. Configure your Google Analytics destination in the RudderStack dashboard with a template that dynamically updates the `trackingId` property for each event, routing the data to the appropriate GA property.
 
 ### Step 1: Add a transformation
 
-To populate the configuration values from the event payload, you need to <Link to="/features/transformations/#adding-a-transformation">add a transformation function</Link>. A sample function is shown below:
+To populate the configuration values from the event payload, add a <Link to="/features/transformations/#adding-a-transformation">transformation function</Link> to your Google Analytics destination.
+
+The following sample code uses the transformation's `metadata()` function to determine the `sourceId` from the metadata object. If the `sourceId` matches one of your provided IDs, then the associated `trackingId` is sent to Google Analytics.
+
+If there is no match for the `sourceId`, the default value that you define in the next step will be passed to GA.
 
 ```javascript
 export function transformEvent(event, metadata) {
@@ -76,155 +72,28 @@ export function transformEvent(event, metadata) {
 }
 ```
 
-For this transformation, the path that fetches the configuration values should be set in the dashboard settings as shown below:
+### Step 2: Specify the setting path in destination settings
 
-```javascript
-{{ message.properties.trackingId || "UA-1659942401" }}
-```
-
-### Step 2: Specify the path in destination settings
-
-Once you have added a transformation, the next step is to add a Google Analytics destination in the RudderStack dashboard. 
-
-<div class="infoBlock">
-Follow our guide on <Link to="/dashboard-guides/destinations/#adding-a-destination">Adding a Destination</Link> guide for more information.
-</div>
+Once you have added a transformation, the next step is to <Link to="/dashboard-guides/destinations/#adding-a-destination">add a destination</Link> for Google Analytics in the RudderStack dashboard.
 
 In the **Connection Settings**, the **Tracking ID** field of the destination should be configured as shown:
-
 <img src="../../assets/user-guides/dynamic-destination-configuration.png" />
 
-### How it works
 
-Consider the following event payload:
-
-```javascript
-[{
-  "message": {
-    "channel": "web",
-    "context": {
-      "traits": {
-        "name": "John Doe"
-      },
-      "app": {
-        "build": "1.0.0",
-        "name": "RudderStack JavaScript SDK",
-        "namespace": "com.rudderstack.javascript",
-        "version": "1.0.0"
-      },
-      "library": {
-        "name": "RudderStack JavaScript SDK",
-        "version": "1.0.0"
-      },
-      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
-      "locale": "en-US",
-      "ip": "0.0.0.0",
-      "os": {
-        "name": "",
-        "version": ""
-      },
-      "screen": {
-        "density": 2
-      }
-    },
-    "properties": {
-      "trackingId": "UA-1234567890",
-      "plan": "Sample Plan",
-      "name": "john doe"
-    },
-    "type": "identify",
-    "messageId": "84e26acc-56a5-4835-8233-591137fca468",
-    "originalTimestamp": "2019-10-14T11:15:18.299Z",
-    "anonymousId": "00000000000000000000000000",
-    "userId": "123456",
-    "integrations": {
-      "All": true
-    },
-    "sentAt": "2019-10-14T09:03:22.563Z"
-  },
-  "destination": {
-    "Config": {
-      "trackingID": "{{ message.properties.trackingId || \"UA-1659942401\" }}",
-      "doubleClick": true,
-      "enhancedLinkAttribution": true,
-      "classic": true,
-      "ignoredReferrers": "",
-      "serverClassic": false,
-      "includeSearch": true,
-      "trackCategorizedPages": true,
-      "trackNamedPages": true,
-      "sampleRate": "100",
-      "siteSpeedSampleRate": "1",
-      "setAllMappedProps": true,
-      "enableServerSideIdentify": true,
-      "serverSideIdentifyEventCategory": "name",
-      "serverSideIdentifyEventAction": "action1",
-      "anonymizeIp": true,
-      "domain": "domain",
-      "enhancedEcommerce": true,
-      "nonInteraction": true,
-      "optimize": "abc123",
-      "sendUserId": true,
-      "useGoogleAmpClientId": true,
-      "web-useNativeSDK": true,
-      "dimensions": [{
-          "from": "name",
-          "to": "dimension1"
-        },
-        {
-          "from": "custom2",
-          "to": "dimension2"
-        }
-      ],
-      "metrics": [{
-          "from": "email",
-          "to": "metric1"
-        },
-        {
-          "from": "trait2",
-          "to": "metric2"
-        }
-      ],
-      "resetCustomDimensionsOnPage": [{
-          "resetCustomDimensionsOnPage": "abc"
-        },
-        {
-          "resetCustomDimensionsOnPage": "xyz"
-        }
-      ],
-      "contentGroupings": [{
-          "from": "plan",
-          "to": "contentGroup1"
-        },
-        {
-          "from": "name",
-          "to": "contentGroup2"
-        }
-      ]
-    },
-    "Enabled": true
-  }
-}]
-```
-
-Once you specify the value for the **Tracking ID** field as `{{ message.properties.trackingId || "UA-1659942401" }}` while setting up the Google Analytics destination, for the above payload, `UA-1234567890` will be passed the configuration value.
-
-This is because `Config.trackingId` will be set to `UA-1234567890`, which is the value assigned to `properties.trackingId`.
-
-In case `properties.trackingId` does not have any value, then `Config.trackingId` will be set to `UA-1659942401` (the default value) and passed as the destination configuration value.
+With the transformation in place, and your tracking ID connection settings configured, event data will be routed to Google Analytics based on the tracking ID in the payload.
 
 ## FAQ
 
 ### How is this feature useful to me?
 
-This feature is very useful if you want to configure multiple instances of the same destination with different configurations for specific fields. Refer to the use-case section above to see how you can use this feature.
+This feature is useful if you want to configure multiple instances of the same destination with different configurations for specific fields. Refer to the use-case section above to see how you can use this feature.
 
 ### How should I use this feature? What if I don't want to use it?
 
 In the text field of a particular connection setting that you want to configure, enter the path of the payload along with a default value in the following format:
 
 ```javascript
-{{ message.path.config.name || "default_config_value" }}
+{{ event.path.config.name || "default_config_value" }}
 ```
 
 If you don't want to use this feature, you can enter the configuration setting in the dashboard as you normally would.
