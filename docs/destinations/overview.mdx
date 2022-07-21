@@ -1,18 +1,17 @@
 ---
 title: "Destinations Overview"
 description: >-
-  Detailed technical documentation on sending event data from RudderStack
-  to your specified destination platforms.
+  Detailed technical documentation on sending event data from RudderStack to your preferred destination platforms.
 ---
 
 ## What is a destination?
 
-A RudderStack destination is the target for your source event data, generally either a *streaming* destination or a *warehouse* destination. 
+A RudderStack destination is the target for your source event data, generally either a **cloud** destination or a **warehouse** destination. 
 
-* **Streaming destinations** consume your event data to complement their offering which may be related to marketing, analytics, CRM, etc.
-* **Warehouse destinations** are storage destinations such as Amazon Redshift, Snowflake, or Google BigQuery.
+* **Cloud destinations** consume your event data to complement their offering related to marketing, analytics, CRM, etc.
+* **Warehouse destinations** are data storage and processing platforms like Amazon Redshift, Snowflake, or Google BigQuery.
 
-RudderStack currently supports integration with over 150 popular destination platforms such as Google Analytics, Amplitude, Mixpanel, Salesforce, and more. This section provides detailed documentation on setting up these event stream destinations in RudderStack to send your event data in no time.
+RudderStack currently supports integration with over 150 cloud and warehouse destinations. This section provides detailed documentation on setting up these destinations in RudderStack to send your event data in no time.
 
 ## Warehouse Destinations
 
@@ -20,8 +19,12 @@ RudderStack currently supports integration with over 150 popular destination pla
   type={'warehouse'}
 />
 
-## Streaming Destinations
+## Cloud Destinations
 
 <Destinations
   type={'streaming'}
 />
+
+<div class="infoBlock">
+To send events to a destination that RudderStack currently does not support or to build a new integration for RudderStack, refer to the <Link to="/resources/community/#contribute">Contributor's guides</Link>.
+</div>
