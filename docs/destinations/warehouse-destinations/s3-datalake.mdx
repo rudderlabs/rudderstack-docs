@@ -15,6 +15,19 @@ For more information on how the events are mapped to the tables in S3 data lake 
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/s3_datalake">GitHub repository</a>.
 </div>
 
+## S3 permissions for data lake destination
+
+To successfully send data to your S3 data lake, you need to set the following permissions in your S3 policy:
+
+```json
+"Action": [
+    "s3:GetObject",
+    "s3:PutObject",
+    "s3:PutObjectAcl",
+    "s3:ListBucket"
+]
+```
+
 ## Configuring S3 Data Lake destination in RudderStack
 
 To set up S3 data lake as a destination in RudderStack, follow these steps:
@@ -45,10 +58,6 @@ If AWS Glue is enabled, make sure you grant the following permissions to it:
 </ul>
 </div>
 
-<div class="warningBlock">
-If this setting is disabled, your S3 policy needs to include certain permissions. Refer to the <Link to="#s3-permissions-for-data-lake-destination">S3 permissions for the data lake destination</Link> section below for more information.
-</div>
-
 * **AWS Glue Region**: Enter your AWS Glue region. For example, for `N.Virginia`, it would be `us-east-1`.
 
 <div class="infoBlock">
@@ -76,19 +85,6 @@ For more information on obtaining the AWS access key ID and secret access key, r
 <div class="warningBlock">
 Make sure the credentials (<strong>Access Key ID</strong> and <strong>Secret Access Key</strong>) have the permissions to read and write into the configured S3 bucket.
 </div>
-
-## S3 permissions for data lake destination
-
-If you have disabled the **Register schema on AWS Glue** setting in the <Link to="#connection-settings">destination settings</Link>, then you need to set the following permissions in your S3 policy to successfully send data to your S3 data lake:
-
-```json
-"Action": [
-    "s3:GetObject",
-    "s3:PutObject",
-    "s3:PutObjectAcl",
-    "s3:ListBucket"
-]
-```
 
 ### Finding your data in S3 data lake
 
