@@ -543,7 +543,7 @@ export const jsonData = [
         content: []
     },
     {
-        title: "Streaming Destinations",
+        title: "Cloud Destinations",
         link: "/destinations/streaming-destinations/",
         content: [
             {
