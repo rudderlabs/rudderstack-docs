@@ -330,6 +330,11 @@ During steps 3 and 4, the tables will be in a locked state. This might impact re
 If the above steps take too long to complete, you can halt the warehouse operations in the interim. For more information, refer to this <Link to="#how-do-i-avoid-lags-in-data-syncs-while-heavy-loads-are-running-on-my-datawarehouse">FAQ</Link>.
 </div>
 
+### Why am I not able to see the properties added at the top level of an event in warehouse destination?
+
+RudderStack drops the non-standard properties (any property apart from the <Link to="/destinations/warehouse-destinations/warehouse-schema/#standard-rudderstack-properties">standard properties</Link>) declared at the top level of an event. However, it allows you to add such properties in the `context` or `properties` section of the event payload.
+
+
 ## Warehouse-specific
 
 ### While configuring the Snowflake destination, what should I enter in the Account field?
