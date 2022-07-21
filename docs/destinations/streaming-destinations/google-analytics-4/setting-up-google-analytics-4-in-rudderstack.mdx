@@ -32,10 +32,15 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
     - **Measurement Id**: Enter the Measurement Id which is the identifier for a data stream. It can be found in the Google Analytics dashboard under **Admin** > **Data Streams** > **Choose your stream** > **Measurement ID**.
   - **`Firebase`** - Supported only for the cloud mode. If you select `Firebase`, enter the below settings:
     - **Firebase App Id**: Enter the Firebase App ID which is the identifier for Firebase app. It can be found in the Firebase dashboard under **Project Settings** > **General**.
-- **Enable debug mode**: Enable this setting to monitor events in the debug view:
-  * For device mode, it utilizes the `debug_mode` parameter in the GA4 script. Refer <Link to="https://support.google.com/analytics/answer/7201382?hl=en#zippy=%2Cglobal-site-tag-websites">Google documentation</Link> for more information.
-  * For cloud mode, it is supported via the validation server endpoint. Refer <Link to="https://developers.google.com/analytics/devguides/collection/protocol/ga4/validating-events?client_type=gtag">Google documentation</Link> for more information.
- 
+- **Enable debug mode**: Enable this setting to monitor events in the debug view.
+
+<div class="infoBlock">
+<ul>
+<li>For device mode, it utilizes the `debug_mode` parameter in the GA4 script. Refer to the <Link to="https://support.google.com/analytics/answer/7201382?hl=en#zippy=%2Cglobal-site-tag-websites">Google documentation</Link> for more information.</li>
+<li>For cloud mode, it is supported via the validation server endpoint. Refer to the <Link to="https://developers.google.com/analytics/devguides/collection/protocol/ga4/validating-events?client_type=gtag">Google documentation</Link> for more information.</li>
+</ul>
+</div>
+
 <div class="infoBlock">
 Refer to the <Link to="#faq">FAQ</Link> section for more information on how to obtain the API Secret, Measurement Id and Firebase App ID.
 </div>
