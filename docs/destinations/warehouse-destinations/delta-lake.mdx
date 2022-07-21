@@ -388,6 +388,26 @@ All the outbound traffic is routed through these RudderStack IPs.
 
 Refer to this [documentation](https://docs.microsoft.com/bs-cyrl-ba/azure/databricks/sql/language-manual/sql-ref-reserved-words) for a complete list of the reserved keywords.
 
+### Does the Databricks cluster attached to the destination need to be up all the time?
+
+No, your Databricks cluster attached to the destination need not be up all the time.
+
+### What happens if the cluster or the destination service is down? Is there a possibility of data loss?
+
+If a warehouse destination is down or unavailable, RudderStack will continue to retry sending events (on an exponential backoff basis, for up to 3 hours).
+
+RudderStack stores the syncs as staging files and retries sending them at a later time when the cluster is up again. This allows for a successful delivery without any missing data.
+
+After retrying for up to 3 hours, RudderStack marks the syncs as aborted. Once the service is up and running again, you can go to the <Link to="/dashboard-guides/overview/#syncs">**Syncs**</Link> tab in the RudderStack dashboard and retry sending the data.
+
+###  Does RudderStack automatically spin the Databricks cluster/SQL endpoint every time it needs to write?
+
+No, RudderStack does not spin the Databricks cluster or the SQL endpoint on its own every time it needs to write to the cluster. 
+
+Databricks itself starts up the cluster/endpoint when the connection is established. You just need to configure the <Link to="https://docs.databricks.com/clusters/clusters-manage.html#automatic-termination-1">automatic termination</Link> settings in the **Autopilot Options** on the cluster creation page, as shown:
+
+<img src="../../assets/dw-integrations/databricks-autopilot-options.png" alt="Databricks autopilot options" />
+
 ### How does RudderStack handle the reserved words in a column, table, or schema?
 
 There are some limitations when it comes to using reserved words as a schema, table, or column name. If such words are used in event names, traits or properties, they will be prefixed with a `_` when RudderStack creates tables or columns for them in your schema.
