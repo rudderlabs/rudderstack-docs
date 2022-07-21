@@ -77,7 +77,19 @@ If you explicitly specify the IP address in the event payload, RudderStack uses 
 
 ### Anonymous ID
 
-The `anonymousId` is a **UUID** (Universally Unique Identifier) generated to uniquely identify a user. RudderStack automatically assigns the `anonymousId` to the anonymous visitors on your website.
+The `anonymousId` is an auto-generated **UUID** (Universally Unique Identifier) that gets assigned to each unique and unidentified visitor to your website.
+
+#### Retrieving anonymous ID
+
+To retrieve the anonymous ID of any visitor, run the following:
+
+```javascript
+rudderanalytics.getAnonymousId();
+```
+
+<div class="infoBlock">
+If the <code class="inline-code">anonymousId</code> is null in the SDK and you call the above function, RudderStack will automatically set a new <code class="inline-code">anonymousId</code>.
+</div>
 
 #### Using anonymous ID
 
