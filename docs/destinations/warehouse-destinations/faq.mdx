@@ -332,7 +332,7 @@ If the above steps take too long to complete, you can halt the warehouse operati
 
 ### Why am I not able to see the properties added at the top level of an event in warehouse destination?
 
-RudderStack drops the non-standard properties (any property apart from the <Link to="/destinations/warehouse-destinations/warehouse-schema/#standard-rudderstack-properties">standard properties</Link>) declared at the top level of an event. However, it allows you to add such properties in the `context` or `properties` section of the event payload.
+RudderStack drops any non-standard properties (properties apart from the <Link to="/destinations/warehouse-destinations/warehouse-schema/#standard-rudderstack-properties">standard properties</Link>) declared at the top level of an event. However, you can add such properties in the `context` or `properties` section of the event payload.
 
 
 ## Warehouse-specific
