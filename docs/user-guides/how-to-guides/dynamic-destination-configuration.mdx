@@ -5,9 +5,11 @@ description: >-
 ---
 
 Dynamic settings configuration is supported in <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> RudderStack destinations, allowing you to configure destinations based on data from an event payload.
+
+This feature is useful if you want to configure multiple instances of the same destination programmatically with different configurations for specific fields. In this guide, we'll show you how to configure a dynamic destination setting, and walk through a use-case using a Google Analytics destination.
 ## Create the configuration setting template
 
-To use this feature, enter the path of your desired configuration value from the event payload using object notation in a [handlbars.js](https://handlebarsjs.com/guide/expressions.html) expression, as well as a default value for the setting in case the value is not present:
+To use this feature, enter the path of your desired configuration value from the event payload using object notation in a [handlebars.js](https://handlebarsjs.com/guide/expressions.html) expression, as well as a default value for the setting in case the value is not present:
 
 For example: `{{ event.path.to.key || "default_config_value" }}`, where
 
@@ -15,11 +17,7 @@ For example: `{{ event.path.to.key || "default_config_value" }}`, where
 - `path.to.key` is the location of the property you want to make configurable for your destination, e.g., `properties.url`
 - `"default_config_value"` is the default value for the property
 
-Any value present in the path will be passed as a configuration setting to your destination. If no value is present in the payload path, the default value will be used to configure the destination.
-
-
-
-If `event.path.to.key` exists, its value will be sent as a destination config setting. If not present, RudderStack will send the default value that you supply in the expression.
+If `event.path.to.key` exists, its value will be passed as a configuration setting to your destination. If not present, RudderStack will send the default value that you supply in the expression.
 
 <div class="infoBlock">
   <ul>
@@ -84,11 +82,6 @@ In the **Connection Settings**, configure the **Tracking ID** field, as shown:
 With the transformation in place and the dynamic tracking ID configured in the connection settings, RudderStack will route the event data to Google Analytics based on the tracking ID in the payload.
 
 ## FAQ
-
-### How is this feature useful to me?
-
-This feature is useful if you want to configure multiple instances of the same destination with different configurations for specific fields. Refer to the <Link to="#use-case-dynamically-configure-your-destination-by-google-analytics-tracking-id">use case</Link> section above to see how you can use this feature.
-
 ### How should I use this feature? What if I don't want to use it?
 
 In the text field of a particular connection setting that you want to configure, enter the path of the payload along with a default value in the following format:
