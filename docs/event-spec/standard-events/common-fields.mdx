@@ -116,7 +116,7 @@ The following section highlights all the contextual fields that are **automatica
 | `library.version` | Yes | Yes | Yes | Version of the library. |
 | `ip` | - | Yes | - |  IP address of the user. |
 | `locale` | Yes | Yes | Yes | Locale string of the user. |
-| `network.bluetooth` | - | Yes (if permission is granted) | - | Bluetooth information about the network connection. |
+| `network.bluetooth` | - | Yes (if permission is granted) | - | Bluetooth information. |
 | `network.carrier` | - | Yes | Yes | Carrier information about the network connection. |
 | `network.cellular` | - | Yes | Yes | Cellular information about the network connection. |
 | `network.wifi` | - | Yes | Yes | WiFi information about the network connection. |
@@ -225,7 +225,7 @@ The following sample payload highlights the usage of the common and contextual f
     },
     "device": {
       "type": "android",
-      "id": "7e32188a4dab669f",
+      "id": "78c53c15-32a1-4b65-adac-bec2d7bb8fab",
       "advertisingId":"435o4GRlm",
       "manufacturer": "Google",
       "model": "Android SDK built for x86",
@@ -285,32 +285,32 @@ The following sample payload highlights the usage of the common and contextual f
   "channel": "mobile",
   "context": {
     "app": {
-      "name": "RudderiOSClient",
+      "name": "RudderSampleAppObjC",
       "version": "1.0",
       "build": "1"
     },
     "device": {
       "type": "iOS",
-      "id": "7e32188a4dab669f",
+      "id": "78c53c15-32a1-4b65-adac-bec2d7bb8fab",
       "advertisingId":"435o4GRlm",
       "adTrackingEnabled": false,
-      "manufacturer": "Google",
-      "model": "iOS SDK built for x86",
-      "name": "generic_x86",
+      "manufacturer": "Apple",
+      "model": "iPhone",
+      "name": "iPhone 12",
     },
     "library": {
       "name": "rudder-ios-library",
-      "version": "0.1.4"
+      "version": "1.5.0"
     },
     "locale": "en-US",
     "network": {
-      "carrier": "iOS",
-      "cellular": true,
+      "carrier": "unavailable",
+      "cellular": false,
       "wifi": true
     },
     "os": { 
       "name": "iOS", 
-      "version": "9" 
+      "version": "15.2" 
       },
     "screen": { 
       "height": 1794, 
@@ -325,7 +325,7 @@ The following sample payload highlights the usage of the common and contextual f
   "integrations": { 
     "All": true 
     },
-  "messageId": "1578564113557-af022c68-429e-4af4-b99b-2b9174056383",
+  "messageId": "1643629072-8ce81faf-7489-4508-b21b-659e81510991",
   "properties": {
     "review_id": "review_id_1",
     "product_id": "product_id_1",
