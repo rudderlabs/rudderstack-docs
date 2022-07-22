@@ -97,6 +97,10 @@ RudderStack syncs your Salesforce data in the following manner:
 RudderStack only reads your Salesforce data and does not write to it.
 </div>
 
+### How does RudderStack handle the Salesforce rate limits?
+
+RudderStack automatically stops the sync process if the Salesforce [rate limits](https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm) are hit. Once the limits are lifted, RudderStack starts the next data sync from the point it last stopped.
+
 ### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is.
