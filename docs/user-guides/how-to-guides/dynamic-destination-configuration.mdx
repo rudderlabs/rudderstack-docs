@@ -19,7 +19,7 @@ Any value present in the path will be passed as a configuration setting to your 
 
 
 
-If `event.path.to.key` exists, its value will be sent as a destination config setting. If not present, we will send the default value that you supply in the expression.
+If `event.path.to.key` exists, its value will be sent as a destination config setting. If not present, RudderStack will send the default value that you supply in the expression.
 
 <div class="infoBlock">
   <ul>
@@ -28,11 +28,11 @@ If `event.path.to.key` exists, its value will be sent as a destination config se
   </ul>
 </div>
 
-In the next section we'll walk through an example of dynamic configuration using multiple Google Analytics tracking IDs.
+The next section walks through an example of dynamic configuration using multiple Google Analytics tracking IDs.
 
-## Use Case: Dynamically configure your destination by Google Analytics Tracking ID
+## Use Case: Dynamically configure your Google Analytics destination using Tracking ID
 
-Suppose you have two web properties with `rudderanalytics.js` implemented, each with a unique Universal Analtyics (UA) tracking ID. You don't want to set up different RudderStack destinations for each property; rather, you would like to pass the event data to the appropriate tracking ID in your Google Analytics instance.
+Suppose you have implemented two web properties with `rudderanalytics.js`, each with a unique Universal Analytics (UA) tracking ID. You don't want to set up different RudderStack destinations for each property; rather, you would like to pass the event data to the appropriate tracking ID in your Google Analytics instance.
 
 To achieve this you will:
 
@@ -44,11 +44,11 @@ To achieve this you will:
 
 ### Step 1: Add a transformation
 
-To populate the configuration values from the event payload, add a <Link to="/features/transformations/#adding-a-transformation">transformation function</Link> to your Google Analytics destination.
+To populate the configuration values from the event payload, add a <Link to="/features/transformations/#adding-a-transformation">transformation function</Link>.
 
 The following sample code uses the transformation's `metadata()` function to determine the `sourceId` from the metadata object. If the `sourceId` matches one of your provided IDs, then the associated `trackingId` is sent to Google Analytics.
 
-If there is no match for the `sourceId`, the default value that you define in the next step will be passed to GA.
+If there is no match for the `sourceId`, the default value that you define in the next step will be passed to Google Analytics.
 
 ```javascript
 export function transformEvent(event, metadata) {
@@ -75,19 +75,19 @@ export function transformEvent(event, metadata) {
 
 ### Step 2: Specify the setting path in destination settings
 
-Once you have added a transformation, the next step is to <Link to="/dashboard-guides/destinations/#adding-a-destination">add a destination</Link> for Google Analytics in the RudderStack dashboard.
+Once you have added a transformation, the next step is to <Link to="/dashboard-guides/destinations/#adding-a-destination">add a Google Analytics destination</Link> in the RudderStack dashboard.
 
-In the **Connection Settings**, the **Tracking ID** field of the destination should be configured as shown:
+In the **Connection Settings**, configure the **Tracking ID** field, as shown:
 <img src="../../assets/user-guides/dynamic-destination-configuration.png" />
 
 
-With the transformation in place, and your tracking ID connection settings configured, event data will be routed to Google Analytics based on the tracking ID in the payload.
+With the transformation in place and the dynamic tracking ID configured in the connection settings, RudderStack will route the event data to Google Analytics based on the tracking ID in the payload.
 
 ## FAQ
 
 ### How is this feature useful to me?
 
-This feature is useful if you want to configure multiple instances of the same destination with different configurations for specific fields. Refer to the use-case section above to see how you can use this feature.
+This feature is useful if you want to configure multiple instances of the same destination with different configurations for specific fields. Refer to the <Link to="#use-case-dynamically-configure-your-destination-by-google-analytics-tracking-id">use case</Link> section above to see how you can use this feature.
 
 ### How should I use this feature? What if I don't want to use it?
 
