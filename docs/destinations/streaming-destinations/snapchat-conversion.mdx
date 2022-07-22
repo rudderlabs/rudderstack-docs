@@ -8,7 +8,6 @@ Snapchat's [Conversions API](https://businesshelp.snapchat.com/s/article/convers
 RudderStack supports Snapchat Conversion as a destination where you can send your event data seamlessly.
 
 <div class="warningBlock">
-
 The events should be generated at least 28 days before to be eligible for reporting via the Conversions API.
 </div>
 
@@ -32,43 +31,44 @@ To know more about the difference between cloud mode and device mode in RudderSt
 Once you have confirmed that the source platform supports sending events to Snapchat Conversion, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Snapchat Conversion**.
-2. Assign a name to your destination and click on **Next**.
+2. Assign a name to your destination and click on **Continue**.
 
 ## Connection settings
 
 To successfully configure Snapchat Conversion as a destination, configure the following settings:
 
 <img src="../../assets/event-stream-destinations/snapchat-conversion-connection-settings.png" alt="Snapchat Conversion connection settings"/>
+<img src="../../assets/event-stream-destinations/snapchat-conversion-connection-settings-2.png" alt="Snapchat Conversion connection settings"/>
 
 - **API Token**: Enter your API token generated from your Snapchat dashboard.
-
-<div class="infoBlock">
-
-For more information on getting your API token, refer to the <a href="#faq">FAQ</a> section below.
-</div>
-
 - **Pixel ID**: Enter your Snap Pixel ID. This is required for sending the web and offline events.
 
 <div class="infoBlock">
-
-For more information on getting your Snap Pixel ID, refer to the <a href="#faq">FAQ</a> section below.
+For more information on getting your API token and Snap Pixel ID, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
 - **Snap App ID**: Enter your Snapchat App ID. This is required for sending the app events.
 
 <div class="infoBlock">
-
 Refer to the <a href="https://ads.tiktok.com/marketing_api/docs?id=1701890914536450">Generate your Snap App ID</a> guide for more information on generating the Snap App ID.
 </div>
 
 - **App ID**: Enter the unique ID associated with your application. This is required for sending the app events.
 
 <div class="warningBlock">
-
 The <strong>App ID</strong> is different from <strong>Snap App ID</strong>. It should be numeric for iOS and in the human-interpretable string format in case of Android.
 
 For more information, refer to the <a href="https://marketingapi.snapchat.com/docs/conversion.html#conversion-parameters">Conversions API reference</a>.
 </div>
+
+- **Map your events with Snapchat Standard Events**: Enter the event name and pick a corresponding <Link to="https://businesshelp.snapchat.com/s/article/chrome-helper?language=en_US">Snapchat standard event</Link> from the dropdown to be triggered when that event is called.
+
+<div class="successBlock">
+You can specify multiple <strong>Standard Events</strong> for one <strong>Event Name</strong> and vice versa.
+</div>
+
+- **Enable Event Deduplication**: Enable this setting to deduplicate the events. If enabled, you need to enter the following:
+  - **Deduplication key**: Enter the field/property name to be mapped to a standard Snapchat Conversion property `client_dedup_id`, using which Snapchat Conversion deduplicates the events.
 
 ## Track
 
@@ -77,7 +77,6 @@ The <Link to="/event-spec/standard-events/track">`track`</Link> event lets you c
 RudderStack tracks and sends the web, mobile, and offline events to Snapchat via the [`conversion`](https://tr.snapchat.com/v2/conversion) endpoint.
 
 <div class="warningBlock">
-
 RudderStack uses Bearer authentication leveraging the Snap API token for authenticating all the requests. OAuth is not supported currently.
 </div>
 
@@ -104,7 +103,6 @@ rudderanalytics.track("Order Completed", {
 ```
 
 <div class="infoBlock">
-
 Make sure to pass at least one of the required fields from the below:
 <ul>
   <li><code class="inline-code">email</code></li>
@@ -125,7 +123,6 @@ offline -> "OFFLINE"
 ```
 
 <div class="infoBlock">
-
 Make sure you specify the values in the exact format.
 </div>
 
