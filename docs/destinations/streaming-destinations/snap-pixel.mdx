@@ -71,7 +71,7 @@ rudderanalytics.identify({
 });   
 ```
 
-The following table lists the parameters along with the relative mapping to the Snap Pixel parameters:
+The following table lists the user parameters along with the relative mapping to the Snap Pixel parameters:
 
 | **RudderStack user parameter** | **Snap Pixel user parameter** |
 | :--- | :--- |
@@ -143,7 +143,7 @@ Snap Pixel supports upto 5 custom events, as listed in the table below:
 
 RudderStack lets you define the client deduplication key for event deduplication by enabling the **Customize Client Deduplication Key** setting in the dashboard. 
 
-The following scenarios describes the different ways RudderStack can set the custom deduplication key:
+The following scenarios describes the different ways RudderStack sets the custom deduplication key:
 
 ### Scenario 1: Passing the key in the event properties
 
@@ -162,7 +162,7 @@ rudderanalytics.track(
 );
 ```
 
-In this case, `mydedupid` is set as the client deduplication key.
+In this case, RudderStack sets `mydedupid` as the client deduplication ID.
 
 ### Scenario 2: Passing the message ID as the deduplication key
 
@@ -172,7 +172,7 @@ If you enable the **Customize Client Deduplication Key** setting and leave the *
 
 If you enable the **Customize Client Deduplication Key** setting and set the **Client Deduplication Field**, but the field is either missing or has a different name in the event, then RudderStack **does not set** the client deduplication ID.
 
-Suppose you set **Client Deduplication Field** to `properties.dedup` and the event contains `properties.deduplication` instead, then RudderStack sends the event to Snap Pixel **without setting** the client deduplication key.
+Suppose you set **Client Deduplication Field** to `properties.dedup` and the event contains `properties.deduplication` instead, then RudderStack sends the event to Snap Pixel **without setting** the client deduplication ID.
 
 ## FAQ
 
