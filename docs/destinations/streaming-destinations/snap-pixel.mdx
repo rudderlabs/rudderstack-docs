@@ -95,10 +95,10 @@ The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you s
 A sample `track` call is as shown below:
 
 ```javascript
-rudderanalytics.track('PURCHASE', {
+rudderanalytics.track('Order Completed', {
   'currency': 'USD',
   'price': 333.33,
-  'transaction_id': '11111111'
+  'order_id': '11111111'
 });
 ```
 
@@ -116,6 +116,10 @@ You can also send the following <Link to="/event-spec/ecommerce-events-spec/">Ru
 | `Product Viewed` | `VIEW_CONTENT` |
 | `Product List Viewed` | `VIEW_CONTENT` |
 | `Products Searched` | `SEARCH` |
+
+<div class="warningBlock">
+RudderStack maps <code class="inline-code">order_id</code> to Snap Pixel's <code class="inline-code">transaction_id</code> only in case of the <code class="inline-code">Order Completed</code> event.  
+</div>
 
 <div class="infoBlock">
 For more information on the Snap Pixel events, refer to the <a href="https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US">Snapchat documentation</a>.
