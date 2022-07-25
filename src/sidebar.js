@@ -413,11 +413,17 @@ export const jsonData = [
                 title: "Pipedrive",
                 link: "/sources/extract/pipedrive/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "QuickBooks",
                 link: "/sources/extract/quickbooks/",
                 content: []
             }, 
+            {
+                title: "Recurly",
+                link: "/sources/extract/recurly/",
+                content: []
+            },
             {
                 title: "Salesforce",
                 link: "/sources/extract/salesforce/",
@@ -550,7 +556,7 @@ export const jsonData = [
         content: []
     },
     {
-        title: "Streaming Destinations",
+        title: "Cloud Destinations",
         link: "/destinations/streaming-destinations/",
         content: [
             {
@@ -664,7 +670,8 @@ export const jsonData = [
                 title: "Pinterest Tag",
                 link: "/destinations/streaming-destinations/pinterest-ads/",
                 content: []
-            }, {
+            },
+            {
                 title: "Reddit Pixel",
                 link: "/destinations/streaming-destinations/reddit-pixel/",
                 content: []

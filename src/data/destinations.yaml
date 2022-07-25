@@ -316,7 +316,7 @@
   options: null
   type: streaming
 - category: null
-  displayName: Kiss Metrics
+  displayName: Kissmetrics
   link: /destinations/streaming-destinations/kissmetrics/
   options: null
   type: streaming
@@ -373,6 +373,11 @@
 - category: null
   displayName: Marketo Lead Import
   link: /destinations/streaming-destinations/marketo-lead-import/
+  options: null
+  type: streaming
+- category: null
+  displayName: Matomo
+  link: /destinations/streaming-destinations/matomo/
   options: null
   type: streaming
 - category: null
@@ -556,6 +561,11 @@
   options: null
   type: streaming
 - category: null
+  displayName: Vero
+  link: /destinations/streaming-destinations/vero/
+  options: null
+  type: streaming
+- category: null
   displayName: VWO
   link: /destinations/streaming-destinations/vwo-beta-visual-website-optimizer/
   options: null
@@ -588,7 +598,7 @@
   options: null
   type: warehouse
 - category: data-lake
-  displayName: Amazon S3 Datalake
+  displayName: Amazon S3 Data Lake
   link: /destinations/warehouse-destinations/s3-datalake/
   options: null
   type: warehouse
@@ -598,7 +608,7 @@
   options: null
   type: warehouse
 - category: data-lake
-  displayName: Azure Datalake
+  displayName: Azure Data Lake
   link: /destinations/warehouse-destinations/azure-datalake/
   options: null
   type: warehouse
@@ -608,7 +618,7 @@
   options: null
   type: warehouse
 - category: data-lake
-  displayName: Databricks (Delta Lake)
+  displayName: Databricks Delta Lake
   link: /destinations/warehouse-destinations/delta-lake/
   options: null
   type: warehouse
@@ -618,7 +628,7 @@
   options: null
   type: warehouse
 - category: data-lake
-  displayName: Google Cloud Storage Datalake
+  displayName: Google Cloud Storage Data Lake
   link: /destinations/warehouse-destinations/gcs-datalake/
   options: null
   type: warehouse
@@ -628,7 +638,7 @@
   options: null
   type: warehouse
 - category: null
-  displayName: Postgres
+  displayName: PostgreSQL
   link: /destinations/warehouse-destinations/postgresql/
   options: null
   type: warehouse

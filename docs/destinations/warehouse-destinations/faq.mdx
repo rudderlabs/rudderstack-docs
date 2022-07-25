@@ -1,5 +1,5 @@
 ---
-title: "FAQ"
+title: "Warehouse FAQ"
 description: >-
   Commonly-asked questions related to the RudderStack data warehouse destinations.
 ---
@@ -29,13 +29,13 @@ The EU cluster IPs are listed below:
 All the outbound traffic is routed through these RudderStack IPs.
 </div>
 
-## Data loads
+## Data syncs and retries
 
-### When does Rudderstack load data into the data warehouse(s)?
+### When does Rudderstack load data into the warehouse destination?
 
 RudderStack lets you choose how frequently it should sync the data into the data warehouse. The default time is 30 minutes. However, you can choose to extend this value up to 24 hours. You can also configure the time of the day when RudderStack loads the data.
 
-### Is there a way to force load my data into the warehouses?
+### Is there a way to force load my data into the warehouse?
 
 Yes, there is - you can configure the below values in your `config.yaml` file:
 
@@ -44,9 +44,27 @@ warehouseSyncFreqIgnore = true #if set true this will ignore syncFrequency and s
 uploadFreqInS=1800 #This field lets you control syncPeriod if above field set to true 
 ```
 
-### Where can I view the status of my data load?
+### Where can I view the status of my data sync?
 
-You can view the warehouse upload status in the **Live Events** section of the destination in the RudderStack dashboard.
+You can view the warehouse upload status in the <Link to="/dashboard-guides/live-events/#destination-live-events">**Live Events**</Link> section of the destination in the RudderStack dashboard.
+
+### What happens if the cluster or the destination service is down? Is there a possibility of data loss?
+
+If a warehouse destination is down or unavailable, RudderStack will continue to retry sending the events (on an exponential backoff basis, for up to 3 hours).
+
+RudderStack stores the syncs as staging files and retries sending them at a later time when the cluster is up again. This allows for a successful delivery without any missing data.
+
+### Does RudderStack keep retrying sending events indefinitely? How long can a service be down without losing any data?
+
+After retrying for up to 3 hours, RudderStack marks the syncs as aborted. Once the service is up and running again, you can go to the <Link to="/dashboard-guides/overview/#syncs">**Syncs**</Link> tab in the RudderStack dashboard and retry sending the data.
+
+### Is there a scenario where I can lose my data without the ability to retry syncs?
+
+RudderStack stores the data in the form of staging files in the object storage associated with the warehouse destination. Usually, the data is stored in the bucket for 30 days. **However, it completely depends on the retention policy you have set for the bucket.**
+
+<div class="infoBlock">
+RudderStack also provides the <Link to="/user-guides/administrators-guide/event-replay/">event replay</Link> feature for the <a href="https://www.rudderstack.com/enterprise-quote/">enterprise customers</a> wherein you can back up your event data and replay it in case of any failures.
+</div>
 
 ## Staging
 
@@ -329,6 +347,11 @@ To set your preferred data type for a particular column, it is highly recommende
 During steps 3 and 4, the tables will be in a locked state. This might impact real-time data uploads/syncs.
 If the above steps take too long to complete, you can halt the warehouse operations in the interim. For more information, refer to this <Link to="#how-do-i-avoid-lags-in-data-syncs-while-heavy-loads-are-running-on-my-datawarehouse">FAQ</Link>.
 </div>
+
+### Why am I not able to see the properties added at the top level of an event in warehouse destination?
+
+RudderStack drops any non-standard properties (properties apart from the <Link to="/destinations/warehouse-destinations/warehouse-schema/#standard-rudderstack-properties">standard properties</Link>) declared at the top level of an event. However, you can add such properties in the `context` or `properties` section of the event payload.
+
 
 ## Warehouse-specific
 

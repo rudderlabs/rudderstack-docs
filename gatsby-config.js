@@ -125,6 +125,30 @@ module.exports = {
         icons: [],
       },
     },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemaps`,
+        resolveSiteUrl: () => 'https://www.rudderstack.com',
+        query: `
+          {
+            allMdx {
+              nodes {
+                slug
+              }
+            }
+          }
+        `,
+        resolvePages: ({ allMdx: { nodes: allMdxPages } }) => {
+          return allMdxPages.map(page => ({ path: `/${page.slug}` }))
+        },
+        serialize: ({ path }) => ({
+          url: path,
+          changefreq: 'daily',
+          priority: 0.7
+        })
+      }
+    },
     ...(process.env.RS_GATSBY_ALGOLIA_APIKEY
       ? [
         {
