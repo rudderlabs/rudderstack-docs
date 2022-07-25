@@ -15,8 +15,8 @@ RudderStack uses the source name (written in snake case, for example, `source_na
 
 The following tables are created in your data warehouse for each RudderStack source connected to it:
 
-| Name                                | Description                                                                                                           |
-| :-----------------------------------| :---------------------------------------------------------------------------------------------------------------------|
+| Name         | Description                  |
+| :-----------------------------------| :------------------------------|
 | `<source_name>.identifies`          | Every `identify` call sent from the source is stored in this table, including the properties passed as `traits`.      |
 | `<source_name>.users`               | RudderStack stores all the unique users in this table. Only the latest properties used to identify a user are stored, including the latest `anonymousId`.    |
 | `<source_name>.tracks`              | Every `track` call sent from the source is stored in this table. It **does not include** the custom properties present in the event's `properties` but has some standard properties (listed in the <Link to="#standard-rudderstack-properties">Standard properties</Link> section below such as `received_at`, `anonymous_id`, `context_device_info`, etc.                                                                                                    |
@@ -170,6 +170,34 @@ The corresponding schemas created for the `tracks` and `add_to_cart` tables are 
 | `event`              | String      | `add_to_cart`                                           | The name of the corresponding event table.                                              |
 | `event_text`         | String      | `Add to Cart`                                           | The name of the event.                                                                  |
 | `uuid_ts`            | Timestamp   | `2020-04-26 07:31:54:735`                               | Added by RudderStack for debugging purposes. Can be ignored for analytics.             |
+
+You can choose to skip the creation of `tracks` table by setting the `skipTracksTable` option to `true`. The following sample snippet shows how to skip the `tracks` table for Delta Lake destination:
+
+```javascript
+event.integrations = {
+    "DELTALAKE": {
+        options: {
+            skipTracksTable: true
+        }
+    }
+}
+```
+
+Similarly, you can use the following names for the required warehouse destination in the above snippet:
+
+| Warehouse destination |  Format |
+| :------------------- | :---------- |
+| PostgreSQL | POSTGRES |
+| Snowflake  | SNOWFLAKE |
+| Google BigQuery   | BQ |
+| Microsoft SQL Server | MSSQL |
+| Databricks Delta Lake  | DELTALAKE |
+| ClickHouse | CLICKHOUSE |
+| Amazon S3 Data Lake | S3_DATALAKE |
+| Google Cloud Storage Data Lake  | GCS_DATALAKE |
+| Azure Data Lake   | AZURE_DATALAKE |
+| Amazon Redshift | RS |
+| Azure Synapse | |
 
 ### Table: `add_to_cart`
 
