@@ -144,37 +144,32 @@ To obtain a user’s <code class="inline-block">anonymous_id</code>, you can que
 <li>Azure Synapse</li>
 <li>Microsoft SQL Server</li></ul>
       </td>
-      <td> Note 1</td>
     </tr>
     <tr>
       <td> Upsert strategy</td>
-      <td>Snowflake
-<br/>Databricks Delta Lake Merge Mode (To be given)
-<br/>Google BigQuery Merge Mode (To be given)
+      <td><ul><li>Snowflake</li>
+<li>Databricks Delta Lake Merge Mode (To be given)</li>
+<li>Google BigQuery Merge Mode (To be given)</li></ul>
       </td>
-      <td> Note 2</td>
     </tr>
     <tr>
       <td>INSERT data</td>
-      <td>ClickHouse
-<br/>Google BigQuery
-<br/>Databricks Delta Lake
+      <td><ul><li>ClickHouse</li>
+<li>Google BigQuery</li>
+<li>Databricks Delta Lake</li></ul>
       </td>
-      <td> Note 3</td>
     </tr>
      <tr>
       <td>RS only generates load files and store them in respective storage. Data loading is not done.</td>
-      <td>Azure Data Lake
-<br/>Google Cloud Storage Data Lake
-<br/>Amazon S3 Data Lake
+      <td><ul><li>Azure Data Lake</li>
+<li>Google Cloud Storage Data Lake</li>
+<li>Amazon S3 Data Lake</li></ul>
       </td>
-      <td> Note 4</td>
     </tr>
     <tr>
       <td>Table schema is generated in glue catalog i.e. users table is created.</td>
       <td>Amazon S3 Data Lake + AWS Glue
       </td>
-      <td> Note 5</td>
     </tr>
   </tbody>
 </table>
