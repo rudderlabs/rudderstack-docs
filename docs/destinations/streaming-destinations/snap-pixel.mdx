@@ -56,7 +56,7 @@ For more information on this setting, refer to the <Link to="#setting-custom-cli
 
 The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call is used to initialize the Snap Pixel code.
 
-RudderStacks checks the cookies for the user parameter(email or phone number) before loading the Snap Pixel snippet. If the parameter is found, RudderStack loads the snippet. Otherwise, an <code class="inline-code">identify</code> call with the user's email or phone number is required to load the snippet.
+RudderStacks checks the cookies for the user parameter (`email` or `phone`) before loading the Snap Pixel snippet. If the parameter is present, RudderStack loads the snippet. Otherwise, RudderStack loads the snippet **without passing** the user parameter.
 
 A sample `identify` call is as shown:
 
@@ -164,7 +164,7 @@ If you enable the **Customize Client Deduplication Key** setting and leave the *
 
 If you enable the **Customize Client Deduplication Key** setting and set the **Client Deduplication Field**, but the field is either missing or has a different name in the event, then RudderStack **does not set** the client deduplication ID.
 
-Suppose you set **Client Deduplication Field** to `properties.dedup` and the event contains `properties.deduplication` instead, then RudderStack throws an error.
+Suppose you set **Client Deduplication Field** to `properties.dedup` and the event contains `properties.deduplication` instead, then RudderStack sends the event to Snap Pixel **without setting** the client deduplication key.
 
 ## FAQ
 
