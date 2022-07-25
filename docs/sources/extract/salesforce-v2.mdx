@@ -28,11 +28,15 @@ To set up Salesforce as a Cloud Extract source, you need to configure the follow
 - Enable the **Sandbox** checkbox if your app is in the Salesforce [sandbox](https://help.salesforce.com/s/articleView?id=sf.create_test_instance.htm&type=5) mode.
 
 <div class="warningBlock">
-It is highly recommended to not check this box if you're unsure whether your app is in a Salesforce sandbox.
+It is highly recommended to keep the checkbox unchecked if you're unsure whether your app is in a Salesforce sandbox.
 </div>
 
 - Click **Connect with Salesforce V2** and connect your Salesforce account with RudderStack.
-- **Start Date**: Select the start date from when you want RudderStack to ingest the Salesforce data.
+- **Start Date**: Select the start date when you want RudderStack to ingest the Salesforce data.
+      - If you specify the start date, RudderStack selects all the Salesforce data associated with the `updated` field available from that date and **does not** replicate any data before this date.
+      - If you do not specify the start date, RudderStack replicates all the data associated with the `created` field by default.
+      
+      
 
 <div class="warningBlock">
 RudderStack will not replicate any data before this date. Also, RudderStack will replicate all your data by default if you do not set this field.
