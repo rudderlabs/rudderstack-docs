@@ -1,5 +1,6 @@
 const { DateTime } = require("luxon");
 
+
 export const onRouteUpdate = (_ref, _ref2) => {
   let prevLocation = _ref.prevLocation;
 
