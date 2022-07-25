@@ -3,9 +3,9 @@ title: "Snap Pixel"
 description: Step-by-step guide on sending your event data from RudderStack to Snap Pixel.
 ---
 
-The [Snap Pixel](https://ads.snapchat.com/) is a piece of JavaScript code that lets you measure the cross-device impact of your advertising campaigns. It lets you understand how many Snapchat users interact with your website after seeing the ads.
+The [Snap Pixel](https://ads.snapchat.com/) is a piece of JavaScript code that lets you measure the cross-device impact of your advertising campaigns. It enables you to understand how many Snapchat users interact with your website after seeing the ads.
 
-RudderStack supports Snap Pixel as a destination to which you can seamlessly send your event data.
+RudderStack supports Snap Pixel as a destination where you can seamlessly send your event data.
 
 ## Getting started
 
@@ -31,13 +31,13 @@ To set up Snap Pixel as a destination, you need to configure the following setti
 
 <img src="../../assets/event-stream-destinations/snap-pixel-connection-settings.png" alt="Snapchat Pixel connection settings" />
 
-- **Pixel ID**: Enter your Snap Pixel ID here.
+- **Pixel ID**: Enter your Snap Pixel ID.
 
 <div class="infoBlock">
 For more information on obtaining your Snap Pixel ID, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
-- **Hashing Method**: Snap Pixel lets you pass a user parameter \(email or phone number\) in both hashed and non-hashed format during intialization. If **SHA-256** is chosen as an option, RudderStack will hash-encode the parameter.
+- **Hashing Method**: Snap Pixel lets you pass a user parameter (`email` or `phone`) in both hashed and non-hashed format during the snippet's intialization. If you choose **SHA-256**, RudderStack will hash-encode the parameter before passing it to Snap Pixel.
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Snap Pixel.
 
 <div class="infoBlock">
@@ -59,7 +59,7 @@ The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call is u
 RudderStacks checks the cookies for the user parameter (`email` or `phone`) before loading the Snap Pixel snippet. If the parameter is present, RudderStack loads the snippet. Otherwise, RudderStack loads the snippet **without passing** the user parameter.
 
 <div class="infoBlock">
-Snapchat strongly recommends passing a user parameter (either <code class="inline-code">email</code> or <code class="inline-code">phone</code>) through the Snap Pixel as it allows you get better insights into your tracked conversions and creating more robust Pixel Custom Audiences. For more information, refer to the <a href="https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US">Snap Pixel FAQ</a>.
+Snapchat strongly recommends passing a user parameter (either <code class="inline-code">email</code> or <code class="inline-code">phone</code>) through the Snap Pixel, as it lets you get better insights into your tracked conversions and creates more robust Pixel Custom Audiences. For more information, refer to the <a href="https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US">Snap Pixel FAQ</a>.
 </div>
 
 A sample `identify` call is as shown:
@@ -82,9 +82,13 @@ The following table lists the user parameters along with the relative mapping to
 
 When the <Link to="/event-spec/standard-events/page/">`page`</Link> call is made, RudderStack sends the following call to Snap Pixel:
 
-`snaptr("track", "PAGE_VIEW")`.
+```
+snaptr("track", "PAGE_VIEW")
+```
 
-You can make the `page` call with or without the event payload.
+<div class="infoBlock">
+You can make the <code class="inline-code">page</code> call with or without the event payload.
+</div>
 
 A sample `page` call is as shown:
 
@@ -129,7 +133,7 @@ RudderStack maps <code class="inline-code">order_id</code> to Snap Pixel's <code
 For more information on the Snap Pixel events, refer to the <a href="https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US">Snapchat documentation</a>.
 </div>
 
-Snap Pixel supports upto 5 custom events, as listed in the table below:
+Snap Pixel supports up to 5 custom events, as listed in the table below:
 
 | **Custom Events** |
 | :--- |
@@ -141,13 +145,13 @@ Snap Pixel supports upto 5 custom events, as listed in the table below:
 
 ## Setting custom client deduplication key
 
-RudderStack lets you define the client deduplication key for event deduplication by enabling the **Customize Client Deduplication Key** setting in the dashboard. 
+RudderStack lets you define the client deduplication key for event deduplication.  Enable the **Customize Client Deduplication Key** setting in the dashboard to use this feature.
 
-The following scenarios describes the different ways RudderStack sets the custom deduplication key:
+The following scenarios describe the different ways RudderStack sets the custom deduplication key:
 
 ### Scenario 1: Passing the key in the event properties
 
-If you enable the **Customize Client Deduplication Key** setting and set the **Client Deduplication Field** to `properties.dedup`, then RudderStack sets the client deduplication ID with the value associated with `properties.dedup`, as shown below:
+Suppose you enable the **Customize Client Deduplication Key** setting and set the **Client Deduplication Field** to `properties.dedup`. RudderStack then sets the client deduplication ID with the value associated with `properties.dedup`, as shown in the following snippet:
 
 ```javascript
 rudderanalytics.track(
@@ -164,15 +168,15 @@ rudderanalytics.track(
 
 In this case, RudderStack sets `mydedupid` as the client deduplication ID.
 
-### Scenario 2: Passing the message ID as the deduplication key
+### Scenario 2: Passing the `messageId` as the deduplication key
 
-If you enable the **Customize Client Deduplication Key** setting and leave the **Client Deduplication Field** empty, then RudderStack sets the event's `messageId` as the client deduplication ID.
+Suppose you enable **Customize Client Deduplication Key** and leave the **Client Deduplication Field** empty. In this case, RudderStack sets the event's `messageId` as the client deduplication ID.
 
 ### Scenario 3: Passing wrong/missing field in the dashboard settings
 
-If you enable the **Customize Client Deduplication Key** setting and set the **Client Deduplication Field**, but the field is either missing or has a different name in the event, then RudderStack **does not set** the client deduplication ID.
+Suppose you enable **Customize Client Deduplication Key** and set the **Client Deduplication Field**, but the field is either missing or has a different name in the event. In this case, RudderStack **does not set** the client deduplication ID.
 
-Suppose you set **Client Deduplication Field** to `properties.dedup` and the event contains `properties.deduplication` instead, then RudderStack sends the event to Snap Pixel **without setting** the client deduplication ID.
+For example, if you set **Client Deduplication Field** to `properties.dedup` and the event contains the`properties.deduplication` property instead, then RudderStack sends the event to Snap Pixel **without setting** the client deduplication ID.
 
 ## FAQ
 
