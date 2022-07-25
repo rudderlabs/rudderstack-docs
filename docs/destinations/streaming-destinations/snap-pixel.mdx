@@ -59,7 +59,7 @@ The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call is u
 RudderStacks checks the cookies for the user parameter (`email` or `phone`) before loading the Snap Pixel snippet. If the parameter is present, RudderStack loads the snippet. Otherwise, RudderStack loads the snippet **without passing** the user parameter.
 
 <div class="infoBlock">
-Snapchat strongly recommends passing a user parameter through the Snap Pixel as it allows you get better insights into your tracked conversions and creating more robust Pixel Custom Audiences. For more information, refer to the <a href="https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US">Snap Pixel FAQ</a>.
+Snapchat strongly recommends passing a user parameter (either <code class="inline-code">email</code> or <code class="inline-code">phone</code>) through the Snap Pixel as it allows you get better insights into your tracked conversions and creating more robust Pixel Custom Audiences. For more information, refer to the <a href="https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US">Snap Pixel FAQ</a>.
 </div>
 
 A sample `identify` call is as shown:
@@ -71,7 +71,7 @@ rudderanalytics.identify({
 });   
 ```
 
-Either or both of the user parameters should be passed in the `identify` call. The following table lists the parameters along with the relative mapping to the Snap Pixel parameters:
+The following table lists the parameters along with the relative mapping to the Snap Pixel parameters:
 
 | **RudderStack user parameter** | **Snap Pixel user parameter** |
 | :--- | :--- |
