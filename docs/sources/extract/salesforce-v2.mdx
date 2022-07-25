@@ -7,15 +7,15 @@ description: Step-by-step guide on ingesting data from Salesforce into RudderSta
 
 This document guides you in setting up Salesforce as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Salesforce data, which can then be routed to your RudderStack-supported data warehouse destination.
 
-<div class="warningBlock">
-All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
-</div>
-
 <GhBadge
   label={'Stability'}
   message={'Beta'}
   color={'blueviolet'}
 />
+
+<div class="warningBlock">
+All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
+</div>
 
 ## Getting started
 
@@ -42,6 +42,10 @@ It is highly recommended to keep the checkbox unchecked if you're unsure whether
 
 <div class="warningBlock">
 RudderStack will replicate all your data by default if you do not set this field.
+</div>
+
+<div class="infoBlock">
+For more information on how RudderStack replicates your Salesforce data, refer to the <Link to="#how-does-rudderstack-sync-my-salesforce-data">FAQ</Link> section below.
 </div>
 
 - **Salesforce Object filtering criteria**: This optional setting lets you add the filtering criteria to read and ingest only the Salesforce objects relevant to you.
