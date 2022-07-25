@@ -417,7 +417,12 @@ export const jsonData = [
                 title: "QuickBooks",
                 link: "/sources/extract/quickbooks/",
                 content: []
-            }, {
+            },{
+                title: "Recurly",
+                link: "/sources/extract/recurly/",
+                content: []
+            },  
+            {
                 title: "Salesforce",
                 link: "/sources/extract/salesforce/",
                 content: [
@@ -657,7 +662,8 @@ export const jsonData = [
                 title: "Pinterest Tag",
                 link: "/destinations/streaming-destinations/pinterest-ads/",
                 content: []
-            }, {
+            },
+            {
                 title: "Reddit Pixel",
                 link: "/destinations/streaming-destinations/reddit-pixel/",
                 content: []
