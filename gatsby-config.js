@@ -52,7 +52,8 @@ module.exports = {
         },
       },
     },
-    {
+    ...(process.env.GATSBY_SANITY_PROJECTID && process.env.RS_PRODUCTION_WRITE_KEY ? 
+      [{
       resolve: `gatsby-source-sanity`,
       options: {
         projectId: process.env.GATSBY_SANITY_PROJECTID,
@@ -74,7 +75,7 @@ module.exports = {
         sdkURL: 'https://cdn.rudderlabs.com/v1.1/beta/rudder-analytics.min.js',
         dataPlaneUrl: `https://rudderstack-dataplane.rudderstack.com`,
       },
-    },
+    }] : []),
     `gatsby-transformer-csv`,
     'gatsby-plugin-use-query-params',
     `gatsby-plugin-react-helmet`,

@@ -18,7 +18,10 @@ import CookiesConsent from "../../../../components/cookiesConsent";
 import ScriptContentHead from "../../../../components/ScriptContentHead";
 import ScriptContentBody from "../../../../components/ScriptContentBody";
 
+
 export default function Layout({ children, title, headings, description }) {
+  const isProdMode = process.env.GATSBY_SANITY_PROJECTID && process.env.RS_PRODUCTION_WRITE_KEY;
+
   const data = useStaticQuery(graphql`
     {
       allSanitySiteSettings {
@@ -35,13 +38,13 @@ export default function Layout({ children, title, headings, description }) {
   const [isTocOpen, setTocOpen] = useState(false);
   const disableTOC = false;
 
-  function handleMenuOpen() {
+  const handleMenuOpen = () => {
     setMenuOpen(!isMenuOpen);
   }
 
   return (
     <Fragment>
-      {data.allSanitySiteSettings.edges[0].node._rawWebsiteScripts.map(
+      {isProdMode && data.allSanitySiteSettings.edges[0].node._rawWebsiteScripts.map(
         (script) => {
           return (
             <ScriptContentHead key={script._key} currentSlug={""} {...script} />
@@ -126,7 +129,7 @@ export default function Layout({ children, title, headings, description }) {
         </Main>
       </Container>
       <CookiesConsent />
-      {data.allSanitySiteSettings.edges[0].node._rawWebsiteScripts.map(
+      {isProdMode && data.allSanitySiteSettings.edges[0].node._rawWebsiteScripts.map(
         (script) => {
           return (
             <ScriptContentBody key={script._key} currentSlug={""} {...script} />
