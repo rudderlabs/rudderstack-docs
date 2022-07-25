@@ -527,6 +527,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "salesforce-v2",
+    title: "Salesforce v2",
+    link: "/sources/extract/salesforce-v2/",
+    content: [],
+  },
+  {
     key: "schema-comparison-rudderstack-vs-segment",
     title: "Schema Comparison: Rudderstack Vs Segment",
     link:
