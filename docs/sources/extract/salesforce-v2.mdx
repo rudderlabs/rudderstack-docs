@@ -32,18 +32,10 @@ It is highly recommended to keep the checkbox unchecked if you're unsure whether
 </div>
 
 - Click **Connect with Salesforce V2** and connect your Salesforce account with RudderStack.
-- **Start Date**: Select the start date when you want RudderStack to ingest the Salesforce data.
-      - If you specify the start date, RudderStack selects all the Salesforce data associated with the `updated` field available from that date and **does not** replicate any data before this date.
-      - If you do not specify the start date, RudderStack replicates all the data associated with the `created` field by default.
-      
-      
+- **Start Date**: Select the start date when you want RudderStack to ingest the Salesforce data. RudderStack will not replicate any data before this date.
 
 <div class="warningBlock">
-RudderStack will not replicate any data before this date. Also, RudderStack will replicate all your data by default if you do not set this field.
-</div>
-
-<div class="infoBlock">
-Once you specify the start date, RudderStack selects all the Salesforce data associated with the <code class="inline-code">updated</code> field available from that date, otherwise it picks the data associated with the <code class="inline-code">created</code> field.
+RudderStack will replicate all your data by default if you do not set this field.
 </div>
 
 - **Salesforce Object filtering criteria**: This optional setting lets you add the filtering criteria to read and ingest only the Salesforce objects relevant to you.
@@ -92,10 +84,7 @@ You can connect <strong>only one data warehouse destination</strong> per Cloud E
 
 ### How does RudderStack sync my Salesforce data?
 
-RudderStack syncs your Salesforce data in the following manner:
-
-1. When RudderStack first connects to your Salesforce data source, it will sync the historical data from the <Link to="#connection-settings">**Start Date**</Link> specified in the dashboard. If no start date is specified, RudderStack will sync **all** your historical data.
-2. It then syncs with your Salesforce source based on the specified schedule and run frequency and incrementally replicates your data, that is, it syncs only the new or updated rows to the connected warehouse destination.
+RudderStack replicates all the Salesforce data associated with the `updated` field. If not present, it picks the data associated with the `created` field.
 
 <div class="infoBlock">
 RudderStack only reads your Salesforce data and does not write to it.
