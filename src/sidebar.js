@@ -413,11 +413,18 @@ export const jsonData = [
                 title: "Pipedrive",
                 link: "/sources/extract/pipedrive/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "QuickBooks",
                 link: "/sources/extract/quickbooks/",
                 content: []
-            }, {
+            }, 
+            {
+                title: "Recurly",
+                link: "/sources/extract/recurly/",
+                content: []
+            },
+            {
                 title: "Salesforce",
                 link: "/sources/extract/salesforce/",
                 content: [
@@ -427,7 +434,13 @@ export const jsonData = [
                         content: []
                     },
                 ]
-            }, {
+            },
+            {
+                title: "Salesforce v2",
+                link: "/sources/extract/salesforce-v2/",
+                content: []
+            },
+            {
                 title: "Salesforce Pardot",
                 link: "/sources/extract/salesforce-pardot/",
                 content: []
@@ -657,7 +670,8 @@ export const jsonData = [
                 title: "Pinterest Tag",
                 link: "/destinations/streaming-destinations/pinterest-ads/",
                 content: []
-            }, {
+            },
+            {
                 title: "Reddit Pixel",
                 link: "/destinations/streaming-destinations/reddit-pixel/",
                 content: []

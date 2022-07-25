@@ -12,78 +12,77 @@ RudderStack supports the following e-commerce events that form an intrinsic part
 
 ### Browsing
 
-The following actions are associated with the user's browsing activity, whenever they are on the website:
+The following events are associated with a user's browsing activities whenever they are on the website:
 
-| **User action**       | **Context**                                        |
+| Event       | Context                                        |
 | :-------------------- | :------------------------------------------------- |
-| Products Searched     | When the user searches for product/s               |
-| Product List Viewed   | When the user views a list or category of products |
-| Product List Filtered | When the user filters a product list or category   |
+| <Link to="/event-spec/ecommerce-events-spec/browsing/#products-searched">Products Searched</Link>     | When a user searches for products               |
+| <Link to="/event-spec/ecommerce-events-spec/browsing/#product-list-viewed">Product List Viewed</Link>   | When a user views a list or category of products |
+| <Link to="/event-spec/ecommerce-events-spec/browsing/#product-list-filtered">Product List Filtered</Link> | When a user filters a product list or category   |
 
 ### Promotions
 
-The following actions are associated with the user's interaction with a website promotion:
+The following events are associated with a user's interaction with the website promotions:
 
-| **User action**   | **Context**                                             |
+| Event   | Context                                             |
 | :---------------- | :------------------------------------------------------ |
-| Promotion Viewed  | When the user views a promotional ad on the website     |
-| Promotion Clicked | When the user clicks on a promotional ad on the website |
+| <Link to="/event-spec/ecommerce-events-spec/promotions/#promotion-viewed">Promotion Viewed</Link>  | When a user views a promotional ad on the website     |
+| <Link to="/event-spec/ecommerce-events-spec/promotions/#promotion-clicked">Promotion Clicked</Link> | When a user clicks on a promotional ad on the website |
 
 ### Ordering
 
-The following actions are associated with a user's core ordering activity:
+The following events are associated with a user's product ordering activities:
 
-| **User action**         | **Context**                                                          |
+| Event         | Context                                                          |
 | :---------------------- | :------------------------------------------------------------------- |
-| Product Viewed          | When the user views a product and its details                        |
-| Product Added           | When the user adds a product to their shopping cart                  |
-| Product Removed         | When the user removes a product from their shopping cart             |
-| Cart Viewed             | When the user views their shopping cart                              |
-| Checkout Started        | When the user initiates the checkout process to complete their order |
-| Checkout Step Viewed    | When the user views a checkout step                                  |
-| Checkout Step Completed | When the user completes a checkout step                              |
-| Payment Info Entered    | When the user adds the payment information                           |
-| Order Completed         | When the order is completed by the user                              |
-| Order Updated           | When the user updates the already placed order                       |
-| Order Refunded          | When the order amount is refunded to the user                        |
-| Order Cancelled         | When the user cancels the already placed order                       |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#product-clicked">Product Clicked</Link>          | When a user clicks on a product                        |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#product-viewed">Product Viewed</Link>          | When a user views a product and its details                        |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#product-added">Product Added</Link>           | When a user adds a product to their shopping cart                  |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#product-removed">Product Removed</Link>         | When a user removes a product from their shopping cart             |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#cart-viewed">Cart Viewed</Link>             | When a user views their shopping cart                              |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#checkout-started">Checkout Started</Link>        | When a user initiates the checkout process to complete their order |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#checkout-step-viewed">Checkout Step Viewed</Link>    | When a user views a checkout step                                  |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#checkout-step-completed">Checkout Step Completed</Link> | When a user completes a checkout step                              |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#payment-info-entered">Payment Info Entered</Link>    | When a user adds the payment information                           |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#order-completed">Order Completed</Link>         | When an order is completed by a user                              |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#order-updated">Order Updated</Link>           | When a user updates the already placed order                       |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#order-refunded">Order Refunded</Link>         | When the order amount is refunded to a user                        |
+| <Link to="/event-spec/ecommerce-events-spec/ordering/#order-cancelled">Order Cancelled</Link>         | When a user cancels the already placed order                       |
 
 ### Coupons
 
-The following actions are associated with the user's interactions with the website's coupon facilities, for availing discounts:
+The following events are associated with a user's interactions with the website's coupon facilities for availing discounts:
 
-| **User Action** | **Context**                                                                    |
+| Event | Context                                                                    |
 | :-------------- | :----------------------------------------------------------------------------- |
-| Coupon Entered  | When the user enters a coupon on an order or the shopping cart                 |
-| Coupon Applied  | When a coupon is applied successfully on an order or the shopping cart         |
-| Coupon Denied   | When a coupon is not valid for the order or the cart and is denied as a result |
-| Coupon Removed  | When the user removes the coupon from an order or the shopping cart            |
+| <Link to="/event-spec/ecommerce-events-spec/coupons/#coupon-entered">Coupon Entered</Link>  | When a user enters a coupon on an order or the shopping cart                 |
+| <Link to="/event-spec/ecommerce-events-spec/coupons/#coupon-applied">Coupon Applied</Link>  | When a coupon is applied successfully on an order or the shopping cart         |
+| <Link to="/event-spec/ecommerce-events-spec/coupons/#coupon-denied">Coupon Denied</Link>   | When a coupon is not valid for the order or the cart and is denied as a result |
+| <Link to="/event-spec/ecommerce-events-spec/coupons/#coupon-removed">Coupon Removed</Link>  | When a user removes the coupon from an order or the shopping cart            |
 
 ### Wishlist
 
-The following actions are associated with the user's activities related to adding or removing product/s from their wish list:
+The following actions are associated with a user's activities related to adding or removing product/s from their wishlist:
 
-| **User action**                | **Context**                                           |
+| Event                | Context                                           |
 | :----------------------------- | :---------------------------------------------------- |
-| Product Added to Wishlist      | When the user adds a product to their wish list       |
-| Product Removed from Wishlist  | When the user removes a product from their wish list  |
-| Wishlist Product Added to Cart | When the user adds a wishlisted product to their cart |
+| <Link to="/event-spec/ecommerce-events-spec/wishlisting/#product-added-to-wishlist">Product Added to Wishlist</Link>      | When a user adds a product to their wishlist       |
+| <Link to="/event-spec/ecommerce-events-spec/wishlisting/#product-removed-from-wishlist">Product Removed from Wishlist</Link>  | When a user removes a product from their wishlist  |
+| <Link to="/event-spec/ecommerce-events-spec/wishlisting/#wishlist-product-added-to-cart">Wishlist Product Added to Cart</Link> | When a user adds a wishlisted product to their cart |
 
 ### Sharing
 
-The following actions are associated with the user's sharing activity when they share the product or the cart list with their friends or colleagues:
+The following events are associated with a user activities when they share the product or the cart list with others:
 
-| **User action** | **Context**                                                                |
+| Event | Context                                                                |
 | :-------------- | :------------------------------------------------------------------------- |
-| Product Shared  | When the user shares the product link with one or more friends             |
-| Cart Shared     | When the user shares their existing shopping cart with one or more friends |
+| <Link to="/docs/event-spec/ecommerce-events-spec/sharing/#product-shared">Product Shared</Link>  | When a user shares the product link with one or more friends             |
+| <Link to="/docs/event-spec/ecommerce-events-spec/sharing/#cart-shared">Cart Shared</Link>     | When a user shares their existing shopping cart with one or more friends |
 
 ### Reviewing
 
-The following actions are associated with the reviewing activity of the user:
+The following events are associated with a user's reviewing activity:
 
-| **User action**  | **Context**                     |
+| Event  | Context                     |
 | :--------------- | :------------------------------ |
-| Product Reviewed | When the user reviews a product |
-
-
+| <Link to="/event-spec/ecommerce-events-spec/reviewing/#product-reviewed">Product Reviewed</Link> | When a user reviews a product |

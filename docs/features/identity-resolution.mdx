@@ -158,8 +158,6 @@ This allows you to enrich the user profile with more information across various 
 Yes,  RudderStack auto-merges the following user identifiers by default so you don't need to call the`merge` API or leverage user transformations to merge them:
 
 - `userId` and `previousId` for the <Link to="/event-spec/standard-events/alias/">`alias`</Link> calls
-- `userId` and `anonymousId` for the <Link to="/event-spec/standard-events/track/">`track`</Link>, <Link to="/event-spec/standard-events/group/">`group`</Link>, and <Link to="/event-spec/standard-events/screen/">`screen`</Link> calls.
+- `userId` and `anonymousId` for the <Link to="/event-spec/standard-events/identify/">`identify`</Link>, <Link to="/event-spec/standard-events/track/">`track`</Link>, <Link to="/event-spec/standard-events/group/">`group`</Link>, and <Link to="/event-spec/standard-events/screen/">`screen`</Link> calls.
 
 For merging other user identifiers like device ID, phone number, email ID, etc. RudderStack provides a <a href="#using-the-merge-api"><code class="inline-code">merge</code></a> API. Alternatively, you can use the <Link to="/features/transformations/">Transformations</Link> feature to merge these identifiers.
-
-

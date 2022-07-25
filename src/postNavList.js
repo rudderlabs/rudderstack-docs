@@ -514,10 +514,22 @@ export const postNavList = [
     link: "/sources/extract/quickbooks/",
     content: [],
   },
+    {
+    key: "recurly",
+    title: "Recurly",
+    link: "/sources/extract/recurly/",
+    content: [],
+  },
   {
     key: "salesforce",
     title: "Salesforce",
     link: "/sources/extract/salesforce/",
+    content: [],
+  },
+  {
+    key: "salesforce-v2",
+    title: "Salesforce v2",
+    link: "/sources/extract/salesforce-v2/",
     content: [],
   },
   {

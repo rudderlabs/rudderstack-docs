@@ -39,6 +39,12 @@ To successfully configure TikTok Ads as a destination, you need to configure the
 
 - **Hash Contextual User Properties (SHA-256)**: If this setting is enabled, RudderStack will hash the contextual user properties like `external_id`, `email`, `phone_number` from the raw format to the SHA-256 format.
 
+- **Mapping to trigger the TikTok Ads standard events for the respective Events**: Enter the event name and select the corresponding <Link to="https://ads.tiktok.com/help/article?aid=10028">TikTok Ads standard event</Link> from the dropdown to be triggered when that event is called.
+
+<div class="successBlock">
+You can specify multiple <strong>standard events</strong> for one <strong>event name</strong> and vice versa.
+</div>
+
 ### Track
 
 The `track` call lets you capture user events along with the properties associated with them.
