@@ -41,11 +41,13 @@ It is highly recommended to keep the checkbox unchecked if you're unsure whether
 - **Start Date**: Select the start date when you want RudderStack to ingest the Salesforce data. RudderStack will not replicate any data before this date.
 
 <div class="warningBlock">
-RudderStack will replicate all your data by default if you do not set this field.
+If you do not specify the start date, RudderStack will replicate all your data by default.
 </div>
 
 <div class="infoBlock">
-For more information on how RudderStack replicates your Salesforce data, refer to the <Link to="#how-does-rudderstack-sync-my-salesforce-data">FAQ</Link> section below.
+RudderStack replicates all the Salesforce data associated with the <code class="inline-code">updated</code> field. If not present, it picks the data associated with the <code class="inline-code">created</code> field.
+<br /><br />
+<strong>RudderStack only reads your Salesforce data and does not write to it</strong>.
 </div>
 
 - **Salesforce Object filtering criteria**: This optional setting lets you add the filtering criteria to read and ingest only the Salesforce objects relevant to you.
@@ -91,14 +93,6 @@ Use the <strong>Use Existing Destination</strong> option if you have an already-
 ### Can I connect my Salesforce source to multiple data warehouse destinations?
 
 You can connect <strong>only one data warehouse destination</strong> per Cloud Extract source. If you wish to send data to multiple warehouses, you can configure multiple Cloud Extract sources with the same settings and connect them to each data warehouse.
-
-### How does RudderStack sync my Salesforce data?
-
-RudderStack replicates all the Salesforce data associated with the `updated` field. If not present, it picks the data associated with the `created` field.
-
-<div class="infoBlock">
-RudderStack only reads your Salesforce data and does not write to it.
-</div>
 
 ### How does RudderStack handle the Salesforce rate limits?
 
