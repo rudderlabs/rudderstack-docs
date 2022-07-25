@@ -72,7 +72,7 @@ In this case, `timestamp` will be **less** than `originalTimestamp`.
 
 ## Contextual fields
 
-The contextual fields give additional useful context about a particular event. The following table lists all the contextual fields with their detailed description:
+The contextual fields give additional context about a particular event. The following table lists all the contextual fields with their detailed description:
 
 | Name | Data type | Description |
 | :--- | :--- | :--- |
@@ -90,7 +90,7 @@ The contextual fields give additional useful context about a particular event. T
 | `campaign` | Object | Gives detailed information about campaigns, like `name`, `source`, `medium`, `content` and `term`. |
 
 <div class="warningBlock">
-<strong>All of the above contextual fields are not automatically collected by the RudderStack SDKs.</strong> Refer to the following section for more information on which SDK automatically populates what contextual fields.
+<strong>All of the above contextual fields are not automatically collected by the RudderStack SDKs.</strong> Refer to the following section for more information on the contextual fields automatically populated by the RudderStack SDKs.
 </div>
 
 The following section highlights all the contextual fields that are **automatically collected** and populated by each of the RudderStack SDKs:
@@ -141,7 +141,7 @@ The following section highlights all the contextual fields that are **automatica
 
 <div class="infoBlock">
 For Android SDK V1.6.0 and above, the Bluetooth status is collected in the <code class="inline-code">network.bluetooth</code> field only if the Bluetooth permission is present in the app.
-For iOS SDK V1.6.3 and above, the Bluetooth status is not collected in the <code class="inline-code">network.bluetooth</code> field as it’s a run time permission.
+For iOS SDK V1.6.3 and above, the Bluetooth status is not collected in the <code class="inline-code">network.bluetooth</code> field as it’s a run-time permission.
 </div>
 
 The following sample payload highlights the usage of the common and contextual fields in web and mobile modes:
