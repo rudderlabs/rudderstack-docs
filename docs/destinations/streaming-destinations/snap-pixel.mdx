@@ -56,7 +56,7 @@ For more information on this setting, refer to the <Link to="#setting-custom-cli
 
 The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call is used to initialize the Snap Pixel code.
 
-RudderStacks checks the cookies for the user parameter (`email` or `phone`) before loading the Snap Pixel snippet. If the parameter is present, RudderStack loads the snippet. Otherwise, RudderStack loads the snippet **without passing** the user parameter.
+RudderStack checks the cookies for the user parameter (`email` or `phone`) before loading the Snap Pixel snippet. If the parameter is present, RudderStack loads the snippet. Otherwise, it loads the snippet **without passing** the user parameter.
 
 <div class="infoBlock">
 Snapchat strongly recommends passing a user parameter (either <code class="inline-code">email</code> or <code class="inline-code">phone</code>) through the Snap Pixel, as it lets you get better insights into your tracked conversions and creates more robust Pixel Custom Audiences. For more information, refer to the <a href="https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US">Snap Pixel FAQ</a>.
@@ -133,15 +133,13 @@ RudderStack maps <code class="inline-code">order_id</code> to Snap Pixel's <code
 For more information on the Snap Pixel events, refer to the <a href="https://businesshelp.snapchat.com/s/article/pixel-website-install?language=en_US">Snapchat documentation</a>.
 </div>
 
-Snap Pixel supports up to 5 custom events, as listed in the table below:
+Snap Pixel supports up to 5 custom events, as listed below:
 
-| **Custom Events** |
-| :--- |
-| `CUSTOM_EVENT_1` |
-| `CUSTOM_EVENT_2` |
-| `CUSTOM_EVENT_3` |
-| `CUSTOM_EVENT_4` |
-| `CUSTOM_EVENT_5` |
+- `CUSTOM_EVENT_1`
+- `CUSTOM_EVENT_2`
+- `CUSTOM_EVENT_3`
+- `CUSTOM_EVENT_4`
+- `CUSTOM_EVENT_5`
 
 ## Setting custom client deduplication key
 
