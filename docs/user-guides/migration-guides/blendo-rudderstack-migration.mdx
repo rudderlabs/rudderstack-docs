@@ -51,6 +51,20 @@ Further processing might be necessary on a query level for the existing views or
 - Resources that replaced the previous data on export are no longer supported. In RudderStack, the new data will always be appended to the output table. This change affects mainly two resources: **Google Sheets rows**, and **Mailchimp lists.**
 - Prefixing tables on destinations is not supported by RudderStack. You can resolve the conflicts in table names from sources of the same role by exporting to separate schemas.
 
+## Retain column names
+
+You can use the `useBlendoCasing` integration option to retain the column names as Blendo infrastructure. The following sample snippet shows how to retain the Blendo column names for Delta Lake destination:
+
+```javascript
+event.integrations = {
+    "DELTALAKE": {
+        options: {
+            useBlendoCasing: true
+        }
+    }
+}
+```
+
 ## Functionalities to be Released Soon
 
 We're currently working on adding more functionalities to make the migration from Blendo to RudderStack more seamless. Some of them are:
