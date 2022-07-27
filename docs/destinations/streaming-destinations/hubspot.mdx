@@ -7,9 +7,15 @@ description: Step-by-step guide on sending your event data from RudderStack to H
 
 RudderStack supports HubSpot as a destination where you can seamlessly send your event data.
 
+<div class="warningBlock">
+This HubSpot source uses the legacy API and will be deprecated soon. Refer to the <Link to="/destinations/streaming-destinations/hubspot-v2/">HubSpot V2</Link> guide for the latest documentation.
+</div>
+
+
 <div class="infoBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/hs">GitHub repository</a>.
 </div>
+
 
 ## Getting started
 
@@ -31,36 +37,50 @@ Once you have confirmed that the source platform supports sending events to HubS
 
 ## Connection settings
 
-To successfully configure HubSpot as a destination, you'll need to configure the following settings:
+To successfully configure HubSpot as a destination using the legacy API, you can choose any of the following authorization types:
+
+1. **Private Apps**: Allows you to use HubSpot's APIs to access specific data from your HubSpot account.
+
+<img src="../../assets/event-stream-destinations/hubspot-connection-settings-2.png" alt="HubSpot connection settings" />
+
+- **Authorization Type**: Select **Private Apps** from the dropdown.
+- **Access Token**: Enter your HubSpot access token from the **Private Apps** section in the HubSpot dashboard.
+
+<div class="infoBlock">
+Refer to the <Link to="#faq">FAQ</Link> section to know where to get the HubSpot access token.
+</div>
+
+- **API Version**: Select **Legacy API** from the dropdown. To work with new HubSpot API, refer to the <Link to="/destinations/streaming-destinations/hubspot-v2/">HubSpot V2</Link> guide.
+
+2. **API Key (deprecating soon)**: Allows you to create custom applications using HubSpot's APIs.
+
+<div class="warningBlock">
+HubSpot API keys will be deprecated soon. Refer to <Link to="https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key">HubSpot documentation</Link> for more information.
+</div>
 
 <img src="../../assets/event-stream-destinations/hubspot-connection-settings-1.png" alt="HubSpot connection settings" />
 
-- **Hub ID**: Enter your HubSpot Hub ID. For more information on obtaining the Hub ID, refer to the [HubSpot support guide](https://knowledge.hubspot.com/account/manage-multiple-hubspot-accounts#identify-the-current-account-s-hub-id).
-- **API Key**: Enter your HubSpot API key. For more information on obtaining the API key, refer to the [HubSpot support guide](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key).
+- **Authorization Type**: Select **API Key (deprecating soon)** from the dropdown.
+- **Hub ID**: Enter your HubSpot Hub ID.
+- **API Key**: Enter your HubSpot API key. It is mandatory to send the data to HubSpot via the RudderStack cloud mode.
 
-<div class="warningBlock">
-The HubSpot API Key is mandatory for sending the data to Hubspot via the RudderStack cloud mode.
+<div class="infoBlock">
+Refer to the <Link to="#faq">FAQ</Link> section to know where to get the Hub ID and API Key.
 </div>
+
+- **API Version**: Select **Legacy API** from the dropdown. To work with new HubSpot API, refer to the <Link to="/destinations/streaming-destinations/hubspot-v2/">HubSpot V2</Link> guide.
 
 ### Client-side events filtering
 
-<div class="infoBlock">
-This option is applicable only if you're sending events to HubSpot via the web device mode. Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
-</div>
-
-### Web device mode settings
-
-<img src="../../assets/event-stream-destinations/hubspot-connection-settings-2.png" alt="HubSpot web SDK settings" />
-
-- **Use device mode to send events**: Enable this setting to send events via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+<img src="../../assets/event-stream-destinations/hubspot-connection-settings-3.png" alt="HubSpot connection settings" />
 
 <div class="infoBlock">
-You can change the setting to enable or disable device mode to send events at any point. However, note that you will need to refresh your web page for the changes to reflect.
+These settings are applicable only if you're sending events to HubSpot via the web device mode. Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 </div>
 
 ## Page
 
-The `page` call lets you record your website's page views with any additional relevant information about the viewed page.
+The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
 <Tabs>
   <TabList>
@@ -82,7 +102,7 @@ The `page` call lets you record your website's page views with any additional re
 
 ## Identify
 
-RudderStack sends the `identify` call to create or update a contact in HubSpot. The user's email ID must be present in the `identify` call's `traits`.
+RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a contact in HubSpot. The user's email ID must be present in the `identify` call's `traits`.
 
 <Tabs>
   <TabList>
@@ -152,7 +172,7 @@ For sending properties of type `date`, send them as the epoch time or as a `date
 
 ## Track
 
-A `track` call lets you record various user actions and any properties associated with them.
+A <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record various user actions and any properties associated with them.
 
 To associate a `track` call with a user, you need to specify the user's `email` under `context.traits` . Additionally, RudderStack associates the `track` events with the same user after an `identify` request is successfully made.
 
@@ -176,13 +196,15 @@ rudderanalytics.track(
 )
 ```
 
+The track call also supports `externalId` as a parameter which is mapped from the External Id, that is, `hubspotId`.
+
 ### Revenue events
 
 For the revenue events, a `value` or `revenue` key should be included in the event properties to be recorded in HubSpot.
 
 ## Screen
 
-The `screen` call lets you record whenever your user views their mobile screen, with any additional information about the viewed screen.
+The <Link to="/event-spec/standard-events/screen/">`screen`</Link> call lets you record whenever your user views their mobile screen, with any additional information about the viewed screen.
 
 If you have enabled screen views in your <Link to="/sources/sdks/rudderstack-android-sdk/">Android</Link> or <Link to="/sources/sdks/rudderstack-ios-sdk/">iOS</Link> app implementation, RudderStack will send this information to HubSpot.
 
@@ -221,19 +243,27 @@ rudderanalytics.identify("userId", {
 })
 ```
 
-## FAQs
+## FAQ
 
-### Where do I get the API Key and Hub ID for Hubspot?
+### Where do I get the API Key and Hub ID for HubSpot?
 
-You can get the API Key and Hub ID for Hubspot by logging into your [Hubspot account](https://app.hubspot.com/login/).
-
-Refer to the following HubSpot guides for more details:
+Refer to the following HubSpot guides to get the API Key and Hub ID:
 
 - [Obtaining the API Key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
 - [Obtaining the Hub ID](https://knowledge.hubspot.com/account/manage-multiple-hubspot-accounts#identify-the-current-account-s-hub-id)
 
-### Can I use Hubspot website analytics?
+### Where do I get the Access Token for HubSpot?
 
-Yes - RudderStack supports sending `page` calls in device mode which can be used for Hubspot website analytics.
+To get the Access Token:
+
+1. Log into your [HubSpot account](https://app.hubspot.com/login/).
+2. Go to **Integrations** > **Private Apps** from the left sidebar.
+3. Click on your app to see the below:
+
+<img src="../../assets/event-stream-destinations/Hubspot-access-token.png" />
+
+### Can I use HubSpot website analytics?
+
+Yes - RudderStack supports sending `page` calls in device mode which can be used for HubSpot website analytics.
 
 

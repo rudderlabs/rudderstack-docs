@@ -1,0 +1,159 @@
+---
+title: "HubSpot V2"
+description: Step-by-step guide on sending your event data from RudderStack to HubSpot using the new API
+---
+
+[HubSpot](https://www.hubspot.com/) is a leading marketing and sales platform that helps you track leads as well as inbound marketing and sales.
+
+RudderStack supports HubSpot as a destination where you can seamlessly send your event data.
+
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/hs">GitHub repository</a>.
+</div>
+
+
+## Getting started
+
+Before configuring HubSpot as a destination in RudderStack, verify if the source platform is supported by HubSpot by referring to the table below:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     | -             | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+
+<div class="infoBlock">
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+</div>
+
+Once you have confirmed that the source platform supports sending events to HubSpot, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **HubSpot**.
+2. Assign a name to the destination and click on **Continue**.
+
+## Connection settings
+
+To successfully configure HubSpot as a destination using the new API, you can choose any of the following authorization types:
+
+1. **Private Apps**: Allows you to use HubSpot's APIs to access specific data from your HubSpot account.
+
+<img src="../../assets/event-stream-destinations/hubspotv2-connection-settings-2.png" alt="HubSpot connection settings" />
+
+- **Authorization Type**: Select **Private Apps** from the dropdown.
+- **Access Token**: Enter your HubSpot access token from the **Private Apps** section in the HubSpot dashboard.
+
+<div class="infoBlock">
+Refer to the <Link to="#faq">FAQ</Link> section to know where to get the HubSpot access token.
+</div>
+
+- **API Version**: Select **New API** from the dropdown.
+
+2. **API Key (deprecating soon)**: Allows you to create custom applications using HubSpot's APIs.
+
+<div class="warningBlock">
+HubSpot API keys will be deprecated soon. Refer to <Link to="https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key">HubSpot documentation</Link> for more information.
+</div>
+
+<img src="../../assets/event-stream-destinations/hubspotv2-connection-settings-1.png" alt="HubSpot connection settings" />
+
+- **Authorization Type**: Select **API Key (deprecating soon)** from the dropdown.
+- **Hub ID**: Enter your HubSpot Hub ID.
+- **API Key**: Enter your HubSpot API key. It is mandatory to send the data to HubSpot via the RudderStack cloud mode.
+
+<div class="infoBlock">
+Refer to the <Link to="#faq">FAQ</Link> section to know where to get the Hub ID and API Key.
+</div>
+
+- **API Version**: Select **New API** from the dropdown.
+
+### Client-side events filtering
+
+<img src="../../assets/event-stream-destinations/hubspot-connection-settings-3.png" alt="HubSpot connection settings" />
+
+<div class="infoBlock">
+These settings are applicable only if you're sending events to HubSpot via the web device mode. Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
+</div>
+
+## Identify
+
+RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a contact in HubSpot. The user's email ID must be present in the `identify` call's `traits`.
+
+In the new CRM API for hubspot, one needs to check if a contact exists and then update is done through new Update endpoints. Hence, one axios call will be in between. But the approach we have via legacy batch API, for create or update, we do not need a separate endpoint and it works seemlessly. But we will keep this version change scope as well.
+
+A sample `identify` call is as shown:
+
+```javascript
+rudderanalytics.identify({
+  firstName: "Tintin",
+  city: "Brussels",
+  country: "Belgium",
+  phone: "1234567890",
+  email: "tintin@twentiethcentury.com",
+  custom_flavor: "chocolate",
+  custom_date: 1574769933368,
+  custom_date1: new Date("2019-10-14T11:15:53.296Z"),
+})
+```
+
+## Track
+
+A <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record various user actions and any properties associated with them.
+
+To associate a `track` call with a user, you need to specify the user's `email` under `context.traits` . Additionally, RudderStack associates the `track` events with the same user after an `identify` request is successfully made.
+
+A sample `track` event is as shown:
+
+```javascript
+rudderanalytics.track(
+  "Purchase", {
+    value: 30,
+  }, {
+    context: {
+      traits: {
+        firstname: "Tintin",
+        city: "Brussels",
+        country: "Belgium",
+        phone: "1234567890",
+        email: "tintin@twentiethcentury.com",
+      },
+    },
+  }
+)
+```
+
+### Property mappings
+
+Optional properties:
+
+| RudderStack property         | HubSpot property      | 
+| :--------------------------- | :--------------------- |
+| `properties.assetDescription`/`properties.hsAssetDescription`  | `$hs_asset_description`     | 
+| `properties.assetType`/`properties.hsAssetType`               | `hs_asset_type`       
+| `properties.campaignId`           | `hs_campaign_id`       |         
+| `traits.address.city`/`context.traits.address.city`/`properties.address.city`           | `hs_city`            |          
+| `traits.address.country`/`context.traits.address.country`/`properties.address.country` | `hs_country`       |            
+| `context.device.name`            | `hs_device_name`            |          
+| `properties.elementClass`/`properties.hsElementClass`               | `hs_element_class`               |             
+| `properties.elementId`/`properties.hsElementId`              | `hs_element_id`              |    
+
+
+
+## FAQ
+
+### Where do I get the API Key and Hub ID for HubSpot?
+
+Refer to the following HubSpot guides to get the API Key and Hub ID:
+
+- [Obtaining the API Key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+- [Obtaining the Hub ID](https://knowledge.hubspot.com/account/manage-multiple-hubspot-accounts#identify-the-current-account-s-hub-id)
+
+### Where do I get the Access Token for HubSpot?
+
+To get the Access Token:
+
+1. Log into your [HubSpot account](https://app.hubspot.com/login/).
+2. Go to **Integrations** > **Private Apps** from the left sidebar.
+3. Click on your app to see the below:
+
+<img src="../../assets/event-stream-destinations/Hubspot-access-token.png" />
+
+
