@@ -1450,10 +1450,6 @@ export const jsonData = [
         link: "/user-guides/migration-guides/",
         content: [
             {
-                title: "Migrating from Blendo to RudderStack",
-                link: "/user-guides/migration-guides/blendo-rudderstack-migration/",
-                content: []
-            }, {
                 title: "Migrating from Segment to RudderStack",
                 link: "/user-guides/migration-guides/rudderstack-migration-guide/",
                 content: []
