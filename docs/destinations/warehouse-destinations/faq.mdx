@@ -352,6 +352,16 @@ If the above steps take too long to complete, you can halt the warehouse operati
 
 RudderStack drops any non-standard properties (properties apart from the <Link to="/destinations/warehouse-destinations/warehouse-schema/#standard-rudderstack-properties">standard properties</Link>) declared at the top level of an event. However, you can add such properties in the `context` or `properties` section of the event payload.
 
+### Which integration options are supported for Warehouse destinations?
+
+The following integration options are supported for Warehouse destinations:
+
+| Integration option | Description |
+| :------------ | :---------- |
+| `skipTracksTable`     | Skips the creation of `tracks` table. <Link to="/destinations/warehouse-destinations/warehouse-schema/#skip-creation-of-tracks-table">Reference</Link>.         |
+| `useBlendoCasing`     | Retains the Blendo column names when migrating from Blendo to RudderStack.         |
+| `jsonPaths`     | Declares given path columns as json fields in warehouse. <Link to="/destinations/warehouse-destinations/json-column-support/">Reference</Link>. |
+
 
 ## Warehouse-specific
 
