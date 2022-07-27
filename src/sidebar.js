@@ -8,7 +8,7 @@ export const jsonData = [
     // Getting Started section
     {
         title: "What is RudderStack?",
-        sectionTitle: "Getting Started",
+        sectionTitle: "Get Started",
         link: `/get-started/what-is-rudderstack/`,
         content: []
     },
