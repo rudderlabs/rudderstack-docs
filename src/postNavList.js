@@ -1916,12 +1916,6 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "blendo-rudderstack-migration",
-    title: "Migrating from Blendo to RudderStack",
-    link: "/user-guides/migration-guides/blendo-rudderstack-migration/",
-    content: [],
-  },
-  {
     key: "rudderstack-migration-guide",
     title: "Migrating from Segment to RudderStack",
     link: "/user-guides/migration-guides/rudderstack-migration-guide/",
