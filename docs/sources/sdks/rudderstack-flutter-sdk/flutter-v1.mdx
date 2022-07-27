@@ -67,7 +67,6 @@ import 'package:rudder_sdk_flutter/RudderLogger.dart';
 RudderLogger.init(RudderLogger.VERBOSE);
 RudderConfigBuilder builder = RudderConfigBuilder();
 builder.withDataPlaneUrl(DATA_PLANE_URL);
-builder.withTrackLifecycleEvents(true);
 RudderClient.getInstance(WRITE_KEY,config: builder.build());
 ```
 

@@ -58,8 +58,7 @@ RudderClient.SerializeSqlite();
 
 // Build your config
 RudderConfigBuilder configBuilder = new RudderConfigBuilder()
-    .WithDataPlaneUrl(DATA_PLANE_URL);
-    .WithLogLevel(RudderLogLevel.VERBOSE)
+    .WithDataPlaneUrl(DATA_PLANE_URL); 
 
 // get instance for RudderClient
 RudderClient rudderClient = RudderClient.GetInstance(

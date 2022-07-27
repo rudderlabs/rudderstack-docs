@@ -344,13 +344,13 @@ An example `identify` event is as shown:
 
 ```objectivec
 [[RSClient sharedInstance] identify:@"test_user_id"
-traits:@&#123;@"foo": @"bar",
+traits:@{ 
+        @"foo": @"bar",
         @"foo1": @"bar1",
         @"email": @"test@gmail.com",
         @"key_1" : @"value_1",
         @"key_2" : @"value_2"
-&#125;
-];
+}];
 ```
 </span>
       </TabPanel>

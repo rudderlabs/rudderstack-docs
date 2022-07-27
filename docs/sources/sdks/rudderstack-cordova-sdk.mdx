@@ -52,8 +52,7 @@ A sample Cordova SDK initialization is as shown:
 
 ```javascript
 RudderClient.initialize(WRITE_KEY , {
-  dataPlaneUrl: DATA_PLANE_URL,
-  loglevel: RudderClient.LogLevel.VERBOSE,
+  dataPlaneUrl: DATA_PLANE_URL
 })
 ```
 
@@ -392,14 +391,7 @@ A sample SDK initialization is shown below:
 
 ```javascript
 RudderClient.initialize("1n0JdVPZTRUIkLXYccrWzZwdGSx", {
-  dataPlaneUrl: "https://0ff6-175-101-36-4.ngrok.io",
-  flushQueueSize: 30,
-  dbCountThreshold: 10000,
-  configRefreshInterval: 2,
-  logLevel: 0,
-  sleepTimeOut: 10,
-  trackLifecycleEvents: true,
-  recordScreenViews: true,
+  dataPlaneUrl: "https://0ff6-175-101-36-4.ngrok.io"
 }, {
   integrations: {
     MixPanel: true,
@@ -442,8 +434,7 @@ RudderStack collects the advertisement ID **only** if `autoCollectAdvertId` is s
 ```javascript
 RudderClient.initialize(WRITE_KEY , {
   dataPlaneUrl: DATA_PLANE_URL,
-  loglevel: RudderClient.LogLevel.VERBOSE,
-  autoCollectAdvertId: true,
+  autoCollectAdvertId: true
 })
 ```
 
@@ -477,7 +468,6 @@ You configure logging behavior of your SDK by sending the value of the `logLevel
 RudderClient.initialize( WRITE_KEY , {
   dataPlaneUrl: DATA_PLANE_URL ,
   logLevel: RudderClient.LogLevel.VERBOSE,
-  trackLifecycleEvents: true
 })
 ```
 

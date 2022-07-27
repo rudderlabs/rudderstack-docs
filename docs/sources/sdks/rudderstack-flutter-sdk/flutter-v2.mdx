@@ -91,10 +91,8 @@ import 'package:rudder_sdk_flutter/RudderController.dart';
 
 ```dart
 final RudderController rudderClient = RudderController.instance;
-RudderLogger.init(RudderLogger.VERBOSE);
 RudderConfigBuilder builder = RudderConfigBuilder();
 builder.withDataPlaneUrl(<DATA_PLANE_URL>);
-builder.withTrackLifecycleEvents(true);
 rudderClient.initialize(<WRITE_KEY>,config: builder.build());
 ```
 

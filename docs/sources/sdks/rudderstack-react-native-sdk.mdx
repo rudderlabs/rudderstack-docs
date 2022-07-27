@@ -82,9 +82,7 @@ import rudderClient from "@rudderstack/rudder-sdk-react-native"
 
 ```typescript
 await rudderClient.setup(WRITE_KEY, {
-  dataPlaneUrl: DATA_PLANE_URL,
-  trackLifecycleEvents: true,
-  recordScreenViews: true,
+  dataPlaneUrl: DATA_PLANE_URL
 })
 ```
 
@@ -279,9 +277,7 @@ rudderClient.identify(
   {
     email: "testuser@example.com",
     location: "UK",
-  },
-  null
-)
+  })
 ```
 
 The `identify` method has the following signature:
@@ -621,9 +617,7 @@ RudderStack collects the advertisement ID **only** if `autoCollectAdvertId` is s
 ```typescript
 await rudderClient.setup(WRITE_KEY, {
   dataPlaneUrl: DATA_PLANE_URL,
-  trackLifecycleEvents: true,
-  autoCollectAdvertId: true,
-  recordScreenViews: true,
+  autoCollectAdvertId: true
 })
 ```
 

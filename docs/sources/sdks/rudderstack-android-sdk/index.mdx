@@ -159,8 +159,6 @@ val rudderClient = RudderClient.getInstance(
     WRITE_KEY,
     RudderConfig.Builder()
         .withDataPlaneUrl(DATA_PLANE_URL)
-        .withTrackLifecycleEvents(true)
-        .withRecordScreenViews(true)
         .build()
 )
 ```
@@ -175,8 +173,6 @@ RudderClient rudderClient = RudderClient.getInstance(
         WRITE_KEY,
         new RudderConfig.Builder()
                 .withDataPlaneUrl(DATA_PLANE_URL)
-                .withTrackLifecycleEvents(true)
-                .withRecordScreenViews(true)
                 .build()
 );
 ```
@@ -662,8 +658,6 @@ val rudderClient = RudderClient.getInstance(
     WRITE_KEY,
     RudderConfig.Builder()
         .withDataPlaneUrl(DATA_PLANE_URL)
-        .withTrackLifecycleEvents(true)
-        .withRecordScreenViews(true)
         .withAutoCollectAdvertId(true)
         .build()
 )
@@ -788,9 +782,6 @@ var rudderClient = RudderClient.getInstance(
             <WRITE_KEY>,
             RudderConfig.Builder()
                 .withDataPlaneUrl(<DATA_PLANE_URL>)
-                .withLogLevel(RudderLogger.RudderLogLevel.DEBUG)
-                .withTrackLifecycleEvents(false)
-                .withRecordScreenViews(false)
                 .build(),
             option // passing the rudderoption object containing the list of destination(s) you specified
         )
@@ -1031,8 +1022,6 @@ var rudderClient = RudderClient.getInstance(
             WRITE_KEY,
             RudderConfig.Builder()
                 .withDataPlaneUrl(DATA_PLANE_URL)
-                .withTrackLifecycleEvents(false)
-                .withRecordScreenViews(false)
                 .withCustomFactory(CustomFactory.FACTORY)
                 .build()
 )

@@ -152,8 +152,6 @@ To initialize the RudderStack client, place the following code in your `AppDeleg
 ```objectivec
 RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
 [config dataPlaneURL:DATA_PLANE_URL];
-[config trackLifecycleEvents:YES];
-[config recordScreenViews:YES];
 
 [[RSClient sharedInstance] configureWith:config];
 ```
@@ -166,9 +164,7 @@ A shared instance of <code class="inline-code">RSClient</code> is accessible aft
 ```swift
 let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
                   .dataPlaneURL(DATA_PLANE_URL)
-                  .trackLifecycleEvents(true)
-                  .recordScreenViews(true)
-        
+                  
 RSClient.sharedInstance().configure(with: config)
 ```
 </span>
