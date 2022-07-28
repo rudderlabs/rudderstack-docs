@@ -94,17 +94,41 @@ Remember to delete the pre-populated <code class="inline-code">transformEvent</c
 
 7. To save the transformation, click **Save**.
 
-### `transformEvent` definition
+## Connecting transformation to a destination
 
-The `transformEvent` function takes two inputs:
+You can connect a transformation to a destination in two cases:
+
+### Case 1: While setting up a new destination
+
+RudderStack gives you the option to add a transformation while setting up a destination, as shown:
+
+<img src="../../assets/features/connecting-a-transformation.png" alt="Connecting a transformation" />
+
+### Case 2: Connecting to an existing destination
+
+To add a transformation to an existing destination, follow these steps:
+
+1. Go to the **Transformation** tab in your destination dashboard and click **Add a transformation**, as shown:
+
+<img src="../../assets/features/adding-transformation-existing-destination-1.png" alt="Connecting a transformation to existing destination" />
+
+2. Then, choose the transformation to you want to connect to the destination.
+
+<img src="../../assets/features/adding-transformation-existing-destination-2.png" alt="Connecting a transformation to existing destination" />
+
+## `transformEvent` definition
+
+RudderStack applies the `transformEvent` function on each event and takes two inputs:
 - `event`: This corresponds to the input event
 - `metadata`: This is an **optional** input corresponding to the JavaScript function which you can use to access the metadata of the given event.
 
 <div class="infoBlock">
-For more information on <code class="inline-code">metadata</code>, refer to the <Link to="#accessing-metadata">Accessing metadata</Link> section below.
+For more information on <code class="inline-code">metadata</code>, refer to the <Link to="#accessing--the-event-metadata">Accessing metadata</Link> section below.
 </div>
 
-### Using `transformBatch` instead of `transformEvent`
+After the transformation is complete, `transformEvent` returns the final event to be sent to the destination.
+
+## Using `transformBatch` instead of `transformEvent`
 
 In cases where you want to perform any aggregation or roll-up operation on a micro batch of events, you can use the `transformBatch` function instead of `transformEvent`, as shown:
 
@@ -144,17 +168,17 @@ Currently, RudderStack does not support deletion of libraries. This is to ensure
 
 5. Click **Run Test** to ensure the code included in the library has the correct syntax.
 
-## Using libraries in transformations
+### Using libraries in transformations
 
 To use the libraries in your existing transformations, refer to the **Import Library Name** option in the RudderStack dashboard, as shown:
 
-<img src="../assets/features/libraries-in-transformations.png" alt="Using libraries in transformations" />
+<img src="../../assets/features/libraries-in-transformations.png" alt="Using libraries in transformations" />
 
 <div class="infoBlock">
 RudderStack converts the library name into <strong>camel case without spaces</strong>; this becomes your <strong>library handle</strong> which you can use across multiple transformations. For example, if your library name is <code class="inline-code">Sample Transformation Library</code>, then the library handle would be <code class="inline-code">sampleTransformationLibrary</code>.
 </div>
 
-### Use-case
+#### Use-case
 
 Suppose you want to import a function `rudderEmail` from the `Is Rudder Email` library to filter events that don't have the email address containing the RudderStack domain.
 
@@ -182,9 +206,9 @@ export function transformEvent(event) {
 
 On clicking **Run Test**, a sample event not containing the RudderStack email domain is filtered out, as shown:
 
-<img src="../assets/features/libraries-in-transformations-test.png" alt="Filtering out events using libraries in transformation" />
+<img src="../../assets/features/libraries-in-transformations-test.png" alt="Filtering out events using libraries in transformation" />
 
-## Importing multiple functions from a single library
+### Importing multiple functions from a single library
 
 When importing a single function or multiple functions from a library, keep the import statement to one line. Breaking the import function into multiple lines will lead to an error.
 
@@ -227,7 +251,15 @@ import getPrice as gp from "getFinanceData";
 getPrice(ev)
 ```
 
-## Accessing metadata
+### How RudderStack tests library updates
+
+If you update a library that is referenced in any transformation, RudderStack tests the new library code along with the transformation code against the default event payload. This ensures that the transformation does not break due to any changes in the library.
+
+<div class="warningBlock">
+RudderStack currently does not support testing libraries with custom events.
+</div>
+
+## Accessing the event metadata
 
 RudderStack injects a function `metadata(event)` into your transformations as an argument. This allows you to access the event metadata variables that help you customize your transformations.
 
@@ -239,18 +271,14 @@ The following properties, if available, are present in the metadata response:
 
 | Property   | Description       |
 | :-------------- | :------------------------- |
-| `sourceId`      | This refers to the ID of the source configured on your RudderStack dashboard. Note that it different from the source **Write Key**. Refer to the image below for more details. |
-| `destinationId` | ID of the destination configured on your RudderStack dashboard.                                                                                                                |
-| `messageId`     | Corresponds to the unique ID for each event.                                                                                                                                   |
-| `sessionId`     | If sessions are enabled, this corresponds to the value of the session ID.                                                                                                      |
+| `sourceId`      | The ID of the source configured in your RudderStack dashboard. Note that it is different from the <Link to="">source write key</Link>. |
+| `destinationId` | The ID of the destination configured in your RudderStack dashboard.           |
+| `messageId`     | The unique ID for each event.            |
+| `sessionId`     | The ID associated with a session. This is applicable only if sessions are enabled.    |
 
-<img src="../assets/image (98).png" alt="Source ID" />
+Since you may not need the event metadata in every transformation, you can include it as an **optional argument** in your function signature whenever required.
 
-<img src="../assets/image (120) (1) (1).png" alt="Source ID" />
-
-Since you may not need the metadata in every transformation, you can optionally access it by including it in your function signature as an argument wherever required.
-
-An example of this is as shown below:
+An example of using `metadata` is shown below:
 
 ```javascript
 export function transformEvent(event, metadata) {
@@ -263,17 +291,21 @@ export function transformEvent(event, metadata) {
 
 ## External API requests
 
-You can make any number of external API requests in your transformation functions and use the response to enrich your events data. RudderStack injects an asynchronous `fetch(url)` function into your transformations. It makes an API call to the given URL and returns the response in a JSON format.
+You can make any number of external API requests in your transformation functions and use the response to enrich your events. 
 
-An example of how to use the `fetch` function in transformations is shown below:
+<div class="infoBlock">
+RudderStack injects an asynchronous <code class="inline-code">fetch(url)</code> function in your transformations. It makes an API call to the given URL and returns the response in the JSON format.
+</div>
+
+You can use the `fetch` function in your transformations as follows:
 
 ```javascript
 export async function transformEvent(event, metadata) {
   const res = await fetch("post_url", {
-    method: "POST", // POST, PUT, DELETE, GET, etc.
+    method: "POST",  // POST, PUT, DELETE, GET, etc.
     headers: {
       "Content-Type": "application/json;charset=UTF-8",
-      Authorization: "Bearer <your_authorization_token>"
+      Authorization: "Bearer <authorization_token>"
     },
     body: JSON.stringify(event)
   });
@@ -282,30 +314,26 @@ export async function transformEvent(event, metadata) {
 }
 ```
 
-<div class="successBlock">
-To see how this feature is used in more detail, refer to the <a href="https://github.com/rudderlabs/sample-user-transformers/blob/sampleTransformationV1/EnrichWithClearbit.js">Clearbit enrichment example</a> which uses the <code class="inline-code">fetch</code> function.
+<div class="infoBlock">
+To see the <code class="inline-code">fetch</code> function in action, refer to the <a href="https://github.com/rudderlabs/sample-user-transformers/blob/sampleTransformationV1/EnrichWithClearbit.js">Clearbit enrichment</a> sample transformation.
 </div>
 
 <div class="infoBlock">
-For improved performance, we recommend using <code class="inline-code">batch</code> API requests instead of a separate API request for each event whenever possible.
+For improved performance, it is highly recommended to use the <code class="inline-code">batch</code> API requests instead of a separate API request for each event wherever possible.
 </div>
 
-### FetchV2
+### Fetching response properties using `fetchV2`
 
-FetchV2 is a wrapper around the `fetch` call to provide more access to fetch the response properties.
+**FetchV2** is a wrapper around the `fetch` call. It enables you to fetch the response properties more efficiently while making the external API calls.
 
 The following properties are present in a `fetchV2` response:
 
-| Property Name   | Description  |
+| Property | Description  |
 | :-------------- | :----------- |
-| `status`      | Status code of fetch response, e.g. `200`.|
-| `url` | URL of the Fetch API.   |
-| `headers`     | Response headers   |
-| `body`     | Response body in JSON or TEXT. By default, it is JSON. |
-
-<div class="infoBlock">
-Use the <code class="inline-code">try-catch</code> block to capture the cause for failures during the <code class="inline-code">fetch</code> call, e.g. when a timeout is applied.
-</div>
+| `status`      | Status code of fetch response, for example, `200`. |
+| `url` | The URL of the Fetch API.   |
+| `headers`     | The response headers   |
+| `body`     | The response body in JSON or TEXT. By default, it is JSON. |
 
 An example of how to use the `fetchV2` function in RudderStack transformations is shown below:
   
@@ -322,32 +350,39 @@ export async function transformEvent(event) {
   return event;
 }
 ```
+
+<div class="infoBlock">
+Use the <code class="inline-code">try-catch</code> block to capture the cause of failure during the <code class="inline-code">fetchv2</code> call; for example, a timeout.
+</div>
+
+## Transformation and library revisions
+
+A revision is a state where you can store a transformation or library as a draft. Once the test criteria is met, you can restore the draft and publish it for production use by <Link to="#connecting-transformation-to-a-destination">connecting it to a destination</Link>.
   
 ## Debugging with logs
 
-You can access event-related logs while running a test by including the `log()` function in your transformation code. An example of this is as shown:
+RudderStack enables you to access any event-related information in the form of logs while running a test on your transformation. You can do this by including the `log` function in your transformation code. 
+
+An example of using the `log` function is shown below:
 
 ```javascript
 export function transformEvent(event, metadata) {
   const meta = metadata(event);
   event.sourceId = meta.sourceId;
 
-  log("Event Name is", event.event, ";", "Message Id is", event.messageId);
-  log("Source Id is", meta.sourceId);
+  log("Event Name is", event.event, ";", "Message ID is", event.messageId);
+  log("Source ID is", meta.sourceId);
 
   return event;
 }
 ```
 
-On running a test on the above code, you can see the logs in the **Logs** section of the dashboard, as shown:
+On adding the above transformation and clicking **Run Test**, you can see the resulting log in the **Logs** section of the dashboard, as shown:
 
-<img
-  src="../assets/image (103) (2) (2) (2) (2) (2) (1) (2) (2) (2) (2) (1).png"
-  alt="Adding a Transformation"
-/>
+<img src="../../assets/features/transformation-log.png" alt="Transformation log" />
 
 <div class="infoBlock">
-Arguments to the <code class="inline-code">log</code> function can be a String, Number or Object.
+You can pass a string, number, or an object as an argument to the <code class="inline-code">log</code> function.
 </div>
 
 ## Limits
@@ -356,37 +391,13 @@ You should take into account the memory and time limits when adding a new transf
 
 | Parameter    | Limit     |
 | :----------- | :-------- |
-| Memory Limit | 8 MB      |
-| Time Limit   | 4 seconds |
+| Memory limit | 8 MB      |
+| Time limit   | 4 seconds |
 
-<div class="warningBlock">
+<div class="dangerBlock">
 The user transformation fails if these limits are exceeded.
 </div>
 
 ## FAQ
 
-
-
-## I used to write transformations like `function transform(events) {}`. Why am I not able to create new transformations this way?
-
-We have changed the way transformations are written. RudderStack now supports writing functions that transform a single event instead of a batch of events. You can now define your transformation in the following manner:
-
-`export function transformEvent(event, metadata) {}`
-
-## I want to write a transformation that can be applied to a small batch of events. Can I not do this anymore?
-
-You can. Simply define your transformation in the following manner:
-
-`export function transformBatch(events, metadata) {}`
-
-<div class="warningBlock">
-This can cause a loss of the event metadata that RudderStack uses internally to maintain event ordering for you.
-</div>
-
-## I cannot import libraries into my existing transformations. What do I do?
-
-Previously created transformations shown as `Version: V0` don't support libraries. If you want to use libraries, please create a new transformation with `Version: V1` that support libraries. You can then reconnect your destinations with this new transformation that you have created.
-
-## I want to update my existing version v0 transformation code to version v1. What do I do?
-
-You cannot update transformation `Version: V0` directly to `Version: V1`. Please create a new transformation with updated code `Version: V1`. You can then reconnect your destinations with this new transformation that you have created and delete existing `Version: V0` transformation.
+For answers to some of the commonly asked questions on this feature, refer to the <Link to="/features/transformations/faq/">FAQ</Link> guide.
