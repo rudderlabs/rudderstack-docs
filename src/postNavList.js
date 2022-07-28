@@ -1050,6 +1050,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "onesignal",
+    title: "OneSignal",
+    link: "/destinations/streaming-destinations/onesignal/",
+    content: [],
+  },
+  {
     key: "clevertap",
     title: "CleverTap",
     link: "/destinations/streaming-destinations/clevertap/",

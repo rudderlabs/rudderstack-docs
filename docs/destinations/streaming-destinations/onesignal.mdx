@@ -35,8 +35,8 @@ To successfully configure OneSignal as a destination, you will need to configure
 
 <img src="../../assets/event-stream-destinations/OneSignal-connection-settings.png" alt="OneSignal connection settings"/>
 
-- **License Code**: Enter your OneSignal license code.
-- **API Key**: Enter your OneSignal API key.
+- **App Id**: Enter your OneSignal license code.
+- **Device type**: Enter your OneSignal API key.
 
 <div class="infoBlock">
 To get your OneSignal license code and API key, log into your OneSignal dashboard and go to <strong>Data Platform</strong> > <strong>Integrations</strong> > <strong>REST API</strong>. For more information, refer to the <Link to="#faq">FAQ</Link> section below.
@@ -48,43 +48,38 @@ To get your OneSignal license code and API key, log into your OneSignal dashboar
 
 The <Link to="/event-spec/standard-events/identify">`identify`</Link> method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
-RudderStack uses the `identify` call to create or update the customer information in OneSignal. It maps `userId` or `anonymousId` (`userId` is prioritized if both are present ) to OneSignal's `userId` before sending the data via the [`users`](https://docs.OneSignal.com/docs/rest-api-tracking-users#users) API.
+For Adding a new device to OneSignal App. If a device is already registered with the specified identifier, then this will update the existing device record instead of creating a new one.
+Add Device Endpoint `https://onesignal.com/api/v1/players`
 
 A sample `identify` call is shown below:
 
 ```javascript
-rudderanalytics.identify("1hKOmRA4GRlm", {
-  email: "alex@example.com",
-  phone: "+1-202-555-0146",
-});
+rudderanalytics.identify('userId123', {
+            firstName: 'Mike',
+            lastName: 'Dwell',
+            email: "mike@email.com"
+        }, {
+            integrations: {
+                oneSignal: {
+                    deviceType: "6",
+                    identifier: ""
+                }
+            }
+        );
 ```
 
-### Traits mapping
+### Property mapping
 
-RudderStack maps the following `identify` traits to the corresponding OneSignal attributes:
-
-| RudderStack trait | OneSignal attribute | Presence | Notes |
-| :-------| :--------| :------| :------|
-| `userId` | `userId` | Required if `anonymousId` is not present. | `userId` cannot exceed 100 characters. |
-| `anonymousId` | `anonymousId` | Required if `userId` is not present. | `anonymousId` cannot exceed 100 characters. |
-| `firstName` | `firstName` | Optional | The user's first name. |
-| `lastName` | `lastName` | Optional | The user's last name. |
-| `birthday`/`dateOfBirth`/`dateofbirth`/`dob`/`DOB` | `birthDate` | Optional | The user's birth date in the ISO format: `yyyy-MM-dd`. |
-| `gender` | `gender` | Optional | The user's gender. |
-| `email` | `email` | Optional | The user's email. |
-| `phone` | `phone` | Optional | The user's phone. |
-| `emailOptIn` | `emailOptIn` | Optional | The user's email subscription preference. |
-| `smsOptIn` | `smsOptIn` | Optional | The user's SMS subscription preference. |
-| `whatsappOptIn` | `whatsappOptIn` | Optional | The user's WhatsApp subscription preference. |
-| `company.name` | `company` | Optional | The user's company. |
-| `hashedEmail` | `hashedEmail` | Optional | The user's hashed email for email services. |
-| `hashedPhone` | `hashedPhone` | Optional | The user's encrypted phone number for SMS services. |
-| `postalcode` / `address.postalCode` | `postalCode` | Optional | The user's postal code. |
-| `region` / `address.region` | `region` | Optional | The user's region. |
-| `locality` / `address.locality` | `locality` | Optional | The user's locality. |
-| `city` / `address.city` | `city` | Optional | The user's city. |
-| `country` / `address.country` | `country` | Optional | The user's country. |
-| `attributes` | `attributes` | Optional | The user's custom attributes as key-value pairs. |
+| RudderStack property | OneSignal property | Presence | 
+| :-------| :--------| :------|
+| use the library to check the browser and map the deviceType accordingly and the deviceToken. And this will be overridden by the deviceType in the integrationsObj. | `device_type` | Required | 
+| `traits.firstName` | `tags.first_name` | Optional |
+| `traits.lastName` | `tags.last_name` | Optional | 
+| `context.device.deviceModel` | `device_model` | Optional | 
+| `context.os` | `device_os` | Optional | 
+| `traits.address.country` | `country` | Optional |
+| `context.timezone` | `timezone` | Optional | 
+| `anonymousId` | `external_user_id` | Optional | 
 
 ### Identify traits considerations
 
@@ -99,91 +94,59 @@ Note the following when sending `identify` traits to OneSignal:
 
 The <Link to="/event-spec/standard-events/track">`track`</Link> method lets you capture user events along with the properties associated with them.
 
-RudderStack uses the `track` call to send the custom events to OneSignal via the [`events`](https://docs.OneSignal.com/docs/rest-api-tracking-events#events) API.
+This endpoint is used to update an existing device's tags in one of your OneSignal apps using the `External User ID`. All devices containing a particular externalUserId will update simultaneously.
+
+Update Device Endpoint: `https://onesignal.com/api/v1/apps/{app_id}
+/users/{external_user_id}`
+
+**Note** - While updating a device tag, any key inside a tag can be deleted by providing empty string as value for that key. Ignoring that tag key won’t delete the key from the tag.
 
 A sample `track` call is shown below:
 
 ```javascript
-rudderanalytics.track("Order Completed", {
-  timestamp: "2022-05-05T14:58:10.000Z",
-  currency: "USD",
-  checkout_id: "X23441",
-  order_id: "ORD00123"
-});
+rudderanalytics.track('Add to cart', {
+    purchased_item: "Shirt",
+		brand: "Zara"
+	}
+);
 ```
 
 <div class="warningBlock">
 Make sure you call <code class="inline-code">identify</code> before <code class="inline-code">track</code> for RudderStack to include the <code class="inline-code">userId</code> in the <code class="inline-code">track</code> events. Otherwise, RudderStack will send the <code class="inline-code">track</code> calls to OneSignal with an <code class="inline-code">anonymousId</code>.
 </div>
 
-### Property mapping
 
-RudderStack maps the following event properties to the corresponding OneSignal attributes:
 
-| RudderStack trait | OneSignal attribute | Presence | Notes |
-| :-------| :--------| :------| :------|
-| `userId` | `userId` | Required if `anonymousId` is not present. | `userId` cannot exceed 100 characters. |
-| `anonymousId` | `anonymousId` | Required if `userId` is not present. | `anonymousId` cannot exceed 100 characters. |
-| `eventName` | `event` | Required | The event name. |
-| `timestamp`/`originalTimestamp` | `eventTime` | Optional | The date and time of the event in ISO format: `yyyy-MM-ddTHH:mm:ss±hhmm`. |
-| `properties` | `eventData` | Optional | The custom event attributes as key-value pairs. |
 
-### Setting custom attributes
 
-OneSignal lets you send custom attributes as key-value pairs in the `eventData` parameter as described in the <Link to="#property-mapping">above section</Link>. However, there are a few things you should keep in mind:
+## Group
 
-- OneSignal ignores any custom attributes starting with `we_` as these are reserved for internal use.
-- User attribute names must be less than 50 characters, while the `string` attribute values cannot exceed 1000 characters. OneSignal automatically truncates any additional characters.
-- You can create a maximum of 25 custom user attributes of each data type.
-- If the attribute value is a JSON object, it can only be used to personalize your campaigns. These attributes cannot be used to create user segments.
-- Once defined, the data type of a custom user attribute cannot be changed again.
+The <Link to="/event-spec/standard-events/group">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account. It also lets you record any custom traits associated with that group like the name of the company, number of employees, etc.
 
-## Page
-
-The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
-
-RudderStack internally transforms the `page` call into a `track` call before sending it as a custom event to OneSignal. It sends the event/category name by transforming it in the `Viewed ${category} ${name} page` format.
-
-For example, consider the following `page` call:
+A sample `group` call is as shown 
+we can group devices having tags using groupId.
 
 ```javascript
-rudderanalytics.page("Home", "Clothes", {
-  path: "/best-seller/1",
-  referrer: "https://www.google.com/search?q=estore+bestseller",
-  search: "estore bestseller",
-  title: "The best sellers offered by EStore",
-  url: "https://www.estore.com/best-seller/1"
+rudderanalytics.group('groupId123', {
+    firstName: 'Mike',
+    lastName: 'Dwell',
+    email: "mike@email.com"
 });
 ```
 
-RudderStack transforms the above event into a `track` call named `Viewed Home Clothes page` and sends it to OneSignal as a custom event.
+### Property mapping
 
-<div class="infoBlock">
-RudderStack sends the <code class="inline-code">page</code> event properties to OneSignal, similar to the <code class="inline-code">track</code> event properties.
-</div>
-
-## Screen
-
-The <Link to="/event-spec/standard-events/screen">`screen`</Link> method lets you record whenever your user views their mobile screen with any additional relevant information about the screen. It is the mobile equivalent of a <Link to="#page"><code class="inline-code">page</code></Link> call.
-
-RudderStack internally transforms the `screen` call into a `track` call before sending it as a custom event to OneSignal. It sends the event/category name by transforming it in the `Viewed ${category} ${name} screen` format.
-
-For example, consider the following `screen` call:
-
-```kotlin
-rudderClient.screen(
-    "Games",
-    "home",
-    RudderProperty().putValue("foo", "bar"),
-    null
-)
-```
-
-RudderStack transforms the above event into a `track` call named `Viewed Games home screen` and sends it to OneSignal as a custom event.
-
-<div class="infoBlock">
-RudderStack sends the <code class="inline-code">screen</code> event properties to OneSignal, similar to the <code class="inline-code">track</code> event properties.
-</div>
+| RudderStack property | OneSignal property | Presence | 
+| :-------| :--------| :------|
+| `groupId` | `groupId` | Required | 
+| use the library to check the browser and map the deviceType accordingly and the deviceToken. And this will be overridden by the deviceType in the integrationsObj. | `device_type` | Required | 
+| `traits.firstName` | `tags.first_name` | Optional |
+| `traits.lastName` | `tags.last_name` | Optional | 
+| `context.device.deviceModel` | `device_model` | Optional | 
+| `context.os` | `device_os` | Optional | 
+| `traits.address.country` | `country` | Optional |
+| `context.timezone` | `timezone` | Optional | 
+| `anonymousId` | `external_user_id` | Optional | 
 
 ## FAQ
 
