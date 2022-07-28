@@ -44,7 +44,7 @@ export default function Layout({ children, title, headings, description }) {
 
   return (
     <Fragment>
-      {isProdMode && data.allSanitySiteSettings.edges[0].node._rawWebsiteScripts.map(
+      {isProdMode && data?.allSanitySiteSettings?.edges[0].node._rawWebsiteScripts.map(
         (script) => {
           return (
             <ScriptContentHead key={script._key} currentSlug={""} {...script} />
@@ -129,7 +129,7 @@ export default function Layout({ children, title, headings, description }) {
         </Main>
       </Container>
       <CookiesConsent />
-      {isProdMode && data.allSanitySiteSettings.edges[0].node._rawWebsiteScripts.map(
+      {isProdMode && data?.allSanitySiteSettings?.edges[0].node._rawWebsiteScripts.map(
         (script) => {
           return (
             <ScriptContentBody key={script._key} currentSlug={""} {...script} />
