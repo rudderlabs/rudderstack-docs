@@ -45,7 +45,7 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen}) => {
         <nav className="docsNav">
           <ul className="docsNavList">
             <li>
-              <Link to="/docs/" onClick={(e) => rudderslabTrackOnClickDocs("navigation", null, e, true)}>Home</Link>
+              <Link to="/" onClick={(e) => rudderslabTrackOnClickDocs("navigation", null, e, true)}>Home</Link>
             </li>
             <li>
               <a href="https://github.com/rudderlabs/rudder-server" onClick={(e) => rudderslabTrackOnClickDocs("navigation", null, e, true)}>GitHub</a>
