@@ -65,6 +65,14 @@ Refer to the <Link to="#faq">FAQ</Link> section to know where to get the Hub ID 
 
 - **API Version**: Select **New API** from the dropdown.
 
+<img src="../../assets/event-stream-destinations/hubspotv2-connection-settings-3.png" alt="HubSpot connection settings" />
+
+- **Hubspot property name to be used as lookup field**: Enter the unique Hubspot property to be used for contact lookup. The provided lookup field key will be retrieved from traits.
+- **RudderStack Event Name**: Enter the custom behavioral RudderStack event name you want to map to the HubSpot event name.
+- **HubSpot Event Name**: Enter the custom behavioral HubSpot event name you want to map to the above-mentioned RudderStack event name.
+- **Map your Event Property**: Enter the RudderStack and HubSpot event properties you want to map for custom behavioral events.
+
+
 ### Client-side events filtering
 
 <img src="../../assets/event-stream-destinations/hubspot-connection-settings-3.png" alt="HubSpot connection settings" />
@@ -77,7 +85,7 @@ These settings are applicable only if you're sending events to HubSpot via the w
 
 RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a contact in HubSpot. The user's email ID must be present in the `identify` call's `traits`.
 
-In the new CRM API for hubspot, one needs to check if a contact exists and then update is done through new Update endpoints. Hence, one axios call will be in between. But the approach we have via legacy batch API, for create or update, we do not need a separate endpoint and it works seemlessly. But we will keep this version change scope as well.
+In the new CRM API for hubspot, one needs to check if a contact exists and then update is done through new Update endpoints. Hence, one axios call will be in between. But the approach we have via legacy batch API, for create or update, we do not need a separate endpoint and it works seemlessly.
 
 A sample `identify` call is as shown:
 
@@ -98,7 +106,7 @@ rudderanalytics.identify({
 
 A <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record various user actions and any properties associated with them.
 
-To associate a `track` call with a user, you need to specify the user's `email` under `context.traits` . Additionally, RudderStack associates the `track` events with the same user after an `identify` request is successfully made.
+To associate a `track` call with a user, you need to specify the user's `email` under `context.traits`. Additionally, RudderStack associates the `track` events with the same user after an `identify` request is successfully made.
 
 A sample `track` event is as shown:
 
@@ -122,7 +130,29 @@ rudderanalytics.track(
 
 ### Property mappings
 
-Optional properties:
+The following table lists the (optional) property mappings between RudderStack and HubSpot for the `track` API:
+
+| RudderStack property         | HubSpot property      | 
+| :--------------------------- | :--------------------- |
+| `traits.utk`/`context.traits.utk`/`properties.utk`  | `utk`     | 
+| `email`        | `email`       |
+| `properties.occurred_at`/`originalTimestamp`  | `occurredAt`       |         
+| `traits.objectId`/`context.traits.objectId`/`properties.objectId`    | `objectId`     |            
+
+### Custom behavioral events
+
+You can create the custom behavioral events and properties associated to them in the RudderStack dashboard.
+
+The following parameters are sent in the custom behavorial events:
+- **Identifier**: Either the contact ID, email, or <Link to="https://developers.hubspot.com/docs/api/events/tracking-code">utk</Link> of the contact associated with the event.
+    - **utk**: The user token, which is stored in the visitor's *`hubspotutk`* browser cookie. (not sure if the user will be able to send it in cloud mode)       
+    - **Event name:** The internal name of the event, which can be found in HubSpot.
+    - **Properties object**: Different properties as explained below:
+
+#### Property mappings
+
+When you create a custom behavioral event in HubSpot, some default properties are provided with those events.
+The following table lists these (optional) property mappings between RudderStack and HubSpot for custom behavioral events in the `track` API:
 
 | RudderStack property         | HubSpot property      | 
 | :--------------------------- | :--------------------- |
@@ -134,8 +164,6 @@ Optional properties:
 | `context.device.name`            | `hs_device_name`            |          
 | `properties.elementClass`/`properties.hsElementClass`               | `hs_element_class`               |             
 | `properties.elementId`/`properties.hsElementId`              | `hs_element_id`              |    
-
-
 
 ## FAQ
 
