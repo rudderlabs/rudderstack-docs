@@ -50,7 +50,6 @@ This code snippet:
 | Method           | Description                                          |
 | :--------------- | :--------------------------------------------------- |
 | <Link to="/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/#loading-javascript-sdk">`load()`</Link>     | Loads `analytics.js` with the specified write key. |
-| <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#page">`page()`</Link>     | Records page views whenever a user visits a page.    |
 | <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#track">`track()`</Link>   | Tracks user actions and other events.            |
 | <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#identify">`identify()`</Link> | Associates users and their traits or actions.        |
 |<Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#alias">`alias()`</Link>    | Maps a new user ID with an old user.       |
@@ -65,7 +64,7 @@ This code snippet:
 | `getGroupTraits`  | Fetches the current group traits.       |
 
 - Loads the analytics object with the specified write key.
-- Makes the `page()`call to track the page views. It auto-captures properties such as `path`, `referrer`, `search`, `title`, and `URL`. Refer to the <Link to="/event-spec/standard-events/page/">`page`</Link> method to override these properties. 
+- Makes the `page()`call to track the page views. It captures the whole URL including the UTM parameters as part of the page call payload, such as `path`, `referrer`, `search`, `title`, and `URL`. Refer to the <Link to="/event-spec/standard-events/page/#properties">`page`</Link> method to override these properties.
 
 To integrate the SDK with your website and load it **synchronously**, add any of the following script in the `<head>` section of your website.
 
@@ -119,7 +118,7 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
 ```
 
 <div class="infoBlock">
-There is an explicit <code class="inline-code">page</code> call at the end in all the above snippets. This is added to ensure that whenever the SDK loads in a page, a <code class="inline-code">page</code> call is sent. You can either remove this call or modify it with extra <code class="inline-code">page</code> properties as required. You can also add <code class="inline-code">page</code> calls in your application in places not tied directly to page load, for example, virtual page views, page renders on route change, such as in SPAs.
+There is an explicit <code class="inline-code">page</code> call at the end in all the above snippets. This is added to ensure that whenever the SDK loads in a page, a <code class="inline-code">page</code> call is sent. You can either remove this call or modify it with extra <code class="inline-code">page</code> properties as required. You can also add <code class="inline-code">page</code> calls in your application in places not tied directly to page load, for example, virtual page views, page renders on route change, such as in <Link to="#single-page-application">single-page applications</Link>.
 </div>
 
 ### Using NPM 
@@ -244,3 +243,7 @@ rudderanalytics.track(
 The JavaScript SDK captures the `Order Completed` event along with `revenue`, `currency`, and `anonymousId` from the above snippet.
 
 You can use this method to track various success metrics for your website like user signups, item purchases, article bookmarks, and more.
+
+## Single-page application
+
+The JavaScript SDK makes a `page` call after its initialization (explicitly called at the end of the installation script). However, in case of a single-page application (SPA) where the page is not reloaded for every route change, you need to make the `page` call explicitly after the route change on the frontend. Refer to the example <Link to="/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nextjs-integration/#method-2-installing-and-configuring-the-javascript-sdk-using-npm-package-in-your-nextjs-app">steps here</Link>.
