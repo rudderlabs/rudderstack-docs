@@ -37,9 +37,9 @@ Once you have confirmed that the source platform supports sending events to HubS
 
 ## Connection settings
 
-To successfully configure HubSpot as a destination using the legacy API, you can choose any of the following authorization types:
+To successfully configure HubSpot as a destination using the **legacy API**, you can choose any of the following authorization types:
 
-### Private Apps authorization type
+#### Private Apps authorization type
 
 Select authorization type as **Private Apps** which allows you to use HubSpot's APIs to access specific data from your HubSpot account.
 
@@ -53,7 +53,7 @@ Refer to the <Link to="#faq">FAQ</Link> section to know where to get the HubSpot
 
 - **API Version**: Select **Legacy API** from the dropdown. To work with the new HubSpot API, refer to the <Link to="/destinations/streaming-destinations/hubspot-v2/">HubSpot V2</Link> guide.
 
-### API Key authorization type
+#### API Key authorization type
 
 Select authorization type as **API Key (deprecating soon)** which allows you to create custom applications using HubSpot's APIs.
 
@@ -125,11 +125,11 @@ A sample `identify` call is as shown:
 
 ```javascript
 rudderanalytics.identify({
-  firstName: "Tintin",
-  city: "Brussels",
-  country: "Belgium",
-  phone: "1234567890",
-  email: "tintin@twentiethcentury.com",
+  firstName: "Alex",
+  city: "New Orleans",
+  country: "USA",
+  phone: "+1-202-555-0146",
+  email: "alex@example.com",
   custom_flavor: "chocolate",
   custom_date: 1574769933368,
   custom_date1: new Date("2019-10-14T11:15:53.296Z"),
@@ -182,16 +182,16 @@ A sample `track` event is as shown:
 
 ```javascript
 rudderanalytics.track(
-  "Purchase", {
+  "Order Completed", {
     value: 30,
   }, {
     context: {
       traits: {
-        firstname: "Tintin",
-        city: "Brussels",
-        country: "Belgium",
-        phone: "1234567890",
-        email: "tintin@twentiethcentury.com",
+        firstname: "Alex",
+        city: "New Orleans",
+        country: "USA",
+        phone: "+1-202-555-0146",
+        email: "alex@example.com",
       },
     },
   }
@@ -232,8 +232,8 @@ RudderStack supports sending the [HubSpot CRM custom object](https://developers.
 A sample `identify` call for HubSpot CRM custom object is shown below:
 
 ```javascript
-rudderanalytics.identify("userId", {
-  email: "name@domain.com",
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+  email: "alex@example.com",
   hubspot: {
     contactId: "512",
     qualifiedName: "p99688696_car",
