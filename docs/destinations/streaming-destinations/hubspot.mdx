@@ -39,20 +39,23 @@ Once you have confirmed that the source platform supports sending events to HubS
 
 To successfully configure HubSpot as a destination using the legacy API, you can choose any of the following authorization types:
 
-1. **Private Apps**: Allows you to use HubSpot's APIs to access specific data from your HubSpot account.
+### Private Apps authorization type
+
+Select authorization type as **Private Apps** which allows you to use HubSpot's APIs to access specific data from your HubSpot account.
 
 <img src="../../assets/event-stream-destinations/hubspot-connection-settings-2.png" alt="HubSpot connection settings" />
 
-- **Authorization Type**: Select **Private Apps** from the dropdown.
 - **Access Token**: Enter your HubSpot access token from the **Private Apps** section in the HubSpot dashboard.
 
 <div class="infoBlock">
 Refer to the <Link to="#faq">FAQ</Link> section to know where to get the HubSpot access token.
 </div>
 
-- **API Version**: Select **Legacy API** from the dropdown. To work with new HubSpot API, refer to the <Link to="/destinations/streaming-destinations/hubspot-v2/">HubSpot V2</Link> guide.
+- **API Version**: Select **Legacy API** from the dropdown. To work with the new HubSpot API, refer to the <Link to="/destinations/streaming-destinations/hubspot-v2/">HubSpot V2</Link> guide.
 
-2. **API Key (deprecating soon)**: Allows you to create custom applications using HubSpot's APIs.
+### API Key authorization type
+
+Select authorization type as **API Key (deprecating soon)** which allows you to create custom applications using HubSpot's APIs.
 
 <div class="warningBlock">
 HubSpot API keys will be deprecated soon. Refer to <Link to="https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key">HubSpot documentation</Link> for more information.
@@ -60,15 +63,14 @@ HubSpot API keys will be deprecated soon. Refer to <Link to="https://knowledge.h
 
 <img src="../../assets/event-stream-destinations/hubspot-connection-settings-1.png" alt="HubSpot connection settings" />
 
-- **Authorization Type**: Select **API Key (deprecating soon)** from the dropdown.
 - **Hub ID**: Enter your HubSpot Hub ID.
-- **API Key**: Enter your HubSpot API key. It is mandatory to send the data to HubSpot via the RudderStack cloud mode.
+- **API Key**: Enter your HubSpot API key. This field is mandatory to send data to HubSpot via the RudderStack cloud mode.
 
 <div class="infoBlock">
 Refer to the <Link to="#faq">FAQ</Link> section to know where to get the Hub ID and API Key.
 </div>
 
-- **API Version**: Select **Legacy API** from the dropdown. To work with new HubSpot API, refer to the <Link to="/destinations/streaming-destinations/hubspot-v2/">HubSpot V2</Link> guide.
+- **API Version**: Select **Legacy API** from the dropdown. To work with the new HubSpot API, refer to the <Link to="/destinations/streaming-destinations/hubspot-v2/">HubSpot V2</Link> guide.
 
 ### Client-side events filtering
 
@@ -196,7 +198,7 @@ rudderanalytics.track(
 )
 ```
 
-The track call also supports `externalId` as a parameter which is mapped from the External Id, that is, `hubspotId`.
+The `track` call also supports <Link to="https://legacydocs.hubspot.com/docs/methods/enterprise_events/http_api#:~:text=%26favorite_color%3Dorange-,External%20id,-%26id%3D%7Bvalue%7D">`externalId`</Link> as a parameter which is mapped from `externalID` `hubspotId`.
 
 ### Revenue events
 
