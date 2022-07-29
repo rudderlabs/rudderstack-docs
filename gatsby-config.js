@@ -141,7 +141,9 @@ module.exports = {
           }
         `,
         resolvePages: ({ allMdx: { nodes: allMdxPages } }) => {
-          return allMdxPages.map((page) => ({ path: `/${page.slug}` }));
+          return allMdxPages.map((page) => {
+            return { path: `/${page.slug.replace(/\/$/, "")}` };
+          });
         },
         serialize: ({ path }) => ({
           url: path,
