@@ -5,6 +5,7 @@ import algoliasearch from "algoliasearch/lite"
 import DocsSearchBox from "./DocsSearchBox"
 import DocSearchContentWrapper from "./DocSearchContentWrapper"
 import {rudderslabTrackOnClickDocs} from '../utils/common'
+import { Link } from 'gatsby';
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,
@@ -44,7 +45,7 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen}) => {
         <nav className="docsNav">
           <ul className="docsNavList">
             <li>
-              <a href="/" onClick={(e) => rudderslabTrackOnClickDocs("navigation", null, e, true)}>Home</a>
+              <Link to="/docs/" onClick={(e) => rudderslabTrackOnClickDocs("navigation", null, e, true)}>Home</Link>
             </li>
             <li>
               <a href="https://github.com/rudderlabs/rudder-server" onClick={(e) => rudderslabTrackOnClickDocs("navigation", null, e, true)}>GitHub</a>
