@@ -189,13 +189,6 @@ export const jsonData = [
                         link: "/sources/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
                         content: []
                     },  
-                    {
-                        key: "context-traits",
-                        title: "Context and Traits",
-                        link:
-                          "/sources/sdks/rudderstack-javascript-sdk/context-traits/",
-                        content: [],
-                     },
                      {
                         key: "javascript-sdk-enhancements",
                         title: "Enhancements",

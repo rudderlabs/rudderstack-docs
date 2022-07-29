@@ -152,12 +152,6 @@ export const postNavList = [
     link: "/sources/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
     content: [],
   },
-   {
-     key: "context-traits",
-     title: "Context and Traits",
-     link: "/sources/sdks/rudderstack-javascript-sdk/context-traits/",
-     content: [],
-  },
   {
     key: "version-migration-guide",
     title: "Version Migration",

@@ -53,7 +53,10 @@ A sample `identify` call is shown below:
 ```javascript
 rudderanalytics.identify(
     "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
-        email: "alex@example.com"
+        firstName: "Alex",
+        lastName: "Keener",
+        email: "alex@example.com",
+        phone: "+1-202-555-0146"
     }, {
         page: {
             path: "/best-seller/1",
@@ -64,7 +67,7 @@ rudderanalytics.identify(
         }
     },
     () => {
-        console.log("Sample identify call");
+        console.log("identify call");
     }
 );
 ```
@@ -421,3 +424,51 @@ rudderanalytics.setAnonymousId("abcde");
 rudderanalytics.identify("12345", { name: "Firstname Lastname" });
 rudderanalytics.track("test event", { testProp: "prop1" });
 ```
+
+## Context and Traits
+
+RudderStack provides the option to automatically capture the certain event-specific and user-specific data, based on the type of the event.
+
+The `context` and `traits` dictionaries are provided in the <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#apiOptions">`apiOptions`</Link> parameter of the supported API methods.
+
+### Context
+
+The `context` is a dictionary of additional information about a particular event data, such as a user’s locale.
+
+<div class="infoBlock">
+A context is a complete and specific piece of information. Any other information provided outside this specification is ignored.
+</div>
+
+### Traits
+
+The `traits` is an optional dictionary included within <Link to="#context">`context`</Link> which specifies the user's unique traits. This is a very useful field for linking the user's information from a previously made <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/#identify">`identify`</Link> call to the subsequent <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/#track">`track`</Link> or <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/#page">`page`</Link> calls.
+
+#### Use-case
+
+To understand the concept of context and traits better, refer to the following `identify` event:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    name: "Alex Keener",
+    email: "alex@example.com",
+    subscriptionStatus: "subscribed",
+    plan: "Silver"
+});
+```
+
+The traits in the above event are `name`, `email`, `subscriptionStatus`, and `plan`. If you wish to add new or override any traits in the subsequent `track` or `page` event triggered by the user, you can do so by passing it in `traits` as shown:
+
+```javascript
+rudderanalytics.track(
+    "Subscription Update", {
+        campaign: "Subscribe"
+    }, {
+        traits: {
+            plan: "Gold",
+            addOn: true
+        }
+    }
+);
+```
+
+The above snippet will add a new trait `addOn` and modify the `plan` traits value to `gold` in the `track` event.
