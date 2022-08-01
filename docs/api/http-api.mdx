@@ -745,6 +745,5 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/batch < batch.json
 RudderStack lets you import any historical data by simply adding the `timestamp` argument to any of your API calls. However, this can be done only for the destinations that accept historical time-stamped data, like Amplitude, Mixpanel, etc. 
 
 <div class="infoBlock">
-
-If you are tracking current events, leave out the `timestamp` field. RudderStack will automatically add the timestamps to the event requests.
+If you are tracking current events, leave out the <code class="inline-code">timestamp</code> field. RudderStack will automatically add the timestamps to the event requests.
 </div>
