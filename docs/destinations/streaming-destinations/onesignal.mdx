@@ -3,9 +3,9 @@ title: "OneSignal"
 description: Step-by-step guide on sending your event data from RudderStack to OneSignal.
 ---
 
-[OneSignal](https://onesignal.com/) is the market leader in driving customer engagement with multi-channel messaging across Web and Mobile Push, In-App Messages, SMS, and Email subscribers. This destination is maintained by OneSignal.
+[OneSignal](https://onesignal.com/) is a popular service which helps in driving customer engagement with multi-channel messaging across web and mobile push notifications, in-app messages, SMS, and email subscribers.
 
-RudderStack supports OneSignal as a destination to which you can seamlessly send your event data for efficient marketing and analytics.
+RudderStack supports OneSignal as a destination where you can send your event data seamlessly.
 
 <div class="infoBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/blob/master/v0/destinations/">GitHub repository</a>.
@@ -33,31 +33,29 @@ Once you have confirmed that the source platform supports sending events to OneS
 
 To successfully configure OneSignal as a destination, you will need to configure the following settings:
 
-<img src="../../assets/event-stream-destinations/OneSignal-connection-settings.png" alt="OneSignal connection settings"/>
+<img src="../../assets/event-stream-destinations/onesignal-connection-settings.png" alt="OneSignal connection settings"/>
 
-- **App Id**: Enter your OneSignal license code.
-- **Device type**: Enter your OneSignal API key.
+- **App Id**: Enter your OneSignal App Id.
+- **Toggle on to create a device using email**: Enable this setting to create a device using email along with the browser.
+- **Toggle on to create a device using phone number**: Enable this setting to create a device using phone number along with the browser.
+- **Toggle on to concatenate event name with properties**: Enable this setting to concatenate event names with properties. for example, if `add_to_cart` is an event and `brand` is a property, the event will be sent as `add_to_cart_brand` tag.
+- **Allowed Property List**: Enter the properties which you want to add as device tags, if present in the payload.
 
 <div class="infoBlock">
 To get your OneSignal license code and API key, log into your OneSignal dashboard and go to <strong>Data Platform</strong> > <strong>Integrations</strong> > <strong>REST API</strong>. For more information, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
-- **Data Center**: Select your OneSignal data center from the dropdown.
-
 ## Identify 
 
-The <Link to="/event-spec/standard-events/identify">`identify`</Link> method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
-
-For Adding a new device to OneSignal App. If a device is already registered with the specified identifier, then this will update the existing device record instead of creating a new one.
-Add Device Endpoint `https://onesignal.com/api/v1/players`
+You can make an <Link to="/event-spec/standard-events/identify">`identify`</Link> call to add a new device to OneSignal App. However, if a device is already registered with the specified identifier, then it will update the existing device's record instead of creating a new one.
 
 A sample `identify` call is shown below:
 
 ```javascript
-rudderanalytics.identify('userId123', {
-            firstName: 'Mike',
-            lastName: 'Dwell',
-            email: "mike@email.com"
+rudderanalytics.identify('1hKOmRA4el9Zt1WSfVJIVo4GRlm', {
+            firstName: 'Alex',
+            lastName: 'Keener',
+            email: "alex@example.com"
         }, {
             integrations: {
                 oneSignal: {
@@ -68,11 +66,21 @@ rudderanalytics.identify('userId123', {
         );
 ```
 
+You can create multiple devices in a single `identify` call:
+- One for the browser (by default)
+- Addditional ones for the email and SMS
+
+To create devices for email and SMS,  you need to enable the **Toggle on to create a device using email** and **Toggle on to create a device using phone number** settings in the RudderStack dashboard as well as send their data (`email` or `phone`) in the payload.
+
+The `external_user_id` is mapped to `userId` by default and `anonymoysId` is added as a tag with key as `anonymousId` and value as `anonymousId value`.
+
 ### Property mapping
+
+The following table details the mappings between RudderStack and OneSignal properties:
 
 | RudderStack property | OneSignal property | Presence | 
 | :-------| :--------| :------|
-| use the library to check the browser and map the deviceType accordingly and the deviceToken. And this will be overridden by the deviceType in the integrationsObj. | `device_type` | Required | 
+| `deviceType`  | `device_type` | Required | 
 | `traits.firstName` | `tags.first_name` | Optional |
 | `traits.lastName` | `tags.last_name` | Optional | 
 | `context.device.deviceModel` | `device_model` | Optional | 
@@ -81,25 +89,13 @@ rudderanalytics.identify('userId123', {
 | `context.timezone` | `timezone` | Optional | 
 | `anonymousId` | `external_user_id` | Optional | 
 
-### Identify traits considerations
-
-Note the following when sending `identify` traits to OneSignal:
-
-- Either `userId` or `anonymousId` must be present in the `identify` call. 
-- If both `userId` and `anonymousId` are present in the `identify` call, RudderStack ignores `anonymousId`.
-- OneSignal prioritizes `hashedEmail` over `email`. Hence, once you set `hashedEmail`, it can then be updated only through a new `hashedEmail`.
-- OneSignal prioritizes `hashedPhone` over `phone`. Hence, once you set `hashedPhone`, it can then be updated only through a new `hashedPhone`.
-
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> method lets you capture user events along with the properties associated with them.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call can be used to update an existing device's tags in one of your OneSignal apps using the `external_user_id`. All devices containing the particular `externalUserId` are updated simultaneously.
 
-This endpoint is used to update an existing device's tags in one of your OneSignal apps using the `External User ID`. All devices containing a particular externalUserId will update simultaneously.
+While updating a device tag, any key inside a tag can be deleted by providing the empty string as value for that key.
 
-Update Device Endpoint: `https://onesignal.com/api/v1/apps/{app_id}
-/users/{external_user_id}`
-
-**Note** - While updating a device tag, any key inside a tag can be deleted by providing empty string as value for that key. Ignoring that tag key won’t delete the key from the tag.
+Only the properties mentioned under the **Allowed Property List** setting in the RudderStack dashboard can be added as tags.
 
 A sample `track` call is shown below:
 
@@ -111,26 +107,17 @@ rudderanalytics.track('Add to cart', {
 );
 ```
 
-<div class="warningBlock">
-Make sure you call <code class="inline-code">identify</code> before <code class="inline-code">track</code> for RudderStack to include the <code class="inline-code">userId</code> in the <code class="inline-code">track</code> events. Otherwise, RudderStack will send the <code class="inline-code">track</code> calls to OneSignal with an <code class="inline-code">anonymousId</code>.
-</div>
-
-
-
-
-
 ## Group
 
-The <Link to="/event-spec/standard-events/group">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account. It also lets you record any custom traits associated with that group like the name of the company, number of employees, etc.
+The <Link to="/event-spec/standard-events/group">`group`</Link> call can be used to group the devices having tags using `groupId`.
 
-A sample `group` call is as shown 
-we can group devices having tags using groupId.
+A sample `group` call is as shown:
 
 ```javascript
-rudderanalytics.group('groupId123', {
-    firstName: 'Mike',
-    lastName: 'Dwell',
-    email: "mike@email.com"
+rudderanalytics.group('1hKOmRA4el9Zt1WSfVJIVo4GRlm', {
+    firstName: 'Alex',
+    lastName: 'Keener',
+    email: "alex@example.com"
 });
 ```
 
@@ -139,7 +126,7 @@ rudderanalytics.group('groupId123', {
 | RudderStack property | OneSignal property | Presence | 
 | :-------| :--------| :------|
 | `groupId` | `groupId` | Required | 
-| use the library to check the browser and map the deviceType accordingly and the deviceToken. And this will be overridden by the deviceType in the integrationsObj. | `device_type` | Required | 
+| `deviceType` | `device_type` | Required | 
 | `traits.firstName` | `tags.first_name` | Optional |
 | `traits.lastName` | `tags.last_name` | Optional | 
 | `context.device.deviceModel` | `device_model` | Optional | 
