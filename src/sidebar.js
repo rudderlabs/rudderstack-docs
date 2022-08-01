@@ -280,16 +280,6 @@ export const jsonData = [
         link: "/sources/cloud-apps/",
         content: [
             {
-                title: "Webhook Source",
-                link: "/sources/cloud-apps/webhook-source/",
-                content: []
-            },
-            {
-                title: "Braze",
-                link: "/sources/cloud-apps/braze-currents/",
-                content: []
-            },
-            {
                 title: "App Center",
                 link: "/sources/cloud-apps/appcenter/",
                 content: []
@@ -298,11 +288,23 @@ export const jsonData = [
                 title: "AppsFlyer",
                 link: "/sources/cloud-apps/appsflyer/",
                 content: []
-            }, {
+            },
+            {
                 title: "Auth0",
                 link: "/sources/cloud-apps/auth0/",
                 content: []
-            }, {
+            },
+            {
+                title: "Braze",
+                link: "/sources/cloud-apps/braze-currents/",
+                content: []
+            },
+            {
+                title: "Canny",
+                link: "/sources/cloud-apps/canny/",
+                content: []
+            },
+             {
                 title: "Customer.io",
                 link: "/sources/cloud-apps/customerio/",
                 content: []
@@ -329,6 +331,11 @@ export const jsonData = [
             }, {
                 title: "Segment",
                 link: "/sources/cloud-apps/segment/",
+                content: []
+            },
+            {
+                title: "Webhook Source",
+                link: "/sources/cloud-apps/webhook-source/",
                 content: []
             },
         ]
