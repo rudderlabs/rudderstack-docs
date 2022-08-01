@@ -91,7 +91,7 @@ These settings are applicable only if you're sending events to HubSpot via the w
 
 ## Identify
 
-RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to check if a contact exists, if yes, the update is done through the new Update endpoints. Hence, there is an axios call in between.
+RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to check if a contact exists, if yes, the update is done through the new update endpoints.
 
 A sample `identify` call is as shown:
 
@@ -110,7 +110,9 @@ rudderanalytics.identify({
 
 ## Track
 
-A <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record various user actions and any properties associated with them. To associate a `track` call with a user, you need to specify the user's `email` under `context.traits`. Additionally, RudderStack associates the `track` events with the same user after an `identify` request is successfully made.
+A <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record various user actions and any properties associated with them. 
+
+To associate a `track` call with a user, you need to specify the user's `email` under `context.traits`. Also, RudderStack associates the `track` events with the same user after an `identify` request is successfully made.
 
 A sample `track` event is as shown:
 
@@ -134,7 +136,7 @@ rudderanalytics.track(
 
 ### Property mappings
 
-The following table lists the (optional) property mappings between RudderStack and HubSpot for the `track` API:
+The following table lists the **optional** property mappings between RudderStack and HubSpot for the `track` call:
 
 | RudderStack property         | HubSpot property      | 
 | :--------------------------- | :--------------------- |
@@ -150,11 +152,11 @@ The following table lists the (optional) property mappings between RudderStack a
 The following parameters are sent in the custom behavorial events:
 - **Identifier**: Either the contact ID, email, or <Link to="https://developers.hubspot.com/docs/api/events/tracking-code">utk</Link> (user token) of the contact associated with the event. The utk is the user token stored in the visitor's `hubspotutk` browser cookie.
 - **Event name:** The internal name of the event which can be found in HubSpot.
-- **Properties object**: When you create a custom behavioral event in HubSpot, some default properties are provided with those events.
+- **Properties object**: When you create a custom behavioral event in HubSpot, some default properties are provided with those events, as explained in the below section.
 
 #### Property mappings
 
-The following table lists the (optional) default property mappings between RudderStack and HubSpot for custom behavioral events:
+The following table lists the **optional** and default property mappings between RudderStack and HubSpot for custom behavioral events:
 
 | RudderStack property         | HubSpot property      | 
 | :--------------------------- | :--------------------- |
