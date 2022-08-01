@@ -1,0 +1,57 @@
+---
+title: "Merge"
+description: Detailed technical description of the Merge API.
+---
+
+RudderStack's `merge` API enables you to merge different user identities and associate them to a single customer profile in the warehouse.
+
+<div class="successBlock">
+For more information on how to use the <code class="inline-code">merge</code> API, refer to the <Link to="/features/identity-resolution/#using-the-merge-api">Identity Resolution</Link> guide.
+</div>
+
+<div class="warningBlock">
+Currently, RudderStack supports <code class="inline-code">merge</code> only for identity resolution in its  <Link to="/destinations/warehouse-destinations/bigquery/">BigQuery</Link> and  <Link to="/destinations/warehouse-destinations/snowflake/">Snowflake</Link> warehouse destinations.
+</div>
+
+## Sample payload
+
+A sample payload for the `merge` event after removing the <Link to="/event-spec/standard-events/common-fields/">common fields</Link> is shown below:
+
+```json
+{
+  "type": "merge",
+  "userId": "1hKOmRA4GRlm",
+  "mergeProperties": [{
+      "type": "email",
+      "value": "alex@example.com"
+    },
+    {
+      "type": "mobile",
+      "value": "+1-202-555-0146"
+    }
+  ]
+}
+```
+
+In the above example, `type` refers to a unique user identifier like email, phone number, device ID, etc. that can be associated to a given customer profile.
+
+## Merge fields
+
+Apart from the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link>, the `merge` call accepts the following fields:
+
+| **Field**    | **Type** | **Presence** | **Description**      |
+| :----------- | :------- | :----------- | :--------------------------------------------------------------------------------------------------------------- |
+| `userId`      | String   | Required, if `anonymousId` is not present.     | The unique user identifier.                             |
+| `anonymousId` | String | Required, if `userId` is not present. | The anonymous ID associated with a user or visitor. |
+| `mergeProperties` | Object   | Required     | Includes the user properties to be merged and connected to a given user profile. |
+
+## FAQ 
+
+### Does RudderStack auto-merge any user identifiers?
+
+Yes, RudderStack auto-merges the following user identifiers by default so you don't need to call the `merge` API for them:
+
+- `userId` and `previousId` for the <Link to="/event-spec/standard-events/alias/">`alias`</Link> calls
+- `userId` and `anonymousId` for the <Link to="/event-spec/standard-events/identify/">`identify`</Link>, <Link to="/event-spec/standard-events/track/">`track`</Link>, <Link to="/event-spec/standard-events/group/">`group`</Link>, and <Link to="/event-spec/standard-events/screen/">`screen`</Link> calls.
+
+For merging other user identifiers like device ID, phone number, email ID, etc. you need to use the `merge` API.

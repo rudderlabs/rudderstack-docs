@@ -531,7 +531,57 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/alias < alias.json
 | `traits` | Object | Optional | Dictionary of the properties or traits associated with the group, such as `email` or `name`. |
 | `timestamp` | DateTime| Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
 
-## 11. Batch
+## 11. Merge
+
+The `merge` call enables you to merge different user identities and associate them to a single customer profile in the warehouse.
+
+### 11.1 Sample Payload
+
+```javascript title="merge.json"
+{
+  "userId": "1hKOmRA4GRlm",
+  "mergeProperties": [{
+      "type": "email",
+      "value": "alex@example.com"
+    },
+    {
+      "type": "mobile",
+      "value": "+1-202-555-0146"
+    }
+  ]
+}
+```
+
+### 11.2 Usage
+
+<Tabs>
+  <TabList>
+    <Tab>CURL</Tab>
+    <Tab>HTTPie</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```bash
+curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/merge \
+-d @merge.json \
+--header "Content-Type: application/json" 
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+### 11.3 Accepted Fields
+
+| **Field**    | **Type** | **Presence** | **Description**      |
+| :----------- | :------- | :----------- | :--------------------------------------------------------------------------------------------------------------- |
+| `userId`      | String   | Required, if `anonymousId` is not present.     | The unique user identifier.                             |
+| `anonymousId` | String | Required, if `userId` is not present. | The anonymous ID associated with a user or visitor. |
+| `mergeProperties` | Object   | Required     | Includes the user properties to be merged and connected to a given user profile. |
+
+## 12. Batch
 
 The `batch` call allows you to send a series of `identify`, `track`, `page`, `group` and `screen` requests in a single batch. This call helps you minimize the number of outbound requests, thus enabling better performance.
 
@@ -544,7 +594,7 @@ As mentioned earlier, RudderStack sets a maximum limit of `4 MB` per batch reque
 <DATA_PLANE_URL>/v1/batch
 ```
 
-### 11.1. Sample Payload
+### 12.1. Sample Payload
 
 
 ```javascript title="batch.json"
@@ -655,7 +705,7 @@ As mentioned earlier, RudderStack sets a maximum limit of `4 MB` per batch reque
 ```
 
 
-### 11.2. Usage
+### 12.2. Usage
 
 <Tabs>
   <TabList>
@@ -684,13 +734,13 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/batch < batch.json
     </TabPanels>
 </Tabs>
 
-### 11.3. Accepted Fields
+### 12.3. Accepted Fields
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
 | `batch` | Array | Required | An array of `identify`, `track`, `page`, `group` and `screen` calls. Each call must have a `type` property and a valid method name. |
 
-## 12. Historical Imports
+## 13. Historical Imports
 
 RudderStack lets you import any historical data by simply adding the `timestamp` argument to any of your API calls. However, this can be done only for the destinations that accept historical time-stamped data, like Amplitude, Mixpanel, etc. 
 
@@ -698,5 +748,3 @@ RudderStack lets you import any historical data by simply adding the `timestamp`
 
 If you are tracking current events, leave out the `timestamp` field. RudderStack will automatically add the timestamps to the event requests.
 </div>
-
-
