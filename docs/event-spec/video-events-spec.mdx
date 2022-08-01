@@ -47,7 +47,7 @@ A sample event is as shown below:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Playback Started",
     "userId": "user12345",
     "properties": {
@@ -79,7 +79,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Playback Paused",
     "userId": "user12345",
     "properties": {
@@ -108,7 +108,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Playback Interrupted",
     "userId": "user12345",
     "properties": {
@@ -138,7 +138,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Playback Buffer Started",
     "userId": "user12345",
     "properties": {
@@ -167,7 +167,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Playback Buffer Completed",
     "userId": "user12345",
     "properties": {
@@ -196,7 +196,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Playback Seek Started",
     "userId": "user12345",
     "properties": {
@@ -226,7 +226,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Playback Seek Completed",
     "userId": "user12345",
     "properties": {
@@ -255,7 +255,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Playback Resumed",
     "userId": "user12345",
     "properties": {
@@ -284,7 +284,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Playback Resumed",
     "userId": "user12345",
     "properties": {
@@ -667,7 +667,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Content Started",
     "userId": "user12345",
     "properties": {
@@ -696,7 +696,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Content Playing",
     "userId": "user12345",
     "properties": {
@@ -725,7 +725,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Content Completed",
     "userId": "user12345",
     "properties": {
@@ -989,7 +989,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Ad Started",
     "userId": "user12345",
     "properties": {
@@ -1014,7 +1014,7 @@ A sample event is as shown:
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Ad Playing",
     "userId": "user12345",
     "properties": {
@@ -1037,7 +1037,7 @@ This event is sent after the user has viewed the video ad completely. Note that 
 
 ```javascript
 {
-    "action": "track",
+    "type": "track",
     "event": "Video Ad Completed",
     "userId": "user12345",
     "properties": {
@@ -1477,6 +1477,4 @@ rudderanalytics.track("Video Playback Completed", {
 
 These ads can be a promotional video by the sponsors or a piece of content offered by the content provider.
 
-## Contact Us
 
-For more information on the RudderStack video spec, feel free to [contact us](mailto:%20docs@rudderstack.com). You can also start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

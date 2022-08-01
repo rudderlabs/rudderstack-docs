@@ -9,7 +9,6 @@ The Reverse ETL sources support two sync modes that let you define how to sync y
 * Mirror mode
 
 <div class="infoBlock">
- 
 Currently, the <Link to="/sources/reverse-etl/google-bigquery/">BigQuery</Link>, <Link to="/sources/reverse-etl/mysql/">MySQL</Link>, <Link to="/sources/reverse-etl/postgresql/">PostgreSQL</Link>, <Link to="/sources/reverse-etl/amazon-redshift/">Redshift</Link>, and <Link to="/sources/reverse-etl/snowflake/">Snowflake</Link> warehouse sources support syncing data via both these sync modes.
 </div>
 
@@ -25,17 +24,19 @@ By default, these modes sync the data incrementally, meaning they only sync the 
 
 ## Upsert mode
 
-In this mode, RudderStack supports insertion of new records and updates to the existing records, while syncing data to the destination. 
+In this mode, RudderStack supports insertion of new records and updates to the existing records, while syncing data to the destination.
 
 <div class="infoBlock">
- 
-The upsert mode is supported for all destinations connected to the above-mentioned Reverse ETL sources, except <Link to="/destinations/advertising/fb-custom-audience/">Facebook Custom Audience</Link>.
+Upsert mode is supported for all the destinations except <Link to="/destinations/streaming-destinations/fb-custom-audience/">Facebook Custom Audience</Link> and <Link to="/destinations/streaming-destinations/google-adwords-remarketing-list/">Google Ads Remarketing Lists (Customer Match)</Link>.
 </div>
+
+<!-- <div class="infoBlock">
+The upsert mode is supported for all destinations except <Link to="/destinations/streaming-destinations/fb-custom-audience/">Facebook Custom Audience</Link> and <Link to="/destinations/streaming-destinations/google-adwords-remarketing-list/">Google Ads Remarketing Lists (Customer Match)</Link> destinations.
+</div> -->
  
 <img src="../../../assets/warehouse-actions-sources/upsert-mode.png" alt="Upsert mode" />
 
 <div class="infoBlock">
-
 Whenever the columns mapping is changed, RudderStack runs a full sync the next time.
 </div>
 
@@ -44,8 +45,7 @@ Whenever the columns mapping is changed, RudderStack runs a full sync the next t
 In this mode, RudderStack 'mirrors' the source by keeping the destination data the same as the source data. It performs insertion, updates, and deletion of records while syncing data to the destination. 
 
 <div class="infoBlock">
-
- This mode is currently supported only for the <Link to="/destinations/advertising/fb-custom-audience/">Facebook Custom Audience</Link> destination connected to the above-mentioned Reverse ETL sources.
+This mode is currently supported only for the <Link to="/destinations/streaming-destinations/fb-custom-audience/">Facebook Custom Audience</Link> and <Link to="/destinations/streaming-destinations/google-adwords-remarketing-list/">Google Ads Remarketing Lists (Customer Match)</Link> destinations.
 </div>
 
 <img src="../../../assets/warehouse-actions-sources/mirror-mode.png" alt="Mirror mode" />
@@ -61,6 +61,4 @@ Whenever the columns mapping is changed, RudderStack runs a full sync the next t
 
 In case of an unsuccessful delivery, RudderStack retries sending the events in the next sync.
 
-## Contact us
 
-For queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.

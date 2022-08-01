@@ -251,8 +251,7 @@ The `screen` method has the following signature:
 The `group` call associates a user to a specific organization.
 
 <div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">group</code> call, refer to the <a href="https://event-spec/standard-events/group/">RudderStack API Specification</a> guide.
+For a detailed explanation of the <code class="inline-code">group</code> call, refer to the <Link to="/event-spec/standard-events/group/">RudderStack Event Specification</Link> guide.
 </div>
 
 A sample `group` event is shown below:
@@ -283,13 +282,11 @@ RudderStack doesn't persist the group traits across the sessions.
 The `alias` call lets you merge different identities of a known user.
 
 <div class="infoBlock">
-
 <code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
 </div>
 
 <div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">alias</code> call, refer to the <a href="https://event-spec/standard-events/alias/">RudderStack API Specification</a> guide.
+For a detailed explanation of the <code class="inline-code">alias</code> call, refer to the <Link to="/event-spec/standard-events/alias/">RudderStack Event Specification</Link> guide.
 </div>
 
 A sample `alias` call is as shown:
@@ -509,8 +506,4 @@ Map context = await rudderClient.getRudderContext();
 print(context["traits"]);
 ```
 
-## Contact us
 
-For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
-
-If you come across any issues while using the Flutter SDK, you can also open an issue on our [GitHub issues page](https://github.com/rudderlabs/rudder-sdk-flutter/issues).

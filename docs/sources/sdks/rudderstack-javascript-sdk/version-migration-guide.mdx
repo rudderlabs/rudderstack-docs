@@ -291,10 +291,8 @@ RudderStack follows the below precedence order while determining the root locati
 
 1. RudderStack refers to the `destSDKBaseURL` value in the `options` parameter of the `load` API call.
 2. If absent, RudderStack then checks the `src` attribute of the `<script>` tag that adds the core JavaScript SDK to your website. `/js-integrations` is automatically appended to the root location.
-3. If none of the two options above are applicable, RudderStack uses the default CDN URL ([**https://cdn.rudderlabs.com/v1.1/js-integrations/**](https://cdn.rudderlabs.com/v1.1/js-integrations/)).
+3. If none of the two options above are applicable, RudderStack uses the default CDN URL `https://cdn.rudderlabs.com/v1.1/js-integrations/`.
 
 The above approach ensures that minimal changes are required from your end.
 
-## Contact us
 
-In case of any issues or questions on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.

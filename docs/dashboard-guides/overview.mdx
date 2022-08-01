@@ -13,13 +13,15 @@ This option helps you easily get started with RudderStack. You can set up a sour
 
 <img src="../assets/rs-cloud/get-started.png" alt="RudderStack Dashboard" />
 
+## Directory
+
+**Directory** acts as a catalogue for all the sources (<Link to="/sources/cloud-apps/">Cloud Apps</Link>, <Link to="/sources/extract/">Cloud Extract</Link> and <Link to="/sources/reverse-etl/">Reverse ETL</Link>) and destinations (<Link to="/destinations/warehouse-destinations/">Warehouse</Link> and <Link to="/destinations/streaming-destinations/">Streaming destinations</Link>) supported by RudderStack.
+
 ## Connections
 
 This option lets you set up your data pipelines by connecting different sources and destinations across your entire customer data stack.
 
 <img src="../assets/rs-cloud/connections-dashboard.png" alt="RudderStack Dashboard" />
-
-<br />
 
 ### Data plane URL
 
@@ -36,20 +38,20 @@ Here's how to get the Data Plane URL:
 * If you're using [RudderStack Open Source](https://app.rudderstack.com/signup?type=opensource), you are required to <Link to="/get-started/rudderstack-open-source/data-plane-setup/">set up your own data plane</Link> in your preferred environment.
 
 <div class="successBlock">
-An open source data plane URL looks like `http:localhost:8080` where `8080` is typically the port where your RudderStack data plane is hosted.
+An open source data plane URL looks like <code class="inline-code">http:localhost:8080</code> where <code class="inline-code">8080</code> is typically the port where your RudderStack data plane is hosted.
 </div>
 
-## Sources
+### Sources
 
 This option lists all the configured sources in your workspace. You can add a new source by clicking on the **New Source** button, as shown:
 
-<img src="../assets/rs-cloud/rudderstack-sources.png" alt="RudderStack sources" />
+<img src="../assets/rs-cloud/sources.png" alt="RudderStack sources" />
 
 <div class="infoBlock">
 Refer to the <Link to="/sources/">Sources</Link> guide for more details on setting up a source in RudderStack.
 </div>
 
-## Destinations
+### Destinations
 
 This option lists all the configured destinations where you can send your event data. You can add a new destination by clicking on the **New Destination** button, as shown:
 
@@ -69,23 +71,15 @@ This option provides detailed metrics on the events synced to the warehouse dest
 
 This feature lets you define custom SQL queries which can be executed on your warehouse. You can then use RudderStack to send the resulting data to specific destinations.
 
-<img src="../assets/warehouse-actions-sources/models-view-dashboard.png" alt="RudderStack Models" />
-
 <div class="infoBlock">
 Refer to the <Link to="/sources/reverse-etl/features/models/">Models</Link> guide for more details on setting up a new model in RudderStack.
 </div>
-
-## Directory
-
-**Directory** acts as a catalogue for all the sources (<Link to="/sources/cloud-apps/">Cloud Apps</Link>, <Link to="/sources/extract/">Cloud Extract</Link> and <Link to="/sources/reverse-etl/">Reverse ETL</Link>) and destinations (<Link to="/destinations/warehouse-destinations/">Warehouse</Link> and <Link to="/destinations/streaming-destinations/">Streaming destinations</Link>) supported by RudderStack.
-
-<img src="../assets/rs-cloud/directory.png" alt="Directory in RudderStack Dashboard" />
 
 ## Transformations
 
 With this option, you can write your own JavaScript functions to transform your events. You can also create your own **Libraries** to reuse a transformation's code for other transformations.
 
-<img src="../assets/rs-cloud/transformations-dashboard.png" alt="Transformations" />
+<img src="../assets/rs-cloud/transformations.png" alt="RudderStack Transformations and Libraries option" />
 
 <div class="infoBlock">
 Refer to the <Link to="/features/transformations/">Transformations</Link> guide to learn more about this feature.
@@ -93,17 +87,21 @@ Refer to the <Link to="/features/transformations/">Transformations</Link> guide 
 
 ## Audit Logs
 
-Audit logs can be used to track the user activities within your RudderStack workspace. It is available only for the [Enterprise users](https://www.rudderstack.com/pricing/).
+Audit logs can be used to track the user activities within your RudderStack workspace.
+
+<div class="infoBlock">
+Audit logs is an <a href="https://www.rudderstack.com/pricing/">enterprise</a> feature.
+</div>
 
 <img src="../assets/rs-cloud/audit-logs-dashboard.png" alt="Audit Logs" />
 
 <div class="infoBlock">
-Refer to the <Link to="/dashboard-guides/audit-logs/">Audit Logs</Link> guide to learn more about this feature.
+Refer to the <Link to="/dashboard-guides/audit-logs/">Audit Logs</Link> guide for more information on this feature.
 </div>
 
 ## Tracking Plans
 
-**Tracking Plans** is an **enterprise feature** lets you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on the predefined plans. It ensures data quality and validates your expected events against the live events that are delivered to RudderStack with real-time validation.
+RudderStack's **Tracking Plans** feature lets you you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on the predefined plans. It ensures data quality by validating the live events delivered to RudderStack against the expected events.
 
 <div class="infoBlock">
 Refer to the <Link to="/features/data-governance/tracking-plans/">Tracking plans</Link> guide for more information on creating and using tracking plans in RudderStack.
@@ -115,48 +113,34 @@ This option lets you manage the settings and various details related to your Rud
 
 <img src="../assets/rs-cloud/settings-dashboard.png" alt="Settings in RudderStack dashboard" />
 
-### General
+### Account
 
-It displays the general account settings like name, email and password. You can also edit the name and password using the respective options. 
+It displays the general account settings like name, email, and password. You can change your account name and password, set up and enforce two-factor authentication.
 
-### Teammates
+You can also generate a <Link to="/dashboard-guides/personal-access-token/">Personal Access Token</Link> required to use the RudderStack APIs.
+
+### Members
 
 This option displays all your teammates with their access permissions in the current RudderStack workspace. You can also invite new teammates by using the **Invite Teammate** button.
 
 <div class="infoBlock">
-Refer to the <Link to="/dashboard-guides/teammates/">Teammates</Link> guide for more details on this option.
-</div>
-
-<div class="successBlock">
-RudderStack Cloud Free allows you to invite up to 3 members in your workspace. To increase this limit, you will be required to upgrade to the Pro or Enterprise plan. Refer to the <a href="https://rudderstack.com/pricing/">RudderStack Pricing Page</a> for details on these plans.
+Refer to the <Link to="/dashboard-guides/permissions-management/">Permissions Management</Link> guide for more details on this option.
 </div>
 
 ### Billing
 
 It displays the billing information of your RudderStack account. You can change the existing plan or contact sales to get more information.
 
-### Security
-
-This option lets you set up 2-Factor authentication to receive verification codes via SMS.
-
-### Personal access token
-
-This option lets you generate a personal access token associated with your account. It is required to use all the RudderStack APIs.
-
-<div class="infoBlock">
-Refer to the <Link to="/dashboard-guides/personal-access-token/">Personal Access Token</Link> guide for more details on this option.
-</div>
-
 ### Company
 
-It lets you view and edit your workspace and company name associated with RudderStack.
+This tab lets you change your workspace name and company name. You can also find your <Link to="#workspace-token">workspace token</Link> here.
 
 ### Workspace Token
 
 The workspace token is a unique identifier associated with your current RudderStack workspace. 
 
 <div class="warningBlock">
-The workspace token is not available for the [RudderStack Pro and Enterprise](https://www.rudderstack.com/pricing/) versions as the RudderStack team handles the deployment. 
+The workspace token is not available for the <a href="https://www.rudderstack.com/pricing/">RudderStack Pro and Enterprise</a> versions as the RudderStack team handles the deployment. 
 </div>
 
 To get your workspace token, go to **Settings** > **Company**, as shown:
@@ -169,6 +153,12 @@ By default, the workspace token is hidden for security purposes. You must have <
 
 To view the workspace token, click on <strong>Reveal Token</strong> and enter the password associated with your RudderStack account.
 
-## Contact us
+### Data privacy
 
-For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
+In this tab, you can control who can view the PII(Personally Identifiable Information) by limiting access to the raw event data.
+
+<div class="infoBlock">
+Refer to the <Link to="/dashboard-guides/permissions-management/#limiting-access-to-pii-related-features">Permissions Management</Link> guide for more details on this option.
+</div>
+
+

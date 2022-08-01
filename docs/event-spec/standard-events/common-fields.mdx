@@ -72,9 +72,7 @@ In this case, `timestamp` will be **less** than `originalTimestamp`.
 
 ## Contextual fields
 
-The contextual fields give additional useful context about a particular event.
-
-The following table lists all the contextual fields with their detailed description:
+The contextual fields give additional context about a particular event. The following table lists all the contextual fields with their detailed description:
 
 | Name | Data type | Description |
 | :--- | :--- | :--- |
@@ -92,183 +90,112 @@ The following table lists all the contextual fields with their detailed descript
 | `campaign` | Object | Gives detailed information about campaigns, like `name`, `source`, `medium`, `content` and `term`. |
 
 <div class="warningBlock">
-<strong>Not all of the above contextual fields are automatically collected by the RudderStack SDKs.</strong> Refer to the following sections for more information on which SDK automatically populates what contextual fields.
+<strong>All of the above contextual fields are not automatically collected by the RudderStack SDKs.</strong> Refer to the following section for more information on the contextual fields automatically populated by the RudderStack SDKs.
 </div>
 
-The following sections highlight all the contextual fields that are automatically collected and populated by each of the RudderStack SDKs:
+The following section highlights all the contextual fields that are **automatically collected** and populated by each of the RudderStack SDKs:
 
-### JavaScript SDK
+| Field | JavaScript | Android | iOS | Description | 
+| :--- | :--- |:--- |:--- |:--- |
+| `app.name`         | -   | Yes | Yes | Name of the application. |
+| `app.version`      | -   | Yes | Yes | Version of the application. | 
+| `app.build`        | -   | Yes | Yes | Build of the application. |
+| `campaign.name`    | Yes | -   | -   | Name of the campaign.  |
+| `campaign.source`  | Yes | -   | -   | Source of the campaign. |
+| `campaign.medium`  | Yes | -   | -   | Medium of the campaign. |
+| `campaign.term`    | Yes | -   | -   | Term of the campaign. |
+| `campaign.content` | Yes | -   | -   | Content of the campaign. |
+| `device.type`      | -   | Yes | Yes   | Type of the device. |
+| `device.id`        | -   | Yes | Yes | ID of the device. |
+| `device.advertisingId` | - | Yes | Yes | Advertising ID of the device. |
+| `device.adTrackingEnabled` | - | - | Yes | If ad tracking is enabled on the device.   |
+| `device.manufacturer` | - | Yes | Yes | Manufacturer of the device.|
+| `device.model` | - | Yes | Yes | Model of the device. |
+| `device.name` | - | Yes | Yes | Name of the device. |
+| `library.name` | Yes | Yes | Yes | Name of the library. |
+| `library.version` | Yes | Yes | Yes | Version of the library. |
+| `ip` | - | Yes | - |  IP address of the user. |
+| `locale` | Yes | Yes | Yes | Locale string of the user. |
+| `network.bluetooth` | - | Yes (if permission is granted) | - | Bluetooth information. |
+| `network.carrier` | - | Yes | Yes | Carrier information about the network connection. |
+| `network.cellular` | - | Yes | Yes | Cellular information about the network connection. |
+| `network.wifi` | - | Yes | Yes | WiFi information about the network connection. |
+| `os.name` | - | Yes | Yes | Name of the operating system. |
+| `os.version` | - | Yes | Yes | Version of the operating system. |
+| `page.path` | Yes | - |  - | Path of the current page in the browser. |
+| `page.initial_referrer` | Yes | - |  - | Initial referrer of the current page in the browser. |
+| `page.initial_referring_domain` | Yes | - |  - | Initial referring domain of the current page in the browser. |
+| `page.referrer` | Yes | - |  - | Referrer of the current page in the browser. |
+| `page.referring_domain` | Yes | - |  - | Referring domain of the current page in the browser. |
+| `page.search` | Yes | - |  - | Search of the current page in the browser.
+| `page.title` | Yes | - |  - | Title of the current page in the browser. |
+| `page.url` | Yes | - |  - | URL of the current page in the browser. |
+| `screen.density` | Yes | Yes | - | Density of the device's screen. |
+| `screen.height` | Yes | Yes | Yes | Height of the device's screen. |
+| `screen.width` | Yes | Yes | Yes | Width of the device's screen. |
+| `screen.innerWidth` | Yes |   -   |   -   | Inner width of the device's screen. |
+| `screen.innerHeight` | Yes |   -   |   -   | Inner height of the device's screen. |
+| `traits` | - | Yes | Yes | Traits of the user. |
+| `userAgent` | Yes | Yes | - | User agent of the device making the request. |
+| `timezone` | - | Yes | Yes | Information about the user's timezone. |
 
-| Field | Automatically Collected? |
-| :--- | :--- |
-| `app.name` | - |
-| `app.version` | - |
-| `app.build` | - |
-| `campaign.name` | Yes |
-| `campaign.source` | Yes |
-| `campaign.medium` | Yes |
-| `campaign.term` | Yes |
-| `campaign.content` | Yes |
-| `device.type` | - |
-| `device.advertisingId` | - |
-| `device.adTrackingEnabled` | - |
-| `device.manufacturer` | - |
-| `device.model` | - |
-| `library.name` | Yes |
-| `library.version` | Yes |
-| `ip` | Yes |
-| `locale` | Yes |
-| `location.latitude` | - |
-| `location.longitude` | - |
-| `location.speed` | - |
-| `network.bluetooth` | - |
-| `network.carrier` | - |
-| `network.cellular` | - |
-| `network.wifi` | - |
-| `os.name` | - |
-| `os.version` | - |
-| `page.path` | Yes |
-| `page.referrer` | Yes |
-| `page.search` | Yes |
-| `page.title` | Yes |
-| `page.url` | Yes |
-| `screen.density` | - |
-| `screen.height` | - |
-| `screen.width` | - |
-| `traits` | - |
-| `userAgent` | Yes |
-| `timezone` | - |
+<div class="infoBlock">
+For Android SDK V1.6.0 and above, the Bluetooth status is collected in the <code class="inline-code">network.bluetooth</code> field only if the Bluetooth permission is present in the app.
+For iOS SDK V1.6.3 and above, the Bluetooth status is not collected in the <code class="inline-code">network.bluetooth</code> field as it’s a run-time permission.
+</div>
 
-### Android SDK
+The following sample payload highlights the usage of the common and contextual fields in web and mobile modes:
 
-| Field | Automatically Collected? |
-| :--- | :--- |
-| `app.name` | Yes |
-| `app.version` | Yes |
-| `app.build` | Yes |
-| `campaign.name` | - |
-| `campaign.source` | - |
-| `campaign.medium` | - |
-| `campaign.term` | - |
-| `campaign.content` | - |
-| `device.type` | Yes |
-| `device.id` | Yes |
-| `device.advertisingId` | Yes |
-| `device.adTrackingEnabled` | - |
-| `device.manufacturer` | Yes |
-| `device.model` | Yes |
-| `device.name` | Yes |
-| `library.name` | Yes |
-| `library.version` | Yes |
-| `ip` | Yes |
-| `locale` | Yes |
-| `network.bluetooth` | Yes |
-| `network.carrier` | Yes |
-| `network.cellular` | Yes |
-| `network.wifi` | Yes |
-| `os.name` | Yes |
-| `os.version` | Yes |
-| `page.path` | - |
-| `page.referrer` | - |
-| `page.search` | - |
-| `page.title` | - |
-| `page.url` | - |
-| `screen.density` | Yes |
-| `screen.height` | Yes |
-| `screen.width` | Yes |
-| `traits` | Yes |
-| `userAgent` | Yes |
-| `timezone` | Yes |
-
-### iOS SDK
-
-| Field | Automatically Collected? |
-| :--- | :--- |
-| `app.name` | Yes |
-| `app.version` | Yes |
-| `app.build` | Yes |
-| `campaign.name` | - |
-| `campaign.source` | - |
-| `campaign.medium` | - |
-| `campaign.term` | - |
-| `campaign.content` | - |
-| `device.type` | - |
-| `device.id` | Yes |
-| `device.advertisingId` | Yes |
-| `device.adTrackingEnabled` | Yes |
-| `device.manufacturer` | Yes |
-| `device.model` | Yes |
-| `device.name` | - |
-| `library.name` | Yes |
-| `library.version` | Yes |
-| `ip` | Yes |
-| `locale` | Yes |
-| `network.bluetooth` | - |
-| `network.carrier` | Yes |
-| `network.cellular` | Yes |
-| `network.wifi` | Yes |
-| `os.name` | Yes |
-| `os.version` | Yes |
-| `page.path` | - |
-| `page.referrer` | - |
-| `page.search` | - |
-| `page.title` | - |
-| `page.url` | - |
-| `screen.density` | - |
-| `screen.height` | Yes |
-| `screen.width` | Yes |
-| `traits` | Yes |
-| `userAgent` | - |
-| `timezone` | Yes |
-
-## Sample payload with common fields
-
-The following sample payload highlights how the above common and contextual fields are used:
+<Tabs>
+  <TabList>
+    <Tab>JavaScript</Tab>
+    <Tab>Android</Tab>
+    <Tab>iOS</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
 
 ```json
 {
-  "anonymousId": "7e32188a4dab669f",
-  "channel": "mobile",
+  "anonymousId": "78c53c15-32a1-4b65-adac-bec2d7bb8fab",
+  "channel": "web",
   "context": {
-    "app": {
-      "build": "1",
-      "name": "RudderAndroidClient",
-      "namespace": "com.rudderstack.demo.android",
-      "version": "1.0"
-    },
-    "device": {
-      "id": "7e32188a4dab669f",
-      "manufacturer": "Google",
-      "model": "Android SDK built for x86",
-      "name": "generic_x86",
-      "type": "android"
-    },
-    "library": {
-      "name": "com.rudderstack.android.sdk.core",
-      "version": "0.1.4"
-    },
-    "locale": "en-US",
-    "network": {
-      "carrier": "Android",
-      "bluetooth": false,
-      "cellular": true,
-      "wifi": true
-    },
     "campaign": {
+      "name": "sales campaign",
       "source": "google",
       "medium": "medium",
-      "term": "keyword",
-      "content": "some content",
-      "name": "some campaign"
+      "term": "event data",
+      "content": "Make sense of the modern data stack"
     },
-    "os": { "name": "Android", "version": "9" },
-    "screen": { "density": 420, "height": 1794, "width": 1080 },
-    "timezone": "Asia/Mumbai",
-    "traits": { "anonymousId": "7e32188a4dab669f" },
+    "library": {
+      "name": "RudderLabs JavaScript SDK",
+      "version": "2.9.1"
+    },
+    "locale": "en-US",
+    "page": {
+      "path": "/best-seller/1",
+      "initial_referrer": "https://www.google.com/search",
+      "initial_referring_domain": "google.com",
+      "referrer": "https://www.google.com/search?q=estore+bestseller",
+      "referring_domain": "google.com",
+      "search": "estore bestseller",
+      "title": "The best sellers offered by EStore",
+      "url": "https://www.estore.com/best-seller/1"
+    },
+    "screen": { 
+      "density": 420, 
+      "height": 1794, 
+      "width": 1080, 
+      "innerHeight": 200, 
+      "innerWidth": 100 
+      },
     "userAgent": "Dalvik/2.1.0 (Linux; U; Android 9; Android SDK built for x86 Build/PSR1.180720.075)"
   },
   "event": "Product Reviewed",
-  "integrations": { "All": true },
+  "integrations": { 
+    "All": true 
+    },
   "messageId": "1578564113557-af022c68-429e-4af4-b99b-2b9174056383",
   "properties": {
     "review_id": "review_id_1",
@@ -281,7 +208,138 @@ The following sample payload highlights how the above common and contextual fiel
   "sentAt": "2020-01-09T10:02:03.257Z"
 }
 ```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
 
-## Contact us
+```json
+{
+  "anonymousId": "78c53c15-32a1-4b65-adac-bec2d7bb8fab",
+  "channel": "mobile",
+  "context": {
+    "app": {
+      "name": "RudderAndroidClient",
+      "version": "1.0",
+      "build": "1"
+    },
+    "device": {
+      "type": "android",
+      "id": "78c53c15-32a1-4b65-adac-bec2d7bb8fab",
+      "advertisingId":"435o4GRlm",
+      "manufacturer": "Google",
+      "model": "Android SDK built for x86",
+      "name": "generic_x86",
+    },
+    "library": {
+      "name": "com.rudderstack.android.sdk.core",
+      "version": "0.1.4"
+    },
+    "ip": "192.168.1.1",
+    "locale": "en-US",
+    "network": {
+      "bluetooth": false,
+      "carrier": "Android",
+      "cellular": true,
+      "wifi": true
+    },
+    "os": { 
+      "name": "Android", 
+      "version": "9" 
+      },
+    "screen": { 
+      "density": 420, 
+      "height": 1794, 
+      "width": 1080 
+      },
+     "traits": { 
+      "anonymousId": "78c53c15-32a1-4b65-adac-bec2d7bb8fab" 
+      },
+    "timezone": "Asia/Mumbai",
+    "userAgent": "Dalvik/2.1.0 (Linux; U; Android 9; Android SDK built for x86 Build/PSR1.180720.075)"
+  },
+  "event": "Product Reviewed",
+  "integrations": { 
+    "All": true 
+    },
+  "messageId": "1578564113557-af022c68-429e-4af4-b99b-2b9174056383",
+  "properties": {
+    "review_id": "review_id_1",
+    "product_id": "product_id_1",
+    "rating": 2.0,
+    "review_body": "Sample Review Body"
+  },
+  "originalTimestamp": "2020-01-09T10:01:53.558Z",
+  "type": "track",
+  "sentAt": "2020-01-09T10:02:03.257Z"
+}
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
 
-For more information on the common fields, feel free to [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
+```json
+{
+  "anonymousId": "78c53c15-32a1-4b65-adac-bec2d7bb8fab",
+  "channel": "mobile",
+  "context": {
+    "app": {
+      "name": "RudderSampleAppObjC",
+      "version": "1.0",
+      "build": "1"
+    },
+    "device": {
+      "type": "iOS",
+      "id": "78c53c15-32a1-4b65-adac-bec2d7bb8fab",
+      "advertisingId":"435o4GRlm",
+      "adTrackingEnabled": false,
+      "manufacturer": "Apple",
+      "model": "iPhone",
+      "name": "iPhone 12",
+    },
+    "library": {
+      "name": "rudder-ios-library",
+      "version": "1.5.0"
+    },
+    "locale": "en-US",
+    "network": {
+      "carrier": "unavailable",
+      "cellular": false,
+      "wifi": true
+    },
+    "os": { 
+      "name": "iOS", 
+      "version": "15.2" 
+      },
+    "screen": { 
+      "height": 1794, 
+      "width": 1080 
+      },
+     "traits": { 
+      "anonymousId": "78c53c15-32a1-4b65-adac-bec2d7bb8fab" 
+      },
+    "timezone": "Asia/Mumbai"
+  },
+  "event": "Product Reviewed",
+  "integrations": { 
+    "All": true 
+    },
+  "messageId": "1643629072-8ce81faf-7489-4508-b21b-659e81510991",
+  "properties": {
+    "review_id": "review_id_1",
+    "product_id": "product_id_1",
+    "rating": 2.0,
+    "review_body": "Sample Review Body"
+  },
+  "originalTimestamp": "2020-01-09T10:01:53.558Z",
+  "type": "track",
+  "sentAt": "2020-01-09T10:02:03.257Z"
+}
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+

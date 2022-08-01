@@ -8,7 +8,7 @@ export const jsonData = [
     // Getting Started section
     {
         title: "What is RudderStack?",
-        sectionTitle: "Getting Started",
+        sectionTitle: "Get Started",
         link: `/get-started/what-is-rudderstack/`,
         content: []
     },
@@ -61,43 +61,45 @@ export const jsonData = [
         link: "/get-started/cloud-vs-open-source/",
         content: []
     },
-    // Dashboard guides section
-    {
-        title: "Overview",
-        sectionTitle: "Dashboard Guides",
-        link: "/dashboard-guides/overview/",
-        content: []
-    },
-    {
-        title: "Sources",
-        link: "/dashboard-guides/sources/",
-        content: []
-    },
-    {
-        title: "Destinations",
-        link: "/dashboard-guides/destinations/",
-        content: []
-    },
-    {
-        title: "Live Events",
-        link: "/dashboard-guides/live-events/",
-        content: []
-    },
-    {
-        title: "Teammates (User Management)",
-        link: "/dashboard-guides/teammates/",
-        content: []
-    },
-    {
-        title: "Audit Logs",
-        link: "/dashboard-guides/audit-logs/",
-        content: []
-    },
-    {
-        title: "Personal Access Token",
-        link: "/dashboard-guides/personal-access-token/",
-        content: []
-    },
+
+// Dashboard guides section
+
+{
+    title: "Overview",
+    sectionTitle: "Dashboard Guides",
+    link: "/dashboard-guides/overview/",
+    content: []
+},
+{
+    title: "Sources",
+    link: "/dashboard-guides/sources/",
+    content: []
+},
+{
+    title: "Destinations",
+    link: "/dashboard-guides/destinations/",
+    content: []
+},
+{
+    title: "Live Events",
+    link: "/dashboard-guides/live-events/",
+    content: []
+},
+{
+    title: "Permissions Management",
+    link: "/dashboard-guides/permissions-management/",
+    content: []
+},
+{
+    title: "Audit Logs",
+    link: "/dashboard-guides/audit-logs/",
+    content: []
+},
+{
+    title: "Personal Access Token",
+    link: "/dashboard-guides/personal-access-token/",
+    content: []
+},
     // Sources section
     {
         title: "Overview",
@@ -411,11 +413,18 @@ export const jsonData = [
                 title: "Pipedrive",
                 link: "/sources/extract/pipedrive/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "QuickBooks",
                 link: "/sources/extract/quickbooks/",
                 content: []
-            }, {
+            }, 
+            {
+                title: "Recurly",
+                link: "/sources/extract/recurly/",
+                content: []
+            },
+            {
                 title: "Salesforce",
                 link: "/sources/extract/salesforce/",
                 content: [
@@ -425,7 +434,13 @@ export const jsonData = [
                         content: []
                     },
                 ]
-            }, {
+            },
+            {
+                title: "Salesforce v2",
+                link: "/sources/extract/salesforce-v2/",
+                content: []
+            },
+            {
                 title: "Salesforce Pardot",
                 link: "/sources/extract/salesforce-pardot/",
                 content: []
@@ -437,11 +452,8 @@ export const jsonData = [
                 title: "Stripe",
                 link: "/sources/extract/stripe/",
                 content: []
-            }, {
-                title: "Xero",
-                link: "/sources/extract/xero/",
-                content: []
-            }, {
+            }, 
+            {
                 title: "Zendesk",
                 link: "/sources/extract/zendesk/",
                 content: []
@@ -544,7 +556,7 @@ export const jsonData = [
         content: []
     },
     {
-        title: "Streaming Destinations",
+        title: "Cloud Destinations",
         link: "/destinations/streaming-destinations/",
         content: [
             {
@@ -658,7 +670,8 @@ export const jsonData = [
                 title: "Pinterest Tag",
                 link: "/destinations/streaming-destinations/pinterest-ads/",
                 content: []
-            }, {
+            },
+            {
                 title: "Reddit Pixel",
                 link: "/destinations/streaming-destinations/reddit-pixel/",
                 content: []
@@ -787,23 +800,34 @@ export const jsonData = [
                 title: "Lytics",
                 link: "/destinations/streaming-destinations/lytics/",
                 content: []
-            }, {
+            },
+            {
+                key: "matomo",
+                title: "Matomo",
+                link: "/destinations/streaming-destinations/matomo/",
+                content: [],
+            },
+            {
                 title: "Mixpanel",
                 link: "/destinations/streaming-destinations/mixpanel/",
                 content: []
-            }, {
+            },
+            {
                 title: "New Relic",
                 link: "/destinations/streaming-destinations/new-relic/",
                 content: []
-            }, {
+            },
+            {
                 title: "Pendo",
                 link: "/destinations/streaming-destinations/pendo/",
                 content: []
-            }, {
+            },
+            {
                 title: "PostHog",
                 link: "/destinations/streaming-destinations/posthog/",
                 content: []
-            }, {
+            },
+            {
                 title: "Profitwell",
                 link: "/destinations/streaming-destinations/profitwell/",
                 content: [
@@ -1057,19 +1081,44 @@ export const jsonData = [
                 title: "Salesforce Marketing Cloud",
                 link: "/destinations/streaming-destinations/sfmc/",
                 content: []
-            }, {
+            },
+            {
                 title: "Salesforce Pardot",
                 link: "/destinations/streaming-destinations/pardot/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "SendGrid",
                 link: "/destinations/streaming-destinations/sendgrid/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Userlist",
                 link: "/destinations/streaming-destinations/userlist/",
                 content: []
-            }, {
+            },
+            {
+                title: "Vero",
+                link: "/destinations/streaming-destinations/vero/",
+                content: [
+                    {
+                        title: "Setting up Vero",
+                        link: "/destinations/streaming-destinations/vero/setting-up-vero/",
+                        content: []
+                    },
+                    {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/vero/cloud-mode/",
+                        content: []
+                    },
+                    {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/vero/device-mode/",
+                        content: []
+                    },
+                ]
+            },
+            {
                 title: "WebEngage",
                 link: "/destinations/streaming-destinations/webengage/",
                 content: []
@@ -1401,10 +1450,6 @@ export const jsonData = [
         link: "/user-guides/migration-guides/",
         content: [
             {
-                title: "Migrating from Blendo to RudderStack",
-                link: "/user-guides/migration-guides/blendo-rudderstack-migration/",
-                content: []
-            }, {
                 title: "Migrating from Segment to RudderStack",
                 link: "/user-guides/migration-guides/rudderstack-migration-guide/",
                 content: []

@@ -514,10 +514,22 @@ export const postNavList = [
     link: "/sources/extract/quickbooks/",
     content: [],
   },
+    {
+    key: "recurly",
+    title: "Recurly",
+    link: "/sources/extract/recurly/",
+    content: [],
+  },
   {
     key: "salesforce",
     title: "Salesforce",
     link: "/sources/extract/salesforce/",
+    content: [],
+  },
+  {
+    key: "salesforce-v2",
+    title: "Salesforce v2",
+    link: "/sources/extract/salesforce-v2/",
     content: [],
   },
   {
@@ -543,12 +555,6 @@ export const postNavList = [
     key: "stripe",
     title: "Stripe",
     link: "/sources/extract/stripe/",
-    content: [],
-  },
-  {
-    key: "xero",
-    title: "Xero",
-    link: "/sources/extract/xero/",
     content: [],
   },
   {
@@ -711,6 +717,12 @@ export const postNavList = [
     key: "google-analytics-ga",
     title: "Google Analytics",
     link: "/destinations/streaming-destinations/google-analytics-ga/",
+    content: [],
+  },
+  {
+    key: "matomo",
+    title: "Matomo",
+    link: "/destinations/streaming-destinations/matomo/",
     content: [],
   },
   {
@@ -1392,9 +1404,33 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "storage-platforms",
-    title: "Storage Platforms",
+    key: "streaming-destinations",
+    title: "Streaming Destinations",
     link: "/destinations/streaming-destinations/",
+    content: [],
+  },
+  {
+    key: "vero",
+    title: "Vero",
+    link: "/destinations/streaming-destinations/vero/",
+    content: [],
+  },
+  {
+    key: "setting-up-vero",
+    title: "Setting up Vero",
+    link: "/destinations/streaming-destinations/setting-up-vero/",
+    content: [],
+  },
+  {
+    key: "cloud-mode",
+    title: "Cloud Mode",
+    link: "/destinations/streaming-destinations/cloud-mode/",
+    content: [],
+  },
+  {
+    key: "device-mode",
+    title: "Device Mode",
+    link: "/destinations/streaming-destinations/device-mode/",
     content: [],
   },
   {
@@ -1657,6 +1693,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "permissions-management",
+    title: "Permissions Management",
+    link: "/dashboard-guides/permissions-management/",
+    content: [],
+  },
+  {
     key: "personal-access-token",
     title: "Personal Access Token",
     link: "/dashboard-guides/personal-access-token/",
@@ -1871,12 +1913,6 @@ export const postNavList = [
     key: "migration-guides",
     title: "Migration Guides",
     link: "/user-guides/migration-guides/",
-    content: [],
-  },
-  {
-    key: "blendo-rudderstack-migration",
-    title: "Migrating from Blendo to RudderStack",
-    link: "/user-guides/migration-guides/blendo-rudderstack-migration/",
     content: [],
   },
   {

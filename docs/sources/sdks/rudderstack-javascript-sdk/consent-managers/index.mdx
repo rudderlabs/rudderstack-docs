@@ -41,6 +41,12 @@ Data protection laws such as GDPR, CCPA, etc. require the websites to get user c
   </div>
 </a>
 
-## Contact us
+## FAQ
 
-For queries on any of the sections in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com) or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community) community.
+### Can I integrate the RudderStack JavaScript SDK with any consent manager?
+
+Currently, RudderStack only supports integration with <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust cookie consent manager</Link>.
+
+However, you can use a workaround to integrate some other consent manager by managing the cookie consent yourself and translating that information into a list of destinations which need to be loaded/blocked. Once done, load the JavaScript SDK to <Link to="/sources/sdks/rudderstack-javascript-sdk/#filtering-selective-destinations">filter the destinations</Link> via the `integrations` object.
+
+

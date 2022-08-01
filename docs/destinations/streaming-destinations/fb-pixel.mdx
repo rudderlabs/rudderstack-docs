@@ -6,7 +6,6 @@ description: Step-by-step guide on sending your event data from RudderStack to F
 [Facebook Pixel](https://developers.facebook.com/docs/facebook-pixel/) is a simple JavaScript snippet that you can add to your website and track visitor activity as well as other important metrics required to build effective marketing and advertising campaigns.
 
 <div class="infoBlock">
-
 RudderStack leverages the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/">Conversions API</a> for sending server-side events to this destination.
 </div>
 
@@ -30,7 +29,7 @@ To know more about the difference between cloud mode and device mode in RudderSt
 Once you have confirmed that the source platform supports sending events to Facebook Pixel, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Facebook Pixel**.
-2. Assign a name to your destination and click on **Next**.
+2. Assign a name to your destination and click on **Continue**.
 
 ### Connection settings
 
@@ -44,7 +43,6 @@ The following sections explain these settings in more detail.
 - **Business Access Token**: Enter your Facebook business access token required to send the events via the cloud mode.
 
 <div class="infoBlock">
-
 For more information on obtaining your Facebook Pixel ID and Business Access Token, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
@@ -80,7 +78,6 @@ For more information on obtaining your Facebook Pixel ID and Business Access Tok
 | `birthday` |
 
 <div class="infoBlock">
-
 If you want to send any of the above properties hashed by SHA256, you need to enter the property name in the <strong>Denylist PII Properties</strong> field and enable the <strong>Denylist PII Hash Property</strong> toggle.
 </div>
 
@@ -132,22 +129,20 @@ If you want to send any of the above properties hashed by SHA256, you need to en
 - **Use as Test Destination:** Enable this setting if you are using this destination for testing purposes and enter the **Test Event Code**. This code can be found in your Facebook Pixel dashboard.
 
 <div class="infoBlock">
-
-  The <code class="inline-code">context.dataProcessingOptions</code> will be mapped to <code class="inline-code">data_processing_options</code> in Facebook as is mentioned in the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/server-event#data-processing-options">Facebook developer docs</a>.
+The <code class="inline-code">context.dataProcessingOptions</code> will be mapped to <code class="inline-code">data_processing_options</code> in Facebook as is mentioned in the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/server-event#data-processing-options">Facebook developer docs</a>.
 </div>
 
 ### Client-side event filtering
 
 <div class="infoBlock">
-
 RudderStack supports specifying which events should be discarded or allowed to flow through, when sending events via the device mode. For more information, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> documentation.
 </div>
 
-### Web SDK settings
+### Web device mode settings
 
 <img src="../../assets/event-stream-destinations/fbp-connection-settings-5.png" alt="Connection settings" />
 
-- **Use Updated Mapping**: If this setting is disabled, RudderStack will send the `identify` traits as received. If this setting is enabled, RudderStack takes the following example `identify` traits:
+- **Use Updated Mapping**: If this setting is disabled, RudderStack will send the `identify` traits as received. If this setting is enabled, RudderStack takes the following `identify` traits:
 
 ```JSON
 {
@@ -184,7 +179,7 @@ RudderStack then changes the traits as shown below, before sending them to Faceb
 ```
 
 - **Legacy Conversion Pixel IDs**: With this setting, you can send specific events to a legacy conversion Pixel by specifying the event-Pixel ID mapping. Note that this option is available only when sending events via the device mode.
-- **Use device-mode to send events**: Enable this setting to send events from the web SDK to Facebook Pixel via the device mode.
+- **Use device-mode to send events**: Enable this setting to send events from the JavaScript SDK to Facebook Pixel via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 - Finally, click on **Next** to complete the configuration.
 
@@ -249,8 +244,7 @@ rudderanalytics.track(
 ```
 
 <div class="infoBlock">
-  
-A string is the only valid data type for the <code class="inline-code">category</code> field. However, you can pass an array of string values which will be concatenated using a delimiter (,) before sending the events.  
+String is the only valid data type for the <code class="inline-code">category</code> field. However, you can pass an array of string values which will be concatenated using a delimiter (,) before sending the events.
 </div>
 
 ## Standard events
@@ -261,9 +255,9 @@ In the dashboard, you have the option to **map your events to standard Facebook 
 Refer to the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for more information.
 </div>
 
-The mapping is done as follows in RudderStack:
+RudderStack maps the following events to the Facebook standard events:
 
-| Rudder Event          | Facebook Standard Event |
+| RudderStack Event          | Facebook Standard Event |
 | :-------------------- | :---------------------- |
 | `Product List Viewed` | `ViewContent`           |
 | `Product Viewed`      | `ViewContent`           |
@@ -272,7 +266,10 @@ The mapping is done as follows in RudderStack:
 | `Products Searched`   | `Search`                |
 | `Checkout Started`    | `InitiateCheckout`      |
 
-In Pixel, a currency for **Purchase** events is required to be specified. If not provided the default will be set to **`USD`**.
+Note that:
+
+- For the <code class="inline-code">Products Searched</code> event, the <code class="inline-code">query</code> property must be a string.
+- You need to specify `currency` in the `Order Completed` event. If not specified, RudderStack will set the default value to `USD`.
 
 ### Other standard events
 
@@ -298,8 +295,7 @@ If you map your event to any of the following Standard Events listed below, then
 In the dashboard, the legacy conversion Pixel IDs can be filled. The events which appear in the mapping are sent to Pixel with the mapped Pixel ID. The conversion events only support currency and value as their event properties.
 
 <div class="infoBlock">
-
-This is only available for device mode.
+This feature is only available when sending events via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 </div>
 
 ## Custom events
@@ -311,8 +307,7 @@ Custom events are used to send any event that does not appear in any of the mapp
 Facebook Pixel allows you to send events via your web browser and your server via the Conversion API. Depending on how you send your events, with this duel set-up, redundant events may be received by Facebook. Therefore, to help get accurate representation of your data, Facebook tries to deduplicate events coming in.
 
 <div class="infoBlock">
-
-For more information on Facebook Deduplication, you can refer to <a href="https://www.facebook.com/business/help/823677331451951?id=1205376682832142">this article</a>.
+For more information on Facebook Deduplication, refer to <a href="https://www.facebook.com/business/help/823677331451951?id=1205376682832142">this article</a>.
 </div>
 
 #### `event_id` method \(Recommended\)
@@ -329,16 +324,13 @@ Facebook's \(and RudderStack's\) recommended form of deduplication is to leverag
 You can set the `event_id` in `traits` , `context.traits` or `properties` object as a unique identifier. This works for both the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> as well as the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 <div class="infoBlock">
-
 If you don't set the <code class="inline-code">event_id</code>, RudderStack will use <code class="inline-code">messageId</code> to map to Facebook's <code class="inline-code">eventId</code>.
 </div>
 
 The `event_name` will be picked up from the name of the event.
 
 <div class="infoBlock">
-
-For more information regarding the logic behind the <code class="inline-code">event_id</code> deduplication, read <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/deduplicate-pixel-and-server-events/#event-id-and-event-name---recommended">this article</a>.
-
+For more information regarding the logic behind the <code class="inline-code">event_id</code> deduplication, refer to the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/deduplicate-pixel-and-server-events/#event-id-and-event-name---recommended">Facebook documentation</a>.
 </div>
 
 #### `fbp` and `external_id` method \(Not Recommended\)
@@ -352,15 +344,12 @@ For this approach, it is necessary to send an event, first from the browser, the
 RudderStack maps the `event_name` from whatever the name of the event that is being sent is. The `fbp` parameter is taken from the `context.fbp` key-value pair. Finally, the `external_id` will just be the `userId` or `anonymousId` \(if `userId` is not present\).
 
 <div class="infoBlock">
-
-For more information regarding the logic behind the <code class="inline-code">fbp</code> and <code class="inline-code">external_id</code> deduplication, read <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/deduplicate-pixel-and-server-events/#fbp-or-external-id">this article</a>.
+For more information regarding the logic behind the <code class="inline-code">fbp</code> and <code class="inline-code">external_id</code> deduplication, refer to the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/deduplicate-pixel-and-server-events/#fbp-or-external-id">Facebook documentation</a>.
 </div>
 
 ## Timestamps
 
-Facebook Pixel uses ISO 8601 timestamp without the timezone information.
-
-Facebook expects them to be sent in the following format:
+Facebook Pixel uses ISO 8601 timestamp without the timezone information. It expects the timestamp to be sent in the following format:
 
 `"checkinDate", "checkoutDate", "departingArrivalDate", "departingDepartureDate", "returningArrivalDate", "returningDepartureDate", "travelEnd", "travelStart"`
 
@@ -386,9 +375,7 @@ In order to use the Facebook Conversions API, you need to generate an access tok
 <img src="../../assets/screen-shot-2021-03-03-at-1.44.33-pm.png" />
 
 <div class="infoBlock">
-
-For more information on how to use this access token, or to generate your access token via your own app, check out Facebook's <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/get-started/#via-events-manager">developer documentation</a>.
-
+For more information on how to use this access token or to generate your access token via your own app, refer to the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/get-started/#via-events-manager">Facebook documentation</a>.
 </div>
 
 #### Can I hash my user data before sending it to RudderStack?
@@ -411,6 +398,4 @@ rudderanalytics.track(
 
 The `integrations` object with these key-values will tell RudderStack not to hash the traits in `context.traits` because they are already hashed. Otherwise, RudderStack will hash your data again and Facebook will not be able to match the traits. Please keep in mind that Facebook will not accept un-hashed data.
 
-## Contact us
 
-For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.

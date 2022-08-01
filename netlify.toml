@@ -6,6 +6,122 @@ CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
 # set TERM variable for terminal output
 TERM = "xterm"
 
+
+# Hubspot
+[[redirects]]
+from = "/cloud-extract-sources/hubspot-v2/"
+to = "/docs/sources/extract/hubspot-v2/"
+status = 301
+[[redirects]]
+from = "/destinations/crm/hubspot/"
+to = "/docs/destinations/streaming-destinations/hubspot/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/hubspot/hubspot-data-model-and-schema-information/"
+to = "/docs/sources/extract/hubspot/hubspot-data-model-and-schema-information/"
+status = 301
+[[redirects]]
+from = "/cloud-extract-sources/hubspot/"
+to = "/docs/sources/extract/hubspot-v2/"
+status = 301
+[[redirects]]
+from ="/sources/extract/hubspot/"
+to = "/docs/sources/extract/hubspot-v2/"
+status = 301
+
+# post-launch redirects (wip)
+
+[[redirects]]
+from = "/data-governance/"
+to = "/docs/features/data-governance/"
+status = 301
+[[redirects]]
+from ="/destinations/minio/"
+to ="/docs/destinations/streaming-destinations/minio/"
+status = 301
+[[redirects]]
+from ="/destinations/sources/"
+to ="/docs/sources/"
+status = 301
+[[redirects]]
+from ="/destinations/warehouse-destinations/identity-resolution/"
+to ="/docs/features/identity-resolution/"
+status = 301
+[[redirects]]
+from ="/extensions/auth0-authentication-api-webhooks"
+to ="/docs/sources/cloud-apps/auth0/"
+status = 301
+[[redirects]]
+from ="/rudderstack-api-spec"
+to ="/docs/api/"
+status = 301
+[[redirects]]
+from ="/rudderstack-api/video-specification/"
+to ="/docs/event-spec/video-events-spec/"
+[[redirects]]
+from ="/rudderstack-api/api-specification/alias/"
+to ="/docs/event-spec/standard-events/alias/"
+status = 301
+[[redirects]]
+from ="/storage-platforms/amazon-s3/"
+to ="/docs/destinations/streaming-destinations/amazon-s3/"
+status = 301
+[[redirects]]
+from ="/clickhouse/"
+to ="/docs/destinations/warehouse-destinations/clickhouse/"
+status = 301
+[[redirects]]
+from ="/google-bigquery/"
+to ="/docs/destinations/warehouse-destinations/bigquery/"
+status = 301
+[[redirects]]
+from ="/posthog/"
+to = "/docs/destinations/streaming-destinations/posthog/"
+status = 301
+[[redirects]]
+from ="/warehouse-schemas/"
+to = "/docs/destinations/warehouse-destinations/warehouse-schema/"
+status = 301
+[[redirects]]
+from ="/rudderstack-react-native-sdk/"
+to ="/docs/sources/sdks/rudderstack-react-native-sdk/"
+status = 301
+
+[[redirects]]
+from ="/administrators-guide/config-parameters"
+to = "/docs/user-guides/administrators-guide/config-parameters/"
+status = 301
+[[redirects]]
+from ="/get-started/installing-and-setting-up-rudderstack/sending-test-events/"
+to = "/docs/get-started/rudderstack-open-source/sending-test-events/"
+status = 301
+[[redirects]]
+from ="/data-warehouse-integrations/json-column-support/"
+to = "/docs/destinations/warehouse-destinations/json-column-support/"
+status = 301
+[[redirects]]
+from ="/destinations/mixpanel"
+to = "/docs/streaming-destinations/mixpanel/"
+status = 301
+[[redirects]]
+from ="/destinations/data-ingestion/kafka/"
+to = "/docs/destinations/streaming-destinations/kafka/"
+status = 301
+[[redirects]]
+from ="/data-warehouse-integrations/snowflake/"
+to = "/docs/destinations/warehouse-destinations/snowflake/"
+status = 301
+[[redirects]]
+from ="/get-started/adding-source-and-destination-rudderstack"
+to = "/docs/dashboard-guides/overview/"
+status = 301
+[[redirects]]
+from ="/identity-resolution/data-warehouse-integrations/google-bigquery"
+to = "/docs/destinations/warehouse-destinations/bigquery/"
+status = 301
+
+
+
 # Docs restructuring week of June 27 2022
 
 # Get started section
@@ -66,180 +182,15 @@ status = 301
 
 [[redirects]]
 from = "/user-guides/migration-guides/blendo-rudderstack-migration/"
-to = "/docs/user-guides/migration-guides/blendo-rudderstack-migration/"
-status = 301
-[[redirects]]
-from = "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/"
-to = "/docs/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/"
+to = "/docs/user-guides/migration-guides/"
 status = 301
 [[redirects]]
 from = "/user-guides/"
 to = "/docs/user-guides/how-to-guides/"
 status = 301
-[[redirects]]
-from = "/user-guides/migration-guides/"
-to = "/docs/user-guides/migration-guides/"
-status = 301
-[[redirects]]
-from = "/user-guides/migration-guides/rudderstack-migration-guide/"
-to = "/docs/user-guides/migration-guides/rudderstack-migration-guide/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/custom-domains/"
-to = "/docs/user-guides/how-to-guides/custom-domains/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/developing-integrations-for-rudderstack/"
-to = "/docs/user-guides/how-to-guides/developing-integrations-for-rudderstack/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/dynamic-destination-configuration/"
-to = "/docs/user-guides/how-to-guides/dynamic-destination-configuration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/filter-events/"
-to = "/docs/user-guides/how-to-guides/filter-events/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/how-to-filter-selective-destinations/"
-to = "/docs/user-guides/how-to-guides/how-to-filter-selective-destinations/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/"
-to = "/docs/user-guides/how-to-guides/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/live-destination-event-debugger/"
-to = "/docs/user-guides/how-to-guides/live-destination-event-debugger/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack/"
-to = "/docs/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/how-to-submit-an-integration-pull-request/"
-to = "/docs/user-guides/how-to-guides/how-to-submit-an-integration-pull-request/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/rudderstack-jamstack-integration/"
-to = "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-angular-integration/"
-to = "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-angular-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-astro-integration/"
-to = "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-astro-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-eleventy-integration/"
-to = "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-eleventy-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-ember-integration/"
-to = "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-ember-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-gatsby-integration/"
-to = "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-gatsby-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-hugo-integration/"
-to = "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-hugo-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-jekyll-integration/"
-to = "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-jekyll-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nextjs-integration/"
-to = "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nextjs-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nuxtjs-integration/"
-to = "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nuxtjs-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-svelte-integration/"
-to = "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-svelte-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-vue-integration/"
-to = "/docs/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-vue-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/implement-native-js-sdk-integration/add-device-mode-sdk-to-js/"
-to = "/docs/user-guides/how-to-guides/implement-native-js-sdk-integration/add-device-mode-sdk-to-js/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/implement-native-js-sdk-integration/"
-to = "/docs/user-guides/how-to-guides/implement-native-js-sdk-integration/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/"
-to = "/docs/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/"
-status = 301
-[[redirects]]
-from = "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript/"
-to = "/docs/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/admin-troubleshooting-guide/"
-to = "/docs/user-guides/administrators-guide/admin-troubleshooting-guide/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/alerting/"
-to = "/docs/user-guides/administrators-guide/alerting/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/event-replay/"
-to = "/docs/user-guides/administrators-guide/event-replay/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/config-parameters/"
-to = "/docs/user-guides/administrators-guide/config-parameters/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/high-availability/"
-to = "/docs/user-guides/administrators-guide/high-availability/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/horizontal-scaling-1/"
-to = "/docs/user-guides/administrators-guide/horizontal-scaling-1/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/"
-to = "/docs/user-guides/administrators-guide/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/bucket-configuration-settings/"
-to = "/docs/user-guides/administrators-guide/bucket-configuration-settings/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/infra-provisioning/"
-to = "/docs/user-guides/administrators-guide/infra-provisioning/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/monitoring-and-metrics/"
-to = "/docs/user-guides/administrators-guide/monitoring-and-metrics/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/okta-sso/"
-to = "/docs/user-guides/administrators-guide/okta-sso/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/rudderstack-grafana-dashboard/"
-to = "/docs/user-guides/administrators-guide/rudderstack-grafana-dashboard/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/software-releases/"
-to = "/docs/user-guides/administrators-guide/software-releases/"
-status = 301
-[[redirects]]
-from = "/user-guides/administrators-guide/onelogin-sso/"
-to = "/docs/user-guides/administrators-guide/onelogin-sso/"
-status = 301
+
+
+
 
 
 [[redirects]]
@@ -697,10 +648,6 @@ status = 301
 [[redirects]]
 from = "/destinations/customer-data-platform/segment/"
 to = "/docs/destinations/streaming-destinations/segment/"
-status = 301
-[[redirects]]
-from = "/destinations/crm/hubspot/"
-to = "/docs/destinations/streaming-destinations/hubspot/"
 status = 301
 [[redirects]]
 from = "/destinations/crm/"
@@ -1293,18 +1240,6 @@ status = 301
 [[redirects]]
 from = "/cloud-extract-sources/google-sheets/"
 to = "/docs/sources/extract/google-sheets/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/hubspot-v2/"
-to = "/docs/sources/extract/hubspot-v2/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/hubspot/hubspot-data-model-and-schema-information/"
-to = "/docs/sources/extract/hubspot/hubspot-data-model-and-schema-information/"
-status = 301
-[[redirects]]
-from = "/cloud-extract-sources/hubspot/"
-to = "/docs/sources/extract/hubspot/"
 status = 301
 [[redirects]]
 from = "/cloud-extract-sources/"

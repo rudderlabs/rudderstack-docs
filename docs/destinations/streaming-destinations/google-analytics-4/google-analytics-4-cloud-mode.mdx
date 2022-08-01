@@ -1,5 +1,5 @@
 ---
-title: "Cloud Mode"
+title: "Google Analytics 4 Cloud Mode"
 description:  Detailed technical documentation on sending events to Google Analytics 4 using the RudderStack cloud mode.
 ---
 
@@ -184,6 +184,14 @@ rudderanalytics.page({}, {
   }],
 });
 ```
+
+The following table lists the property mappings between RudderStack and Google Analytics 4: 
+
+| RudderStack property    | Google Analytics 4 property  |
+| :-------------| :-----------------|
+| `context.page.referrer`       | `page_referrer`      |
+| `context.page.title`          | `page_title`         |
+| `context.page.url`            | `page_location`      |
 
 ## Group
 
@@ -598,6 +606,6 @@ You can retrieve the `app_instance_id` through the Firebase SDK depending on the
 - [C++: `GetAnalyticsInstanceId()`](https://firebase.google.com/docs/reference/cpp/namespace/firebase/analytics#getanalyticsinstanceid)
 - [Unity: `GetAnalyticsInstanceIdAsync()`](https://firebase.google.com/docs/reference/unity/class/firebase/analytics/firebase-analytics#getanalyticsinstanceidasync)
 
-## Contact us
+Refer to the [GA4 documentation](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=firebase#payload_post_body) for more information.
 
-For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
+

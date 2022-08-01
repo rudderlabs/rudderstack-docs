@@ -834,7 +834,7 @@ You can easily develop a device mode destination in case RudderStack doesn't sup
 More information on the RudderStack device mode can be found in the <a href="https://rudderstack.com/docs/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
 </div>
 
-- Create a `CustomFactory.h` file by extending [`RSIntegrationFactory`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Rudder/RSIntegrationFactory.h), as shown:
+- Create a `CustomFactory.h` file by extending [`RSIntegrationFactory`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Sources/Classes/Public/RSIntegrationFactory.h), as shown:
 
 ```objectivec
 #import <Foundation/Foundation.h>
@@ -889,7 +889,7 @@ NS_ASSUME_NONNULL_END
 @end
 ```
 
-- Next, create a `CustomIntegration.h` file by extending [`RSIntegration`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Rudder/RSIntegration.h).
+- Next, create a `CustomIntegration.h` file by extending [`RSIntegration`](https://github.com/rudderlabs/rudder-sdk-ios/blob/master/Sources/Classes/Public/RSIntegration.h).
 
 ```objectivec
 #import <Foundation/Foundation.h>
@@ -1189,8 +1189,4 @@ For more information on the `optOut` API, refer to the [**Enabling/Disabling Use
 You only need to call the `optOut` API with the required parameter only once, as the information persists within the device even if you reboot it.
 </div>
 
-## Contact us
 
-For any queries on any of the sections covered in this guide, you can [**contact us**](mailto:%20docs@rudderstack.com), or start a conversation in our [**Slack**](https://rudderstack.com/join-rudderstack-slack-community/) community.
-
-If you come across any issues while using the iOS SDK, you can also open a new issue on our [**GitHub Issues page**](https://github.com/rudderlabs/rudder-sdk-ios/issues/new).

@@ -32,9 +32,19 @@ To successfully configure Google Analytics 4 as a destination, configure the fol
     - **Measurement Id**: Enter the Measurement Id which is the identifier for a data stream. It can be found in the Google Analytics dashboard under **Admin** > **Data Streams** > **Choose your stream** > **Measurement ID**.
   - **`Firebase`** - Supported only for the cloud mode. If you select `Firebase`, enter the below settings:
     - **Firebase App Id**: Enter the Firebase App ID which is the identifier for Firebase app. It can be found in the Firebase dashboard under **Project Settings** > **General**.
- 
+    
 <div class="infoBlock">
 Refer to the <Link to="#faq">FAQ</Link> section for more information on how to obtain the API Secret, Measurement Id and Firebase App ID.
+</div>
+
+- **Enable debug mode**: Enable this setting to monitor events in the debug view.
+
+<div class="infoBlock">
+The debug mode works as following: 
+<ul>
+<li>For device mode, it utilizes the <code class="inline-code">debug_mode</code> parameter in the GA4 script. Refer to the <Link to="https://support.google.com/analytics/answer/7201382?hl=en#zippy=%2Cglobal-site-tag-websites">Google documentation</Link> for more information.</li>
+<li>For cloud mode, it is supported via the validation server endpoint. Refer to the <Link to="https://developers.google.com/analytics/devguides/collection/protocol/ga4/validating-events?client_type=gtag">Google documentation</Link> for more information.</li>
+</ul>
 </div>
 
 ### Identify
@@ -46,9 +56,9 @@ Refer to the <Link to="#faq">FAQ</Link> section for more information on how to o
 If **Enable Server Side Identify** setting is enabled, you can also configure the following settings:
 
 - **Trait to differentiate between new or existing user**: Enter a trait key to determine whether a user is new or an existing user.
-- **Convert identify event to Login or Signup event**: Enable this setting to convert the `identify` event to a `login` event in case of an existing user or a `sign_up` event in case of a new user.
-- **Trait key for the 'method' parameter in Login or Signup event**: Enter the trait key to pass the `method` parameter in the `login` or `sign_up` event.
-- **Send 'generate_lead' event for 'identify' event**: Enable this setting to send a `generate_lead` event for a new user. 
+- **Convert identify event to Login or Signup event**: Enable this setting to convert the `identify` event to a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#login">`login`</Link> event in case of an existing user or a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#sign_up">`sign_up`</Link> event in case of a new user.
+- **Trait key for the 'method' parameter in Login or Signup event**: Enter the trait key to pass the `method` parameter in the <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#login">`login`</Link> or <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#sign_up">`signup`</Link> event.
+- **Send 'generate_lead' event for 'identify' event**: Enable this setting to send a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#generate_lead">`generate_lead`</Link> event for a new user. 
 
   <div class="infoBlock">
   Note that the <code class="inline-code">generate_lead</code> event will only be fired for the new users and not for the existing ones.
@@ -89,7 +99,7 @@ Google Analytics 4 has a limit on the number of unique properties per event name
 
 This option is applicable only if you're sending events to Google Analytics 4 via the web device mode. Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 
-### Web SDK settings
+### Web device mode settings
 
 <img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings-4.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
 
@@ -126,6 +136,4 @@ Finally, click on **Next** to enable Google Analytics 4 as a destination in Rudd
 4. Click on **Data Streams** and select the stream to get the **Firebase App Id** as shown:
 <img src="../../../assets/event-stream-destinations/firebase-app-id.png" />
 
-## Contact us
 
-For queries on any of the sections covered in this guide, you can [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
