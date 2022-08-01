@@ -36,14 +36,15 @@ To successfully configure OneSignal as a destination, you will need to configure
 <img src="../../assets/event-stream-destinations/onesignal-connection-settings.png" alt="OneSignal connection settings"/>
 
 - **App Id**: Enter your OneSignal App Id.
-- **Toggle on to create a device using email**: Enable this setting to create a device using email along with the browser.
-- **Toggle on to create a device using phone number**: Enable this setting to create a device using phone number along with the browser.
-- **Toggle on to concatenate event name with properties**: Enable this setting to concatenate event names with properties. for example, if `add_to_cart` is an event and `brand` is a property, the event will be sent as `add_to_cart_brand` tag.
-- **Allowed Property List**: Enter the properties which you want to add as device tags, if present in the payload.
 
 <div class="infoBlock">
-To get your OneSignal license code and API key, log into your OneSignal dashboard and go to <strong>Data Platform</strong> > <strong>Integrations</strong> > <strong>REST API</strong>. For more information, refer to the <Link to="#faq">FAQ</Link> section below.
+For more information on finding the OneSignal App Id, refer to the <a href="#faq">FAQ</a> section below.
 </div>
+
+- **Toggle on to create a device using email**: Enable this setting to create a device using email.
+- **Toggle on to create a device using phone number**: Enable this setting to create a device using phone number.
+- **Toggle on to concatenate event name with properties**: Enable this setting to concatenate the event names with properties. for example, if `add_to_cart` is an event and `brand` is a property, the event will be sent as `add_to_cart_brand` tag.
+- **Allowed Property List**: Enter the properties you want to add as device tags, if present in the payload.
 
 ## Identify 
 
@@ -91,11 +92,13 @@ The following table details the mappings between RudderStack and OneSignal prope
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call can be used to update an existing device's tags in one of your OneSignal apps using the `external_user_id`. All devices containing the particular `externalUserId` are updated simultaneously.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call can be used to update an existing device's tags in one of your OneSignal apps using the `external_user_id`. All devices containing the particular `external_user_id` are updated simultaneously.
 
-While updating a device tag, any key inside a tag can be deleted by providing the empty string as value for that key.
+While updating a device tag, any key inside a tag can be deleted by providing the value for that key as an empty string.
 
-Only the properties mentioned under the **Allowed Property List** setting in the RudderStack dashboard can be added as tags.
+<div class="infoBlock">
+Only the properties mentioned under the <strong>Allowed Property List</strong> setting in the RudderStack dashboard can be added as device tags.
+</div>
 
 A sample `track` call is shown below:
 
@@ -109,7 +112,7 @@ rudderanalytics.track('Add to cart', {
 
 ## Group
 
-The <Link to="/event-spec/standard-events/group">`group`</Link> call can be used to group the devices having tags using `groupId`.
+The <Link to="/event-spec/standard-events/group">`group`</Link> call can be used to group the devices having device tags using  the `groupId`.
 
 A sample `group` call is as shown:
 
@@ -122,6 +125,8 @@ rudderanalytics.group('1hKOmRA4el9Zt1WSfVJIVo4GRlm', {
 ```
 
 ### Property mapping
+
+The following table details the mappings between RudderStack and OneSignal properties:
 
 | RudderStack property | OneSignal property | Presence | 
 | :-------| :--------| :------|
@@ -137,12 +142,12 @@ rudderanalytics.group('1hKOmRA4el9Zt1WSfVJIVo4GRlm', {
 
 ## FAQ
 
-### Where can I find the OneSignal License Code and API key?
+### Where can I find the OneSignal App Id?
 
-To get your OneSignal License Code and API key, follow these steps:
+To get your OneSignal App Id, follow these steps:
 
 1. Log into your [OneSignal dashboard](https://dashboard.OneSignal.com/).
-2. Go to **Data Platform** > **Integrations** > **REST API**.
-3. You will find the OneSignal **License Code** and **API Key** listed under **Project Credentials**, as shown:
+2. Go to your app's **Settings** > **Keys & IDs**.
+3. You will find the OneSignal App Id, as shown:
 
-<img src="../../assets/event-stream-destinations/OneSignal-license-api-key.png" alt="OneSignal license code and API key" />
+<img src="../../assets/event-stream-destinations/onesignal-app-id.png" alt="OneSignal license code and API key" />
