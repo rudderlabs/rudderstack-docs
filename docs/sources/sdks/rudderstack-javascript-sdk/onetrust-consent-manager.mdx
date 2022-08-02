@@ -32,7 +32,7 @@ The following sections highlight the steps required to set up the JavaScript SDK
 
 Follow these steps to configure OneTrust for your web app:
 
-1. Create a OneTrust account and ensure that it has access to the **Cookie Compliance** app.
+1. Create a [OneTrust account](https://my.onetrust.com/s/login/SelfRegister?language=en_US&startURL=%2Fs%2F%3Ft%3D1587743884774) and ensure that it has access to the **Cookie Compliance** app.
 2. Add your website and scan it.
 3. Go to the **Categorizations** section and define the new categories or modify the existing ones, as required.
 
@@ -48,7 +48,7 @@ You need to enable OneTrust for a given JavaScript source. To do so, specify the
 
 <img src="../../../assets/event-stream-sources/onetrust-1.png" alt="OneTrust category names" />
 
-### Step 3: Setting up your web site/app
+### Step 3: Setting up your website
 
 1. Load the OneTrust script that you published in your web app in <Link to="#step-1-configuring-onetrust">Step 1</Link>. A sample script is shown below:
 
@@ -77,7 +77,7 @@ function OptanonWrapper() {
     if (window.OneTrust.IsAlertBoxClosed()) {
         // Load the SDK
         rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-                ...otherOptions //optional
+                //other options
             }
         );
     }
@@ -98,7 +98,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
                 enabled: true
             }
         },
-        ...otherOptions //optional
+        //other options
     }
 );
 ```
