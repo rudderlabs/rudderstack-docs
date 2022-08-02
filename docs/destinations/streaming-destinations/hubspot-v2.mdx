@@ -72,6 +72,8 @@ Refer to the <Link to="#faq">FAQ</Link> section to know where to get the Hub ID 
 <img src="../../assets/event-stream-destinations/hubspotv2-connection-settings-3.png" alt="HubSpot connection settings" />
 
 - **HubSpot property name to be used as lookup field**: Enter the unique HubSpot property to be used as a lookup field for <Link to="https://developers.hubspot.com/docs/api/crm/contacts">HubSpot contacts</Link>.
+
+The below settings are only applicable for the **Private Apps** authorization type:
 - **RudderStack Event Name**: Enter the RudderStack event name you want to map to the HubSpot custom behavioral event name.
 - **HubSpot Event Name**: Enter the HubSpot event name you want to map to the above-mentioned RudderStack event.
 - **Map your Event Property**: Enter the RudderStack and HubSpot event properties you want to map for the above-mentioned custom behavioral events. You can specify multiple properties for a single event.
@@ -148,7 +150,7 @@ The following table lists the **optional** property mappings between RudderStack
 ### Custom behavioral events
 
 <div class="warningBlock">
-The custom behavorial events can only be used for the private app authentication type. Also, the private app must have the <code class="inline-code">analytics.behavioral_events.send</code> permission.
+The custom behavorial events can be used for both the authentication types. However, they must have the <code class="inline-code">analytics.behavioral_events.send</code> permission to be used for private apps.
 </div>
 
 [Custom behavioral events](https://developers.hubspot.com/docs/api/analytics/events) are account-defined events in HubSpot that store event details in the event properties. You can create custom behavioral events and their associated properties in the RudderStack dashboard as explained in the <Link to="/destinations/streaming-destinations/hubspot-v2/#event-and-property-names">event and property names</Link> section.
