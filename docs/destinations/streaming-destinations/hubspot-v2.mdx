@@ -32,11 +32,11 @@ Once you have confirmed that the source platform supports sending events to HubS
 
 ## Connection settings
 
-To successfully configure HubSpot as a destination using the **new API**, you can choose any of the following authorization types:
+To successfully configure HubSpot as a destination using the **new API**,  you can choose any of the two authorization types explained below:
 
 #### Private Apps authorization type
 
-Select authorization type as **Private Apps** which allows you to use HubSpot's APIs to access specific data from your HubSpot account.
+The **Private Apps** authorization type allows you to use HubSpot's APIs to access specific data from your HubSpot account.
 
 <img src="../../assets/event-stream-destinations/hubspotv2-connection-settings-2.png" alt="HubSpot connection settings" />
 
@@ -50,7 +50,7 @@ Refer to the <Link to="#faq">FAQ</Link> section to know where to get the HubSpot
 
 #### API Key authorization type
 
-Select authorization type as **API Key (deprecating soon)** which allows you to create custom applications using HubSpot's APIs.
+The **API Key (deprecating soon)** authorization type allows you to create custom applications using HubSpot's APIs.
 
 <div class="warningBlock">
 HubSpot API keys will be deprecated soon. Refer to <Link to="https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key">HubSpot documentation</Link> for more information.
@@ -71,13 +71,13 @@ Refer to the <Link to="#faq">FAQ</Link> section to know where to get the Hub ID 
 
 <img src="../../assets/event-stream-destinations/hubspotv2-connection-settings-3.png" alt="HubSpot connection settings" />
 
-- **HubSpot property name to be used as lookup field**: Enter the unique HubSpot property to be used for <Link to="https://developers.hubspot.com/docs/api/crm/contacts">contact</Link> lookup. The provided lookup field key will be retrieved from traits.
-- **RudderStack Event Name**: Enter the custom behavioral RudderStack event name you want to map to the HubSpot event name.
-- **HubSpot Event Name**: Enter the custom behavioral HubSpot event name you want to map to the above-mentioned RudderStack event name.
+- **HubSpot property name to be used as lookup field**: Enter the unique HubSpot property to be used as a lookup field for <Link to="https://developers.hubspot.com/docs/api/crm/contacts">HubSpot contacts</Link>.
+- **RudderStack Event Name**: Enter the custom behavioral RudderStack event name you want to map to the HubSpot event.
+- **HubSpot Event Name**: Enter the custom behavioral HubSpot event name you want to map to the above-mentioned RudderStack event.
 - **Map your Event Property**: Enter the RudderStack and HubSpot event properties you want to map for the above-mentioned custom behavioral events. You can specify multiple properties for a single event.
 
 <div class="infoBlock">
-Refer to the <Link to="https://developers.hubspot.com/docs/api/analytics/events">custom behavioral events</Link> section to know more.
+Refer to the <Link to="https://developers.hubspot.com/docs/api/analytics/events">custom behavioral events</Link> section to know more about them.
 </div>
 
 
@@ -91,7 +91,7 @@ These settings are applicable only if you're sending events to HubSpot via the w
 
 ## Identify
 
-RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to check if a contact exists, if yes, the update is done through the new update endpoints.
+RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to check if a contact exists, if yes, it performs the update through the new update endpoints.
 
 A sample `identify` call is as shown:
 
@@ -152,7 +152,7 @@ The following table lists the **optional** property mappings between RudderStack
 The following parameters are sent in the custom behavorial events:
 - **Identifier**: Either the contact ID, email, or <Link to="https://developers.hubspot.com/docs/api/events/tracking-code">utk</Link> (user token) of the contact associated with the event. The utk is the user token stored in the visitor's `hubspotutk` browser cookie.
 - **Event name:** The internal name of the event which can be found in HubSpot.
-- **Properties object**: When you create a custom behavioral event in HubSpot, some default properties are provided with those events, as explained in the below section.
+- **Properties object**: When you create a custom behavioral event in HubSpot, some default properties are provided with those events, explained in the below section.
 
 #### Property mappings
 
