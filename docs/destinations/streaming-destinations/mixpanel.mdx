@@ -382,6 +382,16 @@ This feature is available in the web device mode only.
 
 ### Can I pass `null` and empty values for the properties?
 
-Yes, RudderStack supports passing empty/`null` values for the properties sent to Mixpanel.
+Yes, RudderStack supports passing empty or `null` values for the properties sent to Mixpanel.
+
+### I am getting the 'Request Header Fields Too Large' error. What might be the reason?
+
+This error might occur due to the limits Mixpanel imposes on its API requests:
+- The GET request URL above 19K characters (around 19 KB+) is blocked.
+- The header size more than 15KB is not allowed.
+- The body of the request more than 20MB is not allowed.
+- Each event can have up to 255 event properties.
+
+If the request you are making is larger than the above-mentioned limits, it will cause an error. Refer to the <Link to="https://community.mixpanel.com/sending-data-to-mixpanel-11/why-am-i-getting-413-errors-when-using-the-http-api-4659">Mixpanel community</Link> for more information.
 
 
