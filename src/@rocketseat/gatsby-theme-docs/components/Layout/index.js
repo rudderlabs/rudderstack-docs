@@ -18,10 +18,7 @@ import CookiesConsent from "../../../../components/cookiesConsent";
 import ScriptContentHead from "../../../../components/ScriptContentHead";
 import ScriptContentBody from "../../../../components/ScriptContentBody";
 
-
 export default function Layout({ children, title, headings, description }) {
-  const isProdMode = process.env.GATSBY_SANITY_PROJECTID && process.env.RS_PRODUCTION_WRITE_KEY;
-
   const data = useStaticQuery(graphql`
     {
       allSanitySiteSettings {
@@ -40,17 +37,17 @@ export default function Layout({ children, title, headings, description }) {
 
   const handleMenuOpen = () => {
     setMenuOpen(!isMenuOpen);
-  }
+  };
 
   return (
     <Fragment>
-      {isProdMode && data?.allSanitySiteSettings?.edges[0].node._rawWebsiteScripts.map(
-        (script) => {
+      {data?.allSanitySiteSettings?.edges[0].node._rawWebsiteScripts
+        .filter((s) => s._key)
+        .map((script) => {
           return (
             <ScriptContentHead key={script._key} currentSlug={""} {...script} />
           );
-        }
-      )}
+        })}
       <DocsNavigation handleMenuOpen={handleMenuOpen} isMenuOpen={isMenuOpen} />
       <Container>
         <div className="sidebarWrapper">
@@ -108,9 +105,17 @@ export default function Layout({ children, title, headings, description }) {
               )}
               {children}
               <div>
-              <hr />
-              <h2>Contact us</h2><p>
-                For more information on the topics covered on this page, <a href="mailto:docs@rudderstack.com">email us</a> or start a conversation in our <a href="https://rudderstack.com/join-rudderstack-slack-community">Slack community</a>.</p>
+                <hr />
+                <h2>Contact us</h2>
+                <p>
+                  For more information on the topics covered on this page,{" "}
+                  <a href="mailto:docs@rudderstack.com">email us</a> or start a
+                  conversation in our{" "}
+                  <a href="https://rudderstack.com/join-rudderstack-slack-community">
+                    Slack community
+                  </a>
+                  .
+                </p>
               </div>
             </div>
           </Children>
@@ -129,13 +134,13 @@ export default function Layout({ children, title, headings, description }) {
         </Main>
       </Container>
       <CookiesConsent />
-      {isProdMode && data?.allSanitySiteSettings?.edges[0].node._rawWebsiteScripts.map(
-        (script) => {
+      {data?.allSanitySiteSettings?.edges[0].node._rawWebsiteScripts
+        .filter((s) => s._key)
+        .map((script) => {
           return (
             <ScriptContentBody key={script._key} currentSlug={""} {...script} />
           );
-        }
-      )}
+        })}
     </Fragment>
   );
 }
@@ -143,15 +148,15 @@ export default function Layout({ children, title, headings, description }) {
 Layout.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
+    PropTypes.node
   ]).isRequired,
   disableTableOfContents: PropTypes.bool,
   title: PropTypes.string,
-  headings: PropTypes.array,
+  headings: PropTypes.array
 };
 
 Layout.defaultProps = {
   disableTableOfContents: false,
   title: "",
-  headings: null,
+  headings: null
 };
