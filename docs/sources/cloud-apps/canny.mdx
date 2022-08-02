@@ -36,11 +36,11 @@ RudderStack ingests the events from Canny after converting them into the RudderS
 | `created`  | `timestamp`,`originalTimestamp`    | - |
 | `object`        | `properties.objectType`        | -|
 | `type`    | `event`  | -|
-| `object.voter.userId`    | `userId`  | Ony if `type`is `vote.created`/`vote.deleted` |
 | `object.author.userId`     | `userId`   |- |
 | sha256 hash of(`object.author.email`)        | `anonymousId` | Only if `userId` is not present |
-| sha256 hash of(`object.voter.email`)        | `anonymousId` |- |
-| `object.voter.id`        | `context.externalId[0].value` | -|
+| sha256 hash of(`object.voter.email`)        | `anonymousId` |Only if `userId` is not present AND `type`is `vote.created`/`vote.deleted`|
+| `object.voter.userId`    | `userId`  | Only if `type`is `vote.created`/`vote.deleted` |
+| `object.voter.id`        | `context.externalId[0].value` | Only if `type`is `vote.created`/`vote.deleted`|
 | `cannyId`    | `context.externalId[0].type`  |- |
 | `object.author.id`     | `context.externalId[0].value`   |- |
 
@@ -117,7 +117,7 @@ RudderStack transforms the above payload into the following payload:
 
 ```json
 {
-    "anonymousId": "d6a9d06e8a46432850ecc6",
+    "anonymousId": "d6a9d06e8a464324d448003ff0467d971a55ca2950e11fc51faaec4e2850ecc6",
     "event": "post.created",
     "integrations": {
         "Canny": false
@@ -131,23 +131,22 @@ RudderStack transforms the above payload into the following payload:
             "name": "Canny",
             "version": "1.0.0"
         },
+        "traits": {
+        "created": "2022-07-15T11:16:32.648Z",
+        "email": "alex@example.com",
+        "isAdmin": true,
+        "name": "Alexx Keener",
+        "url": "https://rudder.canny.io/admin/users/alex-keener"
+      },
         "externalId": [{
-            "type": "authorId",
+            "type": "cannyUserId",
             "value": "1hKOmRA4el9Zt1WSfVJIVo4GRlm"
         }]
     },
     "timestamp": "2022-07-28T10:52:46.294Z",
+    "originalTimestamp": "2022-07-28T10:52:46.294Z",
     "type": "track",
     "properties": {
-        "author": {
-            "created": "2022-07-15T11:16:32.648Z",
-            "email": "alex@example.com",
-            "id": "1hKOmRA4el9Zt1WSfVJIVo4GRlm",
-            "isAdmin": true,
-            "name": "Alex Keener",
-            "url": "https://rudder.canny.io/admin/users/alex-keener",
-            "userID": null
-        },
         "board": {
             "created": "2022-07-25T12:11:19.895Z",
             "id": "VJIVo4GRlm",
