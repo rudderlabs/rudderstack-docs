@@ -1,6 +1,6 @@
 ---
 title: "HubSpot V2"
-description: Step-by-step guide on sending your event data from RudderStack to HubSpot using the new API
+description: Step-by-step guide on sending your event data from RudderStack to HubSpot using the new HubSpot API.
 ---
 
 [HubSpot](https://www.hubspot.com/) is a leading marketing and sales platform that helps you track leads as well as inbound marketing and sales.
@@ -36,24 +36,24 @@ To successfully configure HubSpot as a destination using the **new API**,  you c
 
 #### Private Apps authorization type
 
-The **Private Apps** authorization type allows you to use HubSpot's APIs to access specific data from your HubSpot account.
+The **Private Apps** authorization type enables you to use HubSpot's APIs to access specific data from your HubSpot account.
 
 <img src="../../assets/event-stream-destinations/hubspotv2-connection-settings-2.png" alt="HubSpot connection settings" />
 
 - **Access Token**: Enter your HubSpot access token from the **Private Apps** section in the HubSpot dashboard.
 
 <div class="infoBlock">
-Refer to the <Link to="#faq">FAQ</Link> section to know where to get the HubSpot access token.
+Refer to the <Link to="#faq">FAQ</Link> section for more information on getting the HubSpot access token.
 </div>
 
-- **API Version**: Select **New API** from the dropdown.
+- **API Version**: Select **New API (v3)** from the dropdown.
 
 #### API Key authorization type
 
-The **API Key (deprecating soon)** authorization type allows you to create custom applications using HubSpot's APIs.
+The **API Key (deprecating soon)** authorization type lets you create custom applications using HubSpot's APIs.
 
 <div class="warningBlock">
-HubSpot API keys will be deprecated soon. Refer to <Link to="https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key">HubSpot documentation</Link> for more information.
+This authorization type will be deprecated soon. Refer to <Link to="https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key">HubSpot documentation</Link> for more information.
 </div>
 
 <img src="../../assets/event-stream-destinations/hubspotv2-connection-settings-1.png" alt="HubSpot connection settings" />
@@ -65,7 +65,7 @@ HubSpot API keys will be deprecated soon. Refer to <Link to="https://knowledge.h
 Refer to the <Link to="#faq">FAQ</Link> section to know where to get the Hub ID and API Key.
 </div>
 
-- **API Version**: Select **New API** from the dropdown.
+- **API Version**: Select **New API (v3)** from the dropdown.
 
 ### Event and property names
 
@@ -73,13 +73,13 @@ Refer to the <Link to="#faq">FAQ</Link> section to know where to get the Hub ID 
 
 - **HubSpot property name to be used as lookup field**: Enter the unique HubSpot property to be used as a lookup field for <Link to="https://developers.hubspot.com/docs/api/crm/contacts">HubSpot contacts</Link>.
 
-The below settings are only applicable for the **Private Apps** authorization type:
+The below settings are only applicable for the <Link to="#private-apps-authorization-type">**Private Apps**</Link> authorization type:
 - **RudderStack Event Name**: Enter the RudderStack event name you want to map to the HubSpot custom behavioral event name.
 - **HubSpot Event Name**: Enter the HubSpot event name you want to map to the above-mentioned RudderStack event.
 - **Map your Event Property**: Enter the RudderStack and HubSpot event properties you want to map for the above-mentioned custom behavioral events. You can specify multiple properties for a single event.
 
 <div class="infoBlock">
-Refer to the <Link to="https://developers.hubspot.com/docs/api/analytics/events">custom behavioral events</Link> section to know more about them.
+Refer to the <Link to="#custom-behavioral-events">Custom behavioral events</Link> section below for more information.
 </div>
 
 
