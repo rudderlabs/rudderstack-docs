@@ -32,7 +32,7 @@ Once you have confirmed that the source platform supports sending events to HubS
 
 ## Connection settings
 
-To successfully configure HubSpot as a destination using the **new API**,  you can choose any of the two authorization types explained below:
+To successfully configure HubSpot as a destination using the <Link to="https://developers.hubspot.com/docs/api/overview">new API</Link>,  you can choose any of the two authorization types explained below:
 
 #### Private Apps authorization type
 
@@ -74,9 +74,9 @@ Refer to the <Link to="#faq">FAQ</Link> section to know where to get the Hub ID 
 - **HubSpot property name to be used as lookup field**: Enter the unique HubSpot property to be used as a lookup field for <Link to="https://developers.hubspot.com/docs/api/crm/contacts">HubSpot contacts</Link>.
 
 The below settings are only applicable for the <Link to="#private-apps-authorization-type">**Private Apps**</Link> authorization type:
-- **RudderStack Event Name**: Enter the RudderStack event name you want to map to the HubSpot custom behavioral event name.
-- **HubSpot Event Name**: Enter the HubSpot event name you want to map to the above-mentioned RudderStack event.
-- **Map your Event Property**: Enter the RudderStack and HubSpot event properties you want to map for the above-mentioned custom behavioral events. You can specify multiple properties for a single event.
+- **RudderStack Event Name**: Enter the RudderStack event name you want to map to the <Link to="https://developers.hubspot.com/docs/api/analytics/events#create-an-event">custom behavioral event</Link> created in HubSpot.
+- **HubSpot Event Name**: Enter the tracking ID of the HubSpot custom behavioral event you want to map to the above-mentioned RudderStack event.
+- **Map your Event Property**: Although HubSpot provides some <Link to="#property-mappings-1">default properties</Link> with custom behavioral events, you can create custom properties and map them to the RudderStack properties using this field. You can also specify multiple properties for a single event.
 
 <div class="infoBlock">
 Refer to the <Link to="#custom-behavioral-events">Custom behavioral events</Link> section below for more information.
@@ -93,7 +93,7 @@ These settings are applicable only if you're sending events to HubSpot via the w
 
 ## Identify
 
-RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to check if a contact exists, if yes, it performs the update through the new update endpoints.
+RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to check if a contact exists, if it does, RudderStack updates the user with the new information. Otherwise, it creates a new user.
 
 A sample `identify` call is as shown:
 
@@ -114,7 +114,11 @@ rudderanalytics.identify({
 
 A <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record various user actions and any properties associated with them. 
 
-To associate a `track` call with a user, you need to specify the user's `email` under `context.traits`. Also, RudderStack associates the `track` events with the same user after an `identify` request is successfully made.
+To associate a `track` call with a user, you need to specify the user's `email` under `context.traits`. 
+
+<div class="infoBlock">
+RudderStack associates the <code class="inline-code">track</code> events with the same user after an <code class="inline-code">identify</code> request is successfully made. However, if you send a <code class="inline-code">track</code> call without making any <code class="inline-code">identify</code> call first, and there is no contact in HubSpot, there will be no association of events as there is no identifier.
+</div>
 
 A sample `track` event is as shown:
 
