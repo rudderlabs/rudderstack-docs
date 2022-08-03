@@ -44,7 +44,7 @@ RudderStack ingests the events from Canny after converting them into the RudderS
 | `object.voter.userId`    | `userId`  | Only if `type`is `vote.created`/`vote.deleted` |
 | `object.voter.id`        | `context.externalId[0].value` | Only if `type`is `vote.created`/`vote.deleted`|
 | `cannyUserId`    | `context.externalId[0].type`  |- |
-| `object.author.id`     | `context.externalId[0].value`   |- |
+| `object.author.id`     | `context.externalId[0].id`   |- |
 
 
 Canny supports the following events:
@@ -142,7 +142,7 @@ RudderStack transforms the above payload into the following payload:
       },
         "externalId": [{
             "type": "cannyUserId",
-            "value": "1hKOmRA4el9Zt1WSfVJIVo4GRlm"
+            "id": "1hKOmRA4el9Zt1WSfVJIVo4GRlm"
         }]
     },
     "timestamp": "2022-07-28T10:52:46.294Z",
