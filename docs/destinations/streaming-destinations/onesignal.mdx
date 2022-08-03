@@ -68,10 +68,9 @@ rudderanalytics.identify('1hKOmRA4el9Zt1WSfVJIVo4GRlm', {
 ```
 
 You can create multiple devices in a single `identify` call:
-- One for the browser (by default)
-- Addditional ones for the email and SMS
-
-To create devices for email and SMS,  you need to enable the **Toggle on to create a device using email** and **Toggle on to create a device using phone number** settings in the RudderStack dashboard as well as send their data (`email` or `phone`) in the payload.
+- For browser (by default)
+- For iOS and Android (depending on the `integrations` object and `context.device` data): When the `deviceType` is set as iOS or Android, the `device.token` is set as the device identifier. You can set this token for <Link to="/sources/sdks/rudderstack-ios-sdk/ios-v2/#setting-the-device-token-for-push-notifications">iOS</Link> and <Link to="/sources/sdks/rudderstack-android-sdk/#setting-the-android-device-token">Android</Link> both. If device.token is not available, `device.id` is set as the identifier. However, it is recommended to send `device.token` for push notifications.
+- For email and SMS: Enable the **Toggle on to create a device using email** and **Toggle on to create a device using phone number** settings in the RudderStack dashboard as well as send their data (`email` or `phone`) in the payload.
 
 The `external_user_id` is mapped to `userId` by default and `anonymoysId` is added as a tag with key as `anonymousId` and value as `anonymousId value`.
 
