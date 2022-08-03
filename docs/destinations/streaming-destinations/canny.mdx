@@ -97,7 +97,13 @@ Also, you can retrieve the user data using `userId` or `email` and use that info
 A sample `track` call is shown below:
 
 ```javascript
-
+rudderanalytics.track("Submit", {
+    boardId: "62de88676bc28b44eeef25dd",
+    details: "Require new feature",
+    title: "New Feature",
+    eta: "10.08.2022",
+    priority: "High"
+})
 ```
 
 ### Property mappings for create post Event 
