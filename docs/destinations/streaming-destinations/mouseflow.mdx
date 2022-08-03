@@ -89,7 +89,7 @@ The following snippets highlight how the data in the sample `identify` call abov
 
 ```javascript
 // Sending userId
-mouseflow.identify("1hKOmRA4GRlm");
+_mfq.push(["identify", "1hKOmRA4GRlm"]);
 
 // Sending user traits as custom variables
 _mfq.push(["setVariable", "city", "New Orleans"]);
@@ -146,7 +146,7 @@ The values in the key-value pairs set as custom variables are always treated as 
 
 ## Page
 
-The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page, such as its title, category, URL, etc.
+The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you send the path of the web page viewed by the user to Mouseflow.
 
 A sample `page` call is shown below:
 
@@ -167,7 +167,7 @@ You can customize the page-related details sent to Mouseflow by passing the valu
 
 | RudderStack property          | Mouseflow property | Presence |
 | :-------------------- | :---------------------- | :-------------|
-| `properties.path` / `context.path` | `_virtualPath` |  Optional |
+| `properties.path` / `context.path` | `_virtualPath` |  Required |
 
 The following snippet highlights how RudderStack sends the data in the sample `page` call above to Mouseflow:
 
