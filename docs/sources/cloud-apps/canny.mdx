@@ -42,7 +42,7 @@ RudderStack ingests the events from Canny after converting them into the RudderS
 | sha256 hash of(`object.voter.email`)        | `anonymousId` |Only if `userId` is not present AND `type`is `vote.created`/`vote.deleted`|
 | `object.voter.userId`    | `userId`  | Only if `type`is `vote.created`/`vote.deleted` |
 | `object.voter.id`        | `context.externalId[0].value` | Only if `type`is `vote.created`/`vote.deleted`|
-| `cannyId`    | `context.externalId[0].type`  |- |
+| `cannyUserId`    | `context.externalId[0].type`  |- |
 | `object.author.id`     | `context.externalId[0].value`   |- |
 
 
