@@ -50,8 +50,6 @@ For more information on this setting, refer to the <Link to="https://www.rudders
 
 The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc. and send this information to Mouseflow.
 
-RudderStack leverages the [`_mfq.push()`](https://js-api-docs.mouseflow.com/#the-_mfq-object) method to send the relevant user details to Mouseflow.
-
 A sample `identify` call is shown below:
 
 ```javascript
@@ -62,14 +60,41 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 })
 ```
 
-### Property mapping
+### Supported mappings
 
 RudderStack maps the following user traits to the corresponding Mouseflow properties:
 
 | RudderStack property          | Mouseflow property | Presence |
 | :-------------------- | :---------------------- | :-------------|
-| `userId` / `traits.email` | `_userName` |  Required |
-| `traits` | `serVariable` | Optional |
+| `userId` / `traits.email` / `anonymousId` | `_userName` |  Required |
+| `traits` | `setVariable` | Optional |
+
+RudderStack sends the `userId` / `email` / `anonymousId` to Mouseflow as `_userName` via the <a href="https://js-api-docs.mouseflow.com/#identifying-a-user"><code class="inline-code">identifying a user</code></a> method, as shown:
+
+```javascript
+_mfq.push(["identify", _userName])
+```
+
+You can also send the user details present in the `traits` as key-value pair to Mouseflow. RudderStack passes them as <a href="https://js-api-docs.mouseflow.com/#identifying-a-user:~:text=include%20%22product%2Dadded%22%2C%20...-,Setting%20a%20custom%20variable,-_mfq.push">custom variables</a> to Mouseflow, as shown:
+
+```javascript
+_mfq.push(["setVariable", _key, _value])
+```
+
+<div class="infoBlock">
+The values in the key-value pairs are always treated as strings.
+</div>
+
+The following snippets highlight how the data in the sample `identify` call above is sent to Mouseflow:
+
+```javascript
+// Sending userId
+mouseflow.identify("1hKOmRA4GRlm");
+
+// Sending user traits as custom variables
+_mfq.push(["setVariable", "city", "New Orleans"]);
+_mfq.push(["setVariable", "favouriteColor", "Red"]);
+```
 
 ## Track
 
@@ -86,9 +111,11 @@ rudderanalytics.track("Product Clicked",{
 
 ### Setting a custom tag
 
-RudderStack lets you set a custom tag to a user recording in Mouseflow. It automatically sets the `track` event name as the custom tag. 
+RudderStack lets you set a custom tag to a user recording in Mouseflow by using Mouseflow's <a href="https://js-api-docs.mouseflow.com/#tagging-a-recording">Tagging a recording</a> method. 
 
-In the above example, RudderStack sets `Product Clicked` as the custom tag by passing it to Mouseflow in the following way:
+RudderStack automatically sets the `track` event name as the custom tag. 
+
+In the sample `track` call above, RudderStack sets `Product Clicked` as the custom tag by passing it to Mouseflow in the following way:
 
 ```javascript
 _mfq.push(["tag", "Product Clicked"]);
@@ -98,11 +125,15 @@ _mfq.push(["tag", "Product Clicked"]);
 A tag must always be of the String data type.
 </div>
 
+<div class="infoBlock">
+You can also set custom tags by passing them via the event's <code class="inline-code">integrations</code> object. Refer to the <Link to="#adding-tags">Adding tags</Link> section below for more information.
+</div> 
+
 ### Setting a custom variable
 
-RudderStack also lets you pass the event properties as custom variables to Mouseflow, as a key-value pair.
+RudderStack also lets you pass the `track` event properties as custom variables to Mouseflow as a key-value pair.
 
-In the sample snippet above, RudderStack sets `price` and `quantity` as the custom variables in the following manner:
+In the sample `track` call above, RudderStack sets `price` and `quantity` as the custom variables in Mouseflow, as shown:
 
 ```javascript
 _mfq.push(["setVariable", "price", "100"]);
@@ -110,32 +141,68 @@ _mfq.push(["setVariable", "quantity", "10"]);
 ```
 
 <div class="warningBlock">
-The value associated with the event property will be passed to Mouseflow as a string.
+The values in the key-value pairs set as custom variables are always treated as strings.
 </div>
 
 ## Page
 
-The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page as its title, category, URL, etc.
+The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page, such as its title, category, URL, etc.
 
-RudderStack sends the page-related information like the event name and category to Mouseflow by passing it in the [`_virtualPath`](https://js-api-docs.mouseflow.com/#virtual-paths-and-pageviews) parameter, as shown:
+A sample `page` call is shown below:
+
+```javascript
+rudderanalytics.page({
+  path: "/test_browser.html",
+});
+```
+
+RudderStack sends the page-related information like the path or the page URL to Mouseflow using the <a href="https://js-api-docs.mouseflow.com/#virtual-paths-and-pageviews:~:text=%2C%20_virtualPath%5D)%3B-,Adding%20a%20virtual%20pageview,-_mfq.push">Adding a virtual pageview</a> method, as shown:
 
 ```javascript
 _mfq.push(["newPageView", _virtualPath]);
 ```
+### Supported mappings
 
-Here, the `_virtualPath` parameter contains the `page` event name and category in the following format:
+You can customize the page-related details sent to Mouseflow by passing the values in the `properties.path` field. RudderStack then maps these details to the `_virtualPath` parameter before sending them to Mouseflow, as highlighted in the below table:
 
-```
-Viewed <category> <event name> Page
-```
+| RudderStack property          | Mouseflow property | Presence |
+| :-------------------- | :---------------------- | :-------------|
+| `properties.path` / `context.path` | `_virtualPath` |  Optional |
 
-Consider the following sample `page` call:
+The following snippet highlights how RudderStack sends the data in the sample `page` call above to Mouseflow:
 
 ```javascript
-rudderanalytics.page("Home")
+_mfq.push(["newPageView", "/test_browser.html"]);
 ```
 
-As described above, RudderStack transforms this event into the `Viewed Home Page` event before sending it to Mouseflow.
+## Adding tags
+
+RudderStack enables you to add tags to your Mouseflow recordings via the `identify` and `track` calls by passing them via the <Link to="/sources/sdks/rudderstack-javascript-sdk/#the-options-parameter">`integrations`</Link> object, as shown:
+
+```javascript
+rudderanalytics.track(
+  "Products Searched", {
+    checkout_id: "12345",
+    product_name: "Red Shirt",
+    product_url: "http://www.myecommercesite.com/products/red-shirt",
+  }, {
+    integrations: {
+      All: true,
+      Mouseflow: {
+        tags: ["tag3", "tag4"],
+      },
+    },
+  }
+);
+```
+
+The corresponding Mouseflow dashboard view containing these tags is shown below:
+
+<img src="../../assets/event-stream-destinations/mouseflow-dashboard-tags.png" alt="Mouseflow tags in dashboard view" />
+
+<div class="infoBlock">
+RudderStack uses Mouseflow's <a href="https://js-api-docs.mouseflow.com/#tagging-a-recording">Tagging a recording</a> method to send the tags.
+</div>
 
 ## FAQ
 
@@ -144,11 +211,21 @@ As described above, RudderStack transforms this event into the `Viewed Home Page
 To get the website ID in Mouseflow, follow these steps:
 
 1. Log into your Mouseflow dashboard.
-2. Click on the **Installation** icon present in your website's card, as shown:
+2. Click the **Website Settings** icon, as shown:
+
+<img src="../../assets/event-stream-destinations/mouseflow-website-id-5.png" alt="Mouseflow website ID"/>
+
+3. You will find your website ID listed here.
+
+<img src="../../assets/event-stream-destinations/mouseflow-website-id-6.png" alt="Mouseflow website ID"/>
+
+#### Alternate method
+
+You can also fetch the website ID by clicking on the **Installation** icon present in your website's card, as shown:
 
 <img src="../../assets/event-stream-destinations/mouseflow-website-id-1.png" alt="Mouseflow website ID"/>
 
-3. Choose your installation method from **Google Tag Manager**, **Wordpress**, and **HTML**.
+Then, choose your installation method from **Google Tag Manager**, **Wordpress**, and **HTML**.
 
 - If you choose **Google Tag Manager** as your installation method, you can find the website ID as seen below:
 
