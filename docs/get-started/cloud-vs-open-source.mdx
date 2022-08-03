@@ -1,30 +1,73 @@
 ---
 title: "RudderStack Cloud vs. Open Source"
 description: >-
-  Detailed guide comparing features available in RudderStack's two offerings - Cloud and Open Source.
+  Compare the features and setup options available in RudderStack's two offerings - Cloud and Open Source.
 ---
 
-This guide compares the features in the two primary RudderStack offerings — [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial) and [RudderStack Open Source](https://app.rudderstack.com/signup?type=opensource). It will help you choose the option that best suits your requirements.
+If you are evaluating RudderStack in a [build vs. buy](https://www.rudderstack.com/blog/when-to-build-vs-buy-data-pipelines) context, it's important to understand the components and features that make up the RudderStack service as they relate to your current and future needs. Our open source community is one of our greatest resources, and we also offer a generous free tier for our cloud users. Whichever you decide, we are here to support you. 
 
-<div class="infoBlock">
+The purpose of this guide is to help you decide which setup is right based on your environment and data needs: [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial) or [RudderStack Open Source](https://app.rudderstack.com/signup?type=opensource). 
 
-RudderStack offers three plans as a part of [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial): *Free*, *Pro*, and *Enterprise*. Refer to the  [Pricing](https://www.rudderstack.com/pricing) page for a detailed comparison and additional information on these plans.
+## RudderStack Architecture
+
+To understand the effort involved in setting up RudderStack, it's useful to take a look at our architecture which comprises the **Control plane** and the **Data plane**. These two services work together to govern the data flows between your event sources and destinations.
+
+<img src="../assets/get-started/rudderstack-architecture.png" alt="RudderStack Architecture" />
+
+### Control Plane
+
+The control plane is the front-end web application where you manage the configuration of your sources and destinations in RudderStack.
+
+Whether you are using RudderStack open source or cloud, **we recommend using the RudderStack-hosted web app as your control plane**. Our free cloud tier offers 5 million events per month and multiple sources and destinations, and includes live events and transformations, which are unavailable in the open source control plane.  It's also much easier to convert to a paid plan as your needs evolve over time if you are using our hosted control plane.
+
+If you require a self-hosted web app, you can use our [Control Plane Lite](https://github.com/rudderlabs/config-generator) interface. See <Link to="/get-started/rudderstack-open-source/control-plane-lite">Control Plane Setup</Link> for details.
+
+<div class="warningBlock">
+
+Cloud-based features like <Link to="/features/transformations/">Transformations</Link> and <Link to="/dashboard-guides/live-events/">Live Events</Link> are not available if you self-host the control plane.
 </div>
+
+
+### Data Plane
+
+The data plane is RudderStack's core engine responsible for receiving event data and transforming it into the required destination format before relaying events to the destination.
+
+The data plane comes in two flavors:
+
+- <Link to="/get-started/rudderstack-cloud">RudderStack Cloud</Link>: RudderStack-hosted data plane with a generous free plan an Pro and Enterprise options.
+
+See our [Pricing](https://www.rudderstack.com/pricing) page for plan comparisons.
+
+- [rudder-server](https://github.com/rudderlabs/rudder-server): Our open source data plane— Run on Docker, Kubernetes, or in your own environment.
+
+
+## Setup
+
+### Cloud
+
+In <Link to="/get-started/rudderstack-cloud/">RudderStack Cloud</Link>, we host the data plane and the control plane so you don't have to worry about their setup. Sign up for free, set up a source and start seeing events within minutes.
+
+### Open Source
+
+For <Link to="/get-started/rudderstack-open-source/">RudderStack Open Source</Link> you have the following data plane and control plane setup options:
+
+  - <Link to="/get-started/rudderstack-open-source/data-plane-setup/">Set up the data plane</Link> in your own environment. <strong>RudderStack will not host it for you</strong>.
+
+  - For the control plane, you can either use the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) or <Link to="/get-started/rudderstack-open-source/control-plane-lite/">set up your own control plane</Link>.
+
+<div class="warningBlock">
+
+If you are unsure, we strongly advise using the free hosted version of the control plane to start. 
+</div>
+
+
+
+
+
+
 
 ## Feature comparison
 
-### Setup and customizability
-
-| Feature |  RudderStack Cloud | RudderStack Open Source | Notes | 
-| :--------| :-------------------| :--------------------------| :-----|
-| <Link to="/get-started/rudderstack-open-source/data-plane-setup/">Data Plane Setup</Link> in your own environment |  ❌ |  ✅ | Cloud uses the RudderStack-hosted <Link to="/resources/rudderstack-architecture/">data plane</Link>. | 
-| <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane Setup</Link> in your own environment  |  ❌ |  ✅ | Cloud uses the RudderStack-hosted [web app](https://app.rudderstack.com/) to manage your connections. |
-| Customize the data plane [config parameters](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) | ❌ |  ✅ |  - |
-
-<div class="infoBlock">
-
-For more information on the data plane and control plane setup options in RudderStack Cloud and Open Source, refer to the <Link to="/#faq">FAQ</Link> section below.
-</div>
 
 ### Event-related features
 
@@ -77,28 +120,8 @@ For more information on the data plane and control plane setup options in Rudder
 | Ability to add other team members in the workspace | ✅ |  ❌   |  You can invite up to 3 members to your workspace in [RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial), up to 10 members in Pro, and unlimited members in the Enterprise plan. | 
 | Audit logs | ✅ |  ❌   |  This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. |
 
-## FAQ
 
-### What is the data plane and control plane in RudderStack? How do I set them up?
 
-The data plane is RudderStack's core engine responsible for receiving event data and transforming it into the required destination format before relaying events to the destination.
 
-The control plane is the front-end web application where you manage the configuration of your sources and destinations in RudderStack.
-
-<div class="infoBlock">
-
-For more information on the data plane and control plane in RudderStack, refer to the <Link to="/resources/rudderstack-architecture/">RudderStack Architecture</Link> guide.
-</div>
-
-In <Link to="/get-started/rudderstack-cloud/">RudderStack Cloud</Link>, we host the data plane and the control plane so you don't have to worry about their setup.
-
-For <Link to="/get-started/rudderstack-open-source/">RudderStack Open Source</Link> you have the following data plane and control plane setup options:
-- <Link to="/get-started/rudderstack-open-source/data-plane-setup/">Set up the data plane</Link> in your own environment. <strong>RudderStack will not host it for you</strong>.
-- For the control plane, you can either use the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) or <Link to="/get-started/rudderstack-open-source/control-plane-lite/">set up your own control plane</Link>.
-
-<div class="warningBlock">
-
-Features like <Link to="/features/transformations/">Transformations</Link> and <Link to="/dashboard-guides/live-events/">Live Events</Link> are not available if you self-host the control plane.
-</div>
 
 
