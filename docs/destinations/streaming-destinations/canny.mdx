@@ -1,0 +1,150 @@
+---
+title: "Canny"
+description: Step-by-step guide on sending your event data from RudderStack to Canny.
+---
+
+[Canny](https://Canny.org/), 
+
+RudderStack supports Canny as a destination to which you can seamlessly send your event data.
+
+## Getting started
+
+Before configuring Canny as a destination in RudderStack, verify if the source platform is supported by Canny by referring to the table below:
+
+| Connection Mode | Web | Mobile | Server |
+| :--- | :--- | :--- | :--- |
+| Device mode | - | - | - |
+| Cloud mode |Supported  | Supported | Supported |
+
+<div class="infoBlock">
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+</div>
+
+Once you have confirmed that the source platform supports sending events to Canny, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Canny**.
+2. Assign a name to the destination and click on **Continue**.
+
+## Connection settings
+
+To successfully configure Canny as a destination, you will need to configure the following settings:
+
+<img src="../../assets/event-stream-destinations/canny-connection-settings.png" alt="Canny connection settings"/>
+
+- **API Key**: Enter your server URL mentioned under the **JavaScript Tracking Code** section in Canny dashboard.
+
+<div class="infoBlock">
+Refer to the <Link to="#faq">FAQ</Link> section below for more information on finding the API Key.
+</div>
+
+### Event settings
+
+- **Mapping to trigger Canny Events for the respective Event**: Enter the event name and pick the standard event from the dropdown to be triggered when that event is called.
+
+<div class="successBlock">
+You can specify multiple <strong>Standard Events</strong> for one <strong>Event Name</strong> and vice versa.
+</div>
+
+## Identify
+
+RudderStack sets the ID value in the cache to the `userId` or `anonymousId` present in the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call. 
+
+Finds the id for a user. If the user does not exist, one is created, and its id is returned. If the user does exist, they will be updated with the data supplied.
+Why is this endpoint useful? If you're going to use an object creation API endpoint (such as create a post), you may have to create the author's account before creating the post.
+
+API Used : `https://canny.io/api/v1/users/create_or_update`
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("user001", {
+    "name": "John Denver",
+    "email": "john@testmail.com",
+    "gender": "Male",
+    "profession": "singer-songwriter",
+    "companies": [{
+        "created": "2020-01-23T04:56:07.890Z",
+        "customFields": {
+            "field1": "value1",
+        },
+        "id": "company123",
+        "monthlySpend": 500.00,
+        "name": "company name"
+    }]
+});
+```
+
+#### Property mappings
+
+The following table lists the RudderStack and Canny property:
+
+| RudderStack property | Canny property | Presence | Data type | 
+|:---------------------|:-------------|:--------------|
+| `userId` | `userId` | Required | String |
+| `context.traits.email`/`traits.email` | `email` | Optional | String |
+| `context.traits.name`/`traits.name` | `name` |Required | String |
+| `context.traits`/`traits` | `customFields` |Optional | Object |
+| `originalTimestamp` | `created` | Optional | Date |
+| `context.traits.avatarURL`/`traits.avatarURL` | `avatarURL` | Optional | String |
+| `context.traits.companies`/`traits.companies` | `companies` | Optional | array of object(in company objects id and name are only required fields) |
+
+## Track
+
+The <Link to="/event-spec/standard-events/track/">`track`</Link> method lets you capture user events along with the properties associated with them.
+
+By using track we can create posts or vote on behalf of a user. Segment doesn’t support these functionalities.
+
+We can retrieve user data using userId or email and use that information to make posts or vote.
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Order Completed",{
+"category": "Orders",
+"action": "Pass",
+"value": 15
+});
+```
+
+#### Vote Event Property mappings
+
+The following table lists the RudderStack and Canny property:
+
+| RudderStack property | Canny property | Presence | Data type | 
+|:---------------------|:-------------|:--------------|
+| `properties.postId` | `postID` | Required | String |
+| We have to collect, it from externalId or making this API call | `voterID` | Required | String |
+
+#### Post Event Property mappings
+
+The following table lists the RudderStack and Canny property:
+
+| RudderStack property | Canny property | Presence | Data type | 
+|:---------------------|:-------------|:--------------|
+| `properties.boardID` | `boardID` | Required | String |
+| We have to collect, it from externalId or making this API call | `authorID` | Required | String |
+| `properties.byID` | `byID` | Optional | String |
+| `properties.categoryID` | `categoryID` |Optional | String |
+| `properties` | `customFields` | Optional | Object |
+| `properties.details` | `details` | Required | String |
+| `properties.eta` | `eta` | Optional | String |
+| `properties.etaPublic` | `etaPublic` | Optional | Boolean |
+| `properties.title` | `title` | Required | String |
+| `properties.imageURLs` | `imageURLs` | Optional | array of strings |
+
+
+## FAQ
+
+### Where can I find the Server URL and Site Id?
+
+To find the Canny Server URL and Site Id:
+
+1. Log into your [Canny dashboard](https://Canny.org/login). 
+2. Go to **Settings** > **Website** > **Tracking Code**.
+3. Under **JavaScript Tracking Code** section, you will find the below: 
+
+<img src="../../assets/event-stream-destinations/Canny-dashboard.png" alt="Canny dashboard"/>
+
+Here, the server URL: `https://rudderstacktest.Canny.cloud/` and site Id: `1`
+
+
