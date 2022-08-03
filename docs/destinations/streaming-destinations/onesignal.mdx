@@ -48,23 +48,29 @@ For more information on finding the OneSignal App Id, refer to the <a href="#faq
 
 ## Identify 
 
-You can make an <Link to="/event-spec/standard-events/identify">`identify`</Link> call to add a new device to OneSignal App. However, if a device is already registered with the specified identifier, then it will update the existing device's record instead of creating a new one.
+You can make an <Link to="/event-spec/standard-events/identify">`identify`</Link> call to add a new device to OneSignal App. However, if a device is already registered with the specified identifier, then it will update the existing device's record. Otherwise, it will create a new one.
 
-A sample `identify` call is shown below:
+A sample `identify` call is shown below: 
 
 ```javascript
 rudderanalytics.identify('1hKOmRA4el9Zt1WSfVJIVo4GRlm', {
-            firstName: 'Alex',
-            lastName: 'Keener',
-            email: "alex@example.com"
-        }, {
-            integrations: {
-                oneSignal: {
-                    deviceType: "6",
-                    identifier: ""
-                }
-            }
-        );
+    firstName: 'Alex',
+    lastName: 'Keener',
+    email: "alex@example.com"
+}, {
+    externalId: [
+        {
+            type: "playerId",
+            id: "Df344sdFgdDsS4"
+        }
+    ],
+    integrations: {
+        oneSignal: {
+            deviceType: "6",
+            identifier: "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
+        }
+    }
+);
 ```
 
 You can create multiple devices in a single `identify` call:
@@ -76,28 +82,28 @@ The `external_user_id` is mapped to `userId` by default and `anonymoysId` is add
 
 ### Property mapping
 
-The following table details the mappings between RudderStack and OneSignal properties:
+The following table details the mappings between RudderStack and OneSignal **optional** properties:
 
-| RudderStack property | OneSignal property | Presence | 
-| :-------| :--------| :------|
-| `deviceType`  | `device_type` | Required | 
-| `traits.firstName` | `tags.first_name` | Optional |
-| `traits.lastName` | `tags.last_name` | Optional | 
-| `context.device.deviceModel` | `device_model` | Optional | 
-| `context.os` | `device_os` | Optional | 
-| `traits.address.country` | `country` | Optional |
-| `context.timezone` | `timezone` | Optional | 
-| `userId` | `external_user_id` | Optional | 
+| RudderStack property | OneSignal property |
+| :-------| :--------| 
+| `context.device.model`  | `device_model` | 
+| `context.os.version` | `device_os` | 
+| `context.timezone` | `timezone` | 
+| `userId` | `external_user_id` | 
+| `context.locale` | `language` |
+| `traits.createdAt`/`context.traits.createdAt`/`timestamp`/`originalTimestamp` | `created_at` | 
+| `traits.createdAt`/`context.traits.createdAt`/`timestamp`/`originalTimestamp` | `last_active` | 
+| `traits.country`/`context.traits.country`/`traits.address.country`/`context.traits.address.country` | `country` | 
+
+<div class="infoBlock">
+All the <code class="inline-code">string</code> key value pairs from <code class="inline-code">traits</code> will be mapped inside the tags object as it is.
+</div>
 
 ## Track
 
 The <Link to="/event-spec/standard-events/track">`track`</Link> call can be used to update an existing device's tags in one of your OneSignal apps using the `external_user_id`. All devices containing the particular `external_user_id` are updated simultaneously.
 
 While updating a device tag, any key inside a tag can be deleted by providing the key value as an empty string.
-
-<div class="infoBlock">
-Only the properties mentioned under the <strong>Allowed Property List</strong> setting in the RudderStack dashboard can be added as device tags.
-</div>
 
 A sample `track` call is shown below:
 
@@ -109,6 +115,18 @@ rudderanalytics.track('Add to cart', {
 );
 ```
 
+### Property mapping
+
+The following table details the mappings between RudderStack and OneSignal properties:
+
+| RudderStack property | OneSignal property | Presence | 
+| :-------| :--------| :------|
+| `userId`  | `external_user_id` | Required | 
+
+<div class="infoBlock">
+All the properties added in the <strong>Allowed Property List</strong> setting in the RudderStack dashboard will be mapped inside the tags object if available in the payload. However, the key value pair should be of <code class="inline-code">string</code> data type only.
+</div>
+
 ## Group
 
 The <Link to="/event-spec/standard-events/group">`group`</Link> call can be used to group the devices having device tags using  the `groupId`.
@@ -117,9 +135,8 @@ A sample `group` call is as shown:
 
 ```javascript
 rudderanalytics.group('1hKOmRA4el9Zt1WSfVJIVo4GRlm', {
-    firstName: 'Alex',
-    lastName: 'Keener',
-    email: "alex@example.com"
+  name: "Apple Inc.",
+  location: "USA",
 });
 ```
 
@@ -130,12 +147,10 @@ The following table details the mappings between RudderStack and OneSignal prope
 | RudderStack property | OneSignal property | Presence | 
 | :-------| :--------| :------|
 | `groupId` | `groupId` | Required | 
-| `deviceType` | `device_type` | Required | 
-| `context.device.deviceModel` | `device_model` | Optional | 
-| `context.os` | `device_os` | Optional | 
-| `traits.address.country` | `country` | Optional |
-| `context.timezone` | `timezone` | Optional | 
-| `userId` | `external_user_id` | Optional | 
+
+<div class="infoBlock">
+All the properties added in the <strong>Allowed Property List</strong> setting in the RudderStack dashboard will be mapped inside the tags object if available in the payload. However, the key value pair should be of <code class="inline-code">string</code> data type only.
+</div>
 
 ## FAQ
 
