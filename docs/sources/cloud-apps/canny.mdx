@@ -34,7 +34,7 @@ RudderStack ingests the events from Canny after converting them into the RudderS
 | Canny property  | RudderStack property| Notes |
 | :------------------ | :------------- |:------------- |
 | `created`  | `timestamp`,`originalTimestamp`    | - |
-| `object`        | `properties.objectType`        | -|
+| `objectType`        | `properties.objectType`        | -|
 | `type`    | `event`  | -|
 | `object.author.userId`     | `userId`   |- |
 | sha256 hash of(`object.author.email`)        | `anonymousId` | Only if `userId` is not present |
