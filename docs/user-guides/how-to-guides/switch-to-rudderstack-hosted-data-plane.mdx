@@ -15,7 +15,7 @@ Follow the steps below to switch from self-hosted to RudderStack-hosted data pla
 
 2. Verify that the self-hosted data plane is no longer getting any requests. One way is to check the load balancer metrics to verify if any requests are still received on your data plane.
 
-3. Verify that all the events received in the self-hosted data plane are delivered. 
+3. Ensure that all the events received in the self-hosted data plane are delivered. 
 
 <div class="infoBlock">
 It is recommended to keep the self-hosted plane running for a day or two to ensure that all the events are delievered.
@@ -35,7 +35,7 @@ Replace the <code class="inline-code">rudderstack-release-name</code> with the r
 
 * In case of mobile SDKs, your customers need to update their mobile applications. You can keep the self-hosted data plane online until a sufficient number of customers have updated their mobile application or there are no more events coming in to the self-hosted data plane.
 
-Alternatively, you can also add an alias DNS record for your self-hosted data plane URL to point to the RudderStack-hosted data plane URL.
+Alternatively, you can run an API Gateway or Cloudflare workers to proxy the requests from your self-hosted data plane URL to the RudderStack-hosted data plane URL.
 
 * In case of mobile SDKs, if you are using Firebase to serve the values like `writeKey` and `dataPlaneUrl`, there is no need to update the mobile application to point to the RudderStack-hosted data plane.
 
