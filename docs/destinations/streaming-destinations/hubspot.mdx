@@ -219,32 +219,6 @@ A sample `screen` call sent via the iOS SDK is shown below:
             properties:@{@"prop_key" : @"prop_value"}];
 ```
 
-## HubSpot custom objects
-
-RudderStack supports sending the [HubSpot CRM custom object](https://developers.hubspot.com/docs/api/crm/crm-custom-objects) via the `identify` call. It expects an object named `hubspot` with the following properties:
-
-- `contactId`
-- `qualifiedName`
-- `objects`
-
-`objects` should be an array containing the objects with two properties - `objectId` and `objectType`. Also, `contactId` is the ID of your HubSpot contact. RudderStack associates the contact with the objects you provide in the `objects` array.
-
-A sample `identify` call for HubSpot CRM custom object is shown below:
-
-```javascript
-rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
-  email: "alex@example.com",
-  hubspot: {
-    contactId: "512",
-    qualifiedName: "p99688696_car",
-    objects: [{
-      objectId: "32921360",
-      objectType: "car",
-    }, ],
-  },
-})
-```
-
 ## FAQ
 
 ### Where do I get the API Key and Hub ID for HubSpot?
