@@ -1,0 +1,86 @@
+---
+title: "AWS Lambda"
+description: Step-by-step guide on sending your event data from RudderStack to AWS Lambda.
+---
+
+[AWS Lambda](https://aws.amazon.com/lambda/) is a serverless compute service that lets you seamlessly run any application code or service without managing or provisioning servers.
+
+RudderStack supports AWS Lambda as a destination where you can send your event data seamlessly.
+
+## Getting started
+
+Before configuring AWS Lambda as a destination in RudderStack, verify if the source platform is supported by AWS Lambda by referring to the table below:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     |  -             | -             | -             |
+| **Cloud mode**      |  **Supported** | **Supported** |  **Supported** |
+
+<div class="infoBlock">
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+</div>
+
+Once you have confirmed that the source platform supports sending events to AWS Lambda, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **AWS Lambda**.
+2. Assign a name to the destination and click **Continue**.
+
+## Connection settings
+
+To successfully configure AWS Lambda as a destination, you need to configure the following settings:
+
+<img src="../../assets/event-stream-destinations/aws-lambda-connection-settings.png" alt="AWS Lambda connection settings"/>
+
+- **Region**: Enter the AWS region associated with your AWS Lambda.
+
+<div class="infoBlock">
+For more information on the AWS regions, refer to the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/">AWS Regions and Availability Zones</a> guide.
+</div>
+
+- **Access Key ID**: Enter the AWS access key ID associated with your IAM user account.
+- **Secret Access Key**: Enter your secret access key.
+
+<div class="infoBlock">
+For more information on creating an IAM user in AWS, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html">AWS documentation</a>.
+</div>
+
+- **Lambda**: Enter the name of the Lambda function to be invoked. RudderStack supports the following name formats:
+
+| Format | Example |
+| :-------| :---------|
+| Function name | <ul><li>`lambda-function` (Name only)</li><li>`lambda-function:v1` (Name with alias)</li></ul>|
+| Function ARN | `arn:aws:lambda:us-west-2:123456789012:function:my-function` |
+| Partial ARN | `123456789012:function:lambda-function` |
+
+<div class="successBlock">
+You can also append a version number or alias to any of the above formats.
+</div>
+
+- **Invocation Type**: This setting lets you specify how RudderStack invokes the lambda function. You can choose between any of the following two options in the dropdown:
+  - **Event**: RudderStack invokes the lambda function asynchronously and sends the failed events to the function's dead-letter queue (if configured). For more information, refer to the <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html">AWS Lambda documentation</a>.
+  - **Request Response**: RudderStack invokes the lambda function synchronously and keeps the connection open until the function returns a response or times out. For more information, refer to the <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html">AWS Lambda documentation</a>.
+
+<div class="warningBlock">
+If you set the <strong>Invocation Type</strong> to <strong>Event</strong> (asynchronous invocation), then any information regarding the lambda function runtime errors is not sent to RudderStack. However, you can view these errors in the <a href="https://docs.aws.amazon.com/lambda/latest/dg/monitoring-cloudwatchlogs.html">AWS CloudWatch logs for your lambda function</a>.
+</div>
+
+- **Enable Batch Input**: Enable this setting if your lambda function expects a batch input (array of events) in the event object.
+- **Client Context**: Use this field to pass up to **3583 bytes** of Base64-encoded data about the invoking client to the function in the context object.
+
+## Supported events
+
+AWS Lambda accepts <Link to="/event-spec/standard-events/identify/">`identify`</Link>, <Link to="/event-spec/standard-events/track/">`track`</Link>, <Link to="/event-spec/standard-events/page/">`page`</Link>, <Link to="/event-spec/standard-events/group/">`group`</Link>, and <Link to="/event-spec/standard-events/alias/">`alias`</Link> events.
+
+<div class="infoBlock">
+This destination accepts raw event data similar to a webhook. RudderStack sends the entire event payload to AWS Lambda as is, without any transformation or modification. 
+</div>
+
+RudderStack leverages the <a href="https://docs.aws.amazon.com/sdk-for-go/api/service/lambda/">AWS SDK for Go</a> to send the events to the lambda function. It uses the SDK's [`Invoke`](https://docs.aws.amazon.com/sdk-for-go/api/service/lambda/#Lambda.Invoke) method to synchronously (**Request Response Invocation Type**) or asynchronously (**Event Invocation Type**) invoke the lambda function.
+
+## FAQ
+
+### Why am I getting a `UnrecognizedClientException` / `InvalidSignatureException` error?
+
+If you're getting a `UnrecognizedClientException` error with a 403 status code, verify if your AWS credentials (both **AWS Access Key ID** and **Secret Access Key**) are valid.
+
+For the `InvalidSignatureException` error, verify if the provided secret access key is valid.

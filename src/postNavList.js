@@ -1512,6 +1512,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "aws-lambda",
+    title: "AWS Lambda",
+    link: "/destinations/streaming-destinations/aws-lambda/",
+    content: [],
+  },
+  {
     key: "vwo-beta-visual-website-optimizer",
     title: "VWO (Visual Website Optimizer)",
     link:
