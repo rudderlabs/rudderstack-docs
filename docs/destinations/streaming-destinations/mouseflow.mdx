@@ -43,12 +43,12 @@ For more information on obtaining your Mouseflow website ID, refer to the <Link 
 For more information on this setting, refer to the <Link to="https://www.rudderstack.com/docs/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
 </div>
 
-- **Use device mode to send events**: Enable this setting to send events from the JavaScript SDK to Mouseflow via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+- **Use device mode to send events**: As this is a <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
 - **OneTrust Cookie Categories**: This setting lets you map <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust cookie</Link>/consent groups to RudderStack's consent purposes.
 
 ## Identify
 
-The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc. and send this information to Mouseflow.
+The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a visiting user and associate them to their actions. It also lets you record their traits like name, email address, etc. and send this information to Mouseflow.
 
 A sample `identify` call is shown below:
 
@@ -85,8 +85,8 @@ You can also send the user details present in the `traits` as key-value pair to 
 _mfq.push(["setVariable", _key, _value])
 ```
 
-<div class="infoBlock">
-RudderStack checks if the values in the key-value pairs are of the type String before passing them to Mouseflow.
+<div class="warningBlock">
+The values in the key-value pairs passed as custom variables should be either strings or numbers. RudderStack will not pass the values with any other data type, for example, Boolean.
 </div>
 
 <div class="infoBlock">
@@ -101,6 +101,7 @@ mouseflow.identify("1hKOmRA4GRlm");
 
 // Sending user traits as custom variables
 _mfq.push(["setVariable", "city", "New Orleans"]);
+_mfq.push(["setVariable", "email", "alex@example.com"]);
 _mfq.push(["setVariable", "favouriteColor", "Red"]);
 ```
 
@@ -145,8 +146,8 @@ _mfq.push(["tag", "Product Clicked"]);
 
 RudderStack also lets you pass the `track` event properties as custom variables to Mouseflow in the form of key-value pairs.
 
-<div class="infoBlock">
-RudderStack checks if the values in the key-value pairs are of the type String before passing them to Mouseflow.
+<div class="warningBlock">
+The values in the key-value pairs should be either strings or numbers. RudderStack will not pass the values with any other data type, for example, Boolean.
 </div>
 
 In the sample `track` call above, RudderStack sets `price` and `quantity` as the custom variables, as shown:
@@ -207,7 +208,7 @@ rudderanalytics.identify(
       All: true,
       Mouseflow: {
         customVariables: {
-          conversionRate: "100",
+          conversionRate: 100,
           total: 4,
         },
       },
@@ -230,7 +231,7 @@ RudderStack uses Mouseflow's <a href="https://js-api-docs.mouseflow.com/#identif
 
 To get the website ID in Mouseflow, follow these steps:
 
-1. Log into your Mouseflow dashboard.
+1. Log into your <a href="https://app.mouseflow.com/sign-in">Mouseflow dashboard</a>.
 2. Click the **Website Settings** icon, as shown:
 
 <img src="../../assets/event-stream-destinations/mouseflow-website-id-5.png" alt="Mouseflow website ID"/>
