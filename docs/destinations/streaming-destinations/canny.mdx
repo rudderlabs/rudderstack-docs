@@ -118,8 +118,8 @@ The following table lists the mappings between RudderStack and Canny properties 
 | `properties.byID`/`properties.byId`/`properties.by.id` | `byID` | Optional | String |-|
 | `properties.categoryID`/`properties.categoryId`/`properties.category.id` | `categoryID` |Optional | String |-|
 | `properties.customFields` | `customFields` | Optional | Object | Ensure that you <Link to="#how-to-create-custom-fields-in-canny-dashboard">create the custom fields in Canny dashboard</Link> to send the event successfully.|
-| `properties.eta` | `eta` | Optional | String | In MM/YYYY format. Required if `etaPublic` is present. |
-| `properties.etaPublic` | `etaPublic` | Optional | Boolean | Required if `eta` is present. |
+| `properties.eta` | `eta` | Required if `etaPublic` is present. | String | Should be in the MM/YYYY format.  |
+| `properties.etaPublic` | `etaPublic` | Required if `eta` is present.  | Boolean | - |
 | `properties.imageURLs` | `imageURLs` | Optional | Array of strings | -|
 
 ### Property mappings for Create vote event 
