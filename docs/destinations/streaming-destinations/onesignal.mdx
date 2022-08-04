@@ -3,7 +3,7 @@ title: "OneSignal"
 description: Step-by-step guide on sending your event data from RudderStack to OneSignal.
 ---
 
-[OneSignal](https://onesignal.com/) is a popular service which helps in driving customer engagement with multi-channel messaging across web and mobile push notifications, in-app messages, SMS, and email subscribers.
+[OneSignal](https://onesignal.com/) is a popular service that helps you drive customer engagement with multi-channel messaging across web and mobile push notifications, in-app messages, SMS, and email subscribers.
 
 RudderStack supports OneSignal as a destination where you can send your event data seamlessly.
 
@@ -38,22 +38,22 @@ To successfully configure OneSignal as a destination, you will need to configure
 - **App Id**: Enter your OneSignal App Id.
 
 <div class="infoBlock">
-For more information on finding the OneSignal App Id, refer to the <a href="#faq">FAQ</a> section below.
+For more information on finding the OneSignal App Id, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
 - **Toggle on to create a device using email**: Enable this setting to create a device using email.
 - **Toggle on to create a device using phone number**: Enable this setting to create a device using phone number.
 - **Toggle on to concatenate event name with properties**: Enable this setting to concatenate the event names with properties. for example, if `add_to_cart` is an event and `brand` is a property, the event will be sent as `add_to_cart_brand` tag.
-- **Allowed Property List**: Enter the properties you want to add as device <Link to="https://documentation.onesignal.com/docs/add-user-data-tags">tags</Link>, if present in the payload. 
+- **Allowed Property List**: Enter the properties you want to add as the device <Link to="https://documentation.onesignal.com/docs/add-user-data-tags">tags</Link>, if present in the payload. 
 
 <div class="warningBlock">
-The properties mentioned under <strong>Allowed Property List</strong> are considered only for the <code class="inline-code">track</code>  and <code class="inline-code">group</code> calls.
+RudderStack considers the properties mentioned under <strong>Allowed Property List</strong> only for the <code class="inline-code">track</code> and <code class="inline-code">group</code> calls.
 </div>
 
 
 ## Identify 
 
-You can make an <Link to="/event-spec/standard-events/identify">`identify`</Link> call to add a new device to OneSignal App. However, if a device is already registered with the specified identifier, then it will update the existing device's record. Otherwise, it will create a new one.
+You can make an <Link to="/event-spec/standard-events/identify">`identify`</Link> call to add a new device to your OneSignal App. However, if a device is already registered with the specified identifier, then it will update the existing device's records.
 
 A sample `identify` call is shown below: 
 
@@ -80,10 +80,12 @@ rudderanalytics.identify('1hKOmRA4el9Zt1WSfVJIVo4GRlm', {
 
 In the above snippet, the `playerId` is a unique ID for a device. If `playerId` is provided in `externalId`, the device having that `playerId` will be updated. The `externalId` is case-sensitive and is expected to be in the above format for correct mapping.
 
-The `anonymoysId` is added as a tag with key as `anonymousId` and value as `anonymousId`'s value.
+<div class="infoBlock">
+RudderStack adds the <code class="inline-code">anonymousId</code> as a tag with the key as <code class="inline-code">anonymousId</code> along with the corresponding value.
+</div>
 
 You can create multiple devices in a single `identify` call:
-- For browser, RudderStack maps the `device_type` from the browser name and device type mapping as explained in the below code snippet. The `anonymousId` is set as an `identifier` depending upon the browser name. 
+- For the browser, RudderStack maps the `device_type` from the browser name and device type mapping as explained in the below code snippet. It sets the `anonymousId` as an `identifier` depending upon the browser name. 
 
     RudderStack maps the following device types by default:
 
@@ -114,12 +116,12 @@ You can create multiple devices in a single `identify` call:
  It is recommended to send <code class="inline-code">device.token</code> for push notifications.
 </div>
 
-- For email and SMS, enable the **Toggle on to create a device using email** and **Toggle on to create a device using phone number** settings in the RudderStack dashboard as well as send their data (`email` or `phone`) in the payload.
+- For email and SMS, enable the **Toggle on to create a device using email** and **Toggle on to create a device using phone number** settings in the RudderStack dashboard and send their data (`email` or `phone`) in the event payload.
 
 
 ### Property mapping
 
-The following table details the mappings between RudderStack and OneSignal **optional** properties:
+The following table details the mappings between the **optional** RudderStack and OneSignal properties:
 
 | RudderStack property | OneSignal property |
 | :-------| :--------| 
@@ -137,9 +139,9 @@ All the <code class="inline-code">string</code> key-value pairs from <code class
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call can be used to update an existing device's tags in one of your OneSignal apps using the `external_user_id`. All devices containing the particular `external_user_id` are updated simultaneously.
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> to update an existing device's tags in your OneSignal apps using the `external_user_id` parameter. All devices containing the particular `external_user_id` are updated simultaneously.
 
-While updating a device tag, any key inside a tag can be deleted by providing the key value as an empty string.
+While updating a device tag, you can delete any key inside a tag by providing the key value as an empty string.
 
 A sample `track` call is shown below:
 
@@ -160,7 +162,7 @@ The following table details the mappings between RudderStack and OneSignal prope
 | `userId`  | `external_user_id` | Required | 
 
 <div class="infoBlock">
-All the properties added in the <strong>Allowed Property List</strong> setting in the RudderStack dashboard will be mapped inside the <code class="inline-code">tags</code> object if available in the payload. However, the key-value pair should be of data type <code class="inline-code">string</code> only.
+RudderStack maps all the properties added in the <strong>Allowed Property List</strong> setting in the RudderStack dashboard to the <code class="inline-code">tags</code> object if they are present in the payload. However, note that the key-value pair should be of the String data type only.
 </div>
 
 ## Group
@@ -185,7 +187,7 @@ The following table details the mappings between RudderStack and OneSignal prope
 | `groupId` | `groupId` | Required | 
 
 <div class="infoBlock">
-All the properties added in the <strong>Allowed Property List</strong> setting in the RudderStack dashboard will be mapped inside the <code class="inline-code">tags</code> object if available in the payload. However, the key value pair should be of data type <code class="inline-code">string</code> only.
+RudderStack maps all the properties added in the <strong>Allowed Property List</strong> setting in the RudderStack dashboard to the <code class="inline-code">tags</code> object if they are present in the payload. However, note that the key-value pair should be of the String data type only.
 </div>
 
 ## FAQ
