@@ -40,7 +40,7 @@ Refer to the <Link to="#faq">FAQ</Link> section below for more information on ge
 
 ### Event settings
 
-- **Mapping to trigger Canny Events for the respective Event**: Enter the event name and pick the Canny event from the dropdown to be triggered when that event is called.
+- **Mapping to trigger Canny Events for the respective Event**: Enter the event name and choose the Canny event from the dropdown to be triggered when that event is called.
 
 <div class="successBlock">
 You can specify multiple <strong>Canny Events</strong> for one <strong>Event Name</strong> and vice versa.
@@ -48,7 +48,7 @@ You can specify multiple <strong>Canny Events</strong> for one <strong>Event Nam
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to <Link to="https://developers.canny.io/api-reference#create_or_update_user">create or update a user</Link>.
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to <Link to="https://developers.canny.io/api-reference#create_or_update_user">create or update a user</Link> in Canny.
 
 A sample `identify` call is shown below:
 
@@ -107,7 +107,7 @@ rudderanalytics.track("Submit", {
 
 ### Property mappings for Create post event 
 
-The following table lists the mappings between RudderStack and Canny properties for **Create post** event:
+The following table lists the mappings between RudderStack and Canny properties for the **Create post** event:
 
 | RudderStack property | Canny property | Presence | Data type | Notes |
 |:---------------------|:-------------|:--------------|:--------------|:--------------|
@@ -117,14 +117,14 @@ The following table lists the mappings between RudderStack and Canny properties 
 | `properties.title` | `title` | Required | String |-|
 | `properties.byID`/`properties.byId`/`properties.by.id` | `byID` | Optional | String |-|
 | `properties.categoryID`/`properties.categoryId`/`properties.category.id` | `categoryID` |Optional | String |-|
-| `properties.customFields` | `customFields` | Optional | Object | Ensure that you <Link to="#how-to-create-custom-fields-in-canny-dashboard">create the custom fields in Canny dashboard</Link> to send the event seuccessfully.|
+| `properties.customFields` | `customFields` | Optional | Object | Ensure that you <Link to="#how-to-create-custom-fields-in-canny-dashboard">create the custom fields in Canny dashboard</Link> to send the event successfully.|
 | `properties.eta` | `eta` | Optional | String | In MM/YYYY format. Required if `etaPublic` is present. |
 | `properties.etaPublic` | `etaPublic` | Optional | Boolean | Required if `eta` is present. |
 | `properties.imageURLs` | `imageURLs` | Optional | Array of strings | -|
 
 ### Property mappings for Create vote event 
 
-The following table lists the mappings between RudderStack and Canny properties for **Create vote** event:
+The following table lists the mappings between RudderStack and Canny properties for the **Create vote** event:
 
 | RudderStack property | Canny property | Presence | Data type | 
 |:---------------------|:-------------|:--------------|:--------------|
@@ -146,14 +146,14 @@ To find the Canny API Key:
 
 <img src="../../assets/event-stream-destinations/canny-api-key.png" alt="Canny dashboard"/>
 
-### How to create custom fields in Canny Dashboard?
+### How to create custom fields in the Canny dashboard?
 
 To create custom fields in Canny Dashboard:
 
 1. Log into your [Canny account](https://canny.io/login).
 2. Go to **Settings** > **Boards** under your profile.
 3. Select the desired **Board** from the dropdown and select **Create Post Form**.
-4. Click on **Create new Post Fields to add them to a board** in the **Fields** section.
+4. In the **Fields** section, click on **Create new Post Fields to add them to a board**.
 5. Click on **Create New Field**, as shown:
 
 <img src="../../assets/event-stream-destinations/canny-new-field.png" alt="Canny dashboard"/>
