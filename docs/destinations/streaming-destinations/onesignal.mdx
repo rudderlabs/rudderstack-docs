@@ -44,7 +44,7 @@ For more information on finding the OneSignal App Id, refer to the <a href="#faq
 - **Toggle on to create a device using email**: Enable this setting to create a device using email.
 - **Toggle on to create a device using phone number**: Enable this setting to create a device using phone number.
 - **Toggle on to concatenate event name with properties**: Enable this setting to concatenate the event names with properties. for example, if `add_to_cart` is an event and `brand` is a property, the event will be sent as `add_to_cart_brand` tag.
-- **Allowed Property List**: Enter the properties you want to add as device tags, if present in the payload.
+- **Allowed Property List**: Enter the properties you want to add as device <Link to="https://documentation.onesignal.com/docs/add-user-data-tags">tags</Link>, if present in the payload.
 
 ## Identify 
 
@@ -73,12 +73,35 @@ rudderanalytics.identify('1hKOmRA4el9Zt1WSfVJIVo4GRlm', {
 );
 ```
 
+The `external_user_id` is mapped to `userId` by default and `anonymoysId` is added as a tag with key as `anonymousId` and value as `anonymousId value`.
+
 You can create multiple devices in a single `identify` call:
-- For browser (by default)
+- For browser (by default): The `device_type` is mapped and `anonymousId` is mapped as `identifier` depending upon the browser name. Also, these are overridden by the `deviceType` and `identifier` in the `integrations` object.
 - For iOS and Android (depending on the `integrations` object and `context.device` data): When the `deviceType` is set as iOS or Android, the `device.token` is set as the device identifier. You can set this token for <Link to="/sources/sdks/rudderstack-ios-sdk/ios-v2/#setting-the-device-token-for-push-notifications">iOS</Link> and <Link to="/sources/sdks/rudderstack-android-sdk/#setting-the-android-device-token">Android</Link> both. If device.token is not available, `device.id` is set as the identifier. However, it is recommended to send `device.token` for push notifications.
 - For email and SMS: Enable the **Toggle on to create a device using email** and **Toggle on to create a device using phone number** settings in the RudderStack dashboard as well as send their data (`email` or `phone`) in the payload.
 
-The `external_user_id` is mapped to `userId` by default and `anonymoysId` is added as a tag with key as `anonymousId` and value as `anonymousId value`.
+RudderStack maps the following types of devices by default:
+
+```javascript
+deviceTypeMapping = {
+    android: 1,
+    ios: 0,
+    chrome: 5,
+    safari: 7,
+    firefox: 8
+}
+```
+
+However, if you want to set any device type other than these, you can provide the `deviceType` and `identifier` in the `integrations` object, as shown:
+
+```javascript
+"integrations": {
+    "one_signal": {
+        "deviceType": "Sample device",
+        "identifier": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
+    }
+}
+```
 
 ### Property mapping
 
