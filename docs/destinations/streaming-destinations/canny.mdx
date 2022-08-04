@@ -116,7 +116,7 @@ The following table lists the mappings between RudderStack and Canny properties 
 | `properties.title` | `title` | Required | String |-|
 | `properties.byID`/`properties.byId`/`properties.by.id` | `byID` | Optional | String |-|
 | `properties.categoryID`/`properties.categoryId`/`properties.category.id` | `categoryID` |Optional | String |-|
-| `properties` (after removing `boardID`, `byID`, `categoryID`,`details`, `eta`, `etaPublic`, `title`, `imageURLs`)| `customFields` | Optional | Object | Ensure that you <Link to="#how-to-create-custom-fields-in-canny-dashboard">create the custom fields in Canny dashboard</Link> to send the event seuccessfully.|
+| `properties.customFields` | `customFields` | Optional | Object | Ensure that you <Link to="#how-to-create-custom-fields-in-canny-dashboard">create the custom fields in Canny dashboard</Link> to send the event seuccessfully.|
 | `properties.eta` | `eta` | Optional | String | In MM/YYYY format. Required if `etaPublic` is present. |
 | `properties.etaPublic` | `etaPublic` | Optional | Boolean | Required if `eta` is present. |
 | `properties.imageURLs` | `imageURLs` | Optional | Array of strings | -|
