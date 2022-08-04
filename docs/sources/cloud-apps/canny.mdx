@@ -20,7 +20,7 @@ Follow these steps to set up Canny as a source in the RudderStack dashboard:
 
 <img src="../../assets/event-stream-sources/canny-2.png" alt="Canny source webhook URL" />
 
-4. Go to your Canny account and navigate to **Settings** > **API & Webhooks** under your profile.
+4. Log into to your <a href="https://canny.io/login">Canny account</a>. In the top-right side, select the **Settings** option under your profile followed by **API & Webhooks**.
 5. Enter the **Webhook URL** under **Webhooks** section, as shown:
 
 <img src="../../assets/event-stream-sources/webhook-url-canny.png" alt="Canny source webhook URL" />
@@ -39,8 +39,8 @@ RudderStack ingests the Canny events after converting them into the RudderStack 
 | `type`    | `event`  | -|
 | `object.author`    | `context.traits`  | RudderStack excludes `userId` and `id`. |
 | `object.author.userId`     | `userId`   |- |
-| sha256 hash of(`object.author.email`)        | `anonymousId` | Only if `userId` is not present |
-| sha256 hash of(`object.voter.email`)        | `anonymousId` |Only if `userId` is not present AND `type`is `vote.created`/`vote.deleted`|
+| SHA-256 hash of `object.author.email`      | `anonymousId` | Only if `userId` is not present |
+| SHA-256 hash of `object.voter.email`        | `anonymousId` |Only if `userId` is not present **and** `type` is `vote.created`/`vote.deleted`|
 | `object.voter.userId`    | `userId`  | Only if `type` is `vote.created`/`vote.deleted` |
 | `object.voter.id`        | `context.externalId[0].value` | Only if `type` is `vote.created`/`vote.deleted`|
 | `cannyUserId`    | `context.externalId[0].type`  |- |
