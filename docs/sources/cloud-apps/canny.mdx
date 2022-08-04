@@ -29,25 +29,25 @@ Follow these steps to set up Canny as a source in the RudderStack dashboard:
 
 ## Event transformation
 
-RudderStack ingests the events from Canny after converting them into the RudderStack event format. It also maps the following properties from the Canny event payload to the RudderStack properties:
+RudderStack ingests the Canny events after converting them into the RudderStack event format. It also maps the following properties from the Canny event payload to the RudderStack properties:
 
 | Canny property  | RudderStack property| Notes |
 | :------------------ | :------------- |:------------- |
 | `created`  | `timestamp`,`originalTimestamp`    | - |
-| `object`        | `properties`        | excluding `author`/`voter` from properties|
+| `object`        | `properties`        | RudderStack excludes `author`/`voter` from the properties. |
 | `objectType`        | `properties.objectType`        | -|
 | `type`    | `event`  | -|
-| `object.author`    | `context.traits`  | excluding `userId` and `id` |
+| `object.author`    | `context.traits`  | RudderStack excludes `userId` and `id`. |
 | `object.author.userId`     | `userId`   |- |
 | sha256 hash of(`object.author.email`)        | `anonymousId` | Only if `userId` is not present |
 | sha256 hash of(`object.voter.email`)        | `anonymousId` |Only if `userId` is not present AND `type`is `vote.created`/`vote.deleted`|
-| `object.voter.userId`    | `userId`  | Only if `type`is `vote.created`/`vote.deleted` |
-| `object.voter.id`        | `context.externalId[0].value` | Only if `type`is `vote.created`/`vote.deleted`|
+| `object.voter.userId`    | `userId`  | Only if `type` is `vote.created`/`vote.deleted` |
+| `object.voter.id`        | `context.externalId[0].value` | Only if `type` is `vote.created`/`vote.deleted`|
 | `cannyUserId`    | `context.externalId[0].type`  |- |
 | `object.author.id`     | `context.externalId[0].id`   |- |
 
 
-Canny supports the following events:
+Canny supports ingesting the following events:
 
 | Canny events  | Description | 
 | :------------------ | :------------- |
