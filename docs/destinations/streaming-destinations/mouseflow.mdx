@@ -82,14 +82,14 @@ _mfq.push(["setVariable", _key, _value])
 ```
 
 <div class="infoBlock">
-The values in the key-value pairs are always treated as strings.
+RudderStack checks if the values in the key-value pairs are of the type String before passing them to Mouseflow.
 </div>
 
 The following snippets highlight how the data in the sample `identify` call above is sent to Mouseflow:
 
 ```javascript
 // Sending userId
-_mfq.push(["identify", "1hKOmRA4GRlm"]);
+mouseflow.identify("1hKOmRA4GRlm");
 
 // Sending user traits as custom variables
 _mfq.push(["setVariable", "city", "New Orleans"]);
@@ -144,8 +144,8 @@ _mfq.push(["setVariable", "price", "100"]);
 _mfq.push(["setVariable", "quantity", "10"]);
 ```
 
-<div class="warningBlock">
-The values in the key-value pairs set as custom variables are always treated as strings.
+<div class="infoBlock">
+RudderStack checks if the values in the key-value pairs are of the type String before passing them to Mouseflow.
 </div>
 
 ## Page
