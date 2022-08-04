@@ -109,11 +109,21 @@ rudderanalytics.track("Product Clicked",{
 })
 ```
 
-### Setting a custom tag
+### Supported mappings
 
-RudderStack lets you set a custom tag to a user recording in Mouseflow by using Mouseflow's <a href="https://js-api-docs.mouseflow.com/#tagging-a-recording">Tagging a recording</a> method. 
+RudderStack lets you set a custom tag to a user recording in Mouseflow by using Mouseflow's <a href="https://js-api-docs.mouseflow.com/#tagging-a-recording">Tagging a recording</a> method.
 
-RudderStack automatically sets the `track` event name as the custom tag. 
+| RudderStack property          | Mouseflow property | Presence |
+| :-------------------- | :---------------------- | :-------------|
+| `event` | `_tag` |  Required |
+
+<div class="infoBlock">
+RudderStack automatically sets the <code class="inline-code">track</code> event name as the custom tag.
+</div>
+
+<div class="warningBlock">
+A Mouseflow tag must always be of the String data type.
+</div>
 
 In the sample `track` call above, RudderStack sets `Product Clicked` as the custom tag by passing it to Mouseflow in the following way:
 
@@ -121,17 +131,11 @@ In the sample `track` call above, RudderStack sets `Product Clicked` as the cust
 _mfq.push(["tag", "Product Clicked"]);
 ```
 
-<div class="warningBlock">
-A tag must always be of the String data type.
-</div>
-
 <div class="infoBlock">
 You can also set custom tags by passing them via the event's <code class="inline-code">integrations</code> object. Refer to the <Link to="#adding-tags">Adding tags</Link> section below for more information.
 </div> 
 
-### Setting a custom variable
-
-RudderStack also lets you pass the `track` event properties as custom variables to Mouseflow as a key-value pair.
+RudderStack also lets you pass the `track` event properties as custom variables to Mouseflow in the form of key-value pairs.
 
 In the sample `track` call above, RudderStack sets `price` and `quantity` as the custom variables in Mouseflow, as shown:
 
@@ -175,7 +179,7 @@ The following snippet highlights how RudderStack sends the data in the sample `p
 _mfq.push(["newPageView", "/test_browser.html"]);
 ```
 
-## Adding tags
+## Setting custom tags via the event's `integrations` object
 
 RudderStack enables you to add tags to your Mouseflow recordings via the `identify` and `track` calls by passing them via the <Link to="/sources/sdks/rudderstack-javascript-sdk/#the-options-parameter">`integrations`</Link> object, as shown:
 
