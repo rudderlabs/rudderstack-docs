@@ -818,11 +818,6 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Pendo",
-                link: "/destinations/streaming-destinations/pendo/",
-                content: []
-            },
-            {
                 title: "PostHog",
                 link: "/destinations/streaming-destinations/posthog/",
                 content: []
@@ -923,12 +918,6 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Delighted",
-                sectionTitle: "CRM",
-                link: "/destinations/streaming-destinations/delighted/",
-                content: []
-            },
-            {
                 title: "HubSpot",
                 link: "/destinations/streaming-destinations/hubspot/",
                 content: []
@@ -1025,15 +1014,7 @@ export const jsonData = [
                         content: []
                     },
                 ]
-            }, {
-                title: "Gainsight",
-                link: "/destinations/streaming-destinations/gainsight/",
-                content: []
-            }, {
-                title: "Gainsight PX",
-                link: "/destinations/streaming-destinations/gainsight-px/",
-                content: []
-            }, {
+            },  {
                 title: "Iterable",
                 link: "/destinations/streaming-destinations/iterable/",
                 content: []
@@ -1119,11 +1100,6 @@ export const jsonData = [
                 ]
             },
             {
-                title: "WebEngage",
-                link: "/destinations/streaming-destinations/webengage/",
-                content: []
-            },
-            {
                 title: "Google Sheets",
                 sectionTitle: "Productivity",
                 link: "/destinations/streaming-destinations/google-sheets/",
@@ -1199,6 +1175,33 @@ export const jsonData = [
                 title: "Google Tag Manager",
                 sectionTitle: "Tag Managers",
                 link: "/destinations/streaming-destinations/google-tag-manager/",
+                content: []
+            },
+            {
+                title: "Canny",
+                sectionTitle: "Surveys",
+                link: "/destinations/streaming-destinations/canny/",
+                content: []
+            },{
+                title: "Delighted",
+                link: "/destinations/streaming-destinations/delighted/",
+                content: []
+            },{
+                title: "Gainsight",
+                link: "/destinations/streaming-destinations/gainsight/",
+                content: []
+            }, {
+                title: "Gainsight PX",
+                link: "/destinations/streaming-destinations/gainsight-px/",
+                content: []
+            },{
+                title: "Pendo",
+                link: "/destinations/streaming-destinations/pendo/",
+                content: []
+            },
+            {
+                title: "WebEngage",
+                link: "/destinations/streaming-destinations/webengage/",
                 content: []
             },
         ]
