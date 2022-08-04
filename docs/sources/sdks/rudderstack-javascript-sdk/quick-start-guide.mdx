@@ -22,11 +22,13 @@ e.page()}();
 <div class="successBlock">
 
 The above snippet lets you integrate the SDK with your website and load it asynchronously to keep your page load time unaffected.
+
 </div>
 
 <div class="infoBlock">
 
 To load <code class="inline-code">rudder-analytics.js</code> on to your page synchronously, refer to the <a href="#minified-code">minified</a> or <a href="#non-minified-code">non-minified</a> versions of the snippet below.
+
 </div>
 
 The above code snippet does the following:
@@ -92,15 +94,16 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
 
 <div class="infoBlock">
 
-  In all the above versions, there is an explicit <code class="inline-code">page</code> call at the end. This is added to ensure that whenever the SDK loads in a page, a <code class="inline-code">page</code> call is sent. You can remove this call completely or modify it with the extra page properties to suit your requirement. You can also add <code class="inline-code">page</code> calls in your application in places not tied directly to page load, e.g., virtual page views, page renders on route change such as in SPAs.
+In all the above versions, there is an explicit <code class="inline-code">page</code> call at the end. This is added to ensure that whenever the SDK loads in a page, a <code class="inline-code">page</code> call is sent. You can remove this call completely or modify it with the extra page properties to suit your requirement. You can also add <code class="inline-code">page</code> calls in your application in places not tied directly to page load, e.g., virtual page views, page renders on route change such as in SPAs.
+
 </div>
 
 ### Write key and data plane URL
 
 To integrate and initialize the JavaScript SDK, you need the source write key and the data plane URL.
 
-- To get the source write key, follow [**this guide**](https://docs.rudderstack.com/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/#get-the-source-write-key).
-- To get the data plane URL, follow [**this guide**](https://docs.rudderstack.com/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it).
+- To get the source write key, follow [**this guide**](https://www.rudderstack.com/docs/get-started/rudderstack-open-source/sending-test-events#get-the-source-write-key).
+- To get the data plane URL, follow [**this guide**](https://www.rudderstack.com/docs/get-started/rudderstack-open-source/data-plane-setup#what-is-a-data-plane-url-where-do-i-get-it).
 
 ### Alternative installation using NPM
 
@@ -115,6 +118,7 @@ npm install rudder-sdk-js --save
 <div class="warningBlock">
 
 This NPM module is only meant to be used for a browser installation. If you want to integrate RudderStack with a Node.js application, refer to the <a href="https://github.com/rudderlabs/rudder-sdk-node">RudderStack Node.js repository</a>.
+
 </div>
 
 #### Using the exported object
@@ -160,19 +164,19 @@ Refer to the following projects for a detailed walk-through of the above steps:
 
 ### Supported browser versions
 
-| **Browser**         | **Supported Versions** |
-| :------------------ | :--------------------- |
-| Safari              | v7 or later            |
-| IE                  | v10 or later           |
-| Edge                | v80 or later           |
-| Mozilla Firefox     | v47 or later           |
-| Chrome              | v54 or later           |
-| Opera               | v43 or later           |
-
+| **Browser**     | **Supported Versions** |
+| :-------------- | :--------------------- |
+| Safari          | v7 or later            |
+| IE              | v10 or later           |
+| Edge            | v80 or later           |
+| Mozilla Firefox | v47 or later           |
+| Chrome          | v54 or later           |
+| Opera           | v43 or later           |
 
 <div class="infoBlock">
 
 If the SDK does not work on the browser versions that you are targeting, verify if adding the browser polyfills to your application solves the issue.
+
 </div>
 
 ## Step 2: Identify your users with the `identify()` method
@@ -206,12 +210,14 @@ In the above example, the user-related information like the `userId` and `email`
 
 <div class="infoBlock">
 
-  There is no need to call <code class="inline-code">identify()</code> for anonymous visitors to your website. Such visitors are automatically assigned an <code class="inline-code">anonymousId</code>.
+There is no need to call <code class="inline-code">identify()</code> for anonymous visitors to your website. Such visitors are automatically assigned an <code class="inline-code">anonymousId</code>.
+
 </div>
 
 <div class="successBlock">
 
-  For more information, refer to the <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/#identify">Identify</a> section of the SDK documentation.
+For more information, refer to the <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/#identify">Identify</a> section of the SDK documentation.
+
 </div>
 
 ## Step 3: Track your users' actions with `track()`
@@ -222,10 +228,11 @@ A sample `track` call is shown below:
 
 ```javascript
 rudderanalytics.track(
-  "test track event GA3", {
+  "test track event GA3",
+  {
     revenue: 30,
     currency: "USD",
-    user_actual_id: 12345,
+    user_actual_id: 12345
   },
   () => {
     console.log("in track call");
@@ -238,6 +245,7 @@ In the above example, the `track` method tracks the user event `test track event
 <div class="successBlock">
 
 You can use the <code class="inline-code">track()</code> method to track various success metrics for your website like user signups, item purchases, article bookmarks, and more.
+
 </div>
 
 ## Step 4: Check ready state
@@ -254,7 +262,6 @@ rudderanalytics.ready(() => {
 
 <div class="successBlock">
 
-For more information on the JavaScript SDK API methods, refer to the <a href="https://docs.rudderstack.com/sources/sdks/rudderstack-javascript-sdk/#supported-apis">JavaScript SDK APIs</a> section of the SDK documentation.
+For more information on the JavaScript SDK API methods, refer to the <a href="https://www.rudderstack.com/docs/get-started/rudderstack-open-source/data-plane-setup#what-is-a-data-plane-url-where-do-i-get-it">JavaScript SDK APIs</a> section of the SDK documentation.
+
 </div>
-
-

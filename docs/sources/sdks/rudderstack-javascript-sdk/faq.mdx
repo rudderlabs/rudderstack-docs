@@ -6,17 +6,19 @@ description: Solutions to some of the commonly faced issues while using the Rudd
 This guide contains the answers to some of the commonly-asked questions around setting up, using, and troubleshooting the RudderStack JavaScript SDK.
 
 <div class="successBlock">
-  
-For queries or issues not listed in this guide, you can always start a conversation on our <a href="https://rudderstack.com/join-rudderstack-slack-community">Slack</a> channel.
+  For queries or issues not listed in this guide, you can always start a
+  conversation on our{" "}
+  <a href="https://rudderstack.com/join-rudderstack-slack-community">Slack</a>{" "}
+  channel.
 </div>
 
 ## Where do I get the data plane URL?
 
-For routing and processing the events to the RudderStack backend, a **data plane URL** is required. Refer to [**this section**](https://docs.rudderstack.com/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) to get the data plane URL depending on your choice of setup.
+For routing and processing the events to the RudderStack backend, a **data plane URL** is required. Refer to [**this section**](https://www.rudderstack.com/docs/get-started/rudderstack-open-source/data-plane-setup#what-is-a-data-plane-url-where-do-i-get-it) to get the data plane URL depending on your choice of setup.
 
 ## How do I load the SDK (`rudder-analytics.js`) correctly?
 
-To load `rudder-analytics.js`, follow the instructions in the [**Install RudderStack JavaScript SDK**](https://docs.rudderstack.com/sources/sdks/rudderstack-javascript-sdk/quick-start-guide) section.
+To load `rudder-analytics.js`, follow the instructions in the [**Install RudderStack JavaScript SDK**](https://www.rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/) section.
 
 To check if the library has loaded correctly, open the JavaScript console in your browser:
 
@@ -31,7 +33,7 @@ In the console, run `rudderanalytics`. If it returns an object as shown in the f
 {Integrations: Object, _integrations: Object, _readied: true, _timeout: 300, _user: n_}
 ```
 
-If it gives you an `undefined` error, verify if the installation is done correctly. Our [**quick start guide**](https://docs.rudderstack.com/sources/sdks/rudderstack-javascript-sdk/quick-start-guide) may be able to help you get up and running.
+If it gives you an `undefined` error, verify if the installation is done correctly. Our [**quick start guide**](https://www.rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/) may be able to help you get up and running.
 
 ## Should I disable ad-blockers on my browser?
 
@@ -50,8 +52,9 @@ To check if data is being transmitted to the specified destinations, go to the *
 <img src="../../../assets/sample-track-call.png" alt="Sample track call" />
 
 <div class="infoBlock">
-  
-  If the outbound request is not shown, check if you have installed and set up the RudderStack JavaScript SDK correctly. Also, check if any ad blockers are enabled in your browser.
+  If the outbound request is not shown, check if you have installed and set up
+  the RudderStack JavaScript SDK correctly. Also, check if any ad blockers are
+  enabled in your browser.
 </div>
 
 ## What is the size limit on the requests?
@@ -76,8 +79,9 @@ rudderanalytics.getAnonymousId();
 ```
 
 <div class="infoBlock">
-  
-If the <code class="inline-code">anonymousId</code> value is null in the SDK, calling the above function will lead to RudderStack automatically setting a new <code class="inline-code">anonymousId</code>.
+  If the <code class="inline-code">anonymousId</code> value is null in the SDK,
+  calling the above function will lead to RudderStack automatically setting a
+  new <code class="inline-code">anonymousId</code>.
 </div>
 
 ## What is the `Reserved Keyword` error?
@@ -98,7 +102,8 @@ RudderStack has reserved the following keywords as keys for a standard event pay
 ```
 
 <div class="warningBlock">
-The above-mentioned keywords should be avoided when naming your event traits and properties.
+  The above-mentioned keywords should be avoided when naming your event traits
+  and properties.
 </div>
 
 ## Can I integrate the RudderStack JavaScript SDK with any consent manager?
@@ -106,5 +111,3 @@ The above-mentioned keywords should be avoided when naming your event traits and
 Currently, RudderStack only supports integration with <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust cookie consent manager</Link>.
 
 However, you can use a workaround to integrate some other consent manager by managing the cookie consent yourself and translating that information into a list of destinations which need to be loaded/blocked. Once done, load the JavaScript SDK to <Link to="/sources/sdks/rudderstack-javascript-sdk/#filtering-selective-destinations">filter the destinations</Link> via the `integrations` object.
-
-
