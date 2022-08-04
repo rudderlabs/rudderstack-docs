@@ -80,7 +80,7 @@ The following table lists the mappings between RudderStack and Canny properties:
 | `context.traits.name`/`traits.name` | `name` |Required | String |
 | `context.traits.email`/`traits.email`/`properties.email` | `email` | Optional | String |
 | `context.traits`/`traits` (after removing `email` and `name`) | `customFields` |Optional | Object |
-| `originalTimestamp`/`timestamp` | `created` | Optional | Date |
+| `originalTimestamp`/`timestamp` | `created` | Optional | ISO 8601 Timestamp |
 | `context.traits.avatarURL`/`traits.avatarURL` | `avatarURL` | Optional | String |
 | `context.traits.companies`/`traits.companies` | `companies` | Optional | Array of object (in company objects `id` and `name` are the only required fields) |
 
