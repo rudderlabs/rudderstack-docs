@@ -941,6 +941,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "HubSpot V2",
+                link: "/destinations/streaming-destinations/hubspot-v2/",
+                content: []
+            },
+            {
                 title: "Salesforce",
                 link: "/destinations/streaming-destinations/salesforce/",
                 content: []

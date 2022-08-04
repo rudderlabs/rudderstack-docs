@@ -960,6 +960,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "hubspot-v2",
+    title: "HubSpot V2",
+    link: "/destinations/streaming-destinations/hubspot-v2/",
+    content: [],
+  },
+  {
     key: "variance",
     title: "Variance",
     link: "/destinations/streaming-destinations/variance/",
