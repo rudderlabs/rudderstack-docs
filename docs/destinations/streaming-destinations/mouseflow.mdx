@@ -72,7 +72,7 @@ RudderStack maps the following user traits to the corresponding Mouseflow proper
 RudderStack sends the `userId` / `email` / `anonymousId` to Mouseflow as `_userName` via the <a href="https://js-api-docs.mouseflow.com/#identifying-a-user"><code class="inline-code">identifying a user</code></a> method, as shown:
 
 ```javascript
-_mfq.push(["identify", _userName])
+mouseflow.identify(_userName)
 ```
 
 You can also send the user details present in the `traits` as key-value pair to Mouseflow. RudderStack passes them as <a href="https://js-api-docs.mouseflow.com/#identifying-a-user:~:text=include%20%22product%2Dadded%22%2C%20...-,Setting%20a%20custom%20variable,-_mfq.push">custom variables</a> to Mouseflow, as shown:
