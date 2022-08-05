@@ -35,15 +35,15 @@ To successfully configure OneSignal as a destination, you will need to configure
 
 <img src="../../assets/event-stream-destinations/onesignal-connection-settings.png" alt="OneSignal connection settings"/>
 
-- **App Id**: Enter your OneSignal App Id.
+- **App Id**: Enter your OneSignal App ID.
 
 <div class="infoBlock">
-For more information on finding the OneSignal App Id, refer to the <Link to="#faq">FAQ</Link> section below.
+For more information on obtaining the OneSignal App ID, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
-- **Toggle on to add a device using email**: Enable this setting to add a new device to your OneSignal app using email.
-- **Toggle on to add a device using phone number**: Enable this setting to add a new device to your OneSignal app using phone number. 
-- **Toggle on to concatenate event name with properties**: Enable this setting to concatenate the event names with properties. for example, if `add_to_cart` is an event and `brand` is a property, the event will be sent as `add_to_cart_brand` tag.
+- **Toggle on to add a device using email**: Enable this setting to add a new device to your OneSignal app using the email.
+- **Toggle on to add a device using phone number**: Enable this setting to add a new device to your OneSignal app using the phone number. 
+- **Toggle on to concatenate event name with properties**: Enable this setting to concatenate the event names with properties. For example, if `add_to_cart` is an event and `brand` is a property, the event will be sent as `add_to_cart_brand` tag.
 - **Allowed Property List**: Enter the properties you want to add as the device <Link to="https://documentation.onesignal.com/docs/add-user-data-tags">tags</Link>, if present in the payload. 
 
 <div class="warningBlock">
@@ -77,15 +77,19 @@ rudderanalytics.identify('1hKOmRA4el9Zt1WSfVJIVo4GRlm', {
 );
 ```
 
-In the above snippet, the `playerId` is a unique ID for a device. If `playerId` is provided in `externalId`, the device having that `playerId` will be updated. The `externalId` is case-sensitive and is expected to be in the above format for correct mapping.
+In the above snippet, the `playerId` is the unique ID for a device. If `playerId` is provided in `externalId`, the device having that `playerId` will be updated. The `externalId` is case-sensitive; for correct mapping, it should present in the exact format as seen above.
 
 <div class="infoBlock">
 RudderStack adds the <code class="inline-code">anonymousId</code> as a tag with the key as <code class="inline-code">anonymousId</code> along with the corresponding value.
 </div>
 
-### Add multiple devices
+<div class="successBlock">
+You can also add multiple devices in a single <code class="inline-code">identify</code> call.
+</div>
 
-You can add multiple devices in a single `identify` call. RudderStack maps the following browser and mobile device types by default:
+### Overriding the device type mappings
+
+RudderStack maps the following browser and mobile device types by default:
 
 ```javascript
 deviceTypeMapping = {
@@ -108,15 +112,14 @@ You can override the above-mentioned device type mappings or set any other devic
 }
 ```
 
-- For browser, Rudderstack checks the browser name in `deviceTypeMapping` as mentioned in the above code snippet and maps it to OneSignal's `device_type` property. It also sets the `anonymousId` as an `identifier` depending upon the browser name. 
-
-- For iOS and Android, RudderStack collects the `context.device.type` field and maps it to OneSignal's `device_type` property. It also sets the `context.device.token`/`context.device.id` as an `identifier`.
+- For browser, RudderStack checks the browser name in `deviceTypeMapping` as mentioned in the above code snippet and maps it to OneSignal's `device_type` property. It also sets the `anonymousId` as the `identifier` depending on the browser name.
+- For iOS and Android, RudderStack collects the `context.device.type` field and maps it to OneSignal's `device_type` property. It also sets the `context.device.token`/`context.device.id` as the `identifier`.
 
 <div class="infoBlock">
 It is recommended to send <code class="inline-code">device.token</code> for push notifications.
 </div>
 
-- For email and SMS, enable the **Toggle on to add a device using email** and **Toggle on to add a device using phone number** settings in the RudderStack dashboard and send their data (`email` or `phone`) in the event payload.
+- For email and SMS, enable the **Toggle on to add a device using email** and **Toggle on to add a device using phone number** settings in the RudderStack dashboard and send the relevant data (`email` or `phone`) in the event payload.
 
 
 ### Property mapping
@@ -193,12 +196,12 @@ RudderStack maps all the properties added in the <strong>Allowed Property List</
 
 ## FAQ
 
-### Where can I find the OneSignal App Id?
+### Where can I find the OneSignal App ID?
 
-To get your OneSignal App Id, follow these steps:
+To get your OneSignal App ID, follow these steps:
 
-1. Log into your [OneSignal dashboard](https://dashboard.OneSignal.com/).
+1. Log into your [OneSignal dashboard](https://dashboard.onesignal.com/).
 2. Go to your app's **Settings** > **Keys & IDs**.
-3. You will find the OneSignal App Id, as shown:
+3. You will find the OneSignal App ID, as shown:
 
 <img src="../../assets/event-stream-destinations/onesignal-app-id.png" alt="OneSignal license code and API key" />
