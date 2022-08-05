@@ -86,7 +86,7 @@ RudderStack adds the <code class="inline-code">anonymousId</code> as a tag with 
 ### Add multiple devices
 
 You can add multiple devices in a single `identify` call:
-- For the browser, RudderStack maps the `device_type` from the browser name and device type mapping as explained in the below code snippet. It sets the `anonymousId` as an `identifier` depending upon the browser name. 
+- For the browser, RudderStack maps the `device_type` from the browser name and `deviceType` mapping as explained in the below code snippet. It sets the `anonymousId` as an `identifier` depending upon the browser name. 
 
     RudderStack maps the following device types by default:
 
@@ -111,7 +111,7 @@ You can add multiple devices in a single `identify` call:
     }
     ```
 
-- For iOS and Android, RudderStack takes the `device_type` from the `context.device.type` field and maps it with the `device_type` value from the above-mentioned mappings. The `context.device.token`/`context.device.id` is set as the `identifier`.
+- For iOS and Android, RudderStack takes the `device_type` from the `context.device.type` field and maps it with the `deviceType` value from the above-mentioned mappings. The `context.device.token`/`context.device.id` is set as the `identifier`.
 
 <div class="infoBlock">
 It is recommended to send <code class="inline-code">device.token</code> for push notifications.
@@ -133,6 +133,8 @@ The following table details the mappings between the **optional** RudderStack an
 | `context.locale` | `language` |
 | `traits.createdAt`/`context.traits.createdAt`/`timestamp`/`originalTimestamp` | `created_at`/`last_active` | 
 | `traits.country`/`context.traits.country`/`traits.address.country`/`context.traits.address.country` | `country` | 
+| `integrations.one_signal.deviceType` | `device_type` | 
+| `integrations.one_signal.identifier` | `identifier` |
 
 <div class="infoBlock">
 All the <code class="inline-code">string</code> key-value pairs from <code class="inline-code">traits</code> are mapped inside the <code class="inline-code">tags</code> object as it is.
