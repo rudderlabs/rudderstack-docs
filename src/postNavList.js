@@ -353,6 +353,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "canny",
+    title: "Canny",
+    link: "/sources/cloud-apps/canny/",
+    content: [],
+  },
+  {
     key: "appcenter",
     title: "App Center",
     link: "/sources/cloud-apps/appcenter/",
