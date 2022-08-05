@@ -9,7 +9,7 @@ RudderStack supports Criteo as a destination to which you can send your event da
 
 ## Getting started
 
-Before configuring Criteo as a destination in RudderStack, verify if Criteo supports the source platform you are sending the events from. Refer to the following table:
+Before configuring Criteo as a destination in RudderStack, verify if the source platform is supported by Criteo by referring to the table below:
 
 | Connection Mode | Web       | Mobile | Server |
 | :------------------ | :------------ | :--------- | :--------- |
@@ -33,7 +33,7 @@ To successfully configure Criteo as a destination, you need to configure the fol
 <img src="../../assets/event-stream-destinations/criteo-connection-settings-2.png" alt="Criteo connection settings" />
 <img src="../../assets/event-stream-destinations/criteo-connection-settings-3.png" alt="Criteo connection settings" />
 
-- **Criteo Account ID**: Enter your Criteo Account ID or Partner ID.
+- **Criteo Account ID**: Enter your Criteo Account/Partner ID.
 
 <div class="infoBlock">
 Refer to the <Link to="#faq">FAQ</Link> section below for more information on getting your Account/Partner ID.
@@ -52,7 +52,7 @@ This field is required when you need to fire the homepage tag to add visitors to
 Criteo allows you to send any extra data about a page or a user to add more context to the events. You can set this feature in Criteo with the assistance of your Criteo Account Manager. You can then use the <strong>Map Specific Fields to Criteo Fields</strong> field mapping feature to send extra data through RudderStack.
 </div>
 
-- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Mouseflow.
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Criteo.
 
 <div class="infoBlock">
 For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
@@ -64,7 +64,7 @@ For more information on this setting, refer to the <Link to="/sources/sdks/event
 You can specify multiple <strong>Standard Events</strong> for one <strong>Event Name</strong> and vice versa.
 </div>
 
-- **Use device mode to send events**: Enable this setting to send events from the <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> to Mouseflow via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+- **Use device mode to send events**: As this is a <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>-only destination, this setting is enabled by default and cannot be disabled .
 - **OneTrust Cookie Categories**: This setting lets you map <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust cookie</Link> /consent groups to RudderStack's consent purposes.
 
 ## Page
@@ -120,7 +120,7 @@ rudderanalytics.track("Product Viewed", {
 
 In the above example, RudderStack captures the information related to the `Product Viewed` event and the associated details such as quantity, price, category, etc.
 
-The following table details the mapping of the <Link to="/event-spec/ecommerce-events-spec/">RudderStack e-commerce events</Link> and the [Criteo OneTag events](https://support.criteo.com/s/article?article=All-Criteo-OneTag-events-and-parameters&language=en_US).
+The following table details the mapping of the <Link to="/event-spec/ecommerce-events-spec/">RudderStack e-commerce events</Link> and the [Criteo OneTag events](https://help.criteo.com/kb/guide/en/all-criteo-onetag-events-and-parameters-vZbzbEeY86/Steps/775825).
 
 | **Rudderstack e-commerce event** | **Criteo OneTag event**               | **OneTag Event Name Used By Criteo** |
 | :------------------------------- | :------------------------------------ | :----------------------------------- |
