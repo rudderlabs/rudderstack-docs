@@ -1518,6 +1518,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "mouseflow",
+    title: "Mouseflow",
+    link: "/destinations/streaming-destinations/mouseflow/",
+    content: [],
+  },
+  {
     key: "vwo-beta-visual-website-optimizer",
     title: "VWO (Visual Website Optimizer)",
     link:

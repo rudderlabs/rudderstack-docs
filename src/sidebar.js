@@ -813,6 +813,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Mouseflow",
+                link: "/destinations/streaming-destinations/mouseflow/",
+                content: []
+            },
+            {
                 title: "New Relic",
                 link: "/destinations/streaming-destinations/new-relic/",
                 content: []
