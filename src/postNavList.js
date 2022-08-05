@@ -1494,6 +1494,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "canny",
+    title: "Canny",
+    link: "/destinations/streaming-destinations/canny/",
+    content: [],
+},
+  {
     key: "splitio",
     title: "Split.io",
     link: "/destinations/streaming-destinations/splitio/",
