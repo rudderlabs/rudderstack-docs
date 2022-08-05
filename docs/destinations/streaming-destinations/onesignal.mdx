@@ -41,8 +41,8 @@ To successfully configure OneSignal as a destination, you will need to configure
 For more information on finding the OneSignal App Id, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
-- **Toggle on to create a device using email**: Enable this setting to create a device using email.
-- **Toggle on to create a device using phone number**: Enable this setting to create a device using phone number.
+- **Toggle on to create a device using email**: Enable this setting to add a new device to your OneSignal app using email.
+- **Toggle on to create a device using phone number**: Enable this setting to add a new device to your OneSignal app using phone number. 
 - **Toggle on to concatenate event name with properties**: Enable this setting to concatenate the event names with properties. for example, if `add_to_cart` is an event and `brand` is a property, the event will be sent as `add_to_cart_brand` tag.
 - **Allowed Property List**: Enter the properties you want to add as the device <Link to="https://documentation.onesignal.com/docs/add-user-data-tags">tags</Link>, if present in the payload. 
 
@@ -50,10 +50,9 @@ For more information on finding the OneSignal App Id, refer to the <Link to="#fa
 RudderStack considers the properties mentioned under <strong>Allowed Property List</strong> only for the <code class="inline-code">track</code> and <code class="inline-code">group</code> calls.
 </div>
 
-
 ## Identify 
 
-You can make an <Link to="/event-spec/standard-events/identify">`identify`</Link> call to add a new device to your OneSignal App. However, if a device is already registered with the specified identifier, then it will update the existing device's records.
+You can make an <Link to="/event-spec/standard-events/identify">`identify`</Link> call to <Link to="https://documentation.onesignal.com/reference/add-a-device">add a new device</Link> to your OneSignal App. However, if a device is already registered with the specified identifier, then it will update the existing device's records.
 
 A sample `identify` call is shown below: 
 
@@ -84,7 +83,9 @@ In the above snippet, the `playerId` is a unique ID for a device. If `playerId` 
 RudderStack adds the <code class="inline-code">anonymousId</code> as a tag with the key as <code class="inline-code">anonymousId</code> along with the corresponding value.
 </div>
 
-You can create multiple devices in a single `identify` call:
+### Add multiple devices
+
+You can add multiple devices in a single `identify` call:
 - For the browser, RudderStack maps the `device_type` from the browser name and device type mapping as explained in the below code snippet. It sets the `anonymousId` as an `identifier` depending upon the browser name. 
 
     RudderStack maps the following device types by default:
@@ -99,7 +100,7 @@ You can create multiple devices in a single `identify` call:
     }
     ```
 
-    You can override the device type mapping mentioned above or set any other device type by providing the `deviceType` and `identifier` in the `integrations` object, as shown:
+    You can override the above-mentioned device type mapping or set any other device type by providing the `deviceType` and `identifier` in the `integrations` object, as shown::
 
     ```javascript
     "integrations": {
@@ -110,10 +111,10 @@ You can create multiple devices in a single `identify` call:
     }
     ```
 
-- For iOS and Android, the `device_type` is taken from the `context.device.type` and is mapped with the `device_type` value from the mappings mentioned above. The `context.device.token`/`context.device.id` is set as an `identifier`. 
+- For iOS and Android, RudderStack takes the `device_type` from the `context.device.type` field and maps it with the `device_type` value from the above-mentioned mappings. The `context.device.token`/`context.device.id` is set as the `identifier`.
 
 <div class="infoBlock">
- It is recommended to send <code class="inline-code">device.token</code> for push notifications.
+It is recommended to send <code class="inline-code">device.token</code> for push notifications.
 </div>
 
 - For email and SMS, enable the **Toggle on to create a device using email** and **Toggle on to create a device using phone number** settings in the RudderStack dashboard and send their data (`email` or `phone`) in the event payload.
@@ -148,9 +149,8 @@ A sample `track` call is shown below:
 ```javascript
 rudderanalytics.track('Add to cart', {
     purchased_item: "Shirt",
-		brand: "Zara"
-	}
-);
+    brand: "Zara"
+});
 ```
 
 ### Property mapping
@@ -167,7 +167,7 @@ RudderStack maps all the properties added in the <strong>Allowed Property List</
 
 ## Group
 
-The <Link to="/event-spec/standard-events/group">`group`</Link> call can be used to group the devices having device tags using  the `groupId`.
+You can use the <Link to="/event-spec/standard-events/group">`group`</Link> call to group the devices with the device tags having the same `groupId`.
 
 A sample `group` call is as shown:
 
