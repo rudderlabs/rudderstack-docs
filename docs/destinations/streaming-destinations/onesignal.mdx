@@ -41,8 +41,8 @@ To successfully configure OneSignal as a destination, you will need to configure
 For more information on finding the OneSignal App Id, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
-- **Toggle on to create a device using email**: Enable this setting to add a new device to your OneSignal app using email.
-- **Toggle on to create a device using phone number**: Enable this setting to add a new device to your OneSignal app using phone number. 
+- **Toggle on to add a device using email**: Enable this setting to add a new device to your OneSignal app using email.
+- **Toggle on to add a device using phone number**: Enable this setting to add a new device to your OneSignal app using phone number. 
 - **Toggle on to concatenate event name with properties**: Enable this setting to concatenate the event names with properties. for example, if `add_to_cart` is an event and `brand` is a property, the event will be sent as `add_to_cart_brand` tag.
 - **Allowed Property List**: Enter the properties you want to add as the device <Link to="https://documentation.onesignal.com/docs/add-user-data-tags">tags</Link>, if present in the payload. 
 
@@ -85,39 +85,38 @@ RudderStack adds the <code class="inline-code">anonymousId</code> as a tag with 
 
 ### Add multiple devices
 
-You can add multiple devices in a single `identify` call:
-- For the browser, RudderStack maps the `device_type` from the browser name and `deviceType` mapping as explained in the below code snippet. It sets the `anonymousId` as an `identifier` depending upon the browser name. 
+You can add multiple devices in a single `identify` call. RudderStack maps the following browser and mobile device types by default:
 
-    RudderStack maps the following device types by default:
+```javascript
+deviceTypeMapping = {
+    android: 1,
+    ios: 0,
+    chrome: 5,
+    safari: 7,
+    firefox: 8
+}
+```
 
-    ```javascript
-    deviceTypeMapping = {
-        android: 1,
-        ios: 0,
-        chrome: 5,
-        safari: 7,
-        firefox: 8
+You can override the above-mentioned device type mappings or set any other device type by providing the `deviceType` and `identifier` in the `integrations` object, as shown:
+
+```javascript
+"integrations": {
+    "one_signal": {
+        "deviceType": "Sample device",
+        "identifier": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
     }
-    ```
+}
+```
 
-    You can override the above-mentioned device type mapping or set any other device type by providing the `deviceType` and `identifier` in the `integrations` object, as shown::
+- For browser, Rudderstack checks the browser name in `deviceTypeMapping` as mentioned in the above code snippet and maps it to OneSignal's `device_type` property. It also sets the `anonymousId` as an `identifier` depending upon the browser name. 
 
-    ```javascript
-    "integrations": {
-        "one_signal": {
-            "deviceType": "Sample device",
-            "identifier": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d"
-        }
-    }
-    ```
-
-- For iOS and Android, RudderStack takes the `device_type` from the `context.device.type` field and maps it with the `deviceType` value from the above-mentioned mappings. The `context.device.token`/`context.device.id` is set as the `identifier`.
+- For iOS and Android, RudderStack collects the `context.device.type` field and maps it to OneSignal's `device_type` property. It also sets the `context.device.token`/`context.device.id` as an `identifier`.
 
 <div class="infoBlock">
 It is recommended to send <code class="inline-code">device.token</code> for push notifications.
 </div>
 
-- For email and SMS, enable the **Toggle on to create a device using email** and **Toggle on to create a device using phone number** settings in the RudderStack dashboard and send their data (`email` or `phone`) in the event payload.
+- For email and SMS, enable the **Toggle on to add a device using email** and **Toggle on to add a device using phone number** settings in the RudderStack dashboard and send their data (`email` or `phone`) in the event payload.
 
 
 ### Property mapping
