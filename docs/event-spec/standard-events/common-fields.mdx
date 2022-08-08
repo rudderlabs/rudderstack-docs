@@ -301,7 +301,7 @@ The following sample payload highlights the usage of the common and contextual f
 
 ## How RudderStack collects IP address
 
-The IP address of a user is captured automatically in the `request_ip` property as a **common field**. You can see it in the event received at the destination but not in the <Link to="https://www.rudderstack.com/docs/dashboard-guides/live-events/">Live Events</Link> tab. The reason is that it is added from the server at the backend while being sent to the destination and not as the initial data generated at the source.
+RudderStack automatically collects the user's IP address in the `request_ip` property as a **common field**. You can see it in the event received at the destination but not in the <Link to="https://www.rudderstack.com/docs/dashboard-guides/live-events/">Live Events</Link> tab. This is because RudderStack adds the IP in the backend while sending the event sent to the destination; it is not a part of the initial event data generated at the source.
 
 You can also specify the `ip` field explicitly to anonymize the IP address, in which case it will be captured as a **contextual field** at the source itself.
 
