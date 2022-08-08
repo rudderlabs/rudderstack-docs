@@ -1381,6 +1381,16 @@ export const jsonData = [
                 link: "/event-spec/standard-events/common-fields/",
                 content: []
             },
+            {
+                title: "Application Lifecycle Events",
+                link: "/event-spec/standard-events/application-lifecycle-events-spec/",
+                content: []
+            },
+            {
+                title: "Video Events",
+                link: "/event-spec/standard-events/video-events-spec/",
+                content: []
+            },
         ]
     },
     {
@@ -1423,16 +1433,6 @@ export const jsonData = [
                 content: []
             },
         ]
-    },
-    {
-        title: "Application Lifecycle Events",
-        link: "/event-spec/application-lifecycle-events-spec/",
-        content: []
-    },
-    {
-        title: "Video Events",
-        link: "/event-spec/video-events-spec/",
-        content: []
     },
     // API section
     {

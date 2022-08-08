@@ -80,7 +80,6 @@ The contextual fields give additional context about a particular event. The foll
 | `device` | Object | Information about the device from which you are capturing the event. It contains `deviceId`, `manufacturer`, `model`, `name` and `type`. |
 | `library` | Object | Details about the RudderStack SDK you are using, like `name` and `version`. |
 | `locale` | String | Captures the language of the device. |
-| `ip` | String | The user's IP address. |
 | `network` | Object | Contains information about the reachability of the device. Also, it gives you the status of the device's `bluetooth`, `wifi`, `cellular` network and `carrier` name. |
 | `os` | Object | Captures the operating system details of the device you are tracking. |
 | `screen` | Object | Gives you the screen dimensions of the device,  i.e. `height`, `width` and the `density`. |
@@ -114,7 +113,6 @@ The following section highlights all the contextual fields that are **automatica
 | `device.name` | - | Yes | Yes | Name of the device. |
 | `library.name` | Yes | Yes | Yes | Name of the library. |
 | `library.version` | Yes | Yes | Yes | Version of the library. |
-| `ip` | - | Yes | - |  IP address of the user. |
 | `locale` | Yes | Yes | Yes | Locale string of the user. |
 | `network.bluetooth` | - | Yes (if permission is granted) | - | Bluetooth information. |
 | `network.carrier` | - | Yes | Yes | Carrier information about the network connection. |
@@ -235,7 +233,6 @@ The following sample payload highlights the usage of the common and contextual f
       "name": "com.rudderstack.android.sdk.core",
       "version": "0.1.4"
     },
-    "ip": "192.168.1.1",
     "locale": "en-US",
     "network": {
       "bluetooth": false,
@@ -343,3 +340,8 @@ The following sample payload highlights the usage of the common and contextual f
 </Tabs>
 
 
+## IP address field
+
+The IP address of a user is captured automatically in the `request_ip` property as a **common field**. You can see it in the event received at the destination but not in the <Link to="https://www.rudderstack.com/docs/dashboard-guides/live-events/">Live Events</Link> tab. The reason is that it is added from the server at the backend while being sent to the destination and not as the initial data generated at the source.
+
+You can also specify the `ip` field explicitly to anonymize the IP address, in which case it will be captured as a **contextual field** at the source itself.
