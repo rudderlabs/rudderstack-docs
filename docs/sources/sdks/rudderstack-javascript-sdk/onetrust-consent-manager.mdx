@@ -32,15 +32,15 @@ The following sections highlight the steps required to set up the JavaScript SDK
 
 Follow these steps to configure OneTrust for your web app:
 
-1. Create a [OneTrust account](https://my.onetrust.com/s/login/SelfRegister?language=en_US&startURL=%2Fs%2F%3Ft%3D1587743884774) and ensure that it has access to the **Cookie Compliance** app.
-2. Add your website and scan it.
-3. Go to the **Categorizations** section and define the new categories or modify the existing ones, as required.
+1. Create a [OneTrust account](https://my.onetrust.com/s/login/SelfRegister?language=en_US&startURL=%2Fs%2F%3Ft%3D1587743884774) and get subscription to their <Link to="https://www.onetrust.com/products/cookie-consent/">Cookie Consent</Link> product.
+2. Navigate to the **Websites** tab and click on **Add Websites**. Enter your top-level website URL which you would like to scan and click **Start Scan**.
+3. Go to the **Categorizations** tab and define the new categories or modify the existing ones, as required.
 
 <div class="infoBlock">
-The categories should be associated with/attached to at least one cookie for them to be displayed in the OneTrust modal on your web app. You can use one of the RudderStack cookies as a workaround.
+The categories should be associated with/attached to at least one cookie for them to be displayed in the OneTrust modal on your web app.
 </div>
 
-4. Go to the **Scripts** section and publish this script.
+4. Go to the **Scripts** tab, select the domain to be published and click **Publish** to publish the script.
 
 ### Step 2: Specifying the OneTrust Cookie Categories
 
@@ -68,7 +68,9 @@ You need to enable OneTrust for a given JavaScript source. To do so, specify the
 <!-- OneTrust Cookies Consent Notice end for samplewebsite.com -->
 ```
 
-2. **Important**: **Load the JavaScript SDK only after the user provides the consent.** 
+2. **Load the JavaScript SDK only after a user provides the consent.**
+
+Based on the type of consent a user provides, the Javacript SDK determines which event data should be sent to a destination.
 
 One way to load the JavaScript SDK after the user provides the consent is to modify the `OptanonWrapper()` callback function provided by OneTrust, as shown:
 
