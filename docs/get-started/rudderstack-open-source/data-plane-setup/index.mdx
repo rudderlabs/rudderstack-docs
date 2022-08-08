@@ -12,13 +12,15 @@ For more information on the data plane, refer to <Link to="/resources/rudderstac
 
 ## Setup instructions
 
-Based on the platform where you want to set up RudderStack, refer to the setup instructions:
+Refer to the following setup instructions depending on your preferred deployment platform:
 
 * <Link to="/get-started/rudderstack-open-source/data-plane-setup/docker/">Docker</Link>
-
 * <Link to="/get-started/rudderstack-open-source/data-plane-setup/kubernetes/">Kubernetes</Link>
-
 * <Link to="/get-started/rudderstack-open-source/data-plane-setup/developer-machine-setup/">Developer Machine Setup</Link>
+
+<div class="warningBlock">
+Setting up multiple RudderStack deployments can cause RudderStack to send concurrent requests - this can result in failures and retries.
+</div>
 
 <div class="warningBlock">
 If you are planning to use RudderStack in production, it is strongly recommended to use the <a href="kubernetes/">Kubernetes</a> Helm charts. The Docker images are updated with the latest bug fixes more frequently than the <a href="https://github.com/rudderlabs/rudder-server">GitHub repository</a>.
@@ -84,5 +86,3 @@ The RudderStack server (backend) supports two running modes:
 <div class="infoBlock">
 For more information on the supported running modes, refer to the <Link to="/user-guides/administrators-guide/high-availability/">RudderStack High Availability</Link>guide.
 </div>
-
-
