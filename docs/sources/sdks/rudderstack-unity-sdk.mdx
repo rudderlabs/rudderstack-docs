@@ -217,7 +217,7 @@ RudderConfigBuilder configBuilder = new RudderConfigBuilder()
 
 ## Tracking application lifecycle events on the Android platform
 
-The Unity SDK automatically tracks the [Application Lifecycle Events](https://www.rudderstack.com/docs/event-spec/application-lifecycle-events-spec/) to get insights into the app metrics like installs, opens, updates, etc. However, you can disable the automatic tracking by setting the `withTrackLifecycleEvents` parameter to `false`, as shown:
+The Unity SDK automatically tracks the <Link to="/event-spec/standard-events/application-lifecycle-events-spec/">Application Lifecycle Events</Link> to get insights into the app metrics like installs, opens, updates, etc. However, you can disable the automatic tracking by setting the `withTrackLifecycleEvents` parameter to `false`, as shown:
 
 ```csharp
 RudderConfig config = new RudderConfigBuilder()
@@ -241,8 +241,7 @@ The following requirements must be met to ensure that the **Application Updated*
 - **For Android**: Make sure the `versionCode` in the `defaultConfig` object nested in the `android` object of your app's `build.gradle` is incremented.
 
 <div class="infoBlock">
-
-Refer to the <a href ="https://www.rudderstack.com/docs/event-spec/application-lifecycle-events-spec/#application-updated">Application Lifecycle Events Specification</a> guide for more information.
+Refer to the <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-updated">Application Lifecycle Events Specification</Link> guide for more information.
 </div>
 
 

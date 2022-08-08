@@ -1848,13 +1848,13 @@ export const postNavList = [
     key: "application-lifecycle-events-spec",
     title: "Application Lifecycle Events",
     link:
-      "/event-spec/application-lifecycle-events-spec/",
+      "/event-spec/standard-events/application-lifecycle-events-spec/",
     content: [],
   },
   {
     key: "video-events-spec",
     title: "Video Events",
-    link: "//event-spec/video-events-spec/",
+    link: "/event-spec/standard-events/video-events-spec/",
     content: [],
   },
   {

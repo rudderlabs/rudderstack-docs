@@ -57,7 +57,7 @@ to ="/docs/api/"
 status = 301
 [[redirects]]
 from ="/rudderstack-api/video-specification/"
-to ="/docs/event-spec/video-events-spec/"
+to ="/docs/event-spec/standard-events/video-events-spec/"
 [[redirects]]
 from ="/rudderstack-api/api-specification/alias/"
 to ="/docs/event-spec/standard-events/alias/"
@@ -291,11 +291,19 @@ to = "/docs/api/test-api/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/video-specification/"
-to = "/docs/event-spec/video-events-spec/"
+to = "/docs/event-spec/standard-events/video-events-spec/"
+status = 301
+[[redirects]]
+from = "/event-spec/video-events-spec/"
+to = "/docs/event-spec/standard-events/video-events-spec/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/application-lifecycle-events-spec/"
-to = "/docs/event-spec/application-lifecycle-events-spec/"
+to = "/docs/event-spec/standard-events/application-lifecycle-events-spec/"
+status = 301
+[[redirects]]
+from = "/event-spec/application-lifecycle-events-spec/"
+to = "/docs/event-spec/standard-events/application-lifecycle-events-spec/"
 status = 301
 [[redirects]]
 from = "/rudderstack-api/api-specification/"
