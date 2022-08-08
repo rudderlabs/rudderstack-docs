@@ -138,7 +138,7 @@ rudderanalytics.track("Order Completed", {
 ```
 
 <div class="infoBlock">
-RudderStack uses the <a href="https://developer.zendesk.com/rest_api/docs/sunshine/events_api">Zendesk Sunshine Events API</a> to send the <code class="inline-code">track</code> calls.
+RudderStack uses the <a href="https://developer.zendesk.com/rest_api/docs/sunshine/events_api">Zendesk Events API</a> to send the <code class="inline-code">track</code> calls.
 </div>
 
 ## Group
@@ -157,7 +157,7 @@ rudderanalytics.group("group01", {
 
 ### Associating user to an organization
 
-You can also use `group` to associate a particular user to an organization. To do so, you need to disable the **Send Group Calls without User ID** dashboard setting in RudderStack and pass the `userId` via the `identify` call before sending any `group` calls to Zendesk.
+You can also use the `group` call to associate a particular user to an organization. To do so, disable the **Send Group Calls without User ID** dashboard setting in RudderStack and pass the `userId` via the <Link to="#identify">`identify`</Link> call before sending any `group` calls to Zendesk.
 
 <div class="infoBlock">
 RudderStack assumes that an <code class="inline-code">identify</code> call (containing the <code class="inline-code">userId</code>) is made before any <code class="inline-code">group</code> call. 
@@ -184,7 +184,7 @@ RudderStack creates a new custom field in Zendesk for any other unmapped attribu
 
 ### How RudderStack does the user-group association
 
-- If `groupId` and `userId` both are present in the `group` event, then RudderStack finds the user with `email` present in the `context.traits` object.
+- If both `userId` and `groupId` are present in the `group` event, then RudderStack first finds the user with `email` present in the <Link to="/event-spec/standard-events/common-fields/#contextual-fields">`context.traits`</Link> object.
 - If `email` is absent, RudderStack creates the user. It will then find the organization associated with the `groupId` present in the payload. If `groupId` is absent too, RudderStack creates a new group and then does the user-group association.
 - If a user already exists, the `organizationId` will be associated with the user and all the user information will be sent for this call. 
 
