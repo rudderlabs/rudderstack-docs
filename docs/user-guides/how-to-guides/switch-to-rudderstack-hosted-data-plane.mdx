@@ -5,7 +5,7 @@ description: >-
 ---
 
 <div class="infoBlock">
-The steps in this guide assume that you are using the RudderStack-hosted control plane.
+The steps in this guide assume that you are using the <Link to="https://app.rudderstack.com/signup?type=opensource">RudderStack-hosted control plane</Link>.
 </div>
 
 ## Detailed steps
@@ -40,7 +40,7 @@ Replace the <code class="inline-code">rudderstack-release-name</code> with the r
 
 * In case of mobile SDKs, your customers need to update their mobile applications. You can keep the self-hosted data plane online until a satisfactory number of customers have updated their mobile application or there are no more events coming in to the self-hosted data plane.
 
-Alternatively, you can run an API Gateway or Cloudflare workers to proxy the requests from your self-hosted data plane URL to the RudderStack-hosted data plane URL.
+  Alternatively, you can run an API Gateway or Cloudflare workers to proxy the requests from your self-hosted data plane URL to the RudderStack-hosted data plane URL.
 
 * In case of mobile SDKs, if you are using Firebase to serve the values like `writeKey` and `dataPlaneUrl`, there is no need to update the mobile application to point to the RudderStack-hosted data plane.
 
