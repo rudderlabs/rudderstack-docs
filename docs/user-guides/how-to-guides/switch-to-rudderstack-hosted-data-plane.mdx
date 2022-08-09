@@ -1,0 +1,47 @@
+---
+title: "How to Switch from Self-hosted to RudderStack-hosted Data Plane"
+description: >-
+  Step-by-step guide on switching from self-hosted data plane to RudderStack-hosted data plane.
+---
+
+<div class="infoBlock">
+The steps in this guide assume that you are using the RudderStack-hosted control plane.
+</div>
+
+## Detailed steps
+
+Follow the steps below to switch from self-hosted to RudderStack-hosted data plane:
+
+1. Update the `dataPlaneUrl` parameter in all your SDK configurations to point to the RudderStack-hosted hosted data plane URL. Refer to the specific <Link to="/sources/sdks/">SDK documentation</Link> or this <Link to="/get-started/rudderstack-open-source/data-plane-setup/#what-is-a-data-plane-url-where-do-i-get-it">FAQ</Link> for details on obtaining the data plane URL.
+
+2. Verify that the self-hosted data plane is no longer getting any requests. 
+
+<div class="infoBlock">
+One way to do this is to check your load balancer metrics to verify if any requests are still received on your data plane.
+</div>
+
+3. Ensure that all the events received in the self-hosted data plane are delivered. 
+
+<div class="infoBlock">
+It is recommended to keep the self-hosted plane running for a day or two to ensure that all the events are delievered.
+</div>
+
+4. Shut down the self-hosted data plane depending on your deployment method. For example, if you have deployed the data plane using Helm, run the following command:
+
+```BASH
+helm delete <rudderstack-release-name>
+```
+
+<div class="infoBlock">
+Replace the <code class="inline-code">rudderstack-release-name</code> with the release name of the Helm chart you want to delete.
+</div>
+
+## Best practices
+
+* In case of mobile SDKs, your customers need to update their mobile applications. You can keep the self-hosted data plane online until a satisfactory number of customers have updated their mobile application or there are no more events coming in to the self-hosted data plane.
+
+Alternatively, you can run an API Gateway or Cloudflare workers to proxy the requests from your self-hosted data plane URL to the RudderStack-hosted data plane URL.
+
+* In case of mobile SDKs, if you are using Firebase to serve the values like `writeKey` and `dataPlaneUrl`, there is no need to update the mobile application to point to the RudderStack-hosted data plane.
+
+* This process of switching the data plane can hamper the order of events as the events are sent both from the RudderStack-hosted and self-hosted data plane at the same time **for a while**. Hence, it is recommended to choose a low-traffic time slot to carry out this activity.
