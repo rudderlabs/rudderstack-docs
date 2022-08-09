@@ -1565,6 +1565,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "How to Switch from Self-hosted to RudderStack-hosted Data Plane",
+                link: "/user-guides/how-to-guides/switch-to-rudderstack-hosted-data-plane/",
+                content: [],
+            },
+            {
                 title: "How to Use AWS Lambda Functions with RudderStack",
                 link: "/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack/",
                 content: []
