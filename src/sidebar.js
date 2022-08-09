@@ -1,1685 +1,2298 @@
 export const jsonData = [
-    // Home section (just a link actually)
-    {
-        title: "Home",
-        link: "/",
-        content: []
-    },
-    // Getting Started section
-    {
-        title: "What is RudderStack?",
-        sectionTitle: "Get Started",
-        link: `/get-started/what-is-rudderstack/`,
-        content: []
-    },
-    {
-        title: "Quickstart",
-        link: `/get-started/quickstart/`,
-        content: []
-    },
-    {
-        title: "RudderStack Cloud",
-        link: `/get-started/rudderstack-cloud/`,
-        content: []
-    },
-    {
-        title: "RudderStack Open Source",
-        link: "/get-started/rudderstack-open-source/",
-        content: [
-            {
-                title: "Control Plane Setup",
-                link: "/get-started/rudderstack-open-source/control-plane-lite/",
-                content: []
-            }, {
-                title: "Data Plane Setup",
-                link: "/get-started/rudderstack-open-source/data-plane-setup/",
-                content: [
-                    {
-                        title: "Docker",
-                        link: "/get-started/rudderstack-open-source/data-plane-setup/docker/",
-                        content: []
-                    }, {
-                        title: "Kubernetes",
-                        link: "/get-started/rudderstack-open-source/data-plane-setup/kubernetes/",
-                        content: []
-                    }, {
-                        title: "Developer Machine Setup",
-                        link: "/get-started/rudderstack-open-source/data-plane-setup/developer-machine-setup/",
-                        content: []
-                    },
-                ]
-            },
-            {
-                title: "Sending Test Events",
-                link: "/get-started/rudderstack-open-source/sending-test-events/",
-                content: []
-            },
-        ]
-    },
-    {
-        title: "RudderStack Cloud vs. Open Source",
+  {
+    key: "home",
+    title: "Home",
+    link: "/",
+    content: [],
+  },
+  {
+    key: "get-started",
+    title: "Get Started",
+    link: `/get-started/`,
+    content: [
+      {
+        key: "rudderstack-architecture",
+        title: "Architecture",
+        link: "/get-started/rudderstack-architecture/",
+        content: [],
+      },
+      {
+        key: "cloud-vs-open-source",
+        title: "RudderStack Cloud vs. RudderStack Open Source",
         link: "/get-started/cloud-vs-open-source/",
-        content: []
-    },
-
-// Dashboard guides section
-
-{
-    title: "Overview",
-    sectionTitle: "Dashboard Guides",
-    link: "/dashboard-guides/overview/",
-    content: []
-},
-{
-    title: "Sources",
-    link: "/dashboard-guides/sources/",
-    content: []
-},
-{
-    title: "Destinations",
-    link: "/dashboard-guides/destinations/",
-    content: []
-},
-{
-    title: "Live Events",
-    link: "/dashboard-guides/live-events/",
-    content: []
-},
-{
-    title: "Permissions Management",
-    link: "/dashboard-guides/permissions-management/",
-    content: []
-},
-{
-    title: "Audit Logs",
-    link: "/dashboard-guides/audit-logs/",
-    content: []
-},
-{
-    title: "Personal Access Token",
-    link: "/dashboard-guides/personal-access-token/",
-    content: []
-},
-    // Sources section
-    {
-        title: "Overview",
-        sectionTitle: "Sources",
-        link: "/sources/",
-        content: []
-    }, {
+        content: [],
+      },
+      {
+        key: "glossary",
+        title: "Glossary",
+        link: "/get-started/glossary/",
+        content: [],
+      },
+    ],
+  },
+  {
+    key: "rudderstack-cloud",
+    title: "RudderStack Cloud",
+    link: "/rudderstack-cloud/",
+    content: [
+      {
+        key: "dashboard-overview",
+        title: "Dashboard Overview",
+        link: "/rudderstack-cloud/dashboard-overview/",
+        content: [],
+      },
+      {
+        key: "sources",
+        title: "Sources",
+        link: "/rudderstack-cloud/sources/",
+        content: [],
+      },
+      {
+        key: "destinations",
+        title: "Destinations",
+        link: "/rudderstack-cloud/destinations/",
+        content: [],
+      },
+      {
+        key: "live-events",
+        title: "Live Events",
+        link: "/rudderstack-cloud/live-events/",
+        content: [],
+      },
+      {
+        key: "audit-logs",
+        title: "Audit Logs",
+        link: "/rudderstack-cloud/audit-logs/",
+        content: [],
+      },
+      {
+        key: "teammates",
+        title: "Teammates (User Management)",
+        link: "/rudderstack-cloud/teammates/",
+        content: [],
+      },
+      {
+        key: "rudderstack-connection-modes",
+        title: "Connection Modes: Cloud Mode vs. Device Mode",
+        link: "/rudderstack-cloud/rudderstack-connection-modes/",
+        content: [],
+      },
+    ],
+  },
+  {
+    key: "stream-sources",
+    title: "Event Streams",
+    link: "/stream-sources/",
+    content: [
+      {
+        key: "rudderstack-sdk-integration-guides",
         title: "SDKs",
-        link: "/sources/sdks/",
+        link: "/stream-sources/rudderstack-sdk-integration-guides/",
         content: [
-            {
-                title: "JavaScript",
-                sectionTitle: "Web",
-                link: "/sources/sdks/rudderstack-javascript-sdk/",
-                content: [
-                    {
-                        title: "Quick Start Guide",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/",
-                        content: []
-                    },
-                    {
-                        title: "JavaScript SDK Enhancements",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
-                        content: []
-                    },
-                    {
-                        title: "Data Storage in Cookies",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
-                        content: []
-                    },
-                    {
-                        title: "Querystring API",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/querystring-api/",
-                        content: []
-                    }, {
-                        title: "Detecting Ad-blocked Pages",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
-                        content: []
-                    }, {
-                        title: "Version Migration Guide",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/",
-                        content: []
-                    }, {
-                        title: "Consent Managers",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/consent-managers/",
-                        content: [
-                            {
-                                title: "OneTrust",
-                                link: "/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/",
-                                content: []
-                            },
-                        ]
-                    }, {
-                        title: "JavaScript SDK FAQs",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/faq/",
-                        content: []
-                    },
-                ]
-            },
-            {
-                title: "AMP Analytics",
-                link: "/sources/sdks/rudderstack-amp-analytics/",
-                content: []
-            },
-            {
-                title: "Android",
-                sectionTitle: "Mobile",
-                link: "/sources/sdks/rudderstack-android-sdk/",
-                content: [
-                    {
-                        title: "Adding Application Class",
-                        link: "/sources/sdks/rudderstack-android-sdk/adding-an-application-class/",
-                        content: []
-                    }, {
-                        title: "Flushing Events",
-                        link: "/sources/sdks/rudderstack-android-sdk/flushing-events-periodically/",
-                        content: []
-                    },
-                ]
-            },
-            {
-                title: "iOS",
-                link: "/sources/sdks/rudderstack-ios-sdk/",
-                content: [
-                    {
-                        title: "iOS v2",
-                        link: "/sources/sdks/rudderstack-ios-sdk/ios-v2/",
-                        content: []
-                    }, {
-                        title: "tvOS",
-                        link: "/sources/sdks/rudderstack-ios-sdk/tvOS/",
-                        content: []
-                    }, {
-                        title: "macOS",
-                        link: "/sources/sdks/rudderstack-ios-sdk/macos/",
-                        content: []
-                    }, {
-                        title: "watchOS",
-                        link: "/sources/sdks/rudderstack-ios-sdk/watchOS/",
-                        content: []
-                    },
-                ]
-            },
-            {
-                title: "Unity",
-                link: "/sources/sdks/rudderstack-unity-sdk/",
-                content: []
-            }, {
-                title: "React Native",
-                link: "/sources/sdks/rudderstack-react-native-sdk/",
-                content: []
-            }, {
-                title: "Flutter",
-                link: "/sources/sdks/rudderstack-flutter-sdk/",
-                content: [
-                    {
-                        title: "Flutter SDK v2",
-                        link: "/sources/sdks/rudderstack-flutter-sdk/flutter-v2/",
-                        content: []
-                    }, {
-                        title: "Flutter SDK v1",
-                        link: "/sources/sdks/rudderstack-flutter-sdk/flutter-v1/",
-                        content: []
-                    },
-                ]
-            }, {
-                title: "Cordova",
-                link: "/sources/sdks/rudderstack-cordova-sdk/",
-                content: []
-            }, {
-                title: "Java",
-                sectionTitle: "Server",
-                link: "/sources/sdks/rudderstack-java-sdk/",
-                content: []
-            }, {
-                title: "Python",
-                link: "/sources/sdks/rudderstack-python-sdk/",
-                content: []
-            }, {
-                title: "Rust",
-                link: "/sources/sdks/rudderstack-rust-sdk/",
-                content: []
-            }, {
-                title: "Node.js",
-                link: "/sources/sdks/rudderstack-node-sdk/",
-                content: []
-            }, {
-                title: "Go",
-                link: "/sources/sdks/rudderstack-go-sdk/",
-                content: []
-            }, {
-                title: "Ruby",
-                link: "/sources/sdks/rudderstack-ruby-sdk/",
-                content: []
-            }, {
-                title: ".NET",
-                link: "/sources/sdks/rudderstack-dotnet-sdk/",
-                content: []
-            }, {
-                title: "PHP",
-                link: "/sources/sdks/rudderstack-php-sdk/",
-                content: []
-            },
-            {
-                title: "Client-side Event Filtering",
-                link: "/sources/sdks/event-filtering/",
-                content: []
-            },
-            {
-                title: "SDK FAQs",
-                link: "/sources/sdks/faq/",
-                content: []
-            },
-        ]
-    },
-    {
-        title: "Cloud Apps",
-        link: "/sources/cloud-apps/",
-        content: [
-            {
-                title: "App Center",
-                link: "/sources/cloud-apps/appcenter/",
-                content: []
-            },
-            {
-                title: "AppsFlyer",
-                link: "/sources/cloud-apps/appsflyer/",
-                content: []
-            },
-            {
-                title: "Auth0",
-                link: "/sources/cloud-apps/auth0/",
-                content: []
-            },
-            {
-                title: "Braze",
-                link: "/sources/cloud-apps/braze-currents/",
-                content: []
-            },
-            {
-                title: "Canny",
-                link: "/sources/cloud-apps/canny/",
-                content: []
-            },
-             {
-                title: "Customer.io",
-                link: "/sources/cloud-apps/customerio/",
-                content: []
-            }, {
-                title: "Extole",
-                link: "/sources/cloud-apps/extole/",
-                content: []
-            }, {
-                title: "Iterable",
-                link: "/sources/cloud-apps/iterable/",
-                content: []
-            }, {
-                title: "Looker",
-                link: "/sources/cloud-apps/looker/",
-                content: []
-            }, {
-                title: "PostHog",
-                link: "/sources/cloud-apps/posthog/",
-                content: []
-            }, {
-                title: "Shopify",
-                link: "/sources/cloud-apps/shopify/",
-                content: []
-            }, {
-                title: "Segment",
-                link: "/sources/cloud-apps/segment/",
-                content: []
-            },
-            {
-                title: "Webhook Source",
-                link: "/sources/cloud-apps/webhook-source/",
-                content: []
-            },
-        ]
-    }, {
-        title: "Cloud Extract",
-        link: "/sources/extract/",
-        content: [
-            {
-                title: "Common Settings",
-                link: "/sources/extract/common-settings/",
-                content: []
-            },
-            {
-                title: "ActiveCampaign",
-                sectionTitle: "Sources",
-                link: "/sources/extract/activecampaign/",
-                content: []
-            },
-            {
-                title: "Bing Ads",
-                link: "/sources/extract/bing-ads/",
-                content: []
-            },
-            {
-                title: "Chargebee",
-                link: "/sources/extract/chargebee/",
-                content: []
-            },
-            {
-                title: "Facebook Ads",
-                link: "/sources/extract/facebook-ads/",
-                content: []
-            }, {
-                title: "Freshdesk",
-                link: "/sources/extract/freshdesk/",
-                content: []
-            }, {
-                title: "Google Ads (Adwords)",
-                link: "/sources/extract/google-adwords/",
-                content: []
-            }, {
-                title: "Google Analytics",
-                link: "/sources/extract/google-analytics/",
-                content: []
-            }, {
-                title: "Google Search Console",
-                link: "/sources/extract/google-search-console/",
-                content: []
-            }, {
-                title: "Google Sheets",
-                link: "/sources/extract/google-sheets/",
-                content: []
-            }, {
-                title: "HubSpot",
-                link: "/sources/extract/hubspot-v2/",
-                content: []
-            }, {
-                title: "Intercom",
-                link: "/sources/extract/intercom/",
-                content: []
-            }, {
-                title: "Intercom v2",
-                link: "/sources/extract/intercom-v2/",
-                content: []
-            }, {
-                title: "Mailchimp",
-                link: "/sources/extract/mailchimp/",
-                content: []
-            }, {
-                title: "Mixpanel",
-                link: "/sources/extract/mixpanel/",
-                content: []
-            }, {
-                title: "Marketo",
-                link: "/sources/extract/marketo/",
-                content: []
-            }, {
-                title: "NetSuite",
-                link: "/sources/extract/netsuite/",
-                content: []
-            }, {
-                title: "Pipedrive",
-                link: "/sources/extract/pipedrive/",
-                content: []
-            }, 
-            {
-                title: "QuickBooks",
-                link: "/sources/extract/quickbooks/",
-                content: []
-            }, 
-            {
-                title: "Recurly",
-                link: "/sources/extract/recurly/",
-                content: []
-            },
-            {
-                title: "Salesforce",
-                link: "/sources/extract/salesforce/",
-                content: [
-                    {
-                        title: "Schema Comparison: Rudderstack Vs Segment",
-                        link: "/sources/extract/salesforce/schema-comparison-rudderstack-vs-segment/",
-                        content: []
-                    },
-                ]
-            },
-            {
-                title: "Salesforce v2",
-                link: "/sources/extract/salesforce-v2/",
-                content: []
-            },
-            {
-                title: "Salesforce Pardot",
-                link: "/sources/extract/salesforce-pardot/",
-                content: []
-            }, {
-                title: "Sendgrid",
-                link: "/sources/extract/sendgrid/",
-                content: []
-            }, {
-                title: "Stripe",
-                link: "/sources/extract/stripe/",
-                content: []
-            }, 
-            {
-                title: "Zendesk",
-                link: "/sources/extract/zendesk/",
-                content: []
-            }, {
-                title: "Zendesk Chat",
-                link: "/sources/extract/zendesk-chat/",
-                content: []
-            },
-        ]
-    }, {
-        title: "Reverse ETL",
-        link: "/sources/reverse-etl/",
-        content: [
-            {
-                title: "Amazon Redshift",
-                sectionTitle: "Sources",
-                link: "/sources/reverse-etl/amazon-redshift/",
-                content: []
-            },
-            {
-                title: "Amazon S3",
-                link: "/sources/reverse-etl/amazon-s3/",
-                content: []
-            },
-            {
-                title: "ClickHouse",
-                link: "/sources/reverse-etl/clickhouse/",
-                content: []
-            },
-            {
-                title: "Databricks",
-                link: "/sources/reverse-etl/databricks/",
-                content: []
-            },
-            {
-                title: "Google BigQuery",
-                link: "/sources/reverse-etl/google-bigquery/",
-                content: []
-            },
-            {
-                title: "MySQL",
-                link: "/sources/reverse-etl/mysql/",
-                content: []
-            },
-            {
-                title: "PostgreSQL",
-                link: "/sources/reverse-etl/postgresql/",
-                content: []
-            },
-            {
-                title: "Snowflake",
-                link: "/sources/reverse-etl/snowflake/",
-                content: []
-            },
-            {
-                title: "Models",
-                sectionTitle: "Features",
-                link: "/sources/reverse-etl/features/models/",
-                content: []
-            }, {
-                title: "Airflow Provider",
-                link: "/sources/reverse-etl/features/airflow-provider/",
-                content: []
-            }, {
-                title: "Visual Data Mapper",
-                link: "/sources/reverse-etl/features/visual-data-mapper/",
-                content: []
-            },
-            {
-                title: "Sync Modes",
-                sectionTitle: "Common Settings",
-                link: "/sources/reverse-etl/common-settings/sync-modes/",
-                content: []
-            }, {
-                title: "Sync Schedule",
-                link: "/sources/reverse-etl/common-settings/sync-schedule-settings/",
-                content: []
-            }, {
-                title: "Importing Data using Tables",
-                link: "/sources/reverse-etl/common-settings/importing-data-using-tables/",
-                content: []
-            }, {
-                title: "Importing Data using Models",
-                link: "/sources/reverse-etl/common-settings/importing-data-using-models/",
-                content: []
-            },
-            {
-                title: "FAQ",
-                sectionTitle: "",
-                link: "/sources/reverse-etl/faq/",
-                content: []
-            },
-        ]
-    },
-    // Destinations section
-    {
-        title: "Overview",
-        sectionTitle: "Destinations",
-        link: "/destinations/overview/",
-        content: []
-    },
-    {
-        title: "Cloud Destinations",
-        link: "/destinations/streaming-destinations/",
-        content: [
-            {
-                title: "Algolia Insights",
-                sectionTitle: "A/B Testing & Personalization",
-                link: "/destinations/streaming-destinations/algolia-insights/",
-                content: []
-            },
-            {
-                title: "Candu",
-                link: "/destinations/streaming-destinations/candu/",
-                content: []
-            },
-            {
-                title: "Google Optimize",
-                link: "/destinations/streaming-destinations/google-optimize/",
-                content: []
-            },
-            {
-                title: "LaunchDarkly",
-                link: "/destinations/streaming-destinations/launchdarkly/",
-                content: []
-            }, {
-                title: "Monetate",
-                link: "/destinations/streaming-destinations/monetate/",
-                content: []
-            }, {
-                title: "Optimizely Full Stack",
-                link: "/destinations/streaming-destinations/optimizely-full-stack/",
-                content: []
-            }, {
-                title: "Optimizely Web",
-                link: "/destinations/streaming-destinations/optimizely-web/",
-                content: []
-            }, {
-                title: "Split.io",
-                link: "/destinations/streaming-destinations/splitio/",
-                content: []
-            }, {
-                title: "Statsig",
-                link: "/destinations/streaming-destinations/statsig/",
-                content: []
-            }, {
-                title: "VWO (Visual Website Optimizer)",
-                link: "/destinations/streaming-destinations/vwo-beta-visual-website-optimizer/",
-                content: []
-            },
-            {
-                title: "Bing Ads",
-                sectionTitle: "Advertising",
-                link: "/destinations/streaming-destinations/bingads/",
-                content: []
-            },
-            {
-                title: "Criteo",
-                link: "/destinations/streaming-destinations/criteo/",
-                content: []
-            },
-            {
-                title: "DCM Floodlight",
-                link: "/destinations/streaming-destinations/dcm-floodlight/",
-                content: [
-                    {
-                        title: "Setting up DCM Floodlight",
-                        link: "/destinations/streaming-destinations/dcm-floodlight/setting-up-dcm-floodlight-in-rudderstack/",
-                        content: []
-                    }, {
-                        title: "Cloud Mode",
-                        link: "/destinations/streaming-destinations/dcm-floodlight/dcm-floodlight-cloud-mode/",
-                        content: []
-                    }, {
-                        title: "Device Mode",
-                        link: "/destinations/streaming-destinations/dcm-floodlight/dcm-floodlight-device-mode/",
-                        content: []
-                    },
-                ]
-            },
-            {
-                title: "Facebook App Events",
-                link: "/destinations/streaming-destinations/facebook-app-events/",
-                content: []
-            }, {
-                title: "Facebook Custom Audience",
-                link: "/destinations/streaming-destinations/fb-custom-audience/",
-                content: []
-            }, {
-                title: "Facebook Pixel",
-                link: "/destinations/streaming-destinations/fb-pixel/",
-                content: []
-            }, {
-                title: "Google Ads (gtag.js)",
-                link: "/destinations/streaming-destinations/g-ads-gtag/",
-                content: []
-            }, {
-                title: "Google Ads Enhanced Conversions",
-                link: "/destinations/streaming-destinations/google-adwords-enhanced-conversions/",
-                content: []
-            }, {
-                title: "Google Ads Remarketing Lists (Customer Match)",
-                link: "/destinations/streaming-destinations/google-adwords-remarketing-list/",
-                content: []
-            }, {
-                title: "LinkedIn Insight Tag",
-                link: "/destinations/streaming-destinations/linkedin-insight-tag/",
-                content: []
-            }, {
-                title: "Lotame",
-                link: "/destinations/streaming-destinations/lotame/",
-                content: []
-            }, {
-                title: "Pinterest Tag",
-                link: "/destinations/streaming-destinations/pinterest-ads/",
-                content: []
-            },
-            {
-                title: "Reddit Pixel",
-                link: "/destinations/streaming-destinations/reddit-pixel/",
-                content: []
-            }, {
-                title: "Snapchat Conversion",
-                link: "/destinations/streaming-destinations/snapchat-conversion/",
-                content: []
-            }, {
-                title: "Snap Pixel",
-                link: "/destinations/streaming-destinations/snap-pixel/",
-                content: []
-            }, {
-                title: "TikTok Ads",
-                link: "/destinations/streaming-destinations/tiktok-ads/",
-                content: []
-            },
-            {
-                title: "Yahoo DSP",
-                link: "/destinations/streaming-destinations/yahoo-dsp/",
+          {
+            key: "rudderstack-javascript-sdk",
+            title: "JavaScript",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/",
+            content: [
+              {
+                key: "quick-start-guide",
+                title: "Quick Start Guide",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/",
                 content: [],
-            },
-            {
-                title: "Adobe Analytics",
-                sectionTitle: "Analytics",
-                link: "/destinations/streaming-destinations/adobe-analytics/",
-                content: [
-                    {
-                        title: "Setting Up Adobe Analytics in RudderStack",
-                        link: "/destinations/streaming-destinations/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/",
-                        content: []
-                    },
-                    {
-                        title: "Web Device Mode Settings",
-                        link: "/destinations/streaming-destinations/adobe-analytics/adobe-analytics-web-device-mode/",
-                        content: []
-                    },
-                    {
-                        title: "Mobile Device Mode Settings",
-                        link: "/destinations/streaming-destinations/adobe-analytics/adobe-analytics-mobile-device-mode/",
-                        content: []
-                    },
-                    {
-                        title: "Adobe Analytics Heartbeat Measurement",
-                        link: "/destinations/streaming-destinations/adobe-analytics/adobe-analytics-heartbeat/",
-                        content: []
-                    }, {
-                        title: "E-commerce Events",
-                        link: "/destinations/streaming-destinations/adobe-analytics/e-commerce-events/",
-                        content: []
-                    },
-                ]
-            },
-            {
-                title: "Amplitude",
-                link: "/destinations/streaming-destinations/amplitude/",
-                content: []
-            },
-            {
-                title: "AWS Personalize",
-                link: "/destinations/streaming-destinations/aws-personalize/",
-                content: []
-            },
-            {
-                title: "Chartbeat",
-                link: "/destinations/streaming-destinations/chartbeat/",
-                content: []
-            }, {
-                title: "Firebase",
-                link: "/destinations/streaming-destinations/firebase/",
-                content: []
-            }, {
-                title: "FullStory",
-                link: "/destinations/streaming-destinations/fullstory/",
-                content: []
-            }, {
-                title: "Google Analytics",
-                link: "/destinations/streaming-destinations/google-analytics-ga/",
-                content: []
-            }, {
-                title: "Google Analytics 4",
-                link: "/destinations/streaming-destinations/google-analytics-4/",
-                content: [
-                    {
-                        title: "Setting up Google Analytics 4",
-                        link: "/destinations/streaming-destinations/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/",
-                        content: []
-                    }, {
-                        title: "Cloud Mode",
-                        link: "/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/",
-                        content: []
-                    }, {
-                        title: "Device Mode",
-                        link: "/destinations/streaming-destinations/google-analytics-4/google-analytics-4-device-mode/",
-                        content: []
-                    },
-                ]
-            }, {
-                title: "Google Analytics 360",
-                link: "/destinations/streaming-destinations/google-analytics-360/",
-                content: []
-            }, {
-                title: "Heap.io",
-                link: "/destinations/streaming-destinations/heap.io/",
-                content: []
-            }, {
-                title: "Hotjar",
-                link: "/destinations/streaming-destinations/hotjar/",
-                content: []
-            }, {
-                title: "Indicative",
-                link: "/destinations/streaming-destinations/indicative/",
-                content: []
-            }, {
-                title: "Keen.io",
-                link: "/destinations/streaming-destinations/keen/",
-                content: []
-            }, {
-                title: "Kissmetrics",
-                link: "/destinations/streaming-destinations/kissmetrics/",
-                content: []
-            }, {
-                title: "Kubit",
-                link: "/destinations/streaming-destinations/kubit/",
-                content: []
-            }, {
-                title: "Lytics",
-                link: "/destinations/streaming-destinations/lytics/",
-                content: []
-            },
-            {
-                key: "matomo",
-                title: "Matomo",
-                link: "/destinations/streaming-destinations/matomo/",
+              },
+              {
+                key: "javascript-sdk-enhancements",
+                title: "JavaScript SDK Enhancements",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
                 content: [],
-            },
-            {
-                title: "Mixpanel",
-                link: "/destinations/streaming-destinations/mixpanel/",
-                content: []
-            },
-            {
-                title: "Mouseflow",
-                link: "/destinations/streaming-destinations/mouseflow/",
-                content: []
-            },
-            {
-                title: "New Relic",
-                link: "/destinations/streaming-destinations/new-relic/",
-                content: []
-            },
-            {
-                title: "PostHog",
-                link: "/destinations/streaming-destinations/posthog/",
-                content: []
-            },
-            {
-                title: "Profitwell",
-                link: "/destinations/streaming-destinations/profitwell/",
+              },
+              {
+                key: "data-storage-cookies",
+                title: "Data Storage in Cookies",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/data-storage-cookies/",
+                content: [],
+              },
+              {
+                key: "querystring-api",
+                title: "Querystring API",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/querystring-api/",
+                content: [],
+              },
+              {
+                key: "detecting-adblocked-pages",
+                title: "Detecting Ad-blocked Pages",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/detecting-adblocked-pages/",
+                content: [],
+              },
+              {
+                key: "version-migration-guide",
+                title: "Version Migration Guide",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/",
+                content: [],
+              },
+              {
+                key: "consent-managers",
+                title: "Consent Managers",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/",
                 content: [
-                    {
-                        title: "Cloud Mode",
-                        link: "/destinations/streaming-destinations/profitwell/profitwell-cloud-mode/",
-                        content: []
-                    }, {
-                        title: "Device Mode",
-                        link: "/destinations/streaming-destinations/profitwell/profitwell-web-device-mode/",
-                        content: []
-                    },
-                ]
-            }, {
-                title: "Quantum Metric",
-                link: "/destinations/streaming-destinations/quantummetric/",
-                content: []
-            }, {
-                title: "Singular",
-                link: "/destinations/streaming-destinations/singular/",
-                content: [
-                    {
-                        title: "Setting up Singular",
-                        link:
-                            "/destinations/streaming-destinations/singular/setting-up-singular-in-rudderstack/",
-                        content: [],
-                    },
-                    {
-                        title: "Cloud Mode",
-                        link:
-                            "/destinations/streaming-destinations/singular/singular-cloud-mode/",
-                        content: [],
-                    },
-                    {
-                        title: "Device Mode",
-                        link:
-                            "/destinations/streaming-destinations/singular/singular-device-mode/",
-                        content: [],
-                    },
-                ]
-            },
-            {
-                title: "Adjust",
-                sectionTitle: "Attribution",
-                link: "/destinations/streaming-destinations/adjust/",
-                content: []
-            },
-            {
-                title: "AppsFlyer",
-                link: "/destinations/streaming-destinations/appsflyer/",
-                content: []
-            },
-            {
-                title: "Attribution",
-                link: "/destinations/streaming-destinations/attribution/",
-                content: []
-            },
-            {
-                title: "Branch",
-                link: "/destinations/streaming-destinations/branchio/",
-                content: []
-            }, {
-                title: "Kochava",
-                link: "/destinations/streaming-destinations/kochava/",
-                content: []
-            }, {
-                title: "TVSquared",
-                link: "/destinations/streaming-destinations/tvsquared/",
-                content: []
-            },
-            {
-                title: "Intercom",
-                sectionTitle: "Business Messaging",
-                link: "/destinations/streaming-destinations/intercom/",
-                content: []
-            }, {
-                title: "Kustomer",
-                link: "/destinations/streaming-destinations/kustomer/",
-                content: []
-            }, {
-                title: "Slack",
-                link: "/destinations/streaming-destinations/slack/",
-                content: []
-            }, {
-                title: "Trengo",
-                link: "/destinations/streaming-destinations/trengo/",
-                content: []
-            },
-            {
-                title: "Visual Studio App Center",
-                sectionTitle: "Continuous Integration",
-                link: "/destinations/streaming-destinations/appcenter/",
-                content: []
-            },
-            {
-                title: "HubSpot",
-                sectionTitle: "CRM",
-                link: "/destinations/streaming-destinations/hubspot/",
-                content: []
-            },
-            {
-                title: "HubSpot V2",
-                link: "/destinations/streaming-destinations/hubspot-v2/",
-                content: []
-            },
-            {
-                title: "Salesforce",
-                link: "/destinations/streaming-destinations/salesforce/",
-                content: []
-            },
-            {
-                title: "Variance",
-                link: "/destinations/streaming-destinations/variance/",
-                content: []
-            }, {
-                title: "Zendesk",
-                link: "/destinations/streaming-destinations/zendesk/",
-                content: []
-            },
-            {
-                title: "Segment",
-                sectionTitle: "Customer Data Platform",
-                link: "/destinations/streaming-destinations/segment/",
-                content: []
-            },
-            {
-                title: "Bugsnag",
-                sectionTitle: "Error Reporting",
-                link: "/destinations/streaming-destinations/bugsnag/",
-                content: []
-            }, {
-                title: "Sentry",
-                link: "/destinations/streaming-destinations/sentry/",
-                content: []
-            },
-            {
-                title: "ActiveCampaign",
-                sectionTitle: "Marketing",
-                link: "/destinations/streaming-destinations/activecampaign/",
-                content: []
-            },
-            {
-                title: "AdRoll",
-                link: "/destinations/streaming-destinations/adroll/",
-                content: []
-            },
-            {
-                title: "Airship",
-                link: "/destinations/streaming-destinations/airship/",
-                content: []
-            },
-            {
-                title: "Appcues",
-                link: "/destinations/streaming-destinations/appcues/",
-                content: []
-            }, {
-                title: "Attentive Tag",
-                link: "/destinations/streaming-destinations/attentive-tag/",
-                content: []
-            }, {
-                title: "Autopilot",
-                link: "/destinations/streaming-destinations/autopilot/",
-                content: []
-            }, {
-                title: "Blueshift",
-                link: "/destinations/streaming-destinations/blueshift/",
-                content: []
-            }, {
-                title: "Braze",
-                link: "/destinations/streaming-destinations/braze/",
-                content: []
-            }, {
-                title: "CleverTap",
-                link: "/destinations/streaming-destinations/clevertap/",
-                content: []
-            }, {
-                title: "Customer.io",
-                link: "/destinations/streaming-destinations/customer.io/",
-                content: []
-            }, {
-                title: "Drip",
-                link: "/destinations/streaming-destinations/drip/",
-                content: [
-                    {
-                        title: "Setting Up Drip in RudderStack",
-                        link: "/destinations/streaming-destinations/drip/setting-up-drip-in-rudderstack/",
-                        content: []
-                    }, {
-                        title: "Cloud Mode",
-                        link: "/destinations/streaming-destinations/drip/drip-cloud-mode/",
-                        content: []
-                    }, {
-                        title: "Device Mode",
-                        link: "/destinations/streaming-destinations/drip/drip-web-device-mode/",
-                        content: []
-                    },
-                ]
-            },  {
-                title: "Iterable",
-                link: "/destinations/streaming-destinations/iterable/",
-                content: []
-            }, {
-                title: "Klaviyo",
-                link: "/destinations/streaming-destinations/klaviyo/",
-                content: []
-            }, {
-                title: "Leanplum",
-                link: "/destinations/streaming-destinations/leanplum/",
-                content: []
-            }, {
-                title: "Mailchimp",
-                link: "/destinations/streaming-destinations/mailchimp/",
-                content: []
-            }, {
-                title: "Marketo",
-                link: "/destinations/streaming-destinations/marketo/",
-                content: []
-            }, {
-                title: "Marketo Lead Import",
-                link: "/destinations/streaming-destinations/marketo-lead-import/",
-                content: []
-            }, {
-                title: "MoEngage",
-                link: "/destinations/streaming-destinations/moengage/",
-                content: []
-            }, {
-                title: "Ometria",
-                link: "/destinations/streaming-destinations/ometria/",
-                content: []
-            }, {
-                title: "OneSignal",
-                link: "/destinations/streaming-destinations/onesignal/",
-                content: []
-            },{
-                title: "Post Affiliate Pro",
-                link: "/destinations/streaming-destinations/post-affiliate-pro/",
-                content: []
-            }, {
-                title: "Qualtrics",
-                link: "/destinations/streaming-destinations/qualtrics/",
-                content: []
-            }, {
-                title: "Revenue Cat",
-                link: "/destinations/streaming-destinations/revenue-cat/",
-                content: []
-            }, {
-                title: "Salesforce Marketing Cloud",
-                link: "/destinations/streaming-destinations/sfmc/",
-                content: []
-            },
-            {
-                title: "Salesforce Pardot",
-                link: "/destinations/streaming-destinations/pardot/",
-                content: []
-            }, 
-            {
-                title: "SendGrid",
-                link: "/destinations/streaming-destinations/sendgrid/",
-                content: []
-            }, 
-            {
-                title: "Userlist",
-                link: "/destinations/streaming-destinations/userlist/",
-                content: []
-            },
-            {
-                title: "Vero",
-                link: "/destinations/streaming-destinations/vero/",
-                content: [
-                    {
-                        title: "Setting up Vero",
-                        link: "/destinations/streaming-destinations/vero/setting-up-vero/",
-                        content: []
-                    },
-                    {
-                        title: "Cloud Mode",
-                        link: "/destinations/streaming-destinations/vero/cloud-mode/",
-                        content: []
-                    },
-                    {
-                        title: "Device Mode",
-                        link: "/destinations/streaming-destinations/vero/device-mode/",
-                        content: []
-                    },
-                ]
-            },
-            {
-                title: "Google Sheets",
-                sectionTitle: "Productivity",
-                link: "/destinations/streaming-destinations/google-sheets/",
-                content: []
-            },
-            {
-                title: "Amazon S3",
-                sectionTitle: "Storage Platforms",
-                link: "/destinations/streaming-destinations/amazon-s3/",
-                content: []
-            },
-            {
-                title: "Azure Blob Storage",
-                link: "/destinations/streaming-destinations/microsoft-azure-blob-storage/",
-                content: []
-            },
-            {
-                title: "DigitalOcean Spaces",
-                link: "/destinations/streaming-destinations/digitalocean-spaces/",
-                content: []
-            },
-            {
-                title: "Google Cloud Storage",
-                link: "/destinations/streaming-destinations/google-cloud-storage/",
-                content: []
-            }, {
-                title: "MinIO",
-                link: "/destinations/streaming-destinations/minio/",
-                content: []
-            }, {
-                title: "Redis",
-                link: "/destinations/streaming-destinations/redis/",
-                content: []
-            },
-            {
-                title: "Amazon EventBridge",
-                sectionTitle: "Streaming Platforms",
-                link: "/destinations/streaming-destinations/amazon-eventbridge/",
-                content: []
-            },
-            {
-                title: "Amazon Kinesis",
-                link: "/destinations/streaming-destinations/amazon-kinesis/",
-                content: []
-            },
-            {
-                title: "Amazon Firehose",
-                link: "/destinations/streaming-destinations/amazon-kinesis-firehose/",
-                content: []
-            },
-            {
-                title: "Apache Kafka",
-                link: "/destinations/streaming-destinations/kafka/",
-                content: []
-            }, {
-                title: "Azure Event Hubs",
-                link: "/destinations/streaming-destinations/azure-event-hubs/",
-                content: []
-            }, {
-                title: "BigQuery Stream",
-                link: "/destinations/streaming-destinations/bigquery-stream/",
-                content: []
-            }, {
-                title: "Confluent Cloud",
-                link: "/destinations/streaming-destinations/confluent-cloud/",
-                content: []
-            }, {
-                title: "Google Pub/Sub",
-                link: "/destinations/streaming-destinations/google-pub-sub/",
-                content: []
-            },
-            {
-                title: "Google Tag Manager",
-                sectionTitle: "Tag Managers",
-                link: "/destinations/streaming-destinations/google-tag-manager/",
-                content: []
-            },
-            {
-                title: "Canny",
-                sectionTitle: "Surveys",
-                link: "/destinations/streaming-destinations/canny/",
-                content: []
-            },{
-                title: "Delighted",
-                link: "/destinations/streaming-destinations/delighted/",
-                content: []
-            },{
-                title: "Gainsight",
-                link: "/destinations/streaming-destinations/gainsight/",
-                content: []
-            }, {
-                title: "Gainsight PX",
-                link: "/destinations/streaming-destinations/gainsight-px/",
-                content: []
-            },{
-                title: "Pendo",
-                link: "/destinations/streaming-destinations/pendo/",
-                content: []
-            },
-            {
-                title: "WebEngage",
-                link: "/destinations/streaming-destinations/webengage/",
-                content: []
-            },
-        ]
-    },
-    {
-        title: "Warehouse Destinations",
-        link: "/destinations/warehouse-destinations/",
+                  {
+                    key: "onetrust",
+                    title: "OneTrust",
+                    link:
+                      "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/",
+                    content: [],
+                  },
+                ],
+              },
+              {
+                key: "js-sdk-faqs",
+                title: "JavaScript SDK FAQs",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "rudderstack-android-sdk",
+            title: "Android",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/",
+            content: [
+              {
+                key: "add-an-application-class-to-you-android-application",
+                title: "Adding Application Class",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application/",
+                content: [],
+              },
+              {
+                key: "flushing-events-periodically",
+                title: "Flushing Events",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/flushing-events-periodically/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "rudderstack-ios-sdk",
+            title: "iOS",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/",
+            content: [
+              {
+                key: "ios-v2",
+                title: "iOS v2",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/ios-v2/",
+                content: [],
+              },
+              {
+                key: "tvOS",
+                title: "tvOS",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/tvOS/",
+                content: [],
+              },
+              {
+                key: "macos",
+                title: "macOS",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/macos/",
+                content: [],
+              },
+              {
+                key: "watchOs",
+                title: "watchOS",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/watchOS/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "rudderstack-unity-sdk",
+            title: "Unity",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/",
+            content: [],
+          },
+          {
+            key: "rudderstack-react-native-sdk",
+            title: "React Native",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/",
+            content: [],
+          },
+          {
+            key: "rudderstack-flutter-sdk",
+            title: "Flutter",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/",
+            content: [
+              {
+                key: "flutter-v2",
+                title: "Flutter SDK v2",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v2/",
+                content: [],
+              },
+              {
+                key: "flutter-v1",
+                title: "Flutter SDK v1",
+                link:
+                  "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "rudderstack-cordova-sdk",
+            title: "Cordova",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/",
+            content: [],
+          },
+          {
+            key: "rudderstack-amp-analytics",
+            title: "AMP Analytics",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/",
+            content: [],
+          },
+          {
+            key: "rudderstack-java-sdk",
+            title: "Java",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-java-sdk/",
+            content: [],
+          },
+          {
+            key: "rudderstack-python-sdk",
+            title: "Python",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-python-sdk/",
+            content: [],
+          },
+          {
+            key: "rudderstack-rust-sdk",
+            title: "Rust",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-rust-sdk/",
+            content: [],
+          },
+          {
+            key: "rudderstack-node-sdk",
+            title: "Node.js",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk/",
+            content: [],
+          },
+          {
+            key: "rudderstack-go-sdk",
+            title: "Go",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-go-sdk/",
+            content: [],
+          },
+          {
+            key: "rudderstack-ruby-sdk",
+            title: "Ruby",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ruby-sdk/",
+            content: [],
+          },
+          {
+            key: "rudderstack-dotnet-sdk",
+            title: ".NET",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-dotnet-sdk/",
+            content: [],
+          },
+          {
+            key: "rudderstack-php-sdk",
+            title: "PHP",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-php-sdk/",
+            content: [],
+          },
+          {
+            key: "event-filtering",
+            title: "Client-side Event Filtering",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/event-filtering/",
+            content: [],
+          },
+          {
+            key: "sdk-faqs",
+            title: "SDK FAQs",
+            link:
+              "/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "webhook-source",
+        title: "Webhook Source",
+        link: "/stream-sources/webhook-source/",
+        content: [],
+      },
+      {
+        key: "braze-currents",
+        title: "Braze",
+        link: "/stream-sources/braze-currents/",
+        content: [],
+      },
+      {
+        key: "appcenter",
+        title: "App Center",
+        link: "/stream-sources/appcenter/",
+        content: [],
+      },
+      {
+        key: "appsflyer",
+        title: "AppsFlyer",
+        link: "/stream-sources/appsflyer/",
+        content: [],
+      },
+      {
+        key: "auth0",
+        title: "Auth0",
+        link: "/stream-sources/auth0/",
+        content: [],
+      },
+      {
+        key: "customerio",
+        title: "Customer.io",
+        link: "/stream-sources/customerio/",
+        content: [],
+      },
+      {
+        key: "extole",
+        title: "Extole",
+        link: "/stream-sources/extole/",
+        content: [],
+      },
+      {
+        key: "iterable",
+        title: "Iterable",
+        link: "/stream-sources/iterable/",
+        content: [],
+      },
+      {
+        key: "looker",
+        title: "Looker",
+        link: "/stream-sources/looker/",
+        content: [],
+      },
+      {
+        key: "posthog",
+        title: "PostHog",
+        link: "/stream-sources/posthog/",
+        content: [],
+      },
+      {
+        key: "shopify",
+        title: "Shopify",
+        link: "/stream-sources/shopify/",
+        content: [],
+      },
+      {
+        key: "segment",
+        title: "Segment",
+        link: "/stream-sources/segment/",
+        content: [],
+      },
+    ],
+  },
+  {
+    key: "cloud-extract-sources",
+    title: "Cloud Extract",
+    link: "/cloud-extract-sources/",
+    content: [
+      {
+        key: "activecampaign",
+        title: "ActiveCampaign",
+        link: "/cloud-extract-sources/activecampaign/",
+        content: [],
+      },
+      {
+        key: "bing-ads",
+        title: "Bing Ads",
+        link: "/cloud-extract-sources/bing-ads/",
+        content: [],
+      },
+      {
+        key: "chargebee",
+        title: "Chargebee",
+        link: "/cloud-extract-sources/chargebee/",
+        content: [],
+      },
+      {
+        key: "facebook-ads",
+        title: "Facebook Ads",
+        link: "/cloud-extract-sources/facebook-ads/",
+        content: [],
+      },
+      {
+        key: "freshdesk",
+        title: "Freshdesk",
+        link: "/cloud-extract-sources/freshdesk/",
+        content: [],
+      },
+      {
+        key: "google-adwords",
+        title: "Google Ads (Adwords)",
+        link: "/cloud-extract-sources/google-adwords/",
+        content: [],
+      },
+      {
+        key: "google-analytics",
+        title: "Google Analytics",
+        link: "/cloud-extract-sources/google-analytics/",
+        content: [],
+      },
+      {
+        key: "google-search-console",
+        title: "Google Search Console",
+        link: "/cloud-extract-sources/google-search-console/",
+        content: [],
+      },
+      {
+        key: "google-sheets",
+        title: "Google Sheets",
+        link: "/cloud-extract-sources/google-sheets/",
+        content: [],
+      },
+      {
+        key: "hubspot-v2",
+        title: "HubSpot",
+        link: "/cloud-extract-sources/hubspot-v2/",
+        content: [],
+      },
+      {
+        key: "intercom",
+        title: "Intercom",
+        link: "/cloud-extract-sources/intercom/",
+        content: [],
+      },
+      {
+        key: "intercom-v2",
+        title: "Intercom v2",
+        link: "/cloud-extract-sources/intercom-v2/",
+        content: [],
+      },
+      {
+        key: "mailchimp",
+        title: "Mailchimp",
+        link: "/cloud-extract-sources/mailchimp/",
+        content: [],
+      },
+      {
+        key: "mixpanel",
+        title: "Mixpanel",
+        link: "/cloud-extract-sources/mixpanel/",
+        content: [],
+      },
+      {
+        key: "marketo",
+        title: "Marketo",
+        link: "/cloud-extract-sources/marketo/",
+        content: [],
+      },
+      {
+        key: "netsuite",
+        title: "NetSuite",
+        link: "/cloud-extract-sources/netsuite/",
+        content: [],
+      },
+      {
+        key: "pipedrive",
+        title: "Pipedrive",
+        link: "/cloud-extract-sources/pipedrive/",
+        content: [],
+      },
+      {
+        key: "quickbooks",
+        title: "QuickBooks",
+        link: "/cloud-extract-sources/quickbooks/",
+        content: [],
+      },
+      {
+        key: "salesforce",
+        title: "Salesforce",
+        link: "/cloud-extract-sources/salesforce/",
         content: [
+          {
+            key: "schema-comparison-rudderstack-vs-segment",
+            title: "Schema Comparison: Rudderstack Vs Segment",
+            link:
+              "/cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "salesforce-pardot",
+        title: "Salesforce Pardot",
+        link: "/cloud-extract-sources/salesforce-pardot/",
+        content: [],
+      },
+      {
+        key: "sendgrid",
+        title: "Sendgrid",
+        link: "/cloud-extract-sources/sendgrid/",
+        content: [],
+      },
+      {
+        key: "stripe",
+        title: "Stripe",
+        link: "/cloud-extract-sources/stripe/",
+        content: [],
+      },
+      {
+        key: "xero",
+        title: "Xero",
+        link: "/cloud-extract-sources/xero/",
+        content: [],
+      },
+      {
+        key: "zendesk",
+        title: "Zendesk",
+        link: "/cloud-extract-sources/zendesk/",
+        content: [],
+      },
+      {
+        key: "zendesk-chat",
+        title: "Zendesk Chat",
+        link: "/cloud-extract-sources/zendesk-chat/",
+        content: [],
+      },
+      {
+        key: "common-settings",
+        title: "Common Settings",
+        link: "/cloud-extract-sources/common-settings/",
+        content: [],
+      },
+    ],
+  },
+  {
+    key: "reverse-etl",
+    title: "Reverse ETL",
+    link: "/reverse-etl/",
+    content: [
+      {
+        key: "amazon-redshift",
+        title: "Amazon Redshift",
+        link: "/reverse-etl/amazon-redshift/",
+        content: [],
+      },
+      {
+        key: "amazon-s3",
+        title: "Amazon S3",
+        link: "/reverse-etl/amazon-s3/",
+        content: [],
+      },
+      {
+        key: "clickhouse",
+        title: "ClickHouse",
+        link: "/reverse-etl/clickhouse/",
+        content: [],
+      },
+      {
+        key: "google-bigquery",
+        title: "Google BigQuery",
+        link: "/reverse-etl/google-bigquery/",
+        content: [],
+      },
+      {
+        key: "mysql",
+        title: "MySQL",
+        link: "/reverse-etl/mysql/",
+        content: [],
+      },
+      {
+        key: "postgresql",
+        title: "PostgreSQL",
+        link: "/reverse-etl/postgresql/",
+        content: [],
+      },
+      {
+        key: "snowflake",
+        title: "Snowflake",
+        link: "/reverse-etl/snowflake/",
+        content: [],
+      },
+      {
+        key: "features",
+        title: "Features",
+        link: "/reverse-etl/features/",
+        content: [
+          {
+            key: "models",
+            title: "Models",
+            link: "/reverse-etl/features/models/",
+            content: [],
+          },
+          {
+            key: "airflow-provider",
+            title: "Airflow Provider",
+            link: "/reverse-etl/features/airflow-provider/",
+            content: [],
+          },
+          {
+            key: "visual-data-mapper",
+            title: "Visual Data Mapper",
+            link: "/reverse-etl/features/visual-data-mapper/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "common-settings",
+        title: "Common Settings",
+        link: "/reverse-etl/common-settings/",
+        content: [
+          {
+            key: "sync-modes",
+            title: "Sync Modes",
+            link: "/reverse-etl/common-settings/sync-modes/",
+            content: [],
+          },
+          {
+            key: "sync-schedule-settings",
+            title: "Sync Schedule",
+            link: "/reverse-etl/common-settings/sync-schedule-settings/",
+            content: [],
+          },
+          {
+            key: "importing-data-using-tables",
+            title: "Importing Data using Tables",
+            link: "/reverse-etl/common-settings/importing-data-using-tables/",
+            content: [],
+          },
+          {
+            key: "importing-data-using-models",
+            title: "Importing Data using Models",
+            link: "/reverse-etl/common-settings/importing-data-using-models/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "faq",
+        title: "FAQ",
+        link: "/reverse-etl/faq/",
+        content: [],
+      },
+    ],
+  },
+  {
+    key: "destinations",
+    title: "Destinations",
+    link: "/destinations/",
+    content: [
+      {
+        key: "testing-and-personalization",
+        title: "A/B Testing & Personalization",
+        link: "/destinations/testing-and-personalization/",
+        content: [
+          {
+            key: "algolia-insights",
+            title: "Algolia Insights",
+            link: "/destinations/testing-and-personalization/algolia-insights/",
+            content: [],
+          },
+          {
+            key: "candu",
+            title: "Candu",
+            link: "/destinations/testing-and-personalization/candu/",
+            content: [],
+          },
+          {
+            key: "google-optimize",
+            title: "Google Optimize",
+            link: "/destinations/testing-and-personalization/google-optimize/",
+            content: [],
+          },
+          {
+            key: "launchdarkly",
+            title: "LaunchDarkly",
+            link: "/destinations/testing-and-personalization/launchdarkly/",
+            content: [],
+          },
+          {
+            key: "monetate",
+            title: "Monetate",
+            link: "/destinations/testing-and-personalization/monetate/",
+            content: [],
+          },
+          {
+            key: "optimizely-full-stack",
+            title: "Optimizely Full Stack",
+            link:
+              "/destinations/testing-and-personalization/optimizely-full-stack/",
+            content: [],
+          },
+          {
+            key: "optimizely-web",
+            title: "Optimizely Web",
+            link: "/destinations/testing-and-personalization/optimizely-web/",
+            content: [],
+          },
+          {
+            key: "splitio",
+            title: "Split.io",
+            link: "/destinations/testing-and-personalization/splitio/",
+            content: [],
+          },
+          {
+            key: "statsig",
+            title: "Statsig",
+            link: "/destinations/testing-and-personalization/statsig/",
+            content: [],
+          },
+          {
+            key: "vwo-beta-visual-website-optimizer",
+            title: "VWO (Visual Website Optimizer)",
+            link:
+              "/destinations/testing-and-personalization/vwo-beta-visual-website-optimizer/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "advertising",
+        title: "Advertising",
+        link: "/destinations/advertising/",
+        content: [
+          {
+            key: "bingads",
+            title: "Bing Ads",
+            link: "/destinations/advertising/bingads/",
+            content: [],
+          },
+          {
+            key: "criteo",
+            title: "Criteo",
+            link: "/destinations/advertising/criteo/",
+            content: [],
+          },
+          {
+            key: "dcm-floodlight",
+            title: "DCM Floodlight",
+            link: "/destinations/advertising/dcm-floodlight/",
+            content: [
             {
-                title: "Warehouse Schema",
-                link: "/destinations/warehouse-destinations/warehouse-schema/",
-                content: []
-            },
-            {
-                title: "JSON Column Support",
-                link: "/destinations/warehouse-destinations/json-column-support/",
-                content: []
-            },
-            {
-                title: "FAQ",
-                link: "/destinations/warehouse-destinations/faq/",
-                content: []
-            },
-            {
-                title: "Amazon Redshift",
-                sectionTitle: "Warehouse Integrations",
-                link: "/destinations/warehouse-destinations/redshift/",
-                content: []
-            },
-            {
-                title: "Amazon S3 Data Lake",
-                link: "/destinations/warehouse-destinations/s3-datalake/",
-                content: []
-            },
-            {
-                title: "Azure Synapse",
-                link: "/destinations/warehouse-destinations/azure-synapse/",
-                content: []
-            },
-            {
-                title: "Azure Data Lake ",
-                link: "/destinations/warehouse-destinations/azure-datalake/",
-                content: []
-            }, {
-                title: "ClickHouse",
-                link: "/destinations/warehouse-destinations/clickhouse/",
-                content: []
-            }, {
-                title: "Databricks Delta Lake",
-                link: "/destinations/warehouse-destinations/delta-lake/",
-                content: []
-            }, {
-                title: "Google BigQuery",
-                link: "/destinations/warehouse-destinations/bigquery/",
-                content: []
-            }, {
-                title: "Google Cloud Storage Data Lake ",
-                link: "/destinations/warehouse-destinations/gcs-datalake/",
-                content: []
-            }, {
-                title: "Microsoft SQL Server",
-                link: "/destinations/warehouse-destinations/sql-server/",
-                content: []
-            }, {
-                title: "PostgreSQL",
-                link: "/destinations/warehouse-destinations/postgresql/",
-                content: []
-            }, {
-                title: "Snowflake",
-                link: "/destinations/warehouse-destinations/snowflake/",
-                content: []
-            },
-        ]
-    },
-    {
+                key: "setting-up-dcm-floodlight-in-rudderstack",
+                title: "Setting up DCM Floodlight",
+                link:
+                  "/destinations/advertising/dcm-floodlight/setting-up-dcm-floodlight-in-rudderstack/",
+                content: [],
+              },
+              {
+                key: "dcm-floodlight-cloud-mode",
+                title: "Cloud Mode",
+                link:
+                  "/destinations/advertising/dcm-floodlight/dcm-floodlight-cloud-mode/",
+                content: [],
+              },
+               {
+                key: "dcm-floodlight-device-mode",
+                title: "Device Mode",
+                link:
+                  "/destinations/advertising/dcm-floodlight/dcm-floodlight-device-mode/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "facebook-app-events",
+            title: "Facebook App Events",
+            link: "/destinations/advertising/facebook-app-events/",
+            content: [],
+          },
+          {
+            key: "fb-custom-audience",
+            title: "Facebook Custom Audience",
+            link: "/destinations/advertising/fb-custom-audience/",
+            content: [],
+          },
+          {
+            key: "fb-pixel",
+            title: "Facebook Pixel",
+            link: "/destinations/advertising/fb-pixel/",
+            content: [],
+          },
+          {
+            key: "g-ads-gtag",
+            title: "Google Ads (gtag.js)",
+            link: "/destinations/advertising/g-ads-gtag/",
+            content: [],
+          },
+          {
+            key: "google-adwords-enhanced-conversions",
+            title: "Google Ads Enhanced Conversions",
+            link:
+              "/destinations/advertising/google-adwords-enhanced-conversions/",
+            content: [],
+          },
+          {
+            key: "google-adwords-remarketing-list",
+            title: "Google Ads Remarketing Lists (Customer Match)",
+            link: "/destinations/advertising/google-adwords-remarketing-list/",
+            content: [],
+          },
+          {
+            key: "linkedin-insight-tag",
+            title: "LinkedIn Insight Tag",
+            link: "/destinations/advertising/linkedin-insight-tag/",
+            content: [],
+          },
+          {
+            key: "lotame",
+            title: "Lotame",
+            link: "/destinations/advertising/lotame/",
+            content: [],
+          },
+          {
+            key: "pinterest-ads",
+            title: "Pinterest Tag",
+            link: "/destinations/advertising/pinterest-ads/",
+            content: [],
+          },
+          {
+            key: "reddit-pixel",
+            title: "Reddit Pixel",
+            link: "/destinations/advertising/reddit-pixel/",
+            content: [],
+          },
+          {
+            key: "snapchat-conversion",
+            title: "Snapchat Conversion",
+            link: "/destinations/advertising/snapchat-conversion/",
+            content: [],
+          },
+          {
+            key: "snap-pixel",
+            title: "Snap Pixel",
+            link: "/destinations/advertising/snap-pixel/",
+            content: [],
+          },
+          {
+            key: "tiktok-ads",
+            title: "TikTok Ads",
+            link: "/destinations/advertising/tiktok-ads/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "analytics",
+        title: "Analytics",
+        link: "/destinations/analytics/",
+        content: [
+          {
+            key: "adobe-analytics",
+            title: "Adobe Analytics",
+            link: "/destinations/analytics/adobe-analytics/",
+            content: [
+              {
+                key: "setting-up-adobe-analytics-in-rudderstack",
+                title: "Setting Up Adobe Analytics in RudderStack",
+                link:
+                  "/destinations/analytics/adobe-analytics/setting-up-adobe-analytics-in-rudderstack/",
+                content: [],
+              },
+              {
+                key: "adobe-analytics-web-device-mode",
+                title: "Web Device Mode Settings",
+                link:
+                  "/destinations/analytics/adobe-analytics/adobe-analytics-web-device-mode/",
+                content: [],
+              },
+              {
+                key: "adobe-analytics-mobile-device-mode",
+                title: "Mobile Device Mode Settings",
+                link:
+                  "/destinations/analytics/adobe-analytics/adobe-analytics-mobile-device-mode/",
+                content: [],
+              },
+              {
+                key: "adobe-analytics-heartbeat",
+                title: "Adobe Analytics Heartbeat Measurement",
+                link:
+                  "/destinations/analytics/adobe-analytics/adobe-analytics-heartbeat/",
+                content: [],
+              },
+              {
+                key: "e-commerce-events",
+                title: "E-commerce Events",
+                link:
+                  "/destinations/analytics/adobe-analytics/e-commerce-events/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "amplitude",
+            title: "Amplitude",
+            link: "/destinations/analytics/amplitude/",
+            content: [],
+          },
+          {
+            key: "aws-personalize",
+            title: "AWS Personalize",
+            link: "/destinations/analytics/aws-personalize/",
+            content: [],
+          },
+          {
+            key: "chartbeat",
+            title: "Chartbeat",
+            link: "/destinations/analytics/chartbeat/",
+            content: [],
+          },
+          {
+            key: "firebase",
+            title: "Firebase",
+            link: "/destinations/analytics/firebase/",
+            content: [],
+          },
+          {
+            key: "fullstory",
+            title: "FullStory",
+            link: "/destinations/analytics/fullstory/",
+            content: [],
+          },
+          {
+            key: "google-analytics-ga",
+            title: "Google Analytics",
+            link: "/destinations/analytics/google-analytics-ga/",
+            content: [],
+          },
+          {
+            key: "google-analytics-4",
+            title: "Google Analytics 4",
+            link: "/destinations/analytics/google-analytics-4/",
+            content: [
+              {
+                key: "setting-up-google-analytics-4-in-rudderstack",
+                title: "Setting up Google Analytics 4",
+                link:
+                  "/destinations/analytics/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/",
+                content: [],
+              },
+              {
+                key: "google-analytics-4-cloud-mode",
+                title: "Cloud Mode",
+                link:
+                  "/destinations/analytics/google-analytics-4/google-analytics-4-cloud-mode/",
+                content: [],
+              },
+              {
+                key: "google-analytics-4-device-mode",
+                title: "Device Mode",
+                link:
+                  "/destinations/analytics/google-analytics-4/google-analytics-4-device-mode/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "google-analytics-360",
+            title: "Google Analytics 360",
+            link: "/destinations/analytics/google-analytics-360/",
+            content: [],
+          },
+          {
+            key: "heap.io",
+            title: "Heap.io",
+            link: "/destinations/analytics/heap.io/",
+            content: [],
+          },
+          {
+            key: "hotjar",
+            title: "Hotjar",
+            link: "/destinations/analytics/hotjar/",
+            content: [],
+          },
+          {
+            key: "indicative",
+            title: "Indicative",
+            link: "/destinations/analytics/indicative/",
+            content: [],
+          },
+          {
+            key: "keen",
+            title: "Keen.io",
+            link: "/destinations/analytics/keen/",
+            content: [],
+          },
+          {
+            key: "kissmetrics",
+            title: "Kissmetrics",
+            link: "/destinations/analytics/kissmetrics/",
+            content: [],
+          },
+          {
+            key: "kubit",
+            title: "Kubit",
+            link: "/destinations/analytics/kubit/",
+            content: [],
+          },
+          {
+            key: "lytics",
+            title: "Lytics",
+            link: "/destinations/analytics/lytics/",
+            content: [],
+          },
+          {
+            key: "mixpanel",
+            title: "Mixpanel",
+            link: "/destinations/analytics/mixpanel/",
+            content: [],
+          },
+          {
+            key: "new-relic",
+            title: "New Relic",
+            link: "/destinations/analytics/new-relic/",
+            content: [],
+          },
+          {
+            key: "pendo",
+            title: "Pendo",
+            link: "/destinations/analytics/pendo/",
+            content: [],
+          },
+          {
+            key: "posthog",
+            title: "PostHog",
+            link: "/destinations/analytics/posthog/",
+            content: [],
+          },
+          {
+            key: "profitwell",
+            title: "Profitwell",
+            link: "/destinations/analytics/profitwell/",
+            content: [
+              {
+                key: "profitwell-cloud-mode",
+                title: "Cloud Mode",
+                link:
+                  "/destinations/analytics/profitwell/profitwell-cloud-mode/",
+                content: [],
+              },
+              {
+                key: "profitwell-web-device-mode",
+                title: "Device Mode",
+                link:
+                  "/destinations/analytics/profitwell/profitwell-web-device-mode/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "quantummetric",
+            title: "Quantum Metric",
+            link: "/destinations/analytics/quantummetric/",
+            content: [],
+          },
+          {
+            key: "singular",
+            title: "Singular",
+            link: "/destinations/analytics/singular/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "attribution",
+        title: "Attribution",
+        link: "/destinations/attribution/",
+        content: [
+          {
+            key: "adjust",
+            title: "Adjust",
+            link: "/destinations/attribution/adjust/",
+            content: [],
+          },
+          {
+            key: "appsflyer",
+            title: "AppsFlyer",
+            link: "/destinations/attribution/appsflyer/",
+            content: [],
+          },
+          {
+            key: "attribution",
+            title: "Attribution",
+            link: "/destinations/attribution/attribution/",
+            content: [],
+          },
+          {
+            key: "branchio",
+            title: "Branch",
+            link: "/destinations/attribution/branchio/",
+            content: [],
+          },
+          {
+            key: "kochava",
+            title: "Kochava",
+            link: "/destinations/attribution/kochava/",
+            content: [],
+          },
+          {
+            key: "tvsquared",
+            title: "TVSquared",
+            link: "/destinations/attribution/tvsquared/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "business-messaging",
+        title: "Business Messaging",
+        link: "/destinations/business-messaging/",
+        content: [
+          {
+            key: "intercom",
+            title: "Intercom",
+            link: "/destinations/business-messaging/intercom/",
+            content: [],
+          },
+          {
+            key: "kustomer",
+            title: "Kustomer",
+            link: "/destinations/business-messaging/kustomer/",
+            content: [],
+          },
+          {
+            key: "slack",
+            title: "Slack",
+            link: "/destinations/business-messaging/slack/",
+            content: [],
+          },
+          {
+            key: "trengo",
+            title: "Trengo",
+            link: "/destinations/business-messaging/trengo/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "continuous-integration",
+        title: "Continuous Integration",
+        link: "/destinations/continuous-integration/",
+        content: [
+          {
+            key: "appcenter",
+            title: "Visual Studio App Center",
+            link: "/destinations/continuous-integration/appcenter/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "crm",
+        title: "CRM",
+        link: "/destinations/crm/",
+        content: [
+          {
+            key: "delighted",
+            title: "Delighted",
+            link: "/destinations/crm/delighted/",
+            content: [],
+          },
+          {
+            key: "hubspot",
+            title: "HubSpot",
+            link: "/destinations/crm/hubspot/",
+            content: [],
+          },
+          {
+            key: "salesforce",
+            title: "Salesforce",
+            link: "/destinations/crm/salesforce/",
+            content: [],
+          },
+          {
+            key: "variance",
+            title: "Variance",
+            link: "/destinations/crm/variance/",
+            content: [],
+          },
+          {
+            key: "zendesk",
+            title: "Zendesk",
+            link: "/destinations/crm/zendesk/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "customer-data-platform",
+        title: "Customer Data Platforms",
+        link: "/destinations/customer-data-platform/",
+        content: [
+          {
+            key: "segment",
+            title: "Segment",
+            link: "/destinations/customer-data-platform/segment/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "error-reporting",
+        title: "Error Reporting",
+        link: "/destinations/error-reporting/",
+        content: [
+          {
+            key: "bugsnag",
+            title: "Bugsnag",
+            link: "/destinations/error-reporting/bugsnag/",
+            content: [],
+          },
+          {
+            key: "sentry",
+            title: "Sentry",
+            link: "/destinations/error-reporting/sentry/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "marketing",
+        title: "Marketing",
+        link: "/destinations/marketing/",
+        content: [
+          {
+            key: "activecampaign",
+            title: "ActiveCampaign",
+            link: "/destinations/marketing/activecampaign/",
+            content: [],
+          },
+          {
+            key: "adroll",
+            title: "AdRoll",
+            link: "/destinations/marketing/adroll/",
+            content: [],
+          },
+          {
+            key: "airship",
+            title: "Airship",
+            link: "/destinations/marketing/airship/",
+            content: [],
+          },
+          {
+            key: "appcues",
+            title: "Appcues",
+            link: "/destinations/marketing/appcues/",
+            content: [],
+          },
+          {
+            key: "attentive-tag",
+            title: "Attentive Tag",
+            link: "/destinations/marketing/attentive-tag/",
+            content: [],
+          },
+          {
+            key: "autopilot",
+            title: "Autopilot",
+            link: "/destinations/marketing/autopilot/",
+            content: [],
+          },
+          {
+            key: "blueshift",
+            title: "Blueshift",
+            link: "/destinations/marketing/blueshift/",
+            content: [],
+          },
+          {
+            key: "braze",
+            title: "Braze",
+            link: "/destinations/marketing/braze/",
+            content: [],
+          },
+          {
+            key: "clevertap",
+            title: "CleverTap",
+            link: "/destinations/marketing/clevertap/",
+            content: [],
+          },
+          {
+            key: "customer.io",
+            title: "Customer.io",
+            link: "/destinations/marketing/customer.io/",
+            content: [],
+          },
+          {
+            key: "drip",
+            title: "Drip",
+            link: "/destinations/marketing/drip/",
+            content: [
+              {
+                key: "setting-up-drip-in-rudderstack",
+                title: "Setting Up Drip in RudderStack",
+                link:
+                  "/destinations/marketing/drip/setting-up-drip-in-rudderstack/",
+                content: [],
+              },
+              {
+                key: "cloud-mode",
+                title: "Cloud Mode",
+                link: "/destinations/marketing/drip/drip-cloud-mode/",
+                content: [],
+              },
+              {
+                key: "device-mode",
+                title: "Device Mode",
+                link: "/destinations/marketing/drip/drip-web-device-mode/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "gainsight",
+            title: "Gainsight",
+            link: "/destinations/marketing/gainsight/",
+            content: [],
+          },
+          {
+            key: "gainsight-px",
+            title: "Gainsight PX",
+            link: "/destinations/marketing/gainsight-px/",
+            content: [],
+          },
+          {
+            key: "iterable",
+            title: "Iterable",
+            link: "/destinations/marketing/iterable/",
+            content: [],
+          },
+          {
+            key: "klaviyo",
+            title: "Klaviyo",
+            link: "/destinations/marketing/klaviyo/",
+            content: [],
+          },
+          {
+            key: "leanplum",
+            title: "Leanplum",
+            link: "/destinations/marketing/leanplum/",
+            content: [],
+          },
+          {
+            key: "mailchimp",
+            title: "Mailchimp",
+            link: "/destinations/marketing/mailchimp/",
+            content: [],
+          },
+          {
+            key: "marketo",
+            title: "Marketo",
+            link: "/destinations/marketing/marketo/",
+            content: [],
+          },
+          {
+            key: "marketo-lead-import",
+            title: "Marketo Lead Import",
+            link: "/destinations/marketing/marketo-lead-import/",
+            content: [],
+          },
+          {
+            key: "moengage",
+            title: "MoEngage",
+            link: "/destinations/marketing/moengage/",
+            content: [],
+          },
+          {
+            key: "ometria",
+            title: "Ometria",
+            link: "/destinations/marketing/ometria/",
+            content: [],
+          },
+          {
+            key: "post-affiliate-pro",
+            title: "Post Affiliate Pro",
+            link: "/destinations/marketing/post-affiliate-pro/",
+            content: [],
+          },
+          {
+            key: "qualtrics",
+            title: "Qualtrics",
+            link: "/destinations/marketing/qualtrics/",
+            content: [],
+          },
+          {
+            key: "revenue-cat",
+            title: "Revenue Cat",
+            link: "/destinations/marketing/revenue-cat/",
+            content: [],
+          },
+          {
+            key: "sfmc",
+            title: "Salesforce Marketing Cloud",
+            link: "/destinations/marketing/sfmc/",
+            content: [],
+          },
+          {
+            key: "pardot",
+            title: "Salesforce Pardot",
+            link: "/destinations/marketing/pardot/",
+            content: [],
+          },
+          {
+            key: "sendgrid",
+            title: "SendGrid",
+            link: "/destinations/marketing/sendgrid/",
+            content: [],
+          },
+          {
+            key: "userlist",
+            title: "Userlist",
+            link: "/destinations/marketing/userlist/",
+            content: [],
+          },
+           {
+            key: "webengage",
+            title: "WebEngage",
+            link: "/destinations/marketing/webengage/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "productivity",
+        title: "Productivity",
+        link: "/destinations/productivity/",
+        content: [
+          {
+            key: "google-sheets",
+            title: "Google Sheets",
+            link: "/destinations/productivity/google-sheets/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "storage-platforms",
+        title: "Storage Platforms",
+        link: "/destinations/storage-platforms/",
+        content: [
+          {
+            key: "amazon-s3",
+            title: "Amazon S3",
+            link: "/destinations/storage-platforms/amazon-s3/",
+            content: [],
+          },
+          {
+            key: "microsoft-azure-blob-storage",
+            title: "Azure Blob Storage",
+            link:
+              "/destinations/storage-platforms/microsoft-azure-blob-storage/",
+            content: [],
+          },
+          {
+            key: "digitalocean-spaces",
+            title: "DigitalOcean Spaces",
+            link: "/destinations/storage-platforms/digitalocean-spaces/",
+            content: [],
+          },
+          {
+            key: "google-cloud-storage",
+            title: "Google Cloud Storage",
+            link: "/destinations/storage-platforms/google-cloud-storage/",
+            content: [],
+          },
+          {
+            key: "minio",
+            title: "MinIO",
+            link: "/destinations/storage-platforms/minio/",
+            content: [],
+          },
+          {
+            key: "redis",
+            title: "Redis",
+            link: "/destinations/storage-platforms/redis/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "streaming-platforms",
+        title: "Streaming Platforms",
+        link: "/destinations/streaming-platforms/",
+        content: [
+          {
+            key: "amazon-eventbridge",
+            title: "Amazon EventBridge",
+            link: "/destinations/streaming-platforms/amazon-eventbridge/",
+            content: [],
+          },
+          {
+            key: "amazon-kinesis",
+            title: "Amazon Kinesis",
+            link: "/destinations/streaming-platforms/amazon-kinesis/",
+            content: [],
+          },
+          {
+            key: "amazon-kinesis-firehose",
+            title: "Amazon Firehose",
+            link: "/destinations/streaming-platforms/amazon-kinesis-firehose/",
+            content: [],
+          },
+          {
+            key: "kafka",
+            title: "Apache Kafka",
+            link: "/destinations/streaming-platforms/kafka/",
+            content: [],
+          },
+          {
+            key: "azure-event-hubs",
+            title: "Azure Event Hubs",
+            link: "/destinations/streaming-platforms/azure-event-hubs/",
+            content: [],
+          },
+          {
+            key: "biquery-stream",
+            title: "BigQuery Stream",
+            link: "/destinations/streaming-platforms/bigquery-stream/",
+            content: [],
+          },
+          {
+            key: "confluent-cloud",
+            title: "Confluent Cloud",
+            link: "/destinations/streaming-platforms/confluent-cloud/",
+            content: [],
+          },
+          {
+            key: "google-pub-sub",
+            title: "Google Pub/Sub",
+            link: "/destinations/streaming-platforms/google-pub-sub/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "tag-managers",
+        title: "Tag Managers",
+        link: "/destinations/tag-managers/",
+        content: [
+          {
+            key: "google-tag-manager",
+            title: "Google Tag Manager",
+            link: "/destinations/tag-managers/google-tag-manager/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "webhooks",
         title: "Webhooks",
         link: "/destinations/webhooks/",
-        content: []
-    },
-    {
-        title: "Connection Modes: Cloud Mode vs. Device Mode",
-        link: "/destinations/rudderstack-connection-modes/",
-        content: []
-    },
-    // Features section
-    {
-        title: "Transformations",
-        sectionTitle: "Features",
-        link: "/features/transformations/",
-        content: []
-    },
-    {
-        title: "Data Governance",
-        link: "/features/data-governance/",
-        content: [
-            {
-                title: "RudderTyper",
-                link: "/features/data-governance/ruddertyper/",
-                content: []
-            }, {
-                title: "Tracking Plans",
-                link: "/features/data-governance/tracking-plans/",
-                content: [
-                    {
-                        title: "Tracking Plan Spreadsheet",
-                        link: "/features/data-governance/tracking-plans/tracking-plan-spreadsheet/",
-                        content: []
-                    },
-                ]
-            },
-        ]
-    }, {
-        title: "Identity Resolution",
-        link: "/features/identity-resolution/",
-        content: []
-    },
-    // Event Spec section
-    {
-        title: "Standard Events",
-        sectionTitle: "Events Spec",
-        link: "/event-spec/standard-events/",
-        content: [
-            {
-                title: "Identify",
-                link: "/event-spec/standard-events/identify/",
-                content: []
-            },
-            {
-                title: "Page",
-                link: "/event-spec/standard-events/page/",
-                content: []
-            },
-            {
-                title: "Screen",
-                link: "/event-spec/standard-events/screen/",
-                content: []
-            },
-            {
-                title: "Track",
-                link: "/event-spec/standard-events/track/",
-                content: []
-            },
-            {
-                title: "Group",
-                link: "/event-spec/standard-events/group/",
-                content: []
-            },
-            {
-                title: "Alias",
-                link: "/event-spec/standard-events/alias/",
-                content: []
-            },
-            {
-                title: "Common Fields",
-                link: "/event-spec/standard-events/common-fields/",
-                content: []
-            },
-            {
-                title: "Application Lifecycle Events",
-                link: "/event-spec/standard-events/application-lifecycle-events-spec/",
-                content: []
-            },
-            {
-                title: "Video Events",
-                link: "/event-spec/standard-events/video-events-spec/",
-                content: []
-            },
-        ]
-    },
-    {
-        title: "E-commerce Events",
-        link: "/event-spec/ecommerce-events-spec/",
-        content: [
-            {
-                title: "Browsing",
-                link: "/event-spec/ecommerce-events-spec/browsing/",
-                content: []
-            },
-            {
-                title: "Ordering",
-                link: "/event-spec/ecommerce-events-spec/ordering/",
-                content: []
-            },
-            {
-                title: "Wishlisting",
-                link: "/event-spec/ecommerce-events-spec/wishlisting/",
-                content: []
-            },
-            {
-                title: "Promotions",
-                link: "/event-spec/ecommerce-events-spec/promotions/",
-                content: []
-            },
-            {
-                title: "Coupons",
-                link: "/event-spec/ecommerce-events-spec/coupons/",
-                content: []
-            },
-            {
-                title: "Sharing",
-                link: "/event-spec/ecommerce-events-spec/sharing/",
-                content: []
-            },
-            {
-                title: "Reviewing",
-                link: "/event-spec/ecommerce-events-spec/reviewing/",
-                content: []
-            },
-        ]
-    },
-    // API section
-    {
-        title: "HTTP API",
-        sectionTitle: "API",
-        link: "/api/http-api/",
-        content: []
-    },
-    {
-        title: "Pixel API",
-        link: "/api/pixel-api-spec/",
-        content: []
-    }, {
-        title: "Tracking Plan API",
-        link: "/api/tracking-plan-api/",
-        content: []
-    }, {
-        title: "Transformation API",
-        link: "/api/transformation-api/",
-        content: []
-    }, {
+        content: [],
+      },
+    ],
+  },
+  {
+    key: "data-warehouse-integrations",
+    title: "Warehouse Destinations",
+    link: "/data-warehouse-integrations/",
+    content: [
+      {
+        key: "amazon-redshift",
+        title: "Amazon Redshift",
+        link: "/data-warehouse-integrations/amazon-redshift/",
+        content: [],
+      },
+      {
+        key: "s3-datalake",
+        title: "Amazon S3 Data Lake",
+        link: "/data-warehouse-integrations/s3-datalake/",
+        content: [],
+      },
+      {
+        key: "azure-synapse",
+        title: "Azure Synapse",
+        link: "/data-warehouse-integrations/azure-synapse/",
+        content: [],
+      },
+      {
+        key: "azure-datalake",
+        title: "Azure Data Lake ",
+        link: "/data-warehouse-integrations/azure-datalake/",
+        content: [],
+      },
+      {
+        key: "clickhouse",
+        title: "ClickHouse",
+        link: "/data-warehouse-integrations/clickhouse/",
+        content: [],
+      },
+      {
+        key: "delta-lake",
+        title: "Databricks Delta Lake",
+        link: "/data-warehouse-integrations/delta-lake/",
+        content: [],
+      },
+      {
+        key: "google-bigquery",
+        title: "Google BigQuery",
+        link: "/data-warehouse-integrations/google-bigquery/",
+        content: [],
+      },
+      {
+        key: "gcs-datalake",
+        title: "Google Cloud Storage Data Lake ",
+        link: "/data-warehouse-integrations/gcs-datalake/",
+        content: [],
+      },
+      {
+        key: "microsoft-sql-server",
+        title: "Microsoft SQL Server",
+        link: "/data-warehouse-integrations/microsoft-sql-server/",
+        content: [],
+      },
+      {
+        key: "postgresql",
+        title: "PostgreSQL",
+        link: "/data-warehouse-integrations/postgresql/",
+        content: [],
+      },
+      {
+        key: "snowflake",
+        title: "Snowflake",
+        link: "/data-warehouse-integrations/snowflake/",
+        content: [],
+      },
+      {
+        key: "warehouse-schemas",
+        title: "Warehouse Schema",
+        link: "/data-warehouse-integrations/warehouse-schemas/",
+        content: [],
+      },
+      {
+        key: "warehouse-faqs",
+        title: "FAQ",
+        link: "/data-warehouse-integrations/warehouse-faqs/",
+        content: [],
+      },
+    ],
+  },
+  {
+    key: "transformations",
+    title: "Transformations",
+    link: "/transformations/",
+    content: [
+      {
+        key: "rudderstack-transformation-api",
+        title: "Transformations API",
+        link: "/transformations/rudderstack-transformation-api/",
+        content: [],
+      },
+      {
+        key: "faq",
+        title: "FAQ",
+        link: "/transformations/faq/",
+        content: [],
+      },
+    ],
+  },
+  {
+    key: "data-governance",
+    title: "Data Governance",
+    link: "/data-governance/",
+    content: [
+      {
+        key: "rudderstack-data-governance-api",
         title: "Data Governance API",
-        link: "/api/data-governance-api/",
-        content: []
-    },
-    {
+        link: "/data-governance/rudderstack-data-governance-api/",
+        content: [],
+      },
+      {
+        key: "ruddertyper",
+        title: "RudderTyper",
+        link: "/data-governance/ruddertyper/",
+        content: [],
+      },
+      {
+        key: "tracking-plans",
+        title: "Tracking Plans",
+        link: "/data-governance/tracking-plans/",
+        content: [
+          {
+            key: "tracking-plan-spreadsheet",
+            title: "Tracking Plan Spreadsheet",
+            link: "/data-governance/tracking-plans/tracking-plan-spreadsheet/",
+            content: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    key: "identity-resolution",
+    title: "Identity Resolution",
+    link: "/identity-resolution/",
+    content: [],
+  },
+  {
+    key: "rudderstack-api",
+    title: "RudderStack API",
+    link: "/rudderstack-api/",
+    content: [
+      {
+        key: "personal-access-tokens",
+        title: "Personal Access Tokens",
+        link: "/rudderstack-api/personal-access-tokens/",
+        content: [],
+      },
+      {
+        key: "api-specification",
+        title: "API Specification",
+        link: "/rudderstack-api/api-specification/",
+        content: [
+          {
+            key: "rudderstack-events-specification",
+            title: "RudderStack Events Specification",
+            link: "/rudderstack-api/api-specification/rudderstack-spec/",
+            content: [
+              {
+                key: "identify",
+                title: "Identify",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-spec/identify/",
+                content: [],
+              },
+              {
+                key: "page",
+                title: "Page",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-spec/page/",
+                content: [],
+              },
+              {
+                key: "screen",
+                title: "Screen",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-spec/screen/",
+                content: [],
+              },
+              {
+                key: "track",
+                title: "Track",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-spec/track/",
+                content: [],
+              },
+              {
+                key: "group",
+                title: "Group",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-spec/group/",
+                content: [],
+              },
+              {
+                key: "alias",
+                title: "Alias",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-spec/alias/",
+                content: [],
+              },
+              {
+                key: "common-fields",
+                title: "Common Fields",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-spec/common-fields/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "rudderstack-ecommerce-events-specification",
+            title: "E-commerce Events",
+            link:
+              "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/",
+            content: [
+              {
+                key: "browsing",
+                title: "Browsing",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/browsing/",
+                content: [],
+              },
+              {
+                key: "promotions",
+                title: "Promotions",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/promotions/",
+                content: [],
+              },
+              {
+                key: "ordering",
+                title: "Ordering",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/ordering/",
+                content: [],
+              },
+              {
+                key: "coupons",
+                title: "Coupons",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/coupons/",
+                content: [],
+              },
+              {
+                key: "wishlisting",
+                title: "Wishlist",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/wishlisting/",
+                content: [],
+              },
+              {
+                key: "sharing",
+                title: "Sharing",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/sharing/",
+                content: [],
+              },
+              {
+                key: "reviewing",
+                title: "Reviewing",
+                link:
+                  "/rudderstack-api/api-specification/rudderstack-ecommerce-events-specification/reviewing/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "application-lifecycle-events-spec",
+            title: "Application Lifecycle Events",
+            link:
+              "/rudderstack-api/api-specification/application-lifecycle-events-spec/",
+            content: [],
+          },
+          {
+            key: "video-specification",
+            title: "Video Events",
+            link: "/rudderstack-api/api-specification/video-specification/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "data-regulation-api",
         title: "Data Regulation API",
-        link: "/api/data-regulation-api/",
-        content: []
-    },
-    {
+        link: "/rudderstack-api/data-regulation-api/",
+        content: [],
+      },
+      {
+        key: "tracking-plan-api",
+        title: "Tracking Plan API",
+        link: "/rudderstack-api/tracking-plan-api/",
+        content: [],
+      },
+      {
+        key: "http-api",
+        title: "HTTP API",
+        link: "/rudderstack-api/http-api/",
+        content: [],
+      },
+      {
+        key: "pixel-api-spec",
+        title: "Pixel API",
+        link: "/rudderstack-api/pixel-api-spec/",
+        content: [],
+      },
+      {
+        key: "test-api",
         title: "Test API",
-        link: "/api/test-api/",
-        content: []
-    },
-    // Guides section
-    {
+        link: "/rudderstack-api/test-api/",
+        content: [],
+      },
+    ],
+  },
+  {
+    key: "rudderstack-open-source",
+    title: "RudderStack Open Source",
+    link: "/rudderstack-open-source/",
+    content: [
+      {
+        key: "control-plane-lite",
+        title: "Control Plane Setup",
+        link: "/rudderstack-open-source/control-plane-lite/",
+        content: [],
+      },
+      {
+        key: "installing-and-setting-up-rudderstack",
+        title: "Data Plane Setup",
+        link: "/rudderstack-open-source/installing-and-setting-up-rudderstack/",
+        content: [
+          {
+            key: "docker",
+            title: "Docker",
+            link:
+              "/rudderstack-open-source/installing-and-setting-up-rudderstack/docker/",
+            content: [],
+          },
+          {
+            key: "kubernetes",
+            title: "Kubernetes",
+            link:
+              "/rudderstack-open-source/installing-and-setting-up-rudderstack/kubernetes/",
+            content: [],
+          },
+          {
+            key: "developer-machine-setup",
+            title: "Developer Machine Setup",
+            link:
+              "/rudderstack-open-source/installing-and-setting-up-rudderstack/developer-machine-setup/",
+            content: [],
+          },
+          {
+            key: "sending-test-events",
+            title: "Sending Test Events",
+            link:
+              "/rudderstack-open-source/installing-and-setting-up-rudderstack/sending-test-events/",
+            content: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    key: "user-guides",
+    title: "User Guides",
+    link: "/user-guides/",
+    content: [
+      {
+        key: "migration-guides",
         title: "Migration Guides",
-        sectionTitle: "User Guides",
         link: "/user-guides/migration-guides/",
         content: [
-            {
-                title: "Migrating from Segment to RudderStack",
-                link: "/user-guides/migration-guides/rudderstack-migration-guide/",
-                content: []
-            }, {
-                title: "Migrating Your Warehouse Destination from Segment to RudderStack",
-                link: "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/",
-                content: []
-            },
-        ]
-    }, {
+          {
+            key: "blendo-rudderstack-migration",
+            title: "Migrating from Blendo to RudderStack",
+            link: "/user-guides/migration-guides/blendo-rudderstack-migration/",
+            content: [],
+          },
+          {
+            key: "rudderstack-migration-guide",
+            title: "Migrating from Segment to RudderStack",
+            link: "/user-guides/migration-guides/rudderstack-migration-guide/",
+            content: [],
+          },
+          {
+            key:
+              "how-to-migrate-warehouse-destination-from-segment-to-rudderstack",
+            title:
+              "Migrating Your Warehouse Destination from Segment to RudderStack",
+            link:
+              "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "administrators-guide",
         title: "Administator's Guides",
         link: "/user-guides/administrators-guide/",
         content: [
-            {
-                title: "OneLogin SSO Setup",
-                link: "/user-guides/administrators-guide/onelogin-sso/",
-                content: []
-            },
-            {
-                title: "Okta SSO Setup",
-                link: "/user-guides/administrators-guide/okta-sso/",
-                content: []
-            },
-            {
-                title: "RudderStack Grafana Dashboard",
-                link: "/user-guides/administrators-guide/rudderstack-grafana-dashboard/",
-                content: []
-            },
-            {
-                title: "Software Releases",
-                link: "/user-guides/administrators-guide/software-releases/",
-                content: []
-            }, {
-                title: "High Availability",
-                link: "/user-guides/administrators-guide/high-availability/",
-                content: []
-            }, {
-                title: "Horizontal Scaling",
-                link: "/user-guides/administrators-guide/horizontal-scaling-1/",
-                content: []
-            }, {
-                title: "Event Replay",
-                link: "/user-guides/administrators-guide/event-replay/",
-                content: []
-            }, {
-                title: "Bucket Configuration Settings for Event Backups",
-                link: "/user-guides/administrators-guide/bucket-configuration-settings/",
-                content: []
-            }, {
-                title: "Alerting Guide",
-                link: "/user-guides/administrators-guide/alerting/",
-                content: []
-            }, {
-                title: "Infrastructure Provisioning",
-                link: "/user-guides/administrators-guide/infra-provisioning/",
-                content: []
-            }, {
-                title: "Monitoring and Metrics",
-                link: "/user-guides/administrators-guide/monitoring-and-metrics/",
-                content: []
-            }, {
-                title: "Configuration Parameters",
-                link: "/user-guides/administrators-guide/config-parameters/",
-                content: []
-            }, {
-                title: "Troubleshooting Guide",
-                link: "/user-guides/administrators-guide/admin-troubleshooting-guide/",
-                content: []
-            },
-        ]
-    }, {
+          {
+            key: "onelogin-sso",
+            title: "OneLogin SSO Setup",
+            link: "/user-guides/administrators-guide/onelogin-sso/",
+            content: [],
+          },
+          {
+            key: "okta-sso",
+            title: "Okta SSO Setup",
+            link: "/user-guides/administrators-guide/okta-sso/",
+            content: [],
+          },
+          {
+            key: "rudderstack-grafana-dashboard",
+            title: "RudderStack Grafana Dashboard",
+            link:
+              "/user-guides/administrators-guide/rudderstack-grafana-dashboard/",
+            content: [],
+          },
+          {
+            key: "software-releases",
+            title: "Software Releases",
+            link: "/user-guides/administrators-guide/software-releases/",
+            content: [],
+          },
+          {
+            key: "high-availability",
+            title: "High Availability",
+            link: "/user-guides/administrators-guide/high-availability/",
+            content: [],
+          },
+          {
+            key: "horizontal-scaling-1",
+            title: "Horizontal Scaling",
+            link: "/user-guides/administrators-guide/horizontal-scaling-1/",
+            content: [],
+          },
+          {
+            key: "event-replay",
+            title: "Event Replay",
+            link: "/user-guides/administrators-guide/event-replay/",
+            content: [],
+          },
+          {
+            key: "bucket-configuration-settings",
+            title: "Bucket Configuration Settings for Event Backups",
+            link:
+              "/user-guides/administrators-guide/bucket-configuration-settings/",
+            content: [],
+          },
+          {
+            key: "alerting",
+            title: "Alerting Guide",
+            link: "/user-guides/administrators-guide/alerting/",
+            content: [],
+          },
+          {
+            key: "infra-provisioning",
+            title: "Infrastructure Provisioning",
+            link: "/user-guides/administrators-guide/infra-provisioning/",
+            content: [],
+          },
+          {
+            key: "monitoring-and-metrics",
+            title: "Monitoring and Metrics",
+            link: "/user-guides/administrators-guide/monitoring-and-metrics/",
+            content: [],
+          },
+          {
+            key: "config-parameters",
+            title: "Configuration Parameters",
+            link: "/user-guides/administrators-guide/config-parameters/",
+            content: [],
+          },
+          {
+            key: "admin-troubleshooting-guide",
+            title: "Troubleshooting Guide",
+            link:
+              "/user-guides/administrators-guide/admin-troubleshooting-guide/",
+            content: [],
+          },
+        ],
+      },
+      {
+        key: "how-to-guides",
         title: "How-to Guides",
         link: "/user-guides/how-to-guides/",
         content: [
-            {
-                title: "How to Configure a Destination via the Event Payload",
-                link: "/user-guides/how-to-guides/dynamic-destination-configuration/",
-                content: []
-            },
-            {
-                title: "How to Submit an Integration Pull Request",
-                link: "/user-guides/how-to-guides/how-to-submit-an-integration-pull-request/",
-                content: []
-            },
-            {
-                title: "How to Use Custom Domains",
-                link: "/user-guides/how-to-guides/custom-domains/",
-                content: []
-            },
-            {
-                title: "How to Use AWS Lambda Functions with RudderStack",
-                link: "/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack/",
-                content: []
-            }, {
-                title: "How to Debug Live Destination Events",
-                link: "/user-guides/how-to-guides/live-destination-event-debugger/",
-                content: []
-            }, {
-                title: "How to Filter Events using Different Methods",
-                link: "/user-guides/how-to-guides/filter-events/",
-                content: []
-            }, {
-                title: "How to Filter Selective Destinations using JavaScript SDK",
-                link: "/user-guides/how-to-guides/how-to-filter-selective-destinations/",
-                content: []
-            }, {
-                title: "How to Create a New Destination Transformation for RudderStack",
-                link: "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/",
+          {
+            key: "dynamic-destination-configuration",
+            title: "How to Configure a Destination via the Event Payload",
+            link:
+              "/user-guides/how-to-guides/dynamic-destination-configuration/",
+            content: [],
+          },
+          {
+            key: "how-to-submit-an-integration-pull-request",
+            title: "How to Submit an Integration Pull Request",
+            link:
+              "/user-guides/how-to-guides/how-to-submit-an-integration-pull-request/",
+            content: [],
+          },
+          {
+            key: "custom-domains",
+            title: "How to Use Custom Domains",
+            link: "/user-guides/how-to-guides/custom-domains/",
+            content: [],
+          },
+          {
+            key: "switch-to-rudderstack-hosted-data-plane",
+            title: "How to Switch from Self-hosted to RudderStack-hosted Data Plane",
+            link: "/user-guides/how-to-guides/switch-to-rudderstack-hosted-data-plane/",
+            content: [],
+          },
+          {
+            key: "using-aws-lambda-functions-with-rudderstack",
+            title: "How to Use AWS Lambda Functions with RudderStack",
+            link:
+              "/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack/",
+            content: [],
+          },
+          {
+            key: "live-destination-event-debugger",
+            title: "How to Debug Live Destination Events",
+            link: "/user-guides/how-to-guides/live-destination-event-debugger/",
+            content: [],
+          },
+          {
+            key: "filter-events",
+            title: "How to Filter Events using Different Methods",
+            link: "/user-guides/how-to-guides/filter-events/",
+            content: [],
+          },
+          {
+            key: "how-to-filter-selective-destinations",
+            title: "How to Filter Selective Destinations using JavaScript SDK",
+            link:
+              "/user-guides/how-to-guides/how-to-filter-selective-destinations/",
+            content: [],
+          },
+          {
+            key: "create-a-new-destination-transformer-for-rudder",
+            title:
+              "How to Create a New Destination Transformation for RudderStack",
+            link:
+              "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/",
+            content: [
+              {
+                key:
+                  "best-practices-for-coding-transformation-functions-in-javascript",
+                title:
+                  "Best Practices for Coding Transformation Functions in JavaScript",
+                link:
+                  "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "implement-native-js-sdk-integration",
+            title: "How to Implement a Native JavaScript SDK Integration",
+            link:
+              "/user-guides/how-to-guides/implement-native-js-sdk-integration/",
+            content: [
+              {
+                key: "add-device-mode-sdk-to-js",
+                title:
+                  "How to Add a Device Mode SDK to RudderStack JavaScript SDK",
+                link:
+                  "/user-guides/how-to-guides/implement-native-js-sdk-integration/add-device-mode-sdk-to-js/",
+                content: [],
+              },
+            ],
+          },
+          {
+            key: "developing-integrations-for-rudderstack",
+            title: "How to Develop Integrations for RudderStack",
+            link:
+              "/user-guides/how-to-guides/developing-integrations-for-rudderstack/",
+            content: [],
+          },
+          {
+            key: "rudderstack-jamstack-integration",
+            title: "How to Integrate RudderStack with Your JAMstack Site",
+            link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/",
+            content: [
+              {
+                key: "rudderstack-angular-integration",
+                title: "Angular",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-angular-integration/",
                 content: [
-                    {
-                        title: "Best Practices for Coding Transformation Functions in JavaScript",
-                        link: "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript/",
-                        content: []
-                    },
-                ]
-            }, {
-                title: "How to Implement a Native JavaScript SDK Integration",
-                link: "/user-guides/how-to-guides/implement-native-js-sdk-integration/",
+
+                ],
+              },
+              {
+                key: "rudderstack-astro-integration",
+                title: "Astro.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-astro-integration/",
                 content: [
-                    {
-                        title: "How to Add a Device Mode SDK to RudderStack JavaScript SDK",
-                        link: "/user-guides/how-to-guides/implement-native-js-sdk-integration/add-device-mode-sdk-to-js/",
-                        content: []
-                    },
-                ]
-            }, {
-                title: "How to Develop Integrations for RudderStack",
-                link: "/user-guides/how-to-guides/developing-integrations-for-rudderstack/",
-                content: []
-            }, {
-                title: "How to Integrate RudderStack with Your JAMstack Site",
-                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/",
+
+                ],
+              },
+              {
+                key: "rudderstack-eleventy-integration",
+                title: "Eleventy",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-eleventy-integration/",
                 content: [
-                    {
-                        title: "Angular",
-                        link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-angular-integration/",
-                        content: []
-                    },
-                    {
-                        title: "Astro.js",
-                        link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-astro-integration/",
-                        content: []
-                    },
-                    {
-                        title: "Eleventy",
-                        link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-eleventy-integration/",
-                        content: []
-                    },
-                    {
-                        title: "Ember.js",
-                        link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-ember-integration/",
-                        content: []
-                    }, {
-                        title: "Gatsby",
-                        link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-gatsby-integration/",
-                        content: []
-                    }, {
-                        title: "Hugo",
-                        link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-hugo-integration/",
-                        content: []
-                    }, {
-                        title: "Jekyll",
-                        link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-jekyll-integration/",
-                        content: []
-                    }, {
-                        title: "Next.js",
-                        link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nextjs-integration/",
-                        content: []
-                    }, {
-                        title: "Nuxt.js",
-                        link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nuxtjs-integration/",
-                        content: []
-                    }, {
-                        title: "Svelte",
-                        link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-svelte-integration/",
-                        content: []
-                    }, {
-                        title: "Vue.js",
-                        link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-vue-integration/",
-                        content: []
-                    },
-                ]
-            },
-        ]
-    },
-    // Resources section
-    {
-        title: "RudderStack Architecture",
-        sectionTitle: "Resources",
-        link: "/resources/rudderstack-architecture/",
-        content: []
-    },
-    {
-        title: "Glossary",
-        link: "/resources/glossary/",
-        content: []
-    },
-    {
-        title: "FAQ",
-        link: "/resources/faq/",
-        content: []
-    },
-    {
-        title: "Community",
-        link: "/resources/community/",
-        content: []
-    },
+
+                ],
+              },
+              {
+                key: "rudderstack-ember-integration",
+                title: "Ember.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-ember-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-gatsby-integration",
+                title: "Gatsby",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-gatsby-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-hugo-integration",
+                title: "Hugo",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-hugo-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-jekyll-integration",
+                title: "Jekyll",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-jekyll-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-nextjs-integration",
+                title: "Next.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nextjs-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-nuxtjs-integration",
+                title: "Nuxt.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nuxtjs-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-svelte-integration",
+                title: "Svelte",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-svelte-integration/",
+                content: [
+
+                ],
+              },
+              {
+                key: "rudderstack-vue-integration",
+                title: "Vue.js",
+                link: "/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-vue-integration/",
+                content: [
+
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    key: "faqs",
+    title: "FAQ",
+    link: "/faqs/",
+    content: [],
+  },
 ];
