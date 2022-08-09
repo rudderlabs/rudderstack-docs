@@ -11,7 +11,7 @@ The steps in this guide assume that you are using the RudderStack-hosted control
 
 Follow the steps below to switch from self-hosted to RudderStack-hosted data plane:
 
-1. Update the `dataPlaneUrl` in all the SDKs to point to the RudderStack-hosted hosted data plane URL. Refer to the <Link to="/sources/sdks/">SDK documentation</Link> for details on how to obtain the data plane URL.
+1. Update the `dataPlaneUrl` parameter in all your SDK configurations to point to the RudderStack-hosted hosted data plane URL. Refer to the specific <Link to="/sources/sdks/">SDK documentation</Link> or this <Link to="/get-started/rudderstack-open-source/data-plane-setup/#what-is-a-data-plane-url-where-do-i-get-it">FAQ</Link> for details on obtaining the data plane URL.
 
 2. Verify that the self-hosted data plane is no longer getting any requests. One way is to check the load balancer metrics to verify if any requests are still received on your data plane.
 
