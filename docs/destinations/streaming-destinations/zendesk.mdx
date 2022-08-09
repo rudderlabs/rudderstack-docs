@@ -38,8 +38,8 @@ To successfully configure Zendesk as a destination, you will need to configure t
 * **Email**: Enter the email address used to log into your Zendesk account.
 * **API Token**: Enter the Zendesk API token used to authenticate the integration. To generate a new API token, refer to this <a href="https://support.zendesk.com/hc/en-us/articles/226022787-Generating-a-new-API-token-">Zendesk support article</a>.
 * **Zendesk Subdomain**: Enter your Zendesk subdomain excluding `.zendesk.com`.
-* **Create users as verified**: Enable this setting to create verified users in Zendesk. If this setting is enabled, RudderStack sends `verified` as `true` in the event payload and Zendesk skips the email verification for these users.
-* **Send Group calls without a User ID**: Enable this setting if you do not want to associate a particular user with a group. If this setting is enabled, the group will be created or updated only if `userId` is **not** present in the event.
+* **Create users as verified**: Enable this setting to create verified users in Zendesk. When enabled, RudderStack sends `verified` as `true` in the event payload and Zendesk skips the email verification for these users.
+* **Send Group calls without a User ID**: Enable this setting if you do not want to associate a particular user with a group. When enabled, RudderStack creates or updates a group only if `userId` is **not** present in the event.
 * **Enable Removing Users from Organizations**: Enable this setting to remove users from an organization via the `identify` call.
 
 <div class="infoBlock">
@@ -66,7 +66,7 @@ RudderStack persists the user details from the `identify` call for all the subse
 
 ### Supported mapping
 
-RudderStack maps the event properties to a subset of the standard Zendesk user attributes. The following table highlights the supported property mappings:
+RudderStack maps the following event properties to the standard Zendesk user attributes:
 
 | **RudderStack property**  | **Zendesk attribute**       | **Presence** | 
 | :--------------- | :---------------- | :------ |
@@ -85,10 +85,6 @@ RudderStack creates a new custom field in Zendesk for any other unmapped attribu
 <div class="infoBlock">
 The <code class="inline-code">organization_id</code> corresponds to the organization ID assigned by Zendesk.
 </div>
-
-### Verifying users at creation
-
-Enable the **Create users as verified** dashboard setting in RudderStack to create and register the verified users in Zendesk. Zendesk skips the email verification for these users.
 
 ### Removing users from an organization
 
@@ -113,13 +109,13 @@ rudderanalytics.identify("1hKOmRA4GRlm",{
 });
 ```
 
-The above `identify` call updates the user as well as removes them from the organization associated with the ID `900001329943`.
+The above `identify` call updates the user (if they exist) as well as removes them from the organization associated with the ID `900001329943`.
 
 RudderStack assumes a valid Zendesk `organization_id` in the `company.id` field. Then, it finds the organization corresponding to that ID and removes the user. 
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record the user actions along with any properties associated with them and send this information to Zendesk.
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record the user actions along with any associated properties and send this information to Zendesk.
 
 You need to first set the `userId` by calling `identify` before sending any `track` events to Zendesk. 
 
@@ -184,14 +180,18 @@ RudderStack creates a new custom field in Zendesk for any other unmapped attribu
 
 ### How RudderStack does the user-group association
 
-- If both `userId` and `groupId` are present in the `group` event, then RudderStack first finds the user with `email` present in the <Link to="/event-spec/standard-events/common-fields/#contextual-fields">`context.traits`</Link> object.
-- If `email` is absent, RudderStack creates the user. It will then find the organization associated with the `groupId` present in the payload. If `groupId` is absent too, RudderStack creates a new group and then does the user-group association.
-- If a user already exists, the `organizationId` will be associated with the user and all the user information will be sent for this call. 
+If both `userId` and `groupId` are present in the `group` event, then RudderStack first finds the user using the `email` field present in the <Link to="/event-spec/standard-events/common-fields/#contextual-fields">`context.traits`</Link> object.
+
+- If `email` is absent, RudderStack creates the user. It will then find the organization associated with the `groupId` present in the payload.
+- If `email` is present, then RudderStack associates the user with the `organizationId` and sends all the user information for this call.
+
+If `groupId` is absent in the event payload, RudderStack creates a new group in Zendesk and then does the user-group association.
 
 The above discussion can be summarized as follows:
 
 | `email` present? | `groupId` present? | Description | Expected behavior |
 | :----------| :--------| :-------| :-----------|
-| No | No | User and the organization do not exist in Zendesk | RudderStack creates a new user and organization and associates both. |
-| Yes | No |  User already exists in Zendesk but not the organization | RudderStack creates a new organization and associates the existing user information with it. |
-| No | Yes | Organization already exists in Zendesk but not the user | RudderStack creates a  new user and associates them with the organization. |
+| No | No | User and the organization do not exist in Zendesk. | RudderStack creates a new user and organization and associates both. |
+| Yes | No |  User already exists in Zendesk but not the organization. | RudderStack creates a new organization and associates the existing user information with it. |
+| No | Yes | Organization already exists in Zendesk but not the user. | RudderStack creates a  new user and associates them with the organization. |
+| Yes | Yes | Both the user and the organization exist in Zendesk. | RudderStack does the user-group association. |
