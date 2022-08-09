@@ -27,42 +27,74 @@ To know more about the Cloud mode in RudderStack, check out the <Link to="/desti
 
 ## Adding a transformation
 
-- Log into your [**RudderStack dashboard**](https://app.rudderstack.com/).
-- Click on the <Link to="/features/transformations/">Transformations</Link> link from the left panel in the dashboard, as shown:
+To add a new transformation in the RudderStack dashboard, follow these steps:
 
-<img src="../assets/image (90).png" alt="Adding a Transformation" />
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. Go to **Enhance** > **Transformations**, as shown:
 
-- Click on the **Create New** option as shown:
+<img src="../assets/features/adding-a-transformation-1.png" alt="Adding a Transformation" />
 
-<img src="../assets/image (92).png" alt="Create New Transformation" />
+3. Click **New Transformation**.
+4. Add a name for your transformation and an optional description.
+5. Next, add your JavaScript function in the **Transformation** window, as shown:
 
-- Next, assign a name for this new transformation. Enter the transformation function's code in the **Transformation** window, as shown:
+<img src="../assets/features/adding-a-transformation-2.png" alt="Adding a Transformation" />
 
-<img
-  src="../assets/image (100).png"
-  alt="Assign a transformation name"
-/>
-
-- Add your transformation code within the `transformEvent` function in the **Transformation** window. You can also add other functions and call them from within `transformEvent`.
-
-<img src="../assets/image (99).png" alt="transformEvent function" />
+<div class="successBlock">
+You can also add other functions and call them from within <code class="inline-code">transformEvent</code>.
+</div>
 
 <div class="infoBlock">
-Our <a href="https://github.com/rudderlabs/sample-user-transformers">Transformations</a> GitHub repository contains some useful templates that you can use to create your own transformations.
-
-You can copy-paste the entire code of any of the functions present in this repository into the **Transformation** window.
-
+Refer to the <a href="https://github.com/rudderlabs/sample-user-transformers">Sample User Transformations</a> GitHub repository for some useful templates that you can use to create your own transformations.
 </div>
 
 <div class="warningBlock">
-Remember to delete the pre-populated <code class="inline-code">transformEvent</code> function in such cases, before pasting your code.
+Remember to delete the pre-populated <code class="inline-code">transformEvent</code> function before adding or pasting your transformation code.
 </div>
 
-- RudderStack also gives you the ability to test your transformation function with the **Run Test** option as shown:
+6. To test your transformation on a sample event, click **Run Test**. RudderStack provides some sample events for you test if your transformation logic works as expected.
 
-<img src="../assets/image (97).png" alt="Run Test" />
+<img src="../assets/features/adding-a-transformation-3.png" alt="Adding a Transformation" />
 
-- In case you want to perform any aggregation/roll-up operation on a micro batch of events, use the `transformBatch` function, as shown:
+7. To save the transformation, click **Save**.
+
+## Connecting transformation to a destination
+
+You can connect a transformation to a destination in two cases:
+
+### Case 1: While setting up a new destination
+
+RudderStack gives you the option to add a transformation while setting up a destination, as shown:
+
+<img src="../assets/features/connecting-a-transformation.png" alt="Connecting a transformation" />
+
+### Case 2: Connecting to an existing destination
+
+To add a transformation to an existing destination, follow these steps:
+
+1. Go to the **Transformation** tab in your destination dashboard and click **Add a transformation**, as shown:
+
+<img src="../assets/features/adding-transformation-existing-destination-1.png" alt="Connecting a transformation to existing destination" />
+
+2. Then, choose the transformation to you want to connect to the destination.
+
+<img src="../assets/features/adding-transformation-existing-destination-2.png" alt="Connecting a transformation to existing destination" />
+
+## `transformEvent` definition
+
+RudderStack applies the `transformEvent` function on each event and takes two inputs:
+- `event`: This corresponds to the input event
+- `metadata`: This is an **optional** input corresponding to the JavaScript function which you can use to access the metadata of the given event.
+
+<div class="infoBlock">
+For more information on <code class="inline-code">metadata</code>, refer to the <Link to="#accessing--the-event-metadata">Accessing metadata</Link> section below.
+</div>
+
+After the transformation is complete, `transformEvent` returns the final event to be sent to the destination.
+
+## Using `transformBatch` instead of `transformEvent`
+
+In cases where you want to perform any aggregation or roll-up operation on a micro batch of events, you can use the `transformBatch` function instead of `transformEvent`, as shown:
 
 ```javascript
 export function transformBatch(events, metadata) {
@@ -71,42 +103,34 @@ export function transformBatch(events, metadata) {
 ```
 
 <div class="dangerBlock">
-Disclaimer for using <code class="inline-code">transformBatch</code>:
+If you are using <code class="inline-code">transformBatch</code> and want to ensure event ordering, make sure you pass on the <code class="inline-code">messageId</code> from the input event to the output event. Without the <code class="inline-code">messageId</code>, there is a strong possibility that RudderStack will <strong>not</strong> maintain the event ordering.
+</div>
 
-<ul>
-<li>Make sure you pass on the <code class="inline-code">messageId</code> from the input event onto the output event. If the <code class="inline-code">messageId</code> is passed on, the order of delivery of events is preserved. <strong>Without it, this order may not be maintained</strong>.</li>
-<li>It is highly recommended to use <code class="inline-code">transformEvent</code> in every possible case as it ensures event ordering in all cases.</li>
-<li>In case a <code class="inline-code">transformBatch</code> is required and event ordering is important, make sure to pass on the <code class="inline-code">messageId</code>.</li>
-</ul>
+<div class="warningBlock">
+It is highly recommended to use <code class="inline-code">transformEvent</code> as much as possible, as it ensures event ordering in any case.
 </div>
 
 ## Libraries
 
-One of the key features of RudderStack Transformations is the ability to reuse code written for a transformation in other transformations as well. For this, RudderStack lets you create libraries or functions that can be reused in different transformations.
+One of the key features of RudderStack Transformations is the ability to reuse the code written for a transformation in other transformations using the **Libraries** feature.
 
-To create a library, follow these steps:
+To add a new library, follow these steps:
 
-- Click on the <Link to="/features/transformations/">Transformations</Link> link in the left nav bar and go to the **Libraries** section. Click on the **Create New** option to add new libraries, as shown:
+1. In your RudderStack dashboard, go to **Enhance** > **Transformations** and click the **Libraries** tab, as shown:
 
-<img src="../assets/image (89).png" alt="Create new library" />
+<img src="../assets/features/adding-a-library-1.png" alt="Adding a library" />
 
-- Add the library's **Name**, an optional **Description**, and include the custom functions that you need to reuse across all other transformations.
+2. Click **New library**.
+3. Add the library **Name**, **Description** and write the function you want to reuse across different transformations.
+4. You can also add multiple functions in a single library, as shown:
 
-<img
-  src="../assets/image (91).png"
-  alt="Add library name and description"
-/>
-
-- You can add multiple functions to a single library, as shown:
-
-<img
-  src="../assets/image (95).png"
-  alt="Add more functions under a single library"
-/>
+<img src="../assets/features/adding-a-library-2.png" alt="Adding a library" />
 
 <div class="warningBlock">
-RudderStack does not support the deletion of libraries as of now. This is to ensure that you don't break any existing transformations that use the library that you might be trying to delete.
+Currently, RudderStack does not support deletion of libraries. This is to ensure that any existing transformations using the libraries do not break.
 </div>
+
+5. Click **Run Test** to ensure the code included in the library has the correct syntax.
 
 ## Using libraries in transformations
 
@@ -277,41 +301,40 @@ export async function transformEvent(event) {
   
 ## Debugging with logs
 
-You can access event-related logs while running a test by including the `log()` function in your transformation code. An example of this is as shown:
+RudderStack enables you to access any event-related information in the form of logs while running a test on your transformation. You can do this by including the `log` function in your transformation code. 
+
+An example of using the `log` function is shown below:
 
 ```javascript
 export function transformEvent(event, metadata) {
   const meta = metadata(event);
   event.sourceId = meta.sourceId;
 
-  log("Event Name is", event.event, ";", "Message Id is", event.messageId);
-  log("Source Id is", meta.sourceId);
+  log("Event Name is", event.event, ";", "Message ID is", event.messageId);
+  log("Source ID is", meta.sourceId);
 
   return event;
 }
 ```
 
-On running a test on the above code, you can see the logs in the **Logs** section of the dashboard, as shown:
+On adding the above transformation and clicking **Run Test**, you can see the resulting log in the **Logs** section of the dashboard, as shown:
 
-<img
-  src="../assets/image (103) (2) (2) (2) (2) (2) (1) (2) (2) (2) (2) (1).png"
-  alt="Adding a Transformation"
-/>
+<img src="../assets/features/transformation-log.png" alt="Transformation log" />
 
 <div class="infoBlock">
-Arguments to the <code class="inline-code">log</code> function can be a String, Number or Object.
+You can pass a string, number, or an object as an argument to the <code class="inline-code">log</code> function.
 </div>
 
 ## Limits
 
-You should take into account the memory and time limits when adding a new transformation. Each invocation of the transformation should not exceed the following limits:
+You should take into account the memory and time limits when adding a new transformation. Each transformation invocation should not exceed the following limits:
 
 | Parameter    | Limit     |
 | :----------- | :-------- |
-| Memory Limit | 8 MB      |
-| Time Limit   | 4 seconds |
+| Memory limit | 8 MB      |
+| Time limit   | 4 seconds |
 
-<div class="warningBlock">
+<div class="dangerBlock">
 The user transformation fails if these limits are exceeded.
 </div>
 
