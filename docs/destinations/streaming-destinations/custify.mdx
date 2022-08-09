@@ -1,0 +1,159 @@
+---
+title: "Custify"
+description: Step-by-step guide on sending your event data from RudderStack to Custify.
+---
+
+[**Custify**](https://www.custify.com/) is a Next-Generation Customer Success Software For B2B SaaS. It helps you better meet customers' needs, reducing churn and increasing lifetime value. You can see in-product usage insights as well as data from CRM, support, billing, and other systems in one place. Relevant customer success KPIs and client interactions are displayed in an easy-to-understand dashboard.
+
+RudderStack supports Custify as a destination to which you can seamlessly send your customer data.
+
+<div class="infoBlock">
+    Find the open source transformer code for this destination in the [**GitHub repository**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/custify).
+</div>
+
+## Getting started
+
+Before configuring Custify as a destination in RudderStack, make sure that Custify supports the source platform from which you are sending the events, by referring to the following table:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     | -             | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+
+<div class="infoBlock">
+    To know more about the difference between cloud mode and device mode in RudderStack, read the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+</div>
+
+Once you have verified that the source platform supports sending events to Custify, perform the steps below:
+
+* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Custify**.
+* Assign a name to the destination and click on **Next**. You should then see the following screen:
+
+<img src="https://user-images.githubusercontent.com/59817155/136159593-9a019f5b-1f0b-4009-afba-d767bc93dc97.png" />
+
+### Connection settings
+
+To set up the Custify destination in RudderStack, the following settings need to be configured:
+
+* **API Key**: This is a mandatory field. Enter the Custify API key that will be used to authenticate the request. To create an API key, go to the [**Custify API Access page**](https://app.custify.com/settings/developer/api-key) and click on **Generate API key**.
+
+Once you've entered all the required settings, click on **Next** to finish the configuration. Custify should now be added and enabled as a destination in RudderStack.
+
+## Identify
+
+The `identify` call creates or updates a Person in Custify. RudderStack uses the `userId` or `email` in `traits` for these actions. Hence, we highly recommend including the users's ID or at least their email address in the `identify` call.
+
+```javascript
+rudderanalytics.identify("user_123", {
+  name: "Han Solo",
+  email: "han.solo@example.com",
+  country: "UK"
+});
+```
+
+### Standard mapping
+
+RudderStack maps the properties to a subset of the standard Custify user attributes and creates a new custom field for the unmapped attributes. The mapping is shown in the following table:
+
+| **RudderStack**  | **Custify**       |
+| :--------------- | :---------------- |
+| `email`          | `email`           |
+| `name`           | `name`            |
+| `organizationId` | `companies`       |
+| `timezone`       | `time_zone`       |
+| `phone`          | `phone`           |
+| `userId`         | `user_id`         |
+
+<div class="infoBlock">
+    The `organization_id` corresponds to the Company ID assigned by Custify.
+</div>
+
+### Removing users from an organization membership
+
+Enable the **Enable Removing Users from Organizations** setting in the dashboard to use this feature.
+
+The following payload fields under `context.traits` are mandatory for this action:
+
+* `company.id`
+* `company.remove` (should be set to `true`)
+
+RudderStack assumes a valid Custify `company_id` in the `company.id` field. Then, it finds the organization corresponding to that ID and performs the action.
+
+A sample `identify` call for this action is shown below:
+
+```javascript
+rudderanalytics.identify("user_123",{
+  name: "Han Solo",
+  email: "han.solo@example.com",
+  country: "UK",
+  company:{
+    id: "company_123",
+    remove: true
+  }
+});
+```
+
+The above `identify` call updates the Person as well as removes them from the Company which has the `company_id` = `company_123`.
+
+## Track
+
+Custify expects an `userId` for every `track` call. You can set the `userId` by making an `identify` call before sending any `track` event. RudderStack persists the user details from the `identify` call to all the subsequent calls.
+
+A sample `track` call is as shown:
+
+```javascript
+rudderanalytics.track("Login", {
+  category: "category",
+  label: "label",
+  value: "value"
+});
+```
+
+<div class="infoBlock">
+
+    RudderStack uses the [**Custify Events API**](https://docs.custify.com/#tag/Event) for the `track` calls. To successfully send `track` calls to Custify, the following criteria should be met:
+    * A `userId` needs to be passed along with the `track` call.
+
+</div>
+
+## Group
+
+You can use the `group` call to create or update a Company in Custify. RudderStack uses the `groupId` to do so.
+
+A sample `group` call is shown below:
+
+```javascript
+rudderanalytics.group("company_123", {
+  name: "Yoda Academy",
+  country: "UK",
+  group_plan: "trial"
+});
+```
+
+The `group` call associates the Person to the Company.
+
+### Standard mapping
+
+RudderStack maps the group traits to a subset of the standard Custify Company attributes. It creates a new custom field for any unmapped attributes.
+
+The current mapping is shown in the following table:
+
+| **RudderStack** | **Custify**    |
+| :---------------| :------------- |
+| `name`          | `name`         |
+| `groupId`       | `company_id`   |
+| `url`           | `website`      |
+
+
+RudderStack assumes that an `identify` call is made before any `group` call with the `userId`.
+
+If `groupId` and `userId` both are present in the `group` event payload, then RudderStack will find the Person with `user_id` present in the traits. If it is not present, RudderStack will create the Person. It will also find the Company associated with the `groupId` present in the payload. If `groupId` is not present, RudderStack creates that too and then does the People-Company association.
+
+If a Person already exists, the `company_id` will be attached to the Person.
+
+The above discussion can be summarized as follows:
+* New `groupId` and new `userId` (No Custify Person associated with the userId): RudderStack creates the Person and the Company and associates them.
+* New `groupId` and existing `userId` (Custify Person already exists): RudderStack creates a new Company and associates the existing Person with it.
+* Old `groupId` and new `userId` (Company already exists in Custify, but not user): RudderStack creates a new Person with the `userId` and associated them with the Company.
+
+Note that `traits` contain the relevant group-specific information, whereas the `context.traits` contains all the user-related information.
