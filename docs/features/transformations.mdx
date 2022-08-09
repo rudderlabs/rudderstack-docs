@@ -203,30 +203,26 @@ import getPrice as gp from "getFinanceData";
 getPrice(ev)
 ```
 
-## Accessing metadata
+## Accessing event metadata
 
 RudderStack injects a function `metadata(event)` into your transformations as an argument. This allows you to access the event metadata variables that help you customize your transformations.
 
 <div class="infoBlock">
-<code class="inline-code">metadata()</code> takes the event as input and returns the metadata of the event.
+<code class="inline-code">metadata()</code> takes the event as the input and returns the metadata of the event.
 </div>
 
 The following properties, if available, are present in the metadata response:
 
-| Property Name   | Description                                                                                                                                                                    |
-| :-------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sourceId`      | This refers to the ID of the source configured on your RudderStack dashboard. Note that it different from the source **Write Key**. Refer to the image below for more details. |
-| `destinationId` | ID of the destination configured on your RudderStack dashboard.                                                                                                                |
-| `messageId`     | Corresponds to the unique ID for each event.                                                                                                                                   |
-| `sessionId`     | If sessions are enabled, this corresponds to the value of the session ID.                                                                                                      |
+| Property   | Description       |
+| :-------------- | :------------------------- |
+| `sourceId`      | The ID of the source configured in your RudderStack dashboard. Note that it is different from the <Link to="/dashboard-guides/sources/#what-is-a-write-key-why-is-it-required">source write key</Link>. |
+| `destinationId` | The ID of the destination configured in your RudderStack dashboard.           |
+| `messageId`     | The unique ID for each event.            |
+| `sessionId`     | The ID associated with a session. This is applicable only if sessions are enabled.    |
 
-<img src="../assets/image (98).png" alt="Source ID" />
+Since you may not need the event metadata in every transformation, you can include it as an **optional argument** in your function signature whenever required.
 
-<img src="../assets/image (120) (1) (1).png" alt="Source ID" />
-
-Since you may not need the metadata in every transformation, you can optionally access it by including it in your function signature as an argument wherever required.
-
-An example of this is as shown below:
+An example of using `metadata` is shown below:
 
 ```javascript
 export function transformEvent(event, metadata) {
