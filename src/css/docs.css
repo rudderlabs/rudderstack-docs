@@ -28,14 +28,20 @@ ul.columns {
   font-size: 24px;
   vertical-align: sub;
   scroll-margin-top: 100px;
+  margin-top: 1%;
+  margin-bottom: 10px;
 }
 .childrenWrapper h3 {
   font-size: 18px;
   scroll-margin-top: 100px;
+  margin-top: 1%;
+  margin-bottom: 10px;
 }
 .childrenWrapper h4 {
   font-size: 16px;
   scroll-margin-top: 100px;
+  margin-top: 1%;
+  margin-bottom: 10px;
 }
 .childrenWrapper h2,
 .childrenWrapper h3,
@@ -55,7 +61,6 @@ ul.columns {
   line-height: 1;
   padding: 0.2em;
   background-color: rgb(215 219 223);
-  color: rgb(59, 69, 78);
   font-size: 14px;
   border-radius: 3px;
   font-feature-settings: "clig" 0, "calt" 0;

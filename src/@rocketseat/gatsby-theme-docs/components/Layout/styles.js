@@ -85,8 +85,7 @@ export const Children = styled.div`
     color: #3d3d4d;
   }
   a {
-    font-weight: bold;
-    text-decoration: underline;
+    font-weight: 600;
     color: rgb(78, 59, 151);
     &:hover {
       color: rgb(23, 23, 110);
