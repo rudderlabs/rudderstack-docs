@@ -72,7 +72,7 @@ RudderStack maps the following event properties to the standard Zendesk user att
 | :--------------- | :---------------- | :------ |
 | `name`           | `name`            | Required |
 | `email`          | `email`           | Optional, but recommended | 
-| `organizationId` | `organization_id` | Optional |
+| `organizationId` / `company.id` | `organization_id` | Optional |
 | `timezone`       | `time_zone`       |  Optional |
 | `phone`          | `phone`           | Optional |
 | `userId`         | `user_id`         | Optional |
@@ -127,6 +127,7 @@ A sample `track` call is shown below:
 
 ```javascript
 rudderanalytics.track("Order Completed", {
+  userId: "1hKOmRA4GRlm"
   currency: "USD",
   revenue: 77,
   value: 99.99,
