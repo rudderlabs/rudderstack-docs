@@ -1,0 +1,180 @@
+---
+title: "InMoment"
+description: Step-by-step guide on sending your event data from RudderStack to InMoment.
+aliases: ["Wootric"]
+---
+
+[InMoment](https://InMoment.io/) (formerly Wootric) is
+
+RudderStack supports InMoment as a destination to which you can seamlessly send your event data.
+
+## Getting started
+
+Before configuring InMoment as a destination in RudderStack, verify if the source platform is supported by InMoment by referring to the table below:
+
+| Connection Mode | Web | Mobile | Server |
+| :--- | :--- | :--- | :--- |
+| Device mode | - | - | - |
+| Cloud mode |Supported  | Supported | Supported |
+
+<div class="infoBlock">
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+</div>
+
+Once you have confirmed that the source platform supports sending events to InMoment, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **InMoment**.
+2. Assign a name to the destination and click on **Continue**.
+
+## Connection settings
+
+To successfully configure InMoment as a destination, you will need to configure the following settings:
+
+<img src="../../assets/event-stream-destinations/inmoment-connection-settings.png" alt="InMoment connection settings"/>
+
+- **API Key**: Enter your API key from the InMoment dashboard.
+
+<div class="infoBlock">
+Refer to the <Link to="#faq">FAQ</Link> section below for more information on getting the API Key.
+</div>
+
+### Event settings
+
+- **Mapping to trigger InMoment Events for the respective Event**: Enter the event name and choose the InMoment event from the dropdown to be triggered when that event is called.
+
+<div class="successBlock">
+You can specify multiple <strong>InMoment Events</strong> for one <strong>Event Name</strong> and vice versa.
+</div>
+
+## Identify
+
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to <Link to="https://developers.InMoment.io/api-reference#create_or_update_user">create or update a user</Link> in InMoment.
+
+User lookup by `external_id` If no record is found, one is created. If the user already exists, user details will be updated with the data supplied. To update the user details we will need an `end_user_id` That can be found using user lookup by `external_id` API.
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("userId1234", {
+    email: "john@testmail.com",
+    phone: "92374162212",
+    name: "John Denver",
+    city: "Bangalore",
+    title: "SDE",
+    gender: "male",
+    company: "Rudderstack",
+    createdAt: "1660050442",
+    timestamp: "1642685961",
+});
+```
+
+### Property mappings
+
+The following table lists the mappings between RudderStack and InMoment properties:
+
+| RudderStack property | InMoment property | Presence | Data type | 
+|:---------------------|:-------------|:--------------|:--------------|
+| `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `external_id` | Required | String |
+
+| RudderStack property | InMoment property | Presence | Data type | 
+|:---------------------|:-------------|:--------------|:--------------|
+| `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Required | String |
+| `context.traits`/`traits` | `properties` | Optional | hash (key-value pair) |
+| `originalTimestamp`/`timestamp` | `last_surveyed` | Optional | string (UNIX timestamp) |
+| `context.traits.avatarURL`/`traits.avatarURL` | `avatarURL` | Optional | String |
+| `context.traits.companies`/`traits.companies` | `companies` | Optional | Array of object (in company objects `id` and `name` are the only required fields) |
+
+| RudderStack property | InMoment property | Presence | Data type | 
+|:---------------------|:-------------|:--------------|:--------------|
+| `context.traits.name`/`traits.name` | `name` |Required | String |
+| `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Required | String |
+| `context.traits`/`traits` (after removing `email` and `name`) | `customFields` |Optional | Object |
+| `originalTimestamp`/`timestamp` | `last_surveyed` | Optional | string (UNIX timestamp) |
+| `context.traits.avatarURL`/`traits.avatarURL` | `avatarURL` | Optional | String |
+| `context.traits.companies`/`traits.companies` | `companies` | Optional | Array of object (in company objects `id` and `name` are the only required fields) |
+
+## Track
+
+You can create the following events using the <Link to="/event-spec/standard-events/track/">`track`</Link> call:
+
+- Creating Response of Survey by End User (Can update end-user properties also if supplied in request)
+- Creating a Decline of Survey by End User (Can update end-user properties also if supplied in request)
+
+We will check the message.integrations.Wootric.survey field to decide whether we have to create a response or create a decline.
+
+RudderStack <Link to="https://developers.InMoment.io/api-reference#retrieve_user">retrieves the user</Link> data using `userId` or `email` and uses that information to create post or vote.
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track(
+    "Submit", {
+        feedbackScore: 9,
+        feedbackText: "Awesome Product!!!",
+        ip: "127.0.0.0",
+        url: "https://www.google.com/",
+        createdAt: "1660050442",
+    }, {
+        integrations: {
+            Wootric: {
+                survey: "create response",
+            },
+        },
+    }
+);
+```
+
+### Property mappings for Create post event 
+
+The following table lists the mappings between RudderStack and InMoment properties for the **Create post** event:
+
+| RudderStack property | InMoment property | Presence | Data type | Notes |
+|:---------------------|:-------------|:--------------|:--------------|:--------------|
+| `properties.boardID`/`properties.boardId`/`properties.board.id` | `boardID` | Required | String | -|
+| Collect from `externalId` or <Link to="https://developers.InMoment.io/api-reference#retrieve_user">retrieve user</Link> API call| `authorID` | Required | String |-|
+| `properties.details` | `details` | Required | String |-|
+| `properties.title` | `title` | Required | String |-|
+| `properties.byID`/`properties.byId`/`properties.by.id` | `byID` | Optional | String |-|
+| `properties.categoryID`/`properties.categoryId`/`properties.category.id` | `categoryID` |Optional | String |-|
+| `properties.customFields` | `customFields` | Optional | Object | Ensure that you <Link to="#how-to-create-custom-fields-in-InMoment-dashboard">create the custom fields in InMoment dashboard</Link> to send the event successfully.|
+| `properties.eta` | `eta` | Required if `etaPublic` is present. | String | Should be in the MM/YYYY format.  |
+| `properties.etaPublic` | `etaPublic` | Required if `eta` is present.  | Boolean | - |
+| `properties.imageURLs` | `imageURLs` | Optional | Array of strings | -|
+
+### Property mappings for Create vote event 
+
+The following table lists the mappings between RudderStack and InMoment properties for the **Create vote** event:
+
+| RudderStack property | InMoment property | Presence | Data type | 
+|:---------------------|:-------------|:--------------|:--------------|
+| `properties.postId`/`properties.postID`/`properties.post.id` | `postID` | Required | String |
+| Collect from `externalId` or <Link to="https://developers.InMoment.io/api-reference#retrieve_user">retrieve user</Link> API call | `voterID` | Required | String |
+
+<div class="infoBlock">
+The key name for <code class="inline-code">externalId</code> is <code class="inline-code">InMomentUserId</code>.
+</div>
+
+## FAQ
+
+### Where can I find the InMoment API Key?
+
+To find the InMoment API Key:
+
+1. Log into your [InMoment account](https://InMoment.io/login).
+2. Go to **Settings** > **API & Webhooks** under your profile, as shown: 
+
+<img src="../../assets/event-stream-destinations/InMoment-api-key.png" alt="InMoment dashboard"/>
+
+### How to create custom fields in the InMoment dashboard?
+
+To create custom fields in InMoment Dashboard:
+
+1. Log into your [InMoment account](https://InMoment.io/login).
+2. Under your profile, navigate to **Settings** > **Post Fields** > **Create New Field**.
+3. Enter the field name and click on **Create**.
+4. Navigate to **Boards** and select the desired **Board** from the dropdown.
+5. Select **Create Post Form** > **Add Fields** in the **Fields** section.
+6. Select the relevant **Post Field** from the dropdown.
+7. Enter details and click **Save**.
+
+<img src="../../assets/event-stream-destinations/InMoment-new-field.png" alt="InMoment dashboard"/>
