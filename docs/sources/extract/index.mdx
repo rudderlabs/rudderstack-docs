@@ -8,14 +8,10 @@ description: >-
 With RudderStack Cloud Extract, you can collect your raw events and data from different cloud tools such as [**Facebook Ads**](https://www.facebook.com/business/ads), [**Google Analytics**](https://analytics.google.com/), [**Marketo**](https://www.marketo.com/), [**HubSpot**](https://www.hubspot.com/), [**Stripe**](stripe/), and more. You can then build efficient ELT pipelines from these cloud apps to your data warehouse.
 
 <div class="warningBlock">
-All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
+Cloud Extract sources support sending data only to a single <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>. To send data to multiple data warehouses from the same source, RudderStack recommends creating individual sources with the same settings for each warehouse destination.
 </div>
 
-<div class="warningBlock">
-It is recommended to connect <strong>only one</strong> warehouse destination to a Cloud Extract source. To send data to multiple data warehouses from the same source, we recommend creating individual sources with the same settings for each warehouse destination.
-</div>
-
-Here's a quick 1-minute walkthrough of the Cloud Extract feature:
+Here's a quick walkthrough of the Cloud Extract feature:
 
 <!--https://www.youtube.com/watch?v=F9dIv5Pp0EE-->
 
