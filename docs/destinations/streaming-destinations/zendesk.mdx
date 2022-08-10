@@ -179,14 +179,14 @@ RudderStack maps the following **optional** `group` traits to the standard Zende
 RudderStack creates a new custom field in Zendesk for any other unmapped attributes.
 </div>
 
-### How RudderStack does the user-group association
+### How RudderStack does the user-organization association
 
-If both `userId` and `groupId` are present in the `group` event, then RudderStack first finds the user using the `email` field present in the <Link to="/event-spec/standard-events/common-fields/#contextual-fields">`context.traits`</Link> object.
+- If both `userId` and `groupId` are present in the `group` event, then RudderStack first finds the user using the `email` field present in the <Link to="/event-spec/standard-events/common-fields/#contextual-fields">`context.traits`</Link> object.
 
-- If `email` is absent, RudderStack creates the user. It will then find the organization associated with the `groupId` present in the payload.
-- If `email` is present, then RudderStack associates the user with the `organizationId` and sends all the user information for this call.
+    - If `email` is absent, RudderStack creates the user. It will then find the organization associated with the `groupId` present in the payload.
+    - If `email` is present, then RudderStack associates the user with the `organizationId` and sends all the user information for this call.
 
-If `groupId` is absent in the event payload, RudderStack creates a new group in Zendesk and then does the user-group association.
+- If `groupId` is absent in the event payload, RudderStack creates a new organization in Zendesk and then does the association.
 
 The above discussion can be summarized as follows:
 
@@ -195,4 +195,4 @@ The above discussion can be summarized as follows:
 | No | No | User and the organization do not exist in Zendesk. | RudderStack creates a new user and organization and associates both. |
 | Yes | No |  User already exists in Zendesk but not the organization. | RudderStack creates a new organization and associates the existing user information with it. |
 | No | Yes | Organization already exists in Zendesk but not the user. | RudderStack creates a  new user and associates them with the organization. |
-| Yes | Yes | Both the user and the organization exist in Zendesk. | RudderStack does the user-group association. |
+| Yes | Yes | Both the user and the organization exist in Zendesk. | RudderStack does the user-organization association. |
