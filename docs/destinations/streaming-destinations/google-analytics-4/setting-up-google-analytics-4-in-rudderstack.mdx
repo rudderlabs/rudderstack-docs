@@ -55,8 +55,7 @@ The settings in this section are only applicable for the <strong>cloud mode</str
 
 <img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings-1.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
 
-- **Enable Server Side Identify**: Enable this setting to make an <Link to="/event-spec/standard-events/identify/">`identify`</Link> call and configure the following settings:
-
+- **Enable Server Side Identify**: Enable this setting and configure the following options to make an <Link to="/event-spec/standard-events/identify/">`identify`</Link> call:
   - **Trait to differentiate between new or existing user**: Enter a trait key to determine whether a user is new or an existing user.
   - **Convert identify event to Login or Signup event**: Enable this setting to convert the `identify` event to a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#login">`login`</Link> event in case of an existing user or a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#sign_up">`sign_up`</Link> event in case of a new user.
 
@@ -142,5 +141,3 @@ Finally, click on **Next** to enable Google Analytics 4 as a destination in Rudd
 3. Select the relevant account and property.
 4. Click on **Data Streams** and select the stream to get the **Firebase App Id** as shown:
 <img src="../../../assets/event-stream-destinations/firebase-app-id.png" />
-
-
