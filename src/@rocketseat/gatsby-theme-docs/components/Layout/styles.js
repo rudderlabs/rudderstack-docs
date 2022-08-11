@@ -7,7 +7,7 @@ export const Container = styled.div`
   padding: 0 24px;
 
   display: grid;
-  grid-template-columns: 300px calc(100% - 390px);
+  grid-template-columns: 300px calc(100% - 300px);
   grid-auto-flow: row;
   grid-gap: 40px;
   background: #ffffff;
@@ -58,7 +58,7 @@ export const Main = styled.main`
 export const Children = styled.div`
   width: 100%;
   max-width: 78%;
-  padding-right: 64px;
+  padding-right: 40px;
 
   @media (max-width: 1200px) {
     max-width: 100%;
