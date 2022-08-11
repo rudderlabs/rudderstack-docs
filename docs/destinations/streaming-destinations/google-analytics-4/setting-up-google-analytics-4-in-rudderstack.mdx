@@ -60,7 +60,7 @@ The settings in this section are only applicable for the <Link to="/destinations
   - **Convert identify event to Login or Signup event**: Enable this setting to convert the `identify` event to a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#login">`login`</Link> event in case of an existing user or a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#sign_up">`sign_up`</Link> event in case of a new user.
 
   <div class="warningBlock">
-  It is recommended to enable this setting in order to send the <code class="inline-code">identify</code> call successfully.
+If <strong>Enable Server Side Identify</strong> is enabled in the dashboard, then this setting too <strong>must</strong> be enabled to send the <code class="inline-code">identify</code> call successfully.
   </div>
 
   - **Trait key for the 'method' parameter in Login or Signup event**: Enter the trait key to pass the `method` parameter in the <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#login">`login`</Link> or <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#sign_up">`signup`</Link> event.
@@ -81,7 +81,7 @@ The settings in this section are only applicable for the <Link to="/destinations
 ### Native SDK
 
 <div class="infoBlock">
-The settings in this section are only applicable for the< strong>device mode</strong>.
+The settings in this section are only applicable for the <Link to="/destinations/rudderstack-connection-modes/#device-mode"><strong>device mode</strong></Link>.
 </div>
 
 <img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings-2.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
