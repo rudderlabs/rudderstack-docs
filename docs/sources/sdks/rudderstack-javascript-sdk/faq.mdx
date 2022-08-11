@@ -1,30 +1,30 @@
 ---
 title: "JavaScript SDK FAQ"
-description: Solutions to some of the commonly faced issues while using the RudderStack JavaScript SDK.
+description: Solutions to some commonly faced issues while using the RudderStack JavaScript SDK.
 ---
 
-This guide contains the answers to some of the commonly-asked questions around setting up, using, and troubleshooting the JavaScript SDK.
+This guide contains the answers to some commonly-asked questions about setting up, using and troubleshooting the JavaScript SDK.
 
-### Should I disable ad-blockers on my browser?
+### Should I disable adblockers on my browser?
 
 Yes, it is important to ensure that no ad blockers are running on your browser, as they restrict the JavaScript SDK script from executing and storing user information in the browser.
 
-### Can I load multiple instances of RudderStack JavaScript SDK ?
+### Can I load multiple instances of RudderStack JavaScript SDK?
 
 No, it is not possible to load multiple instances of the JavaScript SDK, as it is bound to exceed the maximum stack call size and give you an error.
 
-### How to check if the data is being transmitted to the desired destinations?
+### How can I verify if the SDK sends the data to the desired destinations?
 
-To check if data is being transmitted to the specified destinations, go to the **Network** tab of the JavaScript console in your browser.
+To verify if the SDK is transmitting the events to the specified destinations, go to the **Network tab** of the JavaScript console in your browser.
 
 <img src="../../../assets/sample-page-call.png" alt="Sample page call" />
 <img src="../../../assets/sample-track-call.png" alt="Sample track call" />
 
-If the outbound request is not shown, check if you have installed and set up the JavaScript SDK correctly. Also, check if any ad blockers are enabled in your browser.
+If you cannot see any outbound requests, verify if you have installed and set up the JavaScript SDK correctly. Also, check if any adblockers are enabled on your browser.
 
 ### What is the size limit on the requests?
 
-The size limit on requests is 32KB per message and 4MB per batch request.
+The event size limit on the requests is 32 KB per message and 4 MB per batch request.
 
 ### What is the "Reserved Keyword" error?
 
@@ -34,9 +34,9 @@ When using the JavaScript SDK, you may run into the following error:
 Warning! : Reserved keyword used in traits -->  id with track call.
 ```
 
-This is because one or more keys in your `traits` and/or `properties` object has the same value as a reserved keyword.
+This is because one or more keys in your `traits` or `properties` object have the same value as a reserved keyword.
 
-RudderStack reserves the following keywords as keys for a standard event payload and you should avoid using these while naming your event traits and properties:
+RudderStack reserves the following keywords as keys for a standard event payload, and you should avoid using these while naming your event traits and properties:
 
 ```javascript
 "anonymous_id";

@@ -1,9 +1,9 @@
 ---
 title: "Detecting Ad-blocked Pages"
-description: Detailed guide on detecting the ad-blocked pages using the JavaScript SDK.
+description: Detailed technical documentation on using the JavaScript SDK to detect the ad-blocked pages.
 ---
 
-The JavaScript SDK lets you send a page view containing the relevant markers that determine whether a page is ad-blocked. You can analyze this data to find what percentage of your website's page views are affected by the ad blockers.
+The JavaScript SDK lets you send a page view containing the relevant markers that determine whether a page is ad-blocked. You can analyze this data to find what percentage of your website's page views are affected by adblockers.
 
 ## Sending an ad-blocked page view
 
@@ -22,23 +22,23 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 ```
 
 <div class="infoBlock">
-Replace the <Link to="/resources/glossary/#write-key">Write key</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">Data plane URL</Link> in the above snippet with actual values.
+Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
 </div>
 
-The properties included in the above snippet are explained as below:
+The properties included in the above snippet are explained below:
 
-* **`sendAdblockPage`**: Enables the JavaScript SDK to make a call to load the [**Google AdSense**](https://www.google.com/adsense/start/) library. If RudderStack fails to load this library, it concludes that an ad blocker is enabled on the page.
+* **`sendAdblockPage`**: Enables the JavaScript SDK to make a call to load the [**Google AdSense**](https://www.google.com/adsense/start/) library. If RudderStack fails to load this library, it concludes that an adblocker is enabled on the page.
 
 <div class="infoBlock">
-Since most ad blockers block the request to the Google AdSense servers, this approach is assumed as a good measure to detect ad-blocked pages.
+Since most adblockers block the request to the Google AdSense servers, this approach is assumed to be a good measure to detect the ad-blocked pages.
 </div>
 
 * **`sendAdblockPageOptions`**: If the `sendAdblockPage` property is set to `true`, the JavaScript SDK makes an implicit `page` call about the ad-blocked pages.
 
-With `sendAdblockPageOptions` (internally contains the <Link to="/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/#integrationopts">`IntegrationOpts`</Link> object), you can provide the destinations to which you want to forward this `page` call.
+With `sendAdblockPageOptions` (containing the <Link to="/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/#integrationopts">`IntegrationOpts`</Link> object), you can specify the destinations to which you want to forward this `page` call.
 
 <div class="infoBlock">
-Refer to the <a href="https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/#filtering-selective-destinations">Filtering selective destinations</a> guide for more information on filtering the destinations.
+Refer to the <a href="https://docs.rudderstack.com/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/filtering/#filtering-destinations">Filtering destinations</a> guide for more information on filtering the destinations.
 </div>
 
 The implicit `page` call semantics is shown below:

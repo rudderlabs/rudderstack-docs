@@ -1,12 +1,13 @@
 ---
 title: "Data Storage"
 description: >-
-  Detailed technical documentation on persistent user data stored in cookies or local storage by the RudderStack's JavaScript SDK
+  Detailed technical documentation on the persistent user data stored in cookies or local storage by the RudderStack JavaScript SDK.
+aliases: ["javascript sdk data storage", "js sdk data storage", "JavaScript SDK user data"]
 ---
 
-The JavaScript SDK stores persistent user data in the cookies by default. If the cookies are not supported, local storage is used instead. 
+The JavaScript SDK stores persistent user data in the cookies by default. If the cookies are not supported, the SDK uses local storage instead. 
 
-All the cookies are stored in the top-level domain by default. It helps you to identify the users visiting from websites hosted under a particular sub-domain. For example, if you include the JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in `samplewebsite.com`. However, you can specify the cookie storage location by using the `setCookieDomain` parameter in the `load` API options as shown:
+By default, the SDK stores all the cookies in the top-level domain. It helps you to identify the users visiting websites hosted under a particular sub-domain. For example, if you include the JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in `samplewebsite.com`. However, you can specify the cookie storage location by using the `setCookieDomain` parameter in the <Link to="/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/">`load`</Link> API options as shown:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
@@ -15,7 +16,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 ```
 
 <div class="infoBlock">
-Replace the <Link to="/resources/glossary/#write-key">Write key</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">Data plane URL</Link> in the above snippet with actual values.
+Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
 </div>
 
 
