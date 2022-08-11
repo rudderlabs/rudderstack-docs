@@ -1,10 +1,11 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import RsLogo from "../images/rudderstack-logo-v2.svg"
 import { InstantSearch, Configure } from "react-instantsearch-dom"
 import algoliasearch from "algoliasearch/lite"
 import DocsSearchBox from "./DocsSearchBox"
 import DocSearchContentWrapper from "./DocSearchContentWrapper"
-import {rudderslabTrackOnClickDocs} from '../utils/common'
+import { SearchBoxModal } from './DocsSearchModal.js'
+import { rudderslabTrackOnClickDocs } from '../utils/common'
 import { Link } from 'gatsby';
 
 const searchClient = algoliasearch(
@@ -13,10 +14,25 @@ const searchClient = algoliasearch(
 )
 
 
-const DocsNavigation = ({ isMenuOpen, handleMenuOpen}) => {
+const DocsNavigation = ({ isMenuOpen, handleMenuOpen }) => {
   const [isSearchOpen, setSearchOpen] = useState(false)
   const [currentSearchText, setCurrentSearchText] = useState("")
   const [currentRefineHitsCount, setCurrentRefineHitsCount] = useState(0)
+  const [showModal, setShowModal] = useState(false)
+
+  const handleKeyDown = useCallback(e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      setShowModal(true)
+    }else if(e.key === 'Escape'){
+      setShowModal(false)
+    }
+  }, [setShowModal])
+
+  
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [handleKeyDown])
 
   return (
     <div className="headerNav">
@@ -81,42 +97,43 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen}) => {
               </g>
             </svg>
           </span>
-          <input type="text" placeholder="Search..." className="docsSearchbar" onClickCapture={(e) => {setSearchOpen(true); e.target.blur();}} />
+          <input type="text" placeholder="Search..." className="docsSearchbar" onClickCapture={(e) => { setSearchOpen(true); e.target.blur(); }} />
         </div>
-        
+
         <div className="searchWrapper">
           <div className={`searchOverlay ${isSearchOpen ? 'active' : ''}`} onClick={() => setSearchOpen(false)}></div>
           <div className={`instantSearchWrapper ${isSearchOpen ? 'active' : ''}`}>
-              <InstantSearch
-                searchClient={searchClient}
-                indexName={process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs_v2"}
-              >
-                <Configure hitsPerPage={10} />
-                <div className="docsSearchWrapper">
-                  <DocsSearchBox
-                    onRefineTextChange={val => {
-                      setCurrentSearchText(val);
-                    }}
+            <InstantSearch
+              searchClient={searchClient}
+              indexName={process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs_v2"}
+            >
+              <Configure hitsPerPage={10} />
+              <div className="docsSearchWrapper">
+                <DocsSearchBox
+                  onRefineTextChange={val => {
+                    setCurrentSearchText(val);
+                  }}
+                  isSearchOpen={isSearchOpen}
+                  currentSearchText={currentSearchText}
+                  setSearchOpen={setSearchOpen}
+                />
+              </div>
+              <div id="docsSearchHitsContainer">
+                <div data-reactroot>
+                  <DocSearchContentWrapper
                     isSearchOpen={isSearchOpen}
+                    onRefineHitsCountChange={setCurrentRefineHitsCount}
                     currentSearchText={currentSearchText}
                     setSearchOpen={setSearchOpen}
+                    currentRefineHitsCount={currentRefineHitsCount}
                   />
                 </div>
-                <div id="docsSearchHitsContainer">
-                  <div data-reactroot>
-                    <DocSearchContentWrapper
-                      isSearchOpen={isSearchOpen}
-                      onRefineHitsCountChange={setCurrentRefineHitsCount}
-                      currentSearchText={currentSearchText}
-                      setSearchOpen={setSearchOpen}
-                      currentRefineHitsCount={currentRefineHitsCount}
-                    />
-                  </div>
-                </div>
-              </InstantSearch>
-            </div>
+              </div>
+            </InstantSearch>
+          </div>
         </div>
       </div>
+      {showModal && <SearchBoxModal />}
     </div>
   )
 }
