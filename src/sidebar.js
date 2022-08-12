@@ -457,6 +457,10 @@ export const jsonData = [
                 title: "Sendgrid",
                 link: "/sources/extract/sendgrid/",
                 content: []
+            },{
+                title: "Sendgrid V2",
+                link: "/sources/extract/sendgrid-v2/",
+                content: []
             }, {
                 title: "Stripe",
                 link: "/sources/extract/stripe/",
