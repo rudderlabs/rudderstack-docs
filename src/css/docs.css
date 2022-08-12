@@ -1258,9 +1258,10 @@ a.pageRef:hover .rightRefArrow {
 }
 /* feedback component-ENDS */
 
-#docs-modal .searchResultsEmpty{
-  height: max-content;
-  box-shadow: 0 4px 6px -4px rgb(0 0 0 / 0.1);
+#docs-modal .searchResultsEmpty {
+  height: auto;
+  box-shadow: 0 4px 6px -4px rgb(0 0 0 / 10%);
+  padding: 25px 15px;
 }
 #docs-modal .docsSearchWrapper, #docs-modal .docsSearch{
   @apply w-full;
