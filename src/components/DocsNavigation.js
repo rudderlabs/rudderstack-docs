@@ -35,7 +35,7 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen }) => {
   }, [handleKeyDown])
 
   const handleModalClose = () => setShowModal(false)
-  
+
   return (
     <div className="headerNav">
       <div className="headerContainer">
@@ -99,43 +99,10 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen }) => {
               </g>
             </svg>
           </span>
-          <input type="text" placeholder="Search..." className="docsSearchbar" onClickCapture={(e) => { setSearchOpen(true); e.target.blur(); }} />
-        </div>
-
-        <div className="searchWrapper">
-          <div className={`searchOverlay ${isSearchOpen ? 'active' : ''}`} onClick={() => setSearchOpen(false)}></div>
-          <div className={`instantSearchWrapper ${isSearchOpen ? 'active' : ''}`}>
-            <InstantSearch
-              searchClient={searchClient}
-              indexName={process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs_v2"}
-            >
-              <Configure hitsPerPage={10} />
-              <div className="docsSearchWrapper">
-                <DocsSearchBox
-                  onRefineTextChange={val => {
-                    setCurrentSearchText(val);
-                  }}
-                  isSearchOpen={isSearchOpen}
-                  currentSearchText={currentSearchText}
-                  setSearchOpen={setSearchOpen}
-                />
-              </div>
-              <div id="docsSearchHitsContainer">
-                <div data-reactroot>
-                  <DocSearchContentWrapper
-                    isSearchOpen={isSearchOpen}
-                    onRefineHitsCountChange={setCurrentRefineHitsCount}
-                    currentSearchText={currentSearchText}
-                    setSearchOpen={setSearchOpen}
-                    currentRefineHitsCount={currentRefineHitsCount}
-                  />
-                </div>
-              </div>
-            </InstantSearch>
-          </div>
+          <input type="text" placeholder="Search..." className="docsSearchbar" onClickCapture={(e) => { setShowModal(true); e.target.blur(); }} />
         </div>
       </div>
-      {showModal && <SearchBoxModal closeModal={handleModalClose}/>}
+      {showModal && <SearchBoxModal closeModal={handleModalClose} isModalOpen={showModal}/>}
     </div>
   )
 }

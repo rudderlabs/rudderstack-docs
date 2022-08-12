@@ -896,7 +896,6 @@ a.pageRef:hover .rightRefArrow {
   transition: border 0.25s ease;
 }
 .searchOverlay {
-  z-index: 30;
   background: rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
 }
@@ -1257,7 +1256,10 @@ a.pageRef:hover .rightRefArrow {
   }
 }
 /* feedback component-ENDS */
-
+#docs-modal{
+  /* background: rgba(0, 0, 0, 0.25); */
+  height: 100vh;
+}
 #docs-modal .searchResultsEmpty {
   height: auto;
   box-shadow: 0 4px 6px -4px rgb(0 0 0 / 10%);
@@ -1268,5 +1270,9 @@ a.pageRef:hover .rightRefArrow {
 }
 #docs-modal .docsSearch{
   border: 1px solid rgba(222, 226, 231, var(--tw-border-opacity));
+}
+#docs-modal .max-h-80{
+  height: max-content;
+  overflow-y: scroll;
 }
 /*! purgecss end ignore */
