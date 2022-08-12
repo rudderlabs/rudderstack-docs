@@ -136,7 +136,7 @@ The following tables list the mappings between RudderStack and InMoment events/p
 
     | RudderStack event/property | InMoment event/property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
-    | Wootric id returned in Create End User API. we can retrieve the id using user lookup by  external_id API.| `end_user_id` | Required | Integer |
+    | Retrieve `id` by looking up the `external_id`| `end_user_id` | Required | Integer |
     | `context.page.url`/`properties.url` | `origin_url` | Optional | String |
     | `context.traits.createdAt`/`traits.createdAt` | `created_at` | Optional | Integer (UNIX timestamp) |
     | `context.traits`/`traits` | `end_user.properties` | Optional | Hash (key-value pair) |
