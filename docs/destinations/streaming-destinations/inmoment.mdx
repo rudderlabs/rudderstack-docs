@@ -1,10 +1,10 @@
 ---
-title: "InMoment"
-description: Step-by-step guide on sending your event data from RudderStack to InMoment.
+title: "InMoment (formerly Wootric)"
+description: Step-by-step guide on sending your event data from RudderStack to InMoment (formerly Wootric).
 aliases: ["Wootric"]
 ---
 
-[InMoment](https://InMoment.io/) (formerly Wootric) is
+[InMoment (formerly Wootric)](https://inmoment.com/wootric/)  is
 
 RudderStack supports InMoment as a destination to which you can seamlessly send your event data.
 
@@ -23,7 +23,7 @@ To know more about the difference between cloud mode and device mode in RudderSt
 
 Once you have confirmed that the source platform supports sending events to InMoment, follow these steps:
 
-1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **InMoment**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Wootric**.
 2. Assign a name to the destination and click on **Continue**.
 
 ## Connection settings
@@ -32,19 +32,24 @@ To successfully configure InMoment as a destination, you will need to configure 
 
 <img src="../../assets/event-stream-destinations/inmoment-connection-settings.png" alt="InMoment connection settings"/>
 
-- **Username**: Enter your API key from the InMoment dashboard.
-- **Password**: Enter your API key from the InMoment dashboard.
-- **Account Token**: Enter your API key from the InMoment dashboard.
+- **Username**: Enter the email you use to login to [InMoment](https://app.wootric.com/).
+- **Password**: Enter the password you use to login to [InMoment](https://app.wootric.com/).
+- **Account Token**: Enter the unique account token from the InMoment dashboard by navigating to **Settings** > **Your Account**.
 
 <div class="infoBlock">
-Refer to the <Link to="#faq">FAQ</Link> section below for more information on getting the API Key.
+Refer to the <Link to="#faq">FAQ</Link> section below for more information on getting the Account Token.
 </div>
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to <Link to="https://developers.InMoment.io/api-reference#create_or_update_user">create or update a user</Link> in InMoment.
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update a user in InMoment. RudderStack looks up the `external_id` field. If it exists, RudderStack updates a user, otherwise creates a new user.
 
-User lookup by `external_id` If no record is found, one is created. If the user already exists, user details will be updated with the data supplied. To update the user details we will need an `end_user_id` That can be found using user lookup by `external_id` API.
+To update a user's details, RudderStack requires the `end_user_id` field which is the Wootric id returned in Create End User API. 
+we can retrieve the id using user lookup by  external_id API.
+
+
+
+found using user lookup by `external_id` API.
 
 A sample `identify` call is shown below:
 
@@ -152,25 +157,11 @@ The key name for <code class="inline-code">externalId</code> is <code class="inl
 
 ## FAQ
 
-### Where can I find the InMoment API Key?
+### Where can I find the InMoment Account Token?
 
-To find the InMoment API Key:
+To find the InMoment Account Token:
 
-1. Log into your [InMoment account](https://InMoment.io/login).
-2. Go to **Settings** > **API & Webhooks** under your profile, as shown: 
+1. Log into your [InMoment account](https://app.wootric.com/).
+2. Click on the **Settings** icon in the top navigation bar, as shown:
 
-<img src="../../assets/event-stream-destinations/InMoment-api-key.png" alt="InMoment dashboard"/>
-
-### How to create custom fields in the InMoment dashboard?
-
-To create custom fields in InMoment Dashboard:
-
-1. Log into your [InMoment account](https://InMoment.io/login).
-2. Under your profile, navigate to **Settings** > **Post Fields** > **Create New Field**.
-3. Enter the field name and click on **Create**.
-4. Navigate to **Boards** and select the desired **Board** from the dropdown.
-5. Select **Create Post Form** > **Add Fields** in the **Fields** section.
-6. Select the relevant **Post Field** from the dropdown.
-7. Enter details and click **Save**.
-
-<img src="../../assets/event-stream-destinations/InMoment-new-field.png" alt="InMoment dashboard"/>
+<img src="../../assets/event-stream-destinations/inmoment-account-token.png" alt="InMoment dashboard"/>
