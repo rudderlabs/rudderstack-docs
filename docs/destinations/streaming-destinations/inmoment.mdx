@@ -4,7 +4,7 @@ description: Step-by-step guide on sending your event data from RudderStack to I
 aliases: ["Wootric"]
 ---
 
-[InMoment (formerly Wootric)](https://inmoment.com/wootric/)  is
+[InMoment (formerly Wootric)](https://inmoment.com/wootric/) is a cloud-based customer feedback management platform that helps product, customer success, and marketing leaders to improve the customer experience.
 
 RudderStack supports InMoment as a destination to which you can seamlessly send your event data.
 
@@ -37,73 +37,64 @@ To successfully configure InMoment as a destination, you will need to configure 
 - **Account Token**: Enter the unique account token from the InMoment dashboard by navigating to **Settings** > **Your Account**.
 
 <div class="infoBlock">
-Refer to the <Link to="#faq">FAQ</Link> section below for more information on getting the Account Token.
+Refer to the <Link to="#faq">FAQ</Link> section below for more information on getting the account token.
 </div>
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update a user in InMoment. RudderStack looks up the `external_id` field. If it exists, RudderStack updates a user, otherwise creates a new user.
-
-To update a user's details, RudderStack requires the `end_user_id` field which is the Wootric id returned in Create End User API. 
-we can retrieve the id using user lookup by  external_id API.
-
-
-
-found using user lookup by `external_id` API.
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update a user in InMoment. RudderStack updates the user if the `external_id` field exists, otherwise creates one.
 
 A sample `identify` call is shown below:
 
 ```javascript
-rudderanalytics.identify("userId1234", {
-    email: "john@testmail.com",
-    phone: "92374162212",
-    name: "John Denver",
-    city: "Bangalore",
-    title: "SDE",
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    email: "alex@example.com",
+    phone: "+1-202-555-0146",
+    name: "Alex Keener",
+    city: "New Orleans",
     gender: "male",
-    company: "Rudderstack",
-    createdAt: "1660050442",
-    timestamp: "1642685961",
 });
 ```
 
 ### Property mappings
 
-The following table lists the mappings between RudderStack and InMoment properties:
+The following tables list the mappings between RudderStack and InMoment events/properties based on the operation being performed:
 
-| RudderStack property | InMoment property | Presence | Data type | 
-|:---------------------|:-------------|:--------------|:--------------|
-| `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `external_id` | Required | String |
+- [Retrieve a user](https://docs.wootric.com/api/#get-a-specific-end-user-by-email)
 
-| RudderStack property | InMoment property | Presence | Data type | 
-|:---------------------|:-------------|:--------------|:--------------|
-| `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Required | String |
-| `context.traits`/`traits` | `properties` | Optional | hash (key-value pair) |
-| `originalTimestamp`/`timestamp` | `last_surveyed` | Optional | string (UNIX timestamp) |
-| `context.traits.avatarURL`/`traits.avatarURL` | `avatarURL` | Optional | String |
-| `context.traits.companies`/`traits.companies` | `companies` | Optional | Array of object (in company objects `id` and `name` are the only required fields) |
-| `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `external_id` | Optional | String |
+    | RudderStack event/property | InMoment event/property | Presence | Data type | 
+    |:---------------------|:-------------|:--------------|:--------------|
+    | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `external_id` | Required | String |
 
-| RudderStack property | InMoment property | Presence | Data type | 
-|:---------------------|:-------------|:--------------|:--------------|
-| `context.traits.name`/`traits.name` | `name` |Required | String |
-| `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Required | String |
-| `context.traits`/`traits` (after removing `email` and `name`) | `customFields` |Optional | Object |
-| `originalTimestamp`/`timestamp` | `last_surveyed` | Optional | string (UNIX timestamp) |
-| `context.traits.avatarURL`/`traits.avatarURL` | `avatarURL` | Optional | String |
-| `context.traits.companies`/`traits.companies` | `companies` | Optional | Array of object (in company objects `id` and `name` are the only required fields) |
-| `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `external_id` | Required | String |
+- [Create a user](https://docs.wootric.com/api/#create-end-user)
+
+    | RudderStack event/property | InMoment event/property | Presence | Data type | 
+    |:---------------------|:-------------|:--------------|:--------------|
+    | `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Required | String |
+    | `context.traits`/`traits` | `properties` | Optional | Hash (key-value pair) |
+    | `originalTimestamp`/`timestamp` | `last_surveyed` | Optional | String (UNIX timestamp) |
+    | `context.traits.createdAt`/`traits.createdAt` | `external_created_at` | Optional | String (UNIX timestamp) |
+    | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `external_id` | Optional | String |
+
+- [Update a user](https://docs.wootric.com/api/#update-end-user)
+
+    | RudderStack event/property | InMoment event/property | Presence | Data type | 
+    |:---------------------|:-------------|:--------------|:--------------|
+    | Retrieve `id` by looking up the `external_id` | `end_user_id` | Required | String |
+    | `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Optional | String |
+    | `context.traits`/`traits` | `properties` | Optional | Hash (key-value pair) |
+    | `originalTimestamp`/`timestamp` | `last_surveyed` | Optional | String (UNIX timestamp) |
+    | `context.traits.createdAt`/`traits.createdAt` | `external_created_at` | Optional | String (UNIX timestamp) |
+    | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `external_id` | Optional | String |
 
 ## Track
 
-You can create the following events using the <Link to="/event-spec/standard-events/track/">`track`</Link> call:
+You can use the <Link to="/event-spec/standard-events/track/">`track`</Link> call to achieve the following:
 
-- Creating Response of Survey by End User (Can update end-user properties also if supplied in request)
-- Creating a Decline of Survey by End User (Can update end-user properties also if supplied in request)
+- Create/update a survey response by end user 
+- Create/update a survey decline by end user
 
-We will check the message.integrations.Wootric.survey field to decide whether we have to create a response or create a decline.
-
-RudderStack <Link to="https://developers.InMoment.io/api-reference#retrieve_user">retrieves the user</Link> data using `userId` or `email` and uses that information to create post or vote.
+RudderStack checks the `message.integrations.Wootric.survey` field to decide whether to create a response or a decline.
 
 A sample `track` call is shown below:
 
@@ -111,7 +102,7 @@ A sample `track` call is shown below:
 rudderanalytics.track(
     "Submit", {
         feedbackScore: 9,
-        feedbackText: "Awesome Product!!!",
+        feedbackText: "Great Product!",
         ip: "127.0.0.0",
         url: "https://www.google.com/",
         createdAt: "1660050442",
@@ -125,41 +116,36 @@ rudderanalytics.track(
 );
 ```
 
-### Property mappings for Create post event 
+### Property mappings
 
-The following table lists the mappings between RudderStack and InMoment properties for the **Create post** event:
+The following tables list the mappings between RudderStack and InMoment events/properties based on the survey response/decline by the end user:
 
-| RudderStack property | InMoment property | Presence | Data type | Notes |
-|:---------------------|:-------------|:--------------|:--------------|:--------------|
-| `properties.boardID`/`properties.boardId`/`properties.board.id` | `boardID` | Required | String | -|
-| Collect from `externalId` or <Link to="https://developers.InMoment.io/api-reference#retrieve_user">retrieve user</Link> API call| `authorID` | Required | String |-|
-| `properties.details` | `details` | Required | String |-|
-| `properties.title` | `title` | Required | String |-|
-| `properties.byID`/`properties.byId`/`properties.by.id` | `byID` | Optional | String |-|
-| `properties.categoryID`/`properties.categoryId`/`properties.category.id` | `categoryID` |Optional | String |-|
-| `properties.customFields` | `customFields` | Optional | Object | Ensure that you <Link to="#how-to-create-custom-fields-in-InMoment-dashboard">create the custom fields in InMoment dashboard</Link> to send the event successfully.|
-| `properties.eta` | `eta` | Required if `etaPublic` is present. | String | Should be in the MM/YYYY format.  |
-| `properties.etaPublic` | `etaPublic` | Required if `eta` is present.  | Boolean | - |
-| `properties.imageURLs` | `imageURLs` | Optional | Array of strings | -|
+- [Create response](https://docs.wootric.com/api/#create-response)
 
-### Property mappings for Create vote event 
+    | RudderStack event/property | InMoment event/property | Presence | Data type | 
+    |:---------------------|:-------------|:--------------|:--------------|
+    | Retrieve `id` by looking up the `external_id`| `end_user_id` | Required | String |
+    | `properties.feedbackScore`| `score` | Required | Integer |
+    | `context.ip`/`request_ip` | `ip_address` | Required | Text |
+    | `context.page.url`/`properties.url` | `origin_url` | Required | Text |
+    | `properties.feedbackText` | `text` | Optional | Text |
+    | `context.traits.createdAt`/`traits.createdAt` | `created_at` | Optional | Integer (UNIX timestamp) |
+    | `context.traits`/`traits` | `end_user.properties` | Optional | Hash (key-value pair) |
 
-The following table lists the mappings between RudderStack and InMoment properties for the **Create vote** event:
+- [Create decline](https://docs.wootric.com/api/#create-decline)
 
-| RudderStack property | InMoment property | Presence | Data type | 
-|:---------------------|:-------------|:--------------|:--------------|
-| `properties.postId`/`properties.postID`/`properties.post.id` | `postID` | Required | String |
-| Collect from `externalId` or <Link to="https://developers.InMoment.io/api-reference#retrieve_user">retrieve user</Link> API call | `voterID` | Required | String |
-
-<div class="infoBlock">
-The key name for <code class="inline-code">externalId</code> is <code class="inline-code">InMomentUserId</code>.
-</div>
+    | RudderStack event/property | InMoment event/property | Presence | Data type | 
+    |:---------------------|:-------------|:--------------|:--------------|
+    | Wootric id returned in Create End User API. we can retrieve the id using user lookup by  external_id API.| `end_user_id` | Required | Integer |
+    | `context.page.url`/`properties.url` | `origin_url` | Optional | String |
+    | `context.traits.createdAt`/`traits.createdAt` | `created_at` | Optional | Integer (UNIX timestamp) |
+    | `context.traits`/`traits` | `end_user.properties` | Optional | Hash (key-value pair) |
 
 ## FAQ
 
-### Where can I find the InMoment Account Token?
+### Where can I find the InMoment account token?
 
-To find the InMoment Account Token:
+To find the InMoment account token:
 
 1. Log into your [InMoment account](https://app.wootric.com/).
 2. Click on the **Settings** icon in the top navigation bar, as shown:
