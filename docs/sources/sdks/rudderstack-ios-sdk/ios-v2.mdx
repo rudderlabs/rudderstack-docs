@@ -8,7 +8,6 @@ description: >-
 The **RudderStack iOS SDK** lets you track the customer event data from your iOS, macOS, tvOS, and watchOS applications and send it to the specified destinations via RudderStack.
 
 <div class="successBlock">
-
 <ul>
   <li>tvOS is supported in version <strong>1.1.0 and above</strong></li>
   <li>watchOS is supported in version <strong>v1.3.1 and above</strong></li>
@@ -17,7 +16,6 @@ The **RudderStack iOS SDK** lets you track the customer event data from your iOS
 </div>
 
 <div class="infoBlock">
-
 Refer to the <a href="https://github.com/rudderlabs/rudder-sdk-swift">GitHub codebase</a> to get a more hands-on understanding of the SDK.
 </div>
 
@@ -36,20 +34,24 @@ Refer to the <a href="https://github.com/rudderlabs/rudder-sdk-swift">GitHub cod
 
 To set up the RudderStack iOS SDK, the following prerequisites must be met:
 
-- Set up a [RudderStack account](https://app.rudderstack.com).
-- Set up an iOS source in the dashboard. For more information, refer to the <Link to="/dashboard-guides/sources/">Sources</Link> guide.  You should then see a **Write Key** for this source, as shown:
+- You need to set up a [**RudderStack account**](https://app.rudderstack.com/signup).
+- Once signed up, <Link to="/dashboard-guides/sources/#adding-a-source">set up an iOS source</Link> in the dashboard. You should be able to see a **Write Key** for this source, as shown below:
 
-<img src="../../../assets/event-stream-sources/ios-sdk-1.png" alt="iOS source write key" />
+<img src="../../../assets/event-stream-sources/ios-write-key.png" alt="iOS source write key" />
 
-- You also need a data plane URL. Follow <Link to="/dashboard-guides/overview#data-plane-url">Data plane URL</Link> section for more information on the data plane URL and where to get it.
-- Finally, you will need a Mac with the latest version of [Xcode](https://developer.apple.com/xcode/).
+- You also need a data plane URL. Refer to the <Link to="/resources/glossary/#data-plane-url">Glossary</Link> for more information on the data plane URL and where to find it.
+
+<div class="successBlock">
+The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has an SDK installation snippet containing both the write key and the data plane URL. You can use it to integrate the iOS SDK into your project.
+</div>
+
+- Finally, you need a Mac with the latest version of [**Xcode**](https://developer.apple.com/xcode/).
 
 ## Installing the RudderStack iOS SDK
 
 The RudderStack iOS SDK is distributed through [Cocoapods](https://cocoapods.org/pods/Rudder) and [Carthage](https://github.com/Carthage/Carthage).
 
 <div class="successBlock">
-
 The recommended and easiest way to add the SDK to your project is through <code class="inline-code">Podfile</code>.
 </div>
 
