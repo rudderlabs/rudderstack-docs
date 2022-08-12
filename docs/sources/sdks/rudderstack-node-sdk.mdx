@@ -1,11 +1,11 @@
 ---
 title: "Node.js"
 description: >-
-  Detailed technical documentation on using RudderStack’s Node.js SDK to send
+  Detailed technical documentation on using RudderStack’s Node SDK to send
   events to various destinations.
 ---
 
-The **RudderStack Node.js SDK** lets you track your customer event data from your Node.js applications and send it to your specified destinations via RudderStack.
+The **RudderStack Node SDK** lets you track your customer event data from your Node.js applications and send it to your specified destinations via RudderStack.
 
 Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-node) to get a more hands-on understanding of the SDK.
 
@@ -17,14 +17,18 @@ Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-nod
 
 ## SDK setup requirements
 
-To set up the RudderStack Node.js SDK, the following prerequisites must be met:
+To set up the RudderStack Node SDK, the following prerequisites must be met:
 
-- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
-- Once signed up, set up a Node.js source in the dashboard. For more information, see <Link to="/dashboard-guides/sources/#adding-a-source">Adding a source</Link>. You should then see a **Write Key** for this source, as shown below:
+- You need to set up a [**RudderStack account**](https://app.rudderstack.com/signup).
+- Once signed up, <Link to="/dashboard-guides/sources/#adding-a-source">set up a Node source</Link> in the dashboard. You should then see a **Write Key** for this source, as shown below:
 
-<img src="../../assets/event-stream-sources/node-sdk-1.png" alt="Node.js source write key" />
+<img src="../../assets/event-stream-sources/node-write-key.png" alt="Node source write key" />
 
-- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
+- You will also need a data plane URL. Refer to the <Link to="/resources/glossary/#data-plane-url">Glossary</Link> for more information on the data plane URL and where to find it.
+
+<div class="successBlock">
+The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has an SDK installation snippet containing both the write key and the data plane URL. You can use it to integrate the Node SDK into your application.
+</div>
 
 ## Installing the Node.js SDK
 
