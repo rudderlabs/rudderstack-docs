@@ -20,19 +20,21 @@ You can check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk
 
 To set up the RudderStack Android SDK, the following prerequisites must be met:
 
-- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
-- Once signed up, set up an Android source in the dashboard. For more information, see <Link to="/dashboard-guides/sources/#adding-a-source">Adding a source</Link>.  You should then see a **Write Key** for this source, as shown below:
+- You will need to install [**Android Studio**](https://developer.android.com/studio) on your system.
+- Also, you will need to set up a [**RudderStack account**](https://app.rudderstack.com/signup).
+- Once signed up, <Link to="/dashboard-guides/sources/#adding-a-source">set up an Android source</Link> in the dashboard.  You should then see a **Write Key** for this source, as shown below:
 
-<img src="../../../assets/event-stream-sources/android-sdk-1.png" alt="Android source write key" />
+<img src="../../../assets/event-stream-sources/android-write-key.png" alt="Android source write key" />
 
-- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
+- You will also need a data plane URL. Refer to the <Link to="/resources/glossary/#data-plane-url">Glossary</Link> for more information on the data plane URL and where to find it.
 
-- Finally, you will also need to install [**Android Studio**](https://developer.android.com/studio) on your system.
+<div class="successBlock">
+The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has an SDK installation snippet containing both the write key and the data plane URL. You can use it to integrate the Android SDK into your project.
+</div>
 
 ## Installing the SDK
 
 <div class="infoBlock">
-
 <strong>As Bintray has sunset from 1st May, we're moving the Android SDK to Maven Central. All the versions from 1.0.10 are available in Maven Central only.</strong>
 </div>
 
@@ -115,8 +117,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ```
 
 <div class="infoBlock">
-  
-  For more details, refer to this <a href="https://developer.android.com/reference/javax/net/ssl/SSLSocket.html#protocols">Android documentation</a>.
+For more details, refer to this <a href="https://developer.android.com/reference/javax/net/ssl/SSLSocket.html#protocols">Android documentation</a>.
 </div>
 
 ## Setting Android Permission

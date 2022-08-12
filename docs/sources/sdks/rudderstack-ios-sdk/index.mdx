@@ -11,19 +11,16 @@ The **RudderStack iOS SDK** lets you track your customer event data from your iO
 Refer to the [GitHub codebase](https://github.com/rudderlabs/rudder-sdk-ios) to get a more hands-on understanding of the SDK.
 
 <div class="warningBlock">
-
-<strong>This document is written for the iOS SDK v1</strong>.
+<strong>This documentation is written for the iOS SDK v1</strong>.
 </div>
 
 <div class="infoBlock">
-
 You can integrate the iOS SDK with your tvOS and watchOS apps and seamlessly track user events without any additional configuration.
 
 The SDK supports tvOS tracking in version <strong>1.1.0 and above</strong>. watchOS tracking is supported in version <strong>1.3.1 and above</strong>.
 </div>
 
 <div class="successBlock">
-
 A new version of the iOS SDK (<strong>v2</strong>) is now available. Some key features of this release include:
 <ul>
   <li>Support for tracking events from your macOS apps</li>
@@ -44,14 +41,18 @@ For more information, refer to the <Link to="/sources/sdks/rudderstack-ios-sdk/i
 
 To set up the RudderStack iOS SDK, the following prerequisites must be met:
 
-- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
-- Once signed up, set up an iOS source in the dashboard. For more information, see <Link to="/dashboard-guides/sources/#adding-a-source">Adding a source</Link>.  You should then see a **Write Key** for this source, as shown below:
+- You need to set up a [**RudderStack account**](https://app.rudderstack.com/signup).
+- Once signed up, <Link to="/dashboard-guides/sources/#adding-a-source">set up an iOS source</Link> in the dashboard.  You should then see a **Write Key** for this source, as shown below:
 
-<img src="../../../assets/event-stream-sources/ios-sdk-1.png" alt="iOS source write key" />
+<img src="../../../assets/event-stream-sources/ios-write-key.png" alt="iOS source write key" />
 
-- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
+- You also need a data plane URL. Refer to the <Link to="/resources/glossary/#data-plane-url">Glossary</Link> for more information on the data plane URL and where to find it.
 
-- Finally, you will need a Mac with the latest version of [**Xcode**](https://developer.apple.com/xcode/).
+<div class="successBlock">
+The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has an SDK installation snippet containing both the write key and the data plane URL. You can use it to integrate the iOS SDK into your project.
+</div>
+
+- Finally, you need a Mac with the latest version of [**Xcode**](https://developer.apple.com/xcode/).
 
 ## Installing the RudderStack iOS SDK
 
