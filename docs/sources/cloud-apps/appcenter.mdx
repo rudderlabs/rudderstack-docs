@@ -3,9 +3,9 @@ title: "App Center"
 description: Step-by-step guide to ingest your event data from App Center into RudderStack.
 ---
 
-[App Center](https://appcenter.ms/) is Microsoft's cross-platform build automation and management platform that lets you automate your builds, test your apps in the cloud, and monitor their real-time usage with the help of crash data and analytics.
+[App Center](https://appcenter.ms/) is Microsoft's cross-platform build automation and management platform. It lets you automate your builds, test your apps in the cloud, and monitor their real-time usage with the help of crash data and analytics.
 
-You can send your App Center events to RudderStack by adding a webhook that points to RudderStack. These events include activities related to a build success or failure, release of new version of an app, or an app crash. You can also configure what events to send as per your requirement on their dashboard.
+You can send your App Center events by adding a webhook that points to RudderStack. These events include activities related to build success or failure, new app version releases, or app crashes. You can also configure what events to send per your requirement on their dashboard.
 
 This guide will help you set up App Center as a source in RudderStack.
 
@@ -23,12 +23,14 @@ Follow these steps to set up your App Center source in the RudderStack dashboard
 
 <img src="../../assets/event-stream-sources/appcenter-2.png" alt="App Center source configuration" />
 
-5. In the **URL** text box, add a URL pointing to RudderStack in the following format: 
+5. In the **URL** text box, add the URL pointing to RudderStack in the following format: 
 
-`<DATA_PLANE_URL>/v1/webhook?writeKey=<WRITE_KEY>`
+```
+<DATA_PLANE_URL>/v1/webhook?writeKey=<WRITE_KEY>
+```
 
 <div class="infoBlock">
-For more information on the data plane URL, refer to <Link to="/rudderstack-open-source/installing-and-setting-up-rudderstack#what-is-a-data-plane-url-where-do-i-get-it">this</Link>section.
+For more information on the data plane URL, refer to the <Link to="/resources/glossary/#data-plane-url">Glossary</Link>.
 </div>
 
 <div class="warningBlock">
