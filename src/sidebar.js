@@ -324,13 +324,15 @@ export const jsonData = [
                 title: "PostHog",
                 link: "/sources/cloud-apps/posthog/",
                 content: []
-            }, {
-                title: "Shopify",
-                link: "/sources/cloud-apps/shopify/",
-                content: []
-            }, {
+            },
+            {
                 title: "Segment",
                 link: "/sources/cloud-apps/segment/",
+                content: []
+            },
+            {
+                title: "Shopify",
+                link: "/sources/cloud-apps/shopify/",
                 content: []
             },
             {
