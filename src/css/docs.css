@@ -1258,4 +1258,14 @@ a.pageRef:hover .rightRefArrow {
 }
 /* feedback component-ENDS */
 
+#docs-modal .searchResultsEmpty{
+  height: max-content;
+  box-shadow: 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+#docs-modal .docsSearchWrapper, #docs-modal .docsSearch{
+  @apply w-full;
+}
+#docs-modal .docsSearch{
+  border: 1px solid rgba(222, 226, 231, var(--tw-border-opacity));
+}
 /*! purgecss end ignore */

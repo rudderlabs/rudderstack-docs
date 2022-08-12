@@ -23,7 +23,7 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen }) => {
   const handleKeyDown = useCallback(e => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
       setShowModal(true)
-    }else if(e.key === 'Escape'){
+    } else if (e.key === 'Escape') {
       setShowModal(false)
     }
   }, [setShowModal])
@@ -34,6 +34,8 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen }) => {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [handleKeyDown])
 
+  const handleModalClose = () => setShowModal(false)
+  
   return (
     <div className="headerNav">
       <div className="headerContainer">
@@ -133,7 +135,7 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen }) => {
           </div>
         </div>
       </div>
-      {showModal && <SearchBoxModal />}
+      {showModal && <SearchBoxModal closeModal={handleModalClose}/>}
     </div>
   )
 }
