@@ -26,7 +26,7 @@ To set up Sendgrid as a source in RudderStack, follow these steps:
 <img src="../../assets/cloud-extract-sources/sendgridv2-connection-settings.png" alt="Sendgrid credentials" />
 
 - **Sendgrid API key**: Enter your Sendgrid API key by going to your Sendgrid dashboard and navigating to **Settings** > **API Keys**.
-- **Start time**: Enter your Start time in timestamp integer format. Any data before this timestamp will not be replicated.
+- **Start time**: Choose the start date from which you want RudderStack to ingest the Sendgrid data. RudderStack will not replicate any data before this date.
 
 <div class="infoBlock">
 For more information on the required permissions for the API key, refer to the <a href="#faq">FAQ</a> section below.
@@ -43,7 +43,6 @@ The following settings specify how RudderStack sends the data ingested from Send
     - **Manual**: You are required to run the syncs manually.
 
 <div class="infoBlock">
-
 For more information on the schedule types, refer to the <Link to="/sources/extract/common-settings/">Common Settings</Link> guide.
 </div>
 
@@ -60,7 +59,6 @@ You can further connect this source to your data warehouse by clicking on **Add 
 <img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
 
 <div class="successBlock">
-
 Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
 </div>
 
@@ -102,5 +100,3 @@ Upon configuring the source, RudderStack first connects to your SendGrid instanc
 Yes, it is.
 
 RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
-
-
