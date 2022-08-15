@@ -24,7 +24,7 @@ This guide will help you decide the right setup based on your environment and da
 Refer to the <Link to="#setup-overview">Setup overview</Link> section below to understand the RudderStack Cloud and Open Source setup options.
 </div>
 
-## Setup differences
+## Cloud and Open Source setup
 
 To understand the effort involved in setting up RudderStack, it's useful to take a look at RudderStack's architecture which comprises the <Link to="/resources/rudderstack-architecture/#control-plane">**control plane**</Link> and the <Link to="/resources/rudderstack-architecture/#data-plane">**data plane**</Link>. These two services work together to govern the data flow between your event sources and destinations.
 
@@ -39,7 +39,7 @@ To understand the effort involved in setting up RudderStack, it's useful to take
 
 In <Link to="/get-started/rudderstack-cloud/">RudderStack Cloud</Link>, you get a RudderStack-hosted data plane and the control plane so you don't have to worry about the setup at all. <a href="https://app.rudderstack.com/signup/">Sign up</a> for free, set up a source and destination, and start seeing the events flow within minutes.
 
-RudderStack's free cloud tier offers 5 million events per month and multiple sources and destinations. It also includes key features like <Link to="/dashboard-guides/live-events/">Live Events</Link> and <Link to="/features/transformations/">Transformations</Link>.  It's also easier to convert to a <a href="https://www.rudderstack.com/pricing">paid plan</a> as your needs evolve over time.
+RudderStack's free cloud tier offers multiple sources, destinations and delivery of 5 million events per month. It provides key features like <Link to="/dashboard-guides/live-events/">Live Events</Link> and <Link to="/features/transformations/">Transformations</Link>. It's also easier to convert to a <a href="https://www.rudderstack.com/pricing">paid plan</a> as your needs evolve over time.
 
 ### RudderStack Open Source
 
@@ -51,9 +51,9 @@ For <Link to="/get-started/rudderstack-open-source/">RudderStack Open Source</Li
 RudderStack will not host the data plane for you.
 </div>
 
-- For setting up the control plane, you have two options:
+- Set up the control plane using any of the following options:
   - Use the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource).
-  - If you want to self-host your source-destination configurations, set up your own control plane using <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link>.
+  - Self-host your source-destination configurations by setting up your own control plane using <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane Lite</Link>.
 
 <div class="warningBlock">
 Cloud-based features like <Link to="/features/transformations/">Transformations</Link> and <Link to="/dashboard-guides/live-events/">Live Events</Link> are not available if you use the <Link to="/get-started/rudderstack-open-source/control-plane-lite">Control Plane Lite</Link> utility.
@@ -74,7 +74,7 @@ If you are unsure, it is highly recommended to use <Link to="#rudderstack-cloud"
 | <Link to="/dashboard-guides/live-events/">Live Events</Link> |  ✅ |  ❗  | <ul><li>For Open Source users, this feature is available only in the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource).</li><li>Applicable only for <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> destinations.</li></ul> | 
 | End-to-end warehouse uploads | ✅  |  ❌  | Use the RudderStack-hosted object storage to **temporarily** store your events before forwarding them to your warehouse destination. **RudderStack does not persist any of this data**. |
 | <Link to="/user-guides/administrators-guide/event-replay/">Event Replay</Link>| ✅ |  ❌  | This is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature. | 
-| Maintaining event ordering | ✅ |  ❌  | <ul><li>For Cloud, this is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature.</li><li>Crucial for a multi-node RudderStack setup</li><li>Not supported in the open source setup.</li></ul> |
+| Maintaining event ordering | ✅ |  ❌  | <ul><li>For Cloud, this is an [Enterprise-only](https://www.rudderstack.com/enterprise-quote/) feature.</li><li>Crucial for a multi-node RudderStack setup</li></ul> |
 | <Link to="/features/transformations/">Transformations</Link> (cloud mode only) |  ✅ |  ✅ | <ul><li>For Open Source users, transformations are available only in the [RudderStack-hosted control plane](https://app.rudderstack.com/signup?type=opensource) and users can set up to **3 transformations**.</li><li>[RudderStack Cloud Free](https://app.rudderstack.com/signup?type=freetrial) users can set up to **3 transformations**.</li><li>Pro and Enterprise users can create unlimited transformations.</li></ul> |
 
 ### ETL and Reverse ETL
