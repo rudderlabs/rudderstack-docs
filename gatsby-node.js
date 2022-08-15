@@ -1,3 +1,24 @@
+if (!process.env.GATSBY_SANITY_TOKEN) {
+  exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+    const { createNode } = actions
+    const POST_NODE_TYPE = 'SanitySiteSettings'
+    const post = {
+      _rawWebsiteScripts: ['test'],
+    }
+
+    createNode({
+      ...post,
+      id: createNodeId(`${POST_NODE_TYPE}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: POST_NODE_TYPE,
+        contentDigest: createContentDigest(post),
+      },
+    })
+  }
+}
+
 exports.onPostBuild = () => {
   const fs = require('fs')
 

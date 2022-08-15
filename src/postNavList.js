@@ -353,6 +353,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "canny",
+    title: "Canny",
+    link: "/sources/cloud-apps/canny/",
+    content: [],
+  },
+  {
     key: "appcenter",
     title: "App Center",
     link: "/sources/cloud-apps/appcenter/",
@@ -954,6 +960,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "hubspot-v2",
+    title: "HubSpot V2",
+    link: "/destinations/streaming-destinations/hubspot-v2/",
+    content: [],
+  },
+  {
     key: "variance",
     title: "Variance",
     link: "/destinations/streaming-destinations/variance/",
@@ -1047,6 +1059,12 @@ export const postNavList = [
     key: "ometria",
     title: "Ometria",
     link: "/destinations/streaming-destinations/ometria/",
+    content: [],
+  },
+  {
+    key: "onesignal",
+    title: "OneSignal",
+    link: "/destinations/streaming-destinations/onesignal/",
     content: [],
   },
   {
@@ -1476,6 +1494,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "canny",
+    title: "Canny",
+    link: "/destinations/streaming-destinations/canny/",
+    content: [],
+},
+  {
     key: "splitio",
     title: "Split.io",
     link: "/destinations/streaming-destinations/splitio/",
@@ -1509,6 +1533,12 @@ export const postNavList = [
     key: "monetate",
     title: "Monetate",
     link: "/destinations/streaming-destinations/monetate/",
+    content: [],
+  },
+  {
+    key: "mouseflow",
+    title: "Mouseflow",
+    link: "/destinations/streaming-destinations/mouseflow/",
     content: [],
   },
   {
@@ -1818,13 +1848,13 @@ export const postNavList = [
     key: "application-lifecycle-events-spec",
     title: "Application Lifecycle Events",
     link:
-      "/event-spec/application-lifecycle-events-spec/",
+      "/event-spec/standard-events/application-lifecycle-events-spec/",
     content: [],
   },
   {
     key: "video-events-spec",
     title: "Video Events",
-    link: "//event-spec/video-events-spec/",
+    link: "/event-spec/standard-events/video-events-spec/",
     content: [],
   },
   {
@@ -2035,6 +2065,12 @@ export const postNavList = [
     key: "custom-domains",
     title: "How to Use Custom Domains",
     link: "/user-guides/how-to-guides/custom-domains/",
+    content: [],
+  },
+  {
+    key: "switch-to-rudderstack-hosted-data-plane",
+    title: "How to Switch from Self-hosted to RudderStack-hosted Data Plane",
+    link: "/user-guides/how-to-guides/switch-to-rudderstack-hosted-data-plane/",
     content: [],
   },
   {

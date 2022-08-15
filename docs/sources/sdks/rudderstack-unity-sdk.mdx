@@ -11,16 +11,15 @@ Check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-unity) 
 
 ## SDK setup requirements
 
-To configure the Unity SDK, you will need the following:
+To set up the RudderStack Unity SDK, the following prerequisites must be met:
 
-- You will need to set up a [**RudderStack account**](https://app.rudderstack.com).
-- Once signed up, set up a Unity source in the dashboard. For more information, see <Link to="/dashboard-guides/sources/#adding-a-source">Adding a source</Link>.  You should then see a **Write Key** for this source, as shown below:
+- You need to set up a [**RudderStack account**](https://app.rudderstack.com/signup).
+- Once signed up, <Link to="/dashboard-guides/sources/#adding-a-source">set up a Unity source</Link> in the dashboard. You should be able to see a **Write Key** for this source, as shown below:
 
-<img src="../../assets/event-stream-sources/unity-sdk-1.png" alt="Unity source write key" />
+<img src="../../assets/event-stream-sources/unity-write-key.png" alt="Unity source write key" />
 
-- You will also need a data plane URL. Follow [**this section**](https://rudderstack.com/docs/rudderstack-open-source/installing-and-setting-up-rudderstack/#what-is-a-data-plane-url-where-do-i-get-it) for more information on the data plane URL and where to get it.
-
-- Finally, you will need the [**Unity development kit**](https://store.unity.com/download).
+- You will also need a data plane URL. Refer to the <Link to="/resources/glossary/#data-plane-url">Glossary</Link> for more information on the data plane URL and where to find it.
+- Finally, download and install the [**Unity development kit**](https://store.unity.com/download).
 
 ## Installing the Unity SDK
 
@@ -217,7 +216,7 @@ RudderConfigBuilder configBuilder = new RudderConfigBuilder()
 
 ## Tracking application lifecycle events on the Android platform
 
-The Unity SDK automatically tracks the [Application Lifecycle Events](https://www.rudderstack.com/docs/event-spec/application-lifecycle-events-spec/) to get insights into the app metrics like installs, opens, updates, etc. However, you can disable the automatic tracking by setting the `withTrackLifecycleEvents` parameter to `false`, as shown:
+The Unity SDK automatically tracks the <Link to="/event-spec/standard-events/application-lifecycle-events-spec/">Application Lifecycle Events</Link> to get insights into the app metrics like installs, opens, updates, etc. However, you can disable the automatic tracking by setting the `withTrackLifecycleEvents` parameter to `false`, as shown:
 
 ```csharp
 RudderConfig config = new RudderConfigBuilder()
@@ -241,8 +240,7 @@ The following requirements must be met to ensure that the **Application Updated*
 - **For Android**: Make sure the `versionCode` in the `defaultConfig` object nested in the `android` object of your app's `build.gradle` is incremented.
 
 <div class="infoBlock">
-
-Refer to the <a href ="https://www.rudderstack.com/docs/event-spec/application-lifecycle-events-spec/#application-updated">Application Lifecycle Events Specification</a> guide for more information.
+Refer to the <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-updated">Application Lifecycle Events Specification</Link> guide for more information.
 </div>
 
 

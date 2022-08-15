@@ -31,7 +31,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./src/data/`,
-      }
+      },
     },
     {
       resolve: `gatsby-plugin-purgecss`,
@@ -52,29 +52,35 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `gatsby-source-sanity`,
-      options: {
-        projectId: process.env.GATSBY_SANITY_PROJECTID,
-        dataset: process.env.GATSBY_SANITY_DATASET,
-        token: process.env.GATSBY_SANITY_TOKEN,
-        graphqlTag: 'default',
-      },
-    },
-    {
-      resolve: `gatsby-plugin-rudderstack`,
-      options: {
-        prodKey: process.env.RS_PRODUCTION_WRITE_KEY,
-        loadType: 'defer',
-        trackPage: false,
-        loadAsync: true,
-        delayLoad: true,
-        delayLoadTime: 1000,
-        useNewSDK: true,
-        sdkURL: 'https://cdn.rudderlabs.com/v1.1/beta/rudder-analytics.min.js',
-        dataPlaneUrl: `https://rudderstack-dataplane.rudderstack.com`,
-      },
-    },
+    ...(process.env.GATSBY_SANITY_PROJECTID &&
+    process.env.RS_PRODUCTION_WRITE_KEY
+      ? [
+          {
+            resolve: `gatsby-source-sanity`,
+            options: {
+              projectId: process.env.GATSBY_SANITY_PROJECTID,
+              dataset: process.env.GATSBY_SANITY_DATASET,
+              token: process.env.GATSBY_SANITY_TOKEN,
+              graphqlTag: 'default',
+            },
+          },
+          {
+            resolve: `gatsby-plugin-rudderstack`,
+            options: {
+              prodKey: process.env.RS_PRODUCTION_WRITE_KEY,
+              loadType: 'defer',
+              trackPage: false,
+              loadAsync: true,
+              delayLoad: true,
+              delayLoadTime: 1000,
+              useNewSDK: true,
+              sdkURL:
+                'https://cdn.rudderlabs.com/v1.1/beta/rudder-analytics.min.js',
+              dataPlaneUrl: `https://rudderstack-dataplane.rudderstack.com`,
+            },
+          },
+        ]
+      : []),
     `gatsby-transformer-csv`,
     'gatsby-plugin-use-query-params',
     `gatsby-plugin-react-helmet`,
@@ -145,32 +151,32 @@ module.exports = {
         serialize: ({ path }) => ({
           url: path,
           changefreq: 'daily',
-          priority: 0.7
-        })
-      }
+          priority: 0.7,
+        }),
+      },
     },
     ...(process.env.RS_GATSBY_ALGOLIA_APIKEY
       ? [
-        {
-          resolve: `gatsby-plugin-algolia`,
-          options: {
-            appId: process.env.GATSBY_ALGOLIA_APP_ID,
-            apiKey: process.env.RS_GATSBY_ALGOLIA_APIKEY,
-            indexName:
-              process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs_v2",
-            queries: require("./src/utils/docs-algolia"),
-            enablePartialUpdates: true,
-            matchFields: [
-              "objectID",
-              "title",
-              "aliases",
-              "slug",
-              "headings",
-              "excerpt"
-            ],
+          {
+            resolve: `gatsby-plugin-algolia`,
+            options: {
+              appId: process.env.GATSBY_ALGOLIA_APP_ID,
+              apiKey: process.env.RS_GATSBY_ALGOLIA_APIKEY,
+              indexName:
+                process.env.GATSBY_ALGOLIA_INDEX_PREFIX + '_gatsby_docs_v2',
+              queries: require('./src/utils/docs-algolia'),
+              enablePartialUpdates: true,
+              matchFields: [
+                'objectID',
+                'title',
+                'aliases',
+                'slug',
+                'headings',
+                'excerpt',
+              ],
+            },
           },
-        },
-      ]
+        ]
       : []),
   ],
 }
