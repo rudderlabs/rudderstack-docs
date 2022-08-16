@@ -64,9 +64,19 @@ To create a Google Cloud Function, follow these steps:
 1. Log into your [Cloud Functions account](https://cloud.google.com/functions) and click **VIEW CONSOLE**.
 2. Select your project.
 3. Then, click **CREATE FUNCTION**.
-4. Enter a name for your function and allocate the memory for the function.
-5. In the **Trigger** field, select **HTTP** or **HTTPS**, depending on your use-case. 
-6. Save the resulting URL - this is required to set up Google Cloud Functions as a destination in RudderStack.
-7. Configure the function's code in the **Source Code** field and the language in the **Runtime** field.
-8. Enter the function name as defined in your code in the **Function to execute** field.
-9. Click **Create** to save your settings and create the Cloud Function.
+4. Enter a **Function name** and select the **Region** from the dropdown.
+
+<img src="../../assets/event-stream-destinations/gcf-setup.png" alt="Google Cloud Functions setup"/>
+
+5. In the **Trigger** field, select **HTTP** or **HTTPS**, depending on your use-case.
+6. In the **Runtime, build and connections settings**, specify the memory allocated for the cloud function in the **Memory allocated** field.
+7. Configure the rest of the cloud function settings as per your requirement and click **Next**.
+
+<img src="../../assets/event-stream-destinations/gcf-setup-1.png" alt="Google Cloud Functions setup"/>
+
+8. Add the function code and the language in the **Runtime** field.
+9. Enter the function name as defined in your code in the **Entry point** field.
+10. Click **Deploy** to save your settings and create the Cloud Function.
+11. In the **TRIGGER** tab, copy the trigger URL - this is required to set up Google Cloud Functions as a destination in RudderStack.
+
+<img src="../../assets/event-stream-destinations/gcf-url.png" alt="Google Cloud Functions trigger URL"/>
