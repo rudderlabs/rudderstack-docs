@@ -1130,6 +1130,12 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Google Cloud Functions",
+                sectionTitle: "Serverless",
+                link: "/destinations/streaming-destinations/google-cloud-functions/",
+                content: []
+            },
+            {
                 title: "Amazon S3",
                 sectionTitle: "Storage Platforms",
                 link: "/destinations/streaming-destinations/amazon-s3/",

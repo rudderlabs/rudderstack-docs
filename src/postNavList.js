@@ -1573,6 +1573,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "google-cloud-functions",
+    title: "Google Cloud Functions",
+    link: "/destinations/streaming-destinations/google-cloud-functions/",
+    content: [],
+  },
+  {
     key: "bugsnag",
     title: "Bugsnag",
     link: "/destinations/streaming-destinations/bugsnag/",
