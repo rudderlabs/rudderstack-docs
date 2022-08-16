@@ -49,7 +49,7 @@ A sample `identify` call is shown below:
 ```javascript
 rudderanalytics.identify("1hKOmRA4GRlm", {
     email: "alex@example.com",
-    phone: "+1-202-555-0146",
+    phone: "+12025550146",
     name: "Alex Keener",
     city: "New Orleans",
     gender: "male",
@@ -73,7 +73,7 @@ The following tables list the mappings between RudderStack and InMoment events/p
     | RudderStack event/property | InMoment event/property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
     | `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Optional, if `phone` is present. | String |
-    | `context.traits.phone`/`traits.phone`/`properties.phone` | `phone_number` | Optional, if `email` is present. | String (Phone number with country code, for example, `+1-202-555-0146`) |
+    | `context.traits.phone`/`traits.phone`/`properties.phone` | `phone_number` | Optional, if `email` is present. | String (Phone number with country code, for example, `+12025550146`) |
     | `context.traits`/`traits` | `properties` | Optional | Hash (key-value pair) |
     | `originalTimestamp`/`timestamp` | `last_surveyed` | Optional | String (UNIX timestamp) |
     | `context.traits.createdAt`/`traits.createdAt` | `external_created_at` | Optional | String (UNIX timestamp) |
@@ -89,7 +89,7 @@ At least one parameter out of <code class="inline-code">email</code> and <code c
     |:---------------------|:-------------|:--------------|:--------------|
     | Retrieved `id` by looking up the `external_id` | `end_user_id` | Required | String |
     | `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Optional | String |
-    | `context.traits.phone`/`traits.phone`/`properties.phone` | `phone_number` | Optional | String (Phone number with country code, for example, `+1-202-555-0146`) |
+    | `context.traits.phone`/`traits.phone`/`properties.phone` | `phone_number` | Optional | String (Phone number with country code, for example, `+12025550146`) |
     | `context.traits`/`traits` | `properties` | Optional | Hash (key-value pair) |
     | `originalTimestamp`/`timestamp` | `last_surveyed` | Optional | String (UNIX timestamp) |
     | `context.traits.createdAt`/`traits.createdAt` | `external_created_at` | Optional | String (UNIX timestamp) |
@@ -98,14 +98,14 @@ At least one parameter out of <code class="inline-code">email</code> and <code c
 
 You can use the <Link to="/event-spec/standard-events/track/">`track`</Link> call to:
 
-- Create or update a survey response by the end user 
-- Create or update a survey decline by the end user
+- Create a survey response by the end user 
+- Create a survey decline by the end user
 
 <div class="infoBlock">
 RudderStack also updates the user properties if they are present in the event.
 </div>
 
-RudderStack checks the `message.integrations.Wootric.survey` field to determine whether to create a response or a decline.
+RudderStack checks the `message.integrations.Wootric.eventType` field to determine whether to create a response or a decline.
 
 A sample `track` call is shown below:
 
@@ -131,7 +131,7 @@ rudderanalytics.track(
 
 The following tables list the mappings between RudderStack and InMoment properties based on the end user's survey response/decline:
 
-- [Create response](https://docs.wootric.com/api/#create-response)
+- [Create a survey response](https://docs.wootric.com/api/#create-response)
 
     | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
@@ -147,7 +147,7 @@ The following tables list the mappings between RudderStack and InMoment properti
 If the difference between the event's <code class="inline-code">timestamp</code> and <code class="inline-code">createdAt</code> is greater than 24 hours, RudderStack creates a new response for the user. Otherwise, it updates the last response.
 </div>
 
-- [Create decline](https://docs.wootric.com/api/#create-decline)
+- [Create a survey decline](https://docs.wootric.com/api/#create-decline)
 
     | RudderStack event/property | InMoment event/property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
