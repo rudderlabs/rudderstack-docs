@@ -1,15 +1,11 @@
 ---
-title: "Mixpanel"
+title: "Mixpanel V2"
 description: Step-by-step guide to ingest data from your Mixpanel account into RudderStack.
 ---
 
 [Mixpanel](https://mixpanel.com/) is an analytics platform that provides specific tools for targeted business communication and customer engagement, in-app A/B testing, user survey forms, and custom reports to measure customer retention.
 
 This document guides you in setting up Mixpanel as a source in RudderStack. Once configured, RudderStack automatically ingests your Mixpanel data and routes it to your specified data warehouse destination.
-
-<div class="dangerBlock">
-This source will be deprecated soon. Refer to the <Link to="/sources/extract/mixpanel-v2/">Mixpanel V2</Link> guide for the latest documentation.
-</div>
 
 <div class="warningBlock">
 All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
@@ -20,27 +16,48 @@ All the Cloud Extract sources support sending data only to a <Link to="/destinat
 To set up Mixpanel as a source in RudderStack, follow these steps:
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
-2. Go to **Sources** > **New source** > **Cloud Extract** and select **Mixpanel** from the list of sources.
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **Mixpanel V2** from the list of sources.
 3. Assign a name to your source and click on **Next**.
 
 ### Connection settings
 
-1. Click **Create Credentials from Scratch**. You will then see the following screen:
+Enter the following connection settings to set up the Mixpanel V2 source:
 
-<img src="../../assets/cloud-extract-sources/mixpanel-connection-settings-1.png" alt="Mixpanel connection settings" />
+<img src="../../assets/cloud-extract-sources/mixpanelv2-connection-settings.png" alt="Mixpanel connection settings" />
 
-2. Enter the following connection settings:
-  - **Account Name** : Enter your Mixpanel account name.
-  - **API Key** : Enter your Mixpanel API Key. You can get it from the **Project Settings** option in your Mixpanel dashboard.
-  - **API Secret** : Enter your Mixpanel API Secret.
-  - **Project timezone** : Enter your Mixpanel project timezone. You can find this information in your Mixpanel **Project Settings**, within the **Project Details** section.
+The connection settings are described below:
+
+- **Project Token** : Enter your Mixpanel project token by going to your Mixpanel **Project Settings** > **Access Keys**.
 
 <div class="infoBlock">
-More information on how to obtain the above credentials can be found in the <a href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings">Mixpanel support guide</a>.
+For more information on obtaining the Mixpanel project token, refer to the <a href="https://help.mixpanel.com/hc/en-us/articles/115004502806-Find-Project-Token-">Mixpanel support guide</a>.
 </div>
 
-<div class="successBlock">
-If you have already connected RudderStack to your Mixpanel account, your credentials should appear automatically under <strong>Use existing credentials</strong>.
+- **Attribution Window**: Specify the time period for attributing results to the ads and the lookback period during which the ads results are counted. By default, this value is set to **5 days**.
+- **Project Timezone**: Specify your Mixpanel project timezone by going to your Mixpanel **Project Settings** > **Project Details**.
+
+<div class="infoBlock">
+For more information on getting your Mixpanel project timezone, refer to the <a href="https://help.mixpanel.com/hc/en-us/articles/115004547203-Manage-Timezones-for-Projects-in-Mixpanel">Mixpanel support guide</a>.
+</div>
+
+- **Select Properties By Default**: Enable this setting to capture new event properties and engage records. If disabled, these properties will be ignored.
+- **Start Date**: Select the date from when RudderStack ingests your Mixpanel data.
+
+<div class="warningBlock">
+RudderStack will <strong>not replicate</strong> any data before this date. If you do not set this option, RudderStack will replicate the Mixpanel data up to one year from the current date by default.
+</div>
+
+- **End Date**: Specify the end date for the replication window.
+
+<div class="warningBlock">
+RudderStack will not replicate any data <strong>after</strong> this date. Do not set this field if you want RudderStack to sync the most recent Mixpanel data.
+</div>
+
+- **Region**: Specify your Mixpanel domain instance from either **US** or **EU**.
+- **Date Slicing Window**: Define the window size used to slice through the Mixpanel data. By default, RudderStack sets this field to **30 days**.
+
+<div class="infoBlock">
+Reduce the value of this field if the amount of data in the slicing window is too large for your environment.
 </div>
 
 ### Destination settings
@@ -79,7 +96,7 @@ Use the <strong>Use Existing Destination</strong> option if you have an already-
 
 You can connect <strong>only one data warehouse destination</strong> per Cloud Extract source. If you wish to send data to multiple warehouses, you can configure multiple Cloud Extract sources with the same settings and connect them to each data warehouse.
 
-#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is.
 

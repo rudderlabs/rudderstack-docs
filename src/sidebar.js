@@ -399,18 +399,25 @@ export const jsonData = [
                 link: "/sources/extract/intercom/",
                 content: []
             }, {
-                title: "Intercom v2",
+                title: "Intercom V2",
                 link: "/sources/extract/intercom-v2/",
                 content: []
             }, {
                 title: "Mailchimp",
                 link: "/sources/extract/mailchimp/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Mixpanel",
                 link: "/sources/extract/mixpanel/",
                 content: []
-            }, {
+            },
+            {
+                title: "Mixpanel V2",
+                link: "/sources/extract/mixpanel-v2/",
+                content: []
+            }, 
+            {
                 title: "Marketo",
                 link: "/sources/extract/marketo/",
                 content: []
@@ -445,7 +452,7 @@ export const jsonData = [
                 ]
             },
             {
-                title: "Salesforce v2",
+                title: "Salesforce V2",
                 link: "/sources/extract/salesforce-v2/",
                 content: []
             },

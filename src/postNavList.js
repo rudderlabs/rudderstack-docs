@@ -497,6 +497,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "mixpanel-v2",
+    title: "Mixpanel v2",
+    link: "/sources/extract/mixpanel-v2/",
+    content: [],
+  },
+  {
     key: "marketo",
     title: "Marketo",
     link: "/sources/extract/marketo/",
