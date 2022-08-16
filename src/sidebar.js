@@ -1217,7 +1217,7 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/gainsight-px/",
                 content: []
             },{
-                title: "InMoment",
+                title: "InMoment (Wootric)",
                 link: "/destinations/streaming-destinations/inmoment/",
                 content: []
             },{
