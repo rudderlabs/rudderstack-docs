@@ -1058,11 +1058,18 @@ export const jsonData = [
                 title: "Marketo Lead Import",
                 link: "/destinations/streaming-destinations/marketo-lead-import/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "MoEngage",
                 link: "/destinations/streaming-destinations/moengage/",
                 content: []
-            }, {
+            },
+            {
+                title: "Mautic",
+                link: "/destinations/streaming-destinations/mautic/",
+                content: []
+            },  
+            {
                 title: "Ometria",
                 link: "/destinations/streaming-destinations/ometria/",
                 content: []

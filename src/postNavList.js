@@ -1573,6 +1573,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "mautic",
+    title: "Mautic",
+    link: "/destinations/streaming-destinations/mautic/",
+    content: [],
+  },
+  {
     key: "bugsnag",
     title: "Bugsnag",
     link: "/destinations/streaming-destinations/bugsnag/",
