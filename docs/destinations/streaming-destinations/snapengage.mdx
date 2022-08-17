@@ -33,15 +33,15 @@ To successfully configure SnapEngage as a destination, you will need to configur
 <img src="../../assets/event-stream-destinations/snapengage-connection-settings-1.png" alt="SnapEngage connection settings"/>
 <img src="../../assets/event-stream-destinations/snapengage-connection-settings-2.png" alt="SnapEngage connection settings"/>
 
-- **Widget ID**: Enter your SnapEngage widget ID here.
+- **Widget ID**: Enter your SnapEngage widget ID.
 
 <div class="infoBlock">
 For more information on obtaining your SnapEngage widget ID, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
 - **Record Live Chat Events**: Enable this setting to allow RudderStack to automatically track and send your live chat-related events to SnapEngage.
-- **Update Event Name in track call**: If **Record Live Chat Events** is enabled, enable this setting to update the standard `track` call events with custom event names.
-    - **Mapping to update the Event Name in track call**: Use this setting to map the event names with standard SnapEngage events.
+- **Update Event Name in track call**: If **Record Live Chat Events** is enabled, enable this setting to update the event names in the `track` call.
+    - **Mapping to update the Event Name in track call**: Use this setting to map the standard SnapEngage events with your custom event names.
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to SnapEngage.
 
 <div class="infoBlock">
@@ -79,7 +79,7 @@ The following table lists the mappings between the RudderStack and SnapEngage pr
 If the **Record Live Chat Events** dashboard setting is enabled during the destination setup, RudderStack lets you track the Live Chat events and send them as <Link to="/event-spec/standard-events/track/">`track`</Link> events to SnapeEngage, based on the user's interactions.
 
 <div class="infoBlock">
-RudderStack sends these <code class="inline-code">track</code> events to SnapEngage as <a href="https://developer.snapengage.com/javascript-api/javascript-events/">callback functions</a>.
+RudderStack sends the <code class="inline-code">track</code> events to SnapEngage as <a href="https://developer.snapengage.com/javascript-api/javascript-events/">callback functions</a>.
 </div>
 
 ### Supported events
