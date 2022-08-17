@@ -86,7 +86,7 @@ RudderStack sends the <code class="inline-code">track</code> events to SnapEngag
 
 RudderStack automatically records and sends the following `track` events to SnapEngage:
 
-- Live Chat Conversation Started
+- [Live Chat Conversation Started](https://developer.snapengage.com/javascript-api/#startchat-event)
 
 ```javascript
 SnapEngage.setCallback("StartChat", function() {
@@ -103,7 +103,7 @@ SnapEngage.setCallback("StartChat", function() {
 });
 ```
 
-- Live Chat Conversation Ended
+- [Live Chat Conversation Ended](https://developer.snapengage.com/javascript-api/#close-event)
 
 ```javascript
 SnapEngage.setCallback("Close", function() {
@@ -120,7 +120,7 @@ SnapEngage.setCallback("Close", function() {
 });
 ```
 
-- Live Chat Message Sent 
+- [Live Chat Message Sent](https://developer.snapengage.com/javascript-api/#chatmessagesent-event) 
 
 ```javascript
 SnapEngage.setCallback("ChatMessageSent", function() {
@@ -137,7 +137,7 @@ SnapEngage.setCallback("ChatMessageSent", function() {
 });
 ```
 
-- Live Chat Message Received
+- [Live Chat Message Received](https://developer.snapengage.com/javascript-api/#chatmessagereceived-event)
 
 ```javascript
 SnapEngage.setCallback("ChatMessageReceived", function(agent) {
@@ -156,7 +156,7 @@ SnapEngage.setCallback("ChatMessageReceived", function(agent) {
 });
 ```
 
-- Button Clicked
+- [Button Clicked](https://developer.snapengage.com/javascript-api/#button-event)
 
 ```javascript
 SnapEngage.setCallback("InlineButtonClicked", function() {
