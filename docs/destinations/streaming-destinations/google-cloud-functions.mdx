@@ -32,13 +32,17 @@ To successfully configure Google Cloud Functions as a destination, you need to c
 <img src="../../assets/event-stream-destinations/gcf-connection-settings.png" alt="Google Cloud Functions connection settings"/>
 
 - **Choose your Trigger Type**: From the dropdown, select **HTTP** or **HTTPS** depending on the trigger type configured for your cloud function.
-  - **Gcloud Authorization**: If you have selected **HTTPS** as your trigger type, enter your <a href="https://cloud.google.com/functions/docs/securing/authenticating#authenticating_developer_testing">Google Cloud Authorization Token</a>.
+
+<div class="infoBlock">
+For more information on setting the trigger type for your cloud function, refer to the <Link to="#faq">FAQ</Link> section below.
+</div>
+
+- **Gcloud Authorization**: If you have selected **HTTPS** as your trigger type, enter your <a href="https://cloud.google.com/functions/docs/securing/authenticating#authenticating_developer_testing">Google Cloud Authorization Token</a>.
 - **URL**: Enter the URL obtained in the **Trigger** field during the cloud function setup.
 
 <div class="infoBlock">
 For more information on obtaining the URL, refer to the <Link to="#how-do-i-create-a-google-cloud-function">FAQ</Link> below.
 </div>
-
 - **API Key ID**: Enter your API key ID. Refer to the <a href="https://cloud.google.com/docs/authentication/api-keys">Google Cloud documentation</a> for more information on creating and using the API key.
 
 <div class="infoBlock">
@@ -67,10 +71,8 @@ To create a Google Cloud Function, follow these steps:
 4. Enter a **Function name** and select the **Region** from the dropdown.
 
 <div class="warningBlock">
-Verify that the cloud function name is valid.
+Verify that your cloud function name is valid.
 </div>
-
-<img src="../../assets/event-stream-destinations/gcf-setup.png" alt="Google Cloud Functions setup"/>
 
 5. In the **Trigger** field, select **HTTP** or **HTTPS**, depending on your use-case.
 6. In the **Runtime, build and connections settings**, specify the memory allocated for the cloud function in the **Memory allocated** field.
