@@ -3,7 +3,7 @@ title: "Marketo"
 description: Step-by-step guide on sending your event data from RudderStack to Marketo.
 ---
 
-[Marketo](https://marketo.com) is a leading marketing automation platform that enables you to identify the right audiences through effective behavioral tracking, and deliver automated, personalized marketing campaigns.
+[Marketo](https://marketo.com) is a leading marketing automation platform that enables you to identify the right audiences through effective behavioral tracking and deliver automated, personalized marketing campaigns.
 
 RudderStack supports Marketo as a destination where you can seamlessly send your event data.
 
@@ -14,7 +14,7 @@ Find the open source transformer code for this destination in the <a href="https
 ## Getting started
 
 <div class="warningBlock">
-Before setting up the Marketo destination in RudderStack, you need to create two fields in Marketo with the API names exactly as <code class="inline-code">userId</code> and <code class="inline-code">anonymousId</code>. RudderStack looks up the Marketo Lead objects using these properties. <strong>Without these two fields, all the events will fail</strong>.
+Before setting up the Marketo destination in RudderStack, you must create two fields in Marketo with the API names exactly as <code class="inline-code">userId</code> and <code class="inline-code">anonymousId</code>. RudderStack looks up the Marketo Lead objects using these properties. <strong>Without these two fields, all the events will fail</strong>.
 </div>
 
 Before configuring Marketo as a destination in RudderStack, verify if the source platform is supported by Marketo by referring to the table below:
@@ -31,7 +31,7 @@ To know more about the difference between cloud mode and device mode in RudderSt
 Once you have confirmed that the source platform supports sending events to HubSpot, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Marketo**.
-2. Assign a name to the destination and click on **Continue**.
+2. Assign a name to the destination and click **Continue**.
 
 ### Connection settings
 
@@ -42,7 +42,7 @@ To successfully configure Marketo as a destination in RudderStack, you need to c
 - **Munchkin Account ID**: Enter your Munchkin account ID.
 
 <div class="infoBlock">
-You can find the Munchkin Account ID by logging into your Marketo instance and going to <strong>Admin</strong> &gt; <strong>Integration</strong> &gt; <strong>Munchkin</strong>. Your Munchkin ID will be listed in the <strong>Tracking Code</strong> section in the main screen. For more information, refer to the <a href="https://nation.marketo.com/t5/knowledgebase/how-to-find-your-munchkin-id-for-a-marketo-instance/ta-p/248432">Marketo documentation</a>.
+You can find the Munchkin Account ID by logging into your Marketo instance and going to <strong>Admin</strong> &gt; <strong>Integration</strong> &gt; <strong>Munchkin</strong>. Your Munchkin ID is listed on the main screen in the <strong>Tracking Code</strong> section. For more information, refer to the <a href="https://nation.marketo.com/t5/knowledgebase/how-to-find-your-munchkin-id-for-a-marketo-instance/ta-p/248432">Marketo documentation</a>.
 </div>
 
 - **Client ID**: Enter your Marketo client ID.
@@ -122,7 +122,7 @@ By default, RudderStack maps the following `traits` to the Marketo fields:
 | `website`  | `Website`                           |
 
 <div class="infoBlock">
-For rest of the fields that you want to sync with Marketo, you need to create a mapping of your traits and custom Marketo fields in the RudderStack dashboard, as specified in the <Link to="#lead-mapping-settings">Lead Mapping settings</Link> section.
+For the rest of the fields that you want to sync with Marketo, you can create a mapping of your traits and custom Marketo fields in the RudderStack dashboard, as specified in the <Link to="#lead-mapping-settings">Lead Mapping settings</Link> section.
 </div>
 
 ## Track
