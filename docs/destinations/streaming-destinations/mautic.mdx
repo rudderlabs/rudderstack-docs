@@ -48,7 +48,18 @@ You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Lin
 A sample `identify` call is shown below:
 
 ```javascript
-
+rudderanalytics.identify("1hKOmRA4GRlm", {
+  state: "Louisiana",
+  firstName: "Alex",
+  lastName: "Keener",
+  title: "Mr",
+  zipcode: "90009",
+  prospectOrCustomer: "Customer",
+  country: "USA",
+  website: "www.alex.com",
+  subscriptionStatus: "New",
+  phone: "12025550146",
+});
 ```
 
 ### Supported mappings
@@ -117,6 +128,10 @@ RudderStack uses the <code class="inline-code">type</code> trait present in the 
 A sample `group` call is shown below:
 
 ```javascript
+rudderanalytics.group("group01", {
+  "name": "Alex Keener",
+  "type": "Segments"
+});
 ```
 
 Similar to the <Link to="#getting-contact-details">`identify`</Link> call above, RudderStack retrieves the contact ID from the `group` call in the following order of precedence:
