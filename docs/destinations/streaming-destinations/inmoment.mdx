@@ -42,7 +42,27 @@ Refer to the <Link to="#faq">FAQ</Link> section below for more information on ge
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update a user in InMoment. RudderStack updates the user if the `external_id` field exists, otherwise creates a new one.
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update a user in InMoment.
+
+RudderStack follows the below approach to look up a user and update their details:
+
+1. If your event contains `context.externalId.0.id` (the Wootric user ID), RudderStack updates the user details against this ID. A sample snippet containing `context.externalId.0.id` is as shown:
+
+```javascript
+{
+  "context": {
+    "externalId": [{
+      "type": "wootricEndUserId",
+      "id": "12345"
+    }]
+  }
+}
+```
+
+2. If `context.externalId.0.id` is absent, RudderStack then looks for the `external_id` (RudderStack's `userId`) field. If it exists, RudderStack updates the user against this ID.
+3. If none of `context.externalId.0.id` or `external_id` are present, RudderStack creates a new user in Wootric.
+
+RudderStack updates the user if the `external_id` field exists, otherwise creates a new one.
 
 A sample `identify` call is shown below:
 
@@ -84,7 +104,7 @@ The following tables list the mappings between RudderStack and InMoment events/p
 
     | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
-    | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `external_id` | Required | String |
+    | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id` | `external_id` | Required | String |
     | `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Optional, if `phone` is present. | String |
     | `context.traits.phone`/`traits.phone`/`properties.phone` | `phone_number` | Optional, if `email` is present. | String (Phone number with country code, for example, `+12025550146`) |
     | `context.traits`/`traits` | `properties` | Optional | Hash (key-value pair) |
@@ -99,7 +119,7 @@ At least one parameter out of <code class="inline-code">email</code> and <code c
 
     | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
-    | Retrieved `id` by looking up the `external_id` | `end_user_id` | Required | String |
+    | Retrieved ID from `context.externalId.0.id` if present, else from `external_id` | `end_user_id` | Required | String |
     | `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Optional | String |
     | `context.traits.phone`/`traits.phone`/`properties.phone` | `phone_number` | Optional | String (Phone number with country code, for example, `+12025550146`) |
     | `context.traits`/`traits` | `properties` | Optional | Hash (key-value pair) |
@@ -155,7 +175,7 @@ The following tables list the mappings between RudderStack and InMoment properti
 
     | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
-    | Retrieved `id` by looking up the `external_id`| `end_user_id` | Required | String |
+    | Retrieved ID from `context.externalId.0.id` if present, else from `external_id` | `end_user_id` | Required | String |
     | `properties.feedbackScore`| `score` | Required | Integer |
     | `context.ip`/`request_ip` | `ip_address` | Required | Text |
     | `context.page.url`/`properties.url` | `origin_url` | Required | Text |
@@ -164,20 +184,20 @@ The following tables list the mappings between RudderStack and InMoment properti
     | `context.traits`/`traits` | `end_user.properties` | Optional | Hash (key-value pair) |
 
 <div class="warningBlock">
-If the difference between the event's <code class="inline-code">timestamp</code> and <code class="inline-code">createdAt</code> is greater than 24 hours, RudderStack creates a new response for the user. Otherwise, it updates the last response.
+If the difference between the event's <code class="inline-code">timestamp</code> and <code class="inline-code">createdAt</code> is greater than 24 hours, RudderStack creates a new survey response for the user. Otherwise, it updates the last response.
 </div>
 
 - [Create a survey decline](https://docs.wootric.com/api/#create-decline)
 
     | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
-    | Retrieved `id` by looking up the `external_id`| `end_user_id` | Required | Integer |
+    | Retrieved ID from `context.externalId.0.id` if present, else from `external_id` | `end_user_id` | Required | Integer |
     | `context.page.url`/`properties.url` | `origin_url` | Optional | String |
     | `context.traits.createdAt`/`traits.createdAt` | `created_at` | Optional | Integer (UNIX timestamp) |
     | `context.traits`/`traits` | `end_user.properties` | Optional | Hash (key-value pair) |
 
 <div class="warningBlock">
-If the difference between the event's <code class="inline-code">timestamp</code> and <code class="inline-code">createdAt</code> is greater than 24 hours, RudderStack creates a new decline for the user. Otherwise, it updates the last decline.
+If the difference between the event's <code class="inline-code">timestamp</code> and <code class="inline-code">createdAt</code> is greater than 24 hours, RudderStack creates a new survey decline for the user. Otherwise, it updates the last decline.
 </div>
 
 ## FAQ
