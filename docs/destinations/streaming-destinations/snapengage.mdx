@@ -4,7 +4,7 @@ description: Step-by-step guide on sending your event data from RudderStack to S
 aliases: ["SnapEngage destination"]
 ---
 
-[SnapEngage](https://snapengage.com/) is an enterprise chat platform. If offers chatbots and live chat integrations to drive conversions, reduce response times, and increase customer satisfaction.
+[SnapEngage](https://snapengage.com/) is an enterprise chat platform. It offers chatbots and live chat integrations to drive conversions, reduce response times, and increase customer satisfaction.
 
 RudderStack supports SnapEngage as a destination where you can seamlessly send your event data.
 
@@ -39,7 +39,7 @@ To successfully configure SnapEngage as a destination, you will need to configur
 For more information on obtaining your SnapEngage widget ID, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
-- **Record Live Chat Events**: Enable this setting to allow RudderStack to automatically track and send your live chat-related events to SnapEngage.
+- **Record Live Chat Events**: Enable this setting to allow RudderStack to automatically record your SnapEngage Live Chat events as `track` events.
 - **Update Event Name in track call**: If **Record Live Chat Events** is enabled, enable this setting to update the event names in the `track` call.
     - **Mapping to update the Event Name in track call**: Use this setting to map the standard SnapEngage events with your custom event names.
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to SnapEngage.
@@ -52,7 +52,7 @@ For more information on this setting, refer to the <Link to="/sources/sdks/event
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to set the user's email, name, and other custom fields in SnapEngage through their <a href="https://developer.snapengage.com/javascript-api/#javascript-api">SDK</a>.
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to set the user's email and username in SnapEngage through their <a href="https://developer.snapengage.com/javascript-api/#javascript-api">SDK</a>.
 
 A sample `identify` call is shown below:
 
@@ -76,15 +76,11 @@ The following table lists the mappings between the RudderStack and SnapEngage pr
 
 ## Track
 
-If the **Record Live Chat Events** dashboard setting is enabled during the destination setup, RudderStack lets you track the Live Chat events and send them as <Link to="/event-spec/standard-events/track/">`track`</Link> events to SnapEngage, based on the user's interactions.
-
-<div class="infoBlock">
-RudderStack sends the <code class="inline-code">track</code> events to SnapEngage as <a href="https://developer.snapengage.com/javascript-api/javascript-events/">callback functions</a>.
-</div>
+If the **Record Live Chat Events** dashboard setting is enabled during the destination setup, RudderStack records the SnapEngage Live Chat events based on the user's interactions. You can then send them as <Link to="/event-spec/standard-events/track/">track</Link> events to any other tools (connected to the source in RudderStack).
 
 ### Supported events
 
-RudderStack automatically records and sends the following `track` events to SnapEngage:
+RudderStack automatically records and sends the following Live Chat events:
 
 - [Live Chat Conversation Started](https://developer.snapengage.com/javascript-api/#startchat-event)
 
@@ -179,7 +175,7 @@ You can also update the standard SnapEngage Live Chat events with custom event n
 
 <img src="../../assets/event-stream-destinations/snapengage-event-mapping.png" alt="SnapEngage event name mapping" />
 
-Based on the mappings set in the above image, RudderStack replaces the event names `"Live Chat Conversation Started"` and `"Live Chat Message Sent"`with `"User Started Chat"` and `"Submit"` respectively, before sending the events to SnapEngage.
+Based on the mappings set in the above image, RudderStack replaces the event names `"Live Chat Conversation Started"` and `"Live Chat Message Sent"`with `"User Started Chat"` and `"Submit"` respectively.
 
 ## FAQ
 
