@@ -64,20 +64,32 @@ The following tables list the mappings between RudderStack and InMoment events/p
 
 - [Retrieve a user by external ID](https://docs.wootric.com/api/#get-a-specific-end-user-by-external-id)
 
-    | RudderStack event/property | InMoment event/property | Presence | Data type | 
+    | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
     | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `external_id` | Required | String |
 
+- [Retrieve a user by email](https://docs.wootric.com/api/#get-a-specific-end-user-by-email)
+
+    | RudderStack property | InMoment property | Presence | Data type | 
+    |:---------------------|:-------------|:--------------|:--------------|
+    | `traits.email`/`context.traits.email`/ `properties.email` / `context.externalId.0.id` | `email` | Required | String |
+
+- [Retrieve a user by phone](https://docs.wootric.com/api/#get-a-specific-end-user-by-phone-number)
+
+    | RudderStack property | InMoment property | Presence | Data type |
+    | :---------------------|:-------------|:--------------|:--------------|
+    | `traits.phone`/ `context.traits.phone` / `properties.phone` | `phone_number` | Required | String |
+
 - [Create a user](https://docs.wootric.com/api/#create-end-user)
 
-    | RudderStack event/property | InMoment event/property | Presence | Data type | 
+    | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
+    | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `external_id` | Required | String |
     | `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Optional, if `phone` is present. | String |
     | `context.traits.phone`/`traits.phone`/`properties.phone` | `phone_number` | Optional, if `email` is present. | String (Phone number with country code, for example, `+12025550146`) |
     | `context.traits`/`traits` | `properties` | Optional | Hash (key-value pair) |
     | `originalTimestamp`/`timestamp` | `last_surveyed` | Optional | String (UNIX timestamp) |
     | `context.traits.createdAt`/`traits.createdAt` | `external_created_at` | Optional | String (UNIX timestamp) |
-    | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `external_id` | Optional | String |
 
 <div class="warningBlock">
 At least one parameter out of <code class="inline-code">email</code> and <code class="inline-code">phone</code> is required to create a user.
@@ -85,7 +97,7 @@ At least one parameter out of <code class="inline-code">email</code> and <code c
 
 - [Update a user](https://docs.wootric.com/api/#update-end-user)
 
-    | RudderStack event/property | InMoment event/property | Presence | Data type | 
+    | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
     | Retrieved `id` by looking up the `external_id` | `end_user_id` | Required | String |
     | `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Optional | String |
@@ -105,6 +117,10 @@ You can use the <Link to="/event-spec/standard-events/track/">`track`</Link> cal
 RudderStack also updates the user properties if they are present in the event.
 </div>
 
+<div class="warningBlock">
+You can use the <code class="inline-code">track</code> events only for the existing Wootric users.
+</div>
+
 RudderStack checks the `message.integrations.Wootric.eventType` field to determine whether to create a response or a decline.
 
 A sample `track` call is shown below:
@@ -120,12 +136,16 @@ rudderanalytics.track(
     }, {
         integrations: {
             Wootric: {
-                survey: "create response",
+                eventType: "create response",
             },
         },
     }
 );
 ```
+
+<div class="warningBlock">
+You will get an error if the <code class="inline-code">eventType</code> is set to any value other than <code class="inline-code">create response</code> or <code class="inline-code">create decline</code>.
+</div>
 
 ### Property mappings
 
@@ -149,7 +169,7 @@ If the difference between the event's <code class="inline-code">timestamp</code>
 
 - [Create a survey decline](https://docs.wootric.com/api/#create-decline)
 
-    | RudderStack event/property | InMoment event/property | Presence | Data type | 
+    | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
     | Retrieved `id` by looking up the `external_id`| `end_user_id` | Required | Integer |
     | `context.page.url`/`properties.url` | `origin_url` | Optional | String |
