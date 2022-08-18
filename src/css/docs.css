@@ -959,7 +959,7 @@ a.pageRef:hover .rightRefArrow {
   -webkit-box-direction: normal;
 }
 .docsSearchWrapper {
-  height: 80px;
+  height: 66px;
 }
 .docsSearch input[type="text"] {
   outline: none;
@@ -1122,11 +1122,14 @@ a.pageRef:hover .rightRefArrow {
 @media only screen and (max-width: 500px) {
   .headerContainer {
     padding: 0px 12px;
-    grid-template-columns: 40px calc(100% - 150px) 40px;
+    grid-template-columns: 40px calc(100% - 150px) 80px;
   }
 
   .docsSearch {
     @apply border-transparent;
+  }
+  .headerContainer .docsSearch{
+    padding-left: 0;
   }
   .docsSearchbar {
     @apply hidden;
@@ -1277,5 +1280,18 @@ a.pageRef:hover .rightRefArrow {
 }
 #docs-modal .searchToggleIcon{
   display: none;
+}
+.headerContainer .docsSearch:hover, .docsSearch:hover input{
+  cursor: pointer;
+  --tw-bg-opacity: 1;
+    background-color: rgba(222, 226, 231, var(--tw-bg-opacity));
+}
+#docs-modal .docsSearchWrapper{
+  align-items: start;
+}
+@media screen and (max-width:1360px) {
+  .docsSearchbar{
+    max-width: 60%;
+  }
 }
 /*! purgecss end ignore */

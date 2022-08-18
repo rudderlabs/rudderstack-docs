@@ -35,7 +35,7 @@ export const SearchBoxModal = ({ closeModal, isModalOpen}) => {
             <div className={`searchOverlay ${isModalOpen ? 'active' : ''}`}></div>
                 <div ref={modalRef} className="flex text-center justify-center">
                     <div className="relative bg-white rounded-lg max-h-85 text-left overflow-hidden shadow-gray-300 transform transition-all w-full sm:max-w-lg">
-                        <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div className="bg-white px-4 py-4">
                             <InstantSearch
                                 searchClient={searchClient}
                                 indexName={process.env.GATSBY_ALGOLIA_INDEX_PREFIX + "_gatsby_docs_v2"}

@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react"
 import RsLogo from "../images/rudderstack-logo-v2.svg"
-import { InstantSearch, Configure } from "react-instantsearch-dom"
 import algoliasearch from "algoliasearch/lite"
-import DocsSearchBox from "./DocsSearchBox"
-import DocSearchContentWrapper from "./DocSearchContentWrapper"
 import { SearchBoxModal } from './DocsSearchModal.js'
 import { rudderslabTrackOnClickDocs } from '../utils/common'
 import { Link } from 'gatsby';
@@ -16,8 +13,6 @@ const searchClient = algoliasearch(
 
 const DocsNavigation = ({ isMenuOpen, handleMenuOpen }) => {
   const [isSearchOpen, setSearchOpen] = useState(false)
-  const [currentSearchText, setCurrentSearchText] = useState("")
-  const [currentRefineHitsCount, setCurrentRefineHitsCount] = useState(0)
   const [showModal, setShowModal] = useState(false)
 
   const handleKeyDown = useCallback(e => {
@@ -78,7 +73,7 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen }) => {
             </li>
           </ul>
         </nav>
-        <div className="docsSearch" onClickCapture={() => setSearchOpen(true)}>
+        <div className="docsSearch" onClickCapture={() => setShowModal(true)}>
           <span className="docsSearchIcon">
             <svg
               preserveAspectRatio="xMidYMid meet"
@@ -100,6 +95,13 @@ const DocsNavigation = ({ isMenuOpen, handleMenuOpen }) => {
             </svg>
           </span>
           <input type="text" placeholder="Search..." className="docsSearchbar" onClickCapture={(e) => { setShowModal(true); e.target.blur(); }} />
+          <span className="command-text">
+            {typeof window !== 'undefined' &&
+              !window.navigator.userAgent.includes('Mac')
+              ? 'Ctrl '
+              : '⌘'}
+            K
+          </span>
         </div>
       </div>
       {showModal && <SearchBoxModal closeModal={handleModalClose} isModalOpen={showModal}/>}
