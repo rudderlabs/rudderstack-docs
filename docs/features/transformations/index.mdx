@@ -137,6 +137,16 @@ To add a transformation to an existing destination, follow these steps:
 
 <img src="../../assets/features/adding-transformation-existing-destination-2.png" alt="Connecting a transformation to existing destination" />
 
+## Deleting a transformation
+
+To delete a transformation, go to **Enhance** > **Transformations** and click the **Delete** button next to the transformation that you want to delete, as shown:
+
+<img src="../../assets/features/deleting-a-transformation.png" alt="Deleting a transformation" />
+
+<div class="warningBlock">
+You cannot delete a transformation that is connected to a destination.
+</div>
+
 ## `transformEvent` function
 
 While using a transformation, RudderStack applies the `transformEvent` function on each event that takes two arguments:
@@ -297,6 +307,16 @@ import getPrice as gp from "getFinanceData";
 getPrice(ev)
 ```
 
+## Deleting a library
+
+To delete a transformation, go to **Enhance** > **Transformations** and click the **Libraries** tab. button next to the transformation that you want to delete, as shown:
+
+<img src="../../assets/features/deleting-a-library.png" alt="Deleting a library" />
+
+<div class="warningBlock">
+You cannot delete a <Link to="/features/transformations/faq#what-is-a-referenced-library">referenced library</Link>.
+</div>
+
 ## Making external API requests
 
 You can make any number of external API requests in your transformation functions and use the response to enrich your events. 
@@ -364,7 +384,7 @@ You should take into account the following memory and time limits when invoking 
 | Parameter    | Limit     |
 | :----------- | :-------- |
 | Memory limit | 128 MB      |
-| Time limit   | 4 seconds |
+| Execution time limit   | 4 seconds |
 
 <div class="dangerBlock">
 The user transformation fails if these limits are exceeded.
