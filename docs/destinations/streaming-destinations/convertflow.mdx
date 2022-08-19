@@ -66,13 +66,10 @@ A sample `identify` call is shown below:
 rudderanalytics.identify(
   "1hKOmRA4GRlm", {
     email: "alex@example.com",
-    name: "Alex Keener",
-    override: true
+    name: "Alex Keener"
   }
 );
 ```
-
-In the above snippet, set `override: true` if you want RudderStack to identify the users who have already been identified as a ConvertFlow contact. If you set `override: false`, RudderStack identifies the users who have **not** been previously identified as a contact.
 
 ### Supported mappings
 
