@@ -46,10 +46,11 @@ For more information on obtaining the URL, refer to the <Link to="#how-do-i-crea
 - **API Key ID**: Enter your API key ID. Refer to the <a href="https://cloud.google.com/docs/authentication/api-keys">Google Cloud documentation</a> for more information on creating and using the API key.
 
 <div class="infoBlock">
-The API key ID is a string required by the cloud function to identiy a request. RudderStack injects this key in the <code class="inline-code">Authorization</code> header in the case of <strong>HTTP</strong> trigger type and the <code class="inline-code">ApiKey</code> header in the case of <strong>HTTPS</strong> trigger type.
+The API key ID is a string required by the cloud function to identiy a request. RudderStack injects this key in the <code class="inline-code">ApiKey</code> header in the case of both <strong>HTTP</strong> and <strong>HTTPS</strong> trigger types.
 </div>
 
 - **Enable Batch Input**: Enable this setting to pass a batch input (array of events) to your cloud function.
+- **maxBatchSize**: If **Enable Batch Input** setting is enabled, specify the maximum batch size in this field.
 
 ## Supported events
 
