@@ -76,7 +76,7 @@ The following table lists the mappings between the RudderStack and SnapEngage pr
 
 ## Track
 
-If you enable the **Record Live Chat Events** dashboard setting, RudderStack records the SnapEngage Live Chat events based on the user's interactions and sends them as <Link to="/event-spec/standard-events/track/">track</Link> events. You can then view and analyze these events in the other tools (connected to the same source in RudderStack).
+If you enable the **Record Live Chat Events** dashboard setting, RudderStack records the SnapEngage Live Chat events based on the user's interactions and sends them as <Link to="/event-spec/standard-events/track/">track</Link> events. You can then view and analyze these events using other tools (connected to the same source in RudderStack).
 
 ### Supported events
 
@@ -171,11 +171,11 @@ SnapEngage.setCallback("InlineButtonClicked", function() {
 
 ### Mapping events
 
-You can also update the standard SnapEngage Live Chat events with custom event names by enabling the <strong>Update Event Name in track call</strong> setting in the RudderStack dashboard and specifying the required mapping, as shown:
+You can also update the standard SnapEngage Live Chat events with custom event names. Enable the <strong>Update Event Name in track call</strong> dashboard setting in RudderStack and specify the required mapping, as shown:
 
 <img src="../../assets/event-stream-destinations/snapengage-event-mapping.png" alt="SnapEngage event name mapping" />
 
-Based on the mappings set in the above image, RudderStack replaces the event names `"Live Chat Conversation Started"` and `"Live Chat Message Sent"`with `"User Started Chat"` and `"Submit"` respectively.
+From the mappings set in the above image, RudderStack replaces the event names `"Live Chat Conversation Started"` and `"Live Chat Message Sent"`with `"User Started Chat"` and `"Submit"` respectively.
 
 ## FAQ
 
