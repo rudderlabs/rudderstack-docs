@@ -86,13 +86,13 @@ The following tables list the mappings between RudderStack and InMoment events/p
 
     | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
-    | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `external_id` | Required | String |
+    | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id` | Required | String |
 
 - [Retrieve a user by email](https://docs.wootric.com/api/#get-a-specific-end-user-by-email)
 
     | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
-    | `traits.email`/`context.traits.email`/ `properties.email` / `context.externalId.0.id` | `email` | Required | String |
+    | `traits.email`/`context.traits.email`/ `properties.email` | `email` | Required | String |
 
 - [Retrieve a user by phone](https://docs.wootric.com/api/#get-a-specific-end-user-by-phone-number)
 
@@ -105,7 +105,7 @@ The following tables list the mappings between RudderStack and InMoment events/p
     | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
     | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id` | `external_id` | Required | String |
-    | `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Optional, if `phone` is present. | String |
+    | `context.traits.email`/`traits.email`/`properties.email` | `email` | Optional, if `phone` is present. | String |
     | `context.traits.phone`/`traits.phone`/`properties.phone` | `phone_number` | Optional, if `email` is present. | String (Phone number with country code, for example, `+12025550146`) |
     | `context.traits`/`traits` | `properties` | Optional | Hash (key-value pair) |
     | `originalTimestamp`/`timestamp` | `last_surveyed` | Optional | String (UNIX timestamp) |
@@ -120,7 +120,7 @@ At least one parameter out of <code class="inline-code">email</code> and <code c
     | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
     | Retrieved ID from `context.externalId.0.id` if present, else from `external_id` | `end_user_id` | Required | String |
-    | `context.traits.email`/`traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Optional | String |
+    | `context.traits.email`/`traits.email`/`properties.email` | `email` | Optional | String |
     | `context.traits.phone`/`traits.phone`/`properties.phone` | `phone_number` | Optional | String (Phone number with country code, for example, `+12025550146`) |
     | `context.traits`/`traits` | `properties` | Optional | Hash (key-value pair) |
     | `originalTimestamp`/`timestamp` | `last_surveyed` | Optional | String (UNIX timestamp) |
