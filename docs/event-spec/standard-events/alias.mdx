@@ -6,32 +6,32 @@ description: Detailed technical description of the Alias API call.
 The `alias` call lets you merge different identities of a known user.
 
 <div class="infoBlock">
-<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
+RudderStack supports sending <code class="inline-code">alias</code> events only to select downstream destinations. Refer to the <Link to="/destinations/streaming-destinations/">destination-specific documentation</Link> for more details.
 </div>
 
-<div class="successBlock">
-  The following destinations support the <code class="inline-code">alias</code>
-  call:
-  <ul>
-    <li>
-      <Link to="/destinations/streaming-destinations/moengage/">MoEngage</Link>
-    </li>
-    <li>
-      <Link to="/destinations/streaming-destinations/kissmetrics/">Kissmetrics</Link>
-    </li>
-    <li>
-      <Link to="/destinations/streaming-destinations/amplitude/">Amplitude</Link> (only
-      supported by the <Link to="/sources/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>)
-    </li>
-    <li>
-      <Link to="/destinations/streaming-destinations/mixpanel/">Mixpanel</Link>
-    </li>
-  </ul>
+<div class="warningBlock">
+The <code class="inline-code">alias</code> call is used only for merging user identitites. It does not update the user's <code class="inline-code">traits</code> or other common properties.
 </div>
+
+## `alias` fields
+
+In addition to the <Link to="/event-spec/standard-events/common-fields/">Common Fields</Link>, the `alias` call accepts the following fields:
+
+| Field | Description | Data type | Presence |
+| :-----| :-----------| :----------| :---------|
+| `userId` | The user's unique identifier in the database. Either `userId` or `anonymousId` should be present. | String | Optional, if `anonymousId` is already set. |
+| `previousId` | The user's previous identifier. | String | Required |
+
+### `userId` vs `previousId`
+
+- The `previousId` attribute refers to the previous user identifier. It could be either:
+  - An `anonymousId` assigned to the user \(by the browser if the user is a new visitor or has not logged in yet, or the session ID if you're using a server-side SDK\).
+  - A previously set `userId` to identify the user via the `identify` call.
+- The `userId` is the user's new identity or an existing identity that you want to merge with `previousId`.
 
 ## Sample payload
 
-A sample payload of an `alias` call with most of the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link> removed is shown below:
+A sample payload of an `alias` call is shown below:
 
 ```javascript
 {
@@ -47,64 +47,10 @@ The corresponding event that generates the above payload via the <Link to="/sour
 rudderanalytics.alias("12345")
 ```
 
-<div class="successBlock">
-The RudderStack SDK automatically passes the user's <code class="inline-code">anonymousId</code> as <code class="inline-code">previousId</code> in the payload, as seen above.
+<div class="infoBlock">
+The RudderStack SDK automatically passes the user's <code class="inline-code">anonymousId</code> as <code class="inline-code">previousId</code> in the payload.
 </div>
 
 <div class="warningBlock">
-When instrumenting a website with the JavaScript SDK, making the <code class="inline-code">alias</code> call via the client-side is important as the <code class="inline-code">anonymousId</code> is generated via the browser. Similarly, if you're using a server-side SDK, the <code class="inline-code">alias</code> call must be made from the server-side as the session ID is set as the <code class="inline-code">anonymousId</code>.
+When instrumenting your website with the JavaScript SDK, the <code class="inline-code">alias</code> call must be made from the client-side as the <code class="inline-code">anonymousId</code> is generated via the browser. Similarly, if you're using a server-side SDK, the <code class="inline-code">alias</code> call must be made from the server-side as the session ID is set as the <code class="inline-code">anonymousId</code>.
 </div>
-
-## Alias fields
-
-In addition to the <Link to="/event-spec/standard-events/common-fields/">Common fields</Link>, the `alias` call accepts the following fields:
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">
-        <b>Field</b>
-      </th>
-      <th style="text-align:left">
-        <b>Type</b>
-      </th>
-      <th style="text-align:left">
-        <b>Presence</b>
-      </th>
-      <th style="text-align:left">
-        <b>Description</b>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-      <td style="text-align:left">
-        <code class="inline-code">userId</code>
-      </td>
-      <td style="text-align:left">Object</td>
-      <td style="text-align:left">
-        <p>Optional (if <code class="inline-code">anonymousId</code> is already set)</p>
-      </td>
-      <td style="text-align:left">
-        <p>The user's identifier in your database. Either <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> should be present.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <code class="inline-code">previousId</code>
-      </td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">Required</td>
-      <td style="text-align:left">The user's previous identifier.</td>
-    </tr>
-  </tbody>
-</table>
-
-## `userId` vs `previousId`
-
-- The `previousId` attribute refers to the previous user identifier. It could be either:
-  - An `anonymousId` assigned to the user \(by the browser if the user is a new visitor or has not logged in yet, or the session ID if you're using a server-side SDK\).
-  - A previously set `userId` to identify the user via the `identify` call.
-- The `userId` is the user's new identity or an existing identity that you want to merge with `previousId`.
-
-
