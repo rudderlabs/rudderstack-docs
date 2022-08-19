@@ -219,6 +219,42 @@ A sample `screen` call sent via the iOS SDK is shown below:
             properties:@{@"prop_key" : @"prop_value"}];
 ```
 
+## Connecting Reverse ETL sources
+
+If you're connecting a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source to your HubSpot destination that uses a <a href="https://developers.hubspot.com/docs/api/intro-to-auth#private-app-access-tokens">private app access token</a> for authentication, make sure your access token has the following scopes:
+
+```
+crm.lists.read
+crm.objects.contacts.read
+crm.objects.contacts.write
+crm.schemas.custom.read
+crm.objects.custom.read
+crm.objects.custom.write
+crm.schemas.custom.write
+crm.objects.companies.write
+crm.schemas.contacts.read
+crm.lists.write
+crm.objects.companies.read
+crm.objects.deals.read
+crm.objects.deals.write
+crm.schemas.companies.read
+crm.schemas.companies.write
+crm.schemas.contacts.write
+crm.schemas.deals.read
+crm.schemas.deals.write
+crm.objects.owners.read
+crm.objects.quotes.write
+crm.objects.quotes.read
+crm.schemas.quotes.read
+crm.objects.line_items.read
+crm.objects.line_items.write
+crm.schemas.line_items.read
+```
+
+<div class="infoBlock">
+For more information on adding the above scopes, refer to the <a href="https://developers.hubspot.com/docs/api/migrate-an-api-key-integration-to-a-private-app#create-a-new-private-app">HubSpot documentation</a>.
+</div>
+
 ## FAQ
 
 ### Where do I get the API Key and Hub ID for HubSpot?
@@ -241,5 +277,3 @@ To get the Access Token:
 ### Can I use HubSpot website analytics?
 
 Yes - RudderStack supports sending `page` calls in device mode which can be used for HubSpot website analytics.
-
-
