@@ -75,7 +75,21 @@ You cannot update an existing `Version: V0` transformation to the current versio
 
 Instead, you can <Link to="/features/transformations/#adding-a-transformation">create a new transformation</Link> based on the <Link to="/features/transformations/#transformevent-definition">`transformEvent` definition</Link>, then reconnect your destinations with this transformation. Finally, delete the existing `Version: V0` transformation.
 
+## What are transformation and library revisions?
+
+Using the <Link to ="/api/transformation-api/">Transformations API</Link>, you can create and store a transformation or library as a draft without publishing them. These are called revisions.
+
+Once the revisions meet the test criteria, you can restore and publish them for production use.
+
 ## Libraries
+
+### How does RudderStack test any library updates?
+
+If you update a library that is referenced in any transformation, RudderStack tests the new library code along with the transformation code against the default event payload. This ensures that the transformation does not break due to any changes in the library.
+
+<div class="warningBlock">
+RudderStack currently does not support testing libraries with custom events.
+</div>
 
 ### Can I test my library with sample events?
 
