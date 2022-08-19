@@ -454,11 +454,11 @@ export const jsonData = [
                 link: "/sources/extract/salesforce-pardot/",
                 content: []
             }, {
-                title: "Sendgrid",
+                title: "SendGrid",
                 link: "/sources/extract/sendgrid/",
                 content: []
             },{
-                title: "Sendgrid V2",
+                title: "SendGrid V2",
                 link: "/sources/extract/sendgrid-v2/",
                 content: []
             }, {
