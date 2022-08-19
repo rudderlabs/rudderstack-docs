@@ -15,48 +15,12 @@ The <code class="inline-code">alias</code> call is used only for merging user id
 
 ## `alias` fields
 
-The `alias` call accepts the following fields:
+In addition to the <Link to="/event-spec/standard-events/common-fields/">Common Fields</Link>, the `alias` call accepts the following fields:
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">
-        <b>Field</b>
-      </th>
-      <th style="text-align:left">
-        <b>Type</b>
-      </th>
-      <th style="text-align:left">
-        <b>Presence</b>
-      </th>
-      <th style="text-align:left">
-        <b>Description</b>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-      <td style="text-align:left">
-        <code class="inline-code">userId</code>
-      </td>
-      <td style="text-align:left">Object</td>
-      <td style="text-align:left">
-        <p>Optional (if <code class="inline-code">anonymousId</code> is already set)</p>
-      </td>
-      <td style="text-align:left">
-        <p>The user's identifier in your database. Either <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> should be present.</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <code class="inline-code">previousId</code>
-      </td>
-      <td style="text-align:left">String</td>
-      <td style="text-align:left">Required</td>
-      <td style="text-align:left">The user's previous identifier.</td>
-    </tr>
-  </tbody>
-</table>
+| Field | Description | Data type | Presence |
+| :-----| :-----------| :----------| :---------|
+| `userId` | The user's unique identifier in the database. Either `userId` or `anonymousId` should be present. | String | Optional, if `anonymousId` is already set. |
+| `previousId` | The user's previous identifier. | String | Required |
 
 ### `userId` vs `previousId`
 
@@ -83,10 +47,10 @@ The corresponding event that generates the above payload via the <Link to="/sour
 rudderanalytics.alias("12345")
 ```
 
-<div class="successBlock">
-The RudderStack SDK automatically passes the user's <code class="inline-code">anonymousId</code> as <code class="inline-code">previousId</code> in the payload, as seen above.
+<div class="infoBlock">
+The RudderStack SDK automatically passes the user's <code class="inline-code">anonymousId</code> as <code class="inline-code">previousId</code> in the payload.
 </div>
 
 <div class="warningBlock">
-When instrumenting a website with the JavaScript SDK, making the <code class="inline-code">alias</code> call via the client-side is important as the <code class="inline-code">anonymousId</code> is generated via the browser. Similarly, if you're using a server-side SDK, the <code class="inline-code">alias</code> call must be made from the server-side as the session ID is set as the <code class="inline-code">anonymousId</code>.
+When instrumenting your website with the JavaScript SDK, the <code class="inline-code">alias</code> call must be made from the client-side as the <code class="inline-code">anonymousId</code> is generated via the browser. Similarly, if you're using a server-side SDK, the <code class="inline-code">alias</code> call must be made from the server-side as the session ID is set as the <code class="inline-code">anonymousId</code>.
 </div>
