@@ -7,26 +7,24 @@ description: >-
 The **Visual Data Mapper** (VDM) offers an intuitive UI to map your warehouse columns to specific destination fields. This is useful especially when mapping your warehouse data to custom fields defined in your destination.
 
 <div class="infoBlock">
-
 Visual Data Mapper is currently available for the following destinations:
 <ul>
-  <li><a href="https://rudderstack.com/docs/destinations/marketing/customer.io/">Customer.io</a></li>
-  <li><a href="https://rudderstack.com/docs/destinations/crm/hubspot/">HubSpot</a></li>
-  <li><a href="https://rudderstack.com/docs/destinations/crm/salesforce/">Salesforce</a></li>
-  <li><a href="https://rudderstack.com/docs/destinations/marketing/mailchimp/">Mailchimp</a></li>
-  <li><a href="https://rudderstack.com/docs/destinations/marketing/iterable/">Iterable</a></li>
-  <li><a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a></li>
-  <li><a href="https://rudderstack.com/docs/destinations/business-messaging/intercom/">Intercom</a></li>
-  <li><a href="https://rudderstack.com/docs/destinations/marketing/klaviyo/">Klaviyo</a></li>
  <li><a href="https://rudderstack.com/docs/destinations/analytics/amplitude/">Amplitude</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/marketing/customer.io/">Customer.io</a></li>
  <li><a href="https://rudderstack.com/docs/destinations/analytics/google-analytics-ga/">Google Analytics</a></li>
-  <li><a href="https://www.rudderstack.com/docs/destinations/marketing/marketo/">Marketo</a></li>
  <li><a href="https://www.rudderstack.com/docs/destinations/advertising/google-adwords-remarketing-list/">Google Awords Remarketing Lists (Customer Match)</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/crm/hubspot/">HubSpot</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/business-messaging/intercom/">Intercom</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/marketing/iterable/">Iterable</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/marketing/klaviyo/">Klaviyo</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/marketing/mailchimp/">Mailchimp</a></li>
+ <li><a href="https://www.rudderstack.com/docs/destinations/marketing/marketo/">Marketo</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/crm/salesforce/">Salesforce</a></li>
 </ul>
 </div>
 
 <div class="successBlock">
-
 To use this feature, you can use a <a href="https://rudderstack.com/docs/sources/reverse-etl/">Reverse ETL source</a> and then connect it to a VDM-supported destination.
 </div>
 
@@ -39,19 +37,17 @@ To use the Visual Data Mapper, follow these steps:
 <img src="../../../assets/warehouse-actions-sources/vdm-object.png" />
 
 <div class="infoBlock">
-If you have set up the source using the <strong>Model</strong> option, the <strong>Schema</strong> and <strong>Table</strong> fields are replaced by the <strong>Model</strong> field, as shown:
+If you have set up the source using the <strong>Model</strong> option, the <strong>Schema</strong> and <strong>Table</strong> fields are replaced by the <strong>Model</strong> field, as shown:<br /><br />
 <img src="../../../assets/warehouse-actions-sources/vdm-model.png" alt="VDM model options" />
 </div>
 
 <div class="infoBlock">
-
 By default, Visual Data Mapping is enabled for all the VDM-supported destinations. To configure the data via JSON, click on the <strong>Map with JSON</strong> button.
 </div>
 
 3. Choose the source **Model** or **Schema** + **Table** from where you want RudderStack to import and sync the data.
 
 <div class="successBlock">
-
 Upon selection, RudderStack automatically loads the relevant resources. If you have added a new model or warehouse table during this configuration process, click on <strong>Reload models</strong>/<strong>Reload schemas and tables</strong> to fetch the latest resources.
 </div>
 
@@ -60,19 +56,16 @@ Upon selection, RudderStack automatically loads the relevant resources. If you h
 <img src="../../../assets/warehouse-actions-sources/vdm-2.png" />
 
 <div class="successBlock">
-
 RudderStack automatically loads all the relevant destination objects. If you have added a new destination object during this configuration process, click on <strong>Reload objects</strong> to get all the latest objects.
 </div>
 
 <div class="dangerBlock">
-
 <strong>RudderStack does not support objects that do not have any fields or a unique user identifier.</strong>
 </div>
 
 5. Next, select the sync mode that RudderStack uses to sync your data.
 
 <div class="infoBlock">
-
 RudderStack supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <Link to="/sources/reverse-etl/common-settings/sync-modes/">Sync Modes</Link> guide.
 </div>
 
@@ -83,7 +76,6 @@ In the **Choose Identifier** section, choose a warehouse column and destination 
 <img src="../../../assets/warehouse-actions-sources/vdm-3.png" />
 
 <div class="infoBlock">
-
 The <strong>identifier</strong> (Map with Visualizer) or <strong>user_id/anonymous_id</strong> (Map with JSON) fields must have unique values in order to successfully sync the data to the destination. The records containing duplicate identifier values will fail to sync. For example, if you have chosen <code class="inline-code">name</code> as the <strong>identifier</strong> and it contains more than one values as 'Alex', the duplicate record will fail to sync.
 </div>
 
@@ -96,7 +88,6 @@ In the **Map Fields** section, you can configure the source-destination field ma
 <img src="../../../assets/warehouse-actions-sources/vdm-4.png" />
 
 <div class="successBlock">
-
 RudderStack gives you full visibility into the name and type of the fields that you are mapping. 
 </div>
 
@@ -108,26 +99,13 @@ When sending events to some objects, there are some required fields that need to
 
 #### Mapping fields of different type/format
 
-In case you are mapping fields with different data types or formats, you can use the [**Transformations**](https://rudderstack.com/docs/transformations/) feature to do type conversion before sending the events data. 
+In case you are mapping fields with different data types or formats, you can use the <Link to="/features/transformations/">Transformations</Link> feature to do type conversion before sending the events data. 
 
 For example, RudderStack lets you map the warehouse column `Phone` of type `string` to a destination field `Company ID` of type `float` . You can then add a transformation at the destination end to do this type conversion to ensure there is no mismatch.
 
 <img src="../../../assets/warehouse-actions-sources/vdm-6.png" />
 
 ### Creating a custom destination field
-
-<div class="warningBlock">
- 
-This feature is currently available for the following  destinations:
-<ul>
-  <li><a href="https://rudderstack.com/docs/destinations/marketing/customer.io/">Customer.io</a></li>
-  <li><a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a></li>
-  <li><a href="https://rudderstack.com/docs/destinations/marketing/iterable/">Iterable</a></li>
-  <li><a href="https://rudderstack.com/docs/destinations/marketing/klaviyo/">Klaviyo</a></li>
- <li><a href="https://rudderstack.com/docs/destinations/analytics/amplitude/">Amplitude</a></li>
- <li><a href="https://rudderstack.com/docs/destinations/analytics/google-analytics-ga/">Google Analytics</a></li>
-</ul>
-</div>
 
 RudderStack lets you create a custom destination field and map it to a warehouse column by following the below steps:
 
@@ -138,6 +116,39 @@ RudderStack lets you create a custom destination field and map it to a warehouse
 
 3. Finally, click on **Create**.
 
+<div class="warningBlock">
+This feature is currently available for the following  destinations:
+<ul>
+ <li><a href="https://rudderstack.com/docs/destinations/analytics/amplitude/">Amplitude</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/marketing/braze/">Braze</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/marketing/customer.io/">Customer.io</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/analytics/google-analytics-ga/">Google Analytics</a></li>
+ <li><a href="https://rudderstack.com/docs/destinations/marketing/iterable/">Iterable</a></li>
+  <li><a href="https://rudderstack.com/docs/destinations/marketing/klaviyo/">Klaviyo</a></li>
+</ul>
+</div>
+
 Once you have mapped all the source columns to the destination fields, click on **Next** to complete the destination configuration.
 
+#### Syncing data to custom Salesforce objects
 
+RudderStack **does not support** creating new custom fields for the <Link to="/destinations/streaming-destinations/salesforce/">Salesforce</Link> destination using the above-mentioned steps. 
+
+However, you can still use the Visual Data Mapping feature to sync your data to the custom Salesforce objects by following the below steps:
+
+1. Log into your <a href="https://login.salesforce.com/?locale=in">Salesforce dashboard</a>.
+2. In the top navigation bar, click the **Setup** icon and go to **Object Manager**.
+
+<img src="../../../assets/warehouse-actions-sources/salesforce-custom-object.png" alt="Salesforce custom object" />
+
+3. Then, go to **Create** > **Custom Object**.
+4. Enter the relevant details and click **Save** to finish the configuration.
+
+<div class="warningBlock">
+Make sure you select the <strong>Allow Search</strong> setting under the <strong>Search Status</strong> section, as shown below. Otherwise, the custom object will <strong>not</strong> be visible in the RudderStack dashboard.<br /><br />
+<img src="../../../assets/warehouse-actions-sources/salesforce-custom-object-1.png" alt="Salesforce custom object" />
+</div>
+
+5. In your RudderStack dashboard, click **Reload objects** under the **Object** field. Your newly created custom object should now be visible in this list. Select the object and map the relevant fields to sync your data.
+
+<img src="../../../assets/warehouse-actions-sources/salesforce-custom-object-2.png" alt="Salesforce custom object" />

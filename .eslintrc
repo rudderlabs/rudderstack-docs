@@ -1,0 +1,178 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier",
+    "plugin:json-schema-validator/recommended",
+    "plugin:jsonc/recommended-with-json",
+    "plugin:jsonc/recommended-with-jsonc",
+    "plugin:jsonc/recommended-with-json5"
+  ],
+  "plugins": ["unicorn", "import", "react", "prettier", "jsonc"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.json6", "*.json", "*/**.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "max-lines": "off"
+      }
+    },
+    {
+      "files": ["**/cypress/*.ts", "*test.ts", "*test.tsx"],
+      "rules": {
+        "react/react-in-jsx-scope": "off"
+      }
+    },
+    {
+      "files": ["**/*.js"],
+      "rules": {"react/prop-types": "off"}
+    }
+  ],
+  "rules": {
+    "indent": ["error", 2],
+    "import/no-unresolved": "error",
+    "import/extensions": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".tsx"
+        ]
+      }
+    ],
+    "react/destructuring-assignment": "off",
+    "curly": [
+      "error",
+      "multi-line",
+      "consistent"
+    ],
+    "object-curly-newline": "error",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-array-index-key": "off",
+    "react/require-default-props": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["**/*.test.tsx", "**/*.test.ts", "**/*.stories.tsx"] }
+    ],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "off",
+    "function-paren-newline": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "react/function-component-definition": [
+      2,
+      { "namedComponents": "arrow-function" }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "ignoreRestSiblings": true, "varsIgnorePattern": "^CatchErr" }
+    ],
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "jsx-a11y/no-autofocus": "off",
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "warn",
+    "camelcase": ["warn", {
+      "properties": "always"
+    }],
+    "jsx-a11y/aria-role": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "no-empty": ["error", { "allowEmptyCatch": true }],
+    "no-console": "error",
+    "no-underscore-dangle": "off",
+    "no-plusplus": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/no-access-state-in-setstate": "off",
+    "react/sort-comp": "off",
+    "no-unused-expressions": ["error", { "allowTernary": true }],
+    "unicorn/filename-case": [
+      "error",
+      { "cases": { "camelCase": true, "pascalCase": true, "kebabCase": true } }
+    ],
+    "unicorn/no-instanceof-array": "error",
+    "unicorn/no-static-only-class": "error",
+    "unicorn/consistent-destructuring": "error",
+    "unicorn/better-regex": "error",
+    "unicorn/no-for-loop": "error",
+    "unicorn/prefer-array-some": "error",
+    "unicorn/prefer-array-find": "error",
+    "unicorn/no-lonely-if": "error",
+    "unicorn/prefer-includes": "error",
+    "unicorn/prefer-array-flat-map": "error",
+    "unicorn/no-useless-spread": "error",
+    "unicorn/no-useless-length-check": "error",
+    "unicorn/prefer-export-from": "error",
+    "max-depth": ["error", { "max": 3 }],
+    "max-lines": ["error", { "max": 647 }],
+    "max-params": ["error", { "max": 5 }],
+    "@typescript-eslint/no-unnecessary-type-constraint": "off",
+    "no-useless-constructor": "error",
+    "@typescript-eslint/no-useless-constructor": ["error"],
+    "class-methods-use-this": "off",
+    "react/jsx-no-useless-fragment": ["error", { "allowExpressions": true }],
+    "import/order": ["warn", {
+      "newlines-between": "always"
+    }],
+    "react/no-unstable-nested-components": ["error", { "allowAsProps": true }],
+    "function-call-argument-newline": "off",
+    "max-classes-per-file": ["error", 10],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "jsonc/array-bracket-newline": ["error", {
+      "multiline": true,
+      "minItems": null
+    }],
+    "jsonc/array-bracket-spacing": ["error", "never"],
+    "jsonc/indent": ["error", 2],
+    "jsonc/comma-style": ["error", "last"],
+    "jsonc/key-spacing": ["error", {
+      "beforeColon": false,
+      "afterColon": true,
+      "mode": "strict"
+    }],
+    "jsonc/object-curly-newline": ["error", {
+      "consistent": true
+    }],
+    "jsonc/object-curly-spacing": ["error", "never"],
+    "jsonc/object-property-newline": ["error", {
+      "allowAllPropertiesOnSameLine": false
+    }],
+    "import/no-dynamic-require": ["warn"]
+  }
+}

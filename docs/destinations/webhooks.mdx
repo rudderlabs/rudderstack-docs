@@ -5,7 +5,7 @@ description: >-
   webhook endpoint.
 ---
 
-Webhooks allow you to send the events generated via the RudderStack SDK to your own backend. It is useful in cases where you want to apply some custom logic on the event payload before sending it to your preferred destination platforms.
+Webhooks let you send the events generated via RudderStack's <Link to="/sources/sdks/">SDKs</Link>, <Link to="/sources/cloud-apps/">Cloud Apps</Link>, and <Link to="/sources/reverse-etl/">Reverse ETL</Link> sources. It is useful in cases where you want to apply some custom logic on the event payload before sending it to your preferred destination platforms.
 
 Once webhooks are enabled as a destination in your dashboard, RudderStack forwards the SDK events to your configured webhook endpoint.
 
@@ -37,8 +37,6 @@ In the **Connection Settings** page, enter the relevant connection information a
 
 <img src="../assets/event-stream-destinations/webhook-connection-settings.png" alt="Webhook connection settings" />
 
-The settings are listed below:
-
 - **Webhook URL**: This is the endpoint where RudderStack sends the events. Both `http` and `https` are supported. For `https`, **TLS cert** needs to be **valid** for a successful event delivery.
 - **URL Method**: This is the HTTP method of the request sent to the configured endpoint. Supported methods are `POST`, `PUT` and `GET`. By default, RudderStack uses the `POST` method to send the events.
 - **Headers**: Add custom headers for your events via this option. These headers will be added to the request made from RudderStack to your webhook. By default, RudderStack adds the following headers for the `POST` and `PUT` requests:
@@ -49,11 +47,11 @@ The settings are listed below:
 | `Content-Type` | `application/json` |
 
 <div class="infoBlock">
-RudderStack also supports adding a dynamic header for your events through user transformation. For more information, refer to this <a href="https://github.com/rudderlabs/sample-user-transformers/blob/master/AddDynamicHeader.js">user transformation code</a>.
+RudderStack also supports adding a dynamic header to your events through user transformation. For more information, refer to the <a href="https://github.com/rudderlabs/sample-user-transformers#dynamic-header">Sample RudderStack Transformations</a> repository.
 </div>
 
 <div class="infoBlock">
-You can also add a dynamic path to your base URL. For more information on how to do this, refer to this <a href="https://github.com/rudderlabs/sample-user-transformers/blob/master/DynamicPathtoBaseURL.js">user transformation code</a>.
+You can also add a dynamic path to your base URL. For more information, refer to this <a href="https://github.com/rudderlabs/sample-user-transformers#dynamic-path">user transformation</a>.
 </div>
 
 ## Identify

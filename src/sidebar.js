@@ -8,7 +8,7 @@ export const jsonData = [
     // Getting Started section
     {
         title: "What is RudderStack?",
-        sectionTitle: "Getting Started",
+        sectionTitle: "Get Started",
         link: `/get-started/what-is-rudderstack/`,
         content: []
     },
@@ -280,16 +280,6 @@ export const jsonData = [
         link: "/sources/cloud-apps/",
         content: [
             {
-                title: "Webhook Source",
-                link: "/sources/cloud-apps/webhook-source/",
-                content: []
-            },
-            {
-                title: "Braze",
-                link: "/sources/cloud-apps/braze-currents/",
-                content: []
-            },
-            {
                 title: "App Center",
                 link: "/sources/cloud-apps/appcenter/",
                 content: []
@@ -298,11 +288,23 @@ export const jsonData = [
                 title: "AppsFlyer",
                 link: "/sources/cloud-apps/appsflyer/",
                 content: []
-            }, {
+            },
+            {
                 title: "Auth0",
                 link: "/sources/cloud-apps/auth0/",
                 content: []
-            }, {
+            },
+            {
+                title: "Braze",
+                link: "/sources/cloud-apps/braze-currents/",
+                content: []
+            },
+            {
+                title: "Canny",
+                link: "/sources/cloud-apps/canny/",
+                content: []
+            },
+             {
                 title: "Customer.io",
                 link: "/sources/cloud-apps/customerio/",
                 content: []
@@ -322,13 +324,20 @@ export const jsonData = [
                 title: "PostHog",
                 link: "/sources/cloud-apps/posthog/",
                 content: []
-            }, {
+            },
+            {
+                title: "Segment",
+                link: "/sources/cloud-apps/segment/",
+                content: []
+            },
+            {
                 title: "Shopify",
                 link: "/sources/cloud-apps/shopify/",
                 content: []
-            }, {
-                title: "Segment",
-                link: "/sources/cloud-apps/segment/",
+            },
+            {
+                title: "Webhook Source",
+                link: "/sources/cloud-apps/webhook-source/",
                 content: []
             },
         ]
@@ -813,13 +822,13 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "New Relic",
-                link: "/destinations/streaming-destinations/new-relic/",
+                title: "Mouseflow",
+                link: "/destinations/streaming-destinations/mouseflow/",
                 content: []
             },
             {
-                title: "Pendo",
-                link: "/destinations/streaming-destinations/pendo/",
+                title: "New Relic",
+                link: "/destinations/streaming-destinations/new-relic/",
                 content: []
             },
             {
@@ -923,14 +932,14 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Delighted",
+                title: "HubSpot",
                 sectionTitle: "CRM",
-                link: "/destinations/streaming-destinations/delighted/",
+                link: "/destinations/streaming-destinations/hubspot/",
                 content: []
             },
             {
-                title: "HubSpot",
-                link: "/destinations/streaming-destinations/hubspot/",
+                title: "HubSpot V2",
+                link: "/destinations/streaming-destinations/hubspot-v2/",
                 content: []
             },
             {
@@ -1025,15 +1034,7 @@ export const jsonData = [
                         content: []
                     },
                 ]
-            }, {
-                title: "Gainsight",
-                link: "/destinations/streaming-destinations/gainsight/",
-                content: []
-            }, {
-                title: "Gainsight PX",
-                link: "/destinations/streaming-destinations/gainsight-px/",
-                content: []
-            }, {
+            },  {
                 title: "Iterable",
                 link: "/destinations/streaming-destinations/iterable/",
                 content: []
@@ -1066,6 +1067,10 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/ometria/",
                 content: []
             }, {
+                title: "OneSignal",
+                link: "/destinations/streaming-destinations/onesignal/",
+                content: []
+            },{
                 title: "Post Affiliate Pro",
                 link: "/destinations/streaming-destinations/post-affiliate-pro/",
                 content: []
@@ -1117,11 +1122,6 @@ export const jsonData = [
                         content: []
                     },
                 ]
-            },
-            {
-                title: "WebEngage",
-                link: "/destinations/streaming-destinations/webengage/",
-                content: []
             },
             {
                 title: "Google Sheets",
@@ -1199,6 +1199,33 @@ export const jsonData = [
                 title: "Google Tag Manager",
                 sectionTitle: "Tag Managers",
                 link: "/destinations/streaming-destinations/google-tag-manager/",
+                content: []
+            },
+            {
+                title: "Canny",
+                sectionTitle: "Surveys",
+                link: "/destinations/streaming-destinations/canny/",
+                content: []
+            },{
+                title: "Delighted",
+                link: "/destinations/streaming-destinations/delighted/",
+                content: []
+            },{
+                title: "Gainsight",
+                link: "/destinations/streaming-destinations/gainsight/",
+                content: []
+            }, {
+                title: "Gainsight PX",
+                link: "/destinations/streaming-destinations/gainsight-px/",
+                content: []
+            },{
+                title: "Pendo",
+                link: "/destinations/streaming-destinations/pendo/",
+                content: []
+            },
+            {
+                title: "WebEngage",
+                link: "/destinations/streaming-destinations/webengage/",
                 content: []
             },
         ]
@@ -1362,6 +1389,16 @@ export const jsonData = [
                 link: "/event-spec/standard-events/common-fields/",
                 content: []
             },
+            {
+                title: "Application Lifecycle Events",
+                link: "/event-spec/standard-events/application-lifecycle-events-spec/",
+                content: []
+            },
+            {
+                title: "Video Events",
+                link: "/event-spec/standard-events/video-events-spec/",
+                content: []
+            },
         ]
     },
     {
@@ -1405,16 +1442,6 @@ export const jsonData = [
             },
         ]
     },
-    {
-        title: "Application Lifecycle Events",
-        link: "/event-spec/application-lifecycle-events-spec/",
-        content: []
-    },
-    {
-        title: "Video Events",
-        link: "/event-spec/video-events-spec/",
-        content: []
-    },
     // API section
     {
         title: "HTTP API",
@@ -1456,10 +1483,6 @@ export const jsonData = [
         link: "/user-guides/migration-guides/",
         content: [
             {
-                title: "Migrating from Blendo to RudderStack",
-                link: "/user-guides/migration-guides/blendo-rudderstack-migration/",
-                content: []
-            }, {
                 title: "Migrating from Segment to RudderStack",
                 link: "/user-guides/migration-guides/rudderstack-migration-guide/",
                 content: []
@@ -1548,6 +1571,11 @@ export const jsonData = [
                 title: "How to Use Custom Domains",
                 link: "/user-guides/how-to-guides/custom-domains/",
                 content: []
+            },
+            {
+                title: "How to Switch from Self-hosted to RudderStack-hosted Data Plane",
+                link: "/user-guides/how-to-guides/switch-to-rudderstack-hosted-data-plane/",
+                content: [],
             },
             {
                 title: "How to Use AWS Lambda Functions with RudderStack",

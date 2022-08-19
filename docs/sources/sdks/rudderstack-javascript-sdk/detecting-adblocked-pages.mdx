@@ -29,18 +29,20 @@ This property enables the JavaScript SDK to make a call to load the [**Google Ad
 
 <div class="infoBlock">
 
-  Since most ad blockers block the request to the Google AdSense servers, we assume this approach to be a good measure to detect ad-blocked pages.
+Since most ad blockers block the request to the Google AdSense servers, we assume this approach to be a good measure to detect ad-blocked pages.
+
 </div>
 
 ### `sendAdblockPageOptions`
 
 The JavaScript SDK will make an implicit `page` call about the ad-blocked pages if `sendAdblockPage` is set to `true`.
 
-With `sendAdblockPageOptions` \(which internally contains the [**`IntegrationOpts`**](https://docs.rudderstack.com/sources/sdks/rudderstack-javascript-sdk#integrationopts) object\), you can provide the destinations to which you want to forward this `page` call.
+With `sendAdblockPageOptions` \(which internally contains the [**`IntegrationOpts`**](https://www.rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/#integrationopts) object\), you can provide the destinations to which you want to forward this `page` call.
 
 <div class="infoBlock">
 
-  For more information on filtering destinations, refer to the <a href="https://docs.rudderstack.com/sources/sdks/rudderstack-javascript-sdk/#filtering-selective-destinations">Filtering selective destinations</a> section of the SDK guide.
+For more information on filtering destinations, refer to the <a href="https://www.rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/#filtering-selective-destinations">Filtering selective destinations</a> section of the SDK guide.
+
 </div>
 
 The implicit `page` call semantics is as shown:
@@ -57,5 +59,3 @@ rudderanalytics.page(
   sendAdblockPageOptions
 );
 ```
-
-
