@@ -32,6 +32,15 @@ status = 301
 # post-launch redirects (wip)
 
 [[redirects]]
+from = "/sources/sdks/*"
+to = "/docs/sources/event-streams/sdks/:splat"
+status = 301
+[[redirects]]
+from = "/sources/cloud-apps/*"
+to = "/docs/sources/event-streams/cloud-apps/:splat"
+status = 301
+
+[[redirects]]
 from = "/data-governance/"
 to = "/docs/features/data-governance/"
 status = 301
