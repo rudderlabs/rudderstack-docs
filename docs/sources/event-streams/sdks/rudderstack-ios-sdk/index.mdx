@@ -27,7 +27,7 @@ A new version of the iOS SDK (<strong>v2</strong>) is now available. Some key fe
   <li>Support for tracking push notifications</li>
 </ul>
 
-For more information, refer to the <Link to="/sources/sdks/rudderstack-ios-sdk/ios-v2">iOS SDK v2</Link> documentation.
+For more information, refer to the <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/ios-v2">iOS SDK v2</Link> documentation.
 </div>
 
 <GhBadge
@@ -548,7 +548,7 @@ You can configure your client based on the following parameters using `RudderCon
 | `trackLifecycleEvents`  | `boolean` | Specify whether the SDK will capture application life cycle events automatically.                                                                                                                                                                              | `true`                                                                     |
 | `recordScreenViews`     | `boolean` | Specify whether the SDK will capture screen view events automatically.                                                                                                                                                                                         | `false`                                                                    |
 | `enableBackgroundMode`  | `boolean` | Specify whether the SDK should send the events for some time when the app is moved to the background. Currently it is available only for `iOS` & `tvOS`. | `false`                                                                    |
-| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the control plane. Check the [**Self-hosted control plane**](https://rudderstack.com/docs/sources/sdks/rudderstack-ios-sdk/#self-hosted-control-plane) section below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | `https://api.rudderlabs.com`       |
+| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the control plane. Check the [**Self-hosted control plane**](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-ios-sdk/#self-hosted-control-plane) section below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | `https://api.rudderlabs.com`       |
 
 ### Self-hosted control plane
 
@@ -638,7 +638,7 @@ When sending events to a destination via the [**device mode**](https://ruddersta
 
 <div class="infoBlock">
 
-Refer to the <a href="https://rudderstack.com/docs/sources/sdks/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
+Refer to the <a href="https://rudderstack.com/docs/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
 </div>
 
 ## Enabling/disabling events for specific destinations
@@ -1182,7 +1182,7 @@ RSClient.sharedInstance()?.optOut(false)
 
 <div class="infoBlock">
 
-For more information on the `optOut` API, refer to the [**Enabling/Disabling User Tracking via optOut API \(GDPR Support\)**](https://rudderstack.com/docs/sources/sdks/rudderstack-ios-sdk#enabling-disabling-user-tracking-via-the-optout-api-gdpr-support) section above.
+For more information on the `optOut` API, refer to the [**Enabling/Disabling User Tracking via optOut API \(GDPR Support\)**](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-ios-sdk#enabling-disabling-user-tracking-via-the-optout-api-gdpr-support) section above.
 </div>
 
 <div class="successBlock">
