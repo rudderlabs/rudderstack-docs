@@ -52,23 +52,23 @@ A sample `identify` call is shown below:
 
 ```javascript
 rudderanalytics.identify(
-    "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
-        firstName: "Alex",
-        lastName: "Keener",
-        email: "alex@example.com",
-        phone: "+1-202-555-0146"
-    }, {
-        page: {
-            path: "/best-seller/1",
-            referrer: "https://www.google.com/search?q=estore+bestseller",
-            search: "estore bestseller",
-            title: "The best sellers offered by EStore",
-            url: "https://www.estore.com/best-seller/1"
-        }
-    },
-    () => {
-        console.log("identify call");
+  "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    firstName: "Alex",
+    lastName: "Keener",
+    email: "alex@example.com",
+    phone: "+1-202-555-0146"
+  }, {
+    page: {
+      path: "/best-seller/1",
+      referrer: "https://www.google.com/search?q=estore+bestseller",
+      search: "estore bestseller",
+      title: "The best sellers offered by EStore",
+      url: "https://www.estore.com/best-seller/1"
     }
+  },
+  () => {
+    console.log("identify call");
+  }
 );
 ```
 
@@ -120,14 +120,14 @@ An example is shown below:
 
 ```javascript
 rudderanalytics.identify(
-    "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
-        email: "alex@example.com"
-    }, {
-        anonymousId: "my-anonymous-id"
-    },
-    () => {
-        console.log("identify call");
-    }
+  "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    email: "alex@example.com"
+  }, {
+    anonymousId: "my-anonymous-id"
+  },
+  () => {
+    console.log("identify call");
+  }
 );
 ```
 
@@ -135,9 +135,10 @@ rudderanalytics.identify(
 
 ```javascript
 rudderanalytics.setAnonymousId("my-anonymous-id");
-
 // All event payloads will have the anonymousId key set "my-anonymous-id".
-rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", { email1: "alex@example.com" }, () => {
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+  email1: "alex@example.com"
+}, () => {
   console.log("identify call");
 });
 ```
@@ -146,8 +147,8 @@ rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", { email1: "alex@example.
 
 ```javascript
 rudderanalytics.setAnonymousId(
-    null,
-    "<version>*<checkSum>*<idName1>*<idValue1>*<idName2>*<idValue2>..."
+  null,
+  "<version>*<checkSum>*<idName1>*<idValue1>*<idName2>*<idValue2>..."
 );
 ```
 
@@ -186,12 +187,16 @@ The <code class="inline-code">anonymousId</code> will remain unchanged in this c
 For updating the user traits, you can call `identify` method with the same `userId` multiple times with the new traits. This will append or modify all the traits associated with that user. An example is shown below:
 
 ```javascript
-rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", { email1: "alex@example.com" }, () => {
-  console.log("identify call");
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    email1: "alex@example.com"
+}, () => {
+    console.log("identify call");
 });
 
-rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", { email2: "john@example.com" }, () => {
-  console.log("identify call");
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    email2: "john@example.com"
+}, () => {
+    console.log("identify call");
 });
 ```
 
@@ -229,17 +234,17 @@ A sample `page` call is shown below:
 
 ```javascript
 rudderanalytics.page(
-    "Cart",
-    "Cart Viewed", {
-        path: "/best-seller/1",
-        referrer: "https://www.google.com/search?q=estore+bestseller",
-        search: "estore bestseller",
-        title: "The best sellers offered by EStore",
-        url: "https://www.estore.com/best-seller/1"
-    },
-    () => {
-        console.log("page call");
-    }
+  "Cart",
+  "Cart Viewed", {
+    path: "/best-seller/1",
+    referrer: "https://www.google.com/search?q=estore+bestseller",
+    search: "estore bestseller",
+    title: "The best sellers offered by EStore",
+    url: "https://www.estore.com/best-seller/1"
+  },
+  () => {
+    console.log("page call");
+  }
 );
 ```
 
@@ -268,14 +273,14 @@ A sample `track` call is shown below:
 
 ```javascript
 rudderanalytics.track(
-    "Order Completed", {
-        revenue: 30,
-        currency: "USD",
-        user_actual_id: 12345
-    },
-    () => {
-        console.log("track call");
-    }
+  "Order Completed", {
+    revenue: 30,
+    currency: "USD",
+    user_actual_id: 12345
+  },
+  () => {
+    console.log("track call");
+  }
 );
 ```
 
@@ -308,7 +313,7 @@ A sample `alias` call is shown below:
 
 ```javascript
 rudderanalytics.alias("new_id", "old_id", () => {
-    console.log("alias call");
+  console.log("alias call");
 });
 ```
 
@@ -335,8 +340,8 @@ A sample `group` call is shown:
 
 ```javascript
 rudderanalytics.group("sample_group_id", {
-    name: "Apple Inc.",
-    location: "USA",
+  name: "Apple Inc.",
+  location: "USA",
 });
 ```
 
@@ -371,20 +376,18 @@ This functionality is supported only for the <code class="inline-code">syncPixel
 An example is shown below:
 
 ```javascript
-<script>
 rudderanalytics.syncPixelCallback = obj => {
-    rudderanalytics.track(
-        "sync lotame", {
-            destination: obj.destination
-        }, {
-            integrations: {
-                All: false,
-                S3: true
-            }
-        }
-    );
+  rudderanalytics.track(
+    "sync lotame", {
+      destination: obj.destination
+    }, {
+      integrations: {
+        All: false,
+        S3: true
+      }
+    }
+  );
 };
-</script>
 
 <script src="https://cdn.rudderlabs.com/rudder-analytics.min.js"></script>
 ```
@@ -395,11 +398,11 @@ You can also add the callback in the **loadOptions** parameter as shown below:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-    clientSuppliedCallbacks: {
-        syncPixelCallback: () => {
-            console.log("sync done");
-        },
+  clientSuppliedCallbacks: {
+    syncPixelCallback: () => {
+      console.log("sync done");
     },
+  },
 });
 ```
 
@@ -428,9 +431,18 @@ http://hostname.com/?ajs_uid=12345&ajs_event=test%20event&ajs_aid=abcde&ajs_prop
 It will trigger the following API calls:
 
 ```javascript
+// Sets the user ID/anonymous ID
 rudderanalytics.setAnonymousId("abcde");
-rudderanalytics.identify("12345", { name: "Firstname Lastname" });
-rudderanalytics.track("test event", { testProp: "prop1" });
+
+// Identify call
+rudderanalytics.identify("12345", {
+  name: "Firstname Lastname"
+});
+
+// Track call
+rudderanalytics.track("test event", {
+  testProp: "prop1"
+});
 ```
 
 ## Context and traits
@@ -457,10 +469,10 @@ To understand the concept of context and traits better, refer to the following `
 
 ```javascript
 rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
-    name: "Alex Keener",
-    email: "alex@example.com",
-    subscriptionStatus: "subscribed",
-    plan: "Silver"
+  name: "Alex Keener",
+  email: "alex@example.com",
+  subscriptionStatus: "subscribed",
+  plan: "Silver"
 });
 ```
 
@@ -468,14 +480,14 @@ The traits in the above event are `name`, `email`, `subscriptionStatus`, and `pl
 
 ```javascript
 rudderanalytics.track(
-    "Subscription Update", {
-        campaign: "Subscribe"
-    }, {
-        traits: {
-            plan: "Gold",
-            addOn: true
-        }
+  "Subscription Update", {
+    campaign: "Subscribe"
+  }, {
+    traits: {
+      plan: "Gold",
+      addOn: true
     }
+  }
 );
 ```
 
