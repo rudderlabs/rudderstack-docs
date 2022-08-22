@@ -23,6 +23,10 @@ Google Analytics 4 does not officially support a complete server-to-server integ
 
 The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
+<div class="infoBlock">
+For more information on the dashboard settings related to <code class="inline-code">identify</code> events, refer to the <Link to="/destinations/streaming-destinations/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify settings</Link> section.
+</div>
+
 A sample `identify` call using `gtag` is shown below:
 
 ```javascript
@@ -49,9 +53,8 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
     }],
 });
 ```
-
 <div class="infoBlock">
-For more information on the dashboard settings related to <code class="inline-code">identify</code> events, refer to the <Link to="/destinations/streaming-destinations/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify settings</Link> section.
+In the above snippet, the <code class="inline-code">externalId</code> is the GA4 <code class="inline-code">app_instance_id</code>. For more information on obtaining the <code class="inline-code">app_instance_id</code>, refer to the <Link to="#how-do-i-obtain-the-app_instance_id">FAQ</Link> section below.
 </div>
 
 ## Track
