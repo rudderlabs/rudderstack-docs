@@ -19,6 +19,28 @@ Google Analytics 4 does not officially support a complete server-to-server integ
   color={'blueviolet'}
 />
 
+## Supported tagging methods in cloud mode
+
+RudderStack supports both the `gtag` and `firebase` ways for tagging in websites in the cloud mode. However, note that:
+
+- If you use `gtag`, passing the `client_id` parameter is mandatory.
+- If you use `firebase`, passing the `app_instance_id` parameter is mandatory.
+
+<div class="infoBlock">
+Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a> guide for more information.
+</div>
+
+The mappings for the above-mentioned mandatory parameters are listed in the following table:
+
+| Parameters    | Mapping value  |
+| :-------------| :-----------------|
+| `client_id`         |  from `externalID` `ga4ClientId` or `anonymousId` or `messageId` |
+| `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  | 
+
+<div class="infoBlock">
+Refer to the <Link to="#how-do-i-obtain-app_instance_id">FAQ</Link> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
+</div>
+
 ## Identify
 
 The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
@@ -54,47 +76,11 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 });
 ```
 
-In the above snippet, the `externalId` is the GA4 `app_instance_id`. 
-
-<div class="infoBlock">
-For more information on obtaining the <code class="inline-code">app_instance_id</code>, refer to the <Link to="#how-do-i-obtain-app_instance_id">FAQ</Link> section below.
-</div>
+In the above snippet, the `externalId` is the GA4 `app_instance_id`.
 
 ## Track
 
 The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
-
-RudderStack supports both the `gtag` and `firebase` ways for tagging in websites in the cloud mode. However, note that:
-
-- If you use `gtag`, passing the `client_id` parameter is mandatory.
-- If you use `firebase`, passing the `app_instance_id` parameter is mandatory.
-
-<div class="infoBlock">
-Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a> guide for more information.
-</div>
-
-The mappings for the above-mentioned mandatory parameters are listed in the following table:
-
-| Parameters    | Mapping value  |
-| :-------------| :-----------------|
-| `client_id`         |  from `externalID` `ga4ClientId` or `anonymousId` or `messageId` |
-| `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  | 
-
-<div class="infoBlock">
-Refer to the <Link to="#how-do-i-obtain-app_instance_id">FAQ</Link> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
-</div>
-
-The mappings for the optional parameters (common for `gtag` and `firebase` both) are listed in the following table:
-
-| Optional Parameters    | Mapping value  | Description |
-| :-------------| :-----------------|:-----------------|
-| `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
-| `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Timestamp in ISO 8601 format.|
-| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. If `context.device.adTrackingEnabled` is set as `true`, `non_personalised_ads` will be set to `false`. |
-
-<div class="infoBlock">
-Google Analytics 4 Measurement Protocol only supports timestamps 72 hours into the past and 15 minutes into the future. RudderStack discards any event with a timestamp out of this range.
-</div>
 
 A sample `track` call using `gtag` is shown below:
 
@@ -166,6 +152,20 @@ rudderanalytics.track('Product List Viewed', {
 });
 ```
 
+### Supported mappings
+
+The mappings for the **optional** parameters (common for `gtag` and `firebase` both) are listed in the following table:
+
+| Optional Parameters    | Mapping value  | Description |
+| :-------------| :-----------------|:-----------------|
+| `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
+| `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Timestamp in ISO 8601 format.|
+| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. If `context.device.adTrackingEnabled` is set as `true`, `non_personalised_ads` will be set to `false`. |
+
+<div class="infoBlock">
+Google Analytics 4 Measurement Protocol only supports timestamps 72 hours into the past and 15 minutes into the future. RudderStack discards any event with a timestamp out of this range.
+</div>
+
 ## Page
 
 The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page. 
@@ -190,6 +190,8 @@ rudderanalytics.page({}, {
   }],
 });
 ```
+
+### Supported mappings
 
 The following table lists the property mappings between RudderStack and Google Analytics 4: 
 
