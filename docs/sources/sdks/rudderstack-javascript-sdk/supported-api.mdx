@@ -96,7 +96,7 @@ If the <code class="inline-code">anonymousId</code> is <code class="inline-code"
 
 #### How the SDK uses `anonymousId`
 
-The JavaScript SDK generates a unique `anonymousId`, stores it in the `rl_anonymous_id` cookie in the top-level domain, and attaches it to every subsequent event. This helps RudderStack to identify the anonymous users from other sites that are hosted under a sub-domain. Refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/">Data Storage</Link> guide for more information on how the JavaScript SDK stores persistent user data in cookies. 
+The JavaScript SDK generates a unique `anonymousId`, stores it in the `rl_anonymous_id` cookie in the top-level domain, and attaches it to every subsequent event. This helps RudderStack to identify the anonymous users from other sites hosted under a sub-domain.
 
 <div class="infoBlock">
 If you identify a user with your application's unique identifier like email, database ID, etc., RudderStack stores this ID in the <code class="inline-code">rl_user_id</code> cookie and attaches it to every event.
