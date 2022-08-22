@@ -498,7 +498,7 @@ export const postNavList = [
   },
   {
     key: "mixpanel-v2",
-    title: "Mixpanel v2",
+    title: "Mixpanel V2",
     link: "/sources/extract/mixpanel-v2/",
     content: [],
   },
