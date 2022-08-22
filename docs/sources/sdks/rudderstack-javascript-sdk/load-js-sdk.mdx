@@ -1,6 +1,6 @@
 ---
 title: "Load JavaScript SDK"
-description: Detailed technical documentation on how to load the JavaScript SDK with various options.
+description: Detailed technical documentation on loading the JavaScript SDK with various options.
 ---
 
 You can load the JavaScript SDK using the `load` API method to track and send events from your website to RudderStack. It can be defined as:
@@ -10,12 +10,12 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, [loadOptions]);
 ```
 
 <div class="infoBlock">
-Replace the <Link to="/resources/glossary/#write-key">Write key</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">Data plane URL</Link> in the above snippet with actual values.
+Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
 </div>
 
 ## Loading options 
 
-The **loadOptions** in the `load` call above can be used to define various options while loading the SDK. It includes the following parameters:
+You can use **loadOptions* in the above `load` call to define various options while loading the SDK. It includes the following parameters:
 
 ```javascript
 {
@@ -38,19 +38,19 @@ The detailed description of these parameters is as follows:
 | Parameter             | Type                                | Description                    |
 | :-------------------- | :---------------------------------- | :------------------------ |
 |  `logLevel`           | String                              | Values include `DEBUG`, `INFO`, and `WARN`.             |
-|  `integrations`       | <Link to="#integrationopts">IntegrationOpts</Link> | Send event data to the <Link to="/sources/sdks/rudderstack-javascript-sdk/filtering/">selective destinations</Link>.                                          |
-|  `configUrl`          | String                              |  Server (<Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane</Link>) endpoint serving your destination configurations. Default value: `https://api.rudderlabs.com`. Note that the source config is automatically appended to this endpoint, `https://api.rudderlabs.com/<source_config_url>/sourceConfig`  |
-|  `queueOpts`          | <Link to="#queueopts">QueueOpts</Link>         | Contains options to control the behavior of the persistence queue that buffers the events before sending them to the data plane.          |
-|  `loadIntegration`    | Boolean                             | Determines whether the destination SDKs are fetched by the SDK or not (true by default). Supported for **Amplitude** and **Google Analytics**.                      |
-| `secureCookie`        | Boolean                             | Determines whether the SDK sends the cookie to the storage backend via HTTPS (false by default).|
-| `destSDKBaseURL`      | String                              | Path used by the SDK to load the integrations. Default value: `https://cdn.rudderlabs.com/v1.1/js-integrations`. <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">Reference</Link>.    | 
-| `useBeacon`           | Boolean                             | Determines whether the SDK <Link to="/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#send-events-using-beacon">sends event payloads via Beacon</Link> (false by default).  |
+|  `integrations`       | <Link to="#integrationopts">IntegrationOpts</Link> | Sends event data to the <Link to="/sources/sdks/rudderstack-javascript-sdk/filtering/">selective destinations</Link>.                                          |
+|  `configUrl`          | String                              |  The <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane</Link> endpoint serving your destination configurations. Default value is `https://api.rudderlabs.com`. Note that `sourceConfig` is automatically appended to this endpoint in the format `https://api.rudderlabs.com/<source_config_url>/sourceConfig`  |
+|  `queueOpts`          | <Link to="#queueopts">QueueOpts</Link>         | Contains the options to control the behavior of the persistence queue that buffers the events before sending them to the data plane.          |
+|  `loadIntegration`    | Boolean                             | Determines whether the destination SDKs are fetched by the SDK or not. Default value is `True`. Supported for **Amplitude** and **Google Analytics**.                      |
+| `secureCookie`        | Boolean                             | Determines whether the SDK sends the cookie to the storage backend via HTTPS. Default value is `False`. |
+| `destSDKBaseURL`      | String                              | Path used by the SDK to load the integrations. Default value is  `https://cdn.rudderlabs.com/v1.1/js-integrations`. <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">Reference</Link>.    | 
+| `useBeacon`           | Boolean                             | Determines whether the SDK <Link to="/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#send-events-using-beacon">sends event payloads via Beacon</Link>. Default value is `False`.  |
 | `beaconQueueOptions`  | <Link to="/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#send-events-using-beacon">BeaconQueueOpts</Link> | Internal queue to hold the data and send it through the Beacon utility in batches. |
-| `cookieConsentManager` | Object       |  <Link to="#cookieconsentmanager">Consent manager integration</Link>. |
-| `anonymousIdOptions` | Object       |  <Link to="#anonymousidoptions">Automatically captures the anonymous ID</Link> from a source and sets it as Rudderstack’s anonymousId.  |
+| `cookieConsentManager` | Object       |  Refer to the <Link to="#cookieconsentmanager">Consent manager integration</Link> section. |
+| `anonymousIdOptions` | Object       |  <Link to="#anonymousidoptions">Automatically captures the anonymous ID</Link> from a source and sets it as RudderStack’s `anonymousId`.  |
 
 
-The detailed definitions and usage of some parameters are given below:
+The following sections contain the detailed definitions and usage of some of the above parameters:
 
 #### `IntegrationOpts`
 
@@ -74,7 +74,7 @@ The following table describes the above (optional) parameters in detail:
 
 #### `QueueOpts`
 
-The `queueOpts` object contains the options to control the behavior of the persistence queue that buffers the events before sending them to the data plane. Its structure is defined as follows:
+The `queueOpts` object contains the options to control the behavior of the persistence queue that buffers the events before sending them to RudderStack. Its structure is defined as follows:
 
 ```javascript
 {
@@ -113,9 +113,11 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 
 #### `anonymousIdOptions`
 
-The `anonymousIdOptions` object can be used to automatically capture the anonymous ID from a source and set it as Rudderstack's `anonymousId`. For example, if you are migrating from any source, say Segment, and want to retain its anonymous ID, you can enable the `anonymousIdOptions` to set the Segment's anonymous ID as the  Rudderstack's anonymous Id.
+You can use the `anonymousIdOptions` object to automatically capture the anonymous ID from a source and set it as Rudderstack's `anonymousId`. 
 
-Its structure is defined as follows:
+For example, if you are migrating from a particular source and want to retain its anonymous ID, you can enable the `anonymousIdOptions` to set the source's anonymous ID as the `anonymousId` in RudderStack.
+
+The structure of `anonymousIdOptions` is defined as follows:
 
 ```javascript
 {
@@ -137,12 +139,12 @@ Its structure is defined as follows:
   </div>
 
   <div class="infoBlock">
-  You can call the <strong>Reset</strong>  API to clear the persisted anonymous ID and force the SDK to generate a new ID when the next tracking API is called (irrespective of the fact that <code class="inline-code">anonymousIdOptions</code> is enabled/disabled). However, if the <code class="inline-code">anonymousIdOptions</code> object is enabled and the SDK is loaded again (as a result of webpage reload, navigate to a different webpage, etc,), the <code class="inline-code">setAnonymousId</code> call will trigger automatically and the specified source's anonymous ID will again be set as the Rudderstack's anonymous ID.
+You can call the <strong>reset</strong>  API to clear the persisted anonymous ID and force the SDK to generate a new ID when the next tracking API is called (irrespective of whether <code class="inline-code">anonymousIdOptions</code> is enabled or disabled). However, if the <code class="inline-code">anonymousIdOptions</code> object is enabled and the SDK is loaded again (as a result of webpage reload, navigate to a different webpage, etc.), the <code class="inline-code">setAnonymousId</code> call will trigger automatically and the specified source's anonymous ID will again be set as the RudderStack <code class="inline-code">anonymousId</code>.
   </div>
 
 ## Loading SDK for self-hosted control plane
 
-If you are self-hosting the control plane using the [Control Plane Lite](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility, the `load` call should be as below:
+If you are self-hosting the control plane using the [Control Plane Lite](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/) utility, the `load` call should be made as below:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
@@ -151,7 +153,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 ```
 
 <div class="infoBlock">
-Replace the <Link to="/resources/glossary/#write-key">Write key</Link>, <Link to="/dashboard-guides/overview/#data-plane-url">Data plane URL</Link> and <Link to="/get-started/rudderstack-open-source/control-plane-lite/#control-plane-url">Control plane URL</Link> in the above snippet with actual values.
+Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
 </div>
 
 ## Verifying if the SDK has loaded correctly
@@ -163,10 +165,10 @@ You can verify if the JavaScript SDK has loaded correctly by opening the JavaScr
 - **Firefox**: `Ctrl+Shift+K` \(Windows\) or `Command+Option+K` \(Mac\) and select the `Console` tab.
 - **Internet Explorer**: Press `F12` and go to the `Console` tab.
 
-Run `rudderanalytics` command in the console,. If it returns the following code snippet, it means that the `analytics.js` file has loaded successfully:
+Run the `rudderanalytics` command in the console. If it returns the following code snippet, it means that the `analytics.js` file has loaded successfully:
 
 ```javascript
 {Integrations: Object, _integrations: Object, _readied: true, _timeout: 300, _user: n_}
 ```
 
-If it gives an `undefined` error, you need to verify the SDK installation again.
+If it gives an `undefined` error, you need to verify the SDK installation.
