@@ -26,7 +26,7 @@ RudderStack's JavaScript SDK leverages the `rudder-analytics.js` library to trac
 JavaScript SDK v1.1 is now the default version of the JavaScript SDK. It is a lightweight, efficient, and optimized version of the RudderStack JavaScript SDK v1. For more information, refer to the following links:
   
 - <a href="https://rudderstack.com/blog/rudderstacks-new-high-performance-javascript-sdk/">Introducing RudderStack's New, High-performance JavaScript SDK</a>
-- <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/">Migrating to JavaScript SDK v1.1</a>
+- <a href="https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/">Migrating to JavaScript SDK v1.1</a>
 
 </div>
 
@@ -38,19 +38,19 @@ For the source code and implementation details, refer to the JavaScript SDK <a h
 
 <div class="infoBlock">
 
-The JavaScript SDK stores persistent user data in the cookies. For more information on these cookies, refer to the <a href="https://www.rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/">Data Storage in Cookies</a> guide.
+The JavaScript SDK stores persistent user data in the cookies. For more information on these cookies, refer to the <a href="https://www.rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/data-storage-cookies/">Data Storage in Cookies</a> guide.
 
 </div>
 
 <div class="successBlock">
 
-The JavaScript SDK now supports integration with the OneTrust consent manager and lets you map OneTrust cookie/consent groups to RudderStack's consent purposes. For more information on the OneTrust integration, refer to <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">this guide</a>.
+The JavaScript SDK now supports integration with the OneTrust consent manager and lets you map OneTrust cookie/consent groups to RudderStack's consent purposes. For more information on the OneTrust integration, refer to <a href="https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">this guide</a>.
 
 </div>
 
 ## Installing the SDK
 
-To quickly set up and start using the RudderStack JavaScript SDK, go through our [**quick start guide**](https://www.rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/).
+To quickly set up and start using the RudderStack JavaScript SDK, go through our [**quick start guide**](https://www.rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/).
 
 ## Supported APIs
 
@@ -110,9 +110,9 @@ It includes the following details:
 | `queueOpts`            | [**QueueOpts**](#queueopts)                                                                                                              | Refer to the [`QueueOpts`](#queueopts) section.                                                                                                                                                                                                                                                                                                                        |
 | `loadIntegration`      | Boolean                                                                                                                                  | Defaults to `true`. If set to `false`, the destination SDKs are not fetched by the SDK. This is supported for **Amplitude** and **Google Analytics**.                                                                                                                                                                                                                  |
 | `secureCookie`         | Boolean                                                                                                                                  | Defaults to `false`. If set to `true`, the SDK sends the cookie to the storage backend via HTTPS.                                                                                                                                                                                                                                                                      |
-| `destSDKBaseURL`       | String                                                                                                                                   | Defaults to `https://cdn.rudderlabs.com/v1.1/js-integrations`. The SDK will load the integrations from this path. You can also set your own integrations path using this field. For more information, refer to [**this section**](https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn). |
+| `destSDKBaseURL`       | String                                                                                                                                   | Defaults to `https://cdn.rudderlabs.com/v1.1/js-integrations`. The SDK will load the integrations from this path. You can also set your own integrations path using this field. For more information, refer to [**this section**](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn). |
 | `useBeacon`            | Boolean                                                                                                                                  | Defaults to `false`. If set to `true`, the SDK sends the event payloads via the `navigator.sendBeacon()` utility.                                                                                                                                                                                                                                                      |
-| `beaconQueueOptions`   | [**BeaconQueueOpts**](https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) | Refer to the [**BeaconQueueOpts**](https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) section.                                                                                                                                                                                                         |
+| `beaconQueueOptions`   | [**BeaconQueueOpts**](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) | Refer to the [**BeaconQueueOpts**](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#beaconqueueopts) section.                                                                                                                                                                                                         |
 | `cookieConsentManager` | Object                                                                                                                                   | Refer to the [`cookieConsentManager`](#cookieconsentmanager) section for more information.                                                                                                                                                                                                                                                                             |
 | `anonymousIdOptions`   | Object                                                                                                                                   | Refer to the [Capturing `anonymousId` automatically](#capturing-anonymousid-automatically) section for more information.                                                                                                                                                                                                                                               |
 
@@ -124,7 +124,7 @@ The JavaScript SDK supports a new Boolean field, `useBeacon`, in the `load()` ca
 
 <div class="infoBlock">
 
-Refer to <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#sendbeacon-as-a-transport-mechanism">this section</a> for more details on using the Beacon transport mechanism.
+Refer to <a href="https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#sendbeacon-as-a-transport-mechanism">this section</a> for more details on using the Beacon transport mechanism.
 
 </div>
 
@@ -242,7 +242,7 @@ You don't have to call <code class="inline-code">identify</code> for the anonymo
 
 #### How RudderStack uses anonymousId
 
-The JavaScript SDK generates a unique `anonymousId`, stores it in a cookie named `rl_anonymous_id` in the top-level domain, and attaches to every subsequent event. This helps RudderStack in identifying the unknown users from other sites that are hosted under a sub-domain. For more information on how the JavaScript SDK stores persistent user data in cookies, refer to [Data Storage in Cookies](https://www.rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/).
+The JavaScript SDK generates a unique `anonymousId`, stores it in a cookie named `rl_anonymous_id` in the top-level domain, and attaches to every subsequent event. This helps RudderStack in identifying the unknown users from other sites that are hosted under a sub-domain. For more information on how the JavaScript SDK stores persistent user data in cookies, refer to [Data Storage in Cookies](https://www.rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/data-storage-cookies/).
 
 <div class="infoBlock">
 
@@ -305,7 +305,7 @@ rudderanalytics.setAnonymousId(
 );
 ```
 
-Here, the second parameter is the AMP Linker ID format in accordance with the [**specified structure**](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format). For the links decorated with the [**RudderStack Linker parameter**](https://www.rudderstack.com/docs/sources/sdks/rudderstack-amp-analytics/#amp-linker), the `<idName1>` value will be `rs_amp_id`.
+Here, the second parameter is the AMP Linker ID format in accordance with the [**specified structure**](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format). For the links decorated with the [**RudderStack Linker parameter**](https://www.rudderstack.com/docs/sources/event-streams/sdks/rudderstack-amp-analytics/#amp-linker), the `<idName1>` value will be `rs_amp_id`.
 
 Calling the above method will parse the Linker ID and set the `anonymousId` as the value of the `rs_amp_id` key.
 
@@ -617,7 +617,7 @@ rudderanalytics.load(
 <div class="infoBlock">
   For more information on the consent managers supported by RudderStack, refer
   to{" "}
-  <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/consent-managers/">
+  <a href="https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/">
     this section
   </a>
   .
@@ -625,7 +625,7 @@ rudderanalytics.load(
 
 #### Capturing `anonymousId` automatically
 
-The JavaScript SDK provides `anonymousIdOptions` object in the [`load()`](https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/#the-options-parameter) call options. It automatically captures the anonymous ID from a source and sets it as Rudderstack’s `anonymousId`.
+The JavaScript SDK provides `anonymousIdOptions` object in the [`load()`](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/#the-options-parameter) call options. It automatically captures the anonymous ID from a source and sets it as Rudderstack’s `anonymousId`.
 
 The structure of `anonymousIdOptions` object is shown below:
 
@@ -719,7 +719,7 @@ When sending events to a destination via the **web device mode**, you can explic
 
 <div class="infoBlock">
 
-Refer to the <a href="https://rudderstack.com/docs/sources/sdks/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
+Refer to the <a href="https://rudderstack.com/docs/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
 
 </div>
 
@@ -794,7 +794,7 @@ rudderanalytics.track(
 
 <div class="infoBlock">
 
-You can refer to the <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/#common-destination-names">Common destination names</a> for the naming conventions for the destinations.
+You can refer to the <a href="https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/#common-destination-names">Common destination names</a> for the naming conventions for the destinations.
 
 </div>
 
@@ -928,4 +928,4 @@ The above snippet will append `plan` as a trait to the `track` event. Note that 
 
 ## FAQs
 
-Refer to the [**FAQs**](https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/faq/) section for solutions to some of the commonly faced issues while using the JavaScript SDK on your website.
+Refer to the [**FAQs**](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/faq/) section for solutions to some of the commonly faced issues while using the JavaScript SDK on your website.

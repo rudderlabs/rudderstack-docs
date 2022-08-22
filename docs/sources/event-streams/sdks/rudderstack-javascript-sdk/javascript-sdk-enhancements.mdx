@@ -10,11 +10,11 @@ The following sections cover the finer technical details of the improvements in 
 
 The JavaScript SDK hosted at [**https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js**](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) sends the event payload using the **XHR** \(XMLHttpRequest\) API.
 
-RudderStack now also supports sending the event payload using the [**`navigator.sendBeacon`**](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) browser utility, which asynchronously sends a small amount of data over HTTP to the RudderStack server. The JavaScript SDK supports a new Boolean field, `useBeacon`, in the [**`load()`**](https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/#the-options-parameter) call options. When set to `true`, the SDK sends events using the **`navigator.sendBeacon`** utility.
+RudderStack now also supports sending the event payload using the [**`navigator.sendBeacon`**](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) browser utility, which asynchronously sends a small amount of data over HTTP to the RudderStack server. The JavaScript SDK supports a new Boolean field, `useBeacon`, in the [**`load()`**](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/#the-options-parameter) call options. When set to `true`, the SDK sends events using the **`navigator.sendBeacon`** utility.
 
 <div class="successBlock">
 
-You can use the <code class="inline-code">sendBeacon</code> feature with the <a href="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js">latest version</a> of the JavaScript SDK. For more information on how to use this feature, refer to <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/#the-options-parameter">this section</a>.
+You can use the <code class="inline-code">sendBeacon</code> feature with the <a href="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js">latest version</a> of the JavaScript SDK. For more information on how to use this feature, refer to <a href="https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/#the-options-parameter">this section</a>.
 
 </div>
 
@@ -126,7 +126,7 @@ rudderanalytics.requireIntegration(
 
 <div class="infoBlock">
 
-RudderStack supports a few canonical names for destinations. You can find more information regarding these canonical names in the <a href="https://www.rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk#common-destination-names">common destination names</a> section of the SDK documentation.
+RudderStack supports a few canonical names for destinations. You can find more information regarding these canonical names in the <a href="https://www.rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk#common-destination-names">common destination names</a> section of the SDK documentation.
 
 </div>
 

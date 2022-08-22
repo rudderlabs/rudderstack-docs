@@ -4,7 +4,7 @@ description: >-
   Detailed instructions for using RudderStack's Flutter SDK v1.
 ---
 
-| **IMPORTANT**: This version of the Flutter SDK will soon be deprecated. We highly recommend upgrading to the latest SDK version by going to our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-flutter). For the latest documentation, refer to [**this**](https://rudderstack.com/docs/sources/sdks/rudderstack-flutter-sdk/) guide.   |
+| **IMPORTANT**: This version of the Flutter SDK will soon be deprecated. We highly recommend upgrading to the latest SDK version by going to our [**GitHub repository**](https://github.com/rudderlabs/rudder-sdk-flutter). For the latest documentation, refer to [**this**](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-flutter-sdk/) guide.   |
 | :------------------------------------------------- |
 
 <GhBadge
@@ -76,7 +76,7 @@ The `setup` method has the following signature:
 | `writeKey` | `String`       | Yes      | Your Flutter source `writeKey`                       |
 | `config`   | `RudderConfig` | No       | Contains the RudderStack Client configuration |
 
-Check the [**Configuring your RudderStack client**](https://rudderstack.com/docs/sources/sdks/rudderstack-flutter-sdk/#configuring-your-rudderstack-client) section below for a full list of the configurable parameters.
+Check the [**Configuring your RudderStack client**](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-flutter-sdk/#configuring-your-rudderstack-client) section below for a full list of the configurable parameters.
 
 ## Track
 
@@ -382,7 +382,7 @@ You can configure your client based on the following parameters by passing them 
 | `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server.                                                                                                                                                                                           | `10 seconds`                                             |
 | `configRefreshInterval` | `int`     | Fetches the config from the dashboard after this specified time.                                                                                                                                                                                 | `2 hours`                                                      |
 | `trackLifecycleEvents`  | `boolean` | Whether SDK will capture application life cycle events automatically.                                                                                                                                                                             | `true`                                                   |
-| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the control plane. Check the section [**Self-hosted control plane**](https://rudderstack.com/docs/sources/sdks/rudderstack-flutter-sdk/flutter-v1/#self-hosted-control-plane) below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | `https://api.rudderlabs.com` |
+| `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the control plane. Check the section [**Self-hosted control plane**](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-flutter-sdk/flutter-v1/#self-hosted-control-plane) below for more information. The SDK will add `/sourceConfig` along with this URL to fetch the configuration. | `https://api.rudderlabs.com` |
 
 ### Self-hosted control plane
 

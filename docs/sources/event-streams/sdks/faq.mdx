@@ -16,7 +16,7 @@ If <code class="inline-code">anonymousId</code> is explicitly provided by the us
 </div>
 
 <div class="successBlock">
-For more information on how RudderStack handles overriding <code class="inline-code">anonymousId</code>, please refer to our <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-javascript-sdk/#322-overriding-anonymousid-in-the-options-parameter">docs</a>.
+For more information on how RudderStack handles overriding <code class="inline-code">anonymousId</code>, please refer to our <a href="https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/#322-overriding-anonymousid-in-the-options-parameter">docs</a>.
 </div>
 
 #### Android SDK
@@ -30,7 +30,7 @@ On the Android devices, the <code class="inline-code">deviceId</code> is assigne
 </div>
 
 <div class="successBlock">
-For more information on how RudderStack handles <code class="inline-code">anonymousId</code> in the iOS SDK, please refer to our <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-android-sdk/#anonymous-id">docs</a>.
+For more information on how RudderStack handles <code class="inline-code">anonymousId</code> in the iOS SDK, please refer to our <a href="https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-android-sdk/#anonymous-id">docs</a>.
 </div>
 
 #### iOS SDK
@@ -44,7 +44,7 @@ According to the Apple <a href="https://developer.apple.com/documentation/uikit/
 </div>
 
 <div class="successBlock">
-For more information on how RudderStack handles<code class="inline-code">anonymousId</code> in the iOS SDK, please refer to our <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-ios-sdk/#anonymous-id">docs</a>.
+For more information on how RudderStack handles<code class="inline-code">anonymousId</code> in the iOS SDK, please refer to our <a href="https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-ios-sdk/#anonymous-id">docs</a>.
 </div>
 
 ### How do I identify anonymous users across client-side and server-side?
@@ -120,9 +120,9 @@ Currently the Node SDK is the only server-side SDK that supports event retry and
 Where, <InlineMath>dt</InlineMath> is the delay time in ms and <InlineMath>n</InlineMath> is the current retry attempt. The SDK will retry until the attempts surpass the `maxAttempts` value which is set to 10 attempts. With each retry attempt, the delay time will grow exponentially. However, it will never be greater than the maximum delay duration which is 30 seconds.
 
 <div class="infoBlock">
-The Node SDK does have a feature to persist the event data in Redis for more event storage and better guarantees of failed event delivery. Instructions on how to configure the Redis solution can be found <a href="https://rudderstack.com/docs/sources/sdks/rudderstack-node-sdk/#data-persistence-in-node-js-sdk">here</a>.
+The Node SDK does have a feature to persist the event data in Redis for more event storage and better guarantees of failed event delivery. Instructions on how to configure the Redis solution can be found <a href="https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-node-sdk/#data-persistence-in-node-js-sdk">here</a>.
 </div>
 
 ### Can I filter and selectively send the event data to certain destinations?
 
-Yes, you can use RudderStack's [Client-side Event Filtering](https://www.rudderstack.com/docs/sources/sdks/event-filtering/) feature to specify which events should be discarded or allowed to flow through - by allowlisting or denylisting them in the RudderStack dashboard while setting up your destination. This method is useful if you are sending the events via the [device mode](https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode).
+Yes, you can use RudderStack's [Client-side Event Filtering](https://www.rudderstack.com/docs/sources/event-streams/sdks/event-filtering/) feature to specify which events should be discarded or allowed to flow through - by allowlisting or denylisting them in the RudderStack dashboard while setting up your destination. This method is useful if you are sending the events via the [device mode](https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode).
