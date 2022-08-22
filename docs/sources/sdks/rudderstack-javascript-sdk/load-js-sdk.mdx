@@ -102,13 +102,12 @@ Once a user provides the consent, you can load the JavaScript SDK and enable the
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-        cookieConsentManager: {
-            oneTrust: {
-                enabled: true
-            }
+    cookieConsentManager: {
+        oneTrust: {
+            enabled: true
         }
     }
-);
+});
 ```
 
 #### `anonymousIdOptions`
@@ -127,20 +126,20 @@ The structure of `anonymousIdOptions` is defined as follows:
     }
 }
 ```
-  The following table describes the above (required) parameters in detail:
+The following table describes the above (required) parameters in detail:
 
-  | Parameter  | Type  | Description    |   
-  | :--------| :---- | :----------------| 
-  | `enabled` | Boolean  | Determines if the anonymous ID should be auto-captured. | 
-  | `source`  | String   | Determines the external source of anonymous ID. | 
+| Parameter  | Type  | Description    |   
+| :--------| :---- | :----------------| 
+| `enabled` | Boolean  | Determines if the anonymous ID should be auto-captured. | 
+| `source`  | String   | Determines the external source of anonymous ID. | 
 
-  <div class="infoBlock">
-  If the RudderStack <code class="inline-code">anonymousId</code> is already set in your browser, <code class="inline-code">anonymousIdOptions</code> will not take effect.
-  </div>
+<div class="infoBlock">
+If the RudderStack <code class="inline-code">anonymousId</code> is already set in your browser, <code class="inline-code">anonymousIdOptions</code> will not take effect.
+</div>
 
-  <div class="infoBlock">
+<div class="infoBlock">
 You can call the <strong>reset</strong>  API to clear the persisted anonymous ID and force the SDK to generate a new ID when the next tracking API is called (irrespective of whether <code class="inline-code">anonymousIdOptions</code> is enabled or disabled). However, if the <code class="inline-code">anonymousIdOptions</code> object is enabled and the SDK is loaded again (as a result of webpage reload, navigate to a different webpage, etc.), the <code class="inline-code">setAnonymousId</code> call will trigger automatically and the specified source's anonymous ID will again be set as the RudderStack <code class="inline-code">anonymousId</code>.
-  </div>
+</div>
 
 ## Loading SDK for self-hosted control plane
 
@@ -148,7 +147,7 @@ If you are self-hosting the control plane using the [Control Plane Lite](https:/
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-    configUrl: < CONTROL_PLANE_URL > ,
+  configUrl: < CONTROL_PLANE_URL > ,
 });
 ```
 
