@@ -1,11 +1,12 @@
 ---
 title: "Version Migration"
 description: Step-by-step guide on migrating the RudderStack JavaScript SDK from v1 to v1.1.
+aliases: ["javascript sdk version migration", "js sdk version migration"]
 ---
 
-The latest **JavaScript SDK (v1.1)** is the lightweight, efficient, and optimized version of the SDK. Its size is reduced by approximately 70% which considerably increases its loading speed.
+The latest **JavaScript SDK (v1.1)** is the lightweight, efficient, and optimized version of the SDK with a size reduction of approximately 70%, thereby increasing its loading speed considerably.
 
-Another major improvement in the latest version (v1.1) is that the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations are published as individual plugins and loaded dynamically as per the specified dashboard configurations. In v1, the device mode destinations were bundled with the core SDK.
+Another significant improvement in the latest version (v1.1) is that the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations are published as individual plugins and loaded dynamically as per the dashboard configurations. In v1, the device mode destinations were bundled with the core SDK.
 
 
 The below section covers the detailed steps to migrate to JavaScript SDK v1.1 depending on your JavaScript SDK v1 installation.
@@ -36,11 +37,10 @@ It is highly recommended to forward the entire CDN path <code class="inline-code
 </div>
 
 <div class="successBlock">
-Refer to the <a href="https://rudderstack.com/docs/user-guides/how-to-guides/custom-domains/">custom domains</a> guide for more information on CDN forwarding/proxying.
+Refer to the <Link to="/user-guides/how-to-guides/custom-domains/">How to Use Custom Domains</Link> guide for more information on CDN forwarding/proxying.
 </div>
 
 3.  Go to **Behaviors** and verify that the sub-path `/v1.1/*` is **not configured to be blocked** in any way. This is required to ensure that both the core SDK and destination SDKs are forwarded properly.
-
 4. Finally, update the script tag in your website as shown:
 
 From **v1**:
@@ -113,7 +113,9 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 
 ## Case 4: Migrating version using NPM
 
-The latest NPM package is based on JavaScript SDK v1.1 architecture and is released with the 2.x.x version. To update the SDK package using NPM, use any of the following options:
+The latest NPM package is based on JavaScript SDK v1.1 architecture and is released with the 2.x.x version.
+
+To update the SDK package using NPM, use any of the following options:
 
 * Upgrade `rudder-sdk-js` package to the latest version using the below command:
 
@@ -139,9 +141,9 @@ npm install rudder-sdk-js@2.x.x
 By default, the device mode destinations are loaded from https://cdn.rudderlabs.com/v1.1/js-integrations/ in 2.x.x, depending on the dashboard settings. The name of the destination is appended to the URL as:
 https://cdn.rudderlabs.com/v1.1/js-integrations/{dest-name.min.js}
 
-For example, the path for Hubspot is: https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js, and Google Analytics is: https://cdn.rudderlabs.com/v1.1/js-integrations/GA.min.js, etc.
+For example, the path for HubSpot is: https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js, and Google Analytics is: https://cdn.rudderlabs.com/v1.1/js-integrations/GA.min.js, etc.
 
-If you are loading the device mode destinations from a custom path, use any of the below-mentioned ways: 
+If you are loading the device mode destinations from a custom path, use any of the below-mentioned ways depending on your case: 
 
 ### Forwarded/proxied RudderStack CDN
 
@@ -167,7 +169,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 
 
 <div class="infoBlock">
-Replace the <Link to="/resources/glossary/#write-key">Write key</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">Data plane URL</Link> in the above snippets with actual values.
+Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
 </div>
 
 ## FAQ
@@ -177,5 +179,5 @@ Replace the <Link to="/resources/glossary/#write-key">Write key</Link> and <Link
 RudderStack follows the below precedence order while determining the root location of the destination SDK:
 
 1. It refers to the `destSDKBaseURL` value in the `options` parameter of the `load` API call.
-2. If absent, it checks the `src` attribute of the `<script>` tag that adds the core JavaScript SDK to your website. `/js-integrations` is automatically appended to the root location.
+2. If absent, it checks the `src` attribute of the `<script>` tag (that adds the core JavaScript SDK to your website) if `/js-integrations` is automatically appended to the root location.
 3. If none of the above options are applicable, it uses the default CDN URL: `https://cdn.rudderlabs.com/v1.1/js-integrations/`.
