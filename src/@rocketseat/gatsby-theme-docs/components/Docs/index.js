@@ -129,7 +129,7 @@ export default function Docs({mdx, pageContext}) {
         e => rudderslabTrackOnClickDocs('link', null, e, true),
         {passive: true},
       )
-      o.setAttribute('target', '_blank')
+      o.setAttribute('target', '_self')
     })
 
     let sectionLinks = document.querySelectorAll('.childrenWrapper a.anchor')
