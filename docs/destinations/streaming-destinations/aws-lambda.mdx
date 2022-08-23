@@ -31,12 +31,15 @@ To successfully configure AWS Lambda as a destination, you need to configure the
 
 <img src="../../assets/event-stream-destinations/aws-lambda-connection-settings.png" alt="AWS Lambda connection settings"/>
 
-- **Region**: Enter the AWS region associated with your AWS Lambda.
+- **Region**: Enter the region associated with your AWS Lambda service.
 
 <div class="infoBlock">
 For more information on the AWS regions, refer to the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/">AWS Regions and Availability Zones</a> guide.
 </div>
 
+- **Role Based Authentication**: Enable this setting to use role-based AWS authentication for this destination. If this setting is enabled, you can configure the following fields:
+  - **IAM Role ARN**: Enter your role ARN. For more information on the IAM ARNs, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns">AWS documentation</a>.
+  - **External ID**: Enter the external ID associated with the role. For more information on using the external ID, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS documentation</a>.
 - **Access Key ID**: Enter the AWS access key ID associated with your IAM user account.
 - **Secret Access Key**: Enter your secret access key.
 
@@ -56,26 +59,33 @@ For more information on creating an IAM user in AWS, refer to the <a href="https
 You can also append a version number or alias to any of the above formats.
 </div>
 
-- **Invocation Type**: This setting lets you specify how RudderStack invokes the lambda function. You can choose between any of the following two options in the dropdown:
-  - **Event**: RudderStack invokes the lambda function asynchronously and sends the failed events to the function's dead-letter queue (if configured). For more information, refer to the <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html">AWS Lambda documentation</a>.
-  - **Request Response**: RudderStack invokes the lambda function synchronously and keeps the connection open until the function returns a response or times out. For more information, refer to the <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html">AWS Lambda documentation</a>.
-
-<div class="warningBlock">
-If you set the <strong>Invocation Type</strong> to <strong>Event</strong> (asynchronous invocation), then any information regarding the lambda function runtime errors is not sent to RudderStack. However, you can view these errors in the <a href="https://docs.aws.amazon.com/lambda/latest/dg/monitoring-cloudwatchlogs.html">AWS CloudWatch logs for your lambda function</a>.
-</div>
-
 - **Enable Batch Input**: Enable this setting if your lambda function expects a batch input (array of events) in the event object.
+  - **Max Batch Size**: If **Enable Batch Input** setting is enabled, use this field to set the maximum size of the event batch.
 - **Client Context**: Use this field to pass up to **3583 bytes** of Base64-encoded data about the invoking client to the function in the context object.
 
 ## Supported events
-
-AWS Lambda accepts <Link to="/event-spec/standard-events/identify/">`identify`</Link>, <Link to="/event-spec/standard-events/track/">`track`</Link>, <Link to="/event-spec/standard-events/page/">`page`</Link>, <Link to="/event-spec/standard-events/group/">`group`</Link>, and <Link to="/event-spec/standard-events/alias/">`alias`</Link> events.
 
 <div class="infoBlock">
 This destination accepts raw event data similar to a webhook. RudderStack sends the entire event payload to AWS Lambda as is, without any transformation or modification. 
 </div>
 
-RudderStack leverages the <a href="https://docs.aws.amazon.com/sdk-for-go/api/service/lambda/">AWS SDK for Go</a> to send the events to the lambda function. It uses the SDK's [`Invoke`](https://docs.aws.amazon.com/sdk-for-go/api/service/lambda/#Lambda.Invoke) method to synchronously (**Request Response Invocation Type**) or asynchronously (**Event Invocation Type**) invoke the lambda function.
+You can send your <Link to="/event-spec/standard-events/identify/">`identify`</Link>, <Link to="/event-spec/standard-events/track/">`track`</Link>, <Link to="/event-spec/standard-events/page/">`page`</Link>, <Link to="/event-spec/standard-events/group/">`group`</Link>, and <Link to="/event-spec/standard-events/alias/">`alias`</Link> events to your lambda function via RudderStack.
+
+RudderStack leverages the <a href="https://docs.aws.amazon.com/sdk-for-go/api/service/lambda/">AWS SDK for Go</a> to send the events to the lambda function. It uses the SDK's [`Invoke`](https://docs.aws.amazon.com/sdk-for-go/api/service/lambda/#Lambda.Invoke) method to **asynchronously** invoke the lambda function.
+
+<div class="warningBlock">
+As RudderStack supports only asynchronous invocation, it only guarantees the order in which the events are triggered. Also, the execution time is completely dependent on the complexity of your lambda function.
+</div>
+
+<div class="infoBlock">
+It is highly recommended to configure a <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#invocation-dlq">dead-letter queue</a> to save the discarded events for further processing.
+</div>
+
+## Viewing error logs
+
+RudderStack does not get any information related to the runtime errors for your lambda function. As a result, you will not be able to view these errors in the <Link to="/dashboard-guides/live-events/">Live Events</Link> tab of your dashboard.
+
+To view these errors, you can configure the <a href="https://docs.aws.amazon.com/lambda/latest/dg/monitoring-cloudwatchlogs.html">AWS CloudWatch logs</a> for your lambda function.
 
 ## FAQ
 
