@@ -101,321 +101,321 @@ export const postNavList = [
   {
     key: "sdks",
     title: "SDKs",
-    link: "/sources/sdks/",
+    link: "/sources/event-streams/sdks/",
     content: [],
   },
   {
     key: "rudderstack-javascript-sdk",
     title: "JavaScript",
-    link: "/sources/sdks/rudderstack-javascript-sdk/",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/",
     content: [],
   },
   {
     key: "quick-start-guide",
     title: "Quick Start Guide",
-    link: "/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/",
     content: [],
   },
   {
     key: "javascript-sdk-enhancements",
     title: "JavaScript SDK Enhancements",
-    link: "/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
     content: [],
   },
   {
     key: "data-storage-cookies",
     title: "Data Storage in Cookies",
-    link: "/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
     content: [],
   },
   {
     key: "querystring-api",
     title: "Querystring API",
-    link: "/sources/sdks/rudderstack-javascript-sdk/querystring-api/",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/querystring-api/",
     content: [],
   },
   {
     key: "detecting-adblocked-pages",
     title: "Detecting Ad-blocked Pages",
-    link: "/sources/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
     content: [],
   },
   {
     key: "version-migration-guide",
     title: "Version Migration Guide",
-    link: "/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/",
     content: [],
   },
   {
     key: "consent-managers",
     title: "Consent Managers",
     link:
-      "/sources/sdks/rudderstack-javascript-sdk/consent-managers/",
+      "/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/",
     content: [],
   },
   {
     key: "onetrust",
     title: "OneTrust",
     link:
-      "/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/",
+      "/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/",
     content: [],
   },
   {
     key: "faq",
     title: "JavaScript SDK FAQs",
     link:
-      "/sources/sdks/rudderstack-javascript-sdk/faq/",
+      "/sources/event-streams/sdks/rudderstack-javascript-sdk/faq/",
     content: [],
   },
   {
     key: "rudderstack-android-sdk",
     title: "Android",
     link:
-      "/sources/sdks/rudderstack-android-sdk/",
+      "/sources/event-streams/sdks/rudderstack-android-sdk/",
     content: [],
   },
   {
     key: "adding-an-application-class",
     title: "Adding Application Class",
     link:
-      "/sources/sdks/rudderstack-android-sdk/adding-an-application-class/",
+      "/sources/event-streams/sdks/rudderstack-android-sdk/adding-an-application-class/",
     content: [],
   },
   {
     key: "flushing-events-periodically",
     title: "Flushing Events Periodically",
     link:
-      "/sources/sdks/rudderstack-android-sdk/flushing-events-periodically/",
+      "/sources/event-streams/sdks/rudderstack-android-sdk/flushing-events-periodically/",
     content: [],
   },
   {
     key: "rudderstack-ios-sdk",
     title: "iOS",
     link:
-      "/sources/sdks/rudderstack-ios-sdk/",
+      "/sources/event-streams/sdks/rudderstack-ios-sdk/",
     content: [],
   },
   {
     key: "ios-v2",
     title: "iOS v2",
     link:
-      "/sources/sdks/rudderstack-ios-sdk/ios-v2/",
+      "/sources/event-streams/sdks/rudderstack-ios-sdk/ios-v2/",
     content: [],
   },
   {
     key: "tvOS",
     title: "tvOS",
     link:
-      "/sources/sdks/rudderstack-ios-sdk/tvOS/",
+      "/sources/event-streams/sdks/rudderstack-ios-sdk/tvOS/",
     content: [],
   },
   {
     key: "macos",
     title: "macOS",
     link:
-      "/sources/sdks/rudderstack-ios-sdk/macos/",
+      "/sources/event-streams/sdks/rudderstack-ios-sdk/macos/",
     content: [],
   },
   {
     key: "watchOS",
     title: "watchOS",
     link:
-      "/sources/sdks/rudderstack-ios-sdk/watchOS/",
+      "/sources/event-streams/sdks/rudderstack-ios-sdk/watchOS/",
     content: [],
   },
   {
     key: "rudderstack-unity-sdk",
     title: "Unity",
     link:
-      "/sources/sdks/rudderstack-unity-sdk/",
+      "/sources/event-streams/sdks/rudderstack-unity-sdk/",
     content: [],
   },
   {
     key: "rudderstack-react-native-sdk",
     title: "React Native",
     link:
-      "/sources/sdks/rudderstack-react-native-sdk/",
+      "/sources/event-streams/sdks/rudderstack-react-native-sdk/",
     content: [],
   },
   {
     key: "rudderstack-flutter-sdk",
     title: "Flutter",
     link:
-      "/sources/sdks/rudderstack-flutter-sdk/",
+      "/sources/event-streams/sdks/rudderstack-flutter-sdk/",
     content: [],
   },
   {
     key: "flutter-v2",
     title: "Flutter SDK v2",
     link:
-      "/sources/sdks/rudderstack-flutter-sdk/flutter-v2/",
+      "/sources/event-streams/sdks/rudderstack-flutter-sdk/flutter-v2/",
     content: [],
   },
   {
     key: "flutter-v1",
     title: "Flutter SDK v1",
     link:
-      "/sources/sdks/rudderstack-flutter-sdk/flutter-v1/",
+      "/sources/event-streams/sdks/rudderstack-flutter-sdk/flutter-v1/",
     content: [],
   },
   {
     key: "rudderstack-cordova-sdk",
     title: "Cordova",
     link:
-      "/sources/sdks/rudderstack-cordova-sdk/",
+      "/sources/event-streams/sdks/rudderstack-cordova-sdk/",
     content: [],
   },
   {
     key: "rudderstack-amp-analytics",
     title: "AMP Analytics",
     link:
-      "/sources/sdks/rudderstack-amp-analytics/",
+      "/sources/event-streams/sdks/rudderstack-amp-analytics/",
     content: [],
   },
   {
     key: "rudderstack-java-sdk",
     title: "Java",
     link:
-      "/sources/sdks/rudderstack-java-sdk/",
+      "/sources/event-streams/sdks/rudderstack-java-sdk/",
     content: [],
   },
   {
     key: "rudderstack-python-sdk",
     title: "Python",
     link:
-      "/sources/sdks/rudderstack-python-sdk/",
+      "/sources/event-streams/sdks/rudderstack-python-sdk/",
     content: [],
   },
   {
     key: "rudderstack-rust-sdk",
     title: "Rust",
     link:
-      "/sources/sdks/rudderstack-rust-sdk/",
+      "/sources/event-streams/sdks/rudderstack-rust-sdk/",
     content: [],
   },
   {
     key: "rudderstack-node-sdk",
     title: "Node.js",
     link:
-      "/sources/sdks/rudderstack-node-sdk/",
+      "/sources/event-streams/sdks/rudderstack-node-sdk/",
     content: [],
   },
   {
     key: "rudderstack-go-sdk",
     title: "Go",
     link:
-      "/sources/sdks/rudderstack-go-sdk/",
+      "/sources/event-streams/sdks/rudderstack-go-sdk/",
     content: [],
   },
   {
     key: "rudderstack-ruby-sdk",
     title: "Ruby",
     link:
-      "/sources/sdks/rudderstack-ruby-sdk/",
+      "/sources/event-streams/sdks/rudderstack-ruby-sdk/",
     content: [],
   },
   {
     key: "rudderstack-dotnet-sdk",
     title: ".NET",
     link:
-      "/sources/sdks/rudderstack-dotnet-sdk/",
+      "/sources/event-streams/sdks/rudderstack-dotnet-sdk/",
     content: [],
   },
   {
     key: "rudderstack-php-sdk",
     title: "PHP",
     link:
-      "/sources/sdks/rudderstack-php-sdk/",
+      "/sources/event-streams/sdks/rudderstack-php-sdk/",
     content: [],
   },
   {
     key: "event-filtering",
     title: "Client-side Event Filtering",
-    link: "/sources/sdks/event-filtering/",
+    link: "/sources/event-streams/sdks/event-filtering/",
     content: [],
   },
   {
     key: "faq",
     title: "SDK FAQ",
-    link: "/sources/sdks/faq/",
+    link: "/sources/event-streams/sdks/faq/",
     content: [],
   },
   {
     key: "webhook-source",
     title: "Webhook Source",
-    link: "/sources/cloud-apps/webhook-source/",
+    link: "/sources/event-streams/cloud-apps/webhook-source/",
     content: [],
   },
   {
     key: "braze-currents",
     title: "Braze",
-    link: "/sources/cloud-apps/braze-currents/",
+    link: "/sources/event-streams/cloud-apps/braze-currents/",
     content: [],
   },
   {
     key: "canny",
     title: "Canny",
-    link: "/sources/cloud-apps/canny/",
+    link: "/sources/event-streams/cloud-apps/canny/",
     content: [],
   },
   {
     key: "appcenter",
     title: "App Center",
-    link: "/sources/cloud-apps/appcenter/",
+    link: "/sources/event-streams/cloud-apps/appcenter/",
     content: [],
   },
   {
     key: "appsflyer",
     title: "AppsFlyer",
-    link: "/sources/cloud-apps/appsflyer/",
+    link: "/sources/event-streams/cloud-apps/appsflyer/",
     content: [],
   },
   {
     key: "auth0",
     title: "Auth0",
-    link: "/sources/cloud-apps/auth0/",
+    link: "/sources/event-streams/cloud-apps/auth0/",
     content: [],
   },
   {
     key: "customerio",
     title: "Customer.io",
-    link: "/sources/cloud-apps/customerio/",
+    link: "/sources/event-streams/cloud-apps/customerio/",
     content: [],
   },
   {
     key: "extole",
     title: "Extole",
-    link: "/sources/cloud-apps/extole/",
+    link: "/sources/event-streams/cloud-apps/extole/",
     content: [],
   },
   {
     key: "iterable",
     title: "Iterable",
-    link: "/sources/cloud-apps/iterable/",
+    link: "/sources/event-streams/cloud-apps/iterable/",
     content: [],
   },
   {
     key: "looker",
     title: "Looker",
-    link: "/sources/cloud-apps/looker/",
+    link: "/sources/event-streams/cloud-apps/looker/",
     content: [],
   },
   {
     key: "posthog",
     title: "PostHog",
-    link: "/sources/cloud-apps/posthog/",
+    link: "/sources/event-streams/cloud-apps/posthog/",
     content: [],
   },
   {
     key: "shopify",
     title: "Shopify",
-    link: "/sources/cloud-apps/shopify/",
+    link: "/sources/event-streams/cloud-apps/shopify/",
     content: [],
   },
   {
     key: "segment",
     title: "Segment",
-    link: "/sources/cloud-apps/segment/",
+    link: "/sources/event-streams/cloud-apps/segment/",
     content: [],
   },
   {
@@ -494,6 +494,12 @@ export const postNavList = [
     key: "mixpanel",
     title: "Mixpanel",
     link: "/sources/extract/mixpanel/",
+    content: [],
+  },
+  {
+    key: "mixpanel-v2",
+    title: "Mixpanel V2",
+    link: "/sources/extract/mixpanel-v2/",
     content: [],
   },
   {
@@ -1122,6 +1128,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "sendgrid-v2",
+    title: "Sendgrid V2",
+    link: "/sources/extract/sendgrid-v2/",
+    content: []
+  },
+  {
     key: "gainsight",
     title: "Gainsight",
     link: "/destinations/streaming-destinations/gainsight/",
@@ -1570,6 +1582,12 @@ export const postNavList = [
     key: "google-sheets",
     title: "Google Sheets",
     link: "/destinations/streaming-destinations/google-sheets/",
+    content: [],
+  },
+  {
+    key: "google-cloud-functions",
+    title: "Google Cloud Functions",
+    link: "/destinations/streaming-destinations/google-cloud-functions/",
     content: [],
   },
   {
