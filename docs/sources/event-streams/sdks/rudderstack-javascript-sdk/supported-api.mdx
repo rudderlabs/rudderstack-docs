@@ -1,0 +1,494 @@
+---
+title: "Supported API"
+description: Detailed technical documentation on the implementation and usage of the supported JavaScript SDK API.
+---
+
+The JavaScript SDK provides a comprehensive API that lets you track and send your event data to any destination.
+
+## Identify
+
+The <Link to="/event-spec/standard-events/identify/">`identify`</Link> method lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc. 
+
+Once you make the `identify` call, the SDK persists the user information and passes it to the subsequent calls.
+
+The JavaScript SDK defines the `identify` method as shown:
+
+```javascript
+rudderanalytics.identify(userId, [traits], [apiOptions], [callback]);
+```
+
+The following table describes the above (optional) parameters in detail:
+
+|  Parameter     |Type        |  Description          |
+| :------------- |:---------- |  :-------------------------- |
+|  `userId`      | String     |  The unique user identifier in the database. When provided, the SDK sends this argument to the destinations instead of `anonymousId`.                                                                                                  |
+|  `traits`      | Dictionary |  Contains the user's traits or the properties associated with `userId` such as email, address, etc. <Link to="/event-spec/standard-events/identify/#identify-traits">Reference</Link>. |
+|  `callback`    | Function   | Called after the successful execution of the `identify` method. |
+|  `apiOptions`     | Dictionary | Provides information such as `integrations`, `anonymousId`, and `originalTimestamp`.  |
+
+####  `apiOptions`
+
+The structure of the `apiOptions` parameter is as shown:
+
+```javascript
+{
+  integrations: IntegrationOpts,
+  anonymousId: string,
+  originalTimestamp: ISO 8601 date string,
+  <other keys>: <value> // merged with event's contextual information
+}
+```
+The following table describes the above parameters in detail:
+
+| **Parameter**                   | **Type**                                | **Description**  |
+| :-------------------------- | :---------------------------------- | :----------------------- |
+| `integrations`         | <Link to="/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/#integrationopts">IntegrationOpts</Link> | Use to send event data only to the <Link to="/sources/sdks/rudderstack-javascript-sdk/filtering/#filtering-destinations">selective destinations</Link>.   |
+| `anonymousId`           | String                              | Overrides the current event's `anonymousId` at the top level. |
+| `originalTimestamp`     | ISO 8601 Date string                | Overrides the current event's `originalTimestamp` at the top level. <Link to="/event-spec/standard-events/common-fields/#clock-skew-considerations">Reference.</Link> |
+| `<other keys>: <value>` | -                                   | Merged with the event's contextual information. |
+
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify(
+  "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    firstName: "Alex",
+    lastName: "Keener",
+    email: "alex@example.com",
+    phone: "+1-202-555-0146"
+  }, {
+    page: {
+      path: "/best-seller/1",
+      referrer: "https://www.google.com/search?q=estore+bestseller",
+      search: "estore bestseller",
+      title: "The best sellers offered by EStore",
+      url: "https://www.estore.com/best-seller/1"
+    }
+  },
+  () => {
+    console.log("identify call");
+  }
+);
+```
+
+In the above example, the JavaScript SDK captures the `userId`, `email` and the <Link to="/event-spec/standard-events/common-fields/#contextual-fields">contextual information</Link>.
+
+<div class="warningBlock">
+If you specify the IP address in the event payload, RudderStack uses that instead of automatically capturing it in the backend. You can use this feature to anonymize your users' IP addresses.
+</div>
+
+### Anonymous ID
+
+The `anonymousId` is an auto-generated **UUID** (Universally Unique Identifier) that gets assigned to each unique and unidentified visitor to your website.
+
+#### Retrieving anonymous ID
+
+To retrieve the anonymous ID of any visitor, run the following:
+
+```javascript
+rudderanalytics.getAnonymousId();
+```
+
+<div class="infoBlock">
+If the <code class="inline-code">anonymousId</code> is <code class="inline-code">null</code> in the SDK and you call the above function, RudderStack will automatically set a new <code class="inline-code">anonymousId</code>.
+</div>
+
+#### How the SDK uses `anonymousId`
+
+The JavaScript SDK generates a unique `anonymousId`, stores it in the `rl_anonymous_id` cookie in the top-level domain, and attaches it to every subsequent event. This helps RudderStack to identify the anonymous users from other sites hosted under a sub-domain.
+
+<div class="infoBlock">
+If you identify a user with your application's unique identifier like email, database ID, etc., RudderStack stores this ID in the <code class="inline-code">rl_user_id</code> cookie and attaches it to every event.
+</div>
+
+<div class="infoBlock">
+Refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/">Data Storage</Link> guide for more information on how the JavaScript SDK stores persistent user data in cookies.
+</div>
+
+#### Overriding anonymous ID
+
+You can use any of the following three methods to override the `anonymousId` generated by the JavaScript SDK:
+
+* Provide the `anonymousId` in the `apiOptions` parameter of the `identify` call.
+
+<div class="infoBlock">
+Note that all other events will have the <code class="inline-code">anonymousId</code> persisted from the cookie except the particular event where you override the <code class="inline-code">apiOptions</code> parameter.
+</div>
+
+An example is shown below:
+
+```javascript
+rudderanalytics.identify(
+  "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    email: "alex@example.com"
+  }, {
+    anonymousId: "my-anonymous-id"
+  },
+  () => {
+    console.log("identify call");
+  }
+);
+```
+
+* Set the `anonymousId` for all the future events using the `setAnonymousId()` method. An example is shown below:
+
+```javascript
+rudderanalytics.setAnonymousId("my-anonymous-id");
+// All event payloads will have the anonymousId key set "my-anonymous-id".
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+  email1: "alex@example.com"
+}, () => {
+  console.log("identify call");
+});
+```
+
+* Parse the AMP Linker ID and set the `anonymousId` using AMP Analytics, as shown:
+
+```javascript
+rudderanalytics.setAnonymousId(
+  null,
+  "<version>*<checkSum>*<idName1>*<idValue1>*<idName2>*<idValue2>..."
+);
+```
+
+Here, the second parameter is the AMP Linker ID format in the [**specified structure**](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format).  For websites using the <Link to="/sources/sdks/rudderstack-amp-analytics/#amp-linker">RudderStack AMP Analytics SDK</Link>, the `<idName1>` value will be `rs_amp_id`.
+
+Calling the above method will parse the Linker ID and set the `rs_amp_id` key value as the `anonymousId`.
+
+### Setting a blank user ID
+
+To set a blank user ID, you can pass an empty string or `" "` to `userId`.
+
+<div class="warningBlock">
+Do not pass an <code class="inline-code">identify</code> call with <code class="inline-code">null</code> as RudderStack will not allow you to pass a traits object and retain the current <code class="inline-code">userId</code>.
+</div>
+
+#### Use-case
+
+Suppose an anonymous user is identified with a `userId` and then logs out of their account. You can then call `identify("", {isLoggedIn: false})` and the user will continue to be identified by their `anonymousId` for the future events.
+
+### Identifying new users
+
+To identify new users in scenarios like new logins, you can use any one of the following approaches:
+
+* Call `identify` with a new `userId` 
+<br/> OR
+* Call `reset` followed by the `identify`
+
+RudderStack resets all the cookies related to the user (associated with the `userId` and `traits`) and updates them with the newly provided values.
+
+<div class="infoBlock">
+The <code class="inline-code">anonymousId</code> will remain unchanged in this case. It will be the auto-generated value set by the SDK or the one explicitly set using the <code class="inline-code">setAnonymousId</code> method.
+</div>
+
+### Updating user traits
+
+For updating the user traits, you can call `identify` method with the same `userId` multiple times with the new traits. This will append or modify all the traits associated with that user. An example is shown below:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    email1: "alex@example.com"
+}, () => {
+    console.log("identify call");
+});
+
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    email2: "john@example.com"
+}, () => {
+    console.log("identify call");
+});
+```
+
+In the above example, both `email1` and `email2` will be sent in the payload for the second `identify` call.
+
+<div class="infoBlock">
+Calling <code class="inline-code">reset()</code> will reset the existing user traits and calling <code class="inline-code">identify()</code> with new traits will update the new user traits.
+</div>
+
+## Page
+
+The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+
+<div class="infoBlock">
+Many destinations require the <code class="inline-code">page</code> call to be made at least once every page load.
+</div>
+
+The JavaScript SDK defines the `page` method as shown:
+
+```javascript
+rudderanalytics.page(category, name, [properties], [apiOptions], [callback]);
+```
+
+The following table describes the above (optional) parameters in detail:
+
+| **Parameter**    | **Type**   |  **Description**                                                                    |
+| :--------------- |:-----------|  :----------------------------------------------------------------------------------|
+| `category`       |String      |  Category of the page.                                                       |
+| `name`           | String     |  Name of the page.                                                      |
+| `properties`     | Dictionary | Properties of the page auto-captured by the SDK. |
+| `apiOptions`        | Dictionary |  Provides information such as `integrations`, `anonymousId`, and `originalTimestamp`.  <Link to="#apioptions">Reference</Link>.   |
+| `callback`       | Function   | Called after the successful execution of `page` method.                 |
+
+A sample `page` call is shown below:
+
+```javascript
+rudderanalytics.page(
+  "Cart",
+  "Cart Viewed", {
+    path: "/best-seller/1",
+    referrer: "https://www.google.com/search?q=estore+bestseller",
+    search: "estore bestseller",
+    title: "The best sellers offered by EStore",
+    url: "https://www.estore.com/best-seller/1"
+  },
+  () => {
+    console.log("page call");
+  }
+);
+```
+
+In the above example, the JavaScript SDK captures the page `category`, `name` and the <Link to="/event-spec/standard-events/common-fields/#contextual-fields">contextual information</Link>.
+
+## Track
+
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you capture user events along with the associated properties.
+
+The JavaScript SDK defines the `track` method as shown:
+
+```javascript
+rudderanalytics.track(event, [properties], [apiOptions], [callback]);
+```
+
+The following table describes the above parameters in detail:
+
+| **Parameter**    | **Type**   | **Presence** | **Description**                                               |
+| :--------------- |:-----------| :----------- | :-------------------------------------------------------------|
+| `event`          | String     | Required     | The name of the tracked event.                       |
+| `properties`     | Dictionary | Optional     | The event-related properties.                                  |
+| `apiOptions`       | Dictionary | Optional     | Provides information such as `integrations`, `anonymousId`, and `originalTimestamp`. <Link to="#apioptions">Reference</Link>.         |
+| `callback`       | Function   | Optional     | Called after the successful execution of the `track` call.|
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track(
+  "Order Completed", {
+    revenue: 30,
+    currency: "USD",
+    user_actual_id: 12345
+  },
+  () => {
+    console.log("track call");
+  }
+);
+```
+
+In the above example, the `track` method tracks the `Order Completed` event along with other information like `revenue`, `currency`, and the `user_actual_id`.
+
+<div class="warningBlock">
+Refer to the <Link to="/event-spec/ecommerce-events-spec/">E-Commerce Events Specification</Link> guide for more information on the e-commerce events captured by RudderStack.
+</div>
+
+## Alias
+
+The <Link to="/event-spec/standard-events/alias/">`alias`</Link> call lets you merge different identities of a known user.
+
+The JavaScript SDK defines the `alias` method as shown:
+
+```javascript
+rudderanalytics.alias(to, from, [apiOptions], [callback]);
+```
+
+The following table describes the above parameters in detail:
+
+| **Parameter**  |**Type** | **Presence** | **Description** |
+| :------------- |:--------| :----------- | :---------------|
+| `to`        | String     | Required     | New user identifier. |
+| `from`      | String     | Optional     | Old user identifier which will be an alias for the `to` parameter. If not provided, the SDK populates this as the currently identified `userId`, or `anonymousId` in case of anonymous users. |
+| `apiOptions`  | Dictionary  | Optional     | Provides information such as `integrations`, `anonymousId`, and `originalTimestamp`. <Link to="#apioptions">Reference</Link>.      |
+| `callback` | Function    | Optional     |  Called after the successful execution of the `alias` call. |
+
+A sample `alias` call is shown below:
+
+```javascript
+rudderanalytics.alias("new_id", "old_id", () => {
+  console.log("alias call");
+});
+```
+
+## Group
+
+The <Link to="/event-spec/standard-events/group/">`group`</Link> call lets you associate an identified user with a group such as a company, organization, or an account.
+
+The JavaScript SDK defines the `group` method as shown:
+
+```javascript
+rudderanalytics.group(groupId, [traits], [apiOptions], [callback]);
+```
+
+The following table describes the above parameters in detail:
+
+| **Parameter**  |**Type** | **Presence** | **Description** |
+| :------------- |:--------| :----------- | :-------------- |
+| `groupId`  |String | Required     | The unique group identifier in the database. RudderStack calls the relevant destination APIs to associate the identified user to this group.|
+| `traits`   | Dictionary | Optional     | The group-related traits. RudderStack passes these traits to the destination to enhance the group properties. |
+| `apiOptions`  | Dictionary | Optional     | Provides information such as `integrations`, `anonymousId`, and `originalTimestamp`. <Link to="#apioptions">Reference</Link>.      |
+| `callback` | Function | Optional     | Called after the successful execution of the `group` call.|
+
+A sample `group` call is shown:
+
+```javascript
+rudderanalytics.group("sample_group_id", {
+  name: "Apple Inc.",
+  location: "USA",
+});
+```
+
+## Reset
+
+The `reset` method resets the ID and traits of both the user and the group.
+
+The JavaScript SDK defines the `reset` method as shown:
+
+```javascript
+rudderanalytics.reset();
+```
+
+You can also reset the `anonymousId` along with the above-mentioned details by passing `true` to the `reset()` method, as shown:
+
+```javascript
+rudderanalytics.reset(true);
+```
+
+<div class="warningBlock">
+The <code class="inline-code">reset()</code> method only clears the <Link to="/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/">cookies and local storage</Link> set by RudderStack. It does not clear the information stored by the integrated destinations.
+</div>
+
+## Callbacks to common methods
+
+RudderStack lets you define callbacks to the common methods of the `rudderanalytics` object.
+
+<div class="warningBlock">
+This functionality is supported only for the <code class="inline-code">syncPixel</code> method which is called by the SDK while making synchronization calls for the relevant destinations.
+</div>
+
+An example is shown below:
+
+```javascript
+rudderanalytics.syncPixelCallback = obj => {
+  rudderanalytics.track(
+    "sync lotame", {
+      destination: obj.destination
+    }, {
+      integrations: {
+        All: false,
+        S3: true
+      }
+    }
+  );
+};
+
+<script src="https://cdn.rudderlabs.com/rudder-analytics.min.js"></script>
+```
+
+Here, RudderStack defines `syncPixelCallback` on the `rudderanalytics` object while loading the SDK. Further, RudderStack calls this registered callback with the parameter `{destination: <destination_name>}` whenever a SDK makes a sync call the SDK to the relevant integration - in this case, Lotame.
+
+You can also add the callback in the **loadOptions** parameter as shown below:
+
+```javascript
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+  clientSuppliedCallbacks: {
+    syncPixelCallback: () => {
+      console.log("sync done");
+    },
+  },
+});
+```
+
+<div class="infoBlock">
+Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
+</div>
+
+## Querystring API
+
+RudderStack's Querystring API lets you trigger the `track` and `identify` calls using the query parameters within the URL. The query parameters are listed in the following table:
+
+| Parameter             |Action                   |
+| :-------------------- | :--------------------------|
+| `ajs_uid`             | Triggers a `rudderanalytics.identify()` call with `userId` having the parameter value.                                               |
+| `ajs_aid`             | Triggers a `rudderanalytics.setAnonymousId()` call with `anonymousId` having the parameter value.                                    |
+| `ajs_event`           | Triggers a `rudderanalytics.track()` call with `event` name as the parameter value.                                                  |
+| `ajs_prop_<property>` | If `ajs_event` is passed as a query string, the value of this parameter populates the `properties` of the corresponding event in the `track` call.                                                                                                                                                  |
+| `ajs_trait_<trait>`   | If `ajs_uid` is provided as a query string, the value of this parameter populates the `traits` of the `identify` call.       |
+
+For example, consider the following URL containing the querystring parameters:
+
+```javascript
+http://hostname.com/?ajs_uid=12345&ajs_event=test%20event&ajs_aid=abcde&ajs_prop_testProp=prop1&ajs_trait_name=Firstname+Lastname
+```
+
+It will trigger the following API calls:
+
+```javascript
+// Sets the user ID/anonymous ID
+rudderanalytics.setAnonymousId("abcde");
+
+// Identify call
+rudderanalytics.identify("12345", {
+  name: "Firstname Lastname"
+});
+
+// Track call
+rudderanalytics.track("test event", {
+  testProp: "prop1"
+});
+```
+
+## Context and traits
+
+The JavaScript SDK automatically captures certain event-specific and user-specific data based on the event type.
+
+The `context` and `traits` dictionaries are provided in the <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#apioptions">`apiOptions`</Link> parameter of the supported API methods.
+
+### Context
+
+The `context` object is a dictionary of additional information about a particular event data, such as a user’s locale.
+
+<div class="infoBlock">
+A context is a complete and specific piece of information. Any other information provided outside this specification is ignored.
+</div>
+
+### Traits
+
+The `traits` object is an optional dictionary included within <Link to="#context">`context`</Link> specifying the user's unique traits. This is a very useful field for linking the user's information from a previously made <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/#identify">`identify`</Link> call to the subsequent calls, for example, <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/#track">`track`</Link> or <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/#page">`page`</Link>.
+
+#### Use-case
+
+To understand the concept of context and traits better, refer to the following `identify` event:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com",
+  subscriptionStatus: "subscribed",
+  plan: "Silver"
+});
+```
+
+The traits in the above event are `name`, `email`, `subscriptionStatus`, and `plan`. If you wish to add or override any traits in the subsequent `track` or `page` event triggered by the user, you can do so by passing it in `traits` as shown:
+
+```javascript
+rudderanalytics.track(
+  "Subscription Update", {
+    campaign: "Subscribe"
+  }, {
+    traits: {
+      plan: "Gold",
+      addOn: true
+    }
+  }
+);
+```
+
+The above snippet will add a new trait `addOn` and update the user trait `plan` to `Gold`.

@@ -1,0 +1,111 @@
+---
+title: "OneTrust Consent Manager"
+description: >-
+  Detailed technical documentation on integrating RudderStack with the OneTrust consent management platform.
+---
+
+Consent managers offer various cookie consent solutions allowing the customers to determine what personal data they want to share with a business.
+
+<div class="infoBlock">
+Data protection laws such as GDPR, CCPA, etc., require the websites to get user consent for collecting their data through cookies.
+</div>
+
+[OneTrust](https://www.onetrust.com/) is a popular consent management platform that provides data governance, privacy management, and security solutions to thousands of businesses worldwide. 
+
+The JavaScript SDK seamlessly integrates with the OneTrust SDK. It lets you map the OneTrust cookie/consent groups to RudderStack's consent purposes. RudderStack, in turn, uses this consent information to enable/disable the tracking and sending of data.
+
+<div class="warningBlock">
+The OneTrust integration with the JavaScript SDK is applicable only for the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a> connections.
+</div>
+
+## How the RudderStack-OneTrust integration works
+
+Whenever a user starts browsing a website, OneTrust pops up a modal to take consent from the user. This modal contains a list of cookie groups representing the GDPR consent purposes that the user needs to decline or accept.
+
+The JavaScript SDK fetches these consented groups and the destination (OneTrust category) mappings specified in the RudderStack dashboard. Depending on these settings, the SDK filters the destinations.
+
+## Setting up the integration
+
+The following sections highlight the steps to set up the JavaScript SDK integration with OneTrust.
+
+### Step 1: Configuring OneTrust
+
+Follow these steps to configure OneTrust for your web app:
+
+1. Create a [OneTrust account](https://my.onetrust.com/s/login/SelfRegister?language=en_US&startURL=%2Fs%2F%3Ft%3D1587743884774) and get subscription to their <Link to="https://www.onetrust.com/products/cookie-consent/">Cookie Consent</Link> product.
+2. Navigate to **Websites** > **Add Websites**. 
+3. Enter your top-level website URL to scan and click **Start Scan**.
+4. Go to the **Categorizations** tab and define the new categories or modify the existing ones, as required.
+
+<div class="infoBlock">
+The categories should be associated with/attached to at least one cookie to be displayed in your RudderStack dashboard's OneTrust modal.
+</div>
+
+5. Go to the **Scripts** tab, select the domain to be published and click **Publish** to publish the script.
+
+### Step 2: Specifying the OneTrust Cookie Categories
+
+You need to enable OneTrust for a given JavaScript source. To do so, specify the consent category names defined in OneTrust (**Step 1**) for each destination connected to that JavaScript source.
+
+<img src="../../../assets/event-stream-sources/onetrust-1.png" alt="OneTrust category names" />
+
+### Step 3: Setting up your website
+
+1. Load the OneTrust script that you published in your web app in <Link to="#step-1-configuring-onetrust">Step 1</Link>, as shown below:
+
+```javascript
+
+<!-- OneTrust Cookies Consent Notice start for samplewebsite.com -->
+<script
+        src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
+        type="text/javascript"
+        charset="UTF-8"
+        data-domain-script="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" >
+</script>
+<script type="text/javascript">
+        // Required OneTrust callback
+        function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for samplewebsite.com -->
+```
+
+2. **Load the JavaScript SDK only after a user provides consent.**
+
+The JavaScript SDK determines the events to send to a destination based on the user's consent type.
+
+One way to load the JavaScript SDK after the user provides the consent is to modify the `OptanonWrapper()` callback function provided by OneTrust, as shown:
+
+```javascript
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    cookieConsentManager: {
+        oneTrust: {
+            enabled: true
+        }
+    },
+    //other options
+});
+```
+
+<div class="infoBlock">
+If a user updates the consent settings, the web page must be refreshed for the changes to take effect in the SDK.
+</div>
+
+3. Add the `cookieConsentManager` option in the `load()` call as shown:
+
+```javascript
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+        cookieConsentManager: {
+            oneTrust: {
+                enabled: true
+            }
+        },
+        //other options
+    }
+);
+```
+
+Once completed, RudderStack reads the consented categories and filters the destinations accordingly.
+
+<div class="infoBlock">
+Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
+</div>

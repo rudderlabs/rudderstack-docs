@@ -1,22 +1,28 @@
 ---
-title: "Data Storage in Cookies"
+title: "Data Storage"
 description: >-
-  Detailed technical documentation on persistent user data stored in cookies or local storage by the RudderStack’s JavaScript SDK.
+  Detailed technical documentation on the persistent user data stored in cookies or local storage by the RudderStack JavaScript SDK.
+aliases: ["javascript sdk data storage", "js sdk data storage", "JavaScript SDK user data"]
 ---
 
-By default, the RudderStack JavaScript SDK stores persistent user data in the cookies. If the cookies are not supported, local storage is used instead. 
+The JavaScript SDK stores persistent user data in the cookies by default. If the cookies are not supported, the SDK uses local storage instead. 
 
-All the cookies are stored in the top-level domain by default. It helps you to identify the users visiting from websites hosted under a particular sub-domain. For example, if you include the JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in `samplewebsite.com`. However, you can configure where you want to store the cookie by using the `setCookieDomain` parameter in the `load` API options as shown:
+By default, the SDK stores all the cookies in the top-level domain. It helps you to identify the users visiting websites hosted under a particular sub-domain. For example, if you include the JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in `samplewebsite.com`. However, you can specify the cookie storage location by using the `setCookieDomain` parameter in the <Link to="/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/">`load`</Link> API options as shown:
 
 ```javascript
-rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>, {
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
   setCookieDomain: "samplewebsite.com",
 });
 ```
 
+<div class="infoBlock">
+Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
+</div>
+
+
 ## Cookies
 
-The list of cookies used by the JavaScript SDK to store persistent user data is mentioned below:
+The following table lists the cookies used by the JavaScript SDK to store persistent user data:
 
 | Name             | Description       | Example    | Clearing mechanism using the SDK |
 | :-------------------- | :---------------------------------- | :-------------------------------- |:---------------------------------- |
@@ -27,17 +33,16 @@ The list of cookies used by the JavaScript SDK to store persistent user data is 
 |  `rl_group_trait`    | Stores the user group traits object set via the `group` API. All the subsequent group event payloads will contain this data unless cleared from the storage.   |    <pre>{<br />  location: "New Orleans",<br />  nationality: "US",<br />  someObj: {<br />    key1: val1,<br />    key2: val2,<br />  }<br />}</pre>                      |  `rudderanalytics.reset()` |
 | `rl_page_init_referrer`        | Stores the initial referrer of the page when a user visits a site for the first time. All the subsequent event payloads will contain this data.    | `https://www.google.com/` | Cannot be cleared using SDK. |
 | `rl_page_init_referring_domain`      | Stores the initial referring domain of the page when a user visits a site for the first time. All the subsequent event payloads will contain this data.  |  `google.com` | Cannot be cleared using SDK. |
-| `test_rudder_cookie`      | Checks whether the cookie storage of a browser is accessible or not. Once checked, this cookie is removed immediately.  |  `test_rudder_cookie:true` | Cleared automatically. |
+| `test_rudder_cookie`      | Checks whether the cookie storage of a browser is accessible or not. Once checked, the SDK removes the cookie immediately.  |  `test_rudder_cookie:true` | Cleared automatically. |
 
 <div class="infoBlock">
-
 The cookie values are encrypted and their length is directly proportional to the values provided to the SDK. Also, all the cookie names are prefixed with <code class="inline-code">rl_</code> and the values are prefixed with <code class="inline-code">RudderEncrypt:</code>. For example, <code class="inline-code">rl_user_id —> RudderEncrypt:U2FsdGVkX1+UKmiooYoGmKdNws7sgmWgGfHe</code>.
 </div>
 
 
-## Local storage cookies
+## Local storage 
 
-The local storage cookies are used by the JavaScript SDK to keep track of the events sent to the RudderStack backend. They are listed in the table below:
+The JavaScript SDK uses local storage to keep track of the events sent to the RudderStack backend, as listed in the below table:
 
 | Name             | Description       | Example    |
 | :------------- |:---------- | :----------- | 
@@ -47,14 +52,6 @@ The local storage cookies are used by the JavaScript SDK to keep track of the ev
 |  `queue`    | Keeps track of the events that are in queue to be processed.   | <pre>[<br />  {<br />   "item": {<br />    "url": "https://rudderstack-dataplane.rudderstack.com/v1/track",<br />    "headers": {<br />     "Content-Type": "application/json",<br />      ...<br />    },<br />    "message": { <br />     ...<br />    }<br />    "attemptNumber": 0,<br />    "time": 1639734792773,<br />    "id": "a4d89d7f-b594-4eb3-b8bd-a5492e4b596f"<br />   }<br />  }<br />]<br /></pre> |
 
 <div class="infoBlock">
-
-All the local storage cookie names are prefixed with <code class="inline-code">rudder.&lt;uuid&gt;.</code> For example,
+All the local storage cookie names are prefixed with <code class="inline-code">rudder.&lt;uuid&gt;.</code> The <code class="inline-code">uuid</code> here is in the standard UUID v4 format. For example,
 <code class="inline-code">rudder.2dc2aee6-2836-4273-be69-79c90c04ddec.reclaimEnd</code>.
 </div>
-
-
-## FAQ
-
-Refer to the [FAQ](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/faq/) section for solutions to some of the commonly faced issues while using the JavaScript SDK on your website.
-
-

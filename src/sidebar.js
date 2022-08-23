@@ -121,44 +121,52 @@ export const jsonData = [
                         link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/",
                         content: [
                             {
-                                title: "Quick Start Guide",
+                                title: "Quickstart",
                                 link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/",
                                 content: []
                             },
                             {
-                                title: "JavaScript SDK Enhancements",
-                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
+                                title: "Load SDK",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/",
                                 content: []
                             },
                             {
-                                title: "Data Storage in Cookies",
+                                title: "Supported API",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/",
+                                content: [],
+                            },
+                            {
+                                title: "Version Migration",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/",
+                                content: []
+                            },
+                            {
+                                title: "Data Storage",
                                 link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
                                 content: []
                             },
                             {
-                                title: "Querystring API",
-                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/querystring-api/",
-                                content: []
-                            }, {
+                                title: "Filtering",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/filtering/",
+                                content: [],
+                            },
+                            {
+                                title: "OneTrust Consent Manager",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/",
+                                content: [],
+                            },
+                            {
                                 title: "Detecting Ad-blocked Pages",
                                 link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
                                 content: []
-                            }, {
-                                title: "Version Migration Guide",
-                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/",
+                            },
+                            {
+                                title: "Enhancements",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
                                 content: []
-                            }, {
-                                title: "Consent Managers",
-                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/",
-                                content: [
-                                    {
-                                        title: "OneTrust",
-                                        link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/",
-                                        content: []
-                                    },
-                                ]
-                            }, {
-                                title: "JavaScript SDK FAQs",
+                            },
+                            {
+                                title: "FAQ",
                                 link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/faq/",
                                 content: []
                             },
