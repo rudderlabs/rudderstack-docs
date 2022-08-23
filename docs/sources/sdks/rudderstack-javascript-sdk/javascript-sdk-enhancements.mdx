@@ -112,7 +112,7 @@ The SDK maintains a call queue, and the API calls are processed one after the ot
 Suppose the user makes a call `rudderanalytics.requireIntegration("GA")`. All the subsequent calls made to the SDK \(such as `page`, `track`, `alias`, `group`, etc.\) will get enqueued until the `GAPlugin.js` and Google Analytics' `analytics.js` is loaded on the web page. Once the plugin and the end destination snippet is loaded, the calls in the queue will be processed, and the corresponding calls to `analytics.js` will start flowing.
 
 <div class="infoBlock">
-For this example, Google Analytics' <code class="inline-code">trackingId</code> and other configuration settings are fetched from the RudderStack dashboard as noted earlier, and <code class="inline-code">analytics.js</code> is configured using these settings.
+For the above example, Google Analytics' <code class="inline-code">trackingId</code> and other configuration settings are fetched from the RudderStack dashboard and the SDK is configured using these settings.
 </div>
 
 ### Sample call flow
