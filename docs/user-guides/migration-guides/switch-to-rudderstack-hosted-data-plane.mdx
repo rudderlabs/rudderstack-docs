@@ -52,6 +52,6 @@ Replace the <code class="inline-code">rudderstack-release-name</code> with the r
 
 * In case of mobile SDKs, your customers need to update their mobile applications. You can keep the self-hosted data plane online until a satisfactory number of customers have updated their mobile application or there are no more events coming in to the self-hosted data plane. 
 
-Alternatively, you can run an API Gateway or Cloudflare workers to proxy the requests from your self-hosted data plane URL to the RudderStack-hosted data plane URL.
+  Alternatively, you can run an API Gateway or Cloudflare workers to proxy the requests from your self-hosted data plane URL to the RudderStack-hosted data plane URL.
 * In case of mobile SDKs, if you are using Firebase to serve the values like `writeKey` and `dataPlaneUrl`, there is no need to update the mobile application to point to the RudderStack-hosted data plane.
 * This process of switching the data plane can hamper the order of events as the events are sent both from the RudderStack-hosted and self-hosted data plane at the same time **for a while**. Hence, it is recommended to choose a low-traffic time slot to carry out this activity.
