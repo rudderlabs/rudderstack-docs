@@ -1122,6 +1122,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "sendgrid-v2",
+    title: "Sendgrid V2",
+    link: "/sources/extract/sendgrid-v2/",
+    content: []
+  },
+  {
     key: "gainsight",
     title: "Gainsight",
     link: "/destinations/streaming-destinations/gainsight/",

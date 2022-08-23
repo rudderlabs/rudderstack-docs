@@ -1,15 +1,11 @@
 ---
-title: "SendGrid"
+title: "SendGrid V2 Source"
 description: Step-by-step guide on ingesting data from SendGrid into RudderStack.
 ---
 
 [SendGrid](https://www.sendgrid.com/) is an email delivery and marketing tool that lets you build and deliver personalized experiences through their API and marketing automation flows.
 
 This document guides you in setting up SendGrid as a source in RudderStack. Once configured, RudderStack automatically ingests your SendGrid data and routes it to your specified data warehouse destination.
-
-<div class="dangerBlock">
-This source will be deprecated soon. Refer to the <Link to="/sources/extract/sendgrid-v2/">SendGrid V2</Link> guide for the latest documentation.
-</div>
 
 <div class="warningBlock">
 All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
@@ -20,21 +16,19 @@ All the Cloud Extract sources support sending data only to a <Link to="/destinat
 To set up SendGrid as a source in RudderStack, follow these steps:
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
-2. Go to **Sources** > **New source** > **Cloud Extract** and select **SendGrid** from the list of sources.
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **SendGrid V2** from the list of sources.
 3. Assign a name to your source and click on **Next**.
 
 ### Connection settings
 
-1. Click on **Create Credentials from Scratch**. You will then see the following screen:
+1. Enter the following connection credentials to authenticate your SendGrid account with RudderStack:
 
-<img src="../../assets/cloud-extract-sources/sendgrid-connection-settings.png" alt="SendGrid credentials" />
+<img src="../../assets/cloud-extract-sources/sendgridv2-connection-settings.png" alt="SendGrid credentials" />
 
-2. Enter the following connection credentials to authenticate your SendGrid account with RudderStack:
-  - **Account Name**: Enter your SendGrid account name (the email you used to sign up for SendGrid).
-  - **API Key**: Enter your SendGrid API key by going to your SendGrid dashboard and navigating to **Settings** > **API Keys**.
+- **SendGrid API key**: Enter your SendGrid API key by going to your SendGrid dashboard and navigating to **Settings** > **API Keys**.
+- **Start time**: Choose the start date from which you want RudderStack to ingest the SendGrid data. RudderStack will not replicate any data before this date.
 
 <div class="infoBlock">
-
 For more information on the required permissions for the API key, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
@@ -56,7 +50,7 @@ For more information on the schedule types, refer to the <Link to="/sources/extr
 
 Choose the SendGrid data that you wish to ingest via RudderStack. You can either select all the data or choose specific SendGrid data attributes as per your requirement.
 
-<img src="../../assets/cloud-extract-sources/sendgrid-connection-settings-3.png" alt="Selecting the data to import" />
+<img src="../../assets/cloud-extract-sources/sendgridv2-connection-settings-3.png" alt="Selecting the data to import" />
 
 SendGrid is now configured as a source. RudderStack will start ingesting data from SendGrid as per your specified schedule and frequency.
 
@@ -93,6 +87,7 @@ To obtain the API key for configuring the SendGrid Cloud Extract source, follow 
 <img src="../../assets/cloud-extract-sources/sendgrid-api-key-details.png" alt="SendGrid API details" />
 
 <div class="warningBlock">
+
 Copy the API key and store it securely. SendGrid will not display the API key again once you click on <strong>Done</strong>.
 </div>
 
