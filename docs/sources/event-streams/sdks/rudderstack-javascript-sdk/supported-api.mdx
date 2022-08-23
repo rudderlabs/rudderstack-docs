@@ -42,7 +42,7 @@ The following table describes the above parameters in detail:
 
 | **Parameter**                   | **Type**                                | **Description**  |
 | :-------------------------- | :---------------------------------- | :----------------------- |
-| `integrations`         | <Link to="/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/#integrationopts">IntegrationOpts</Link> | Use to send event data only to the <Link to="/sources/sdks/rudderstack-javascript-sdk/filtering/#filtering-destinations">selective destinations</Link>.   |
+| `integrations`         | <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#integrationopts">IntegrationOpts</Link> | Use to send event data only to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/filtering/#filtering-destinations">selective destinations</Link>.   |
 | `anonymousId`           | String                              | Overrides the current event's `anonymousId` at the top level. |
 | `originalTimestamp`     | ISO 8601 Date string                | Overrides the current event's `originalTimestamp` at the top level. <Link to="/event-spec/standard-events/common-fields/#clock-skew-considerations">Reference.</Link> |
 | `<other keys>: <value>` | -                                   | Merged with the event's contextual information. |
@@ -103,7 +103,7 @@ If you identify a user with your application's unique identifier like email, dat
 </div>
 
 <div class="infoBlock">
-Refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/">Data Storage</Link> guide for more information on how the JavaScript SDK stores persistent user data in cookies.
+Refer to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/data-storage-cookies/">Data Storage</Link> guide for more information on how the JavaScript SDK stores persistent user data in cookies.
 </div>
 
 #### Overriding anonymous ID
@@ -152,7 +152,7 @@ rudderanalytics.setAnonymousId(
 );
 ```
 
-Here, the second parameter is the AMP Linker ID format in the [**specified structure**](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format).  For websites using the <Link to="/sources/sdks/rudderstack-amp-analytics/#amp-linker">RudderStack AMP Analytics SDK</Link>, the `<idName1>` value will be `rs_amp_id`.
+Here, the second parameter is the AMP Linker ID format in the [**specified structure**](https://github.com/ampproject/amphtml/blob/master/extensions/amp-analytics/linker-id-receiving.md#format).  For websites using the <Link to="/sources/event-streams/sdks/rudderstack-amp-analytics/#amp-linker">RudderStack AMP Analytics SDK</Link>, the `<idName1>` value will be `rs_amp_id`.
 
 Calling the above method will parse the Linker ID and set the `rs_amp_id` key value as the `anonymousId`.
 
@@ -362,7 +362,7 @@ rudderanalytics.reset(true);
 ```
 
 <div class="warningBlock">
-The <code class="inline-code">reset()</code> method only clears the <Link to="/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/">cookies and local storage</Link> set by RudderStack. It does not clear the information stored by the integrated destinations.
+The <code class="inline-code">reset()</code> method only clears the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/data-storage-cookies/">cookies and local storage</Link> set by RudderStack. It does not clear the information stored by the integrated destinations.
 </div>
 
 ## Callbacks to common methods
@@ -449,7 +449,7 @@ rudderanalytics.track("test event", {
 
 The JavaScript SDK automatically captures certain event-specific and user-specific data based on the event type.
 
-The `context` and `traits` dictionaries are provided in the <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#apioptions">`apiOptions`</Link> parameter of the supported API methods.
+The `context` and `traits` dictionaries are provided in the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#apioptions">`apiOptions`</Link> parameter of the supported API methods.
 
 ### Context
 
@@ -461,7 +461,7 @@ A context is a complete and specific piece of information. Any other information
 
 ### Traits
 
-The `traits` object is an optional dictionary included within <Link to="#context">`context`</Link> specifying the user's unique traits. This is a very useful field for linking the user's information from a previously made <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/#identify">`identify`</Link> call to the subsequent calls, for example, <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/#track">`track`</Link> or <Link to="http://localhost:8001/sources/sdks/rudderstack-javascript-sdk/supported-api/#page">`page`</Link>.
+The `traits` object is an optional dictionary included within <Link to="#context">`context`</Link> specifying the user's unique traits. This is a very useful field for linking the user's information from a previously made <Link to="http://localhost:8001/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#identify">`identify`</Link> call to the subsequent calls, for example, <Link to="http://localhost:8001/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#track">`track`</Link> or <Link to="http://localhost:8001/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#page">`page`</Link>.
 
 #### Use-case
 

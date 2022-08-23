@@ -90,7 +90,7 @@ npm install rudder-sdk-js --save
 ```
 
 <div class="warningBlock">
-Use this NPM module only for browser installation. To integrate RudderStack with your Node.js apps, refer to the <Link to="/sources/sdks/rudderstack-node-sdk/">RudderStack Node.js SDK</Link> documentation.
+Use this NPM module only for browser installation. To integrate RudderStack with your Node.js apps, refer to the <Link to="/sources/event-streams/sdks/rudderstack-node-sdk/">RudderStack Node.js SDK</Link> documentation.
 </div>
 
 Since the NPM module exports the related APIs on an already-defined object combined with the Node.js module caching, you should run the following code snippet **once** and use the exported object throughout your project:
@@ -132,13 +132,13 @@ The installation code snippets discussed above perform the following actions:
 
 | Method           | Description                                          |
 | :--------------- | :--------------------------------------------------- |
-| <Link to="/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/#loading-javascript-sdk">`load()`</Link>     | Loads `analytics.js` with the specified write key. |
-| <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#track">`track()`</Link>   | Tracks user events along with the associated properties.          |
-| <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#identify">`identify()`</Link> | Identifies the users, records their traits, and associates them with their actions.        |
-|<Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#alias">`alias()`</Link>    | Maps a new user ID with an old ID.       |
-|<Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#group">`group()`</Link>    |  Links an identified user with a group such as a company, organization, or an account.       |
-| <Link to="/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/#step-2-check-ready-state">`ready()`</Link>   | Fired when the SDK has initialized itself and the other third-party native SDK destinations.       |
-|<Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#reset">`reset()`</Link>    | Resets the information related to the previously identified user.       |
+| <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#loading-javascript-sdk">`load()`</Link>     | Loads `analytics.js` with the specified write key. |
+| <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#track">`track()`</Link>   | Tracks user events along with the associated properties.          |
+| <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#identify">`identify()`</Link> | Identifies the users, records their traits, and associates them with their actions.        |
+|<Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#alias">`alias()`</Link>    | Maps a new user ID with an old ID.       |
+|<Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#group">`group()`</Link>    |  Links an identified user with a group such as a company, organization, or an account.       |
+| <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/#step-2-check-ready-state">`ready()`</Link>   | Fired when the SDK has initialized itself and the other third-party native SDK destinations.       |
+|<Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#reset">`reset()`</Link>    | Resets the information related to the previously identified user.       |
 |`getAnonymousId`   |  Fetches the current `anonymousId`.       |
 |`setAnonymousId`   | Sets the `anonymousId`.       |
 | `getUserId`   | Fetches the current `userId`.      |
@@ -192,7 +192,7 @@ rudderanalytics.identify(
 The JavaScript SDK captures the `userId`, `email` and the <Link to="/event-spec/standard-events/common-fields/#contextual-fields">contextual information</Link> from the above snippet.
 
 <div class="infoBlock">
-The anonymous visitors are automatically assigned an <code class="inline-code">anonymousId</code>. Refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/supported-api/#anonymous-id">Anonymous ID</Link> section for more information.
+The anonymous visitors are automatically assigned an <code class="inline-code">anonymousId</code>. Refer to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#anonymous-id">Anonymous ID</Link> section for more information.
 </div>
 
 ## Step 4: Track user actions

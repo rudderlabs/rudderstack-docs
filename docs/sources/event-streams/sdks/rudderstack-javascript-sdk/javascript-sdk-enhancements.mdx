@@ -10,7 +10,7 @@ The following sections cover the finer technical details of the improvements in 
 
 The [JavaScript SDK v1.1](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) lets you send the event payloads using the **XHR** (XMLHttpRequest) API (default) or [Beacon](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) browser utility.
 
-The **Beacon** browser utility asynchronously sends a small amount of data over HTTP to the RudderStack server. To send the SDK events using this utility, set the `useBeacon` field in the <Link to="/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/#loading-options">`load()`</Link> call options to `true`.
+The **Beacon** browser utility asynchronously sends a small amount of data over HTTP to the RudderStack server. To send the SDK events using this utility, set the `useBeacon` field in the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#loading-options">`load()`</Link> call options to `true`.
 
 <div class="dangerBlock">
 The <code class="inline-code">sendBeacon</code> version of the JavaScript SDK located <a href="https://cdn.rudderlabs.com/v2/rudder-analytics.min.js?transport=beacon">here</a> and its XMLHTTP version located <a href="https://cdn.rudderlabs.com/v2/rudder-analytics.min.js">here</a> are <strong>no longer supported</strong>. 

@@ -38,14 +38,14 @@ The detailed description of these parameters is as follows:
 | Parameter             | Type                                | Description                    |
 | :-------------------- | :---------------------------------- | :------------------------ |
 |  `logLevel`           | String                              | Values include `DEBUG`, `INFO`, and `WARN`.             |
-|  `integrations`       | <Link to="#integrationopts">IntegrationOpts</Link> | Sends event data to the <Link to="/sources/sdks/rudderstack-javascript-sdk/filtering/">selective destinations</Link>.                                          |
+|  `integrations`       | <Link to="#integrationopts">IntegrationOpts</Link> | Sends event data to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/filtering/">selective destinations</Link>.                                          |
 |  `configUrl`          | String                              |  The <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane</Link> endpoint serving your destination configurations. Default value is `https://api.rudderlabs.com`. Note that `sourceConfig` is automatically appended to this endpoint in the format `https://api.rudderlabs.com/<source_config_url>/sourceConfig`  |
 |  `queueOpts`          | <Link to="#queueopts">QueueOpts</Link>         | Contains the options to control the behavior of the persistence queue that buffers the events before sending them to the data plane.          |
 |  `loadIntegration`    | Boolean                             | Determines whether the destination SDKs are fetched by the SDK or not. Default value is `True`. Supported for **Amplitude** and **Google Analytics**.                      |
 | `secureCookie`        | Boolean                             | Determines whether the SDK sends the cookie to the storage backend via HTTPS. Default value is `False`. |
-| `destSDKBaseURL`      | String                              | Path used by the SDK to load the integrations. Default value is  `https://cdn.rudderlabs.com/v1.1/js-integrations`. <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">Reference</Link>.    | 
-| `useBeacon`           | Boolean                             | Determines whether the SDK <Link to="/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#send-events-using-beacon">sends event payloads via Beacon</Link>. Default value is `False`.  |
-| `beaconQueueOptions`  | <Link to="/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#send-events-using-beacon">BeaconQueueOpts</Link> | Internal queue to hold the data and send it through the Beacon utility in batches. |
+| `destSDKBaseURL`      | String                              | Path used by the SDK to load the integrations. Default value is  `https://cdn.rudderlabs.com/v1.1/js-integrations`. <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">Reference</Link>.    | 
+| `useBeacon`           | Boolean                             | Determines whether the SDK <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#send-events-using-beacon">sends event payloads via Beacon</Link>. Default value is `False`.  |
+| `beaconQueueOptions`  | <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#send-events-using-beacon">BeaconQueueOpts</Link> | Internal queue to hold the data and send it through the Beacon utility in batches. |
 | `cookieConsentManager` | Object       |  Refer to the <Link to="#cookieconsentmanager">Consent manager integration</Link> section. |
 | `anonymousIdOptions` | Object       |  <Link to="#anonymousidoptions">Automatically captures the anonymous ID</Link> from a source and sets it as RudderStack’s `anonymousId`.  |
 
@@ -54,7 +54,7 @@ The following sections contain the detailed definitions and usage of some of the
 
 #### `IntegrationOpts`
 
-You can use this parameter to send the event data only to the <Link to="/sources/sdks/rudderstack-javascript-sdk/filtering/#filtering-destinations">selective destinations</Link>. Its structure is defined as follows:
+You can use this parameter to send the event data only to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/filtering/#filtering-destinations">selective destinations</Link>. Its structure is defined as follows:
 
 ```javascript
 {
@@ -98,7 +98,7 @@ The following table describes the above `integer` type (optional) parameters in 
 
 #### `cookieConsentManager`
 
-Once a user provides the consent, you can load the JavaScript SDK and enable the <Link to="/sources/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/">OneTrust integration</Link> via the `cookieConsentManager` object, as shown:
+Once a user provides the consent, you can load the JavaScript SDK and enable the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/">OneTrust integration</Link> via the `cookieConsentManager` object, as shown:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {

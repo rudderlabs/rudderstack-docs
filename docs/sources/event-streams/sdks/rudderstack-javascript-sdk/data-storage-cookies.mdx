@@ -7,7 +7,7 @@ aliases: ["javascript sdk data storage", "js sdk data storage", "JavaScript SDK 
 
 The JavaScript SDK stores persistent user data in the cookies by default. If the cookies are not supported, the SDK uses local storage instead. 
 
-By default, the SDK stores all the cookies in the top-level domain. It helps you to identify the users visiting websites hosted under a particular sub-domain. For example, if you include the JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in `samplewebsite.com`. However, you can specify the cookie storage location by using the `setCookieDomain` parameter in the <Link to="/sources/sdks/rudderstack-javascript-sdk/load-js-sdk/">`load`</Link> API options as shown:
+By default, the SDK stores all the cookies in the top-level domain. It helps you to identify the users visiting websites hosted under a particular sub-domain. For example, if you include the JavaScript SDK in both `admin.samplewebsite.com` and `app.samplewebsite.com`, the SDK will store the cookie in `samplewebsite.com`. However, you can specify the cookie storage location by using the `setCookieDomain` parameter in the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/">`load`</Link> API options as shown:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
