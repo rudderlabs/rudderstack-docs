@@ -575,6 +575,20 @@ You must follow the below rules while choosing a name for the custom events:
 - Event names must start with a letter. Only letters, numbers, and underscores are permitted. **DO NOT** use spaces.
 - Do not use reserved prefixes and event names. Refer to the <a href="#faq">FAQ</a> section to know more about the reserved event names and prefixes.
 
+## Tracking active users and sessions
+
+As Google Analytics 4 only reports the users who engage with your website for a non-zero time, RudderStack sets the `engagement_time_msec` parameter to 1, by default. To track engagement time in your events, you can set the `engagement_time_msec` field to a different value.
+
+An example is shown below:
+
+```javascript
+
+```
+
+<div class="infoBlock">
+For more information on the optional reporting parameters in Google Analytics 4, refer to their <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=firebase#optional_parameters_for_reports">documentation</a>.
+</div>
+
 ## FAQ
 
 ### I’ve set up GA4 as a destination in RudderStack but I’m not seeing the expected data flow through in the GA4 dashboard. What should I do?
