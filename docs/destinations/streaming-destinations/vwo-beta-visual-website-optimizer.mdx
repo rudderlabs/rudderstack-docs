@@ -133,11 +133,12 @@ rudderanalytics.track(
   "Experiment Viewed", {
     revenue: 30,
     currency: "USD",
-  },
-  integrations: {
-    VWO: {
-      loadIntegration: false
-    }
-  },
+  }, {
+    integrations: {
+      VWO: {
+        loadIntegration: false
+      }
+    },
+  }
 );
 ```
