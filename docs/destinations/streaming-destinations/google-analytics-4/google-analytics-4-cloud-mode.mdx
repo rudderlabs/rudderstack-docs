@@ -41,6 +41,20 @@ The mappings for the above-mentioned mandatory parameters are listed in the foll
 Refer to the <Link to="#how-do-i-obtain-app_instance_id">FAQ</Link> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
 </div>
 
+### Supported mappings
+
+The following table lists the mappings for the **optional** parameters (common for both `gtag` and `firebase`):
+
+| Optional Parameters    | Mapping value  | Description |
+| :-------------| :-----------------|:-----------------|
+| `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
+| `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Timestamp in ISO 8601 format.|
+| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. If `context.device.adTrackingEnabled` is set as `true`, `non_personalised_ads` will be set to `false`. |
+
+<div class="infoBlock">
+Google Analytics 4 Measurement Protocol only supports timestamps 72 hours into the past and 15 minutes into the future. RudderStack discards any event with a timestamp out of this range.
+</div>
+
 ## Identify
 
 The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
@@ -75,8 +89,6 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
     }],
 });
 ```
-
-In the above snippet, the `externalId` is the GA4 `app_instance_id`.
 
 ## Track
 
@@ -151,20 +163,6 @@ rudderanalytics.track('Product List Viewed', {
   }],
 });
 ```
-
-### Supported mappings
-
-The mappings for the **optional** parameters (common for `gtag` and `firebase` both) are listed in the following table:
-
-| Optional Parameters    | Mapping value  | Description |
-| :-------------| :-----------------|:-----------------|
-| `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
-| `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Timestamp in ISO 8601 format.|
-| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. If `context.device.adTrackingEnabled` is set as `true`, `non_personalised_ads` will be set to `false`. |
-
-<div class="infoBlock">
-Google Analytics 4 Measurement Protocol only supports timestamps 72 hours into the past and 15 minutes into the future. RudderStack discards any event with a timestamp out of this range.
-</div>
 
 ## Page
 
