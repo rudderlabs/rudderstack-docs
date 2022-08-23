@@ -62,7 +62,7 @@ flutter pub get
 
 ### Installing the SDK for the web
 
-To install and use the Flutter SDK in your web app, follow the above steps to add the Flutter SDK. Additionally, you need to [install the RudderStack script](https://www.rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/#step-1-install-rudderstack-javascript-sdk) in the `<head>` section of your web page.
+To install and use the Flutter SDK in your web app, follow the above steps to add the Flutter SDK. Additionally, you need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/#step-1-install-javascript-sdk">install the RudderStack script</link> in the `<head>` section of your web page.
 
 <div class="warningBlock">
 
@@ -140,7 +140,7 @@ You can configure your client based on the following parameters by passing them 
 | `useBeacon` | Boolean | If enabled, the SDK sends the event payloads via the `navigator.sendBeacon()` utility | `False` |
 | `secureCookie` | Boolean | If enabled, the SDK sends the cookie to the storage backend via HTTPS. | `False` |
 | `loadIntegration` | Boolean | If disabled, the destination SDKs are not fetched by the SDK. | `True` |
-| `cookieConsentManagers` | Object | Refer to the [cookieConsentManager](https://www.rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/#cookieconsentmanager) section for more information. | - |
+| `cookieConsentManagers` | Object | Refer to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#cookieconsentmanager">cookieConsentManager</Link> section for more information. | - |
 | `beaconFlushQueueInterval` | Integer | The SDK flushes the queue after this time interval (in milliseconds). | 600000 | 
 | `maxBeaconItems` | Integer | The SDK flushes the queue when this number of events is reached. | 10 |
 | `maxItems` | Integer | Maximum number of events kept in the storage. | 100 |
