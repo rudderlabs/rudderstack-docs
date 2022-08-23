@@ -3,22 +3,22 @@ title: "Transformations"
 description: Detailed technical documentation on RudderStack's Transformations feature.
 ---
 
-RudderStack's **Transformations** feature enables you to code custom JavaScript functions to implement specific use-cases on your event data, like:
+RudderStack's **Transformations** feature enables you to write custom JavaScript functions to implement specific use-cases on your event data, such as:
 
 - Filtering or sampling events
 - Cleaning or aggregating data
-- Data masking or removing sensitive PII information in the events to ensure data privacy
+- Data masking or removing sensitive PII to ensure data privacy
 - Enriching events by implementing static logic or leveraging an external API
 - Using an API to implement specific actions on the events
 
 You can use this feature across your <Link to="/sources/cloud-apps/">Cloud Apps</Link>, <Link to="/sources/reverse-etl/">Reverse ETL</Link>, and <Link to="/sources/extract/">Cloud Extract</Link> pipelines.
 
 <div class="infoBlock">
-Refer to the <a href="https://github.com/rudderlabs/sample-user-transformers">Sample RudderStack Transformations</a> repository for some useful templates that you can use to create your own transformations.
+Refer to our <a href="https://github.com/rudderlabs/sample-user-transformers">Sample RudderStack Transformations</a> repository for some useful templates that you can use to create your own transformations.
 </div>
 
 <div class="warningBlock">
-You can use the transformations only when sending events to the destinations via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+You can use transformations only when sending events to destinations via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
 </div>
 
 ## Key features
@@ -37,12 +37,16 @@ Read more about why your data pipeline needs to have an efficient event transfor
 
 ## How do transformations work?
 
-At a high level, once you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination, RudderStack tracks and collects the events at the source (connected to the destination), applies the transformation logic to the events, and then forwards the transformed events to the destination.
+At a high level, once you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination, RudderStack:
+
+1. Tracks and collects events at the source
+1. Applies the transformation logic to the your events
+1. Forwards the transformed event to your connected destination
 
 <img src="../../assets/features/transformations-workflow.png" alt="Transformations workflow" />
 
 <div class="infoBlock">
-Refer to the <Link to="/features/transformations/faq/">FAQ</Link> guide for the commonly asked questions on this feature.
+Refer to the <Link to="/features/transformations/faq/">Transformations FAQ</Link> for commonly asked questions on this feature.
 </div>
 
 ### Use case
@@ -85,7 +89,7 @@ Remember to delete the existing, pre-populated code within the <code class="inli
 
 6. To test your transformation, paste your sample event in the **Events** block and click **Run Test**. By default, RudderStack provides some sample events to test if your transformation logic works as expected.
 
-<img src="../../assets/features/adding-a-transformation-3.png" alt="Adding a Transformation" />
+  <img src="../../assets/features/adding-a-transformation-3.png" alt="Adding a Transformation" />
 
 7. To save the transformation, click **Save**.
 
