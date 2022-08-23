@@ -72,10 +72,14 @@ export const Children = styled.div`
   }
   h2 {
     position: relative;
+    margin-top: 1%;
+    margin-bottom: 10px;
   }
   h2,
   h3 {
     margin: 45px 0 16px 0;
+    margin-top: 1%;
+    margin-bottom: 10px;
   }
   h4,
   h5,
@@ -83,10 +87,11 @@ export const Children = styled.div`
     overflow-wrap: break-word;
     margin: 55px 0 16px 0;
     color: #3d3d4d;
+    margin-top: 1%;
+    margin-bottom: 10px;
   }
   a {
-    font-weight: bold;
-    text-decoration: underline;
+    font-weight: 600;
     color: rgb(78, 59, 151);
     &:hover {
       color: rgb(23, 23, 110);
