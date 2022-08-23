@@ -889,7 +889,7 @@ export const postNavList = [
   },
   {
     key: "inmoment",
-    title: "InMoment",
+    title: "InMoment (Wootric)",
     link: "/destinations/streaming-destinations/inmoment/",
     content: []
   },
