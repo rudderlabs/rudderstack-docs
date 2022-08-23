@@ -444,7 +444,9 @@ The following table lists the RudderStack and Google Analytics 4 properties mapp
   </tr>
 </table>
 
-Most of the above mentioned events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. The below table details out the common mappings for `Items` array:
+Most of the above mentioned events include the `products` parameter (mapped to the [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter) which accepts a `products` array.
+
+The below table details out the common mappings for the `products` array:
 
 | RudderStack    | Google Analytics 4  |
 | :-------------| :-----------------|
@@ -458,9 +460,9 @@ Most of the above mentioned events include [`items`](https://developers.google.c
 | properties.products.$.variant           | `item_variant`  |
 | properties.products.$.quantity           | `quantity`  |
 
-The below mentioned e-commerce events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. 
+The below mentioned e-commerce events include the `products` parameter which accepts a `products` array. 
 
-| RudderStack    | Presence of `items` parameter |
+| RudderStack    | Presence of `products` parameter |
 | :-------------| :-----------------|
 | Product List Viewed         | Required        |
 | Product Clicked         | Required      |
@@ -475,7 +477,7 @@ The below mentioned e-commerce events include [`items`](https://developers.googl
 | Product Added to Wishlist           | Required  |
 | View Search Results           | Optional  |
 
-The following table details the parameter mappings present in the `Items` array, for the above events:
+The following table details the parameter mappings present in the `products` array, for the above events:
 
 | RudderStack    | Google Analytics 4  |
 | :-------------| :-----------------|
@@ -490,14 +492,14 @@ The following table details the parameter mappings present in the `Items` array,
 | properties.products.$.item_list_name           | `item_list_name`  |
 | properties.products.$.location_id           | `location_id`  |
 
-The below mentioned e-commerce events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array.
+The below mentioned e-commerce events include the `products` parameter (mapped to the [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter) which accepts a `products` array.
 
-| RudderStack    | Presence of `items` parameter |
+| RudderStack    | Presence of `products` parameter |
 | :-------------| :-----------------|
 | Promotion Viewed          | Required        |
 | Promotion Clicked      | Optional     |
 
-The following table details the parameter mappings present in the `Items` array, for the above events:
+The following table details the parameter mappings present in the `products` array, for the above events:
 
 | RudderStack    | Google Analytics 4  |
 | :-------------| :-----------------|
