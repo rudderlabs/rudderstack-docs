@@ -29,7 +29,7 @@ Once you have confirmed that the source platform supports sending events to AWS 
 
 To successfully configure AWS Lambda as a destination, you need to configure the following settings:
 
-<img src="../../assets/event-stream-destinations/aws-lambda-connection-settings.png" alt="AWS Lambda connection settings"/>
+<img src="../../assets/event-stream-destinations/aws-lambda-connection-settings-1.png" alt="AWS Lambda connection settings"/>
 
 - **Region**: Enter the region associated with your AWS Lambda service.
 
@@ -38,6 +38,8 @@ For more information on the AWS regions, refer to the <a href="https://aws.amazo
 </div>
 
 - **Role Based Authentication**: Enable this setting to use role-based AWS authentication for this destination. If this setting is enabled, you can configure the following fields:
+  <img src="../../assets/event-stream-destinations/aws-lambda-connection-settings-2.png" alt="AWS Lambda connection settings"/>
+
   - **IAM Role ARN**: Enter your role ARN. For more information on the IAM ARNs, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns">AWS documentation</a>.
   - **External ID**: Enter the external ID associated with the role. For more information on using the external ID, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS documentation</a>.
 - **Access Key ID**: Enter the AWS access key ID associated with your IAM user account.
@@ -89,7 +91,7 @@ To view these errors, you can configure the <a href="https://docs.aws.amazon.com
 
 ## FAQ
 
-### Why am I getting a `UnrecognizedClientException` / `InvalidSignatureException` error?
+### Why am I getting a `UnrecognizedClientException`/`InvalidSignatureException` error?
 
 If you're getting a `UnrecognizedClientException` error with a 403 status code, verify if your AWS credentials (both **AWS Access Key ID** and **Secret Access Key**) are valid.
 
