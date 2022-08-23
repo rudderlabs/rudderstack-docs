@@ -62,8 +62,6 @@ RudderStack follows the below approach to look up a user and update their detail
 2. If `context.externalId.0.id` is absent, RudderStack then looks for the `external_id` (RudderStack's `userId`) field. If it exists, RudderStack updates the user against this ID.
 3. If none of `context.externalId.0.id` or `external_id` are present, RudderStack creates a new user in Wootric.
 
-RudderStack updates the user if the `external_id` field exists, otherwise creates a new one.
-
 A sample `identify` call is shown below:
 
 ```javascript
