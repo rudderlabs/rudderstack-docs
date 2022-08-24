@@ -37,23 +37,28 @@ To successfully configure AWS Lambda as a destination, you need to configure the
 For more information on the AWS regions, refer to the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/">AWS Regions and Availability Zones</a> guide.
 </div>
 
-- **Role Based Authentication**: Enable this setting to use role-based AWS authentication for this destination. If this setting is enabled, you need to configure the following settings:
+- **Role Based Authentication**: Enable this setting to use role-based AWS authentication for this destination. 
+
+  When disabled, you need to configure the following settings:
+
+    - **Access Key ID**: Enter the AWS access key ID associated with your IAM user account.
+    - **Secret Access Key**: Enter your secret access key.<br/> <br/>
+
+  When enabled, you need to configure the following settings:
+
   <img src="../../assets/event-stream-destinations/aws-lambda-connection-settings-2.png" alt="AWS Lambda connection settings"/>
 
   - **IAM Role ARN**: Enter your role ARN. For more information on the IAM ARNs, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns">AWS documentation</a>.
+
+  <div class="infoBlock">
+  For more information on creating an IAM role in AWS, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html">AWS documentation</a>.
+  </div>
+
   - **External ID**: Enter the external ID associated with the role. For more information on using the external ID, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS documentation</a>.
 
-<div class="infoBlock">
-It is highly recommended to use the <Link to="/resources/glossary/#workspace-token">workspace token</Link> as the external ID while creating the IAM role.
-</div>
-
-If **Role Based Authentication** is disabled, you need to configure the following settings:
-  - **Access Key ID**: Enter the AWS access key ID associated with your IAM user account.
-  - **Secret Access Key**: Enter your secret access key.
-
-<div class="infoBlock">
-For more information on creating an IAM role in AWS, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html">AWS documentation</a>.
-</div>
+  <div class="infoBlock">
+  It is highly recommended to use the <Link to="/resources/glossary/#workspace-token">workspace token</Link> as the external ID while creating the IAM role.
+  </div>
 
 - **Lambda**: Enter the name of the Lambda function to be invoked. RudderStack supports the following name formats:
 
