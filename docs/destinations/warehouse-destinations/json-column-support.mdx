@@ -27,7 +27,7 @@ You can use the JSON column feature using any of the following approaches:
 
 ### Declaring JSON columns at the event level
 
-You can use the SDK's `integrations: options` parameter to specify the JSON columns at the event level. The following example demonstrates the use of the <Link to="/sources/sdks/rudderstack-javascript-sdk/#integrationopts">JavaScript SDK's</Link> `IntegrationOpts` parameter to declare the JSON columns:
+You can use the SDK's `integrations: options` parameter to specify the JSON columns at the event level. The following example demonstrates the use of the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/#integrationopts">JavaScript SDK's</Link> `IntegrationOpts` parameter to declare the JSON columns:
 
 ```javascript
 "integrations": {
@@ -55,9 +55,9 @@ Here, `nestedMap` is declared as a JSON column and is in the following format:
 <div class="infoBlock">
 Make sure you configure the SDK to load the <code class="inline-code">options</code> parameter by default. Refer to the following SDK guides for more context:
 <ul>
-  <li><Link to="/sources/sdks/rudderstack-javascript-sdk/#the-options-parameter">JavaScript</Link></li>
-  <li><Link to="/sources/sdks/rudderstack-android-sdk/#1-passing-destinations-while-initializing-the-sdk">Android</Link></li>
-  <li><Link to="/sources/sdks/rudderstack-ios-sdk/#1-passing-destinations-while-initializing-the-sdk">iOS</Link></li>
+  <li><Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/#the-options-parameter">JavaScript</Link></li>
+  <li><Link to="/sources/event-streams/sdks/rudderstack-android-sdk/#1-passing-destinations-while-initializing-the-sdk">Android</Link></li>
+  <li><Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/#1-passing-destinations-while-initializing-the-sdk">iOS</Link></li>
 </ul>
 Then, include the column path from the event payload in the <code class="inline-code">destination_type.options.jsonPaths</code> list, as seen in the above code snippet.
 </div>

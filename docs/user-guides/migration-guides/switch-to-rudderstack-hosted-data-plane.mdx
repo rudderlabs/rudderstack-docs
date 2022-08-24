@@ -21,11 +21,12 @@ Follow these steps to switch from your self-hosted RudderStack control plane to 
 While you can <Link to="/get-started/rudderstack-open-source/control-plane-lite/#exporting-workspace-configuration">export your source-destination configurations</Link> in your self-hosted control plane, there is no way to import them in RudderStack Cloud. Hence, you will have to set up the configurations manually.
 </div>
 
-## Step 2: Data plane migration
+## Detailed steps
 
-Follow the steps below to switch from the self-hosted data plane to RudderStack-hosted data plane:
+Follow the steps below to switch from self-hosted to RudderStack-hosted data plane:
 
 1. Update the `dataPlaneUrl` parameter in all your SDK configurations to point to the RudderStack-hosted hosted data plane URL. Refer to the specific <Link to="/sources/sdks/">SDK documentation</Link> or this <Link to="/get-started/rudderstack-open-source/data-plane-setup/#what-is-a-data-plane-url-where-do-i-get-it">FAQ</Link> for details on obtaining the data plane URL.
+
 2. Verify that the self-hosted data plane is no longer getting any requests. 
 
 <div class="infoBlock">
