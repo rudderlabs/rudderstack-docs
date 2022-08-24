@@ -12,10 +12,10 @@ Data protection laws such as GDPR, CCPA, etc., require the websites to get user 
 
 [OneTrust](https://www.onetrust.com/) is a popular consent management platform that provides data governance, privacy management, and security solutions to thousands of businesses worldwide. 
 
-The JavaScript SDK seamlessly integrates with the OneTrust SDK. It lets you map the OneTrust cookie/consent groups to RudderStack's consent purposes. RudderStack, in turn, uses this consent information to enable/disable the tracking and sending of data.
+The JavaScript SDK seamlessly integrates with the OneTrust SDK. It lets you map the OneTrust cookie/consent groups to RudderStack's consent purposes. RudderStack, in turn, uses this consent information to enable/disable tracking and sending the data.
 
 <div class="warningBlock">
-The OneTrust integration with the JavaScript SDK is applicable only for the <a href="https://www.rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/#device-mode">device mode</a> connections.
+The OneTrust integration with the JavaScript SDK is applicable only for the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> connections.
 </div>
 
 ## How the RudderStack-OneTrust integration works
@@ -109,3 +109,11 @@ Once completed, RudderStack reads the consented categories and filters the desti
 <div class="infoBlock">
 Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
 </div>
+
+## FAQ
+
+### Can I integrate the RudderStack JavaScript SDK with any consent manager?
+
+Currently, RudderStack only supports **OneTrust** cookie consent manager.
+
+However, you can use a workaround to integrate some other consent manager by managing the cookie consent yourself and translating that information into a list of destinations which need to be loaded/blocked. Once done, load the JavaScript SDK to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/filtering/#filtering-destinations">filter the destinations</Link> via the `integrations` object.

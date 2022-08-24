@@ -6,22 +6,25 @@ aliases: ["JavaScript quickstart", "JavaScript SDK quickstart", "JS SDK quicksta
 
 This guide lists the steps to quickly install and use the JavaScript SDK to identify your website users and track their actions.
 
+## Prerequisites
+
+To set up and use the RudderStack JavaScript SDK, the following prerequisites must be met:
+
+- Set up a [**RudderStack account**](https://app.rudderstack.com/signup).
+- <Link to="/dashboard-guides/sources/#adding-a-source">Set up a JavaScript source</Link> in the RudderStack dashboard.
+ 
 ## Step 1: Install JavaScript SDK 
 
 ### Using CDN
 
-To integrate the SDK with your website and load it **asynchronously**, add the following code in your website's `<head>` section:
+To integrate the SDK with your website and load it **asynchronously**:
+1. Go to the **Setup** tab of your JavaScript source in the dashboard.
+2. Copy the following snippet by clicking on **Copy Snippet** and paste it in your website's `<head>` section:
 
-```javascript
-<script type="text/javascript">
-!function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
-e.load(WRITE_KEY,DATA_PLANE_URL),
-e.page()}();
-</script>
-```
+<img src="../../../../assets/event-stream-sources/javascript-setup.png" alt="JavaScript source write key" />
 
-<div class="infoBlock">
-Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
+<div class="successBlock">
+The SDK installation snippet (seen above) contains both the <Link to="/resources/glossary/#write-key">write key</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">data plane URL</Link>, by default.
 </div>
 
 To integrate the SDK with your website and load it **synchronously**, add any of the following scripts in your website's `<head>` section.
@@ -74,6 +77,10 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
 
 <script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js"></script>
 ```
+
+<div class="infoBlock">
+Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
+</div>
 
 <div class="infoBlock">
 There is an explicit <code class="inline-code">page</code> call at the end in all the above snippets. This is to ensure that a <code class="inline-code">page</code> call is sent whenever the SDK loads on a page. You can remove this call or modify it with any extra <code class="inline-code">page</code> properties. You can also add <code class="inline-code">page</code> calls in your application in places not tied directly to page load, for example, virtual page views and page renders on route change, such as in <Link to="#single-page-application">single-page applications</Link>.

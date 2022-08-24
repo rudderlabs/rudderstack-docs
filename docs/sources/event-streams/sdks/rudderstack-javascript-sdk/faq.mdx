@@ -17,14 +17,18 @@ No, it is not possible to load multiple instances of the JavaScript SDK, as it i
 
 To verify if the SDK is transmitting the events to the specified destinations, go to the **Network tab** of the JavaScript console in your browser.
 
-<img src="../../../assets/sample-page-call.png" alt="Sample page call" />
-<img src="../../../assets/sample-track-call.png" alt="Sample track call" />
+<img src="../../../../assets/sample-page-call.png" alt="Sample page call" />
+<img src="../../../../assets/sample-track-call.png" alt="Sample track call" />
 
 If you cannot see any outbound requests, verify if you have installed and set up the JavaScript SDK correctly. Also, check if any adblockers are enabled on your browser.
 
 ### What is the size limit on the requests?
 
 The event size limit on the requests is 32 KB per message and 4 MB per batch request.
+
+### Can I send the event data to specific destinations only?
+
+Yes, you can send your <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/filtering/#filtering-destinations">event data only to the specific destinations</Link> by stopping the SDK from loading the other <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> integrations.
 
 ### What is the "Reserved Keyword" error?
 
