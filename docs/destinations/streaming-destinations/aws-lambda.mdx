@@ -43,6 +43,10 @@ For more information on the AWS regions, refer to the <a href="https://aws.amazo
   - **IAM Role ARN**: Enter your role ARN. For more information on the IAM ARNs, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns">AWS documentation</a>.
   - **External ID**: Enter the external ID associated with the role. For more information on using the external ID, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS documentation</a>.
 
+<div class="infoBlock">
+It is highly recommended to use the <Link to="/resources/glossary/#workspace-token">workspace token</Link> as the external ID while creating the IAM role.
+</div>
+
 If **Role Based Authentication** is disabled, you need to configure the following settings:
   - **Access Key ID**: Enter the AWS access key ID associated with your IAM user account.
   - **Secret Access Key**: Enter your secret access key.
