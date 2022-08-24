@@ -1340,7 +1340,13 @@ export const jsonData = [
         title: "Transformations",
         sectionTitle: "Features",
         link: "/features/transformations/",
-        content: []
+        content: [
+            {
+                title: "FAQ",
+                link: "/features/transformations/faq",
+                content: [],
+            },
+        ]
     },
     {
         title: "Data Governance",

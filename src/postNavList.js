@@ -1741,6 +1741,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "faq",
+    title: "Transformations FAQ",
+    link: "/features/transformations/faq",
+    content: [],
+  },
+  {
     key: "permissions-management",
     title: "Permissions Management",
     link: "/dashboard-guides/permissions-management/",
