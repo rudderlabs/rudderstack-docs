@@ -581,21 +581,25 @@ As Google Analytics 4 only reports the users who engage with your website for a 
 
 RudderStack maps the following properties to GA4's `engagement_time_msec` property:
 
-| RudderStack properties | GA4 property |
+| RudderStack properties | Google Analytics 4 property |
 | :------------------------| :-------------|
 | `traits.engagementTimeMsec`/`context.traits.engagementTimeMsec`/`traits.engagement_time_msec`/`context.traits.engagement_time_msec` | `engagement_time_msec` |
 
-To set up a client-side integration with Google Analytics 4 **as well as** send events via the cloud mode, you can track the user sessions on the server-side. When using the `gtag` tagging method, Google generates a `session_id` and `session_number` whenever a session begins. You can pass these identifiers generated on the client-side as event parameters to stitch the session together with the events sent via the cloud mode.
+You can use the Google Analytics 4 `session_id` parameter to identify the sesssion associated with a particular event. 
 
-<div class="warningBlock">
-For the events (collected via both the client-side sessions and cloud mode) to stitch accurately, they must arrive within a window of 48 hours.
+<div class="infoBlock">
+To read more about sessions in Google Analytics 4, refer to this <a href="https://support.google.com/analytics/answer/9191807?hl=en#zippy=">Google Analytics 4 Help article</a>.
 </div>
 
 RudderStack maps the following properties to GA4's `session_id` property:
 
-| RudderStack properties | GA4 property |
+| RudderStack properties | Google Analytics 4 property |
 | :------------------------| :-------------|
 | `traits.sessionId`/`context.traits.sessionId`/`traits.session_id`/`context.traits.session_id` | `session_id` |
+
+<div class="warningBlock">
+RudderStack automatically collects the <code class="inline-code">session_id</code> when sending events via the <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-device-mode/">device mode</Link>. However, it must be manually passed while sending events via the cloud mode.
+</div>
 
 <div class="infoBlock">
 For more information on the optional reporting parameters in Google Analytics 4, refer to their <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=firebase#optional_parameters_for_reports">documentation</a>.
