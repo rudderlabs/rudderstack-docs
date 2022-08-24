@@ -1548,6 +1548,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "aws-lambda",
+    title: "AWS Lambda",
+    link: "/destinations/streaming-destinations/aws-lambda/",
+    content: [],
+  },
+  {
     key: "mouseflow",
     title: "Mouseflow",
     link: "/destinations/streaming-destinations/mouseflow/",

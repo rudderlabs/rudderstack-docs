@@ -1214,11 +1214,18 @@ export const jsonData = [
                 title: "Apache Kafka",
                 link: "/destinations/streaming-destinations/kafka/",
                 content: []
-            }, {
+            },
+            {
+                title: "AWS Lambda",
+                link: "/destinations/streaming-destinations/aws-lambda/",
+                content: []
+            }, 
+            {
                 title: "Azure Event Hubs",
                 link: "/destinations/streaming-destinations/azure-event-hubs/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "BigQuery Stream",
                 link: "/destinations/streaming-destinations/bigquery-stream/",
                 content: []
