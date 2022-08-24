@@ -939,7 +939,13 @@ export const jsonData = [
                 title: "Slack",
                 link: "/destinations/streaming-destinations/slack/",
                 content: []
-            }, {
+            },
+            {
+                title: "SnapEngage",
+                link: "/destinations/streaming-destinations/snapengage/",
+                content: []
+            },
+            {
                 title: "Trengo",
                 link: "/destinations/streaming-destinations/trengo/",
                 content: []
