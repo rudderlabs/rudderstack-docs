@@ -57,12 +57,12 @@ For more information on the AWS regions, refer to the <a href="https://aws.amazo
   - **External ID**: Enter the external ID associated with the role. For more information on using the external ID, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS documentation</a>.
 
   <div class="infoBlock">
-  It is highly recommended to use the <Link to="/resources/glossary/#workspace-token">workspace token</Link> as the external ID while creating the IAM role.
+  It is highly recommended to use the <Link to="/resources/glossary/#workspace-token">workspace token</Link> as the external ID while creating the IAM role, as AWS recommends that the external ID should be domain-specific.
   </div>
 
-- **Lambda**: Enter the name of the Lambda function to be invoked. RudderStack supports the following name formats:
+- **Lambda**: Enter the name of the Lambda function to be invoked. RudderStack supports the following formats:
 
-| Format | Example |
+| Name format | Example |
 | :-------| :---------|
 | Function name | <ul><li>`lambda-function` (Name only)</li><li>`lambda-function:v1` (Name with alias)</li></ul>|
 | Function ARN | `arn:aws:lambda:us-west-2:123456789012:function:my-function` |
