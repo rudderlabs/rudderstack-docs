@@ -1166,6 +1166,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "AWS Lambda",
+                link: "/destinations/streaming-destinations/aws-lambda/",
+                content: []
+            }, 
+            {
                 title: "Amazon S3",
                 sectionTitle: "Storage Platforms",
                 link: "/destinations/streaming-destinations/amazon-s3/",
@@ -1215,11 +1220,6 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/kafka/",
                 content: []
             },
-            {
-                title: "AWS Lambda",
-                link: "/destinations/streaming-destinations/aws-lambda/",
-                content: []
-            }, 
             {
                 title: "Azure Event Hubs",
                 link: "/destinations/streaming-destinations/azure-event-hubs/",
