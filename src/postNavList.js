@@ -2087,8 +2087,8 @@ export const postNavList = [
   },
   {
     key: "switch-to-rudderstack-hosted-data-plane",
-    title: "How to Switch from Self-hosted to RudderStack-hosted Data Plane",
-    link: "/user-guides/how-to-guides/switch-to-rudderstack-hosted-data-plane/",
+    title: "Migrating from Self-hosted to RudderStack-hosted Data Plane",
+    link: "/user-guides/migration-guides/switch-to-rudderstack-hosted-data-plane/",
     content: [],
   },
   {

@@ -1470,6 +1470,10 @@ status = 301
 from = "/get-started/rudderstack-architecture/"
 to = "/docs/resources/rudderstack-architecture/"
 status = 301
+[[redirects]]
+from = "/user-guides/how-to-guides/switch-to-rudderstack-hosted-data-plane/"
+to = "/docs/user-guides/migration-guides/switch-to-rudderstack-hosted-data-plane/"
+status = 301
 
 # End restructuring
 

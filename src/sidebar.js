@@ -1505,10 +1505,16 @@ export const jsonData = [
                 title: "Migrating from Segment to RudderStack",
                 link: "/user-guides/migration-guides/rudderstack-migration-guide/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Migrating Your Warehouse Destination from Segment to RudderStack",
                 link: "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/",
                 content: []
+            },
+            {
+                title: "Migrating from Self-hosted RudderStack to RudderStack Cloud",
+                link: "/user-guides/migration-guides/switch-to-rudderstack-hosted-data-plane/",
+                content: [],
             },
         ]
     }, {
@@ -1590,11 +1596,6 @@ export const jsonData = [
                 title: "How to Use Custom Domains",
                 link: "/user-guides/how-to-guides/custom-domains/",
                 content: []
-            },
-            {
-                title: "How to Switch from Self-hosted to RudderStack-hosted Data Plane",
-                link: "/user-guides/how-to-guides/switch-to-rudderstack-hosted-data-plane/",
-                content: [],
             },
             {
                 title: "How to Use AWS Lambda Functions with RudderStack",
