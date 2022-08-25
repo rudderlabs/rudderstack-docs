@@ -44,7 +44,7 @@ For more information on this setting, refer to the <Link to="https://www.rudders
 </div>
 
 - **Use device mode to send events**: As this is a <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
-- **OneTrust Cookie Categories**: This setting lets you map <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust cookie</Link>/consent groups to RudderStack's consent purposes.
+- **OneTrust Cookie Categories**: This setting lets you map <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/">OneTrust cookie</Link>/consent groups to RudderStack's consent purposes.
 
 ## Identify
 
@@ -194,7 +194,7 @@ _mfq.push(["newPageView", "/test_browser.html"]);
 
 ## Setting custom variables via the `integrations` object
 
-RudderStack enables you to send custom variables to Mouseflow via the `identify` and `track` calls by passing them via the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/#the-options-parameter">`integrations`</Link> object.
+RudderStack enables you to send custom variables to Mouseflow via the `identify` and `track` calls by passing them via the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#loading-options">`integrations`</Link> object.
 
 A sample `identify` call highlighting this feature is shown below:
 

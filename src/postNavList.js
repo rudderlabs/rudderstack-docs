@@ -112,8 +112,50 @@ export const postNavList = [
   },
   {
     key: "quick-start-guide",
-    title: "Quick Start Guide",
+    title: "Quick Start",
     link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/",
+    content: [],
+  },
+  {
+    key: "load-js-sdk",
+    title: "Load the SDK",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/",
+    content: [],
+  },
+  {
+     key: "supported-api",
+     title: "Supported API",
+     link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/",
+     content: [],
+ },
+ {
+    key: "data-storage-cookies",
+    title: "Data Storage",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
+    content: [],
+  },
+  {
+    key: "filtering",
+    title: "Filtering",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/filtering/",
+    content: [],
+  },
+  {
+    key: "version-migration-guide",
+    title: "Version Migration",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/",
+    content: [],
+  },
+  {
+    key: "onetrust-consent-manager",
+    title: "OneTrust Consent Manager",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/",
+    content: [],
+  },
+  {
+    key: "detecting-adblocked-pages",
+    title: "Detect Ad-blocked Pages",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
     content: [],
   },
   {
@@ -123,48 +165,9 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "data-storage-cookies",
-    title: "Data Storage in Cookies",
-    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
-    content: [],
-  },
-  {
-    key: "querystring-api",
-    title: "Querystring API",
-    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/querystring-api/",
-    content: [],
-  },
-  {
-    key: "detecting-adblocked-pages",
-    title: "Detecting Ad-blocked Pages",
-    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
-    content: [],
-  },
-  {
-    key: "version-migration-guide",
-    title: "Version Migration Guide",
-    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/",
-    content: [],
-  },
-  {
-    key: "consent-managers",
-    title: "Consent Managers",
-    link:
-      "/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/",
-    content: [],
-  },
-  {
-    key: "onetrust",
-    title: "OneTrust",
-    link:
-      "/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/",
-    content: [],
-  },
-  {
     key: "faq",
-    title: "JavaScript SDK FAQs",
-    link:
-      "/sources/event-streams/sdks/rudderstack-javascript-sdk/faq/",
+    title: "JavaScript SDK FAQ",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/faq/",
     content: [],
   },
   {
