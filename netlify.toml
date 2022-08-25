@@ -39,7 +39,13 @@ status = 301
 from = "/sources/cloud-apps/*"
 to = "/docs/sources/event-streams/cloud-apps/:splat"
 status = 301
-
+[[redirects]]
+from = "/sources/event-streams/sdks/rudderstack-javascript-sdk/querystring-api/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#querystring-api"
+status = 301
+[[redirects]]
+from ="/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/"
+to ="/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/"
 [[redirects]]
 from = "/data-governance/"
 to = "/docs/features/data-governance/"
