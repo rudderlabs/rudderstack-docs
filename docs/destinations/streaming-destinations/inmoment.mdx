@@ -60,6 +60,11 @@ RudderStack follows the below approach to look up a user and update their detail
 ```
 
 2. If `context.externalId.0.id` is absent, RudderStack then looks for the `external_id` (RudderStack's `userId`) field. If it exists, RudderStack updates the user against this ID.
+
+<div class="infoBlock">
+RudderStack uses InMoment's <a href="https://docs.wootric.com/api/#get-a-specific-end-user-by-id">End user lookup API</a> to retrieve user via <code class="inline-code">context.externalId.0.id</code> and the <a href="https://docs.wootric.com/api/#get-a-specific-end-user-by-external-id">External ID lookup API</a> to retrieve a user via <code class="inline-code">external_id</code>. For more information, refer to the <Link to="#property-mappings">Property mappings</Link> section below.
+</div>
+
 3. If none of `context.externalId.0.id` or `external_id` are present, RudderStack creates a new user in Wootric.
 
 A sample `identify` call is shown below:
@@ -86,17 +91,11 @@ The following tables list the mappings between RudderStack and InMoment events/p
     |:---------------------|:-------------|:--------------|:--------------|
     | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id` | `external_id` | Required | String |
 
-- [Retrieve a user by email](https://docs.wootric.com/api/#get-a-specific-end-user-by-email)
+- [Retrieve a user by end user ID](https://docs.wootric.com/api/#get-a-specific-end-user-by-id)
 
     | RudderStack property | InMoment property | Presence | Data type | 
     |:---------------------|:-------------|:--------------|:--------------|
-    | `traits.email`/`context.traits.email`/ `properties.email` | `email` | Required | String |
-
-- [Retrieve a user by phone](https://docs.wootric.com/api/#get-a-specific-end-user-by-phone-number)
-
-    | RudderStack property | InMoment property | Presence | Data type |
-    | :---------------------|:-------------|:--------------|:--------------|
-    | `traits.phone`/ `context.traits.phone` / `properties.phone` | `phone_number` | Required | String |
+    | `context.externalId.0.id` | `id` | Required | String |
 
 - [Create a user](https://docs.wootric.com/api/#create-end-user)
 
@@ -178,11 +177,11 @@ The following tables list the mappings between RudderStack and InMoment properti
     | `context.ip`/`request_ip` | `ip_address` | Required | Text |
     | `context.page.url`/`properties.url` | `origin_url` | Required | Text |
     | `properties.feedbackText` | `text` | Optional | Text |
-    | `context.traits.createdAt`/`traits.createdAt` | `created_at` | Optional | Integer (UNIX timestamp) |
+    | `context.traits.createdAt`/`traits.createdAt` | `created_at` | Optional | String (UNIX timestamp) |
     | `context.traits`/`traits` | `end_user.properties` | Optional | Hash (key-value pair) |
 
-<div class="warningBlock">
-If the difference between the event's <code class="inline-code">timestamp</code> and <code class="inline-code">createdAt</code> is greater than 24 hours, RudderStack creates a new survey response for the user. Otherwise, it updates the last response.
+<div class="infoBlock">
+If Wootric receives a new survey response request for the same user within a 24-hour window, it updates the last response. Otherwise, it creates a new survey response for the user.
 </div>
 
 - [Create a survey decline](https://docs.wootric.com/api/#create-decline)
@@ -191,11 +190,11 @@ If the difference between the event's <code class="inline-code">timestamp</code>
     |:---------------------|:-------------|:--------------|:--------------|
     | Retrieved ID from `context.externalId.0.id` if present, else from `external_id` | `end_user_id` | Required | Integer |
     | `context.page.url`/`properties.url` | `origin_url` | Optional | String |
-    | `context.traits.createdAt`/`traits.createdAt` | `created_at` | Optional | Integer (UNIX timestamp) |
+    | `context.traits.createdAt`/`traits.createdAt` | `created_at` | Optional | String (UNIX timestamp) |
     | `context.traits`/`traits` | `end_user.properties` | Optional | Hash (key-value pair) |
 
-<div class="warningBlock">
-If the difference between the event's <code class="inline-code">timestamp</code> and <code class="inline-code">createdAt</code> is greater than 24 hours, RudderStack creates a new survey decline for the user. Otherwise, it updates the last decline.
+<div class="infoBlock">
+If Wootric receives a new survey decline request for the same user within a 24-hour window, it updates the last decline. Otherwise, it creates a new survey decline for the user.
 </div>
 
 ## FAQ
