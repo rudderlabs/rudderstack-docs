@@ -29,6 +29,15 @@ Once you have confirmed that the source platform supports sending events to Goog
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Google AdWords Enhanced Conversions**.
 2. Assign a name to your destination and click on **Next**.
 
+### Google AdWords Permissions
+
+Actions undertaken via your RudderStack integration rely on the authorizing Google AdWords user's [underlying permissions](https://support.google.com/google-ads/answer/9978556) and must be at least *Standard* or *Admin*.
+
+If an integration is authorized by a user without at least *Standard* or *Admin* permissions, API calls will fail, and a "RudderStack Admin" user will disable the integration in your <Link to="/dashboard-guides/audit-logs">audit logs</Link>. If you encounter an entry in your audit logs from a `Rudder Admin/admin@rudderstack.com` user, this means that the integration was disabled by RudderStack on account of insufficient permissions by your Google AdWords user.
+
+To avoid this, ensure that the authorizing user has at mininum, *Standard* permissions.
+
+
 ### Connection settings
 
 To successfully configure Google AdWords Enhanced Conversions as a destination, follow the steps below:
