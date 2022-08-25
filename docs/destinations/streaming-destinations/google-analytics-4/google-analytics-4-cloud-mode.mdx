@@ -19,7 +19,7 @@ Google Analytics 4 does not officially support a complete server-to-server integ
   color={'blueviolet'}
 />
 
-## Supported tagging methods in cloud mode
+## Tagging methods
 
 RudderStack supports both the `gtag` and `firebase` ways for tagging in websites in the cloud mode. However, note that:
 
@@ -47,8 +47,8 @@ The following table lists the mappings for the **optional** parameters (common f
 
 | Optional Parameters    | Mapping value  | Description |
 | :-------------| :-----------------|:-----------------|
-| `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
-| `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Timestamp in ISO 8601 format.|
+| `user_id`         |  `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
+| `timestamp_micros`   |  `originalTimestamp`/`timestamp`| Timestamp in ISO 8601 format.|
 | `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. If `context.device.adTrackingEnabled` is set as `true`, `non_personalised_ads` will be set to `false`. |
 
 <div class="infoBlock">
