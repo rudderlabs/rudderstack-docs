@@ -118,7 +118,7 @@ export const postNavList = [
   },
   {
     key: "load-js-sdk",
-    title: "Load SDK",
+    title: "Load the SDK",
     link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/",
     content: [],
   },
@@ -128,13 +128,7 @@ export const postNavList = [
      link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/",
      content: [],
  },
-  {
-    key: "javascript-sdk-enhancements",
-    title: "JavaScript SDK Enhancements",
-    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
-    content: [],
-  },
-  {
+ {
     key: "data-storage-cookies",
     title: "Data Storage",
     link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
@@ -144,12 +138,6 @@ export const postNavList = [
     key: "filtering",
     title: "Filtering",
     link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/filtering/",
-    content: [],
-  },
-  {
-    key: "detecting-adblocked-pages",
-    title: "Detecting Ad-blocked Pages",
-    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
     content: [],
   },
   {
@@ -165,8 +153,20 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "detecting-adblocked-pages",
+    title: "Detect Ad-blocked Pages",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
+    content: [],
+  },
+  {
+    key: "javascript-sdk-enhancements",
+    title: "JavaScript SDK Enhancements",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
+    content: [],
+  },
+  {
     key: "faq",
-    title: "JavaScript SDK FAQs",
+    title: "JavaScript SDK FAQ",
     link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/faq/",
     content: [],
   },

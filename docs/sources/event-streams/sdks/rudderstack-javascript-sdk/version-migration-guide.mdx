@@ -65,7 +65,7 @@ If you have cloned RudderStack's JavaScript SDK and are self-hosting it via your
 
 It is recommended to maintain the following structure:
 
-<img src="../../../assets/js-sdk-version-migration.png" alt="Recommended structure for self-hosting RudderStack's CDN" />
+<img src="../../../../assets/js-sdk-version-migration.png" alt="Recommended structure for self-hosting RudderStack's CDN" />
 
 4. Check the core SDK's file name:
 - If it is **not** `rudder-analytics.min.js`, update the script tag in your website, as shown:
@@ -184,4 +184,4 @@ RudderStack follows the below precedence order while determining the root locati
 
 1. It refers to the `destSDKBaseURL` value in the `options` parameter of the `load` API call.
 2. If absent, it checks the `src` attribute of the `<script>` tag (that adds the core JavaScript SDK to your website) if `/js-integrations` is automatically appended to the root location.
-3. If none of the above options are applicable, it uses the default CDN URL: `https://cdn.rudderlabs.com/v1.1/js-integrations/`.
+3. If none of the above options are applicable, it uses the default CDN URL: https://cdn.rudderlabs.com/v1.1/js-integrations/.

@@ -126,7 +126,7 @@ export const jsonData = [
                                 content: []
                             },
                             {
-                                title: "Load SDK",
+                                title: "Load the SDK",
                                 link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/",
                                 content: []
                             },
@@ -134,11 +134,6 @@ export const jsonData = [
                                 title: "Supported API",
                                 link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/",
                                 content: [],
-                            },
-                            {
-                                title: "Version Migration",
-                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/",
-                                content: []
                             },
                             {
                                 title: "Data Storage",
@@ -151,12 +146,17 @@ export const jsonData = [
                                 content: [],
                             },
                             {
+                                title: "Version Migration",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/",
+                                content: []
+                            },
+                            {
                                 title: "OneTrust Consent Manager",
                                 link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/",
                                 content: [],
                             },
                             {
-                                title: "Detecting Ad-blocked Pages",
+                                title: "Detect Ad-blocked Pages",
                                 link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
                                 content: []
                             },
