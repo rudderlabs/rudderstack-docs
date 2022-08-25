@@ -897,6 +897,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "inmoment",
+    title: "InMoment (Wootric)",
+    link: "/destinations/streaming-destinations/inmoment/",
+    content: []
+  },
+  {
     key: "pendo",
     title: "Pendo",
     link: "/destinations/streaming-destinations/pendo/",
