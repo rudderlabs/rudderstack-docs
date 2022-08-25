@@ -961,13 +961,13 @@ export const postNavList = [
   },
   {
     key: "hubspot",
-    title: "HubSpot",
+    title: "HubSpot (Legacy API)",
     link: "/destinations/streaming-destinations/hubspot/",
     content: [],
   },
   {
     key: "hubspot-v2",
-    title: "HubSpot V2",
+    title: "HubSpot (New API)",
     link: "/destinations/streaming-destinations/hubspot-v2/",
     content: [],
   },
