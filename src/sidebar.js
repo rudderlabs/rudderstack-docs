@@ -970,13 +970,13 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "HubSpot",
+                title: "HubSpot (Legacy API)",
                 sectionTitle: "CRM",
                 link: "/destinations/streaming-destinations/hubspot/",
                 content: []
             },
             {
-                title: "HubSpot V2",
+                title: "HubSpot (New API)",
                 link: "/destinations/streaming-destinations/hubspot-v2/",
                 content: []
             },
