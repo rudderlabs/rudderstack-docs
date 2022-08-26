@@ -45,6 +45,10 @@ Apart from the <Link to="/event-spec/standard-events/common-fields/">Common fiel
 | `anonymousId` | String | Required, if `userId` is not present. | The anonymous ID associated with a user or visitor. |
 | `mergeProperties` | Object   | Required     | Includes the user properties to be merged and connected to a given user profile. |
 
+<div class="warningBlock">
+Either <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> must be present in the <code class="inline-code">merge</code> event. Otherwise, you will get a <strong>Request neither has anonymousId nor userId</strong> error.
+</div>
+
 ## FAQ 
 
 ### Does RudderStack auto-merge any user identifiers?

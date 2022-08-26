@@ -523,10 +523,18 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/alias < alias.json
 
 The `merge` call enables you to merge different user identities and associate them to a single customer profile in the warehouse.
 
+<div class="warningBlock">
+Currently, RudderStack supports <code class="inline-code">merge</code> for identity resolution in the <Link to="/destinations/warehouse-destinations/bigquery/">BigQuery</Link> and <Link to="/destinations/warehouse-destinations/snowflake/">Snowflake</Link> warehouse destinations.
+</div>
+
+<div class="infoBlock">
+For more information on using the <code class="inline-code">merge</code> API, refer to the <Link to="/features/identity-resolution/#using-the-merge-api">Identity Resolution</Link> guide.
+</div>
+
 * Request Type: **POST**
 * Request Format: 
 
-```javascript
+```
 <DATA_PLANE_URL>/v1/merge
 ```
 
