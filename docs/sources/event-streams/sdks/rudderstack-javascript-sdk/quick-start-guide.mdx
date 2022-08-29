@@ -24,8 +24,18 @@ To integrate the SDK with your website and load it **asynchronously**:
 <img src="../../../../assets/event-stream-sources/javascript-setup.png" alt="JavaScript source write key" />
 
 <div class="successBlock">
-The SDK installation snippet (seen above) contains both the <Link to="/resources/glossary/#write-key">write key</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">data plane URL</Link>, by default.
+The SDK installation snippet (seen above) contains both the <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link>, by default.
 </div>
+
+Alternatively, you can copy and use the below snippet (same as above) by replacing the <Link to="/resources/glossary/#write-key">`WRITE_KEY`</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">`DATA_PLANE_URL`</Link> with the actual values.
+
+```javascript
+<script type="text/javascript">
+!function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
+e.load(<WRITE_KEY>,<DATA_PLANE_URL>),
+e.page()}();
+</script>
+```
 
 To integrate the SDK with your website and load it **synchronously**, add any of the following scripts in your website's `<head>` section.
 
