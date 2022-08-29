@@ -59,3 +59,9 @@ Yes, RudderStack auto-merges the following user identifiers by default so you do
 - `userId` and `anonymousId` for the <Link to="/event-spec/standard-events/identify/">`identify`</Link>, <Link to="/event-spec/standard-events/track/">`track`</Link>, <Link to="/event-spec/standard-events/group/">`group`</Link>, and <Link to="/event-spec/standard-events/screen/">`screen`</Link> calls.
 
 For merging other user identifiers like device ID, phone number, email ID, etc. you need to use the `merge` API.
+
+### What is the difference between the `alias` and `merge` calls?
+
+The <Link to="/event-spec/standard-events/alias/">`alias`</Link> call lets you merge two identities of a given user. You can use this call to link the user's previous identifier `previousId` with the user's new identifier `userId`. You can merge only two user identifiers at a time using `alias`.
+
+On the other hand, the `merge` API lets you perform identity resolution by stitching together various user identifiers across different touchpoints to a single customer profile. With this call, you can merge any number of user identifiers corresponding to different customer touchpoints like email, phone number, device ID, etc.
