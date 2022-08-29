@@ -47,18 +47,24 @@ The debug mode works as following:
 </ul>
 </div>
 
-### Identify
+### Identify 
+
+<div class="infoBlock">
+The settings in this section are only applicable for the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode"><strong>cloud mode</strong></Link>.
+</div>
 
 <img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings-1.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
 
-- **Enable Server Side Identify**: Enable this setting to make an <Link to="/event-spec/standard-events/identify/">`identify`</Link> call.
+- **Enable Server Side Identify**: Enable this setting and configure the following options to make an <Link to="/event-spec/standard-events/identify/">`identify`</Link> call:
+  - **Trait to differentiate between new or existing user**: Enter a trait key to determine a new or an existing user.
+  - **Convert identify event to Login or Signup event**: Enable this setting to convert the `identify` event to a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#login">`login`</Link> event in case of an existing user or a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#sign_up">`sign_up`</Link> event in case of a new user.
 
-If **Enable Server Side Identify** setting is enabled, you can also configure the following settings:
+  <div class="warningBlock">
+If <strong>Enable Server Side Identify</strong> is enabled in the dashboard, then this setting too <strong>must</strong> be enabled to send the <code class="inline-code">identify</code> call successfully.
+  </div>
 
-- **Trait to differentiate between new or existing user**: Enter a trait key to determine whether a user is new or an existing user.
-- **Convert identify event to Login or Signup event**: Enable this setting to convert the `identify` event to a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#login">`login`</Link> event in case of an existing user or a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#sign_up">`sign_up`</Link> event in case of a new user.
-- **Trait key for the 'method' parameter in Login or Signup event**: Enter the trait key to pass the `method` parameter in the <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#login">`login`</Link> or <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#sign_up">`signup`</Link> event.
-- **Send 'generate_lead' event for 'identify' event**: Enable this setting to send a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#generate_lead">`generate_lead`</Link> event for a new user. 
+  - **Trait key for the 'method' parameter in Login or Signup event**: Enter the trait key to pass the `method` parameter in the <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#login">`login`</Link> or <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#sign_up">`signup`</Link> event.
+  - **Send 'generate_lead' event for 'identify' event**: Enable this setting to send a <Link to="https://developers.google.com/analytics/devguides/collection/ga4/reference/events#generate_lead">`generate_lead`</Link> event for a new user. 
 
   <div class="infoBlock">
   Note that the <code class="inline-code">generate_lead</code> event will only be fired for the new users and not for the existing ones.
@@ -68,17 +74,17 @@ If **Enable Server Side Identify** setting is enabled, you can also configure th
   - **Value - traits for lead generation**: Enter the value key to pass the `value` parameter for the `generate_lead` event. 
   - **Currency - traits for lead generation**: Enter the currency key to pass the `currency` parameter for the `generate_lead` event. 
 
-<div class="infoBlock">
-Refer to the <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/#identify"><code class="inline-code">identify</code></Link> call payload for more information on sending <code class="inline-code">identify</code> events to GA4 via cloud mode.
-</div>
+  <div class="infoBlock">
+  Refer to the <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/#identify"><code class="inline-code">identify</code></Link> call payload for more information on sending <code class="inline-code">identify</code> events to GA4 via cloud mode.
+  </div>
 
 ### Native SDK
 
-<img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings-2.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
-
 <div class="infoBlock">
-All the settings mentioned below are applicable only for the device mode.
+The settings in this section are only applicable for the <Link to="/destinations/rudderstack-connection-modes/#device-mode"><strong>device mode</strong></Link>.
 </div>
+
+<img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings-2.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
 
 - **Block a Page View Event**: Enable this setting to disable sending `page_view` events on load. However, you can explicitly send a `page_view` event by calling the `page()` API.
 - **Extend Page View Property**: Enable this setting to send the following properties along with any other custom property to the `page` call of the RudderStack SDK:
@@ -97,7 +103,7 @@ Google Analytics 4 has a limit on the number of unique properties per event name
 
 <img src="../../../assets/event-stream-destinations/google-analytics-4-connection-settings-3.png" alt="Google Analytics 4 Connection Settings in RudderStack" />
 
-This option is applicable only if you're sending events to Google Analytics 4 via the web device mode. Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
+This option is applicable only if you're sending events to Google Analytics 4 via the web device mode. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 
 ### Web device mode settings
 
@@ -135,5 +141,3 @@ Finally, click on **Next** to enable Google Analytics 4 as a destination in Rudd
 3. Select the relevant account and property.
 4. Click on **Data Streams** and select the stream to get the **Firebase App Id** as shown:
 <img src="../../../assets/event-stream-destinations/firebase-app-id.png" />
-
-

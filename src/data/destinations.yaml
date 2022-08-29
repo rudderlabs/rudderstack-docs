@@ -6,6 +6,11 @@
   options: null
   type: streaming
 - category: null
+  displayName: AWS Lambda
+  link: /destinations/streaming-destinations/aws-lambda/
+  options: null
+  type: streaming
+- category: null
   displayName: AWS Personalize
   link: /destinations/streaming-destinations/aws-personalize/
   options: null
@@ -141,6 +146,11 @@
   options: null
   type: streaming
 - category: null
+  displayName: Canny
+  link: /destinations/streaming-destinations/canny/
+  options: null
+  type: streaming
+- category: null
   displayName: Chartbeat
   link: /destinations/streaming-destinations/chartbeat/
   options: null
@@ -153,6 +163,11 @@
 - category: null
   displayName: Confluent Cloud
   link: /destinations/streaming-destinations/confluent-cloud/
+  options: null
+  type: streaming
+- category: null
+  displayName: ConvertFlow
+  link: /destinations/streaming-destinations/convertflow/
   options: null
   type: streaming
 - category: null
@@ -256,6 +271,11 @@
   options: null
   type: streaming
 - category: null
+  displayName: Google Cloud Functions
+  link: /destinations/streaming-destinations/google-cloud-functions/
+  options: null
+  type: streaming
+- category: null
   displayName: Google Cloud Storage
   link: /destinations/streaming-destinations/google-cloud-storage/
   options: null
@@ -291,8 +311,18 @@
   options: null
   type: streaming
 - category: null
-  displayName: HubSpot
+  displayName: HubSpot (Legacy API)
   link: /destinations/streaming-destinations/hubspot/
+  options: null
+  type: streaming
+- category: null
+  displayName: HubSpot (New API)
+  link: /destinations/streaming-destinations/hubspot-v2/
+  options: null
+  type: streaming
+- category: null
+  displayName: InMoment (Wootric)
+  link: /destinations/streaming-destinations/inmoment/
   options: null
   type: streaming
 - category: null
@@ -401,6 +431,11 @@
   options: null
   type: streaming
 - category: null
+  displayName: Mouseflow
+  link: /destinations/streaming-destinations/mouseflow/
+  options: null
+  type: streaming
+- category: null
   displayName: New Relic
   link: /destinations/streaming-destinations/new-relic/
   options: null
@@ -408,6 +443,11 @@
 - category: cool
   displayName: Ometria
   link: /destinations/streaming-destinations/ometria/
+  options: null
+  type: streaming
+- category: null
+  displayName: OneSignal
+  link: /destinations/streaming-destinations/onesignal/
   options: null
   type: streaming
 - category: null
@@ -508,6 +548,11 @@
 - category: null
   displayName: Slack
   link: /destinations/streaming-destinations/slack/
+  options: null
+  type: streaming
+- category: null
+  displayName: SnapEngage
+  link: /destinations/streaming-destinations/snapengage/
   options: null
   type: streaming
 - category: null

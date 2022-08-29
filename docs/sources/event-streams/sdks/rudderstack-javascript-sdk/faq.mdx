@@ -1,0 +1,54 @@
+---
+title: "JavaScript SDK FAQ"
+description: Solutions to some commonly faced issues while using the RudderStack JavaScript SDK.
+---
+
+This guide contains the answers to some commonly-asked questions about setting up, using and troubleshooting the JavaScript SDK.
+
+### Should I disable adblockers on my browser?
+
+Yes, it is important to ensure that no ad blockers are running on your browser, as they restrict the JavaScript SDK script from executing and storing user information in the browser.
+
+### Can I load multiple instances of RudderStack JavaScript SDK?
+
+No, it is not possible to load multiple instances of the JavaScript SDK, as it is bound to exceed the maximum stack call size and give you an error.
+
+### How can I verify if the SDK sends the data to the desired destinations?
+
+To verify if the SDK is transmitting the events to the specified destinations, go to the **Network tab** of the JavaScript console in your browser.
+
+<img src="../../../../assets/sample-page-call.png" alt="Sample page call" />
+<img src="../../../../assets/sample-track-call.png" alt="Sample track call" />
+
+If you cannot see any outbound requests, verify if you have installed and set up the JavaScript SDK correctly. Also, check if any adblockers are enabled on your browser.
+
+### What is the size limit on the requests?
+
+The event size limit on the requests is 32 KB per message and 4 MB per batch request.
+
+### Can I send the event data to specific destinations only?
+
+Yes, you can send your <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/filtering/#filtering-destinations">event data only to the specific destinations</Link> by stopping the SDK from loading the other <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> integrations.
+
+### What is the "Reserved Keyword" error?
+
+When using the JavaScript SDK, you may run into the following error: 
+
+```Text
+Warning! : Reserved keyword used in traits -->  id with track call.
+```
+
+This is because one or more keys in your `traits` or `properties` object have the same value as a reserved keyword.
+
+RudderStack reserves the following keywords as keys for a standard event payload, and you should avoid using these while naming your event traits and properties:
+
+```javascript
+"anonymous_id";
+"id";
+"sent_at";
+"received_at";
+"timestamp";
+"original_timestamp";
+"event_text";
+"event";
+```

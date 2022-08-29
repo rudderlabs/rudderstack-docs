@@ -19,9 +19,10 @@ Follow these steps to set up a connection in RudderStack:
 For more information on sources in RudderStack, refer to the <Link to="/sources/">Sources</Link> guide.
 </div>
 
-4. Choose the data source from the list of available sources. RudderStack supports the following three types of sources:
-
-    - <Link to="/sources/cloud-apps/">Cloud Apps</Link>: Collect your event data from all the web, mobile, and server-side apps, then route it to a wide array of customer tools and data warehouses.
+4. Choose a data source from the list of available sources. RudderStack supports the following types of sources:
+ 
+    - <Link to="/sources/event-streams/sdks/">SDKs</Link>: Collect your event data from web, mobile, and server-side apps, then route it to a wide array of customer tools and data warehouses.
+    - <Link to="/sources/event-streams/cloud-apps/">Cloud Apps</Link>: Ingest event data from your cloud apps and route it to the desired destinations.
     - <Link to="/sources/extract/">Cloud Extract</Link>: Build ELT pipelines from cloud apps to your data warehouse.
     - <Link to="/sources/reverse-etl/">Reverse ETL</Link>: Leverage your warehouse as a data source for your entire customer data stack.
 
@@ -38,7 +39,7 @@ Note the source <strong>Write key</strong>. This is required for integrating the
 
 <img src="../assets/get-started/adding-new-destination.png" alt="Adding a new destination" />
 
-7. From the list of destinations, select the destination you want to configure for the source. RudderStack currently supports **over 150** destinations, including <Link to="/destinations/overview/">Event Stream</Link> and <Link to="/destinations/warehouse-destinations/">Warehouse destinations</Link>.
+7. From the list of destinations, select the destination you want to configure for the source. RudderStack currently supports **over 150** destinations, including <Link to="/destinations/streaming-destinations/">Cloud destinations</Link> and <Link to="/destinations/warehouse-destinations/">Warehouse destinations</Link>.
 8. Configure the destination by entering the relevant connection settings. For detailed information on these settings, refer to the <Link to="/destinations/overview/">destination-specific documentation</Link>.
 
 <div class="successBlock">

@@ -1,0 +1,49 @@
+---
+title: "Migrating from Self-hosted RudderStack to RudderStack Cloud"
+description: >-
+  Step-by-step guide on switching from your self-hosted control plane and data plane to RudderStack Cloud.
+---
+
+This guide is helpful if you want to migrate from your self-hosted RudderStack instance to RudderStack Cloud.
+
+## Control plane migration
+
+If you are self-hosting your control plane using the <Link to="/get-started/rudderstack-open-source/control-plane-lite">Control Plane Lite</Link> utility, follow these steps to migrate to cloud:
+
+1. Sign up for <a href="https://app.rudderstack.com/signup">RudderStack Cloud</a>.
+2. Set up your sources and destinations in your new cloud instance. See our <Link to="/dashboard-guides/">Dashboard Guides</Link> overview for walkthroughs on setting up sources and destinations.
+
+If you're using the RudderStack-hosted control plane for your source-destination configurations, skip to the next section, *Data Plane Migration*.
+
+<div class="infoBlock">
+While you can <Link to="/get-started/rudderstack-open-source/control-plane-lite/#exporting-workspace-configuration">export your source-destination configurations</Link> in your self-hosted control plane, there is no way to import them in RudderStack Cloud. Hence, you will have to set up the configurations manually.
+</div>
+
+## Data plane migration
+
+Follow these steps to switch from a self-hosted to RudderStack-hosted data plane:
+
+1. Update the `dataPlaneUrl` parameter in all your SDK configurations to point to the RudderStack-hosted hosted data plane URL. Refer to the specific <Link to="/sources/event-streams/sdks/">SDK documentation</Link> or this <Link to="/get-started/rudderstack-open-source/data-plane-setup/#what-is-a-data-plane-url-where-do-i-get-it">FAQ</Link> for details on obtaining the data plane URL.
+1. Verify that the self-hosted data plane is no longer getting any requests. One way to do this is to check your load balancer metrics to verify if any requests are still received on your data plane.
+1. Ensure that all events received in the self-hosted data plane are delivered. 
+  <div class="infoBlock">
+  It is recommended to keep the self-hosted data plane running for a day or two to ensure that all the events are delievered.
+  </div>
+1. Shut down the self-hosted data plane depending on your deployment method. For example, if you have deployed the data plane using Helm, run the following command:
+
+  ```BASH
+  helm delete <rudderstack-release-name>
+  ```
+
+  <div class="infoBlock">
+  Replace the <code class="inline-code">rudderstack-release-name</code> with the release name of the Helm chart you want to delete.
+  </div>
+
+## Best practices
+
+* In the case of mobile SDKs, your customers need to update their mobile applications. You can keep the self-hosted data plane online until a satisfactory number of customers have updated their mobile application or there are no more events coming in to the self-hosted data plane. 
+
+  Alternatively, you can run an API Gateway or Cloudflare workers to proxy the requests from your self-hosted data plane URL to the RudderStack-hosted data plane URL.
+
+* With mobile SDKs, if you are using Firebase to serve values like `writeKey` and `dataPlaneUrl`, there is no need to update the mobile application to point to the RudderStack-hosted data plane.
+* This process of switching the data plane can hamper the order of events as events are sent both from the RudderStack-hosted and self-hosted data plane at the same time **for a while**. Hence, it is recommended to choose a low-traffic time slot to carry out this activity.

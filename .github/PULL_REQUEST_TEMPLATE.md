@@ -7,7 +7,3 @@
 - [ ] New documentation
 - [ ] Documentation update
 - [ ] Hotfix
-
-## Notion ticket link
-
-> Add a link to the Notion ticket.

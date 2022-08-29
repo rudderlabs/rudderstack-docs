@@ -23,7 +23,7 @@ RudderStack lets you specify the event names to be used as session events in the
 RudderStack sends the session events to Singular via its [`launch`](https://s2s.singular.net/api/v1/launch) API.
 
 <div class="warningBlock">
-RudderStack considers an event as a session event only if it is specified in the dashboard settings or if it one of the following three <Link to="/event-spec/application-lifecycle-events-spec/">lifecycle events</Link>:
+RudderStack considers an event as a session event only if it is specified in the dashboard settings or if it one of the following three <Link to="/event-spec/standard-events/application-lifecycle-events-spec/">lifecycle events</Link>:
 <ul>
   <li>Application Installed</li>
   <li>Application Opened</li>
@@ -39,7 +39,7 @@ RudderStack automatically tracks the above three lifecycle events if lifecycle e
 
 This section lists the mappings of the RudderStack event properties to the relevant Singular fields.
 
-The following table lists the mapping of the attributes **automatically captured** by RudderStack for the **mobile platforms** (<Link to="/sources/sdks/rudderstack-android-sdk/">Android</Link> and <Link to="/sources/sdks/rudderstack-ios-sdk/">iOS</Link>):
+The following table lists the mapping of the attributes **automatically captured** by RudderStack for the **mobile platforms** (<Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link> and <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>):
 
 | RudderStack property | Singular attribute | Presence | Description |
 | :----| :----| :----| :----| 
@@ -102,8 +102,8 @@ These properties are persisted in the SDK and must be passed just once.
 <div class="infoBlock">
 For more information on setting the device token, refer to the relevant SDK documentation:
 <ul>
-  <li><Link to="/sources/sdks/rudderstack-android-sdk#setting-the-android-device-token">Android</Link></li>
-  <li><Link to="/sources/sdks/rudderstack-ios-sdk#setting-the-device-token">iOS</Link></li>
+  <li><Link to="/sources/event-streams/sdks/rudderstack-android-sdk#setting-the-android-device-token">Android</Link></li>
+  <li><Link to="/sources/event-streams/sdks/rudderstack-ios-sdk#setting-the-device-token">iOS</Link></li>
 </ul>
 </div>
 
@@ -117,7 +117,7 @@ RudderStack sends all the events other than the session events as custom events 
 
 ### Supported mappings
 
-The following table lists the mapping of the attributes **automatically captured** by RudderStack for the **mobile platforms** (<Link to="/sources/sdks/rudderstack-android-sdk/">Android</Link> and <Link to="/sources/sdks/rudderstack-ios-sdk/">iOS</Link>):
+The following table lists the mapping of the attributes **automatically captured** by RudderStack for the **mobile platforms** (<Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link> and <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>):
 
 | RudderStack property | Singular attribute | Presence | Description |
 | :----| :----| :----| :----| 
