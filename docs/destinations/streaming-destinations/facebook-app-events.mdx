@@ -5,7 +5,7 @@ description: >-
   Events.
 ---
 
-[**Facebook App Events**](https://developers.facebook.com/docs/app-events/) is Facebook's event tracking functionality. It lets you track events via your app or web page, including user activities such as app installation, purchases, etc.
+[**Facebook App Events**](https://developers.facebook.com/docs/app-events/) is Facebook's event tracking functionality which lets you track events via your app or web page, including user activities such as app installation, purchases, etc.
 
 RudderStack supports Facebook App Events as a destination to which you can send your event data seamlessly.
 
@@ -33,7 +33,7 @@ Once you have confirmed that the source supports sending events to Facebook App 
 
 ### Connection settings
 
-To successfully configure App Events as a destination, you will need to configure the following settings:
+To successfully configure Facebook App Events as a destination, you will need to configure the following settings:
 
 <img src="../../assets/event-stream-destinations/fb-app-events-connection-settings.png" />
 <img src="../../assets/event-stream-destinations/fb-app-events-connection-settings-2.png" />
@@ -44,7 +44,7 @@ To successfully configure App Events as a destination, you will need to configur
 Refer to the <Link to="#faq">FAQ</Link> section for more information on getting your Facebook App ID.
 </div>
 
-The following options are applicable only if you are sending events to Facebook using the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>:
+The following settings are applicable **only if** you are sending events to Facebook using the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>:
 
 - **Limited Data Use**: Enable this option to send the country and state of the end-user. Facebook processes the user data according to the data regulations set for that region.
 
@@ -52,7 +52,7 @@ The following options are applicable only if you are sending events to Facebook 
 For more information on this option, refer to the <a href="#limited-data-use">Limited Data Use</a> section below.
 </div>
 
-- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to ConvertFlow.
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Facebook App Events.
 
 <div class="infoBlock">
 For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
@@ -165,7 +165,7 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
         </div>
         Follow these steps to add Facebook App Events to your iOS project:
 <ol>
-<li>Install <code class="inline-code">Rudder-Facebook</code> (available through <a href="https://cocoapods.org/">CocoaPods</a>) by adding the following line to your <code class="inline-code">Podfile</code>:
+<li>Install <code class="inline-code">RudderFacebookAppEvents</code> (available through <a href="https://cocoapods.org/">CocoaPods</a>) by adding the following line to your <code class="inline-code">Podfile</code>:
 <span>
 
 ```ruby
@@ -322,14 +322,14 @@ A sample `track` call for an iOS application is as shown:.
 <div class="infoBlock">
 When <code class="inline-code">revenue</code> and <code class="inline-code">currency</code> are present in the event properties of any <code class="inline-code">track</code> call, RudderStack makes a <code class="inline-code">Purchase</code> call to Facebook using its <code class="inline-code">logPurchase</code> API along with the normal <code class="inline-code">track</code> call using the <code class="inline-code">logEvent</code> API.
 
-If <code class="inline-code">currency</code> is absent in the event properties RudderStack sets the default value to <code class="inline-code">USD</code>.
+If <code class="inline-code">currency</code> is absent in the event properties, RudderStack sets the default value to <code class="inline-code">USD</code>.
 </div>
 
 ### Supported mappings for iOS v2
 
-This section lists some `track` event and property mappings which are only applicable for <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/ios-v2/">iOS v2</Link> device mode.
+This section lists some `track` event and property mappings which are **applicable only** for <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/ios-v2/">iOS v2</Link> device mode.
 
-The following table lists the mapping for `track` event properties between RudderStack and Facebook App Events:
+The following table lists the `track` event properties mappings between RudderStack and Facebook App Events:
 
 | RudderStack property         | Facebook App Events property   | 
 | :--------------------------- | :---------------------  |
@@ -341,7 +341,7 @@ The following table lists the mapping for `track` event properties between Rudde
 | `query`                 | Query          |        
 | `description`                 | Description         |    
 
-The following table lists the mapping for e-commerce events between RudderStack and Facebook App Events :
+The following table lists the e-commerce events mappings between RudderStack and Facebook App Events:
 
 | RudderStack event         | Facebook App Events event      | 
 | :--------------------------- | :---------------------  |        
@@ -357,7 +357,7 @@ The following table lists the mapping for e-commerce events between RudderStack 
 | Product Reviewed              | Rate                    |
 | Spend Credits         | Spent Credits                 |
 
-Along with the above, RudderStack supports the following Lifecycle events and maps them as it is before sending them to Facebook App Events:
+RudderStack also supports the following Lifecycle events and maps them as it is before sending them to Facebook App Events:
 
 - Complete Registration
 - Achieve Level
@@ -403,7 +403,7 @@ The above <code class="inline-code">screen</code> call is directly passed on to 
 
 In July 2020, Facebook released a [**Limited Data Use**](https://developers.facebook.com/docs/marketing-apis/data-processing-options) feature to give businesses better control over how their data is used in their **California Consumer Privacy Act \(CCPA\)** compliance efforts.
 
-You can now send the **Limited Data Use** data processing parameters to Facebook for each event via RudderStack, so that Facebook can appropriately apply the user’s data choice.
+Using this, you can send the **Limited Data Use** data processing parameters to Facebook for each event via RudderStack, so that Facebook can appropriately apply the user’s data choice.
 
 To use this feature, enable the **Limited Data Use** setting in the RudderStack dashboard and control its behavior via the following data processing parameters:
 
@@ -649,7 +649,7 @@ FacebookSdk.fullyInitialize()
 </Tabs>
 
 <div class="infoBlock">
-Starting from iOS version 14.5, you need to get the device's consent to share data with Facebook or not by setting the  <code class="inline-code">isAdvertiserTrackingEnabled</code> property. Refer to Facebook's <a href="https://developers.facebook.com/docs/app-events/getting-started-app-events-ios#get-device-consent">Get device consent</a> documentation for more information.
+Starting from iOS version 14.5, you need to get the device consent to share data with Facebook or not by setting the  <code class="inline-code">isAdvertiserTrackingEnabled</code> property. Refer to Facebook's <a href="https://developers.facebook.com/docs/app-events/getting-started-app-events-ios#get-device-consent">Get device consent</a> documentation for more information.
 </div>
 
 ## FAQ
