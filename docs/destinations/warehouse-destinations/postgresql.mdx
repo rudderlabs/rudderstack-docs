@@ -3,6 +3,8 @@ title: "PostgreSQL"
 description: Step-by-step guide on setting up PostgreSQL as a destination in RudderStack.
 ---
 
+import Iplist from '/src/components/iplist';
+
 [PostgreSQL](https://www.postgresql.org/) is an enterprise-grade, open source database management system. It supports both SQL and JSON for relational and non-relational queries respectively. Many companies in the market use PostgreSQL as their low-cost data warehousing solution in order to deliver efficient analytics and user insights.
 
 RudderStack lets you configure PostgreSQL as a destination to which you can seamlessly send your event data.
@@ -129,33 +131,7 @@ The following steps demonstrate how you can create a new SSL certificate in [Goo
 For other cloud providers, this procedure might vary slightly.
 </div>
 
-## IPs to be allowlisted
-
-To enable network access to RudderStack, you will need to allowlist the following RudderStack IPs:
-
-- 3.216.35.97
-- 23.20.96.9
-- 18.214.35.254
-- 54.147.40.62
-- 34.198.90.241
-- 100.20.239.77
-- 52.38.160.231
-- 34.211.241.254
-- 44.236.60.231
-- 3.66.99.198
-- 3.64.201.167
-
-<div class="infoBlock">
-If your deployment is in the EU region, you can allowlist only the following two IPs:
-<ul>
-<li>3.66.99.198</li>
-<li>3.64.201.167</li>
-</ul>
-</div>
-
-<div class="infoBlock">
-All the outbound traffic is routed through these RudderStack IPs.
-</div>
+<Iplist/>
 
 ## FAQ
 

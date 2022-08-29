@@ -3,6 +3,8 @@ title: "Amazon S3 Data Lake"
 description: Step-by-step guide on setting up S3 Data Lake as a destination in RudderStack.
 ---
 
+import Iplist from '/src/components/iplist';
+
 Amazon S3 is a popular object storage service used to store both structured and unstructured data. With an S3-powered data lake, you can easily use the native AWS services for data processing, analytics, machine learning, and more.
 
 RudderStack lets you configure S3 data lake as a destination to which you can send your event data seamlessly.
@@ -225,30 +227,4 @@ By default, RudderStack sets the namespace to your source name if it is not expl
 
 <img src="../../assets/dw-integrations/s3-datalake-querying-data-3.png" alt="Preview Data" />
 
-## IPs to be allowlisted
-
-To enable network access to RudderStack, you will need to allowlist the following RudderStack IPs:
-
-- 3.216.35.97
-- 23.20.96.9
-- 18.214.35.254
-- 54.147.40.62
-- 34.198.90.241
-- 100.20.239.77
-- 52.38.160.231
-- 34.211.241.254
-- 44.236.60.231
-- 3.66.99.198
-- 3.64.201.167
-
-<div class="infoBlock">
-If you have your deployment in the EU region, you can allowlist only the following two IPs:
-<ul>
-<li>3.66.99.198</li>
-<li>3.64.201.167</li>
-</ul>
-</div>
-
-<div class="infoBlock">
-All the outbound traffic is routed through these RudderStack IPs.
-</div>
+<Iplist/>

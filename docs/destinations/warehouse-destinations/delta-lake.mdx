@@ -3,6 +3,8 @@ title: "Databricks Delta Lake"
 description: Step-by-step guide on setting up Databricks Delta Lake as a destination in RudderStack.
 ---
 
+import Iplist from '/src/components/iplist';
+
 [Delta Lake](https://databricks.com/product/delta-lake-on-databricks) is a popular data lake used for both streaming and batch operations. It lets you store structured, unstructured, and semi-structured data securely and reliably. With features such as support for ACID transactions, scalable metadata management, and schema enforcement, Delta Lake enables you to scale and deliver real-time data insights and analytics directly via your data lake.
 
 RudderStack lets you configure Delta Lake as a destination to which you can send your event data seamlessly.
@@ -351,33 +353,7 @@ Keep the <strong>Lifetime (days)</strong> field blank. If you enter a number, yo
 
 4. Finally, copy the access token as it will be used during the Delta Lake destination setup in RudderStack.
 
-## IPs to be allowlisted
-
-You will need to allowlist the following RudderStack IPs to enable network access:
-
-- 3.216.35.97
-- 23.20.96.9
-- 18.214.35.254
-- 54.147.40.62
-- 34.198.90.241
-- 100.20.239.77
-- 52.38.160.231
-- 34.211.241.254
-- 44.236.60.231
-- 3.66.99.198
-- 3.64.201.167
-
-<div class="infoBlock">
-If you have your deployment in the EU region, you can allowlist only the following two IPs:
-<ul>
-<li>3.66.99.198</li>
-<li>3.64.201.167</li>
-</ul>
-</div>
-
-<div class="infoBlock">
-All the outbound traffic is routed through these RudderStack IPs.
-</div>
+<Iplist/>
 
 ## FAQ
 
