@@ -75,6 +75,8 @@ The following table lists the mappings between the **optional** RudderStack and 
 | `originalTimestamp` / `timestamp` | `last_active` | Timestamp in ISO 8601 format |
 | `phone` | `phone` / `mobile` | Any |
 | `traits.address.city` | `city` | String |
+| `traits.address.addressLine1`/ `context.traits.address.addressLine1` | `address1` | String |
+| `traits.address.addressLine2`/ `context.traits.address.addressLine2` | `address2` | String |
 | `traits.address`/ `context.traits.address` | `address1` + `address2` | String |
 | `traits.company.employeeCount` | `company_size` | Integer |
 | `traits.role` / `context.traits.role` | `role` | String |
@@ -119,20 +121,26 @@ The contact ID passed in your event's <code class="inline-code">externalId</code
 
 ## Group
 
-You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to link a Mautic contact with a segment, campaign, or a company. 
-
-<div class="infoBlock">
-RudderStack uses the <code class="inline-code">type</code> trait present in the <code class="inline-code">group</code> call to do the linking.
-</div>
+You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to link a Mautic contact with a segment, campaign, or a company.
 
 A sample `group` call is shown below:
 
 ```javascript
 rudderanalytics.group("group01", {
   "name": "Alex Keener",
-  "type": "Segments"
+  "type": "Segments",
+  "operation": "Add"
 });
 ```
+
+RudderStack uses the `type` trait present in the `group` call to link a given user to a segment, campaign, or company. You can add or remove a user to a group using the `operation` trait. If this field is absent, RudderStack sets to `Add` by default.
+
+The following table lists the supported `group` traits:
+
+| RudderStack property | Presence | Notes | 
+|:---------------------|:-------------|:--------------|
+| `traits.type` | Required | You can set it to `Segments`, `Campaigns`, or `Companies` |
+| `traits.operation` | Optional | If not set, RudderStack sets it to `Add` by default. | 
 
 Similar to the <Link to="#getting-contact-details">`identify`</Link> call above, RudderStack retrieves the contact ID from the `group` call in the following order of precedence:
 
