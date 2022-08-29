@@ -3,6 +3,8 @@ title: "Microsoft SQL Server"
 description: Step-by-step guide on setting up SQL Server as a destination in RudderStack.
 ---
 
+import Iplist from '/src/components/iplist';
+
 [Microsoft SQL Server](https://www.microsoft.com/en-in/sql-server/sql-server-downloads) is a popular relational database management system (RDBMS). ideal for a variety of data workloads - from small-scale, single-machine data applications to large data applications with thousands of concurrent users.
 
 RudderStack lets you configure Microsoft SQL Server as a destination to which you can send your event data seamlessly.
@@ -92,33 +94,7 @@ This option is applicable only for RudderStack-hosted data planes. For self-host
    - <Link to="/destinations/streaming-destinations/google-cloud-storage#setting-up-google-cloud-storage">Google Cloud Storage bucket settings</Link>
    - <Link to="/destinations/streaming-destinations/minio#setting-up-minio">MinIO bucket storage settings</Link>
 
-## IPs to be allowlisted
-
-To enable network access to RudderStack, you will need to allowlist the following RudderStack IPs:
-
-- 3.216.35.97
-- 23.20.96.9
-- 18.214.35.254
-- 54.147.40.62
-- 34.198.90.241
-- 100.20.239.77
-- 52.38.160.231
-- 34.211.241.254
-- 44.236.60.231
-- 3.66.99.198
-- 3.64.201.167
-
-<div class="infoBlock">
-If you have your deployment in the EU region, you can allowlist only the following two IPs:
-<ul>
-<li>3.66.99.198</li>
-<li>3.64.201.167</li>
-</ul>
-</div>
-
-<div class="infoBlock">
-All the outbound traffic is routed through these RudderStack IPs.
-</div>
+<Iplist/>
 
 ## FAQ
 
