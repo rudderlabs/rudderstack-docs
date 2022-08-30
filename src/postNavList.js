@@ -1834,6 +1834,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "merge",
+    title: "Merge",
+    link: "/event-spec/standard-events/merge/",
+    content: [],
+  },
+  {
     key: "common-fields",
     title: "Common Fields",
     link: "/event-spec/standard-events/common-fields/",

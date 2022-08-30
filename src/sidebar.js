@@ -1440,6 +1440,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Merge",
+                link: "/event-spec/standard-events/merge/",
+                content: []
+            },
+            {
                 title: "Common Fields",
                 link: "/event-spec/standard-events/common-fields/",
                 content: []
