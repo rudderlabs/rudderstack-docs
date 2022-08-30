@@ -121,7 +121,7 @@ The contact ID passed in your event's <code class="inline-code">externalId</code
 
 ## Group
 
-You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to link a Mautic contact with a segment, campaign, or a company.
+You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to link or delink a Mautic contact with a segment, campaign, or a company.
 
 A sample `group` call is shown below:
 
@@ -129,18 +129,18 @@ A sample `group` call is shown below:
 rudderanalytics.group("group01", {
   "name": "Alex Keener",
   "type": "Segments",
-  "operation": "Add"
+  "operation": "add"
 });
 ```
 
-RudderStack uses the `type` trait present in the `group` call to link a given user to a segment, campaign, or company. You can add or remove a user to a group using the `operation` trait. If this field is absent, RudderStack sets to `Add` by default.
+RudderStack uses the `type` trait present in the `group` call to link or delink a Mautic user to a segment, campaign, or company. You can add or remove a user to a group using the `operation` trait. If this field is not explicitly set, RudderStack sets it to `add` by default.
 
 The following table lists the supported `group` traits:
 
 | RudderStack property | Presence | Notes | 
 |:---------------------|:-------------|:--------------|
-| `traits.type` | Required | You can set it to `Segments`, `Campaigns`, or `Companies` |
-| `traits.operation` | Optional | If not set, RudderStack sets it to `Add` by default. | 
+| `traits.type` | Required | You can set it to `Segments`, `Campaigns`, or `Companies`. |
+| `traits.operation` | Optional | If not set, RudderStack sets it to `add` by default. | 
 
 Similar to the <Link to="#getting-contact-details">`identify`</Link> call above, RudderStack retrieves the contact ID from the `group` call in the following order of precedence:
 
