@@ -27,7 +27,7 @@ The <Link to="/dashboard-guides/overview/#workspace-token">workspace token</Link
 5. Then, open your terminal, navigate to the directory where you want to install RudderStack, and run the following command:
 
 ```bash
-docker-compose -f rudder-docker.yml up
+docker compose -f rudder-docker.yml up -d
 ```
 
 ## Self-hosted control plane
@@ -37,5 +37,3 @@ If you have self-hosted the control plane using the open-source <Link to="/get-s
 ## Sending test events
 
 Once you have successfully performed the steps above, follow the <Link to="/get-started/rudderstack-open-source/sending-test-events/">Sending Test Events</Link> guide to verify the installation.
-
-

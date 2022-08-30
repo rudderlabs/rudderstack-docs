@@ -65,13 +65,13 @@ An open source RudderStack data plane URL typically looks like <code class="inli
 To check the status of your data plane, run the following command:
 
 ```bash
-CURL <DATA_PLANE_URL>/health
+curl <DATA_PLANE_URL>/health
 ```
 
 A sample command is shown below:
 
 ```bash
-CURL https://hosted.rudderlabs.com/health
+curl http://localhost:8080/health
 ```
 
 You will see the following output:
@@ -88,5 +88,3 @@ The RudderStack server (backend) supports two running modes:
 <div class="infoBlock">
 For more information on the supported running modes, refer to the <Link to="/user-guides/administrators-guide/high-availability/">RudderStack High Availability</Link>guide.
 </div>
-
-
