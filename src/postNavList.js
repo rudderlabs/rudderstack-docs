@@ -1774,6 +1774,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "user-management",
+    title: "User Management",
+    link: "/dashboard-guides/user-management/",
+    content: [],
+  },
+  {
     key: "permissions-management",
     title: "Permissions Management",
     link: "/dashboard-guides/permissions-management/",
