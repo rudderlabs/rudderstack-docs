@@ -254,7 +254,7 @@ You should use the `track` method instead. For the JavaScript SDK's `track` meth
 
 #### Is Shopify compatible as a data source for Rudderstack?
 
-Yes, Shopify is compatible as an event stream data source. For more information, refer to <Link to="/sources/cloud-apps/shopify/">Shopify</Link>. We also have users that integrate the JavaScript SDK into their Shopify sites. In some cases, they even do it through Google Tag Manager.
+Yes, Shopify is compatible as an event stream data source. For more information, refer to <Link to="/sources/event-streams/cloud-apps/shopify/">Shopify</Link>. We also have users that integrate the JavaScript SDK into their Shopify sites. In some cases, they even do it through Google Tag Manager.
 However, we strongly recommend using the Shopify source integration for better tracking.
 
 ### Cloud Extract sources
@@ -377,14 +377,14 @@ Additionally, the SDKs have a built-in local caching and retrying capability. So
 To enable network access to RudderStack, you will need to allowlist the following RudderStack IPs:
 
 - 3.216.35.97
-- 34.198.90.241
-- 54.147.40.62
 - 23.20.96.9
 - 18.214.35.254
-- 35.83.226.133
-- 52.41.61.208
-- 44.227.140.138
-- 54.245.141.180
+- 54.147.40.62
+- 34.198.90.241
+- 100.20.239.77
+- 52.38.160.231
+- 34.211.241.254
+- 44.236.60.231
 - 3.66.99.198
 - 3.64.201.167
 
@@ -444,7 +444,7 @@ If a user event fails, the other events are not sent until the failed event is s
 </div>
 
 <div class="infoBlock">
-For more information on the SDK-specific retry and backoff logic, refer to the <Link to="/sources/sdks/faq/#what-is-the-rudderstack-retry-and-backoff-logic-after-the-connection-fails">SDK FAQ</Link> guide.
+For more information on the SDK-specific retry and backoff logic, refer to the <Link to="/sources/event-streams/sdks/faq/#what-is-the-rudderstack-retry-and-backoff-logic-after-the-connection-fails">SDK FAQ</Link> guide.
 </div>
 
 ## Throttling behavior

@@ -6,6 +6,11 @@
   options: null
   type: streaming
 - category: null
+  displayName: AWS Lambda
+  link: /destinations/streaming-destinations/aws-lambda/
+  options: null
+  type: streaming
+- category: null
   displayName: AWS Personalize
   link: /destinations/streaming-destinations/aws-personalize/
   options: null
@@ -161,6 +166,11 @@
   options: null
   type: streaming
 - category: null
+  displayName: ConvertFlow
+  link: /destinations/streaming-destinations/convertflow/
+  options: null
+  type: streaming
+- category: null
   displayName: Criteo
   link: /destinations/streaming-destinations/criteo/
   options: null
@@ -261,6 +271,11 @@
   options: null
   type: streaming
 - category: null
+  displayName: Google Cloud Functions
+  link: /destinations/streaming-destinations/google-cloud-functions/
+  options: null
+  type: streaming
+- category: null
   displayName: Google Cloud Storage
   link: /destinations/streaming-destinations/google-cloud-storage/
   options: null
@@ -296,13 +311,18 @@
   options: null
   type: streaming
 - category: null
-  displayName: HubSpot
+  displayName: HubSpot (Legacy API)
   link: /destinations/streaming-destinations/hubspot/
   options: null
   type: streaming
 - category: null
-  displayName: HubSpot V2
+  displayName: HubSpot (New API)
   link: /destinations/streaming-destinations/hubspot-v2/
+  options: null
+  type: streaming
+- category: null
+  displayName: InMoment (Wootric)
+  link: /destinations/streaming-destinations/inmoment/
   options: null
   type: streaming
 - category: null
@@ -533,6 +553,11 @@
 - category: null
   displayName: Slack
   link: /destinations/streaming-destinations/slack/
+  options: null
+  type: streaming
+- category: null
+  displayName: SnapEngage
+  link: /destinations/streaming-destinations/snapengage/
   options: null
   type: streaming
 - category: null

@@ -32,6 +32,21 @@ status = 301
 # post-launch redirects (wip)
 
 [[redirects]]
+from = "/sources/sdks/*"
+to = "/docs/sources/event-streams/sdks/:splat"
+status = 301
+[[redirects]]
+from = "/sources/cloud-apps/*"
+to = "/docs/sources/event-streams/cloud-apps/:splat"
+status = 301
+[[redirects]]
+from = "/sources/event-streams/sdks/rudderstack-javascript-sdk/querystring-api/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#querystring-api"
+status = 301
+[[redirects]]
+from ="/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/"
+to ="/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/"
+[[redirects]]
 from = "/data-governance/"
 to = "/docs/features/data-governance/"
 status = 301
@@ -49,7 +64,7 @@ to ="/docs/features/identity-resolution/"
 status = 301
 [[redirects]]
 from ="/extensions/auth0-authentication-api-webhooks"
-to ="/docs/sources/cloud-apps/auth0/"
+to ="/docs/sources/event-streams/cloud-apps/auth0/"
 status = 301
 [[redirects]]
 from ="/rudderstack-api-spec"
@@ -84,7 +99,7 @@ to = "/docs/destinations/warehouse-destinations/warehouse-schema/"
 status = 301
 [[redirects]]
 from ="/rudderstack-react-native-sdk/"
-to ="/docs/sources/sdks/rudderstack-react-native-sdk/"
+to ="/docs/sources/event-streams/sdks/rudderstack-react-native-sdk/"
 status = 301
 
 [[redirects]]
@@ -1001,210 +1016,214 @@ status = 301
 
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/"
-to = "/docs/sources/sdks/rudderstack-android-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-android-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/"
-to = "/docs/sources/sdks/rudderstack-ios-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-ios-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/"
-to = "/docs/sources/sdks/rudderstack-javascript-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/"
-to = "/docs/sources/sdks/"
+to = "/docs/sources/event-streams/sdks/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-amp-analytics/"
-to = "/docs/sources/sdks/rudderstack-amp-analytics/"
+to = "/docs/sources/event-streams/sdks/rudderstack-amp-analytics/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/event-filtering/"
-to = "/docs/sources/sdks/event-filtering/"
+to = "/docs/sources/event-streams/sdks/event-filtering/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/add-an-application-class-to-you-android-application/"
-to = "/docs/sources/sdks/rudderstack-android-sdk/adding-an-application-class/"
+to = "/docs/sources/event-streams/sdks/rudderstack-android-sdk/adding-an-application-class/"
 status = 301
 [[redirects]]
-from = "/sources/sdks/rudderstack-android-sdk/add-an-application-class-to-you-android-application/"
-to = "/docs/sources/sdks/rudderstack-android-sdk/adding-an-application-class/"
+from = "/sources/event-streams/sdks/rudderstack-android-sdk/add-an-application-class-to-you-android-application/"
+to = "/docs/sources/event-streams/sdks/rudderstack-android-sdk/adding-an-application-class/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-android-sdk/flushing-events-periodically/"
-to = "/docs/sources/sdks/rudderstack-android-sdk/flushing-events-periodically/"
+to = "/docs/sources/event-streams/sdks/rudderstack-android-sdk/flushing-events-periodically/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-cordova-sdk/"
-to = "/docs/sources/sdks/rudderstack-cordova-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-cordova-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-dotnet-sdk/"
-to = "/docs/sources/sdks/rudderstack-dotnet-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-dotnet-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v1/"
-to = "/docs/sources/sdks/rudderstack-flutter-sdk/flutter-v1/"
+to = "/docs/sources/event-streams/sdks/rudderstack-flutter-sdk/flutter-v1/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/flutter-v2/"
-to = "/docs/sources/sdks/rudderstack-flutter-sdk/flutter-v2/"
+to = "/docs/sources/event-streams/sdks/rudderstack-flutter-sdk/flutter-v2/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-flutter-sdk/"
-to = "/docs/sources/sdks/rudderstack-flutter-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-flutter-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-go-sdk/"
-to = "/docs/sources/sdks/rudderstack-go-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-go-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/ios-v2/"
-to = "/docs/sources/sdks/rudderstack-ios-sdk/ios-v2/"
+to = "/docs/sources/event-streams/sdks/rudderstack-ios-sdk/ios-v2/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/macos/"
-to = "/docs/sources/sdks/rudderstack-ios-sdk/macos/"
+to = "/docs/sources/event-streams/sdks/rudderstack-ios-sdk/macos/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/tvOS/"
-to = "/docs/sources/sdks/rudderstack-ios-sdk/tvOS/"
+to = "/docs/sources/event-streams/sdks/rudderstack-ios-sdk/tvOS/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/watchOS/"
-to = "/docs/sources/sdks/rudderstack-ios-sdk/watchOS/"
+to = "/docs/sources/event-streams/sdks/rudderstack-ios-sdk/watchOS/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-java-sdk/"
-to = "/docs/sources/sdks/rudderstack-java-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-java-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/"
-to = "/docs/sources/sdks/rudderstack-javascript-sdk/consent-managers/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/consent-managers/onetrust/"
-to = "/docs/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/"
+status = 301
+[[redirects]]
+from = "/sources/event-streams/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/data-storage-cookies/"
-to = "/docs/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/data-storage-cookies/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/detecting-adblocked-pages/"
-to = "/docs/sources/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/javascript-sdk-enhancements/"
-to = "/docs/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/js-sdk-faqs/"
-to = "/docs/sources/sdks/rudderstack-javascript-sdk/faq/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/faq/"
 status = 301
 [[redirects]]
-from = "/sources/sdks/rudderstack-javascript-sdk/js-sdk-faqs/"
-to = "/docs/sources/sdks/rudderstack-javascript-sdk/faq/"
+from = "/sources/event-streams/sdks/rudderstack-javascript-sdk/js-sdk-faqs/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/faq/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/querystring-api/"
-to = "/docs/sources/sdks/rudderstack-javascript-sdk/querystring-api/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/querystring-api/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/quick-start-guide/"
-to = "/docs/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-javascript-sdk/version-migration-guide/"
-to = "/docs/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/"
+to = "/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-node-sdk/"
-to = "/docs/sources/sdks/rudderstack-node-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-node-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-php-sdk/"
-to = "/docs/sources/sdks/rudderstack-php-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-php-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-python-sdk/"
-to = "/docs/sources/sdks/rudderstack-python-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-python-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ruby-sdk/"
-to = "/docs/sources/sdks/rudderstack-ruby-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-ruby-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-react-native-sdk/"
-to = "/docs/sources/sdks/rudderstack-react-native-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-react-native-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-rust-sdk/"
-to = "/docs/sources/sdks/rudderstack-rust-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-rust-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/rudderstack-unity-sdk/"
-to = "/docs/sources/sdks/rudderstack-unity-sdk/"
+to = "/docs/sources/event-streams/sdks/rudderstack-unity-sdk/"
 status = 301
 [[redirects]]
 from = "/stream-sources/rudderstack-sdk-integration-guides/sdk-faqs/"
-to = "/docs/sources/sdks/faq/"
+to = "/docs/sources/event-streams/sdks/faq/"
 status = 301
 
 # Cloud Apps Sources
 
 [[redirects]]
 from = "/stream-sources/segment/"
-to = "/docs/sources/cloud-apps/segment/"
+to = "/docs/sources/event-streams/cloud-apps/segment/"
 status = 301
 [[redirects]]
 from = "/stream-sources/webhook-source/"
-to = "/docs/sources/cloud-apps/webhook-source/"
+to = "/docs/sources/event-streams/cloud-apps/webhook-source/"
 status = 301
 [[redirects]]
 from = "/stream-sources/shopify/"
-to = "/docs/sources/cloud-apps/shopify/"
+to = "/docs/sources/event-streams/cloud-apps/shopify/"
 status = 301
 [[redirects]]
 from = "/stream-sources/appcenter/"
-to = "/docs/sources/cloud-apps/appcenter/"
+to = "/docs/sources/event-streams/cloud-apps/appcenter/"
 status = 301
 [[redirects]]
 from = "/stream-sources/appsflyer/"
-to = "/docs/sources/cloud-apps/appsflyer/"
+to = "/docs/sources/event-streams/cloud-apps/appsflyer/"
 status = 301
 [[redirects]]
 from = "/stream-sources/auth0/"
-to = "/docs/sources/cloud-apps/auth0/"
+to = "/docs/sources/event-streams/cloud-apps/auth0/"
 status = 301
 [[redirects]]
 from = "/stream-sources/braze-currents/"
-to = "/docs/sources/cloud-apps/braze-currents/"
+to = "/docs/sources/event-streams/cloud-apps/braze-currents/"
 status = 301
 [[redirects]]
 from = "/stream-sources/customerio/"
-to = "/docs/sources/cloud-apps/customerio/"
+to = "/docs/sources/event-streams/cloud-apps/customerio/"
 status = 301
 [[redirects]]
 from = "/stream-sources/extole/"
-to = "/docs/sources/cloud-apps/extole/"
+to = "/docs/sources/event-streams/cloud-apps/extole/"
 status = 301
 [[redirects]]
 from = "/stream-sources/"
-to = "/docs/sources/cloud-apps/"
+to = "/docs/sources/event-streams/cloud-apps/"
 status = 301
 [[redirects]]
 from = "/stream-sources/iterable/"
-to = "/docs/sources/cloud-apps/iterable/"
+to = "/docs/sources/event-streams/cloud-apps/iterable/"
 status = 301
 [[redirects]]
 from = "/stream-sources/looker/"
-to = "/docs/sources/cloud-apps/looker/"
+to = "/docs/sources/event-streams/cloud-apps/looker/"
 status = 301
 [[redirects]]
 from = "/stream-sources/posthog/"
-to = "/docs/sources/cloud-apps/posthog/"
+to = "/docs/sources/event-streams/cloud-apps/posthog/"
 status = 301
 
 # Cloud Extract Sources
@@ -1460,6 +1479,10 @@ status = 301
 [[redirects]]
 from = "/get-started/rudderstack-architecture/"
 to = "/docs/resources/rudderstack-architecture/"
+status = 301
+[[redirects]]
+from = "/user-guides/how-to-guides/switch-to-rudderstack-hosted-data-plane/"
+to = "/docs/user-guides/migration-guides/switch-to-rudderstack-hosted-data-plane/"
 status = 301
 
 # End restructuring

@@ -46,7 +46,7 @@ For more information on obtaining your Adjust app token, refer to the <Link to="
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Adjust.
 
 <div class="infoBlock">
-This setting is applicable only when sending events to Adjust via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>. For more information, refer to the <Link to="https://www.rudderstack.com/docs/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+This setting is applicable only when sending events to Adjust via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>. For more information, refer to the <Link to="https://www.rudderstack.com/docs/sources/event-streams/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
 </div>
 
 - **Map events to Adjust Event Tokens**: This setting lets you map the RudderStack events to Adjust's [event tokens](https://help.adjust.com/en/article/basic-event-setup#create-an-event-token).
@@ -240,7 +240,7 @@ val rudderClient: RudderClient = RudderClient.getInstance(
       <TabPanel>
         To add Adjust to your Unity app, follow these steps:
 <ol>
-<li>First, add the <Link to="/sources/sdks/rudderstack-unity-sdk/">RudderStack Unity SDK</Link> to your project.</li>
+<li>First, add the <Link to="/sources/event-streams/sdks/rudderstack-unity-sdk/">RudderStack Unity SDK</Link> to your project.</li>
 <li>Download the <a href="https://github.com/rudderlabs/rudder-sdk-unity/tree/master/Integrations/Adjust/RudderAdjust">Adjust SDK extension package</a> and import it in your project.
 
 <div class="warningBlock">
@@ -408,8 +408,8 @@ RudderStack sends data to the Adjust environment depending on the `RudderLogLeve
 <div class="infoBlock">
 For more information on the <code class="inline-code">RudderLogLevel</code>, refer to the following SDK documentation:
 <ul>
-  <li><Link to="/sources/sdks/rudderstack-android-sdk/#configuring-your-rudderstack-client">Android</Link></li>
-  <li><Link to="/sources/sdks/rudderstack-ios-sdk/#configuring-the-rudderstack-client">iOS</Link></li>
+  <li><Link to="/sources/event-streams/sdks/rudderstack-android-sdk/#configuring-your-rudderstack-client">Android</Link></li>
+  <li><Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/#configuring-the-rudderstack-client">iOS</Link></li>
 </ul>
 </div>
 

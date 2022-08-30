@@ -1,0 +1,698 @@
+---
+title: "React Native"
+description: >-
+  Detailed technical documentation on RudderStack’s React Native SDK to send
+  events from your React Native application to various destinations.
+---
+
+The **RudderStack React Native SDK** allows you to track event data from your React Native applications and send it to your specified destinations via RudderStack.
+
+You can check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-react-native) to get a more hands-on understanding of the SDK.
+
+<GhBadge
+  url={'https://www.npmjs.com/package/@rudderstack/rudder-sdk-react-native'}
+  repo={'npm/v/@rudderstack/rudder-sdk-react-native'}
+  style={'flat'}
+/>
+
+## SDK setup requirements
+
+To set up the RudderStack React Native SDK, the following prerequisites must be met:
+
+- You need to set up a [**RudderStack account**](https://app.rudderstack.com/signup).
+- Once signed up, <Link to="/dashboard-guides/sources/#adding-a-source">set up a React Native source</Link> in the dashboard. You should be able to see a **Write Key** for this source, as shown below:
+
+<img src="../../../assets/event-stream-sources/reactnative-write-key.png" alt="React Native source write key" />
+
+- You will also need a data plane URL. Refer to the <Link to="/resources/glossary/#data-plane-url">Glossary</Link> for more information on the data plane URL and where to find it.
+
+<div class="successBlock">
+The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has an SDK installation snippet containing both the write key and the data plane URL. You can use it to integrate the React Native SDK into your project.
+</div>
+
+- Setting up the [**React Native development environment**](https://reactnative.dev/docs/environment-setup) on your system is also highly recommended.
+
+## Installing the React Native SDK
+
+The recommended way to install the React Native SDK is through [`npm`](https://www.npmjs.com/package/@rudderstack/rudder-sdk-react-native).
+
+To add the SDK as a dependency, perform the following steps:
+
+- Go to the root of your application and add `@rudderstack/rudder-sdk-react-native` as a dependency as shown:
+
+<Tabs>
+  <TabList>
+    <Tab>npm</Tab>
+    <Tab>yarn</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```bash
+npm install @rudderstack/rudder-sdk-react-native --save
+```
+</span>  
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```bash
+yarn add @rudderstack/rudder-sdk-react-native
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+
+- Navigate to your Application's iOS folder and install all the required pods with:
+
+```bash
+pod install
+```
+
+## Initializing the RudderStack client
+
+After adding the SDK as a dependency, you need to set up the SDK.
+
+- Make sure you import the SDK as shown:
+
+```typescript
+import rudderClient from "@rudderstack/rudder-sdk-react-native"
+```
+
+- Add the following code in your application:
+
+```typescript
+await rudderClient.setup(WRITE_KEY, {
+  dataPlaneUrl: DATA_PLANE_URL,
+  trackLifecycleEvents: true,
+  recordScreenViews: true,
+})
+```
+
+<div class="successBlock">
+
+  We highly recommend using the <code class="inline-code">await</code> keyword with the setup call.
+</div>
+
+The `setup` method has the following signature:
+
+| Name            | Data Type     | Required | Description                                   |
+| :-------------- | :------------ | :------- | :-------------------------------------------- |
+| `writeKey`      | String     | Yes      | Your React Native source write key                  |
+| `configuration` | Object | No       | Contains the RudderStack client configuration |
+
+Check the [Configuring your RudderStack client](#configuring-your-rudderstack-client) section below for a full list of configurable parameters.
+
+## Configuring your RudderStack client
+
+You can configure your client based on the following parameters by passing them in the `configuration` object of your `setup` call.
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Parameter</th>
+      <th style="text-align:left">Type</th>
+      <th style="text-align:left">Description</th>
+      <th style="text-align:left">Default value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">logLevel</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">int</code>
+      </td>
+      <td style="text-align:left">
+        <p>Controls how much of the log you want to see from the SDK.</p>
+        <p>
+          Refer to the <a href="#debugging">Debugging</a> section to get a list of all supported values.
+        </p>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">RUDDER_LOG_LEVEL.ERROR</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">dataPlaneUrl</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">string</code>
+      </td>
+      <td style="text-align:left">
+        URL of your <code class="inline-code">data-plane</code>. Please refer above to see how to
+        fetch the data plane URL.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">https://hosted.rudderlabs.com</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">flushQueueSize</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">int</code>
+      </td>
+      <td style="text-align:left">
+        Number of events in a batch request to the server.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">30</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">dbThresholdCount</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">int</code>
+      </td>
+      <td style="text-align:left">
+        The number of events to be saved in the <code class="inline-code">SQLite</code> database.
+        Once the limit is reached, older events are deleted from the DB.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">10000</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">sleepTimeout</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">int</code>
+      </td>
+      <td style="text-align:left">
+        Minimum waiting time to flush the events to the server.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">10 seconds</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">configRefreshInterval</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">int</code>
+      </td>
+      <td style="text-align:left">
+        It will fetch the config from <code class="inline-code">dashboard</code> after this many
+        hours.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">2</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">trackLifecycleEvents</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">boolean</code>
+      </td>
+      <td style="text-align:left">
+        Whether SDK will capture application life cycle events automatically.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">true</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">autoCollectAdvertId</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">Boolean</code>
+      </td>
+      <td style="text-align:left">
+        Determines if the SDK will collect the advertisement ID.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">false</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">recordScreenViews</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">boolean</code>
+      </td>
+      <td style="text-align:left">
+        Whether SDK will capture screen view events automatically.
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">false</code>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <code class="inline-code">controlPlaneUrl</code>
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">string</code>
+      </td>
+      <td style="text-align:left">
+        If you are using our open-source <a href="https://rudderstack.com/docs/rudderstack-open-source/control-plane-lite/"><b>Control Plane Lite</b></a> utility, use this option to
+        point to your hosted <code class="inline-code">sourceConfig</code>. SDK will add
+        <code class="inline-code">/sourceConfig</code> along with this URL
+      </td>
+      <td style="text-align:left">
+        <code class="inline-code">https://api.rudderlabs.com</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Identify
+
+RudderStack captures the `deviceId` and uses it as the `anonymousId` for identifying the user. This helps in tracking the users across the application installation. To attach more information to the user, you can use the `identify` method. Once you set the `identify` information to the user, the SDK persists the user information and passes it to the subsequent `track` or `screen` calls. To reset the user identification, you can use the `reset` method.
+
+A sample `identify` event is as shown:
+
+```typescript
+rudderClient.identify(
+  "test_userId",
+  {
+    email: "testuser@example.com",
+    location: "UK",
+  },
+  null
+)
+```
+
+The `identify` method has the following signature:
+
+| Name     | Data Type     | Required | Description                            |
+| :------- | :------------ | :------- | :------------------------------------- |
+| `userId` | String    | Yes      | The user's unique identifier        |
+| `traits` | Object | No       | Traits information for the user            |
+| `option` | Object | No       | Extra options for the `identify` event |
+
+## Track
+
+You can record the user activity through the `track` method. Every user action is called an **event**.
+
+A sample `track` event is shown below:
+
+```typescript
+rudderClient.track("test_track_event", {
+  test_key_1: "test_value_1",
+  test_key_2: {
+    test_child_key_1: "test_child_value_1",
+  },
+})
+```
+
+The `track` method has the following signature:
+
+| Name       | Data Type     | Required | Description                                                 |
+| :--------- | :------------ | :------- | :---------------------------------------------------------- |
+| `name`     | String      | Yes      | Name of the tracked event                         |
+| `property` | Object | No       | Extra data properties to send along with the event |
+| `options`  | Object | No       | Extra event options                                         |
+
+<div class="infoBlock">
+
+RudderStack automatically tracks the following optional events:
+<ol>
+<li><code class="inline-code">Application Installed</code></li>
+<li><code class="inline-code">Application Updated</code></li>
+<li><code class="inline-code">Application Opened</code></li>
+<li><code class="inline-code">Application Backgrounded</code></li>
+</ol>
+You can disable these events by passing <code class="inline-code">trackLifecycleEvents</code> as <code class="inline-code">false</code> in the configuration object. However, we recommend keeping them enabled.
+</div>
+
+## Screen
+
+You can use the `screen` call to record whenever the user sees a screen on the mobile device. You can also send some extra properties along with this event.
+
+An example of the `screen` event is as shown:
+
+```typescript
+rudderClient.screen("Main Activity", {
+  foo: "bar",
+})
+```
+
+Alternatively, you can use the following method signature:
+
+| Name         | Data Type     | Required | Description                                                               |
+| :----------- | :------------ | :------- | :------------------------------------------------------------------------ |
+| `screenName` | String      | Yes      | Name of the screen viewed by the user.                                               |
+| `property`   | Object | No       | Extra property object to pass along with the `screen` call. |
+| `option`     | Object | No       | Extra options passed along with `screen` event.                     |
+
+### Automatic screen recording
+
+You can enable the automatic recording of screen views by passing `recordScreenViews` as `true` while initializing the `rudderClient`. This automatically sends a `screen` call for every screen that a user views. By default, `recordScreenViews` is set to `false`. 
+
+<div class="infoBlock">
+
+The <code class="inline-code">recordScreenViews</code> parameter records the screen views of the native Android <a href="https://developer.android.com/guide/components/activities/intro-activities" target="_blank">Activities</a> or the iOS <a href="https://developer.apple.com/documentation/uikit/view_controllers" target="_blank">Views</a> only and <strong>not</strong> by the React Native Views. 
+</div>  
+
+To track the screen views of the React Native Screens, you can use the following code snippet:
+
+```javascript
+import rudderClient from "@rudderstack/rudder-sdk-react-native"
+import {
+  NavigationContainer
+} from '@react-navigation/native';
+
+const App = () => {
+  const routeNameRef = React.useRef();
+  const navigationRef = React.useRef();
+  return ( <
+    NavigationContainer ref = {
+      navigationRef
+    }
+    onReady = {
+      () => {
+        routeNameRef.current = navigationRef.current.getCurrentRoute().name;
+      }
+    }
+    onStateChange = {
+      async () => {
+        const previousRouteName = routeNameRef.current;
+        const currentRouteName = navigationRef.current.getCurrentRoute().name;
+
+        if (previousRouteName !== currentRouteName) {
+          rudderClient.screen(currentRouteName);
+        }
+        routeNameRef.current = currentRouteName;
+      }
+    } >
+    ...
+    <
+    /NavigationContainer>
+  );
+};
+
+export default App;
+```
+
+## Group
+
+RudderStack's `group` method lets you link an identified user with a group, such as a company, organization, or an account. You can also record any traits associated with the group like the company name, number of employees, etc.
+
+A sample `group` call is shown below:
+
+```typescript
+rudderClient.group("company123", {
+  "city": "New Orleans",
+  "state": "Louisiana",
+  "country": "USA"
+})
+```
+
+The `group` call has the following method signature:
+
+| Name         | Data Type     | Required | Description                              |
+| :----------- | :------------ | :------- | :--------------------------------------- |
+| `groupId` | String      | Yes      | Your group's unique identifier                |
+| `traits`   | Object | No       | The group's traits |
+| `option`     | Object | No       | Extra options passed along with `group` event.  |
+
+## Alias
+
+The `alias` call lets you merge different identities of a known user.
+
+<div class="infoBlock">
+
+<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
+</div>
+
+A sample `alias` call is as shown:
+
+```typescript
+rudderClient.alias("newId")
+```
+
+The `alias` call has the following method signature:
+
+| Name         | Data Type     | Required | Description                                                               |
+| :----------- | :------------ | :------- | :------------------------------------ |
+| `newId` | String      | Yes      | The new identifier you want to assign to the user.                                               |
+| `option`     | Object | No       | Extra options passed along with `alias` event.                     |
+
+## Reset
+
+You can use the `reset` method to clear the persisted `traits` for the `identify` call. This is required for `Logout` operations.
+
+```typescript
+await rudderClient.reset()
+```
+
+<div class="successBlock">
+
+  It is highly recommended to use the <code class="inline-code">await</code>
+  keyword with the reset call.
+</div>
+
+## Enabling/disabling user tracking via the optOut API \(GDPR support\)
+
+RudderStack gives the users \(e.g., an EU user\) the ability to opt out of tracking any user activity until the user gives their consent. You can do this by leveraging RudderStack's `optOut` API.
+
+The `optOut` API takes `true` or `false` as a Boolean value to enable or disable tracking user activities. This flag persists across device reboots.
+
+The following snippet highlights the use of the `optOut` API to disable user tracking:
+
+```typescript
+await rudderClient.optOut(true)
+```
+
+Once the user grants their consent, you can enable user tracking once again by using the `optOut` API with `false` as a parameter sent to it, as shown:
+
+```typescript
+await rudderClient.optOut(false)
+```
+
+<div class="infoBlock">
+
+The `optOut` API is available in the React Native SDK starting from version `1.0.14`.
+</div>
+
+
+## Registering callbacks
+
+The React Native SDK lets you trigger a callback once any device-mode integration is successful. You can use this callback to perform any operation that you wanted to do once a device-integration is successful.
+
+An example of registering a callback for `App Center` is as shown:
+
+```typescript
+await rc.registerCallback("App Center", () => {
+  console.log("App Center is ready")
+})
+```
+
+The `registerCallback` method has the following signatures:
+
+| Name              | Data Type  | Required | Description                                                                   |
+| :---------------- | :--------- | :------- | :---------------------------------------------------------------------------- |
+| `destinationName` | `string`   | Yes      | Display name of the device-mode destination.                                  |
+| `callback`        | `Function` | Yes      | Callback function to be triggered once device-mode integration is successful. |
+
+## Filtering events
+
+When sending events to a destination via the [**device mode**](https://rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode), you can explicitly specify which events should be discarded or allowed to flow through - by allowlisting or denylisting them.
+
+<div class="infoBlock">
+
+Refer to the <a href="https://rudderstack.com/docs/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</a> guide for more information on this feature.
+</div>
+
+## Enabling/disabling events for specific destinations
+
+The React Native SDK lets you enable or disable sending events to a specific destination or all the destinations to which the source is connected. You can specify these destinations by creating an object as shown:
+
+```typescript
+const options = {
+  integrations: {
+    // default value for `All` is true
+    All: false,
+    // specifying destination by its display name
+    Amplitude: true,
+    Mixpanel: false,
+  },
+}
+```
+
+<div class="infoBlock">
+
+The keyword <code class="inline-code">All</code> in the above snippet represents all the destinations the source is connected to. Its value is set to <code class="inline-code">true</code> by default.
+</div>
+
+<div class="infoBlock">
+
+Make sure the destination names that you pass while specifying the destinations should exactly match the names listed <a href="https://app.rudderstack.com/directory">here</a>.
+</div>
+
+There are two methods in which you can pass the destinations specified in the above snippet to the SDK:
+
+### 1. Passing destinations while initializing the SDK
+
+This is helpful when you want to enable or disable sending the events across all the event calls made using the SDK to the specified destinations.
+
+```typescript
+rudderClient.setup(WRITE_KEY, config, options)
+```
+
+### 2. Passing destinations while making event calls
+
+This approach is helpful when you want to enable or disable sending only a particular event to the specified destinations, or if you want to override the specified destinations passed with the SDK initialization \(as described in the method above\) for a particular event.
+
+```typescript
+rudderClient.track(
+  "test_track_event",
+  {
+    test_key_1: "test_value_1",
+  },
+  options
+)
+```
+
+<div class="infoBlock">
+
+If you specify the destinations both while initializing the SDK as well as while making an event call, then the destinations specified at the event level only will be considered.
+</div>
+
+## External ID
+
+You can pass your custom `userId` along with standard `userId` in your `identify` calls. We add those values under `context.externalId`. The following code snippet shows a way to add `externalId` to your `identify` request.
+
+```typescript
+const options = {
+  externalIds: [
+    {
+      id: "some_external_id_1",
+      type: "brazeExternalId",
+    },
+  ],
+}
+rudderClient.identify(
+  "test_userId",
+  {
+    email: "testuser@example.com",
+    location: "UK",
+  },
+  options
+)
+```
+
+## Debugging
+
+If you run into any issues regarding the RudderStack React Native SDK, you can turn on the `VERBOSE` or `DEBUG` logging to find out what the issue is.
+
+First, make sure you modify your import statement to include `RUDDER_LOG_LEVEL` with:
+
+```typescript
+import rudderClient, {
+  RUDDER_LOG_LEVEL,
+} from "@rudderstack/rudder-sdk-react-native"
+```
+
+Then to turn on the logging, change your `RudderClient` initialization to the following:
+
+```typescript
+await rudderClient.setup(WRITE_KEY, {
+  dataPlaneUrl: DATA_PLANE_URL,
+  logLevel: RUDDER_LOG_LEVEL.DEBUG, // or VERBOSE
+})
+```
+
+You can set the log level to one of the following values:
+
+1. `NONE`
+2. `ERROR`
+3. `WARN`
+4. `INFO`
+5. `DEBUG`
+6. `VERBOSE`
+
+## Setting the advertisement ID
+
+RudderStack collects the advertisement ID **only** if `autoCollectAdvertId` is set to `true` during the [SDK initialization](#initializing-the-rudderstack-client), as shown:
+
+```typescript
+await rudderClient.setup(WRITE_KEY, {
+  dataPlaneUrl: DATA_PLANE_URL,
+  trackLifecycleEvents: true,
+  autoCollectAdvertId: true,
+  recordScreenViews: true,
+})
+```
+
+You can use the `putAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `putAdvertisingId` method accepts two `string` arguments :
+
+- `androidId` : Your Android `advertisingId` \(AAID\)
+- `iOSId` : Your iOS `advertisingId` \(IDFA\)
+
+A sample snippet highlighting the use of `putAdvertisingId` is shown below:
+
+```typescript
+rudderClient.putAdvertisingId(AAID, IDFA)
+```
+<div class="warningBlock">
+
+On iOS, you need to call the <code class="inline-code">putAdvertisingId</code> method before calling <code class="inline-code">setup()</code>.
+</div>
+
+## Anonymous ID
+
+You can use the `putAnonymousId` method to pass your `anonymousId` and the SDK will use that instead of the `deviceId`. The `putAnonymousId` method accepts one `string` argument:
+
+- `id`: The user's `anonymousId`.
+
+An example of this method's usage is as shown:
+
+```typescript
+rudderClient.putAnonymousId(ANONYMOUS_ID)
+```
+
+## `flush` API
+
+The React Native SDK supports the `flush()` API. It retrieves all the messages present in the database, divides them into individual batches based on the specified queue size, and flushes them to the RudderStack server/backend.
+
+For example, if the `flushQueueSize` is 30 and there are 180 events in the database when the `flush()` API is called, the SDK will retrieve all the events and divide them into batches of 30 messages each, that is, into 6 batches. 
+
+If a batch fails for some reason, the SDK drops the remaining batches to maintain the sequence of the messages. A batch is considered as failed if it isn’t sent to the RudderStack server after 3 retries. 
+
+In the device mode, the `flush()` API also calls the destination SDK’s `flush()` API (if applicable).  
+
+## FAQs
+
+### Do I need to link the SDK using the React Native link?
+
+No, you don't need to link the SDK as it is auto-linked. If you have linked it using `react-native link` and are facing any issues, use `react-native unlink rudder-sdk-react-native` to unlink it.
+
+### Can I use the SDK with a React Native application created with Expo?
+
+No. The SDK is a React Native module, and currently, the expo doesn't support adding native modules. You can still [**eject**](https://docs.expo.dev/expokit/eject/) your Expo application and use the RudderStack [<Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link> and <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link> SDKs.
+
+### What is the need to use the await keyword?
+
+The functions exposed by the SDK are asynchronous in nature. If you want a synchronous behavior, you must use the `await` keyword. We highly recommend using the `await` keyword with the setup call to make sure that the SDK has been properly set up, before any further calls are made.
+
+### Does the Android build fail after adding the SDK to your Application?
+
+Please try using Android Studio to build your application. This should fix most of the errors.
+
+### How do I get the user `traits` after making an `identify` call?
+
+You can get the user traits after making an `identify` call as shown:
+
+```typescript
+const rudderContext = await rc.getRudderContext()
+console.log("Traits are : " + JSON.stringify(rudderContext.traits))
+```
+
+
