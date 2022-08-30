@@ -8,12 +8,9 @@ The latest **JavaScript SDK (v1.1)** is the lightweight, efficient, and optimize
 
 Another significant improvement in the latest version (v1.1) is that the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations are published as individual plugins and loaded dynamically as per the dashboard configurations. In v1, the device mode destinations were bundled with the core SDK.
 
+## Migrate to JavaScript SDK v1.1
 
-The below section covers the detailed steps to migrate to JavaScript SDK v1.1 depending on your JavaScript SDK v1 installation.
-
-## Case 1: Loading the SDK from RudderStack CDN
-
-Update the script tag in your website as shown:
+If you have installed the JavaScript SDK v1 from RudderStack CDN, you can simply upgrade it to v1.1 by updating the script tag in your website as shown:
 
 From **v1**:
 
@@ -27,21 +24,20 @@ To **v1.1**:
 <script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js" />
 ```
 
-## Case 2: Forwarding/proxying the RudderStack CDN
+## Migration based on JavaScript SDK v1 installation
 
-1. Log into your CDN provider account.
-2. Go to the distribution and set the origin to RudderStack's CDN. Ensure that the entire domain (`https://cdn.rudderlabs.com`) is set as the origin.
+The below section covers detailed steps to migrate to JavaScript SDK v1.1 depending on your approach for JavaScript SDK v1 installation.
 
-<div class="infoBlock">
-It is highly recommended to forward the entire CDN path <code class="inline-code">https://cdn.rudderlabs.com</code> so that you don't miss any files/directories that might be added in the future.
-</div>
+### Forwarding/proxying the RudderStack CDN
 
 <div class="successBlock">
-Refer to the <Link to="/user-guides/how-to-guides/custom-domains/">How to Use Custom Domains</Link> guide for more information on CDN forwarding/proxying.
+Refer to the <Link to="/user-guides/how-to-guides/custom-domains/#setup-for-serving-the-sdk">Custom Domains</Link> guide to use a custom domain to forward or proxy the JavaScript SDK via your own CDN.
 </div>
 
-3.  Go to **Behaviors** and verify that the sub-path `/v1.1/*` is **not configured to be blocked** in any way. This is required to ensure that both the core SDK and destination SDKs are forwarded properly.
-4. Finally, update the script tag in your website as shown:
+The following steps assume that you are using AWS CloudFront to forward or proxy the RudderStack CDN:
+
+1.  Go to **Behaviors** and verify that the sub-path `/v1.1/*` is **not configured to be blocked** in any way. This is required to ensure that both the core SDK and destination SDKs are forwarded properly.
+2. Update the script tag in your website as shown:
 
 From **v1**:
 
@@ -55,38 +51,13 @@ To **v1.1**:
 <script src="https://<subdomain>.<yourdomain>.com/v1.1/rudder-analytics.min.js" />
 ```
 
-## Case 3: Self-hosting RudderStack's CDN
+### Self-hosted JavaScript SDK
 
-If you have cloned RudderStack's JavaScript SDK and are self-hosting it via your own CDN, follow the steps below:
+<div class="successBlock">
+Refer to the <Link to="/user-guides/how-to-guides/self-hosting-js-sdk/">How to host RudderStack JavaScript SDK on your CDN/Storage</Link> guide for detailed steps on how to self-host the JavaScript SDK via your CDN.
+</div>
 
-1. Download the core [JavaScript SDK v1.1](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js).
-2. Download the required destination SDKs.
-3. Move all the downloaded files to your preferred location.
-
-It is recommended to maintain the following structure:
-
-<img src="../../../../assets/js-sdk-version-migration.png" alt="Recommended structure for self-hosting RudderStack's CDN" />
-
-4. Check the core SDK's file name:
-- If it is **not** `rudder-analytics.min.js`, update the script tag in your website, as shown:
-
-```html
-<script>
-// rudderanalytics object initialization
-// ...
-// ...
-// provide the location of the destination SDKs in the load options
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-    destSDKBaseURL: "https://cdn.<yourdomain>.com/js-integrations"
-});
-// ...
-// ...
-</script>
-
-<script src="https://cdn.<yourdomain>.com/<your-custom-analytics-file>.js"></script>
-```
-
-- If it **is** `rudder-analytics.min.js` and:
+- If your JavaScript SDK file name is `rudder-analytics.min.js` and:
   - The destination SDKs are located next to the core SDK file under the `js-integrations` directory, update the script tag as shown:
 
     ```html
@@ -98,32 +69,37 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
       ```html
       <script>
       // rudderanalytics object initialization
-      // ...
-      // ...
       // provide the location of the destination SDKs in the load options
       rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
           destSDKBaseURL: "https://cdn.<yourdomain>.com/custom-js-integrations"
       });
       // ...
-      // ...
       </script>
-
       <script src="https://cdn.<yourdomain>.com/rudder-analytics.min.js"></script>
       ```
 
-## Case 4: Migrating version using NPM
+- If your JavaScript SDK file name is **not** `rudder-analytics.min.js`, update the script tag in your website, as shown:
+
+```html
+<script>
+// rudderanalytics object initialization
+// provide the location of the destination SDKs in the load options
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    destSDKBaseURL: "https://cdn.<yourdomain>.com/js-integrations"
+});
+// ...
+</script>
+<script src="https://cdn.<yourdomain>.com/<your-custom-analytics-file>.js"></script>
+```
+
+
+### Using NPM
 
 The latest NPM package is based on JavaScript SDK v1.1 architecture and is released with the 2.x.x version.
 
 To update the SDK package using NPM, use any of the following options:
 
-* Upgrade `rudder-sdk-js` package to the latest version using the below command:
-
-```javascript
-npm install rudder-sdk-js@latest
-```
-
-* Upgrade `rudder-sdk-js` package to a specific version using the below command:
+* Upgrade `rudder-sdk-js` package to v1.1 using the below command:
 
 ```javascript
 npm install rudder-sdk-js@2.x.x
@@ -143,22 +119,12 @@ https://cdn.rudderlabs.com/v1.1/js-integrations/{dest-name.min.js}
 
 For example, the path for HubSpot is: https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js, and Google Analytics is: https://cdn.rudderlabs.com/v1.1/js-integrations/GA.min.js, etc.
 
-If you are loading the device mode destinations from a custom path, use any of the below-mentioned ways depending on your case: 
+However, if you are loading the device mode destinations from a custom path using any of the below methods:
 
-### Forwarded/proxied RudderStack CDN
+- Forwarded/proxied RudderStack CDN
+- Self-hosted JavaScript SDK
 
-Follow the  <Link to="#case-2-forwardingproxying-the-rudderstack-cdn">steps 1, 2 and 3</Link> and finally use the `destSDKBaseURL` option in the SDK's `load()` call, as shown:
-
-```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-    destSDKBaseURL: "<custom-path-for-device-mode-destination>", // ex: "https://cdn.<yourdomain>.com/js-integrations"
-    ...otherOptions
-});
-```
-
-### Self-hosted RudderStack CDN
-
-Follow the <Link to="#case-3-self-hosting-rudderstacks-cdn">steps 2 and 3</Link> and finally use the `destSDKBaseURL` option in the SDK's `load()` call, as shown:
+Then, pass the custom path for the required device mode destination in the `destSDKBaseURL` option in the SDK's `load()` call, as shown:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
@@ -166,7 +132,6 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
     ...otherOptions
 });
 ```
-
 
 <div class="infoBlock">
 Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.

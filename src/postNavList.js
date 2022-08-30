@@ -2144,6 +2144,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "self-hosting-js-sdk",
+    title: "How to host RudderStack JavaScript SDK on your CDN/Storage",
+    link: "/user-guides/how-to-guides/self-hosting-js-sdk/",
+    content: []
+  },
+  {
     key: "how-to-filter-selective-destinations",
     title: "How to Filter Selective Destinations using JavaScript SDK",
     link: "/user-guides/how-to-guides/how-to-filter-selective-destinations/",
