@@ -29,12 +29,12 @@ The following prerequisites must be met to send events via the HTTP API:
 If you are using RudderStack Cloud, set the Data Plane URL to <code class="inline-code">https://hosted.rudderlabs.com</code>.
 </div>
 
-## 2. API Authorization
+## 2. Authorization
 
 RudderStack uses Basic Authentication for authenticating all the HTTP requests.
 
 <div class="successBlock">
-All the popular HTTP clients \(e.g. CURL, Postman, HTTPie\) have default support for Basic Authentication.
+All the popular HTTP clients (for example, CURL, Postman, HTTPie) have default support for Basic Authentication.
 </div>
 
 The Basic Authentication for this API requires a username and password where:
@@ -44,16 +44,15 @@ The Basic Authentication for this API requires a username and password where:
 
 For example, if the source write key is `1Xk5DChfJAol3xtW7qNnK1apo5p`, your HTTP request must have the following HTTP header `Authorization: Basic MVhrNURDaGZKQW9sM3h0VzdxTm5LMWFwbzVwOg==`
 
-<div class="successBlock">
-
-You can use this [Basic Authentication Header Generator](https://www.blitter.se/utils/basic-authentication-header-generator/) to generate the HTTP header.
+<div class="infoBlock">
+Use the <a href="https://www.blitter.se/utils/basic-authentication-header-generator/">Basic Authentication Header Generator</a> to generate the HTTP header.
 </div>
 
 <div class="warningBlock">
 To send the events via the RudderStack HTTP API, the <strong>Content-Type</strong> header must be set to <code class="inline-code">application/json</code>.
 </div>
 
-## 3. HTTP Responses
+## 3. HTTP responses
 
 * The HTTP API returns a `200` response for successful API requests.  
 * The API returns a `400` response for invalid requests with an appropriate error message in the response. Some possible invalid requests include: 
@@ -66,22 +65,22 @@ To send the events via the RudderStack HTTP API, the <strong>Content-Type</stron
 In case of the Invalid Authorization Header error, verify if the source write key and the Basic Auth Header is valid.
 </div>
 
-## 4. Maximum Allowed Request Size
+## 4. Maximum allowed request size
 
-RudderStack allows messages with a maximum size of `32 KB` per call. The <Link to="#11-batch">`batch`</Link> endpoint accepts a maximum call size of `4 MB` per batch, and `32 KB` per call. RudderStack responds with a `400 Bad Request` if these limits are exceeded.
+RudderStack allows messages with a maximum size of `32 KB` per call. The <Link to="#12-batch">`batch`</Link> endpoint accepts a maximum call size of `4 MB` per batch, and `32 KB` per call. RudderStack responds with a `400 Bad Request` if these limits are exceeded.
 
 ## 5. Identify
 
 The  <Link to="/event-spec/standard-events/identify/">`identify`</Link>call lets you associate a visiting user to their actions and record any associated traits.
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format: 
 
 ```javascript
 <DATA_PLANE_URL>/v1/identify
 ```
 
-### 5.1. Sample Payload
+### 5.1. Sample payload
 
 
 ```javascript title="identify.json"
@@ -126,11 +125,11 @@ curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/identify \
 http -a <source_write_key>: <DATA_PLANE_URL>/v1/identify < identify.json
 ```
 </span>
-</TabPanel>
-</TabPanels>
+      </TabPanel>
+    </TabPanels>
 </Tabs>
 
-### 5.3. Accepted Fields
+### 5.3. Accepted fields
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
@@ -144,16 +143,16 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/identify < identify.json
 
 ## 6. Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you record the customer events, that is, the actions that they perform, along with any properties associated with them.
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you track the user actions along with any properties associated with them.
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format:  
 
 ```javascript
 <DATA_PLANE_URL>/v1/track
 ```
 
-### 6.1. Sample Payload
+### 6.1. Sample payload
 
 
 ```javascript title="track.json"
@@ -221,13 +220,13 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/track < track.json
 The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format:  
 
 ```javascript
 <DATA_PLANE_URL>/v1/page
 ```
 
-### 7.1. Sample Payload
+### 7.1. Sample payload
 
 
 ```javascript title="page.json"
@@ -278,7 +277,7 @@ http -a <your_write_key>: <DATA_PLANE_URL>/v1/page < page.json
     </TabPanels>
 </Tabs>
 
-### 7.3. Accepted Fields
+### 7.3. Accepted fields
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
@@ -295,18 +294,18 @@ http -a <your_write_key>: <DATA_PLANE_URL>/v1/page < page.json
 
 The <Link to="/event-spec/standard-events/screen/">`screen`</Link> call lets you record whenever your user views their mobile screen with any additional relevant information about the screen. 
 
-<div class="successBlock">
-The `screen` call is the mobile equivalent of the `page` call.
+<div class="infoBlock">
+The <code class="inline-code">screen</code> call is the mobile equivalent of the <code class="inline-code">page</code> call.
 </div>
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format: 
 
 ```javascript
 <DATA_PLANE_URL>/v1/screen
 ```
 
-### 8.1. Sample Payload
+### 8.1. Sample payload
 
 
 ```javascript title="screen.json"
@@ -356,7 +355,7 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/screen < screen.json
     </TabPanels>
 </Tabs>
 
-### 8.3. Accepted Fields
+### 8.3. Accepted fields
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
@@ -373,13 +372,13 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/screen < screen.json
 The <Link to="/event-spec/standard-events/group/">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account. It also lets you record any custom traits associated with that group, like the name of the company, the number of employees, etc.
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format: 
 
 ```javascript
 <DATA_PLANE_URL>/v1/group
 ```
 
-### 9.1. Sample Payload
+### 9.1. Sample payload
 
 
 ```javascript title="group.json"
@@ -433,7 +432,7 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/group < group.json
     </TabPanels>
 </Tabs>
 
-### 9.3. Accepted Fields
+### 9.3. Accepted fields
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
@@ -453,24 +452,14 @@ The <Link to="/event-spec/standard-events/alias/">`alias`</Link> call lets you m
 <code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
 </div>
 
-<div class="successBlock">
-
-The following destinations support the <code class="inline-code">alias</code> call:
-
-* <Link to="/destinations/streaming-destinations/moengage/">MoEngage</Link>
-* <Link to="/destinations/streaming-destinations/kissmetrics/">Kissmetrics</Link>
-* <Link to="/destinations/streaming-destinations/amplitude/">Amplitude</Link> (only supported by the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
-
-</div>
-
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format: 
 
 ```javascript
 <DATA_PLANE_URL>/v1/alias
 ```
 
-### 10.1. Sample Payload
+### 10.1. Sample payload
 
 
 ```javascript title="alias.json"
@@ -489,7 +478,6 @@ The following destinations support the <code class="inline-code">alias</code> ca
   "timestamp": "2020-01-21T00:21:34.208Z"
 }
 ```
-
 
 ### 10.2. Usage
 
@@ -520,7 +508,7 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/alias < alias.json
     </TabPanels>
 </Tabs>
 
-### 10.3. Accepted Fields
+### 10.3. Accepted fields
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
@@ -531,20 +519,93 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/alias < alias.json
 | `traits` | Object | Optional | Dictionary of the properties or traits associated with the group, such as `email` or `name`. |
 | `timestamp` | DateTime| Optional | The timestamp of the message's arrival. If you are passing the timestamp in the event, make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For example: `2022-02-01T19:14:18.381Z` |
 
-## 11. Batch
+## 11. Merge
+
+The `merge` call enables you to merge different user identities and associate them to a single customer profile in the warehouse.
+
+<div class="warningBlock">
+Currently, RudderStack supports <code class="inline-code">merge</code> for identity resolution in the <Link to="/destinations/warehouse-destinations/bigquery/">BigQuery</Link> and <Link to="/destinations/warehouse-destinations/snowflake/">Snowflake</Link> warehouse destinations.
+</div>
+
+<div class="infoBlock">
+For more information on using the <code class="inline-code">merge</code> API, refer to the <Link to="/features/identity-resolution/#using-the-merge-api">Identity Resolution</Link> guide.
+</div>
+
+* Request Type: **POST**
+* Request Format: 
+
+```
+<DATA_PLANE_URL>/v1/merge
+```
+
+### 11.1 Sample Payload
+
+```javascript title="merge.json"
+{
+  "userId": "1hKOmRA4GRlm",
+  "mergeProperties": [{
+      "type": "email",
+      "value": "alex@example.com"
+    },
+    {
+      "type": "mobile",
+      "value": "+1-202-555-0146"
+    }
+  ]
+}
+```
+
+### 11.2 Usage
+
+<Tabs>
+  <TabList>
+    <Tab>CURL</Tab>
+    <Tab>HTTPie</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```bash
+curl -u <source_write_key>: -X POST <DATA_PLANE_URL>/v1/merge \
+-d @merge.json \
+--header "Content-Type: application/json" 
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```bash
+http -a <source_write_key>: <DATA_PLANE_URL>/v1/merge < merge.json
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+### 11.3 Accepted fields
+
+| **Field**    | **Type** | **Presence** | **Description**      |
+| :----------- | :------- | :----------- | :--------------------------------------------------------------------------------------------------------------- |
+| `userId`      | String   | Required, if `anonymousId` is not present.     | The unique user identifier.                             |
+| `anonymousId` | String | Required, if `userId` is not present. | The anonymous ID associated with a user or visitor. |
+| `mergeProperties` | Object   | Required     | The user properties to be merged and connected to a given user profile. |
+
+## 12. Batch
 
 The `batch` call allows you to send a series of `identify`, `track`, `page`, `group` and `screen` requests in a single batch. This call helps you minimize the number of outbound requests, thus enabling better performance.
 
 As mentioned earlier, RudderStack sets a maximum limit of `4 MB` per batch request and `32 KB` per call.
 
 * Request Type: **POST**
-* Request Format**:** 
+* Request Format: 
 
 ```javascript
 <DATA_PLANE_URL>/v1/batch
 ```
 
-### 11.1. Sample Payload
+### 12.1. Sample payload
 
 
 ```javascript title="batch.json"
@@ -655,7 +716,7 @@ As mentioned earlier, RudderStack sets a maximum limit of `4 MB` per batch reque
 ```
 
 
-### 11.2. Usage
+### 12.2. Usage
 
 <Tabs>
   <TabList>
@@ -684,19 +745,16 @@ http -a <source_write_key>: <DATA_PLANE_URL>/v1/batch < batch.json
     </TabPanels>
 </Tabs>
 
-### 11.3. Accepted Fields
+### 12.3. Accepted fields
 
 | **Field** | **Type** | **Presence** | **Description** |
 | :--- | :--- | :--- | :--- |
 | `batch` | Array | Required | An array of `identify`, `track`, `page`, `group` and `screen` calls. Each call must have a `type` property and a valid method name. |
 
-## 12. Historical Imports
+## 13. Historical imports
 
 RudderStack lets you import any historical data by simply adding the `timestamp` argument to any of your API calls. However, this can be done only for the destinations that accept historical time-stamped data, like Amplitude, Mixpanel, etc. 
 
 <div class="infoBlock">
-
-If you are tracking current events, leave out the `timestamp` field. RudderStack will automatically add the timestamps to the event requests.
+If you are tracking current events, leave out the <code class="inline-code">timestamp</code> field. RudderStack will automatically add the timestamps to the event requests.
 </div>
-
-
