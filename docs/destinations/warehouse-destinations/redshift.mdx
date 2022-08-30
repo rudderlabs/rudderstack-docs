@@ -3,8 +3,6 @@ title: "Amazon Redshift"
 description: Step-by-step guide on setting up Amazon Redshift as a destination in RudderStack.
 ---
 
-import Iplist from '/src/components/iplist';
-
 [Amazon Redshift](https://aws.amazon.com/redshift/) is the world's fastest cloud data warehouse. It allows you to handle large analytical workloads with best-in-class performance, speed, and efficiency. With Redshift, you don't have to worry about the scale of your data or the cost of running queries on them.
 
 RudderStack lets you configure Redshift as a destination to which you can send your event data seamlessly.
@@ -104,6 +102,7 @@ Use the newly-created user credentials while configuring Redshift as a destinati
 This section is listed for EC2-VPC. However, EC2-Classic works similarly.
 </div>
 
+## IPs to be allowlisted
 <Iplist/>
 
 ### Adding a security group

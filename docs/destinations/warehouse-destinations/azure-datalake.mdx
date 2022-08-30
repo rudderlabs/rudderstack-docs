@@ -3,8 +3,6 @@ title: "Azure Data Lake"
 description: Step-by-step guide on setting up Azure Data Lake as a destination in RudderStack.
 ---
 
-import Iplist from '/src/components/iplist';
-
 [Azure Data Lake](https://azure.microsoft.com/en-in/solutions/data-lake/) is Microsoft's secure and scalable data lake functionality that lets you store data of varying sizes and complexity and facilitates fast, cross-platform data processing and analytics.
 
 RudderStack lets you configure Azure data lake as a destination to which you can send your event data seamlessly.
@@ -79,4 +77,5 @@ RudderStack then converts these events into Parquet files and dumps them into th
 | Product Purchased | `https://<account_name>.blob.core.windows.net/<prefix>/rudder-datalake/<namespace>/product_purchased/2019/10/12/08` |
 | Cart Viewed             | `https://<account_name>.blob.core.windows.net/<prefix>/rudder-datalake/<namespace>/cart_viewed/2019/11/12/09`              |
 
+## IPs to be allowlisted
 <Iplist/>

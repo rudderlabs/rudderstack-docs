@@ -3,8 +3,6 @@ title: "Google Cloud Storage Data Lake"
 description: Step-by-step guide on setting up GCS Data Lake as a destination in RudderStack.
 ---
 
-import Iplist from '/src/components/iplist';
-
 The [Google Cloud Storage (GCS) data lake](https://cloud.google.com/architecture/build-a-data-lake-on-gcp) leverages [Google Cloud Storage](https://cloud.google.com/storage) for storing and accessing your data in the GCP infrastructure. It offers state-of-the-art performance and scalability, along with ensuring the security and privacy of your data.
 
 RudderStack lets you configure GCS data lake as a destination to which you can send your event data seamlessly.
@@ -139,6 +137,7 @@ RudderStack then converts these events into Parquet files and dumps them into th
 | Product Purchased | `https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>/product_purchased/2019/10/12/08` |
 | Cart Viewed             | `https://storage.googleapis.com/<bucketName>/<prefix>/rudder-datalake/<namespace>/cart_viewed/2019/11/12/09`              |
 
+## IPs to be allowlisted
 <Iplist/>
 
 ## FAQ

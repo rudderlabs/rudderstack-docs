@@ -2,8 +2,7 @@ import React from 'react'
 
 export default function Iplist() {
   return (
-    <><h2>IPs to be allowlisted</h2>
-    <p>To enable network access to RudderStack, you will need to allowlist the following RudderStack IPs:</p>
+    <><p>To enable network access to RudderStack, you will need to allowlist the following RudderStack IPs:</p>
     <ul>
       <li>3.216.35.97</li>
       <li>23.20.96.9</li>
