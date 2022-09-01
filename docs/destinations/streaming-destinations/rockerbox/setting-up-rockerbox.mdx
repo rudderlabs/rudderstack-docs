@@ -17,7 +17,7 @@ To know more about the difference between cloud mode and device mode in RudderSt
 Once you have confirmed that the source platform supports sending events to Rockerbox, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Rockerbox**.
-2. Assign a name to your destination and click on **Continue**.
+2. Assign a name to your destination and click **Continue**.
 
 ## Connection settings
 
@@ -28,25 +28,29 @@ To successfully configure Rockerbox as a destination, configure the following se
 
 - **Advertiser Id**: Enter your Rockerbox Advertiser Id.
 
-- **Map your RockerBox events to RudderStack Events**: This option lets you map your RudderStack events to RockerBox events.
-    
 <div class="infoBlock">
-Refer to the <Link to="#faq">FAQ</Link> section for more information on how to obtain the API Secret, Measurement Id and Firebase App ID.
+Refer to the <Link to="#faq">FAQ</Link> section for more information on how to obtain the Advertiser Id.
 </div>
 
+- **Map your RockerBox events to RudderStack Events**: Map your RudderStack events to RockerBox events.
+    
 ### Client-side events filtering
 
 <img src="../../../assets/event-stream-destinations/rockerbox-connection-settings-2.png" alt="Rockerbox Connection Settings in RudderStack" />
 
+This setting lets you specify which events should be blocked or allowed to flow through to Rockerbox.
+
+<div class="infoBlock">
 This option is applicable only if you're sending events to Rockerbox via the web device mode. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
+</div>
 
 ### Web SDK settings
 
-These settings are applicable only if you are sending events to Rockerbox via web device mode.
-
 <img src="../../../assets/event-stream-destinations/rockerbox-connection-settings-3.png" alt="Rockerbox Connection Settings in RudderStack" />
 
-- **Client Auth Id**: Enter your Rockerbox Advertiser Id.
+These settings are applicable only if you are sending events to Rockerbox via web device mode.
+
+- **Client Auth Id**: Enter your Rockerbox Client Auth Id.
 - **Custom Domain**: Enter your Rockerbox Advertiser Id.
 - **Enable Cookie Sync**: Enter your Rockerbox Advertiser Id.
 - **Use device-mode to send events**: Enter your Rockerbox Advertiser Id.
@@ -57,13 +61,7 @@ These settings are applicable only if you are sending events to Rockerbox via we
 
 ### How do I obtain the Advertiser Id?
 
-1. Login to [Google Analytics](https://analytics.google.com/analytics/web/) dashboard.
-2. Go to the **Admin** section in the left sidebar.
-3. Select the relevant account and property.
-4. Click on **Data Streams** and select the stream to get the Measurement Id as shown:
 
-<img src="../../../assets/event-stream-destinations/measurement-id.png" />
-
-### How do I obtain Client Auth ID?
+### How do I obtain the Client Auth ID?
 
 
