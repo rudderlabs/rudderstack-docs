@@ -63,15 +63,7 @@ You can also track conversion events by creating a conversion tag. Removing the 
   
 The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
-Rockerbox `gtag` sends a `page_view` event to Google Analytics by default every-time it is loaded. You can also send `page_view` event to Google Analytics whenever you make an explicit `page()` call to RudderStack SDK.
-
-RudderStack sends the following properties by default:
-
-- `path` mapped to `page_location`
-- `title` mapped to `page_title`
-- `referrer` mapped to `page_referrer`
-
-You can also make `page()` call with any custom and standard properties as shown below:
+The page call is associated with `RB.track("view");` event. Whatever is passed in properties, will be passed onto Rockerbox.
 
 ```javascript
 rudderanalytics.page(
