@@ -135,6 +135,17 @@ You can speed up your warehouse uploads by configuring the following parameters 
   </tr>
 </table>
 
+### What happens if I exceed the table column limit in my warehouse destination?
+
+If you exceed the permissible table column limit in your warehouse, RudderStack will not sync data to it.
+
+### How can I handle the column count threshold in my warehouse?
+
+To avoid exceeding the column count threshold in your warehouse, you can do the following:
+
+- Go to your warehouse and drop the unwanted table columns.
+- If you're passing dynamic properties in the event payload, use the <Link to="/destinations/warehouse-destinations/json-column-support/">JSON Column Support</Link> feature.
+
 ## Namespace and warehouse schema
 
 ### How is the Namespace field populated for a warehouse destination?
@@ -388,5 +399,3 @@ To avoid this, you can set the same namespace **for each source**, as shown:
 <img src="../../assets/dw-integrations/namespace.png" />
 
 Setting a namespace ensures that the mappings are consistent and only one `RUDDER_ID` is created for each user - irrespective of the number of sources connected to your warehouse destination.
-
-
