@@ -6,8 +6,12 @@ description: Step-by-step guide on hosting RudderStack JavaScript SDK on your ow
 This guide will take you through the detailed steps to self-host RudderStack JavaScript SDK on your own CDN or storage:
 
 1. Download the [JavaScript SDK](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) and save the file name as `rudder-analytics.min.js`.
+2. Navigate to the required device mode destination SDKs by replacing the destination name from the URL: https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js
 
-2. Navigate to the required device mode destination SDKs by replacing the destination name from the URL: https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js and download the `<destination_name>.min.js` and `<destination_name>.min.js.map` files. For example,  `HubSpot.min.js` and `HubSpot.min.js.map` files for the HubSpot destination.
+    - Download the `<destination_name>.min.js` from https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js 
+    - Download the `<destination_name>.min.js.map` from https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js.map 
+
+For example, `HubSpot.min.js` and `HubSpot.min.js.map` files for the HubSpot destination.
 
 <div class="infoBlock">
 Downloading and hosting the map file (<code class="inline-code">&lt;destination_name&gt;.min.js.map</code>) is optional but recommended to help in troubleshooting.

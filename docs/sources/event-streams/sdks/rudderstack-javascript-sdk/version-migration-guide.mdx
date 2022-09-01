@@ -34,7 +34,7 @@ The below section covers detailed steps to migrate to JavaScript SDK v1.1 depend
 Refer to the <Link to="/user-guides/how-to-guides/custom-domains/#setup-for-serving-the-sdk">Custom Domains</Link> guide to use a custom domain to forward or proxy the JavaScript SDK hosted on RudderStack CDN.
 </div>
 
-The following migration steps assume that you are using AWS CloudFront to forward or proxy the RudderStack CDN:
+The following steps assume that you are using AWS CloudFront to forward or proxy the RudderStack CDN:
 
 1.  Go to **Behaviors** and verify that the sub-path `/v1.1/*` is **not configured to be blocked** in any way. This is required to ensure that both the core SDK and destination SDKs are forwarded properly.
 2. Update the script tag in your website as shown:
@@ -121,7 +121,7 @@ npm install rudder-sdk-js@2.x.x
 ```
 ## Loading device mode destinations
 
-By default, the device mode destinations are loaded from https://cdn.rudderlabs.com/v1.1/js-integrations/ in 2.x.x, depending on the dashboard settings. The name of the destination is appended to the URL as:
+By default, the device mode destinations are loaded from https://cdn.rudderlabs.com/v1.1/js-integrations/, depending on the dashboard settings. The name of the destination is appended to the URL as:
 https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js
 
 For example, the path for HubSpot is: https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js, and Google Analytics is: https://cdn.rudderlabs.com/v1.1/js-integrations/GA.min.js, etc.
