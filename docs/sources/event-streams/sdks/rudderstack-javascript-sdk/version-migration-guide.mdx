@@ -57,17 +57,21 @@ To **v1.1**:
 Refer to the <Link to="/user-guides/how-to-guides/self-hosting-js-sdk/">How to host JavaScript SDK on your CDN/Storage</Link> guide for detailed steps on self hosting the JavaScript SDK on your CDN or storage.
 </div>
 
-- If the file name of your self-hosted JavaScript SDK is `rudder-analytics.min.js`, and:
-  - The device mode destination SDKs are located next to the core SDK file under the `js-integrations` directory, update the script tag as shown:
+To migrate the self-hosted JavaScript SDK to v1.1, follow any of the three options based on your folder structure:
+
+- If you have self-hosted the JavaScript SDK in the below recommnended structure:
+
+  <img src="../../../../assets/js-sdk-recommended-folder-structure.png" alt="Recommended structure for self-hosting RudderStack's CDN" />
+
+  <br/>
+
+  Meaning, the file name of the JavaScript SDK is `rudder-analytics.min.js`, and the device mode destination SDKs are located next to the core SDK file under the `js-integrations` directory, update the script tag as shown:
 
     ```html
     <script src="https://cdn.<yourdomain>.com/rudder-analytics.min.js"></script>
     ```
 
-      <img src="../../../../assets/js-sdk-recommended-folder-structure.png" alt="Recommended structure for self-hosting RudderStack's CDN" />
-  
-
-  - The destination SDKs are **not** located next to the core SDK file under the `js-integrations` directory, update the script tag as shown:
+  - If the file name of your self-hosted JavaScript SDK is `rudder-analytics.min.js`, and the destination SDKs are **not** located next to the core SDK file under the `js-integrations` directory, update the script tag as shown:
 
       ```html
       <script>
@@ -83,17 +87,17 @@ Refer to the <Link to="/user-guides/how-to-guides/self-hosting-js-sdk/">How to h
 
 - If your JavaScript SDK file name is **not** `rudder-analytics.min.js`, update the script tag in your website, as shown:
 
-```html
-<script>
-// rudderanalytics object initialization
-// provide the location of the destination SDKs in the load options
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-    destSDKBaseURL: "https://cdn.<yourdomain>.com/js-integrations"
-});
-// ...
-</script>
-<script src="https://cdn.<yourdomain>.com/<your-custom-analytics-file>.js"></script>
-```
+  ```html
+  <script>
+  // rudderanalytics object initialization
+  // provide the location of the destination SDKs in the load options
+  rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+      destSDKBaseURL: "https://cdn.<yourdomain>.com/js-integrations"
+  });
+  // ...
+  </script>
+  <script src="https://cdn.<yourdomain>.com/<your-custom-analytics-file>.js"></script>
+  ```
 
 
 ### Using NPM
@@ -118,7 +122,7 @@ npm install rudder-sdk-js@2.x.x
 ## Loading device mode destinations
 
 By default, the device mode destinations are loaded from https://cdn.rudderlabs.com/v1.1/js-integrations/ in 2.x.x, depending on the dashboard settings. The name of the destination is appended to the URL as:
-https://cdn.rudderlabs.com/v1.1/js-integrations/{dest-name.min.js}
+https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js
 
 For example, the path for HubSpot is: https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js, and Google Analytics is: https://cdn.rudderlabs.com/v1.1/js-integrations/GA.min.js, etc.
 

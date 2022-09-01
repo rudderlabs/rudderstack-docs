@@ -3,16 +3,28 @@ title: "How to host RudderStack JavaScript SDK on your CDN/Storage"
 description: Step-by-step guide on hosting RudderStack JavaScript SDK on your own CDN or storage.
 ---
 
-This guide will take you through the steps to self-host RudderStack JavaScript SDK on your own CDN or storage:
+This guide will take you through the detailed steps to self-host RudderStack JavaScript SDK on your own CDN or storage:
 
-1. Download the [JavaScript SDK](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js).
-2. Download the device mode destination SDKs you wish to use. Available path....
+1. Download the [JavaScript SDK](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) and save the file name as `rudder-analytics.min.js`.
+
+2. Navigate to the required device mode destination SDKs by replacing the destination name from the URL: https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js and download the `<destination_name>.min.js` and `<destination_name>.min.js.map` files. For example,  `HubSpot.min.js` and `HubSpot.min.js.map` files for the HubSpot destination.
 
 <div class="infoBlock">
-This guide showcases Google Analytics and HubSpot device mode destination SDKs as an example.
+Downloading and hosting the map file (<code class="inline-code">&lt;destination_name&gt;.min.js.map</code>) is optional but recommended to help in troubleshooting.
 </div>
 
-3. Move the files downloaded in the above steps in a structure like below: 
+3. Move the files downloaded in the above steps in a recommended folder structure as: 
 
 <img src="../../assets/js-sdk-recommended-folder-structure.png" alt="Recommended structure for self-hosting RudderStack's CDN" />
+
+<div class="infoBlock">
+This guide showcases Google Analytics and HubSpot device mode destination SDKs as an example. You can use any device mode destination SDKs as per your requirements.
+</div>
+
+
+4. Add the following script tag in your `rudder-analytics.min.js` file, as shown:
+
+```html
+<script src="https://cdn.<yourdomain>.com/rudder-analytics.min.js"></script>
+```
 
