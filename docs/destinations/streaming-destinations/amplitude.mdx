@@ -501,6 +501,10 @@ To know more about the difference between cloud mode and device mode in RudderSt
 
 The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userid` as well as any optional information such as name, email address, etc.
 
+<div class="infoBlock">
+You can also pass your custom <code class="inline-code">userId</code> along with the standard user ID in your <code class="inline-code">identify</code> calls. RudderStack adds this ID under <a href="https://github.com/rudderlabs/rudder-transformer/blob/5d716c2df82fca2e76c3bb17de17b1cabe72126d/v0/destinations/am/transform.js#L270"><code class="inline-code">context.externalId.0.identifierType</code></a> before sending it to Amplitude.
+</div>
+
 A sample `identify` call looks like the following:
 
 ```javascript
