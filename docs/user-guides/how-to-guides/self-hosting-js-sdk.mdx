@@ -8,10 +8,10 @@ This guide will take you through the detailed steps to self-host RudderStack Jav
 1. Download the [JavaScript SDK](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) and save the file name as `rudder-analytics.min.js`.
 2. Navigate to the required device mode destination SDKs by replacing the destination name from the URL: https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js
 
-    - Download the `<destination_name>.min.js` from https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js 
-    - Download the `<destination_name>.min.js.map` from https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js.map 
+    - Download the `<destination_name>.min.js` file from https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js 
+    - Download the `<destination_name>.min.js.map` file from https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js.map 
 
-For example, `HubSpot.min.js` and `HubSpot.min.js.map` files for the HubSpot destination.
+For example, you can download `HubSpot.min.js` and `HubSpot.min.js.map` files from  https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js and  https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js.map respectively.
 
 <div class="infoBlock">
 Downloading and hosting the map file (<code class="inline-code">&lt;destination_name&gt;.min.js.map</code>) is optional but recommended to help in troubleshooting.
@@ -21,14 +21,8 @@ Downloading and hosting the map file (<code class="inline-code">&lt;destination_
 
 <img src="../../assets/js-sdk-recommended-folder-structure.png" alt="Recommended structure for self-hosting RudderStack's CDN" />
 
-<div class="infoBlock">
-This guide showcases Google Analytics and HubSpot device mode destination SDKs as an example. You can use any device mode destination SDKs as per your requirements.
-</div>
-
-
 4. Add the following script tag in your `rudder-analytics.min.js` file, as shown:
 
 ```html
 <script src="https://cdn.<yourdomain>.com/rudder-analytics.min.js"></script>
 ```
-
