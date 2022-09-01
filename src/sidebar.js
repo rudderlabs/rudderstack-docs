@@ -934,6 +934,29 @@ export const jsonData = [
                 title: "Kochava",
                 link: "/destinations/streaming-destinations/kochava/",
                 content: []
+            },{
+                title: "Rockerbox",
+                link: "/destinations/streaming-destinations/rockerbox/",
+                content: [
+                    {
+                        title: "Setting up Rockerbox",
+                        link:
+                            "/destinations/streaming-destinations/rockerbox/setting-up-rockerbox/",
+                        content: [],
+                    },
+                    {
+                        title: "Cloud Mode",
+                        link:
+                            "/destinations/streaming-destinations/rockerbox/rockerbox-cloud-mode/",
+                        content: [],
+                    },
+                    {
+                        title: "Device Mode",
+                        link:
+                            "/destinations/streaming-destinations/rockerbox/rockerbox-device-mode/",
+                        content: [],
+                    },
+                ]
             }, {
                 title: "TVSquared",
                 link: "/destinations/streaming-destinations/tvsquared/",

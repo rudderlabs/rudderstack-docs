@@ -1221,6 +1221,30 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "rockerbox",
+    title: "Rockerbox",
+    link: "/destinations/streaming-destinations/rockerbox/",
+    content: [],
+  },
+  {
+    key: "setting-up-rockerbox",
+    title: "Setting up Rockerbox",
+    link: "/destinations/streaming-destinations/rockerbox/setting-up-rockerbox/",
+    content: [],
+  },
+  {
+    key: "rockerbox-cloud-mode",
+    title: "Cloud Mode",
+    link:"/destinations/streaming-destinations/rockerbox/rockerbox-cloud-mode/",
+    content: [],
+  },
+  {
+    key: "rockerbox-device-mode",
+    title: "Device Mode",
+    link: "/destinations/streaming-destinations/rockerbox/rockerbox-device-mode/",
+     content: [],
+  },
+  {
     key: "tvsquared",
     title: "TVSquared",
     link: "/destinations/streaming-destinations/tvsquared/",
