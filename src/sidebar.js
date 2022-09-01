@@ -1175,6 +1175,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Zapier",
+                link: "/destinations/streaming-destinations/zapier/",
+                content: []
+            },
+            {
                 title: "AWS Lambda",
                 sectionTitle: "Serverless",
                 link: "/destinations/streaming-destinations/aws-lambda/",

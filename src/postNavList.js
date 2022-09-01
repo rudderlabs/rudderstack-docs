@@ -1612,6 +1612,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "zapier",
+    title: "Zapier",
+    link: "/destinations/streaming-destinations/zapier/",
+    content: [],
+  },
+  {
     key: "mautic",
     title: "Mautic",
     link: "/destinations/streaming-destinations/mautic/",
