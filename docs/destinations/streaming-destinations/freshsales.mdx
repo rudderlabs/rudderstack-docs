@@ -131,22 +131,25 @@ RudderStack uses the [Upsert an Account](https://developers.freshworks.com/crm/a
 A sample `group` call is shown below:
 
 ```javascript
-rudderanalytics.group("group01", {
-  "name": "Alex Keener",
-  "phone": "1234567890",
-  "numberOfEmployees": 51,
-  "annualRevenue": 10000,
-  "zipcode": 90009,
-  "street": "6649 N Blue Gum Street",
-  "city": "New Orleans",
-  "state": "Louisiana",
-  "country": "USA",
-  "context": {
-    "traits": {
-      "email": "group01@example.com"
-    },
-  },
-});
+rudderanalytics.group(
+  "group01", {
+    name: "Alex Keener",
+    phone: "1234567890",
+    numberOfEmployees: 51,
+    annualRevenue: 10000,
+    zipcode: 90009,
+    street: "6649 N Blue Gum Street",
+    city: "New Orleans",
+    state: "Louisiana",
+    country: "USA"
+  }, {
+    context: {
+      traits: {
+        email: "alex@example.com"
+      }
+    }
+  }
+);
 ```
 ### Supported mappings
 
