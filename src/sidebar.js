@@ -86,6 +86,11 @@ export const jsonData = [
     content: []
 },
 {
+    title: "User Management",
+    link: "/dashboard-guides/user-management/",
+    content: []
+},
+{
     title: "Permissions Management",
     link: "/dashboard-guides/permissions-management/",
     content: []
