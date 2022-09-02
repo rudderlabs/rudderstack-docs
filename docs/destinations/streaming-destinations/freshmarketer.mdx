@@ -79,13 +79,12 @@ The following table lists the mappings between the RudderStack and Freshmarketer
 | RudderStack property | Freshmarketer property | Presence |
 | :--------------| :---------| :--------------|
 | `traits.email`, `context.traits.email` | `emails` | Required |
-| `userId` | `id` | Optional |
 | `traits.firstname`, `traits.first_name`, `traits.firstName`,<br />`context.traits.firstname`, `context.traits.first_name`, `context.traits.firstName` | `first_name` | Optional |
 | `traits.lastname`, `traits.last_name`, `traits.lastName`,<br />`context.traits.lastname`, `context.traits.last_name`, `context.traits.lastName` | `last_name` | Optional |
 | `traits.subscriptionStatus`, `context.traits.subscriptionStatus` | `subscription_status` | Optional |
 | `traits.job_title`, `traits.jobTitle`, `context.traits.job_title`, `context.traits.jobTitle` | `job_title` | Optional |
 | `traits.phone`, `context.traits.phone` | `work_number` | Optional |
-| `externalId` | `external_id` | Optional |
+| `userId` | `external_id` | Optional |
 | `traits.mobileNumber`, `context.traits.mobileNumber` | `mobile_number` | Optional |
 | `traits.address`, `context.traits.address` | `address` | Optional |
 | `traits.address.city`, `traits.city`, `context.traits.address.city`, `context.traits.city` | `city` | Optional |
@@ -94,7 +93,7 @@ The following table lists the mappings between the RudderStack and Freshmarketer
 | `traits.address.country`, `traits.country`, `context.traits.address.country`, `context.traits.country` | `country` | Optional |
 | `traits.salesAccounts`, `context.traits.salesAccounts` | `sales_accounts` | Optional |
 | `traits.territoryId`, `context.traits.territoryId` | `territory_id` | Optional |
-| `traits.LeadSourceId`, `context.traits.LeadSourceId` | `lead_source_id` | Optional |
+| `traits.leadSourceId`, `context.traits.leadSourceId` | `lead_source_id` | Optional |
 | `traits.ownerId`, `context.traits.ownerId` | `owner_id` | Optional |
 | `traits.subscriptionTypes`, `context.traits.subscriptionTypes` | `subscription_types` | Optional |
 | `traits.medium`, `context.traits.medium` | `medium` | Optional |
@@ -131,22 +130,25 @@ RudderStack uses the [Upsert an Account](https://developers.freshworks.com/crm/a
 A sample `group` call is shown below:
 
 ```javascript
-rudderanalytics.group("group01", {
-  "name": "Alex Keener",
-  "phone": "1234567890",
-  "numberOfEmployees": 51,
-  "annualRevenue": 10000,
-  "zipcode": 90009,
-  "street": "6649 N Blue Gum Street",
-  "city": "New Orleans",
-  "state": "Louisiana",
-  "country": "USA",
-  "context": {
-    "traits": {
-      "email": "group01@example.com"
-    },
-  },
-});
+rudderanalytics.group(
+  "group01", {
+    name: "Alex Keener",
+    phone: "1234567890",
+    numberOfEmployees: 51,
+    annualRevenue: 10000,
+    zipcode: 90009,
+    street: "6649 N Blue Gum Street",
+    city: "New Orleans",
+    state: "Louisiana",
+    country: "USA"
+  }, {
+    context: {
+      traits: {
+        email: "alex@example.com"
+      }
+    }
+  }
+);
 ```
 ### Supported mappings
 
@@ -174,6 +176,23 @@ The following table lists the mappings between the RudderStack and Freshmarketer
 | `traits.linkedinUserName`, `context.traits.linkedinUserName` | `linkedin` | Optional |
 | `createdAt` | `created_at` | Optional |
 | `timestamp` | `updated_at` | Optional |
+
+## Type conversion and invalid format error
+
+The following event properties accept only the number data type:
+
+- `territoryId`
+- `leadSourceId`
+- `ownerId`
+- `campaignId`
+- `contactStatusId`
+- `lifecycleStageId`
+- `industryTypeId`
+- `businessTypeId`
+- `numberOfEmployees`
+- `parentSalesAccountid`
+
+If any of the above properties are present in any `identify` or `group` call in a different format, Rudderstack will try to convert them into the number data type. If the type conversion is unsuccessful, RudderStack will give an "invalid format" error.
 
 ## FAQ
 
