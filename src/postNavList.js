@@ -1642,6 +1642,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "freshmarketer",
+    title: "Freshmarketer",
+    link: "/destinations/streaming-destinations/freshmarketer/",
+    content: [],
+  },
+  {
     key: "sentry",
     title: "Sentry",
     link: "/destinations/streaming-destinations/sentry/",

@@ -1082,11 +1082,18 @@ export const jsonData = [
                         content: []
                     },
                 ]
-            },  {
+            },
+            {
+                title: "Freshmarketer",
+                link: "/destinations/streaming-destinations/freshmarketer/",
+                content: []
+            },  
+            {
                 title: "Iterable",
                 link: "/destinations/streaming-destinations/iterable/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Klaviyo",
                 link: "/destinations/streaming-destinations/klaviyo/",
                 content: []
