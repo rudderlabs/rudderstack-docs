@@ -1001,6 +1001,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Shynet",
+                link: "/destinations/streaming-destinations/shynet/",
+                content: []
+            },
+            {
                 title: "Bugsnag",
                 sectionTitle: "Error Reporting",
                 link: "/destinations/streaming-destinations/bugsnag/",
