@@ -280,7 +280,7 @@ val rudderClient = RudderClient.getInstance(
 ## Identify
 
 <div class="warningBlock">
-For App Events, RudderStack supports the <code class="inline-code">identify</code> calls only in the mobile device mode.
+For Facebook App Events, RudderStack supports the <code class="inline-code">identify</code> calls only in the mobile device mode.
 </div>
 
 You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to set the `userId` through the `setUserID` method from `AppEventsLogger`.
@@ -307,7 +307,7 @@ A sample `identify` call for an iOS application is shown below:
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call is logged to Facebook using the `logEvent` method of the `AppEventsLogger` class. RudderStack uses the same `eventName` as you have passed to the `track` method. Along with that, it will pass all the `properties` after converting them into an accepted format.
+RudderStack logs the <Link to="/event-spec/standard-events/track">`track`</Link> call to Facebook using the `logEvent` method of the `AppEventsLogger` class. It uses the same `eventName` as you have passed in the `track` call along with all the `properties`, after converting them into the accepted format.
 
 A sample `track` call for an iOS application is as shown:.
 
@@ -327,7 +327,7 @@ If <code class="inline-code">currency</code> is absent in the event properties, 
 
 ### Supported mappings for iOS v2
 
-This section lists some `track` event and property mappings which are **applicable only** for <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/ios-v2/">iOS v2</Link> device mode.
+This section lists some `track` event and property mappings which are **applicable only** when sending events via the <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/ios-v2/">iOS v2</Link> device mode.
 
 The following table lists the `track` event properties mappings between RudderStack and Facebook App Events:
 
@@ -649,7 +649,7 @@ FacebookSdk.fullyInitialize()
 </Tabs>
 
 <div class="infoBlock">
-Starting from iOS version 14.5, you need to get the device consent to share data with Facebook or not by setting the  <code class="inline-code">isAdvertiserTrackingEnabled</code> property. Refer to Facebook's <a href="https://developers.facebook.com/docs/app-events/getting-started-app-events-ios#get-device-consent">Get device consent</a> documentation for more information.
+Starting from iOS version 14.5, you need to get the device consent to share data with Facebook by setting the  <code class="inline-code">isAdvertiserTrackingEnabled</code> property. Refer to Facebook's <a href="https://developers.facebook.com/docs/app-events/getting-started-app-events-ios#get-device-consent">Get device consent</a> documentation for more information.
 </div>
 
 ## FAQ
