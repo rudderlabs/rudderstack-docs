@@ -29,7 +29,7 @@ The following table lists the property mappings between RudderStack and Rockerbo
 | :-------------| :-----------------|
 | `userId` | `external_id`     |     
 | `traits.email`/`context.traits.email`        | `email`        | 
-| `traits.phone`/`context.traits?.phone`    | `phone_number`        | 
+| `traits.phone`/`context.traits.phone`    | `phone_number`        | 
 
 <div class="infoBlock">
 The <code class="inline-code">userId</code> is the ID for a logged in user. It is a first-party identifier that persists across sessions. A unique user ID is essential in a conversion pixel for capturing new or returning user's data. You can include as many user identifiers, but only the first-party identifier should be passed to Rockerbox as <code class="inline-code">external_id</code>.
@@ -50,20 +50,13 @@ rudderanalytics.track(
     })
 ```
 
-You can also track conversion events by creating a conversion tag. Removing the view tracking event and replace it with a conversion event. The following standard conversion event types are supported:
-
-- `conv.purchase`
-- `conv.add_to_cart`
-- `conv.initiate_checkout`
-- `conv.create_account`
-- `conv.email_signup`
-- `conv.enrollment`
-
 ## Page
   
 The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
-The page call is associated with `RB.track("view");` event. Whatever is passed in properties, will be passed onto Rockerbox.
+The `page` call sends a `RB.track("view");` event to Rockerbox by default. The properties passed in the event are also passed on to Rockerbox.
+
+A sample `page` call is as shown:
 
 ```javascript
 rudderanalytics.page(

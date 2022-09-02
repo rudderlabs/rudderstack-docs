@@ -24,25 +24,21 @@ rudderanalytics.track(
   })
 ```
 
-<div class="infoBlock">
-You can choose to send either <code class="inline-code">email</code> or <code class="inline-code">customer_id</code> depending on your implementation. However, it is recommended to include both if available.
-</div>
-
 The following table lists the **required** properties and their mappings between RudderStack and Rockerbox:
 
-| RudderStack property   | Rockerbox property | Data type| Description |
+| RudderStack property   | Rockerbox property | 
 | :-------------| :-----------------|
-| `context.traits.email`/`properties.email`      | `email`   | string | Email associated with the user |
-| `userId`        | `customer_id`        | string | Internal identifier for the user |
-| `event`        | `action`        | string | Name of the conversion event with which the call is associated  |
-| `timestamp`   | `timestamp`      | epoch UTC timestamp of the transaction, fo example: 1535147451 | Time of the conversion  |
+| `context.traits.email`/`properties.email`      | `email`   | 
+| `userId`        | `customer_id`        | 
+| `event`        | `action`        | 
+| `timestamp`   | `timestamp`      | 
 
 The following table lists the **optional (pre-defined)** properties and their mappings between RudderStack and Rockerbox:
 
 | RudderStack property  | Rockerbox property  | 
+| :-------------| :-----------------|
 | `properties.revenue`               | `revenue`      |
 | `properties.order_id`/`orderId`            | `orderId`          |
-|           | `conversion_source`          |
 | `properties.in_store`         | `in_store`  |
 | `properties.salesforce`         | `salesforce`  |
 | `context.traits.phone`           | `phone`  |
