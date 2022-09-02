@@ -1630,6 +1630,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "freshsales",
+    title: "Freshsales",
+    link: "/destinations/streaming-destinations/freshsales/",
+    content: [],
+  },
+  {
     key: "snapengage",
     title: "SnapEngage",
     link: "/destinations/streaming-destinations/snapengage/",
