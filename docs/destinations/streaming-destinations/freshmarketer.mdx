@@ -63,17 +63,13 @@ A sample `identify` call is shown below:
 
 ```javascript
 rudderanalytics.identify("1hKOmRA4GRlm", {
-  "email": "alex@example.com",
-  "firstName": "Alex",
-  "lastName": "Keener",
-  "address": {
-    "street": "6649 N Blue Gum Street",
-    "city": "New Orleans",
-    "state": "Louisiana",
-    "country": "USA",
-    "postalCode": "90009"
-  }
-})
+  email: "alex@example.com",
+  firstName: "Alex",
+  lastName: "Keener",
+  state: "Louisiana",
+  country: "USA",
+  postalCode: "90009",
+});
 ```
 
 ### Supported mappings
@@ -102,12 +98,12 @@ The following table lists the mappings between the RudderStack and Freshmarketer
 | `traits.ownerId`, `context.traits.ownerId` | `owner_id` | Optional |
 | `traits.subscriptionTypes`, `context.traits.subscriptionTypes` | `subscription_types` | Optional |
 | `traits.medium`, `context.traits.medium` | `medium` | Optional |
-| `traits.campaignId`, `traits.campaign_id`, `context.traits.campaignId`, `context.traits.campaign_id` | `campaign_id` | Optional |
-| `traits.keyword`, `context.traits.keyword` | `keyword` | Optional |
+| `traits.campaignId`, `traits.campaign_id`, `context.traits.campaignId`, `context.traits.campaign_id`, `context.campaign.name` | `campaign_id` | Optional |
+| `traits.keyword`, `context.traits.keyword`, `context.campaign.term` | `keyword` | Optional |
 | `traits.timeZone`, `context.traits.timeZone` | `time_zone` | Optional |
-| `traits.facebook`, `context.traits.facebook` | `facebook` | Optional |
-| `traits.twitter`, `context.traits.twitter` | `twitter` | Optional |
-| `traits.linkedin`, `context.traits.linkedin` | `linkedin` | Optional |
+| `traits.facebookUserName`, `context.traits.facebookUserName` | `facebook` | Optional |
+| `traits.twitterUserName`, `context.traits.twitterUserName` | `twitter` | Optional |
+| `traits.linkedinUserName`, `context.traits.linkedinUserName` | `linkedin` | Optional |
 | `createdDate` | `created_at` | Optional |
 | `updatedDate` | `updated_at` | Optional |
 | `traits.contactStatusId`, `context.traits.contactStatusId` | `contact_status_id` | Optional |
@@ -140,15 +136,13 @@ rudderanalytics.group("group01", {
   "phone": "1234567890",
   "numberOfEmployees": 51,
   "annualRevenue": 10000,
-  "address": {
-    "street": "6649 N Blue Gum Street",
-    "city": "New Orleans",
-    "state": "Louisiana",
-    "country": "USA",
-    "postalCode": 90009
-  }
-  context: {
-    traits: {
+  "zipcode": 90009,
+  "street": "6649 N Blue Gum Street",
+  "city": "New Orleans",
+  "state": "Louisiana",
+  "country": "USA",
+  "context": {
+    "traits": {
       "email": "group01@example.com"
     },
   },
