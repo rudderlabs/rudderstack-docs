@@ -193,6 +193,10 @@ The following snippet highlights the use of the `identify` call:
 rudderanalytics.identify("userId", userVars) // userVars is a JSON object
 ```
 
+<div class="infoBlock">
+To send <code class="inline-code">external_id</code> via web device mode, you need to include and send it via an <code class="inline-code">identify</code> call. It will only be sent and mapped if the identify call is made before the <code class="inline-code">track</code> call.
+</div>
+
 ## Page
 
 When you make the `page` call, RudderStack sends the data to Facebook Pixel with the event type as `pageView`. You can also pass properties to `page` - RudderStack automatically sends these properties along with the event ID to Pixel.
