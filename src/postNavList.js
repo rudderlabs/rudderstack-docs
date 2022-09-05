@@ -1515,6 +1515,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "livechat",
+    title: "LiveChat",
+    link: "/destinations/streaming-destinations/livechat/",
+    content: [],
+  },
+  {
     key: "canny",
     title: "Canny",
     link: "/destinations/streaming-destinations/canny/",

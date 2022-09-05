@@ -953,7 +953,13 @@ export const jsonData = [
                 title: "Kustomer",
                 link: "/destinations/streaming-destinations/kustomer/",
                 content: []
-            }, {
+            },
+            {
+                title: "LiveChat",
+                link: "/destinations/streaming-destinations/livechat/",
+                content: []
+            }, 
+            {
                 title: "Slack",
                 link: "/destinations/streaming-destinations/slack/",
                 content: []
