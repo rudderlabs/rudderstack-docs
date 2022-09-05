@@ -71,14 +71,18 @@ The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you reco
 A sample `page` call for <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> is shown below:
 
 ```javascript
-
+rudderanalytics.page("HomePage", {
+  loadTime: 55,
+});
 ```
 
-The following table lists the mapping for the **required** property between RudderStack and Shynet:
+The following table lists the mappings between RudderStack and Shynet properties:
 
-| RudderStack property | Shynet property | Data type | 
-| :----------------- | :--------------- |:--------------- |
-| `properties.loadTime`        | `loadTime`       | Integer |
+| RudderStack property | Shynet property | Presence | Data type | 
+| :----------------- | :--------------- |:--------------- |:--------------- |
+| `context.page.url`        | `location`      | Required | String |
+| `context.page.referrer`   | `referrer`     | Optional  | String |
+| `properties.loadTime`     | `loadTime`      | Optional | Integer |
 
 
 ### Device mode
