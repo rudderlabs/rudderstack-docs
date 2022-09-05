@@ -19,24 +19,27 @@ Once you have confirmed that the source platform supports sending events to Pint
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Pinterest Tag**.
 2. Assign a name to the destination and click **Continue**.
 
-### Connection settings
+## Connection settings
 
 To successfully configure Pinterest Tag as a destination, you will need to configure the following settings:
 
 <img src="../../../assets/event-stream-destinations/pinterest-tag-connection-settings.png" />
 
-- **Pinterest Tag ID**: Enter your Pinterest Tag ID.
+- **Tag ID**: Enter your Pinterest Tag ID.
+- **App Store App ID**: Enter your Pinterest Tag ID.
+- **Pinterest Advertiser ID**: Enter your Pinterest Tag ID.
 
 <div class="infoBlock">
-
 For more information on finding the Pinterest Tag ID, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
+### Other settings
 
 <img src="../../../assets/event-stream-destinations/pinterest-tag-connection-settings-2.png" />
 <img src="../../../assets/event-stream-destinations/pinterest-tag-connection-settings-3.png" />
 
-
+- **Enable hashing for user data conversions**:
+- **Enable Event Deduplication**:
 - **Custom Properties**: Use this field to add any custom properties which should be sent to Pinterest.
 
 <div class="infoBlock">
@@ -45,7 +48,6 @@ For more information on using the custom properties, refer to the <a href="#cust
 </div>
 
 - **Map Your Events To Pinterest Events**: Use this field to map your event to a specific Pinterest event.
-- **Use device-mode to send events**: As this is a <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
 
 - **Enable Enhanced Match on Page Load**: This setting is enabled by default and attaches the hashed email address on the initial page load. Any further calls made to Pinterest will be an Enhanced Match.
 
@@ -60,8 +62,16 @@ For more information on using the custom properties, refer to the <a href="#cust
 
 If you use Rudderstack's `identify()` method to enable Pinterest’s Enhanced Match, you can only collect this information for successive events. Pinterest does not retroactively update the values for the past events.
 
+### Client-side events filtering
 
 <img src="../../../assets/event-stream-destinations/pinterest-tag-connection-settings-4.png" />
+
+This setting is applicable only if you are sending events to AppsFlyer via the device mode. 
+
+<div class="infoBlock">
+  
+Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this setting.
+</div>
 
 ## Identify
 
