@@ -25,25 +25,28 @@ To successfully configure Pinterest Tag as a destination, you will need to confi
 
 <img src="../../../assets/event-stream-destinations/pinterest-tag-connection-settings.png" />
 
-- **Tag ID**: Enter your Pinterest Tag ID.
-- **App Store App ID**: Enter your Pinterest Tag ID.
-- **Pinterest Advertiser ID**: Enter your Pinterest Tag ID.
+- **Tag ID**: Enter your Pinterest Tag ID. This field is **required only** for sending events to Pinterest Tag via <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 <div class="infoBlock">
-For more information on finding the Pinterest Tag ID, refer to the <a href="#faq">FAQ</a> section below.
+For more information on obtaining the Pinterest Tag ID, refer to the <a href="#faq">FAQ</a> section below.
 </div>
+
+- **App Store App ID**: Enter the App Id from your App Store. This field is **required only** when the source is iOS.
+- **Pinterest Advertiser ID**: Enter the Advertiser ID of your Pinterest account. This field is **required only** for sending events to Pinterest Tag via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+
 
 ### Other settings
 
 <img src="../../../assets/event-stream-destinations/pinterest-tag-connection-settings-2.png" />
 <img src="../../../assets/event-stream-destinations/pinterest-tag-connection-settings-3.png" />
 
-- **Enable hashing for user data conversions**:
-- **Enable Event Deduplication**:
+- **Enable hashing for user data conversions**: This setting is enabled by default and hashes your user data.
+- **Enable Event Deduplication**: Enable this setting to deduplicate the events. If enabled, you need to enter the following:
+  - **Deduplication key**: Enter the key using which Pinterest Tag deduplicates the events.
+
 - **Custom Properties**: Use this field to add any custom properties which should be sent to Pinterest.
 
 <div class="infoBlock">
-
 For more information on using the custom properties, refer to the <a href="#custom-properties">Custom properties</a> section below.
 </div>
 
@@ -57,19 +60,18 @@ For more information on using the custom properties, refer to the <a href="#cust
 
   Rudderstack supports [Pinterest Enhanced Match](https://help.pinterest.com/en/business/article/enhanced-match) when the following conditions are met:
 
-- A user is identified every time they visit your site.
-- A user visits your site anonymously but is identified at a later stage by making an `identify()` call.
+  - A user is identified every time they visit your site.
+  - A user visits your site anonymously but is identified at a later stage by making an `identify()` call.
 
-If you use Rudderstack's `identify()` method to enable Pinterest’s Enhanced Match, you can only collect this information for successive events. Pinterest does not retroactively update the values for the past events.
+  If you use Rudderstack's `identify()` method to enable Pinterest’s Enhanced Match, you can only collect this information for successive events. Pinterest does not retroactively update the values for the past events.
 
 ### Client-side events filtering
 
+This setting is applicable only if you are sending events to Pinterest Tag via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>. 
+
 <img src="../../../assets/event-stream-destinations/pinterest-tag-connection-settings-4.png" />
 
-This setting is applicable only if you are sending events to AppsFlyer via the device mode. 
-
 <div class="infoBlock">
-  
 Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this setting.
 </div>
 
@@ -93,9 +95,7 @@ rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
 In the above example, the identification parameter will be set to `alex@example.com` and the successive calls will be an Enhanced Match.
 
 <div class="infoBlock">
-
 After an <code class="inline-code">identify</code> call is made, nothing appears in the network tab in your browser or in the tag helper extension. However, a hashed value for an <code class="inline-code">em</code> parameter is added in the next event call, in a JSON object encoded in the URL.
-
 </div>
 
 ## Track

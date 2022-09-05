@@ -1,0 +1,122 @@
+---
+title: "Pinterest Tag Cloud Mode"
+description: Detailed technical documentation on sending events to Pinterest Tag using the cloud mode.
+---
+
+RudderStack lets you send your event data to Pinterest Tag via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+
+<GhBadge
+  label={'Stability'}
+  message={'Beta'}
+  color={'blueviolet'}
+/>
+
+<div class="infoBlock">
+Find the open source JavaScript SDK code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/PinterestTag">GitHub repository</a>.
+</div>
+
+RudderStack batches the track calls together before sending them to Pinterest Tag where each batch can contain upto 1000 events.
+
+## Track
+
+The <Link to="/event-spec/standard-events/track">`track`</Link> call allows you to capture user actions along with the properties associated with these actions.
+
+
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Order Completed", {
+    checkout_id: "C324532",
+    order_id: "T1230",
+    value: 15.98,
+    revenue: 16.98,
+    currency: "INR"
+})
+```
+
+The following table lists the common field mappings between RudderStack and Pinterest Tag properties:
+
+| RudderStack property | Pinterest Tag property | Presence | Description | 
+|:---------------------|:-------------|:--------------|:--------------|
+| `message.event` | `event_name` | Required | Type of the user event |
+| `context.traits.action_source`/`properties.action_source`/`message.channel` | `action_source` |Required | Source indicating where the conversion event occurred |
+| `timestamp` | `event_time` | Required | Unix timestamp (in UTC) in seconds indicating when the user conversion event occurred |
+| `destination.Config.advertiserId` | `advertiser_id` | Optional | Pinterest Advertiser ID |
+|  Integrations Object `messageId` | `event_id` | Optional | A unique id string that identifies this event and can be used for deduping |
+| `pageUrl` | `event_source_url` | Optional | URL of the web conversion event |
+| `properties.optOut`/`properties.opt_out`/`context.traits.optOut`/`context.device.adTrackingEnabled` | `opt_out` | Optional | When action_source is web or offline, it defines whether the user has opted out of tracking for web conversion events. While when action_source is app_android or app_ios, it defines whether the user has enabled Limit Ad Tracking on their iOS device, or opted out of Ads Personalization on their Android device.|
+| `destination.Config.appId` | `app_id` | Required | app store app ID |
+| `context.app.name`/`properties.appName` | `app_name` |Required | Name of the app. |
+| `context.app.version`/`properties.appVersion` | `app_version` | Version of the app. |
+| `context.device.manufacturer`/`properties.manufacturer` | `device_brand` |Optional | Brand of the user device |
+|  `context.device.model`/`properties.deviceModel` | `device_model` | Optional | Model of the user device |
+| `context.device.type`/`properties.deviceType` | `device_type` | Optional | Type of the user device |
+|  `context.os.version` | `os_version` | Optional | Version of the device operating system. |
+| `context.locale` | `language` | Optional | Two-character ISO-639-1 language code indicating the user's language. | 
+
+
+<div class="infoBlock">
+For iOS:
+If <code class="inline-code">context.device.adTrackingEnabled</code> is true <code class="inline-code">opt_out</code> should be false and vice-versa.
+For other platforms, RudderStack takes values directly from <code class="inline-code">properties.opt_out</code>.
+</div>
+
+The following table lists the user field mappings between RudderStack and Pinterest Tag properties:
+
+It is required at least one of: 
+1) em
+2) hashed_maids
+3) pair client_ip_address + client_user_agent.
+
+| RudderStack property | Pinterest Tag property | Data Type | 
+|:---------------------|:-------------|:--------------|
+| `email` | `em` | Array of strings with SHA-256 |
+| `phone` | `ph` | Array of strings with SHA-256 |
+| `context.traits.gender` | `ge` | Array of strings with SHA-256 |
+| `birthday` | `db` (yyyymmdd format, without any delimeter ) |  Array of strings with SHA-256 |
+|  `lastName` | `ln` | Array of strings with SHA-256 | 
+| `firstName` (if not present, sum of quantity) | `fn` | Array of strings with SHA-256 |
+| `context.traits.city`/`context.traits.address.city` | `ct` | Array of strings with SHA-256|
+| `context.traits.state`/`context.traits.address.state` | `st` (Two-letter code) | Array of strings with SHA-256 |
+| `context.traits.zip`/`context.traits.address.zip` | `zp` | Array of strings with SHA-256 |
+|  `context.traits.country`/`context.traits.address.country` | `country` (Two-character ISO-3166 country code) |Array of strings with SHA-256 | 
+| `context.device.advertisingId` | `hashed_maids` | Array of strings with SHA-256 |
+| `context.ip`/`context.requestIP`/`properties.ip`/`properties.clientIpAddress` | `client_ip_address` | String|
+| `context.userAgent` | `client_user_agent` | String |
+
+
+The following table lists the custom field mappings between RudderStack and Pinterest Tag properties:
+
+| RudderStack property | Pinterest Tag property | Data Type | 
+|:---------------------|:-------------|:--------------|
+| `properties.currency` | `currency` | String |
+| `properties.value`/`properties.total`/`properties.revenue` | `value` | String |
+| `properties.product_id`/`properties.product_sku`/`properties.products[index].product_id`/`properties.products[index].product_sku` | `content_ids` | Array of strings |
+| `properties.price`/`properties.products[index].price` | `contents.[index].item_price` | Array of strings |
+|  `properties.quantity`/`properties.products[index].quantity` | `contents.[index].quantity` | Integer | 
+| `properties.numOfItems` (if not present, sum of quantity) | `num_items` | Integer |
+| `properties.order_id` | `order_id` | String|
+| `properties.query` | `search_string` | String |
+
+
+RudderStack SDK sends the `track` event and any properties as custom properties to Pinterest.
+
+## Page
+
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+
+Pinterest's `pintrk` conversion tag sends any one of the following events when you make a `page` call:
+
+- **`ViewCategory`**: RudderStack sends this event if both the `name` and `category` fields are present. The below sample event contains both and is mapped to the Pinterest's `ViewCategory` event:
+
+```javascript
+rudderanalytics.page("Best Seller", "Games", {
+  path: "/best-seller/games/1",
+  url: "https://www.estore.com/best-seller/games/1",
+  title: "Best selling games offered by EStore",
+  search: "estore bestseller games",
+  referrer: "https://www.google.com/search?q=estore+bestseller",
+  testDimension: "true",
+})
+```
