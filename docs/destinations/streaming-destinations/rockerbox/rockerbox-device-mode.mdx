@@ -21,7 +21,7 @@ rudderanalytics.identify("1hKOmRA4el9Z", {
 })
 ```
 
-The following table lists the property mappings between RudderStack and Rockerbox:
+The following table lists the **optional** properties and their mappings between RudderStack and Rockerbox:
 
 | RudderStack property   | Rockerbox property  | 
 | :-------------| :-----------------|
@@ -45,11 +45,11 @@ A sample `track` call is as shown:
 
 ```javascript
 rudderanalytics.track(
-    "Product Added", {
-        product_id: "00000",
-        product_name: "Pink bolognas",
-        product_url: "http://www.yourdomain.com/products/pink-bolognas",
-    })
+  "Product Added", {
+    product_id: "00000",
+    product_name: "Pink bolognas",
+    product_url: "http://www.yourdomain.com/products/pink-bolognas",
+  })
 ```
 
 ## Page
@@ -62,10 +62,10 @@ A sample `page` call is as shown:
 
 ```javascript
 rudderanalytics.page(
-    "Cart",
-    "Cart Viewed", {
-        title: "new blank page",
-        url: "/pages/new"
-    }
+  "Cart",
+  "Cart Viewed", {
+    title: "new blank page",
+    url: "/pages/new"
+  }
 );
 ```

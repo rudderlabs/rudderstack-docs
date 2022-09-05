@@ -32,6 +32,10 @@ Advertiser Id is a required field for sending events to Rockerbox via <Link to="
 </div>
 
 - **Map your RockerBox events to RudderStack Events**: Enter the corresponding RudderStack and RockerBox events you want to be mapped.
+
+<div class="successBlock">
+You can specify multiple <strong>RudderStack events</strong> for one <strong>Rockerbox event</strong> and vice versa.
+</div>
     
 ### Client-side events filtering
 
@@ -71,4 +75,6 @@ Rockerbox lets you use a Custom Tracking Domain to load the Rockerbox trackers a
 
 Hybrid mode lets you use a destination in the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud</Link> as well as <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> simultaneously. It means that you can route some calls through server side (<Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>), whereas others through the client side SDK (<Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>). This is helpful in some specific use-cases and scenarios only possible in a particular connection mode.
 
-In RockerBox, the `identify` and `page` calls are supported in device mode whereas the `track` calls are supported in both the cloud and device mode.
+<div class="infoBlock">
+In RockerBox, the <code class="inline-code">identify</code> and <code class="inline-code">page</code> calls are supported in device mode whereas the <code class="inline-code">track</code> calls are supported in both the cloud and device mode.
+</div>
