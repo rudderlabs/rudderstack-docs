@@ -38,26 +38,60 @@ To successfully configure LiveChat as a destination, you will need to configure 
 For more information on obtaining your LiveChat license ID, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
-- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to LiveChat.
-
-<div class="infoBlock">
-For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
-</div>
-
-- **Use device mode to send events**: As this is a <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
-- **OneTrust Cookie Categories**: This setting lets you map <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to RudderStack's consent purposes.
+- **Record Live Chat Events**: Enable this setting to allow RudderStack to automatically record your LiveChat interactions as `track` events.
+  - **List of Events**: If **Record Live Chat Events** setting is enabled, enter the list of LiveChat interactions for RudderStack to track.
+  - **Update Event Name in track call**: Use this setting to map the standard LiveChat callback events with custom event names.
 
 ## Identify
 
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> events to send all the user-related information to LiveChat.
 
+RudderStack sends the various **optional** `identify` properties by calling the following LiveChat functions:
 
-### Supported mappings
+| RudderStack property | LiveChat function |
+| :----| :-----|
+| `context.traits.email` | [`set_customer_email`](https://developers.livechat.com/docs/extending-chat-widget/javascript-api#set-customer-email) | 
+| `message.traits` | [`set_custom_variables`](https://developers.livechat.com/docs/extending-chat-widget/javascript-api#set-session-variables) | 
+| `context.traits.name` | [`set_customer_name`](https://developers.livechat.com/docs/extending-chat-widget/javascript-api#set-customer-name) | 
 
+<div class="infoBlock">
+RudderStack also leverages the <code class="inline-code">userId</code> present in the event to set a custom variable called <code class="inline-code">User ID</code>.
+</div>
 
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com",
+  cart_value: "cart",
+  "order date": "05/21/2019"
+});
+```
 
 ## Track
 
+If you enable the **Record Live Chat Events** dashboard setting, RudderStack records the LiveChat interactions and sends them as <Link to="/event-spec/standard-events/track/">`track`</Link> events. You can then view and analyze these events in the other tools (connected to the same source in RudderStack).
 
+<div class="infoBlock">
+RudderStack only tracks the CTA interactions specified in the <strong>List of Events</strong> field in the dashboard settings. If this setting is not specified, RudderStack tracks all the interactions specified in the <Link to="#supported-events">Supported events</Link> section below.
+</div>
+
+### Supported events
+
+RudderStack automatically records and sends the following <a href="https://developers.livechat.com/docs/extending-chat-widget/javascript-api#callbacks">LiveChat callbacks</a>:
+
+| LiveChat event | `track` event name | Description |
+| :---| :---|  :--- |
+| [`onReady`](https://developers.livechat.com/docs/extending-chat-widget/javascript-api#on-ready) | ` ` | When the chat widget has finished loading. |
+| [`onAvailabilityChanged`](https://developers.livechat.com/docs/extending-chat-widget/javascript-api#on-availability-changed) |  `` | When the availability has changed for the current group. |
+| [`onVisibilityChanged`](https://developers.livechat.com/docs/extending-chat-widget/javascript-api#on-visibility-changed) |  `` | When the visibility of the chat widget has changed.  |
+| [`onCustomerStatusChanged`](https://developers.livechat.com/docs/extending-chat-widget/javascript-api#on-customer-status-changed) |  `` |  When the customer's status has changed. |
+| [`onNewEvent`](https://developers.livechat.com/docs/extending-chat-widget/javascript-api#on-new-event) |  `` | Called in case of both the incoming and outgoing events. |
+| [`onFormSubmitted`](https://developers.livechat.com/docs/extending-chat-widget/javascript-api#on-form-submitted) | `` | Called after a form is submitted in the chat. |
+| [`onRatingSubmitted`](https://developers.livechat.com/docs/extending-chat-widget/javascript-api#on-rating-submitted) | `` | When the customer has rated a chat or cancelled the previous rating. |
+| [`onGreetingHidden`](https://developers.livechat.com/docs/extending-chat-widget/javascript-api#on-greeting-hidden) | `` | When the customer cancels the greeting. |
+| [`onRichMessageButtonClicked`](https://developers.livechat.com/docs/extending-chat-widget/javascript-api#on-rich-message-button-clicked) | `` |  When the customer clicks the rich message button. |
 
 ## FAQ
 
