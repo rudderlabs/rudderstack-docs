@@ -3,7 +3,7 @@ title: "Rockerbox Device Mode"
 description: Detailed technical documentation on sending events to Rockerbox using the RudderStack Web Device mode.
 ---
 
-RudderStack lets you send your event data to Rockerbox destination via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK. 
+RudderStack lets you send your event data to Rockerbox via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK. 
 
 <div class="infoBlock">
 Find the open source JavaScript SDK code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/Rockerbox">GitHub repository</a>.
@@ -30,7 +30,7 @@ The following table lists the property mappings between RudderStack and Rockerbo
 | `traits.phone`/`context.traits.phone`    | `phone_number`        | 
 
 <div class="infoBlock">
-The <code class="inline-code">userId</code> is the ID for a logged in user. It is a first-party identifier that persists across sessions. A unique user ID is essential in a conversion pixel for capturing new or returning user's data. You can include as many user identifiers, but only the first-party identifier should be passed to Rockerbox as <code class="inline-code">external_id</code>.
+The <code class="inline-code">userId</code> is the ID for a logged-in user. It is a first-party identifier that persists across sessions. A unique user ID is essential in a conversion pixel for capturing the new or returning user's data. You can include as many user identifiers but only the first-party identifier should be passed to Rockerbox as <code class="inline-code">external_id</code>.
 </div>
 
 ## Track

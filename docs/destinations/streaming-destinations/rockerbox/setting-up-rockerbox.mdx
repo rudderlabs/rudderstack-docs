@@ -35,9 +35,10 @@ Advertiser Id is a required field for sending events to Rockerbox via <Link to="
     
 ### Client-side events filtering
 
+This setting lets you specify which events should be blocked or allowed to flow through to Rockerbox.
+
 <img src="../../../assets/event-stream-destinations/rockerbox-connection-settings-2.png" alt="Rockerbox Connection Settings in RudderStack" />
 
-This setting lets you specify which events should be blocked or allowed to flow through to Rockerbox.
 
 <div class="infoBlock">
 This option is applicable only if you're sending events to Rockerbox via the web device mode. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
@@ -49,10 +50,10 @@ This option is applicable only if you're sending events to Rockerbox via the web
 
 These settings are applicable only if you are sending events to Rockerbox via the web device mode:
 
-- **Client Auth Id**: Enter your Rockerbox Client Auth Id.
+- **Client Auth ID**: Enter your Rockerbox Client Auth ID.
 
 <div class="infoBlock">
-You can obtain the  Client Auth Id from your Rockerbox All Pages tag available in the Rockerbox Attribution platform. For more information on obtaining it, refer to the <a href="https://help.rockerbox.com/article/unydvsq7jr-site-direct-all-pages-pixel#:~:text=Your%20pixel%20will%20have%20an%20alphanumeric%20ID%20instead%20of%20the%20CLIENT_AUTH_ID%20placeholder">Rockerbox documentation</a>.
+You can obtain the  Client Auth ID from your <strong>Rockerbox All Pages</strong> tag available in the Rockerbox Attribution platform. For more information on obtaining it, refer to the <a href="https://help.rockerbox.com/article/unydvsq7jr-site-direct-all-pages-pixel#:~:text=Your%20pixel%20will%20have%20an%20alphanumeric%20ID%20instead%20of%20the%20CLIENT_AUTH_ID%20placeholder">Rockerbox documentation</a>.
 </div>
 
 - **Custom Domain**: Enter the custom domain from where you want to load the pixels. 
@@ -68,6 +69,6 @@ Rockerbox lets you use a Custom Tracking Domain to load the Rockerbox trackers a
 
 ## Hybrid mode
 
-Hybrid mode lets you use a destination in the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud</Link> as well as <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> simultaneously. It means that you can route some calls through server side (Cloud Mode), whereas others through the client side SDK (Device Mode). It is very helpful to achieve some use-case scenarios only possible in a particular connection mode.
+Hybrid mode lets you use a destination in the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud</Link> as well as <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> simultaneously. It means that you can route some calls through server side (<Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>), whereas others through the client side SDK (<Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>). This is helpful in some specific use-cases and scenarios only possible in a particular connection mode.
 
 In RockerBox, the `identify` and `page` calls are supported in device mode whereas the `track` calls are supported in both the cloud and device mode.
