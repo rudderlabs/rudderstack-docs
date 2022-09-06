@@ -72,7 +72,13 @@ A sample `page` call for <Link to="/destinations/rudderstack-connection-modes/#c
 
 ```javascript
 rudderanalytics.page("HomePage", {
-  loadTime: 55,
+  loadTime: 55
+}, {
+  context: {
+    page: {
+      url: 'www.site.com'
+    }
+  }
 });
 ```
 
