@@ -51,33 +51,7 @@ rudderanalytics.track("Order Completed", {
 
 RudderStack SDK sends the `track` event and any properties as custom properties to Pinterest.
 
-## Page
-
-The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
-
-Pinterest's `pintrk` conversion tag sends any one of the following events when you make a `page` call:
-
-- **`ViewCategory`**: RudderStack sends this event if both the `name` and `category` fields are present. The below sample event contains both and is mapped to the Pinterest's `ViewCategory` event:
-
-```javascript
-rudderanalytics.page("Best Seller", "Games", {
-  path: "/best-seller/games/1",
-  url: "https://www.estore.com/best-seller/games/1",
-  title: "Best selling games offered by EStore",
-  search: "estore bestseller games",
-  referrer: "https://www.google.com/search?q=estore+bestseller",
-  testDimension: "true",
-})
-```
-- **`PageVisit`**: RudderStack sends this event if only `name` field is present and drops any additional properties. The below sample event contains only `name` and is mapped to the Pinterest's `PageVisit` event:
-
-```javascript
-rudderanalytics.page("Best Seller", {
-  path: "/best-seller/1",
-})
-```
-
-## E-Commerce
+### E-Commerce
 
 RudderStack supports e-commerce conversion tracking for Pinterest. You can use the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for sending the events while instrumenting your site with the RudderStack SDK.
 
@@ -97,7 +71,6 @@ rudderanalytics.track("custom event")
 ```
 
 <div class="infoBlock">
-  
 You can map your event to a specific Pinterest event by adding it in the <strong>Map Your Events To Pinterest Events</strong> section while configuring the Pinterest destination in RudderStack.
 </div>
 
@@ -116,7 +89,6 @@ Pinterest supports the following nine standard events that can be mapped and tra
 - `Custom`
 
 <div class="infoBlock">
-
 These events aren’t available for conversion reporting.
 </div>
 
@@ -168,3 +140,30 @@ rudderanalytics.track("Event", {
 For the above snippet, the following properties must be added in the **Custom Properties** section:
 - `customProperty.customValue`
 - `someRandomMailId`
+
+## Page
+
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+
+Pinterest's `pintrk` conversion tag sends any one of the following events when you make a `page` call:
+
+- **`ViewCategory`**: RudderStack sends this event if both the `name` and `category` fields are present. The below sample event contains both and is mapped to the Pinterest's `ViewCategory` event:
+
+```javascript
+rudderanalytics.page("Best Seller", "Games", {
+  path: "/best-seller/games/1",
+  url: "https://www.estore.com/best-seller/games/1",
+  title: "Best selling games offered by EStore",
+  search: "estore bestseller games",
+  referrer: "https://www.google.com/search?q=estore+bestseller",
+  testDimension: "true",
+})
+```
+- **`PageVisit`**: RudderStack sends this event if only `name` field is present and drops any additional properties. The below sample event contains only `name` and is mapped to the Pinterest's `PageVisit` event:
+
+```javascript
+rudderanalytics.page("Best Seller", {
+  path: "/best-seller/1",
+})
+```
+

@@ -31,9 +31,8 @@ To successfully configure Pinterest Tag as a destination, you will need to confi
 For more information on obtaining the Pinterest Tag ID, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-- **App Store App ID**: Enter the App Id from your App Store. This field is **required only** when the source is iOS.
+- **App Store App ID**: Enter the App Id from your App Store. This field is **required only** when you are using an iOS source.
 - **Pinterest Advertiser ID**: Enter the Advertiser ID of your Pinterest account. This field is **required only** for sending events to Pinterest Tag via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
-
 
 ### Other settings
 
@@ -42,15 +41,25 @@ For more information on obtaining the Pinterest Tag ID, refer to the <a href="#f
 
 - **Enable hashing for user data conversions**: This setting is enabled by default and hashes your user data.
 - **Enable Event Deduplication**: Enable this setting to deduplicate the events. If enabled, you need to enter the following:
-  - **Deduplication key**: Enter the key using which Pinterest Tag deduplicates the events.
+  - **Deduplication key**: Enter the key using which Pinterest Tag should use to deduplicate the events.
 
-- **Custom Properties**: Use this field to add any custom properties which should be sent to Pinterest.
+- **Custom Properties**: Enter any custom properties which should be sent to Pinterest. This field is **applicable only** for sending events to Pinterest Tag via <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 <div class="infoBlock">
-For more information on using the custom properties, refer to the <a href="#custom-properties">Custom properties</a> section below.
+For more information on using the custom properties, refer to the <a href="/destinations/streaming-destinations/pinterest-ads/pinterest-ads-device-mode/#custom-properties">Custom properties</a> section.
 </div>
 
 - **Map Your Events To Pinterest Events**: Use this field to map Rudderstack events to Pinterest Standard Conversion Events.
+
+<div class="infoBlock">
+The precedence order for the event mapping is:
+<ul>
+<li> The event mapping specified in the above connection setting is given the highest priority</li>
+<li> If not specified, the <Link to="/destinations/streaming-destinations/pinterest-ads/pinterest-ads-device-mode/#e-commerce">standard e-commerce event mapping</Link> is considered.</li>
+<li> If none of the above qualifies, the <Link to="/destinations/streaming-destinations/pinterest-ads/pinterest-ads-cloud-mode/#custom-field-mapping">custom event mapping</Link> is considered.</li>
+</ul>
+</div>
+
 
 - **Enable Enhanced Match on Page Load**: This setting is enabled by default and attaches the hashed email address on the initial page load. Any further calls made to Pinterest will be an Enhanced Match.
 
@@ -85,4 +94,4 @@ Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side
 2. Click on the **Ads** dropdown and go to **Conversions**. It will open the Pinterest Tag Manager.
 3. Click on **Get Started** and you will see your Tag ID, as shown:
 
-<img src="../../assets/event-stream-destinations/tag-id-pinterest.png" />
+<img src="../../../assets/event-stream-destinations/tag-id-pinterest.png" />
