@@ -123,7 +123,7 @@ The following table lists the mappings specific for Pinterest Conversion API and
 | `destination.Config.advertiserId` | `advertiser_id` | Required | Pinterest Advertiser ID. |
 |  Integrations Object `messageId` | `event_id` | Optional | Unique Id (string) that identifies the event and can be used for deduping. |
 | `pageUrl` | `event_source_url` | Optional | URL of the web conversion event. |
-| `properties.optOut`/`properties.opt_out`/`context.traits.optOut`/`context.device.adTrackingEnabled` | `opt_out` | Optional | When <code class="inline-code">action_source</code> is **web** or **offline**, it defines whether the user has opted out of tracking for web conversion events whereas when <code class="inline-code">action_source</code> is **app_android** or **app_ios**, it defines whether the user has enabled **Limit Ad Tracking** on their iOS device or opted out of **Ads Personalization** on their Android device.|
+| `context.device.adTrackingEnabled` | `opt_out` | Optional | When <code class="inline-code">action_source</code> is **web** or **offline**, it defines whether the user has opted out of tracking for web conversion events whereas when <code class="inline-code">action_source</code> is **app_android** or **app_ios**, it defines whether the user has enabled **Limit Ad Tracking** on their iOS device or opted out of **Ads Personalization** on their Android device.|
 | `destination.Config.appId` | `app_id` | Optional | App store's App ID. |
 | `context.app.name`/`properties.appName` | `app_name` |Optional | Name of the app. |
 | `context.app.version`/`properties.appVersion` | `app_version` | Optional |Version of the app. |
@@ -135,8 +135,7 @@ The following table lists the mappings specific for Pinterest Conversion API and
 
 
 <div class="infoBlock">
-For iOS source, if <code class="inline-code">context.device.adTrackingEnabled</code> is <code class="inline-code">true</code>, <code class="inline-code">opt_out</code> should be <code class="inline-code">false</code> and vice-versa.
-For other source platforms, RudderStack takes the value directly from <code class="inline-code">properties.opt_out</code>.
+For mobile sources, if <code class="inline-code">context.device.adTrackingEnabled</code> is <code class="inline-code">true</code>, <code class="inline-code">opt_out</code> will be set as <code class="inline-code">false</code> and vice-versa.
 </div>
 
 ## User field mappings
