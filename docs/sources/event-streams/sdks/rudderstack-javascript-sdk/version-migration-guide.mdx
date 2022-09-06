@@ -68,7 +68,7 @@ To migrate the self-hosted JavaScript SDK to v1.1, follow any of the three optio
   Meaning, the file name for the JavaScript SDK is `rudder-analytics.min.js`, and the device mode destination SDKs are located next to the core SDK file under the `js-integrations` directory, update the script tag as shown:
 
     ```html
-    <script src="https://cdn.<yourdomain>.com/rudder-analytics.min.js"></script>
+    <script src="https://<subdomain>.<yourdomain>.com/rudder-analytics.min.js"></script>
     ```
 
   - If the file name of your self-hosted JavaScript SDK is `rudder-analytics.min.js`, and the destination SDKs are **not** located next to the core SDK file under the `js-integrations` directory, update the script tag as shown:
@@ -78,11 +78,11 @@ To migrate the self-hosted JavaScript SDK to v1.1, follow any of the three optio
       // rudderanalytics object initialization
       // provide the location of the destination SDKs in the load options
       rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-          destSDKBaseURL: "https://cdn.<yourdomain>.com/custom-js-integrations"
+          destSDKBaseURL: "https://<subdomain>.<yourdomain>.com/<path-to-integration-sdks>"
       });
       // ...
       </script>
-      <script src="https://cdn.<yourdomain>.com/rudder-analytics.min.js"></script>
+      <script src="https://<subdomain>.<yourdomain>.com/rudder-analytics.min.js"></script>
       ```
 
 - If your JavaScript SDK file name is **not** `rudder-analytics.min.js`, update the script tag in your website, as shown:
@@ -92,11 +92,11 @@ To migrate the self-hosted JavaScript SDK to v1.1, follow any of the three optio
   // rudderanalytics object initialization
   // provide the location of the destination SDKs in the load options
   rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-      destSDKBaseURL: "https://cdn.<yourdomain>.com/js-integrations"
+      destSDKBaseURL: "https://<subdomain>.<yourdomain>.com/js-integrations"
   });
   // ...
   </script>
-  <script src="https://cdn.<yourdomain>.com/<your-custom-analytics-file>.js"></script>
+  <script src="https://<subdomain>.<yourdomain>.com/<path-to-custom-analytics-file>"></script>
   ```
 
 
