@@ -75,7 +75,7 @@ module.exports = {
               delayLoadTime: 1000,
               useNewSDK: true,
               sdkURL:
-                'https://cdn.rudderlabs.com/v1.1/beta/rudder-analytics.min.js',
+                'https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js',
               dataPlaneUrl: `https://rudderstack-dataplane.rudderstack.com`,
             },
           },
