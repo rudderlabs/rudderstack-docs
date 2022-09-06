@@ -1214,8 +1214,13 @@ export const jsonData = [
                 ]
             },
             {
-                title: "Google Sheets",
+                title: "Monday",
                 sectionTitle: "Productivity",
+                link: "/destinations/streaming-destinations/monday/",
+                content: []
+            },
+            {
+                title: "Google Sheets",
                 link: "/destinations/streaming-destinations/google-sheets/",
                 content: []
             },

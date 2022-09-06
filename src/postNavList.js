@@ -1630,6 +1630,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "monday",
+    title: "Monday",
+    link: "/destinations/streaming-destinations/monday/",
+    content: []
+  },
+  {
     key: "google-sheets",
     title: "Google Sheets",
     link: "/destinations/streaming-destinations/google-sheets/",
