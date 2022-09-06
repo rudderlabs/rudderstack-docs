@@ -422,6 +422,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "shynet",
+    title: "Shynet",
+    link: "/sources/event-streams/cloud-apps/shynet/",
+    content: [],
+  },
+  {
     key: "extract",
     title: "Cloud Extract",
     link: "/sources/extract/",
