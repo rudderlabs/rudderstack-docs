@@ -338,7 +338,13 @@ export const jsonData = [
                         title: "Looker",
                         link: "/sources/event-streams/cloud-apps/looker/",
                         content: []
-                    }, {
+                    }, 
+                    {
+                        title: "Monday",
+                        link: "/sources/event-streams/cloud-apps/monday/",
+                        content: []
+                    },
+                    {
                         title: "PostHog",
                         link: "/sources/event-streams/cloud-apps/posthog/",
                         content: []

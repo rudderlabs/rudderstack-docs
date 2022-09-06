@@ -362,6 +362,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "monday",
+    title: "Monday",
+    link: "/sources/event-streams/cloud-apps/monday/",
+    content: [],
+  },
+  {
     key: "appcenter",
     title: "App Center",
     link: "/sources/event-streams/cloud-apps/appcenter/",
