@@ -4,12 +4,12 @@ description: Step-by-step guide on sending your event data from RudderStack to M
 aliases: ["Monday destination"]
 ---
 
-[Monday](https://monday.com/) is an in-app subscription platform that lets you analyze and grow your cross-platform app subscriptions.
+[Monday](https://monday.com/) is a popular workflow management tool. It lets you create efficient cross-team workflows and automations for better collaboration and maximum productivity.
 
 RudderStack supports Monday as a destination to which you can seamlessly send your event data.
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/revenue_cat">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/monday">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -36,18 +36,45 @@ To successfully configure Monday as a destination, you will need to configure th
 
 <img src="../../assets/event-stream-destinations/monday-connection-settings.png" alt="Monday connection settings"/>
 
-- **Public API Key**: Enter your Monday public API key.
+- **API Token**: Enter the API token from Monday dashboard.
+- **Board ID**: Enter the board ID from Monday dashboard.
+- **Group Title**: Enter the group title of your board from Monday dashboard.
+- **Columns to property mapping**: Enter the column names from your board and the properties you want them to be mapped to.
 
 <div class="infoBlock">
-For more information on getting your Monday public API key, refer to the <a href="#faq">FAQ</a> section below.
+For more information on getting these details, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-- **X-Platform**: Select your app platform from the dropdown.
+### Client-side events filtering
 
+This setting lets you specify the event names which should be allowed to flow through to Monday. Any other event is discarded.
+
+<img src="../../assets/event-stream-destinations/monday-connection-settings-2.png" alt="Monday connection settings"/>
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> method lets you capture user events along with the properties associated with them.
+In Monday, you can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to create an item in your board. You also need to provide the **Board ID** and **column to property mapping** in the RudderStack dashboard to create an item. 
+
+<div class="infoBlock">
+The column names provided in the mapping should be existing in your board. Only the column names provided in the mapped will be updated.
+</div>
+
+
+The following column types can be updated while creating a new item on the board:
+
+- Status 
+- Numbers 
+- Text 
+- Checkbox
+- Country 
+- Email 
+- Item name 
+- Link 
+- Location 
+- Long Text 
+- Phone 
+- Rating 
+- World Clock
 
 A sample `track` call is shown below:
 
@@ -67,35 +94,40 @@ RudderStack maps the following event properties to the corresponding Monday prop
 | RudderStack property | Monday property | Presence |
 | :-----| :------| :-------|
 | `properties.name` | `item_name` | Required |
-| `properties.countryCode` | `countryCode` | Required if Country column is getting updated |
+| `properties.countryCode` | `countryCode` | Required, if `country` column needs to be updated |
 | `properties.emailText` | `text`  | Optional |
-| `properties.latitude` | `latitude`  | Required if location column is being updated |
-| `properties.longitude` | `longitude`  | Required if location column is being updated |
-| `properties.countryShortName` | `countryShortName`  | Required if phone column is being updated |
+| `properties.latitude` | `latitude`  | Required, if `location` column needs to be updated |
+| `properties.longitude` | `longitude`  | Required, if `location` column needs to be updated |
+| `properties.countryShortName` | `countryShortName`  | Required, if `phone` column needs to be updated |
 | `properties.linkText` | `text`  | Optional |
 
 ## FAQ
 
-### Where can I find the Board Id, Group Title and column and property names in Monday dashboard?
+### Where can I find the Monday API token?
 
-Follow these steps:
+To get the Monday API token, follow these steps:
 
-**Board Id**
+1. Log into [Monday dashboard](https://auth.monday.com/auth/login_monday).
+2. Click on your profile in the left navigation bar.
+3. Select **Developer** > **My Access Tokens**, as shown:
+
+<img src="../../assets/event-stream-destinations/monday-api-token.png" alt="Monday API token in the dashboard"/>
+
+### Where can I find the Board ID, Group Title and column names in Monday dashboard?
+
+Follow these steps to find the same:
+
+**Board ID**
 
 1. Log into your [Monday dashboard](https://auth.monday.com/auth/login_monday).
-2. Go to **Work management** in the left navigation bar and select your board. The board Id is displayed in the address bar, as shown:
-
-<img src="../../assets/event-stream-destinations/monday-board_id.png" alt="Monday board ID in the dashboard"/>
-
+2. Go to **Work management** in the left navigation bar and select your board. The board ID is displayed in the address bar.
 
 **Group title**
 
-Select your board. There can be multiple groups in a board, for example, Active deals is the group title in below image:
+Group title is the name of your the groups in the board, for example, **Active deals** and **Closed Won** are the group titles in the below image.
 
-<img src="../../assets/event-stream-destinations/monday-group-title.png" alt="Monday group title in the dashboard"/>
+**Column names**
 
-**Column and property names**
+The column titles in your board are the column names, for example, **Stage**, **Owner**, **Contacts**, and **Accounts** are the column names in the below image.
 
-In your board, column names are:
-
-Property namea are:
+<img src="../../assets/event-stream-destinations/monday-dashboard.png" alt="Monday dashboard"/>
