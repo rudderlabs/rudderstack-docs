@@ -321,6 +321,10 @@ rudderanalytics.alias("new_id", "old_id", () => {
 
 The <Link to="/event-spec/standard-events/group/">`group`</Link> call lets you associate an identified user with a group such as a company, organization, or an account.
 
+<div class="warningBlock">
+RudderStack does not support associating a user to more than one group per <code class="inline-code">group</code> call.
+</div>
+
 The JavaScript SDK defines the `group` method as shown:
 
 ```javascript
