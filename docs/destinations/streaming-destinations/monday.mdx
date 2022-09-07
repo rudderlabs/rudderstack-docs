@@ -55,10 +55,11 @@ This setting lets you specify the event names which should be allowed to flow th
 
 In Monday, you can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to create an item in your board. You also need to provide the **Board ID** and **column to property mapping** in the RudderStack dashboard to create an item. 
 
+You can also provide a group title (optional) to add a new item to any specific group.
+
 <div class="infoBlock">
 The column names provided in the mapping should be existing in your board. Only the column names provided in the mapping will be updated.
 </div>
-
 
 The following column types can be updated while creating a new item on the board:
 
@@ -76,16 +77,33 @@ The following column types can be updated while creating a new item on the board
 - Rating 
 - World Clock
 
-A sample `track` call is shown below:
+<div class="infoBlock">
+If you map a checkbox column, the checkbox value will be set to true by default.
+</div>
+
+
+You can override the board ID mentioned in the RudderStack dashboard's connection setting by passing it in the `externalId` in the track call. A sample `track` call for the same is shown below:
 
 ```javascript
-rudderanalytics.track("event", {
-  status: "done",
-  value: 10000,
-  close_probability: "90%",
-  location: "New York, USA"
+rudderanalytics.track("create an item", {
+  "status": "Done",
+  "latitude": "50.32",
+  "longitude": "46.32",
+  "address": "New York, USA",
+  "mobile_number": "7383222323",
+  "countryShortName": "IN"
+}, {
+  "externalId": [{
+    "type": "boardId",
+    "id": "3536273222"
+  }],
 });
 ```
+<div class="infoBlock">
+Make sure the event passed in the track call is added in the allowlist connection setting in the dashboard, otherwise it will be discarded.
+</div>
+
+
 
 ### Property mapping
 
@@ -100,6 +118,10 @@ RudderStack maps the following event properties to the corresponding Monday prop
 | `properties.longitude` | `longitude`  | Required, if `location` column needs to be updated |
 | `properties.countryShortName` | `countryShortName`  | Required, if `phone` column needs to be updated |
 | `properties.linkText` | `text`  | Optional |
+
+<div class="infoBlock">
+The <code class="inline-code">countryCode</code> and <code class="inline-code">countryShortName</code> must be passed in the ISO-2 country code format (a two-letter code), for example, US.
+</div>
 
 ## FAQ
 
