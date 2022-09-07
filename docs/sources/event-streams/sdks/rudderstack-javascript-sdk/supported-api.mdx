@@ -206,6 +206,30 @@ In the above example, both `email1` and `email2` will be sent in the payload for
 Calling <code class="inline-code">reset()</code> will reset the existing user traits and calling <code class="inline-code">identify()</code> with new traits will update the new user traits.
 </div>
 
+### Setting an external ID
+
+You can pass a custom `userId` along with the standard `userId` in your `identify` call. RudderStack adds this value under `context.externalId`. 
+
+The following code snippet highlights how you can add an `externalId` to your `identify` request:
+
+```javascript
+rudderanalytics.identify(
+  "User-id", {
+    firstName: "Alex",
+    city: "New Orleans",
+    country: "Louisiana",
+    phone: "+1-202-555-0146",
+    email: "alex@example.com",
+    custom_flavor: "chocolate",
+  } {
+    externalId: [{
+      id: "some_external_id_1",
+      type: "brazeExternalId",
+    }, ],
+  }
+);
+```
+
 ## Page
 
 The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
