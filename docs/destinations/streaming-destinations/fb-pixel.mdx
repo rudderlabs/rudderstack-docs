@@ -55,6 +55,7 @@ For more information on obtaining your Facebook Pixel ID and Business Access Tok
 - **Map your events with Facebook Standard Events**: This option lets you map your events to the standard events defined by Facebook.
 - **Standard Events custom properties**: For the standard events, some predefined properties are taken by Facebook. If you want to send more properties for your events, mention those properties in this field.
 - **Value Field Identifier**: You can set this field to `properties.price` or `properties.value`. RudderStack will then assign this to the value field of the Facebook payload.
+- **Enable Advanced Matching**: Enable this setting to update the user information in Facebook Pixel via an `identify` call.
 
 ### PII properties settings
 
@@ -185,7 +186,7 @@ RudderStack then changes the traits as shown below, before sending them to Faceb
 
 ## Identify
 
-In Facebook Pixel, the immediate updating of user properties via the `identify` call is not supported. If the **Enable Advanced Matching** is turned on in the dashboard, then the `identify` call will update Facebook Pixel with the user information.
+In Facebook Pixel, the immediate updating of user properties via the `identify` call is not supported. To do so, you need to enable the **Enable Advanced Matching** setting in the RudderStack dashboard.
 
 The following snippet highlights the use of the `identify` call:
 
@@ -193,8 +194,10 @@ The following snippet highlights the use of the `identify` call:
 rudderanalytics.identify("userId", userVars) // userVars is a JSON object
 ```
 
+To send `external_id` via the web device mode, you need to include and send it via an `identify` call before making any other call.
+
 <div class="infoBlock">
-To send <code class="inline-code">external_id</code> via the web device mode, you need to include and send it via an <code class="inline-code">identify</code> call before making any other call.
+For more information on implementing Advanced Matching in the web device mode, refer to the <a href="https://developers.facebook.com/docs/meta-pixel/advanced/advanced-matching">Facebook documentation</a>.
 </div>
 
 ## Page
