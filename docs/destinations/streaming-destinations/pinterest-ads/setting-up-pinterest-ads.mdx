@@ -39,7 +39,7 @@ For more information on obtaining the Pinterest Tag ID, refer to the <a href="#f
 <img src="../../../assets/event-stream-destinations/pinterest-tag-connection-settings-2.png" />
 <img src="../../../assets/event-stream-destinations/pinterest-tag-connection-settings-3.png" />
 
-- **Enable hashing for user data conversions**: This setting is enabled by default and hashes your user data.
+- **Enable hashing for user data conversions**: This setting is enabled by default and hashes your user data using SHA256 encoding.
 - **Enable Event Deduplication**: Enable this setting to deduplicate the events. If enabled, you need to enter the following:
   - **Deduplication key**: Enter the key using which Pinterest Tag should use to deduplicate the events.
 
@@ -64,9 +64,7 @@ For more information on using the custom properties, refer to the <a href="/dest
 
   When disabled, all the visits made to your site become anonymous. However, you can still identify any user by making the `identify()` call.
 
-  **Enhanced Match**
-
-  Rudderstack supports [Pinterest Enhanced Match](https://help.pinterest.com/en/business/article/enhanced-match) when the following conditions are met:
+  RudderStack supports [Pinterest Enhanced Match](https://help.pinterest.com/en/business/article/enhanced-match) when the following conditions are met:
 
   - A user is identified every time they visit your site.
   - A user visits your site anonymously but is identified at a later stage by making an `identify()` call.
@@ -83,14 +81,14 @@ This setting is applicable only if you are sending events to Pinterest Tag via t
 Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this setting.
 </div>
 
-
-
 ## FAQ
 
 ### How do I get the Pinterest Tag ID?
 
+To get your Pinterest Tag ID, follow these steps:
+
 1. Login to your [Pinterest Ads dashboard](https://ads.pinterest.com/).
-2. Click on the **Ads** dropdown and go to **Conversions**. It will open the Pinterest Tag Manager.
-3. Click on **Get Started** and you will see your Tag ID, as shown:
+2. Click the **Ads** dropdown and go to **Conversions**. It will open the Pinterest Tag Manager.
+3. Click **Get Started** and you will see your Tag ID, as shown:
 
 <img src="../../../assets/event-stream-destinations/tag-id-pinterest.png" />
