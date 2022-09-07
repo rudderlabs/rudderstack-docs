@@ -3,21 +3,21 @@ title: "NetSuite"
 description: Step-by-step guide to ingest data from NetSuite into RudderStack.
 ---
 
-[NetSuite](https://www.netsuite.com/portal/home.shtml) is a popular business management suite that delivers efficient ERP, CRM, and other e-commerce solutions to nearly 25000 customers worldwide.
+[NetSuite](https://www.netsuite.com/portal/home.shtml) is a popular business management suite that delivers efficient ERP, CRM, and other e-commerce solutions to thousands of customers worldwide.
 
-This document guides you in setting up NetSuite as a source in RudderStack. Once configured, RudderStack automatically ingests your specified NetSuite data, which can then be routed to your RudderStack-supported data warehouse destination.
+This document guides you in setting up NetSuite as a source in RudderStack. Once configured, RudderStack automatically ingests your NetSuite data and routes it to your specified data warehouse destination.
 
 <div class="warningBlock">
 All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
 </div>
 
-## Configuring NetSuite
+## Configuring RudderStack-specific settings in NetSuite
 
-Before you set up a Netsuite source in RudderStack, there are some RudderStack-specific configurations you need to do in your Netsuite account.
+Before you set up a Netsuite source in RudderStack, you need to configure some RudderStack-specific settings in your Netsuite account.
 
-### Allowlisting the IPs
+### Allowlisting RudderStack IPs
 
-Depending on the setup of your NetSuite organization, you will have to allowlist the following RudderStack IPs:
+Based on the security configuration of your NetSuite organization, allowlist the following RudderStack IPs:
 
 - 3.216.35.97
 - 23.20.96.9
@@ -34,104 +34,123 @@ If you have your deployment in the EU region, you can allowlist only the followi
 - 3.66.99.198
 - 3.64.201.167
 
-To allowlist the IPs in NetSuite, follow these steps:
+To allowlist the above IPs in NetSuite, follow these steps:
 
-1. Sign into your NetSuite account as an administrator.
+1. Sign into your [NetSuite account](https://system.netsuite.com/pages/customerlogin.jsp) as an administrator.
 2. Go to **Setup** > **Company** > **Company Information**.
 3. Add a comma-delimited list of the above-mentioned RudderStack IPs in the **Allowed IP addresses** field.
-4. Finally, click on **Save**.
+4. Finally, click **Save**.
 
 ### Enabling token-based authentication
 
-You will also need to enable token-based authentication for your NetSuite account in order to generate tokens and authenticate the [SuiteTalk API](https://www.netsuite.com/portal/developers/resources/suitetalk-documentation.shtml).
+To enable token-based authentication for your NetSuite account in order to generate tokens, follow these steps:
 
-To do so, follow these steps:
+1. Go to **Setup** > **Company** > **Enable Features**.
 
-1. Locate the **Manage Authentication** option in the **Enable Features** page.
-2. Enable (check) the **Token-based Authentication** box.
-3. Finally, scroll to the bottom and click on **Save**.
+<img src="../../assets/cloud-extract-sources/netsuite-token-based-auth-1.png" alt="Token based Authentication in Netsuite" />
 
-<img src="../../assets/cloud-extract-sources/netsuite-settings-1.png" alt="Token based Authentication in Netsuite" />
+2. Select the **SuiteCloud** tab.
+3. Under the **SuiteScript** section, check the **CLIENT SUITESCRIPT** and **SERVER SUITESCRIPT** settings and click **I Agree** to access the SuiteCloud terms of service.
 
-### Creating an integration
+<img src="../../assets/cloud-extract-sources/netsuite-token-based-auth-2.png" alt="Token based Authentication in Netsuite" />
 
-Next, create an integration record for RudderStack to uniquely identify RudderStack in your NetSuite account.
+4. Under the **Manage Authentication** section, check **TOKEN-BASED AUTHENTICATION**.
 
-<img src="../../assets/cloud-extract-sources/netsuite-settings-2.png" alt="New integration in Netsuite" />
+<img src="../../assets/cloud-extract-sources/netsuite-token-based-auth-3.png" alt="Token based Authentication in Netsuite" />
 
-Follow these steps to create a new integration:
+5. Finally, click **Save**.
+
+### Creating a new integration flow
+
+To uniquely identify RudderStack in your NetSuite account, you also need to create an integration record for RudderStack. Follow these steps:
 
 1. Go to **Setup** > **Integration** > **Manage Integrations** > **New**.
-2. In the **New Integration** page, enter the following fields:
-    - **Name**: Enter a name for your integration.
+2. Enter the following settings:
+    - **Name**: Enter the name for your integration, for example, `RudderStackIntegration`.
     - **State**: This field should be **Enabled**.
-3. In the **Authentication** tab, enable (check) **Token-based Authentication**.
-4. Finally, click on the **Save** button. The confirmation page will display a **Consumer key/secret** section, as shown:
-
-<img src="../../assets/cloud-extract-sources/netsuite-settings-3.png" alt="Consume key/token in Netsuite" />
+3. In the **Authentication** tab, check **Token-based Authentication**.
 
 <div class="warningBlock">
-
-<strong>Safely store the consumer key and secret</strong>. You will need these credentials while setting up the NetSuite source in RudderStack.
+Remember to uncheck all the other options.
 </div>
 
-### Creating a NetSuite role and configuring permissions
+<img src="../../assets/cloud-extract-sources/netsuite-integration-flow-1.png" alt="New integration in Netsuite" />
+
+4. Finally, click the **Save** button.
+5. In the resulting confirmation page, you can see the **CONSUMER KEY / CLIENT ID** and **CONSUMER SECRET / CLIENT SECRET** under **Client Credentials**, as shown:
+
+<img src="../../assets/cloud-extract-sources/netsuite-integration-flow-2.png" alt="New integration in Netsuite" />
+
+<div class="warningBlock">
+<strong>Store this consumer key and secret safely</strong>. You will need these credentials while setting up the NetSuite source in RudderStack.
+</div>
+
+### Creating a NetSuite role and configure permissions
 
 To create a NetSuite Token ID and Secret, you first need to create a **Role** for RudderStack and an **Employee** with this specific role.
 
-#### Step 1: Creating a role
+#### Step 1: Create a role
 
 To create a new role, follow these steps:
 
 1. Go to **Setup** > **Users/Roles** > **Manage Roles** > **New**.
+
+<img src="../../assets/cloud-extract-sources/netsuite-create-role-1.png" alt="Create new role in NetSuite" />
+
 2. Enter a name for the role in the **Name** field, for example, `RudderStack`.
 3. Select **Two-Factor Authentication Required** to **Not Required**.
 
 <img src="../../assets/cloud-extract-sources/netsuite-settings-4.png" alt="2FA Authentication in Netsuite" />
 
 4. Under the **Permissions** section, go to **Setup** and assign the following permissions:
-
-| Full permissions | View permissions |
-| :---- | :----- |
-| Web Services | Custom Fields |
-| User Access Tokens | Custom Body Fields
-| Log In Using Access Tokens | Perform Search (this can be found in the **Lists** section next to **Setup**)
-| Deleted Records | - |
+    - **Full permissions**
+        - SOAP Web Services
+        - User Access Tokens
+        - Log in using Access Tokens
+        - Deleted Records
+    - **View permissions**
+        - Custom Fields
+        - Custom Body Fields
+        - Custom Lists
+        - Customer Status
 
 <img src="../../assets/cloud-extract-sources/netsuite-settings-5.png" alt="Permissions in Netsuite" />
 
-For each pipeline resource that you want RudderStack to sync, you should give the relevant permissions for it to the role. These resources are divided among the following sections:
+For each pipeline resource that you want RudderStack to sync, you should give the role the relevant permissions to access it. These resources are divided among the following sections:
 
 - **Transactions**
 - **Reports**
 - **Lists**
-- **Custom Records**. 
+- **Custom Records**
 
-Note that each permission should have **View** level.
+<div class="infoBlock">
+Note that each permission should have <strong>View</strong> level.
+</div>
 
 <div class="warningBlock">
-
 It is extremely important that you have assigned the permissions for every resource, saved search or custom record that you want RudderStack to sync. This is required so that you don't encounter any RudderStack sync failures with permission-related issues.
 </div>
 
-#### Step 2: Creating an employee
+#### Step 2: Create an employee
 
 To create a new employee, follow these steps:
 
-1. Navigate to **Lists** > **Employees** > **Employees** > **New**.
+1. Go to **Lists** > **Employees** > **Employees** > **New**.
 2. Then, enter the name and email ID of the employee.
-3. Under the **Access** section, enable (check) **Give Access** and **Manually assign or change password**. Then add the required password.
-4. Finally, add the **Role** which you have created in the previous step and click on **Save** to save the settings.
+3. Under the **Access** tab, check **Give Access** and **Manually assign or change password**. Then add the required password.
 
-<img src="../../assets/cloud-extract-sources/netsuite-settings-6.png" alt="Adding an employee in Netsuite" />
+<img src="../../assets/cloud-extract-sources/netsuite-create-employee-1.png" alt="Adding an employee in Netsuite" />
 
-#### Step 3: Creating an access token
+4. Finally, add the **Role** which you have created in the previous step and click **Save** to save the settings.
 
-In this step, you will need to generate the access tokens required for the integration record \(application\) and the user role.
+<img src="../../assets/cloud-extract-sources/netsuite-create-employee-2.png" alt="Adding an employee in Netsuite" />
+
+#### Step 3: Create an access token
+
+In this step, you need to generate the access tokens required for the integration record \(application\) and the user role.
 
 <div class="infoBlock">
-
-To generate the access token, you may have to first log in as this user.
+To generate the access token, you may have to first log in as the user created in the <Link to="#step-2-create-an-employee">previous step</Link>.
 </div>
 
 <img src="../../assets/cloud-extract-sources/netsuite-settings-7.png" alt="Access token settings in Netsuite" />
@@ -142,35 +161,33 @@ To generate the access token, you may have to first log in as this user.
     - **User**: Select the user you created.
     - **Role**: Select the role you created.
     - **Token Name**: Assign a name for the token.
-3. Finally, click on the **Save** button. The confirmation page will display a **Token ID and Secret**, as shown:
-
-<div class="warningBlock">
-
-For security reasons, this is the only time these credentials will be displayed. Hence, copy and store the <strong>Token ID</strong> and <strong>Token Secret</strong> safely. You will need these credentials while setting up the NetSuite source in RudderStack.
-</div>
+3. Finally, click the **Save** button. The confirmation page will display a **Token ID and Secret**, as shown:
 
 <img src="../../assets/cloud-extract-sources/netsuite-settings-8.png" alt="Access token settings in Netsuite" />
 
+<div class="warningBlock">
+For security reasons, this is the only time these credentials will be displayed. Hence, copy and store the <strong>Token ID</strong> and <strong>Token Secret</strong> safely. You will need these credentials while setting up the NetSuite source in RudderStack.
+</div>
+
 ### Locating your NetSuite Account ID
 
-To locate your NetSuite account ID, go to **Setup** > **Integration** > **Web Services Preferences**.
+To locate your NetSuite account ID, go to **Setup** > **Integration** > **SOAP Web Services Preferences**.
 
 You will find the account ID in the resulting page, as highlighted below:
 
-<img src="../../assets/cloud-extract-sources/netsuite-settings-9.png" alt="Account ID in Netsuite" />
+<img src="../../assets/cloud-extract-sources/netsuite-account-id.png" alt="Account ID in Netsuite" />
 
 <div class="warningBlock">
-  
-If your Account ID contains a suffix, for example, <code class="inline-code">1234567_SB2</code>, it should be included when you enter the ID during the source configuration in RudderStack.
+Enter the complete account ID including the suffix (for example, <code class="inline-code">1234567_SB2</code>) while configuring your NetSuite source in RudderStack.
 </div>
 
 ## Configuring NetSuite source in RudderStack
 
-To set up NetSuite as a source on the RudderStack dashboard, follow these steps:
+To set up NetSuite as a source in RudderStack, follow these steps:
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
 2. Go to **Sources** > **New source** > **Cloud Extract** and select **NetSuite** from the list of sources.
-3. Assign a name to your source and click on **Next**.
+3. Assign a name to your source and click **Continue**.
 
 ### Connection settings
 
@@ -178,22 +195,25 @@ Enter the following connection credentials required to set up your NetSuite sour
 
 <img src="../../assets/cloud-extract-sources/netsuite-settings-10.png" alt="Netsuite connection settings" />
 
-* **Account Name** : Enter your NetSuite account name here. You can get it from your NetSuite dashboard.
-* **Account ID** : Enter the NetSuite account ID. You can get the account ID by going to your NetSuite dashboard and navigating to **Setup** > **Integration** > **Web Services Preferences**. For more information, refer to the [Locating your NetSuite Account ID](#locating-your-netsuite-account-id) section above.
-* **Consumer Key** : Enter your NetSuite consumer key.
-* **Consumer Secret** :  Enter your NetSuite consumer secret.
+* **Account Name** : Enter an account name of your choice.
 
-<div class="infoBlock">
-
-For more information on getting your NetSuite consumer key and secret, refer to the <a href="#creating-an-integration">Creating an integration</a> section above.
+<div class="successBlock">
+You can set any account name of your choice.
 </div>
 
-* **Token ID** : Enter your NetSuite token ID. 
+* **Account ID** : Enter the NetSuite account ID. You can get the account ID by going to your NetSuite dashboard and navigating to **Setup** > **Integration** > **Web Services Preferences**. For more information, refer to the <Link to="#locating-your-netsuite-account-id">Locating your NetSuite Account ID</Link> section above.
+* **Consumer Key** : Enter your NetSuite consumer key.
+* **Consumer Secret** : Enter your NetSuite consumer secret.
+
+<div class="infoBlock">
+For more information on obtaining the NetSuite consumer key and secret, refer to the <Link to="#creating-a-new-integration-flow">Creating a new integration flow</Link> section above.
+</div>
+
+* **Token ID** : Enter your NetSuite token ID.
 * **Token Secret** : Enter your NetSuite token secret.
 
 <div class="infoBlock">
-
-For more information on getting your NetSuite token ID and secret, refer to the <a href="#step-3-creating-an-access-token">Creating an access token</a> section above.
+For more information on obtaining the NetSuite token ID and secret, refer to the <Link to="#step-3-create-an-access-token">Create an access token</Link> section above.
 </div>
 
 ### Setting the historical sync date
@@ -203,7 +223,6 @@ Set the **Historical sync start date** from when you want RudderStack to sync al
 <img src="../../assets/cloud-extract-sources/netsuite-settings-11.png" alt="Netsuite connection settings" />
 
 <div class="warningBlock">
-
 To get the <strong>RudderStack Restlet URL</strong>, you need to first install <a href="https://js.blendo.co/netsuite/v1/restlet.js">this script</a> in your NetSuite account and paste the generated restlet URL in the RudderStack dashboard. For more information on adding the script in your NetSuite account, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
@@ -218,7 +237,6 @@ The following settings specify how RudderStack sends the data ingested from NetS
     - **Manual**: You are required to run the syncs manually.
 
 <div class="infoBlock">
-
 For more information on the schedule types, refer to the <Link to="/sources/extract/common-settings/">Common Settings</Link> guide.
 </div>
 
@@ -227,11 +245,10 @@ For more information on the schedule types, refer to the <Link to="/sources/extr
 Finally, you need to select the NetSuite data that you wish to ingest via RudderStack. You can either select all the data, or choose specific NetSuite data attributes, as per your requirement, as shown:
 
 <div class="warningBlock">
-
 Note that none of the resources are selected by default, so you will have to do the selection manually.
 </div>
 
-<img src="../../assets/cloud-extract-sources/netsuite-settings-12.png" alt="Selecting import data" />
+<img src="../../assets/cloud-extract-sources/netsuite-connection-settings-2.png" alt="Selecting import data" />
 
 #### Importing custom records and saved searches
 
@@ -257,40 +274,34 @@ You can further connect this source to your data warehouse by clicking on **Add 
 Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
 </div>
 
-## FAQs
+## FAQ
 
 ### How can I get the RudderStack Restlet URL?
 
-<div class="warningBlock">
+To get the **RudderStack Restlet URL**, you need to first install <a href="https://js.blendo.co/netsuite/v1/restlet.js">this script</a> in your NetSuite account and paste the generated **Restlet URL** in the dashboard settings.
 
-To get the <strong>RudderStack Restlet URL</strong>, you need to first install <a href="https://js.blendo.co/netsuite/v1/restlet.js">this script</a> in your NetSuite account and paste the generated restlet URL in the RudderStack dashboard.
-</div>
-
-To create a new **Script** in your NetSuite account, follow these steps:
+To install the script, follow these steps:
 
 1. Go to **Customization** > **Scripting** > **Scripts** > **New**.
-2. Then, click on the **+** icon to create a new script. 
-3. A new window will then pop up asking you to select the downloaded [script](https://js.blendo.co/NetSuite/v1/restlet.js).
-4. Once you have attached it, click on **Save**, and then click on **Create Script Record**.
+2. Then, click on the **+** icon to create a new script.
+3. Select the downloaded [**script**](https://js.blendo.co/NetSuite/v1/restlet.js) in **SELECT FILE**.
+4. Click **Save**, followed by **Create Script Record**.
 
 <img src="../../assets/cloud-extract-sources/netsuite-settings-14.png" alt="Creating a new script in NetSuite" />
 
-5. Then, add the **Name** of the script and the **Owner**, that is the **Employee** that you created  in the [Creating an employee](#step-2-creating-an-employee) section above. Then click on **Save**.
+5. Then, add the **Name** of the script and the **Owner**, that is the **Employee** that you created  in the [Creating an employee](#step-2-create-an-employee) section above. Then click **Save**.
 
 <img src="../../assets/cloud-extract-sources/netsuite-settings-15.png" alt="Employee details NetSuite" />
 
-6. To deploy the script, click on **Deployments**, add the script **Title**, and click on **Add**. After the script is deployed, click on **Save**.
+6. To deploy the script, click **Deployments**, add the script **Title**, and click **Add**. After the script is deployed, click **Save**.
 
 <img src="../../assets/cloud-extract-sources/netsuite-settings-16.png" alt="Script deployment NetSuite" />
 
-7. Finally, click on the title of your deployed script. You should be able to see the **External URL**, which is the **RudderStack Restlet URL** that you need to use in the NetSuite source configuration.
+7. Finally, click the title of your deployed script. You should be able to see the **External URL**, which is the **RudderStack Restlet URL** that you need to use in the NetSuite source configuration.
 
 <img src="../../assets/cloud-extract-sources/netsuite-settings-17.png" alt="Restlet URL NetSuite" />
 
 ### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is.
-
 RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
-
-
