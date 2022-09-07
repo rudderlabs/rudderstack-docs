@@ -283,14 +283,21 @@ export const jsonData = [
                     },
                     {
                         title: "Client-side Event Filtering",
+                        sectionTitle: "Features",
                         link: "/sources/event-streams/sdks/event-filtering/",
                         content: []
                     },
                     {
-                        title: "SDK FAQ",
-                        link: "/sources/event-streams/sdks/faq/",
+                        title: "Session Tracking",
+                        link: "/sources/event-streams/sdks/session-tracking/",
                         content: []
                     },
+                    {
+                        title: "SDK FAQ",
+                        sectionTitle: "",
+                        link: "/sources/event-streams/sdks/faq/",
+                        content: []
+                    }
                 ]
             },
             {
