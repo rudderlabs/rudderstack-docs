@@ -712,10 +712,30 @@ export const jsonData = [
                 title: "Lotame",
                 link: "/destinations/streaming-destinations/lotame/",
                 content: []
-            }, {
+            },
+            {
                 title: "Pinterest Tag",
                 link: "/destinations/streaming-destinations/pinterest-ads/",
-                content: []
+                content: [
+                    {
+                        title: "Setting up Pinterest Tag",
+                        link:
+                            "/destinations/streaming-destinations/pinterest-ads/setting-up-pinterest-ads/",
+                        content: [],
+                    },
+                    {
+                        title: "Cloud Mode",
+                        link:
+                            "/destinations/streaming-destinations/pinterest-ads/pinterest-ads-cloud-mode/",
+                        content: [],
+                    },
+                    {
+                        title: "Device Mode",
+                        link:
+                            "/destinations/streaming-destinations/pinterest-ads/pinterest-ads-device-mode/",
+                        content: [],
+                    },
+                ]
             },
             {
                 title: "Reddit Pixel",

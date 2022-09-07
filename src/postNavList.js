@@ -1389,6 +1389,26 @@ export const postNavList = [
     content: [],
   },
   {
+    title: "Pinterest Tag",
+    link: "/destinations/streaming-destinations/pinterest-ads/",
+    content: [],
+  },
+  {
+    title: "Setting up Pinterest Tag",
+    link: "/destinations/streaming-destinations/pinterest-ads/setting-up-pinterest-ads/",
+    content: [],
+  },
+  {
+    title: "Cloud Mode",
+    link: "/destinations/streaming-destinations/pinterest-ads/pinterest-ads-cloud-mode/",
+    content: [],
+  },
+  {
+    title: "Device Mode",
+    link: "/destinations/streaming-destinations/pinterest-ads/pinterest-ads-device-mode/",
+    content: [],
+  },
+  {
     key: "bingads",
     title: "Bing Ads",
     link: "/destinations/streaming-destinations/bingads/",
