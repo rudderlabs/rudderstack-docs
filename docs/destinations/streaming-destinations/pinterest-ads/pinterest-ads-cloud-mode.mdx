@@ -22,9 +22,9 @@ Find the open source JavaScript SDK code for this destination in the <a href="ht
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call allows you to capture conversion events for users.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call allows you to capture the users' conversion events.
 
-The track events are mapped as specified in the **Map Your Events To Pinterest Events** connection setting in the dashboard.
+RudderStack maps the `track` events as specified in the **Map Your Events To Pinterest Events** connection setting in the dashboard.
 
 A sample `track` call is shown below:
 
@@ -53,7 +53,7 @@ rudderanalytics.track("Order Completed", {
 });
 ```
 
-### E-Commerce
+### E-commerce conversion tracking
 
 RudderStack supports e-commerce conversion tracking for Pinterest. You can use the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for sending the events while instrumenting your site with the RudderStack SDK.
 
@@ -94,7 +94,7 @@ These events aren’t available for conversion reporting.
 
 The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
-- **`view_category`**: RudderStack sends this event if both the `name` and `category` fields are present. The below sample event contains both and is mapped to the Pinterest's `view_category` event:
+- **`view_category`**: RudderStack sends this event if both the `name` and `category` fields are present. The below sample event contains both the fields and is mapped to the Pinterest's `view_category` event:
 
 ```javascript
 rudderanalytics.page("Best Seller", "Games", {
@@ -124,9 +124,9 @@ The following table lists the mappings specific for Pinterest Conversion API and
 | `context.traits.action_source`/`properties.action_source`/`message.channel` | `action_source` |Required | Source indicating the occurence of conversion event. |
 | `timestamp` | `event_time` | Required | Unix timestamp (in UTC) in seconds indicating when the user conversion event occurred. |
 | `destination.Config.advertiserId` | `advertiser_id` | Required | Pinterest Advertiser ID. |
-|  Integrations Object `messageId` | `event_id` | Optional | Unique Id (string) that identifies the event and can be used for deduping. |
+|  Integrations Object `messageId` | `event_id` | Optional | Unique ID (string) that identifies the event and can be used for deduplication. |
 | `pageUrl` | `event_source_url` | Optional | URL of the web conversion event. |
-| `context.device.adTrackingEnabled` | `opt_out` | Optional | When <code class="inline-code">action_source</code> is **web** or **offline**, it defines whether the user has opted out of tracking for web conversion events whereas when <code class="inline-code">action_source</code> is **app_android** or **app_ios**, it defines whether the user has enabled **Limit Ad Tracking** on their iOS device or opted out of **Ads Personalization** on their Android device.|
+| `context.device.adTrackingEnabled` | `opt_out` | Optional | When <code class="inline-code">action_source</code> is **web** or **offline**, it defines whether the user has opted out of tracking for web conversion events. When <code class="inline-code">action_source</code> is **app_android** or **app_ios**, it defines whether the user has enabled **Limit Ad Tracking** on their iOS device or opted out of **Ads Personalization** on their Android device.|
 | `destination.Config.appId` | `app_id` | Optional | App store's App ID. |
 | `context.app.name`/`properties.appName` | `app_name` |Optional | Name of the app. |
 | `context.app.version`/`properties.appVersion` | `app_version` | Optional |Version of the app. |
@@ -163,7 +163,7 @@ The following table lists the mappings for fields carrying the user information 
 
 
 <div class="warningBlock">
-In order to send events for the <code class="inline-code">track</code> or <code class="inline-code">page</code> call successfully, you need to send <strong>at least one</strong> of the following user properties:
+To send the <code class="inline-code">track</code> or <code class="inline-code">page</code> events successfully, you need to include <strong>at least one</strong> of the following user properties:
 <ul>
 <li> <code class="inline-code">em</code></li>
 <li><code class="inline-code">hashed_maids</code></li>

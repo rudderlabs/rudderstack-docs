@@ -53,7 +53,7 @@ rudderanalytics.track("Order Completed", {
 
 RudderStack SDK sends the `track` event and any properties as custom properties to Pinterest.
 
-### E-Commerce
+### E-commerce conversion tracking
 
 RudderStack supports e-commerce conversion tracking for Pinterest. You can use the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for sending the events while instrumenting your site with the RudderStack SDK.
 
@@ -149,7 +149,7 @@ The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you reco
 
 Pinterest's `pintrk` conversion tag sends any one of the following events when you make a `page` call:
 
-- **`ViewCategory`**: RudderStack sends this event if both the `name` and `category` fields are present. The below sample event contains both and is mapped to the Pinterest's `ViewCategory` event:
+- **`ViewCategory`**: RudderStack sends this event if both the `name` and `category` fields are present. The below sample event contains both the fields and is mapped to the Pinterest's `ViewCategory` event:
 
 ```javascript
 rudderanalytics.page("Best Seller", "Games", {
