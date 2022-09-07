@@ -3,7 +3,7 @@ title: "NetSuite"
 description: Step-by-step guide to ingest data from NetSuite into RudderStack.
 ---
 
-[NetSuite](https://www.netsuite.com/portal/home.shtml) is a popular business management suite that delivers efficient ERP, CRM, and other e-commerce solutions to nearly 25000 customers worldwide.
+[NetSuite](https://www.netsuite.com/portal/home.shtml) is a popular business management suite that delivers efficient ERP, CRM, and other e-commerce solutions to thousands of customers worldwide.
 
 This document guides you in setting up NetSuite as a source in RudderStack. Once configured, RudderStack automatically ingests your NetSuite data and routes it to your specified data warehouse destination.
 
@@ -76,7 +76,7 @@ Remember to uncheck all the other options.
 
 <img src="../../assets/cloud-extract-sources/netsuite-integration-flow-1.png" alt="New integration in Netsuite" />
 
-4. Finally, click on the **Save** button.
+4. Finally, click the **Save** button.
 5. In the resulting confirmation page, you can see the **CONSUMER KEY / CLIENT ID** and **CONSUMER SECRET / CLIENT SECRET** under **Client Credentials**, as shown:
 
 <img src="../../assets/cloud-extract-sources/netsuite-integration-flow-2.png" alt="New integration in Netsuite" />
@@ -141,7 +141,7 @@ To create a new employee, follow these steps:
 
 <img src="../../assets/cloud-extract-sources/netsuite-create-employee-1.png" alt="Adding an employee in Netsuite" />
 
-4. Finally, add the **Role** which you have created in the previous step and click on **Save** to save the settings.
+4. Finally, add the **Role** which you have created in the previous step and click **Save** to save the settings.
 
 <img src="../../assets/cloud-extract-sources/netsuite-create-employee-2.png" alt="Adding an employee in Netsuite" />
 
@@ -161,7 +161,7 @@ To generate the access token, you may have to first log in as the user created i
     - **User**: Select the user you created.
     - **Role**: Select the role you created.
     - **Token Name**: Assign a name for the token.
-3. Finally, click on the **Save** button. The confirmation page will display a **Token ID and Secret**, as shown:
+3. Finally, click the **Save** button. The confirmation page will display a **Token ID and Secret**, as shown:
 
 <img src="../../assets/cloud-extract-sources/netsuite-settings-8.png" alt="Access token settings in Netsuite" />
 
@@ -187,7 +187,7 @@ To set up NetSuite as a source in RudderStack, follow these steps:
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
 2. Go to **Sources** > **New source** > **Cloud Extract** and select **NetSuite** from the list of sources.
-3. Assign a name to your source and click **Next**.
+3. Assign a name to your source and click **Continue**.
 
 ### Connection settings
 
@@ -278,11 +278,10 @@ Use the <strong>Use Existing Destination</strong> option if you have an already-
 
 ### How can I get the RudderStack Restlet URL?
 
-<div class="warningBlock">
-To get the <strong>RudderStack Restlet URL</strong>, you need to first install <a href="https://js.blendo.co/netsuite/v1/restlet.js">this script</a> in your NetSuite account and paste the generated restlet URL in the RudderStack dashboard.
+To get the **RudderStack Restlet URL**, you need to first install <a href="https://js.blendo.co/netsuite/v1/restlet.js">this script</a> in your NetSuite account and paste the generated **Restlet URL** in the dashboard settings.
 </div>
 
-To create a new **Script** in your NetSuite account, follow these steps:
+To install the script, follow these steps:
 
 1. Go to **Customization** > **Scripting** > **Scripts** > **New**.
 2. Then, click on the **+** icon to create a new script.
@@ -306,5 +305,4 @@ To create a new **Script** in your NetSuite account, follow these steps:
 ### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is.
-
 RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
