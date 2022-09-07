@@ -3,26 +3,66 @@ title: "How to host RudderStack JavaScript SDK on your CDN/Storage"
 description: Step-by-step guide on hosting RudderStack JavaScript SDK on your own CDN or storage.
 ---
 
-This guide will take you through the detailed steps to self-host RudderStack JavaScript SDK on your own CDN or storage:
+This guide walks you through the steps to self-host the RudderStack JavaScript SDK and also covers different scenarios based on your directory structure.
 
 1. Download the [JavaScript SDK](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) and save it as `rudder-analytics.min.js`.
-2. Navigate to the required device mode destination SDKs by replacing the destination name from the URL: https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js
+2. Download all the device mode destination SDK files from https://cdn.rudderlabs.com/v1.1/js-integrations/ or you can selectively find and download the:
 
-    - Download the `<destination_name>.min.js` file from https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js 
-    - Download the `<destination_name>.min.js.map` file from https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js.map 
+    - Destination SDK file for the required destination at: https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js 
+    - Source map file for the corresponding destination at: https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js.map 
 
-For example, you can download `HubSpot.min.js` and `HubSpot.min.js.map` files from  https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js and  https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js.map respectively.
+For example, you can download the HubSpot files from  https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js and  https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js.map respectively.
 
 <div class="infoBlock">
-Downloading and hosting the source map files (<code class="inline-code">&lt;destination_name&gt;.min.js.map</code>) is optional but recommended to help in troubleshooting.
+Downloading and hosting the source map file (<code class="inline-code">&lt;destination_name&gt;.min.js.map</code>) is optional but recommended to help in troubleshooting.
+</div>
+
+<div class="infoBlock"> 
+RudderStack recommends downloading and hosting all the destination SDKs. However, you can selectively download and host the required destination SDKs following the specific download path.
 </div>
 
 3. Move the files downloaded in the above steps in a recommended directory structure as: 
 
 <img src="../../assets/js-sdk-recommended-folder-structure.png" alt="Recommended directory structure for self-hosting RudderStack JavaScript SDK" />
 
-4. Add the following script tag in your `rudder-analytics.min.js` file, as shown:
+4. Add the following script tag in your website as shown:
 
-```html
+```javascript
+<script>
+rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits"],i=0;i<methods.length;i++){var method=methods[i];rudderanalytics[method]=function(a){return function(){rudderanalytics.push([a].concat(Array.prototype.slice.call(arguments)))}}(method)}rudderanalytics.load(WRITE_KEY,DATA_PLANE_URL),rudderanalytics.page();
+</script>
+
 <script src="https://<subdomain>.<yourdomain>.com/<path-to-sdk-base-directory>/rudder-analytics.min.js"></script>
 ```
+
+## Alternate directory structure
+
+If you have a specific use-case where you need to follow a directory structure different than the one recommended above, follow the steps 1 and 2, and proceed with one of the below depending on your directory structure:
+
+- If your JavaScript SDK file name is `rudder-analytics.min.js`, but the destination SDKs are **not** located next to it under the `js-integrations` directory, add the following script tag in your website:
+
+ ```html
+ <script>
+ // rudderanalytics object initialization
+ // provide the location of the destination SDKs in the load options
+ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+     destSDKBaseURL: "https://<subdomain>.<yourdomain>.com/<path-to-integration-sdks>"
+ });
+ // ...
+ </script>
+ <script src="https://<subdomain>.<yourdomain>.com/<path-to-sdk-base-directory>/rudder-analytics.min.js"></script>
+ ```
+
+- If your JavaScript SDK file name is **not** `rudder-analytics.min.js`, and the destination SDKs are **not** located under the `js-integrations` directory, add the following script tag in your website:
+
+ ```html
+ <script>
+ // rudderanalytics object initialization
+ // provide the location of the destination SDKs in the load options
+ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+     destSDKBaseURL: "https://<subdomain>.<yourdomain>.com/<path-to-integration-sdks>"
+ });
+ // ...
+ </script>
+ <script src="https://<subdomain>.<yourdomain>.com/<path-to-custom-analytics-file>/<custom-analytics-file.js>"></script>
+ ```
