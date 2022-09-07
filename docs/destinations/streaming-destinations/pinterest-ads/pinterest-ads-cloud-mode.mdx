@@ -12,7 +12,7 @@ RudderStack lets you send your event data to [Pinterest Conversions API](https:/
 />
 
 <div class="warningBlock">
-To use Pinterest Tag's cloud mode (Pinterest conversions API), you need to contact Pinterest Support to enable the beta access.
+To use Pinterest Tag's cloud mode (Pinterest conversions API), you need to contact <a href="https://help.pinterest.com/en/contact">Pinterest Support</a> to enable the beta access.
 </div>
 
 
@@ -86,7 +86,7 @@ Pinterest supports the following nine standard events that can be mapped and tra
 - `ViewCategory`
 - `Custom`
 
-<div class="infoBlock">
+<div class="warningBlock">
 These events aren’t available for conversion reporting.
 </div>
 
@@ -147,17 +147,17 @@ The following table lists the mappings for fields carrying the user information 
 
 | RudderStack property | Pinterest Tag property | Data Type | 
 |:---------------------|:-------------|:--------------|
-| `email` | `em` | Array of strings with SHA-256 |
-| `phone` | `ph` | Array of strings with SHA-256 |
-| `context.traits.gender` | `ge` | Array of strings with SHA-256 |
-| `birthday` | `db` (yyyymmdd format) |  Array of strings with SHA-256 |
-|  `lastName` | `ln` | Array of strings with SHA-256 | 
-| `firstName` | `fn` | Array of strings with SHA-256 |
-| `context.traits.city`/`context.traits.address.city` | `ct` | Array of strings with SHA-256|
-| `context.traits.state`/`context.traits.address.state` | `st` (Two-letter code) | Array of strings with SHA-256 |
-| `context.traits.zip`/`context.traits.address.zip` | `zp` | Array of strings with SHA-256 |
-|  `context.traits.country`/`context.traits.address.country` | `country` (Two-character ISO-3166 country code) |Array of strings with SHA-256 | 
-| `context.device.advertisingId` | `hashed_maids` | Array of strings with SHA-256 |
+| `email` | `em` | Array of strings with SHA-256 encoding |
+| `phone` | `ph` | Array of strings with SHA-256 encoding |
+| `context.traits.gender` | `ge` | Array of strings with SHA-256 encoding |
+| `birthday` | `db` (yyyymmdd format) |  Array of strings with SHA-256 encoding |
+|  `lastName` | `ln` | Array of strings with SHA-256 encoding | 
+| `firstName` | `fn` | Array of strings with SHA-256 encoding |
+| `context.traits.city`/`context.traits.address.city` | `ct` | Array of strings with SHA-256 encoding|
+| `context.traits.state`/`context.traits.address.state` | `st` (Two-letter code) | Array of strings with SHA-256 encoding |
+| `context.traits.zip`/`context.traits.address.zip` | `zp` | Array of strings with SHA-256 encoding |
+|  `context.traits.country`/`context.traits.address.country` | `country` (Two-character ISO-3166 country code) |Array of strings with SHA-256 encoding | 
+| `context.device.advertisingId` | `hashed_maids` | Array of strings with SHA-256 encoding |
 | `context.ip`/`context.requestIP`/`properties.ip`/`properties.clientIpAddress` | `client_ip_address` | String|
 | `context.userAgent` | `client_user_agent` | String |
 
