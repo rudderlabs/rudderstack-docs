@@ -993,6 +993,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "clickup",
+    title: "ClickUp",
+    link: "/destinations/streaming-destinations/clickup/",
+    content: [],
+  },
+  {
     key: "zendesk",
     title: "Zendesk",
     link: "/destinations/streaming-destinations/zendesk/",
