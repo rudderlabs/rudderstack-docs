@@ -1239,6 +1239,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "ClickUp",
+                link: "/destinations/streaming-destinations/clickup/",
+                content: []
+            },
+            {
                 title: "Zapier",
                 link: "/destinations/streaming-destinations/zapier/",
                 content: []
