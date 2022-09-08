@@ -226,4 +226,6 @@ You need to set the user permissions for the whole project. Otherwise, you may e
 
 RudderStack retries the failed syncs for up to 3 hours before aborting them. For more information, refer to this <Link to="/resources/faq/#how-does-rudderstack-handle-retries-for-failed-events-in-case-of-destination-failure">FAQ</Link>.
 
+### Can I tie a value in the  rudder_discards table back to the actual event in another table?
 
+Yes, you can. The `rudder_discards` table contains columns like `message_id`, `table_name`, `column`, and `value`. You can use the `table_name` and map `message_id`  to the `id` column in your event’s table.
