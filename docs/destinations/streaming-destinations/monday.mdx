@@ -38,16 +38,19 @@ To successfully configure monday.com as a destination, you will need to configur
 
 - **API Token**: Enter the API token from your [monday.com](https://auth.monday.com/auth/login_monday) dashboard.
 - **Board ID**: Enter your monday.com board ID.
-- **Group Title**: Enter the group title of your board.
+- **Group Title**: Enter the group title of your board if you want to add an item to a specific group.
 
 <div class="infoBlock">
 For more information on getting these details, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
-- **Columns to property mapping**: Enter the column names from your board and the properties you want them to be mapped to.
+- **Columns to property mapping**: Enter the column names from your monday.com board and the corresponding RudderStack event properties to be mapped.
 
 <div class="warningBlock">
-The column names provided in the mapping should be existing in your board. Only the column names provided here will be updated.
+<ul>
+<li>The column names provided in the mapping should be existing in your monday.com board.</li> 
+<li>RudderStack will only update the column names provided in this mapping.</li>
+</ul>
 </div>
 
 ### Client-side events filtering
@@ -64,8 +67,6 @@ RudderStack will discard the events <strong>not included</strong> in the allowli
 
 You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to create an item in your board. To do so, you need to specify the **Board ID** and **Columns to property mapping** in the dashboard settings.
 
-To add an item to a specific group, you can provide the group title.
-
 You can also override the board ID mentioned in the RudderStack dashboard by passing it in the `externalId` in the track call. A sample `track` call for the same is shown below:
 
 ```javascript
@@ -74,8 +75,8 @@ rudderanalytics.track("create an item", {
   "latitude": "50.32",
   "longitude": "46.32",
   "address": "New York, USA",
-  "mobile_number": "7383222323",
-  "countryShortName": "IN"
+  "mobile_number": "+1-202-555-0146",
+  "countryShortName": "US"
 }, {
   "externalId": [{
     "type": "boardId",
@@ -147,7 +148,7 @@ To get your monday.com Board ID, Group Title, and column names, follow these ste
 
 **Group title**
 
-Group title is the name of your the groups in the board, for example, **Active deals** and **Closed Won** are the group titles in the below image.
+Group title is the name of your the groups in the board. In the below image, **Active deals** and **Closed Won** are the group titles .
 
 **Column names**
 
