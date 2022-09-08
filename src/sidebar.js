@@ -911,7 +911,11 @@ export const jsonData = [
                 title: "Quantum Metric",
                 link: "/destinations/streaming-destinations/quantummetric/",
                 content: []
-            }, {
+            },  {
+                title: "Shynet",
+                link: "/destinations/streaming-destinations/shynet/",
+                content: []
+            },{
                 title: "Singular",
                 link: "/destinations/streaming-destinations/singular/",
                 content: [
@@ -1051,11 +1055,6 @@ export const jsonData = [
                 title: "Segment",
                 sectionTitle: "Customer Data Platform",
                 link: "/destinations/streaming-destinations/segment/",
-                content: []
-            },
-            {
-                title: "Shynet",
-                link: "/destinations/streaming-destinations/shynet/",
                 content: []
             },
             {
