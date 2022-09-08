@@ -39,53 +39,34 @@ To successfully configure monday.com as a destination, you will need to configur
 - **API Token**: Enter the API token from [monday.com](https://auth.monday.com/auth/login_monday) dashboard.
 - **Board ID**: Enter the board ID from monday.com dashboard.
 - **Group Title**: Enter the group title of your board.
-- **Columns to property mapping**: Enter the column names from your board and the properties you want them to be mapped to.
 
 <div class="infoBlock">
 For more information on getting these details, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
+- **Columns to property mapping**: Enter the column names from your board and the properties you want them to be mapped to.
+
+<div class="warningBlock">
+The column names provided in the mapping should be existing in your board. Only the column names provided here will be updated.
+</div>
+
 ### Client-side events filtering
 
-This setting lets you specify the event names which should be allowed to flow through to monday.com. Any other event is discarded.
+This setting lets you specify the event names which should be allowed to flow through to monday.com. 
 
 <img src="../../assets/event-stream-destinations/monday-connection-settings-2.png" alt="Monday connection settings"/>
 
+<div class="warningBlock">
+RudderStack will discard the events <strong>not included</strong> in the allowlist.
+</div>
+
 ## Track
 
-In Monday, you can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to create an item in your board. You also need to provide the **Board ID** and **column to property mapping** in the RudderStack dashboard to create an item. 
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to create an item in your board. The **Board ID** and **column to property mapping** in the RudderStack dashboard are also required for the same.
 
-You can also provide a group title (optional) to add a new item to any specific group.
+To add an item to a specific group, you can provide the group title.
 
-<div class="infoBlock">
-The column names provided in the mapping should be existing in your board. Only the column names provided in the mapping will be updated.
-</div>
-
-The following column types can be updated while creating a new item on the board:
-
-- Status 
-- Numbers 
-- Text 
-- Checkbox
-- Country 
-- Email 
-- Item name 
-- Link 
-- Location 
-- Long Text 
-- Phone 
-- Rating 
-- World Clock
-
-<div class="infoBlock">
-<ul>
-<li>If you map a checkbox column, the checkbox value will be set to true by default.</li>
-<li>The <code class="inline-code">timezone</code> for world clock must be in continent/city format, for example, Europe/London.</li>
-</ul>
-</div>
-
-
-You can override the board ID mentioned in the RudderStack dashboard's connection setting by passing it in the `externalId` in the track call. A sample `track` call for the same is shown below:
+You can also override the board ID mentioned in the RudderStack dashboard by passing it in the `externalId` in the track call. A sample `track` call for the same is shown below:
 
 ```javascript
 rudderanalytics.track("create an item", {
@@ -103,10 +84,29 @@ rudderanalytics.track("create an item", {
 });
 ```
 
-<div class="infoBlock">
-Make sure the event passed in the track call is added in the allowlist connection setting in the dashboard, otherwise it will be discarded.
+<div class="warningBlock">
+The event passed in the <code class="inline-code">track</code> call should be added in the <strong>Allowlist</strong> connection setting, otherwise it will be discarded.
 </div>
 
+### Supported column types
+
+The following column types can be updated while creating a new item on the board. You can map the properties for these columns in the RudderStack dashboard:
+
+| Column types | Notes |
+| :-----| :-----| 
+| Status | Pass the exact (existing) value. |
+| Numbers | Float or integer Format. |
+| Text | -|
+| Checkbox| If you map a checkbox column, the checkbox value will be set to true by default. [Reference](https://developer.monday.com/api-reference/docs/checkbox#updating-the-checkbox-column).|
+| Country | Requires country code and country name both.  |
+| Email | Pass the email address and optional text to link the email address.|
+| Item name | -|
+| Link | Pass the URL along with the text for the link.|
+| Location | Pass the address along with latitude and longitude details.|
+| Long Text | String can be up to 2000 characters. |
+| Phone | Pass the phone number along with country short name (a two-letter code, for example, US). |
+| Rating | Should be an existing (≤ maximum) rating value. |
+| World Clock | The timezone should be passed in the continent/city format, for example, Europe/London. |
 
 
 ### Property mapping
@@ -115,13 +115,14 @@ RudderStack maps the following event properties to the corresponding monday.com 
 
 | RudderStack property | Monday property | Presence | Notes |
 | :-----| :------| :-------| :-------|
-| `properties.name` | `item_name` | Required | Any attributes passed here will be mapped to the first column value by default. |
-| `properties.countryCode` | `countryCode` | Required, if `country` column needs to be updated |  Must be passed in the ISO-2 country code format (a two-letter code), for example, US. |
-| `properties.emailText` | `text`  | Optional | This can be used to add hyperlink to the email address text on the board.|
+| `properties.name` | `item_name` | Required | Attributes passed here are mapped to the first column value by default. |
+| `properties.countryCode` | `countryCode` | Required, if `country` column needs to be updated |  Must be passed in the ISO-2 country code format (a two-letter code), for example, US. [Reference](https://developer.monday.com/api-reference/docs/country#updating-the-country-column). |
+| `properties.countryShortName` | `countryShortName`  | Required, if `phone` column needs to be updated | Must be passed in the ISO-2 country code format (a two-letter code), for example, US. [Reference](https://developer.monday.com/api-reference/docs/country#updating-the-country-column). |
 | `properties.latitude` | `latitude`  | Required, if `location` column needs to be updated | - |
 | `properties.longitude` | `longitude`  | Required, if `location` column needs to be updated |- |
-| `properties.countryShortName` | `countryShortName`  | Required, if `phone` column needs to be updated | Must be passed in the ISO-2 country code format (a two-letter code), for example, US. |
-| `properties.linkText` | `text`  | Optional | This can be used to add hyperlink to the email address text on the board.|
+| `properties.emailText` | `text`  | Optional | Can be used to add hyperlink to the email address text on the board.|
+| `properties.linkText` | `text`  | Optional | Can be used to add hyperlink to the text on the board.|
+
 
 ## FAQ
 
@@ -137,7 +138,7 @@ To get the monday.com API token, follow these steps:
 
 ### Where can I find the Board ID, Group Title and column names in monday.com dashboard?
 
-Follow these steps to find the above mentioned attributes:
+Follow these steps to find these:
 
 **Board ID**
 
