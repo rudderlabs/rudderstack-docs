@@ -1,0 +1,35 @@
+---
+title: "Session Tracking FAQ"
+description: Answers to the generally asked questions related to RudderStack's session tracking feature.
+---
+
+## General
+
+## JavaScript SDK
+
+### What is a session timeout?
+
+
+
+### Which session tracking-related information does RudderStack store?
+
+RudderStack persists the following session tracking-related information in local storage/cookie in a new field called `rl_session`.
+
+| Parameter | Data type | Description |
+| :---- | :---- | :-----|
+| `sessionId` | String | Uniquely identifies a session. |
+| Session expiration time | Number | Time when the session expires. RudderStack calculates it as the last event's `timestamp` + `timeout`. |
+| Manual session tracking status | Boolean | - |
+| Automatic session tracking status | Boolean | - |
+| Session started | Boolean | A flag that identifies the first event of the session. |
+
+### What happens if a user closes a website tab and reopens it after some time?
+
+If the time between closing the tab and reopening it is less than the session timeout (default is 30 minutes), then RudderStack continues the same session. Otherwise, it starts a new session.
+
+### What happens if a user sets the session timeout to 0?
+
+If a user sets the session timeout to 0, RudderStack disables automatic session tracking.
+
+## Mobile SDKs
+

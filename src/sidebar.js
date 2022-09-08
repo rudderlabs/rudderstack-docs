@@ -290,7 +290,13 @@ export const jsonData = [
                     {
                         title: "Session Tracking",
                         link: "/sources/event-streams/sdks/session-tracking/",
-                        content: []
+                        content: [
+                            {
+                                title: "FAQ",
+                                link: "/sources/event-streams/sdks/session-tracking/faq/",
+                                content: [],
+                              },
+                        ]
                     },
                     {
                         title: "SDK FAQ",

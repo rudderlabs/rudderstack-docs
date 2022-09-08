@@ -345,6 +345,12 @@ export const postNavList = [
   },
   {
     key: "faq",
+    title: "Session Tracking FAQ",
+    link: "/sources/event-streams/sdks/session-tracking/faq/",
+    content: [],
+  },
+  {
+    key: "faq",
     title: "SDK FAQ",
     link: "/sources/event-streams/sdks/faq/",
     content: [],

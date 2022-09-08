@@ -13,8 +13,6 @@ You can use a session to determine the average time users spend on an app and ho
 A single session can contain multiple page views or screen views, events, social interactions, and e-commerce transactions.
 </div>
 
-## Session tracking in RudderStack
-
 The following RudderStack SDKs support the session tracking feature:
 
 - <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>
@@ -95,13 +93,9 @@ For more information, refer to the <Link to="#how-rudderstack-calculates-session
 RudderStack also ends the previous session in case of more than <strong>5 minutes</strong> of inactivity.
 </div>
 
-### Session tracking in JavaScript SDK
+## Session tracking in JavaScript SDK
 
 RudderStack considers the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/">SDK initialization</Link> to be the start of the session.
-
-<div class="infoBlock">
-During the initialization, the SDK checks for an existing user session. If no valid session exists, it creates a new session. Otherwise, the SDK proceeds with the existing session.
-</div>
 
 By default, a session is active until **30 minutes of inactivity** have elapsed. However, you can adjust this limit using the `timeout` load option, as shown in the following snippet:
 
@@ -115,6 +109,18 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 ```
 
 Every time the user interacts with the website, the SDK triggers a new event (`track`, `page`, `identify`, etc.), and resets the expiration time by adding an additional 30 minutes from the time of the last interaction.
+
+### Flow
+
+1. During the initialization, the SDK checks for an existing user session. If no valid session exists, it creates a new session. Otherwise, the SDK proceeds with the existing session.
+2. After receiving an event, the SDK checks if the automatic/manual session tracking is enabled. If no, the flow ends, otherwise it proceeds to the next step.
+  1. The SDK fetches the `sessionId`. If no valid `sessionId` is found, it creates a new session and returns the `sessionId`.
+  2. If this is the first event of the session, the SDK also sends another parameter in the context called `sessionStart: true`. 
+  3. Finally, the SDK updates the session expiration time (current `timestamp` + `timeout`).
+
+The following diagram summarizes the workflow:
+
+<img src="../../../../assets/event-stream-sources/session-tracking-web.png" alt="Session tracking in JavaScript SDK" />
 
 ## How RudderStack calculates `sessionId`
 
@@ -137,3 +143,4 @@ It is important to note the following:
 
 ## FAQ
 
+Refer to the <Link to="">Session Tracking FAQ</Link> guide for a comprehensive list of questions on session tracking.
