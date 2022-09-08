@@ -58,7 +58,7 @@ For more information on using this setting, refer to the <Link to="#adding-custo
 You can provide multiple ClickUp custom fields associated with different lists. However, note that the custom field name <strong>must be unique</strong> within a list to successfully create a task.
 </div>
 
-- **Client-side Events Filtering**: This setting lets you specify which events should be allowed to flow through to ConvertFlow.
+- **Client-side Events Filtering**: This setting lets you specify which events should be allowed to flow through to ClickUp.
 
 <img src="../../assets/event-stream-destinations/clickup-connection-settings-2.png" alt="ClickUp connection settings" />
 
@@ -159,10 +159,10 @@ RudderStack supports specifying the following ClickUp custom fields in the dashb
 | Text | Must be a string. |
 | Checkbox | Must be in a Boolean format. |
 | Number | - |
-| Currency | Must be a number |
+| Currency | Must be a number. |
 | Emoji (integer) | Used for rating. The value must be in a range defined in the ClickUp dashboard. |
 | Location | Latitude/longitude and the formatted address must be passed as the [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/overview?hl=en). |
-| Dropdown | RudderStack will use the dropdown option name to find the UUID using the [`field`](https://api.clickup.com/api/v2/list/list_id/field) endpoint. |
+| Dropdown | RudderStack uses the dropdown option name to find the UUID using the [`field`](https://api.clickup.com/api/v2/list/list_id/field) endpoint. |
 | Label | RudderStack will use the label name to find the UUID using the [`field`](https://api.clickup.com/api/v2/list/list_id/field) endpoint. |
 
 <div class="infoBlock">
