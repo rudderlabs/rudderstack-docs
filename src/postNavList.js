@@ -422,12 +422,6 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "shynet",
-    title: "Shynet",
-    link: "/sources/event-streams/cloud-apps/shynet/",
-    content: [],
-  },
-  {
     key: "extract",
     title: "Cloud Extract",
     link: "/sources/extract/",
@@ -942,6 +936,12 @@ export const postNavList = [
     key: "lytics",
     title: "Lytics",
     link: "/destinations/streaming-destinations/lytics/",
+    content: [],
+  },
+  {
+    key: "shynet",
+    title: "Shynet",
+    link: "/sources/event-streams/cloud-apps/shynet/",
     content: [],
   },
   {
