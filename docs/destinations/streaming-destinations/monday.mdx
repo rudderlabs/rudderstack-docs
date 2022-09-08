@@ -36,8 +36,8 @@ To successfully configure monday.com as a destination, you will need to configur
 
 <img src="../../assets/event-stream-destinations/monday-connection-settings.png" alt="Monday connection settings"/>
 
-- **API Token**: Enter the API token from [monday.com](https://auth.monday.com/auth/login_monday) dashboard.
-- **Board ID**: Enter the board ID from monday.com dashboard.
+- **API Token**: Enter the API token from your [monday.com](https://auth.monday.com/auth/login_monday) dashboard.
+- **Board ID**: Enter your monday.com board ID.
 - **Group Title**: Enter the group title of your board.
 
 <div class="infoBlock">
@@ -62,7 +62,7 @@ RudderStack will discard the events <strong>not included</strong> in the allowli
 
 ## Track
 
-You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to create an item in your board. The **Board ID** and **column to property mapping** in the RudderStack dashboard are also required for the same.
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to create an item in your board. To do so, you need to specify the **Board ID** and **Columns to property mapping** in the dashboard settings.
 
 To add an item to a specific group, you can provide the group title.
 
@@ -95,18 +95,18 @@ The following column types can be updated while creating a new item on the board
 | Column types | Notes |
 | :-----| :-----| 
 | Status | Pass the exact (existing) value. |
-| Numbers | Float or integer Format. |
+| Numbers | Float or integer format. |
 | Text | -|
 | Checkbox| If you map a checkbox column, the checkbox value will be set to true by default. [Reference](https://developer.monday.com/api-reference/docs/checkbox#updating-the-checkbox-column).|
-| Country | Requires country code and country name both.  |
+| Country | Requires both the country name and code.  |
 | Email | Pass the email address and optional text to link the email address.|
 | Item name | -|
 | Link | Pass the URL along with the text for the link.|
 | Location | Pass the address along with latitude and longitude details.|
 | Long Text | String can be up to 2000 characters. |
-| Phone | Pass the phone number along with country short name (a two-letter code, for example, US). |
+| Phone | Pass the phone number along with country short name (a two-letter code, for example, `US`). |
 | Rating | Should be an existing (≤ maximum) rating value. |
-| World Clock | The timezone should be passed in the continent/city format, for example, Europe/London. |
+| World Clock | The timezone should be passed in the `continent/city` format, for example, `Europe/London`. |
 
 
 ### Property mapping
@@ -115,13 +115,13 @@ RudderStack maps the following event properties to the corresponding monday.com 
 
 | RudderStack property | Monday property | Presence | Notes |
 | :-----| :------| :-------| :-------|
-| `properties.name` | `item_name` | Required | Attributes passed here are mapped to the first column value by default. |
-| `properties.countryCode` | `countryCode` | Required, if `country` column needs to be updated |  Must be passed in the ISO-2 country code format (a two-letter code), for example, US. [Reference](https://developer.monday.com/api-reference/docs/country#updating-the-country-column). |
-| `properties.countryShortName` | `countryShortName`  | Required, if `phone` column needs to be updated | Must be passed in the ISO-2 country code format (a two-letter code), for example, US. [Reference](https://developer.monday.com/api-reference/docs/country#updating-the-country-column). |
-| `properties.latitude` | `lat`  | Required, if `location` column needs to be updated | - |
-| `properties.longitude` | `lng`  | Required, if `location` column needs to be updated |- |
-| `properties.emailText` | `text`  | Optional | Can be used to add hyperlink to the email address text on the board.|
-| `properties.linkText` | `text`  | Optional | Can be used to add hyperlink to the text on the board.|
+| `properties.name` | `item_name` | Required | By default, RudderStack maps the attributes passed here to the first column value. |
+| `properties.countryCode` | `countryCode` | Required, if `country` column needs to be updated. |  Must be passed in the ISO-2 country code format (a two-letter code), for example, `US`. [Reference](https://developer.monday.com/api-reference/docs/country#updating-the-country-column). |
+| `properties.countryShortName` | `countryShortName`  | Required, if `phone` column needs to be updated. | Must be passed in the ISO-2 country code format (a two-letter code), for example, `US`. [Reference](https://developer.monday.com/api-reference/docs/country#updating-the-country-column). |
+| `properties.latitude` | `lat`  | Required, if `location` column needs to be updated. | - |
+| `properties.longitude` | `lng`  | Required, if `location` column needs to be updated. |- |
+| `properties.emailText` | `text`  | Optional | Can be used to add a hyperlink to the email address text on the board.|
+| `properties.linkText` | `text`  | Optional | Can be used to add a hyperlink to the text on the board.|
 
 
 ## FAQ
@@ -138,12 +138,12 @@ To get the monday.com API token, follow these steps:
 
 ### Where can I find the Board ID, Group Title and column names in monday.com dashboard?
 
-Follow these steps to find these:
+To get your monday.com Board ID, Group Title, and column names, follow these steps:
 
 **Board ID**
 
 1. Log into the [monday.com dashboard](https://auth.monday.com/auth/login_monday).
-2. Go to **Work management** in the left navigation bar and select your board. The board ID is displayed in the address bar.
+2. Go to **Work management** in the left navigation bar and select your board. The board ID is displayed in the address bar, as seen in the below image.
 
 **Group title**
 
@@ -151,6 +151,6 @@ Group title is the name of your the groups in the board, for example, **Active d
 
 **Column names**
 
-The column titles in your board are the column names, for example, **Stage**, **Owner**, **Contacts**, and **Accounts** are the column names in the below image.
+The column titles in your board are the column names. In the below image, **Stage**, **Owner**, **Contacts**, and **Accounts** are the column names.
 
 <img src="../../assets/event-stream-destinations/monday-dashboard.png" alt="Monday dashboard"/>
