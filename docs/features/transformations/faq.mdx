@@ -75,11 +75,43 @@ You cannot update an existing `Version: V0` transformation to the current versio
 
 Instead, you can <Link to="/features/transformations/#adding-a-transformation">create a new transformation</Link> based on the <Link to="/features/transformations/#transformevent-definition">`transformEvent` definition</Link>, then reconnect your destinations with this transformation. Finally, delete the existing `Version: V0` transformation.
 
-## What are transformation and library revisions?
+### What are transformation and library revisions?
 
 Using the <Link to ="/api/transformation-api/">Transformations API</Link>, you can create and store a transformation or library as a draft without publishing them. These are called revisions.
 
 Once the revisions meet the test criteria, you can restore and publish them for production use.
+
+## DMT
+
+### When to use DMT and event filtering feature?
+
+    - If user requirement is limited only to allowing or denying any sets of events, they should opt for event filtering. As it doesn't require any network call and filtering of events is performed on the client side SDKs themselves.
+    - If the user wants more than filtering e.g., Data masking or removing sensitive PII information in the events to ensure data privacy in that case they should opt for user transformation.
+
+### (Applicable only for mobile) Will my event be lost if there is a network error while processing transformation requests?
+
+    - No, even before sending the events for the device mode transformations they are saved locally in the DB and once the transformation is completed successfully and sent to the destinations, they’re removed from the DB. So no events are lost in case of network unavailability or error.
+
+### Is there any trade-off in using the device mode transformation feature?
+
+    - Yes, the network call for each event transformation is extra overhead for using this feature.
+
+### What happens if the transformation service is attached to the destinations but it is not activated for that user?
+
+    - If the transformation service is attached to any destination but not activated then events are sent without any transformation to that destination.
+    
+Note: This service is available to our enterprise customers only.
+    
+    
+### Can I switch back to the previous version of SDK without DMT?
+
+    - For Mobile SDKs, yes, after an upgrade you can switch back to the previous version of SDK without the DMT feature.
+    - For JS SDK, if you are using the npm package then you can switch to a specific version with or without DMT but for CDN this is not possible.
+
+### What happens if I don’t want to use the transformation service?
+
+    - If the transformation service is not attached to the destination then all the events will be directly sent to that destination without any network requests for transformation.
+
 
 ## Libraries
 
