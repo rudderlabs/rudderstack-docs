@@ -7,36 +7,78 @@ description: Detailed technical description of RudderStack's session tracking fe
 
 A session is a group of user interactions with your website or mobile app within a given time frame. It is usually triggered when a user opens a mobile app or a website in their browser and ends after a particular period of inactivity.
 
-You can use a session to determine the average time users spend on an app and how they engage with it. By combining the session metadata with the usage data like event tracking, you can better understand the user's product journey and analyze their behavior effectively. You can use the resulting insights to identify problems in your app or product workflow or unlock potential opportunities for optimization and improved performance.
-
 <div class="infoBlock">
 A single session can contain multiple page views or screen views, events, social interactions, and e-commerce transactions.
 </div>
 
-The following RudderStack SDKs support the session tracking feature:
+## Session tracking in RudderStack
 
-- <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>
-- <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>
-- <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>
+You can use RudderStack's session tracking feature to determine the average time users spend on an app and how they engage with it. By combining the session metadata with the usage data like event tracking, you can better understand the user's product journey and analyze their behavior effectively. You can also use the resulting insights to identify problems and optimization opportunities in your app or product workflow.
+
+<div class="infoBlock">
+The following RudderStack SDKs support the session tracking feature:
+<ul>
+<li><Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link></li>
+<li><Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link></li>
+<li><Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link></li>
+</ul>
+</div>
 
 ## Automatic session tracking
 
-By default, RudderStack automatically tracks the user sessions. This means that RudderStack automatically determines the start and end of a session depending on the inactivity time configured in the SDK, without any manual intervention.
+**By default, the RudderStack SDKs automatically track the user sessions**. This means that RudderStack automatically determines the start and end of a session depending on the inactivity time configured in the SDK, without any manual intervention.
 
-To disable automatic session tracking, refer to the following SDK-specific snippets:
+### JavaScript SDK
 
-- In case of the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link>:
+In case of the JavaScript SDK, RudderStack considers the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/">SDK initialization</Link> to be the start of the session, as shown:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
   sessions: {
-    autoTrack: false,
+    autoTrack: true,  // Set to false to disable automatic session tracking
   },
   ...<otherLoadOptions>
 });
 ```
 
-- In case of the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android SDK</Link>
+To disable automatic session tracking, you can set the load option `autoTrack`to `false`.
+
+By default, a session is active until **30 minutes of inactivity** have elapsed since the last received event. However, you can adjust this limit using the `timeout` load option, as shown:
+
+```javascript
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+  sessions: {
+    autoTrack: true,
+    timeout: 10 * 60 * 1000,  // 10 min in milliseconds
+  },
+  ...<otherLoadOptions>
+});
+```
+
+Every time the user interacts with the website, the SDK triggers a new event (`track`, `page`, `identify`, etc.), and resets the session expiration time by adding `timeout` (default **30 minutes**) to the last received event's `timestamp`.
+
+<div class="infoBlock">
+For more information on how session tracking works in the JavaScript SDK, refer to the <Link to="#session-tracking-flows">Session tracking flows</Link> section below.
+</div>
+
+### Mobile SDKs
+
+<div class="warningBlock">
+To automatically track sessions in the Android and iOS SDK, <code class="inline-code">withTrackLifecycleEvents</code> should also be set to true. This is because RudderStack considers the <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-opened">Application Opened</Link> or <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-updated">Application Updated</Link> events as the start of a new session.
+</div>
+
+#### Android
+
+By default, automatic session tracking is enabled in the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link> SDK, as shown:
+
+<Tabs>
+  <TabList>
+    <Tab>Kotlin</Tab>
+    <Tab>Java</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
 
 ```kotlin
 val rudderClient = RudderClient.getInstance(
@@ -45,24 +87,93 @@ val rudderClient = RudderClient.getInstance(
     RudderConfig.Builder()
         .withDataPlaneUrl(DATA_PLANE_URL)
         .withTrackLifecycleEvents(true)
-        .withAutoSessionTracking(false)
+        .withAutoSessionTracking(true)  // Set to false to disable automatic session tracking
+        .withSessionTimeoutMillis(60000)
         .withRecordScreenViews(true)
         .build()
 )
 ```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
 
-- For <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS SDK</Link>
+```java
+RudderClient rudderClient = RudderClient.getInstance(
+    this,
+    WRITE_KEY,
+    new RudderConfig.Builder()
+        .withDataPlaneUrl(DATA_PLANE_URL)
+        .withTrackLifecycleEvents(true)
+        .withAutoSessionTracking(true) // Set to false to disable automatic session tracking
+        .withSessionTimeoutMillis(60000)
+        .withRecordScreenViews(true)
+        .build()
+);
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
-```objectivec
+To disable automatic session tracking, set `withAutoSessionTracking` to `false`.
+
+#### iOS
+
+By default, automatic session tracking is enabled in the <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link> SDK, as shown:
+
+<Tabs>
+  <TabList>
+    <Tab>Swift</Tab>
+    <Tab>Objective-C</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```swift
 RudderConfig config = new RudderConfig.Builder()
   .withDataPlaneUrl(DATA_PLANE_URL)
   .withTrackLifecycleEvents(true)
   .withRecordScreenViews(true)
-  .withAutomaticSessionTracking(false)
+  .withAutomaticSessionTracking(true) // To disable automatic session tracking, set to false
+  .withSessionTimeoutMillis(60000)
   .build();
 ```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```objectivec
+
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+To disable automatic session tracking, set `withAutomaticSessionTracking` to `false`.
+
+#### Session expiration in mobile SDKs
+
+By default, a session is active until **5 minutes of inactivity** have elapsed. However, you can adjust this limit using the `withSessionTimeoutMillis` load option, as seen in the above snippets.
+
+If the duration between the last received event and the next `Application Opened` event is more than `withSessionTimeoutMillis`, RudderStack starts a new session. Otherwise, it continues the previous session.
+
+<div class="infoBlock">
+RudderStack saves the time of each received event to keep track of the last event, in case the app is force-closed or closed prematurely.
+</div>
+
+<div class="infoBlock">
+For more information on how session tracking works in the mobile SDKs, refer to the <Link to="#session-tracking-flows">Session tracking flows</Link> section below.
+</div>
 
 ## Manual session tracking
+
+<div class="infoBlock">
+This section is applicable for the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link> SDKs.
+</div>
 
 RudderStack also supports manual session tracking using the following methods that indicate the start and end of a user session:
 
@@ -73,10 +184,32 @@ RudderStack also supports manual session tracking using the following methods th
 | `endSession()` | RudderStack clears the `sessionId` and ends the session. |
 
 <div class="warningBlock">
-Note that manual session tracking overrides automatic session tracking. If <Link to="#automatic-session-tracking">automatic session tracking</Link> is enabled and you call the <code class="inline-code">startSession()</code> API, then RudderStack will disable automatic session tracking.
+Note that manual session tracking overrides automatic session tracking. If <Link to="#automatic-session-tracking">automatic session tracking</Link> is enabled and you call the <code class="inline-code">startSession()</code> API, then RudderStack will disable automatic session tracking <strong>until the app is closed completely</strong>. For more information, refer to the <Link to="/sources/event-streams/sdks/session-tracking/faq/#manual-session-tracking-persistence">FAQ</Link> section.
 </div>
 
-## Session tracking in mobile SDKs
+## Session tracking flows
+
+The following sections describe how the session tracking works in the RudderStack SDKs.
+
+### JavaScript SDK
+
+If session tracking is enabled in the JavaScript SDK, the flow is as explained below:
+
+1. During the initialization, the SDK checks for an existing user session. If no valid session exists, it creates a new session. Otherwise, the SDK proceeds with the existing session.
+2. Upon receiving an event, the SDK fetches the `sessionId`. If no valid `sessionId` is found, it creates a new session and returns the `sessionId`. 
+    - If this is the first event of the session, the SDK also sends another parameter in the context called `sessionStart: true`.
+
+<div class="infoBlock">
+For more information on how RudderStack calculates <code class="inline-code">sessionId</code>, refer to the <Link to="/sources/event-streams/sdks/session-tracking/faq/#how-does-rudderstack-determine-the-sessionid">FAQ</Link> guide. 
+</div>
+
+3. Finally, the SDK updates the session expiration time, that is, the last event's `timestamp` + `timeout` (default **30 minutes**).
+
+The following diagram summarizes the workflow:
+
+<img src="../../../../assets/event-stream-sources/session-tracking-web.png" alt="Session tracking in JavaScript SDK" />
+
+### Mobile SDKs
 
 If session tracking is enabled in the mobile SDKs, the flow is as explained below:
 
@@ -84,47 +217,14 @@ If session tracking is enabled in the mobile SDKs, the flow is as explained belo
 2. The SDK then generates a `sessionId`.
 
 <div class="infoBlock">
-For more information, refer to the <Link to="#how-rudderstack-calculates-sessionid"> How RudderStack calculates the <code class="inline-code">sessionId</code></Link> section below. 
+For more information on how RudderStack calculates <code class="inline-code">sessionId</code>, refer to the <Link to="/sources/event-streams/sdks/session-tracking/faq/#how-does-rudderstack-determine-the-sessionid">FAQ</Link> guide. 
 </div>
 
-3. The SDK records the user events until the application is backgrounded. Upon every <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-backgrounded">`Application Backgrounded`</Link> event, RudderStack automatically invalidates this `sessionId` and ends the session.
+3. The SDK records the user events and the session is active until more than **5 minutes** (default `withSessionTimeoutMillis` value) of inactivity have elapsed since the last received event.
 
 <div class="infoBlock">
-RudderStack also ends the previous session in case of more than <strong>5 minutes</strong> of inactivity.
+For more information, refer to the <Link to="#session-expiration-in-mobile-sdks">Session expiration in the mobile SDKs</Link> section above.
 </div>
-
-## Session tracking in JavaScript SDK
-
-RudderStack considers the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/">SDK initialization</Link> to be the start of the session.
-
-By default, a session is active until **30 minutes of inactivity** have elapsed. However, you can adjust this limit using the `timeout` load option, as shown in the following snippet:
-
-```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-  sessions: {
-    timeout: 10 * 60 * 1000,  // 10 min in milliseconds
-  },
-  ...otherLoadOptions
-});
-```
-
-Every time the user interacts with the website, the SDK triggers a new event (`track`, `page`, `identify`, etc.), and resets the expiration time by adding an additional 30 minutes from the time of the last interaction.
-
-### Flow
-
-1. During the initialization, the SDK checks for an existing user session. If no valid session exists, it creates a new session. Otherwise, the SDK proceeds with the existing session.
-2. After receiving an event, the SDK checks if the automatic/manual session tracking is enabled. If no, the flow ends, otherwise it proceeds to the next step.
-  1. The SDK fetches the `sessionId`. If no valid `sessionId` is found, it creates a new session and returns the `sessionId`.
-  2. If this is the first event of the session, the SDK also sends another parameter in the context called `sessionStart: true`. 
-  3. Finally, the SDK updates the session expiration time (current `timestamp` + `timeout`).
-
-The following diagram summarizes the workflow:
-
-<img src="../../../../assets/event-stream-sources/session-tracking-web.png" alt="Session tracking in JavaScript SDK" />
-
-## How RudderStack calculates `sessionId`
-
-RudderStack passes the event's `timestamp` (in milliseconds) as the `sessionId`. It **does not** attach any user information to this `sessionId` so that they cannot be traced back or identified only with the `sessionId`.
 
 ## Supported downstream tools
 
@@ -143,4 +243,4 @@ It is important to note the following:
 
 ## FAQ
 
-Refer to the <Link to="">Session Tracking FAQ</Link> guide for a comprehensive list of questions on session tracking.
+Refer to the <Link to="/sources/event-streams/sdks/session-tracking/faq/">Session Tracking FAQ</Link> guide for a comprehensive list of questions on session tracking.
