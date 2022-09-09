@@ -86,10 +86,6 @@ Pinterest supports the following nine standard events that can be mapped and tra
 - `ViewCategory`
 - `Custom`
 
-<div class="warningBlock">
-These events aren’t available for conversion reporting.
-</div>
-
 ## Page
 
 The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
@@ -124,7 +120,7 @@ The following table lists the mappings specific for Pinterest Conversion API and
 | `context.traits.action_source`/`properties.action_source`/`message.channel` | `action_source` |Required | Source indicating the occurence of conversion event. |
 | `timestamp` | `event_time` | Required | Unix timestamp (in UTC) in seconds indicating when the user conversion event occurred. |
 | `destination.Config.advertiserId` | `advertiser_id` | Required | Pinterest Advertiser ID. |
-|  Integrations Object `messageId` | `event_id` | Optional | Unique ID (string) that identifies the event and can be used for deduplication. |
+|  Integrations Object `messageId` | `event_id` | Optional | Deduplication key from the dashboard setting or `messageId`. The dashboard setting is given higher priority. |
 | `pageUrl` | `event_source_url` | Optional | URL of the web conversion event. |
 | `context.device.adTrackingEnabled` | `opt_out` | Optional | When <code class="inline-code">action_source</code> is **web** or **offline**, it defines whether the user has opted out of tracking for web conversion events. When <code class="inline-code">action_source</code> is **app_android** or **app_ios**, it defines whether the user has enabled **Limit Ad Tracking** on their iOS device or opted out of **Ads Personalization** on their Android device.|
 | `destination.Config.appId` | `app_id` | Optional | App store's App ID. |
@@ -185,3 +181,19 @@ The following table lists the custom fields mappings for `track` and `page` call
 | `properties.numOfItems` (if not present, sum of quantity) | `num_items` | Integer |
 | `properties.order_id` | `order_id` | String|
 | `properties.query` | `search_string` | String |
+
+## FAQ
+
+### How can I verify if my events are being sent to Pinterest Conversions API?
+
+Follow these steps to see your events in Pinterest Conversions API:
+
+1. Login to your [Pinterest ads manager](https://ads.pinterest.com/) account.
+2. Click the **Ads** tab and select **Conversions** from the dropdown.
+3. Select **API for conversions** from the dropdown to see your events. 
+
+<div class="infoBlock">
+To see <strong>API for conversions</strong> option in the dropdown, you need to set up your Pinterest dashboard using the Pinterest Tag. For more information on using the Pinterest Tag, refer to the <Link to="/destinations/streaming-destinations/pinterest-ads/pinterest-ads-device-mode/">Pinterest Tag Device Mode</Link> documentation.
+</div>
+
+<img src="../../../assets/event-stream-destinations/pinterest-tag-events-cloud.png" />
