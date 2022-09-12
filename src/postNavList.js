@@ -404,6 +404,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "mailmodo",
+    title: "Mailmodo",
+    link: "/sources/event-streams/cloud-apps/mailmodo/",
+    content: [],
+  },
+  {
     key: "posthog",
     title: "PostHog",
     link: "/sources/event-streams/cloud-apps/posthog/",
@@ -1128,6 +1134,12 @@ export const postNavList = [
     key: "mailchimp",
     title: "Mailchimp",
     link: "/destinations/streaming-destinations/mailchimp/",
+    content: [],
+  },
+  {
+    key: "mailmodo",
+    title: "Mailmodo",
+    link: "/destinations/streaming-destinations/mailmodo/",
     content: [],
   },
   {
