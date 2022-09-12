@@ -26,8 +26,11 @@ The following RudderStack SDKs support the session tracking feature:
 
 ## Automatic session tracking
 
-**By default, the RudderStack SDKs automatically track the user sessions**. This means that RudderStack automatically determines the start and end of a session depending on the inactivity time configured in the SDK, without any manual intervention.
+**By default, the above-mentioned RudderStack SDKs automatically track the user sessions**. This means that RudderStack automatically determines the start and end of a session depending on the inactivity time configured in the SDK.
 
+<div class="infoBlock">
+RudderStack also lets you start and end user sessions manually. Refer to the <Link to="#manual-session-tracking">Manual session tracking</Link> section below for more information.
+</div>
 ### JavaScript SDK
 
 In case of the JavaScript SDK, RudderStack considers the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/">SDK initialization</Link> to be the start of the session, as shown:
@@ -41,7 +44,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 });
 ```
 
-To disable automatic session tracking, you can set the load option `autoTrack`to `false`.
+To disable automatic session tracking, you can set the load option `autoTrack` to `false`.
 
 By default, a session is active until **30 minutes of inactivity** have elapsed since the last received event. However, you can adjust this limit using the `timeout` load option, as shown:
 
@@ -55,7 +58,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 });
 ```
 
-Every time the user interacts with the website, the SDK triggers a new event (`track`, `page`, `identify`, etc.), and resets the session expiration time by adding `timeout` (default **30 minutes**) to the last received event's `timestamp`.
+Every time the user interacts with the website, the SDK triggers a new event (`track`, `page`, `identify`, etc.), and resets the session expiration time by adding `timeout` (default **30 minutes**) to the last received event's <Link to="/event-spec/standard-events/common-fields/#clock-skew-considerations">`timestamp`</Link>.
 
 <div class="infoBlock">
 For more information on how session tracking works in the JavaScript SDK, refer to the <Link to="#session-tracking-flows">Session tracking flows</Link> section below.
@@ -172,14 +175,14 @@ For more information on how session tracking works in the mobile SDKs, refer to 
 ## Manual session tracking
 
 <div class="infoBlock">
-This section is applicable for the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link> SDKs.
+This section is applicable for all the supported RudderStack SDKs (<Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>).
 </div>
 
 RudderStack also supports manual session tracking using the following methods that indicate the start and end of a user session:
 
 | Method | Description |
 | :----| :----|
-| `startSession()` | RudderStack creates a new session and passes the event's `timestamp` (in ms) as the `sessionId`. |
+| `startSession()` | RudderStack creates a new session and passes the event's `timestamp` (in ms) as the <Link to="/sources/event-streams/sdks/session-tracking/faq/#how-does-rudderstack-determine-the-sessionid">`sessionId`</Link>. |
 | `startSession(String sessionId)` | You can pass a string as the custom `sessionId` using this method. |
 | `endSession()` | RudderStack clears the `sessionId` and ends the session. |
 
@@ -203,7 +206,7 @@ If session tracking is enabled in the JavaScript SDK, the flow is as explained b
 For more information on how RudderStack calculates <code class="inline-code">sessionId</code>, refer to the <Link to="/sources/event-streams/sdks/session-tracking/faq/#how-does-rudderstack-determine-the-sessionid">FAQ</Link> guide. 
 </div>
 
-3. Finally, the SDK updates the session expiration time, that is, the last event's `timestamp` + `timeout` (default **30 minutes**).
+3. Finally, the SDK updates the session expiration time, that is, the last event's <Link to="/event-spec/standard-events/common-fields/#clock-skew-considerations">`timestamp`</Link> + `timeout` (default **30 minutes**).
 
 The following diagram summarizes the workflow:
 
