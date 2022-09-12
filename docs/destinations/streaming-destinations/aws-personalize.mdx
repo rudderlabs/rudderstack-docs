@@ -84,8 +84,7 @@ When using the <code class="inline-code">PutItems</code> operation, you need to 
 * **Disable Stringifying Additional Properties**: Disables the conversion of additional properties to string data type in AWS Personalize. 
 
 <div class="infoBlock">
-
-This is an exclusive setting applicable only for the <code class="inline-code">putEvents</code> operation.
+This is an exclusive setting only applicable for the <code class="inline-code">putEvents</code> operation. If it is disabled, any mapped fields other than <code class="inline-code">ITEM_ID</code>, <code class="inline-code">EVENT_VALUE</code>, <code class="inline-code">IMPRESSION</code>, <code class="inline-code">RECOMMENDATION_ID</code>, <code class="inline-code">TIMESTAMP</code>, <code class="inline-code">EVENT_TYPE</code>, and <code class="inline-code">USER_ID</code> will be converted to a string before forwarding them to Personalize.
 </div>
 
 ## Identify
