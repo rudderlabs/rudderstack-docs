@@ -31,6 +31,7 @@ The following RudderStack SDKs support the session tracking feature:
 <div class="infoBlock">
 RudderStack also lets you start and end user sessions manually. Refer to the <Link to="#manual-session-tracking">Manual session tracking</Link> section below for more information.
 </div>
+
 ### JavaScript SDK
 
 In case of the JavaScript SDK, RudderStack considers the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/">SDK initialization</Link> to be the start of the session, as shown:
@@ -233,12 +234,28 @@ For more information, refer to the <Link to="#session-expiration-in-mobile-sdks"
 
 RudderStack supports forwarding the `sessionId` and `sessionStart` fields to the following downstream destinations:
 
-| Destination | Notes |
-| :-------| :------|
-| <Link to="/destinations/streaming-destinations/google-analytics-ga/">Google Analytics</Link> | <a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#sc">Reference</a> |
-| <Link to="/destinations/streaming-destinations/google-analytics-4/">Google Analytics 4</Link> | <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=gtag">Reference</a> |
-| <Link to="/destinations/streaming-destinations/amplitude/">Amplitude</Link> | <a href="https://www.docs.developers.amplitude.com/analytics/apis/http-v2-api/">Reference</a> |
-| <Link to="/destinations/streaming-destinations/mixpanel/">Mixpanel</Link> | <ul><li>RudderStack passes `$session_id` under the event properties.</li><li>Mixpanel doesn't have any specific field for `sessionId` but you can use this field in the reports. </li></ul> |
+<table style="table-layout: fixed; width: 100%;" >
+<tr>
+  <td style="width:40%;"><strong>Destination</strong></td>
+  <td style="width:60%;"><strong>Notes</strong></td>
+</tr>
+<tr>
+  <td><Link to="/destinations/streaming-destinations/google-analytics-ga/">Google Analytics</Link></td>
+  <td><a href="https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#sc">Reference</a></td>
+</tr>
+<tr>
+  <td><Link to="/destinations/streaming-destinations/google-analytics-4/">Google Analytics 4</Link></td>
+  <td><a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=gtag">Reference</a></td>
+</tr>
+<tr>
+  <td><Link to="/destinations/streaming-destinations/amplitude/">Amplitude</Link></td>
+  <td><a href="https://www.docs.developers.amplitude.com/analytics/apis/http-v2-api/">Reference</a></td>
+</tr>
+<tr>
+  <td><Link to="/destinations/streaming-destinations/mixpanel/">Mixpanel</Link></td>
+  <td><ul><li>RudderStack passes <code class="inline-code">$session_id</code> under the event properties.</li><li>Mixpanel doesn't have any specific field for <code class="inline-code">$session_id</code> but you can use this field in the reports.</li></ul></td>
+</tr>
+</table>
 
 It is important to note the following:
 - RudderStack passes the `sessionId` to the subsequent events in the `context.sessionId` field.
