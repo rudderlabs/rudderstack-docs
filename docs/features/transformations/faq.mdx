@@ -81,37 +81,21 @@ Using the <Link to ="/api/transformation-api/">Transformations API</Link>, you c
 
 Once the revisions meet the test criteria, you can restore and publish them for production use.
 
-## DMT
+## Tranformations in device mode 
 
-### When to use DMT and event filtering feature?
+### How should I choose between event filtering and tranformations in device mode?
 
-    - If user requirement is limited only to allowing or denying any sets of events, they should opt for event filtering. As it doesn't require any network call and filtering of events is performed on the client side SDKs themselves.
-    - If the user wants more than filtering e.g., Data masking or removing sensitive PII information in the events to ensure data privacy in that case they should opt for user transformation.
+You should go for event filtering when you need to allowlist or denylist any sets of events. However, if you want to mask your data or remove sensitive PII information from the events to ensure data privacy, you should opt for the transformations.
 
-### (Applicable only for mobile) Will my event be lost if there is a network error while processing transformation requests?
+### Is there any trade-off while using the transformations in device mode?
 
-    - No, even before sending the events for the device mode transformations they are saved locally in the DB and once the transformation is completed successfully and sent to the destinations, they’re removed from the DB. So no events are lost in case of network unavailability or error.
-
-### Is there any trade-off in using the device mode transformation feature?
-
-    - Yes, the network call for each event transformation is extra overhead for using this feature.
-
-### What happens if the transformation service is attached to the destinations but it is not activated for that user?
-
-    - If the transformation service is attached to any destination but not activated then events are sent without any transformation to that destination.
-    
-Note: This service is available to our enterprise customers only.
+Yes, RudderStack sends an HTTP request for each event transformation which can cause latency. Also, it increases the network consumption substantially which is an overhead.
     
     
-### Can I switch back to the previous version of SDK without DMT?
+### In case of device mode transformation, can I switch back to the previous version of an SDK?
 
-    - For Mobile SDKs, yes, after an upgrade you can switch back to the previous version of SDK without the DMT feature.
-    - For JS SDK, if you are using the npm package then you can switch to a specific version with or without DMT but for CDN this is not possible.
-
-### What happens if I don’t want to use the transformation service?
-
-    - If the transformation service is not attached to the destination then all the events will be directly sent to that destination without any network requests for transformation.
-
+- For Mobile SDKs, yes, after an upgrade you can switch back to the previous version of SDK without the DMT feature.
+- For JS SDK, if you are using the npm package then you can switch to a specific version with or without DMT but for CDN this is not possible.
 
 ## Libraries
 

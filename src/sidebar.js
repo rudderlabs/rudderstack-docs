@@ -1464,6 +1464,16 @@ export const jsonData = [
         link: "/features/transformations/",
         content: [
             {
+                title: "Using Transformations",
+                link: "/features/transformations/using-transformations",
+                content: [],
+            },
+            {
+                title: "Using Libraries",
+                link: "/features/transformations/using-libraries",
+                content: [],
+            },
+            {
                 title: "FAQ",
                 link: "/features/transformations/faq",
                 content: [],
