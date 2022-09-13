@@ -5,20 +5,13 @@ description: Step-by-step guide on hosting RudderStack JavaScript SDK on your ow
 
 This guide walks you through the steps to self-host the RudderStack JavaScript SDK and also covers different scenarios based on your directory structure.
 
-1. Download the [JavaScript SDK](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) and save it as `rudder-analytics.min.js`. Also, download the [corresponding source map file](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js.map), and save it as `rudder-analytics.min.js.map`
-2. Download all the device mode destination SDK files from https://cdn.rudderlabs.com/v1.1/js-integrations/ or you can selectively find and download the:
-
-    - Destination SDK file for the required destination at: https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js 
-    - Source map file for the corresponding destination at: https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js.map 
+1. Download the [JavaScript SDK](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js) and save it as `rudder-analytics.min.js`. Also, download the [corresponding source map file](https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js.map), and save it as `rudder-analytics.min.js.map`.
+2. Download the required device mode destination SDK files from https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js. Also, download the source map file for the corresponding destination from: https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js.map.
 
 For example, you can download the HubSpot files from  https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js and  https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js.map respectively.
 
 <div class="infoBlock">
 Downloading and hosting the source map files (<code class="inline-code">rudder-analytics.min.js.map</code> or <code class="inline-code">&lt;destination_name&gt;.min.js.map</code>) is optional but recommended to help in troubleshooting.
-</div>
-
-<div class="infoBlock"> 
-RudderStack recommends downloading and hosting all the destination SDKs. However, you can selectively download and host the required destination SDKs following the specific download path.
 </div>
 
 3. Move the files downloaded in the above steps in a recommended directory structure as: 
@@ -56,7 +49,7 @@ If you have a specific use-case where you need to follow a directory structure d
 - If your JavaScript SDK file name is **not** `rudder-analytics.min.js`, and the destination SDKs are **not** located under the `js-integrations` directory, add the following script tag in your website:
 
 <div class="infoBlock"> 
-This option is recommended, as a custom name for the core JavaScript SDK file (instead of <code class="inline-code">rudder-analytics.min.js</code>) can help overcome ad-blockers, if any.
+This option is recommended, as providing a custom name for the core JavaScript SDK file (instead of <code class="inline-code">rudder-analytics.min.js</code>) can help overcome ad-blockers, if any.
 </div>
 
  ```html
