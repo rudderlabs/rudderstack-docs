@@ -42,11 +42,11 @@ To successfully configure Custify as a destination, you need to configure the fo
 To create an API key, go to the <a href="https://app.custify.com/settings/developer/api-key">Custify API Access page</a> and click <strong>Generate API key</strong>.
 </div>
 
-- **Fall back to anonymousId if userId is not present**: If this setting is enabled, RudderStack will use `anonymousId` to identify the user, in case `userId` is not present in the event.
+- **Fall back to anonymousId if userId is not present**: If this setting is enabled, RudderStack will use `anonymousId` to identify the user if `userId` is not present in the event.
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update a user in Custify.  RudderStack uses the `userId` or `email` fields in the event's `traits` to do so. Hence, it is highly recommended to include the `userId` or at least their `email` in the `identify` call.
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update a user in Custify.  RudderStack uses the `userId` or `email` field in the event's `traits` to do so. Hence, it is highly recommended to include the `userId` or at least the user's `email` in the `identify` call.
 
 You can also identify your users with `anonymousId` in case `userId` is not present in the event via the **Fall back to anonymousId if userId is not present** dashboard setting.
 
@@ -62,7 +62,7 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 
 ### Supported mapping
 
-RudderStack maps the event properties to a subset of the standard Custify user attributes. It also creates a new custom field for the unmapped attributes. The mapping is shown in the following table:
+RudderStack maps the following event properties to a subset of the standard Custify user attributes. It also creates a new custom field for the unmapped attributes.
 
 | RudderStack property  | Custify property       | Presence |
 | :--------------- | :---------------- | :----- |
@@ -99,7 +99,7 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 });
 ```
 
-The above `identify` call updates the person as well as removes them from the company having the `id` as `company_123`.
+The above `identify` call updates the user as well as removes them from the company having the `id` as `company_123`.
 
 ## Track
 
@@ -174,7 +174,7 @@ RudderStack maps the following **optional** `group` traits to a subset of the st
 
 To do the user-company association, RudderStack first finds the Custify user by looking for the `userId` present in the <Link to="/event-spec/standard-events/common-fields/#contextual-fields">`context.traits`</Link> object.
 
-- If `userId` and `groupId` are present, RudderStack associates the Custify user with the organization and sends all the user-specific information.
+- If `userId` and `groupId` are present in the event, RudderStack associates the Custify user with the organization and sends all the user-specific information.
 - If `userId` and `groupId` are not present, RudderStack first creates the user and the organization in Custify and then does the association. 
 
 The above discussion can be summarized as follows:
