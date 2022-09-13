@@ -174,7 +174,7 @@ RudderStack then does the following:
 - Creates the views for the new `track` events.
 - All the other skipped views are not regenerated. You can either manually create those views or [contact us](mailto:%20support@rudderstack.com) to get them created.
 
-## FAQs
+## FAQ
 
 ### How are reserved words handled by RudderStack?
 
@@ -228,4 +228,8 @@ RudderStack retries the failed syncs for up to 3 hours before aborting them. For
 
 ### Can I tie a value in the  rudder_discards table back to the actual event in another table?
 
-Yes, you can. The `rudder_discards` table contains columns like `message_id`, `table_name`, `column`, and `value`. You can use the `table_name` and map `message_id`  to the `id` column in your event’s table.
+Yes, you can. 
+
+The <Link to="/destinations/warehouse-destinations/warehouse-schema/#how-rudderstack-handles-data-type-mismatch">`rudder_discards`</Link> table contains columns like `row_id` (corresponding to the event's `messageId`), `table_name`, `column_name`, and `column_value`. 
+
+You can use the `table_name` and map the `row_id` to the `id` column in your event’s table.

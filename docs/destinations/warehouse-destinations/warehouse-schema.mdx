@@ -384,6 +384,10 @@ Once RudderStack recognizes and sets a data type for a table column, it will not
 The values which cannot be cast are set as <code class="inline-block">NULL</code> in the table and stored in the <code class="inline-block">rudder_discards</code> table.
 </div>
 
+<div class="infoBlock">
+The <code class="inline-code">rudder_discards</code> table is applicable for all the warehouse destinations except <Link to="/destinations/warehouse-destinations/s3-datalake/">Amazon S3 Data Lake</Link>.
+</div>
+
 The `rudder_discards` table schema is shown below:
 
 | Column          | Description                                                                                                 |
