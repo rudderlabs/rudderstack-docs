@@ -80,6 +80,16 @@ RudderStack loads all the events configured with your warehouse into staging buc
 
 Make sure that the retention policy duration is longer than the warehouse sync frequency duration so that RudderStack can re-run event uploads for a longer time, if required. It is recommended to set the retention policy duration to **30 days/1 month**.
 
+### Can I grant RudderStack limited access to the Azure Storage resources?
+
+Yes, you can enable the **Use shared access signature (SAS) Tokens** setting while configuring your Blob Storage in the dashboard settings, as shown:
+
+<img src="../../assets/dw-integrations/sas-token.png" alt="Azure Blob Storage SAS token" />
+
+<div class="infoBlock">
+For more information on the shared access signatures (SAS) and setting the required permissions, refer to the <Link to="/destinations/streaming-destinations/microsoft-azure-blob-storage/#sas-token-permissions">SAS token permissions</Link> section.
+</div>
+
 ## Optimizing syncs
 
 ### How do I avoid lags in data syncs while heavy loads are running on my data warehouse?
@@ -364,7 +374,7 @@ If the above steps take too long to complete, you can halt the warehouse operati
 RudderStack drops any non-standard properties (properties apart from the <Link to="/destinations/warehouse-destinations/warehouse-schema/#standard-rudderstack-properties">standard properties</Link>) declared at the top level of an event. However, you can add such properties in the `context` or `properties` section of the event payload.
 
 
-## Warehouse-specific
+## Warehouse-specific settings
 
 ### While configuring the Snowflake destination, what should I enter in the Account field?
 

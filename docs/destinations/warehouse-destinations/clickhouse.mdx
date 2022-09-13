@@ -93,5 +93,3 @@ For the user's table, RudderStack creates a table with an engine `AggregatingMer
 ### How does RudderStack handle cases when loading data into ClickHouse?
 
 RudderStack converts the event keys into the lower case before exporting the data into ClickHouse. This is so that it does not create two tables in case the event name has two different cases.
-
-

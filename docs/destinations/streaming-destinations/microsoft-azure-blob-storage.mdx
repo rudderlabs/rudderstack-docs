@@ -29,9 +29,29 @@ Note the your storage account name, container as well as the access key. This in
 
 7. If you wish to grant limited access to your Azure Storage resources, you can use the Shared Access Signatures (SAS) instead of your access key. To generate a SAS token, go to **Security + networking** > **Shared Access Signature**.
 
+### SAS token permissions
+
+You can use the shared access signatures (SAS) to delegate specific permissions to your storage account resources. This gives you granular control over how users can access your data.
+
 <div class="infoBlock">
-For more information on using shared access signatures (SAS), refer to this <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview">Azure documentation</a>.
+For more information on shared access signatures (SAS) and how to use them, refer to this <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview">Azure documentation</a>.
 </div>
+
+For your Blob Storage destination, RudderStack requires the <strong>Write</strong> permission to write to your container. Make sure it is checked in the **Allowed permissions** setting. An example is shown below:
+
+<img src="../../assets/event-stream-destinations/sas-token-permissions.png" alt="Setting SAS token permissions" />
+
+If you're using Blob Storage as an intermediate object storage for your data warehouse destinations, you will need to assign the following permissions for your SAS token:
+
+| Warehouse destination | Minimum required permissions |
+| :----- | :----- |
+| Azure Data Lake | Read, Write |
+| Azure Synapse | Read, Write |
+| Clickhouse | Read, Write |
+| Databricks Delta Lake | Read, Write |
+| Microsoft SQL Server | Read, Write |
+| PostgreSQL | Read, Write |
+| Snowflake | Read, Write |
 
 ## Configuring Azure Blob Storage in RudderStack
 

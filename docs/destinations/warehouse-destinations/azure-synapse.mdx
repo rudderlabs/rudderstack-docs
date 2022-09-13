@@ -38,10 +38,10 @@ To configure Azure Synapse as a destination in RudderStack, follow these steps:
 
 ### Connection settings
 
-<img src="../../assets/dw-integrations/azure-synapse-connection.png" alt="Azure Synapse connection settings" />
-<img src="../../assets/dw-integrations/azure-synapse-connection2.png" alt="Azure Synapse connection settings" />
+To successfully configure Azure Synapse as a destination, you will need to configure the following settings:
 
-Enter the following credentials in the **Connection Credentials** page:
+<img src="../../assets/dw-integrations/synapse-connection-settings-1.png" alt="Azure Synapse connection settings" />
+<img src="../../assets/dw-integrations/synapse-connection-settings-2.png" alt="Azure Synapse connection settings" />
 
 - **Host**: The host name of your Azure Synapse service.
 - **Database**: The database name in your Azure Synapse instance where the data will be sent.
@@ -50,6 +50,11 @@ Enter the following credentials in the **Connection Credentials** page:
 - **Port**: The port number associated with the Azure Synapse database instance.
 - **Namespace**: Enter the name of the schema created in the <Link to="#prerequisites">Prerequisites</Link> section, where RudderStack will create all the tables.
 - **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your Azure Synapse instance. RudderStack provides three options - **disable**, **true**, and **false**.
+
+<div class="infoBlock">
+For more information these SSL modes, refer to the <Link to="#what-are-the-ssl-mode-options-provided-by-rudderstack">FAQ</Link> section below.
+</div>
+
 - **Sync Frequency**: Specify how often RudderStack should sync the data to your PostgreSQL database.
 - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
 - **Exclude Window**: This optional setting lets you set a time window when RudderStack will **not sync** the data to your database.
@@ -72,9 +77,10 @@ This option is applicable only for RudderStack-hosted data planes. For self-host
    - <Link to="/destinations/streaming-destinations/minio#setting-up-minio">MinIO bucket storage settings</Link>
 
 ## IPs to be allowlisted
-<Iplist/>
 
-## FAQs
+<Iplist />
+
+## FAQ
 
 ### How are reserved words handled by RudderStack?
 
@@ -97,5 +103,3 @@ While setting up the Azure Synapse destination, RudderStack provides the followi
 - **true**: The data sent from RudderStack to your database is encrypted.
 
 For more information on the above options, refer to this [readme](https://github.com/denisenkom/go-mssqldb#common-parameters) section.
-
-
