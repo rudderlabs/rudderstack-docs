@@ -385,7 +385,12 @@ The values which cannot be cast are set as <code class="inline-block">NULL</code
 </div>
 
 <div class="infoBlock">
-The <code class="inline-code">rudder_discards</code> table is applicable for all the warehouse destinations except <Link to="/destinations/warehouse-destinations/s3-datalake/">Amazon S3 Data Lake</Link>.
+The <code class="inline-code">rudder_discards</code> table is applicable for all the warehouse destinations except the following data lake destinations:
+<ul>
+  <li><Link to="/destinations/warehouse-destinations/s3-datalake/">Amazon S3 Data Lake</Link></li>
+  <li><Link to="/destinations/warehouse-destinations/azure-datalake/">Azure Data Lake</Link></li>
+  <li><Link to="/destinations/warehouse-destinations/gcs-datalake/">Google Cloud Storage Data Lake</Link></li>
+</ul>
 </div>
 
 The `rudder_discards` table schema is shown below:
