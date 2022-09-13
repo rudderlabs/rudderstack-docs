@@ -1860,6 +1860,18 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "using-transformations",
+    title: "Using Transformations",
+    link: "/features/transformations/using-transformations",
+    content: [],
+  },
+  {
+    key: "using-libraries",
+    title: "Using Libraries",
+    link: "/features/transformations/using-libraries",
+    content: [],
+  },
+  {
     key: "faq",
     title: "Transformations FAQ",
     link: "/features/transformations/faq",

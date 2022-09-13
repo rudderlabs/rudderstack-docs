@@ -31,7 +31,7 @@ For more information, refer to the <Link to="/features/transformations/using-tra
 
 ### What is a referenced transformation?
 
-If a library `L` is <Link to="/features/transformations/#using-libraries-in-transformations">imported by the transformations</Link> `T1`, `T2`, and `T3`, then `T1`, `T2`, and `T3`are called the referenced transformations to `L`.
+If a library `L` is <Link to="/features/transformations/using-libraries">imported by the transformations</Link> `T1`, `T2`, and `T3`, then `T1`, `T2`, and `T3`are called the referenced transformations to `L`.
 
 ### I used to write transformations like `function transform(events) {}`. Why am I not able to create new transformations this way?
 
@@ -47,7 +47,7 @@ export function transformEvent(event, metadata) {
 
 You cannot update an existing `Version: V0` transformation to the current version.
 
-Instead, you can <Link to="/features/transformations/#adding-a-transformation">create a new transformation</Link> based on the <Link to="/features/transformations/#transformevent-definition">`transformEvent` definition</Link>, then reconnect your destinations with this transformation. Finally, delete the existing `Version: V0` transformation.
+Instead, you can <Link to="/features/transformations/#adding-a-transformation">create a new transformation</Link> based on the <Link to="/features/transformations/using-transformations#transformevent-function">`transformEvent` function</Link>, then reconnect your destinations with this transformation. Finally, delete the existing `Version: V0` transformation.
 
 ### What are transformation and library revisions?
 
@@ -99,13 +99,13 @@ For more information, refer to the <Link to="/features/transformations/#how-rudd
 
 ### Why am I not able to update my library?
 
-If you update a library, <Link to="/features/transformations/#how-rudderstack-tests-library-updates">RudderStack tests the new library code</Link> along with the referenced transformation code. This ensures that the transformation does not break due to any changes in the library.
+If you update a library, <Link to="/features/transformations/faq#how-does-rudderstack-test-any-library-updates">RudderStack tests the new library code</Link> along with the referenced transformation code. This ensures that the transformation does not break due to any changes in the library.
 
 If you're unable to update the library, it is likely that that the transformation is breaking because of the changes. Add the referenced transformation code and test the changes thoroughly.
 
 ### What is a referenced library?
 
-If a transformation `T` <Link to="/features/transformations/#using-libraries-in-transformations">imports a library</Link> `L` in its code, then `L` is called as a referenced library to `T`. 
+If a transformation `T` <Link to="/features/transformations/using-libraries">imports a library</Link> `L` in its code, then `L` is called as a referenced library to `T`. 
 
 ### I cannot import libraries into my existing transformations. What should I do?
 
@@ -115,7 +115,7 @@ If you cannot import libraries into your existing transformations, there is a st
 
 To import the libraries in a transformation, follow these steps:
 
-1. Create a new transformation by following the steps in the <Link to="/features/transformations/#adding-a-transformation">Adding a transformation</Link> section.
-2. Add the updated transformation code as specified in the <Link to="/features/transformations/#transformevent-definition">`transformEvent` definition</Link> section.
-3. Connect the transformation to your destination. For more information, refer to the <Link to="/features/transformations/#connecting-transformation-to-a-destination">Connecting a transformation to the destination</Link> section.
-4. You can then import libraries in the transformation. For more information, refer to the <Link to="/features/transformations/#using-libraries-in-transformations">Using libraries in transformations</Link> section.
+1. Create a new transformation by following the steps in the <Link to="/features/transformations/using-transformations#adding-a-transformation">Adding a transformation</Link> section.
+2. Add the updated transformation code as specified in the <Link to="/features/transformations/using-transformations#transformevent-function">`transformEvent` function</Link> section.
+3. Connect the transformation to your destination. For more information, refer to the <Link to="/features/transformations/using-transformations#connecting-transformation-to-a-destination">Connecting a transformation to the destination</Link> section.
+4. You can then import libraries in the transformation. For more information, refer to the <Link to="/features/transformations/using-libraries">Using libraries in transformations</Link> section.
