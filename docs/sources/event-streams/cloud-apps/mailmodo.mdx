@@ -34,12 +34,17 @@ RudderStack ingests the Mailmodo events after converting them into the RudderSta
 
 | Mailmodo property  | RudderStack property| Notes |
 | :------------------ | :------------- |:------------- |
-| `mailmodoUserId`  | `context.externalId[0].type`    | If `triggerData.userId` is present |
-| `triggerData.userId`/`userId`        | `context.externalId[0].value`        | - |
+| `mailmodoUserId`  | `context.externalId[0].type`    | Only when [webhook is set up as an action in the user journey](https://support.mailmodo.com/support/solutions/articles/84000365396-send-webhook-as-an-action-in-the-journey). |
+| `triggerData.userId`        | `context.externalId[0].value`        | Only when [webhook is set up as an action in the user journey](https://support.mailmodo.com/support/solutions/articles/84000365396-send-webhook-as-an-action-in-the-journey). |
 | SHA-256 hash of `triggerData.email`/`recipientData.email`/`recipientEmail` | `anonymousId`        | -|
-| `email`/`recipientData`    | `context.traits`  | - |
-| `triggerData`/`eventData`     | `properties`   |- |
+| `triggerData.email`/`recipientData.email`/`recipientEmail` | `context.traits.email`        | -|
+| `triggerData.triggerSource`     | `event`   | If `triggerData.triggerSource` is not present, the event name is sent as **Form Submitted**.  |
+| `recipientData`    | `context.traits`  | - |
 | `recordedAt.ts`     | `originalTimestamp`   |- |
+
+<div class="infoBlock">
+<strong>Only <code class="inline-code">userId</code> is a mandatory field</strong>. The other fields are optional as some destinations require phone number or email to associate a given user and do not strictly identify a user by their user ID.
+</div>
 
 
 ## How RudderStack creates the event payload
