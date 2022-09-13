@@ -4,7 +4,7 @@ description: Step-by-step guide on ingesting your event data from Mailmodo into 
 aliases: ["Mailmodo source"]
 ---
 
-[Mailmodo](https://www.mailmodo.com/) is an interactive email marketing tool that provides several features such as sending transactional campaigns, email automation and drip emails with customer journeys, WYSIWYG email editor, and many other tool integrations.
+[Mailmodo](https://www.mailmodo.com/) is an interactive email marketing tool. It provides several features such as transactional campaigns, email automation and drip emails with customer journeys, WYSIWYG email editor, and many other tool integrations.
 
 This guide will help you set up Mailmodo as a source in RudderStack.
 
@@ -12,7 +12,7 @@ This guide will help you set up Mailmodo as a source in RudderStack.
 
 Follow these steps to set up your Mailmodo source in the RudderStack dashboard:
 
-1. Go to your [RudderStack dashboard](https://app.rudderstack.com/) and click on **Add Source**. From the list of **Event Streams** sources, select **Mailmodo**.
+1. Go to your [RudderStack dashboard](https://app.rudderstack.com/) and click **Add Source**. From the list of **Event Streams** sources, select **Mailmodo**.
 2. Assign a name to your source and click **Continue**.
 3. Your Mailmodo source is now configured. Note the **Webhook URL** in the **Settings** tab, as shown:
 
@@ -34,8 +34,8 @@ RudderStack ingests the Mailmodo events after converting them into the RudderSta
 
 | Mailmodo property  | RudderStack property| Notes |
 | :------------------ | :------------- |:------------- |
-| `mailmodoUserId`  | `context.externalId[0].type`    | Only when [webhook is set up as an action in the user journey](https://support.mailmodo.com/support/solutions/articles/84000365396-send-webhook-as-an-action-in-the-journey). |
-| `triggerData.userId`        | `context.externalId[0].value`        | Only when [webhook is set up as an action in the user journey](https://support.mailmodo.com/support/solutions/articles/84000365396-send-webhook-as-an-action-in-the-journey). |
+| `mailmodoUserId`  | `context.externalId[0].type`    | Only when [the webhook is set up as an action in the user journey](https://support.mailmodo.com/support/solutions/articles/84000365396-send-webhook-as-an-action-in-the-journey). |
+| `triggerData.userId`        | `context.externalId[0].value`        | Only when [the webhook is set up as an action in the user journey](https://support.mailmodo.com/support/solutions/articles/84000365396-send-webhook-as-an-action-in-the-journey). |
 | SHA-256 hash of `triggerData.email`/`recipientData.email`/`recipientEmail` | `anonymousId`        | -|
 | `triggerData.email`/`recipientData.email`/`recipientEmail` | `context.traits.email`        | -|
 | `triggerData.triggerSource`     | `event`   | If `triggerData.triggerSource` is not present, the event name is sent as **Form Submitted**.  |
@@ -111,7 +111,7 @@ RudderStack transforms the above payload into the following payload:
 ```
 
 
-- If you choose to export Mailmodo template submissions to your software stack using Webhook, a sample payload sent by Mailmodo is shown below:
+- If you choose to export the Mailmodo template submissions to your software stack using a webhook, a sample payload sent by Mailmodo is shown below:
 
 ```json
 {
