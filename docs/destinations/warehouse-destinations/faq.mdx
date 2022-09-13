@@ -398,6 +398,26 @@ In case of AWS, <code class="inline-code">.aws</code> is present in the account 
 For more information on the different account locator formats depending on your region or cloud provider, refer to the <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region">Snowflake documentation</a>.
 </div>
 
+### What are the SAS token permissions required for the warehouse destinations?
+
+When using Azure Blob Storage as the intermediate object storage for your warehouse destinations, you can use the shared access signatures (SAS) to delegate specific permissions to your storage account resources. This gives you granular control over how users can access your data.
+
+<div class="infoBlock">
+For more information on shared access signatures (SAS) and how to use them, refer to this <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview">Azure documentation</a>.
+</div>
+
+If you're using Blob Storage as an intermediate object storage for your data warehouse destinations, you will need to assign the following permissions for your SAS token:
+
+| Warehouse destination | Minimum required permissions |
+| :----- | :----- |
+| Azure Data Lake | Read, Write |
+| Azure Synapse | Read, Write |
+| Clickhouse | Read, Write |
+| Databricks Delta Lake | Read, Write |
+| Microsoft SQL Server | Read, Write |
+| PostgreSQL | Read, Write |
+| Snowflake | Read, Write |
+
 ## Identity resolution
 
 ### How can I achieve identity resolution with multiple sources connected to one warehouse destination?
