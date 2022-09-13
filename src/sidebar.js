@@ -930,8 +930,13 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "HubSpot",
+                title: "Custify",
                 sectionTitle: "CRM",
+                link: "/destinations/streaming-destinations/custify/",
+                content: []
+            },
+            {
+                title: "HubSpot",
                 link: "/destinations/streaming-destinations/hubspot/",
                 content: []
             },

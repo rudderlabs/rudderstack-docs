@@ -395,6 +395,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "custify",
+    title: "Custify",
+    link: "/sources/cloud-apps/custify/",
+    content: [],
+  },
+  {
     key: "looker",
     title: "Looker",
     link: "/sources/cloud-apps/looker/",
