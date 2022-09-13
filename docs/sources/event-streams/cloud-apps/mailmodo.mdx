@@ -43,9 +43,8 @@ RudderStack ingests the Mailmodo events after converting them into the RudderSta
 | `recordedAt.ts`     | `originalTimestamp`   |- |
 
 <div class="infoBlock">
-<strong>Only <code class="inline-code">userId</code> is a mandatory field</strong>. The other fields are optional as some destinations require phone number or email to associate a given user and do not strictly identify a user by their user ID.
+Barring <code class="inline-code">recipientData</code>, <code class="inline-code">recordedAt</code>, <code class="inline-code">email</code>, and <code class="inline-code">userId</code>, RudderStack assigns the rest of the payload fields to <code class="inline-code">properties</code> after flattening them.
 </div>
-
 
 ## How RudderStack creates the event payload
 
