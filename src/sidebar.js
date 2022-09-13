@@ -1039,7 +1039,7 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "HubSpot",
+                title: "HubSpot (Legacy API)",
                 link: "/destinations/streaming-destinations/hubspot/",
                 content: []
             },
