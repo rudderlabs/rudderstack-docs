@@ -1028,8 +1028,13 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Freshsales",
+                title: "Custify",
                 sectionTitle: "CRM",
+                link: "/destinations/streaming-destinations/custify/",
+                content: []
+            },
+            {
+                title: "Freshsales",
                 link: "/destinations/streaming-destinations/freshsales/",
                 content: []
             },
