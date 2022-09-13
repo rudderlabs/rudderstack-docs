@@ -3,17 +3,17 @@ title: "Custify"
 description: Step-by-step guide on sending your event data from RudderStack to Custify.
 ---
 
-[**Custify**](https://www.custify.com/) is a Next-Generation Customer Success Software For B2B SaaS. It helps you better meet customers' needs, reducing churn and increasing lifetime value. You can see in-product usage insights as well as data from CRM, support, billing, and other systems in one place. Relevant customer success KPIs and client interactions are displayed in an easy-to-understand dashboard.
+[**Custify**](https://www.custify.com/) is a next-generation Customer Success software for B2B SaaS companies. It helps you meet your customers' needs by reducing user churn and increasing their lifetime value. With Custify, you can get insights on product usage and all the data from your CRM, support, billing, and other systems in one place.
 
-RudderStack supports Custify as a destination to which you can seamlessly send your customer data.
+RudderStack supports Custify as a destination where you can seamlessly send your customer data.
 
 <div class="infoBlock">
-    Find the open source transformer code for this destination in the [**GitHub repository**](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/custify).
+Find the open source transformer code for this destination in the [GitHub repository](https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/custify).
 </div>
 
 ## Getting started
 
-Before configuring Custify as a destination in RudderStack, make sure that Custify supports the source platform from which you are sending the events, by referring to the following table:
+Before configuring Custify as a destination in RudderStack, verify if the source platform is supported by Custify by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -21,21 +21,27 @@ Before configuring Custify as a destination in RudderStack, make sure that Custi
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-    To know more about the difference between cloud mode and device mode in RudderStack, read the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
-Once you have verified that the source platform supports sending events to Custify, perform the steps below:
+Once you have confirmed that the source platform supports sending events to Custify, follow these steps:
 
-* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Custify**.
-* Assign a name to the destination and click on **Next**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Custify**.
+2. Assign a name to the destination and click **Continue**.
 
 ### Connection settings
 
-To set up the Custify destination in RudderStack, the following settings need to be configured:
+To successfully configure Custify as a destination, you need to configure the following settings:
 
-* **API Key**: This is a mandatory field. Enter the Custify API key that will be used to authenticate the request. To create an API key, go to the [**Custify API Access page**](https://app.custify.com/settings/developer/api-key) and click on **Generate API key**.
+<img src="../../assets/event-stream-destinations/custify-connection-settings.png" alt="Custify connection settings"/>
 
-Once you've entered all the required settings, click on **Next** to finish the configuration. Custify should now be added and enabled as a destination in RudderStack.
+- **API Key**: This is a mandatory field. Enter the Custify API key used to authenticate the request. 
+
+<div class="infoBlock">
+To create an API key, go to the <a href="https://app.custify.com/settings/developer/api-key">Custify API Access page</a> and click <strong>Generate API key</strong>.
+</div>
+
+- **Fall back to anonymousId if userId is not present**: If this setting is enabled, RudderStack will use `anonymousId` to identify the user, in case `userId` is not present in the event.
 
 ## Identify
 
