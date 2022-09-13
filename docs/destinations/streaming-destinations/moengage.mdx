@@ -561,7 +561,7 @@ RudderStack maps the following properties to the MoEngage properties before send
          <li>To send push notifications in iOS, an APNS certificate needs to be created and converted to a <code class="inline-code">.pem</code> file. This <code class="inline-code">.pem</code> file needs to be uploaded in the MoEngage dashboard.</li>
          <li>Enable <strong>Background mode</strong> by navigating to <strong>Targets</strong> > <strong>Select Your App</strong> > <strong>Signing & Capabilities</strong> > <strong>Select Background Modes</strong>. Then, check <strong>Remote notifications</strong>.</li>
           <li>Then, in your <code class="inline-code">plist</code> file, add the <code class="inline-code">MoEngageAppDelegateProxyEnabled</code> key and set it to <code class="inline-code">false</code> to disable swizzling.</li>
-          <li>Finally, implement the relevant methods in your <code class="inline-code">AppDelegate</code> file by referring to <Link to="/sources/sdks/rudderstack-ios-sdk/ios-v2/#supporting-push-notifications-for-device-mode-destinations">this section</Link>.</li>
+          <li>Finally, implement the relevant methods in your <code class="inline-code">AppDelegate</code> file by referring to <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/ios-v2/#supporting-push-notifications-for-device-mode-destinations">this section</Link>.</li>
          <li>To keep the push notifications even after app launch, you can call the below method:
 <span>
 

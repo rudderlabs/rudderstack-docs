@@ -1,6 +1,6 @@
 ---
 title: "Amplitude"
-description: Step-by-step guide on sending your event data from RudderStack to Amplitude
+description: Step-by-step guide on sending your event data from RudderStack to Amplitude.
 ---
 
 [Amplitude](https://amplitude.com/) is a comprehensive product analytics platform for the web as well as mobile platforms. Over 12,000 companies use Amplitude to get useful marketing insights that drive product strategy and conversion and retention of their customers.
@@ -106,7 +106,7 @@ Amplitude computes <code class="inline-code">device_family</code> as <code class
 ### Client-side events filtering
 
 <div class="infoBlock">
-Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this setting.
+Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this setting.
 </div>
 
 ### Web device mode settings
@@ -119,7 +119,7 @@ Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filteri
 
 <div class="infoBlock">
 
-For more information on explicitly setting the <code class="inline-code">anonymousId</code>, refer to <Link to="/sources/sdks/rudderstack-javascript-sdk/#overriding-the-anonymousid-using-setanonymousid">RudderStack's JavaScript SDK</Link> documentation.
+For more information on explicitly setting the <code class="inline-code">anonymousId</code>, refer to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#overriding-anonymous-id">RudderStack's JavaScript SDK</Link> documentation.
 </div>
 
 - **Set Device ID from the URL parameter**: If this setting is enabled, the Amplitude SDK will parse the URL parameter and set the Device ID from `amp_device_id`.
@@ -494,14 +494,16 @@ To know more about the difference between cloud mode and device mode in RudderSt
 </div>
 
 <div class="infoBlock">
-
-**(Mobile Only)** If a property with the name <code class="inline-code">optOutOfSession</code> and value <code class="inline-code">true</code>then this track call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
-
+<strong>Applicable for mobile only</strong>: If you set a property with the name <code class="inline-code">optOutOfSession</code> and value <code class="inline-code">true</code> then this <code class="inline-code">track</code> call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
 </div>
 
 ## Identify
 
-The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userid` as well as any optional information such as name, email address, etc.
+The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userId` as well as any optional information such as name, email address, etc.
+
+<div class="infoBlock">
+When sending events from your <Link to="/sources/reverse-etl/">Reverse ETL</Link> sources using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapping</Link> feature, you can also pass a custom user ID in your <code class="inline-code">identify</code> calls. RudderStack adds this ID under <a href="https://github.com/rudderlabs/rudder-transformer/blob/5d716c2df82fca2e76c3bb17de17b1cabe72126d/v0/destinations/am/transform.js#L270"><code class="inline-code">context.externalId.0.identifierType</code></a> before sending it to Amplitude.
+</div>
 
 A sample `identify` call looks like the following:
 
@@ -521,30 +523,30 @@ A sample dashboard after making the above `identify`, `page`, and `track` calls 
 <img src="../../assets/screenshot-2020-02-17-at-5.49.05-pm.png" />
 
 <div class="infoBlock">
-
-**(Mobile Only)** If a trait with the name <code class="inline-code">optOutOfSession</code> and value <code class="inline-code">true</code> then this <code class="inline-code">identify</code> call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
-
+<strong>Applicable for mobile only</strong>: If a trait with the name <code class="inline-code">optOutOfSession</code> and value <code class="inline-code">true</code> then this <code class="inline-code">identify</code> call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
 </div>
 
 ## Group
 
-<div class="infoBlock">
-
-This feature is currently supported by the RudderStack JavaScript SDK only.
-</div>
-
 <div class="warningBlock">
-
-Groups are an enterprise-only feature in Amplitude and you need to purchase the Accounts add-on to use them.
+<a href="https://developers.amplitude.com/docs/group-identify-api">Groups</a> are an enterprise-only feature in Amplitude and you need to purchase the <strong><a href="https://help.amplitude.com/hc/en-us/articles/115001765532">Accounts</a></strong> add-on to use them.
 </div>
 
 The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account.
 
-In order to use the Amplitude groups feature with RudderStack you need to define the `Group name trait` and `Group value trait` on the dashboard settings pane and you need to pass them as traits while making a group call.
+<div class="infoBlock">
+RudderStack supports sending the <code class="inline-code">group</code> calls in the cloud mode. However, when sending events via the device mode, <code class="inline-code">group</code> is currently supported only by the web (JavaScript) SDK.
+</div>
 
-Even if you are not having an enterprise account or groups add-on, RudderStack would add `groups`as a `User Property` on a user's profile with `Group name trait` as its type and `Group value trait` as its value.
+<div class="infoBlock">
+RudderStack does not support associating a user to more than one group per <code class="inline-code">group</code> API call sent to Amplitude. To send more than one group per user, you need to call the <code class="inline-code">group</code> API multiple times with the relevant group information specified in the <Link to="#group-settings">group settings</Link>.
+</div>
 
-Let' say you had defined `Group name trait` as `company_id` and `Group value trait` as `company_name` and made the above call then the user would be associated with a Group name : `RS` and a Group Value : `RudderStack` and you can also see that a user property with type `RS` and value `RudderStack` on user's profile.
+To use the Amplitude Groups feature with RudderStack, you need to define the `Group name trait` and `Group value trait` in the dashboard settings and pass them as traits while making a `group` call.
+
+Even if you don't have an enterprise account or the Groups add-on, RudderStack adds `groups` as a user property in the user's profile with <strong>Group Name Trait</strong> as its type and <strong>Group Value Trait</strong> as its value.
+
+Suppose you have defined the <strong>Group Name Trait</strong> as `RS` and <strong>Group Value Trait</strong> as `RudderStack` and made the `group` call, then the user would be associated with the Group name: `RS` and the Group Value: `RudderStack`.
   
 ## Send `event_id` in device mode
 
@@ -572,7 +574,7 @@ rudderanalytics.identify(
 This feature is currently only available when sending events through the JavaScript SDK in the cloud mode.
 </div>
 
-Refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/#alias">JavaScript SDK documentation</Link> for information and examples on how to call the `alias` event.
+Refer to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#alias">JavaScript SDK documentation</Link> for information and examples on how to call the `alias` event.
 
 ### Mapping
 
@@ -599,12 +601,10 @@ rudderanalytics.alias("user_id_to_unmapped", {
 In the snippet above, `user_to_be_unmapped`, will be unmapped or unlinked from the `global_user_id` it is currently linked to.
 
 <div class="infoBlock">
-
-For the **unmapping** call, it is not necessary to provide a <code class="inline-code">global_user_id</code> in the <code class="inline-code">to</code> parameter of the <code class="inline-code">alias</code> call. If it is included, RudderStack will dismiss it.
-
+For the unmapping call, it is not necessary to provide <code class="inline-code">global_user_id</code> in the <code class="inline-code">to</code> parameter of the <code class="inline-code">alias</code> call. If it is included, RudderStack will dismiss this field.
 </div>
 
-For more information on how the `alias` call works for Amplitude, visit [this link](https://help.amplitude.com/hc/en-us/articles/360002750712-Portfolio-Cross-Project-Analysis#h_76557c8b-54cd-4e28-8c82-2f6778f65cd4).
+For more information on how the `alias` call works for Amplitude, refer to this [Amplitude support page](https://help.amplitude.com/hc/en-us/articles/360002750712-Portfolio-Cross-Project-Analysis#h_76557c8b-54cd-4e28-8c82-2f6778f65cd4).
 
 ## Reset
 
@@ -639,7 +639,7 @@ rudderClient.reset();
     </TabPanels>
 </Tabs>
 
-## FAQs
+## FAQ
 
 ### How do I get the Amplitude API Key?
 
@@ -650,4 +650,6 @@ You can find the Amplitude API key in the [Amplitude Settings Page](https://anal
 Session tracking is only supported for the RudderStack <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> because the integration loads Amplitude's SDK. 
 Events sent via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> connections will have session IDs as `-1`.
 
+### Can I send more than one group per user to Amplitude?
 
+RudderStack does not support associating a user to more than one group per `group` API call sent to Amplitude. To send more than one group per user, you need to call the `group` API multiple times with the relevant group information specified in the <Link to="#group-settings">group settings</Link>.

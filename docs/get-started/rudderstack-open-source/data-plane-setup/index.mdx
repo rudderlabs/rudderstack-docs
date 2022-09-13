@@ -20,8 +20,12 @@ Based on the platform where you want to set up RudderStack, refer to the setup i
 
 * <Link to="/get-started/rudderstack-open-source/data-plane-setup/developer-machine-setup/">Developer Machine Setup</Link>
 
-<div class="warningBlock">
+<div class="infoBlock">
 If you are planning to use RudderStack in production, it is strongly recommended to use the <a href="kubernetes/">Kubernetes</a> Helm charts. The Docker images are updated with the latest bug fixes more frequently than the <a href="https://github.com/rudderlabs/rudder-server">GitHub repository</a>.
+</div>
+
+<div class="dangerBlock">
+In RudderStack Open Source, every node runs the warehouse sync operations individually. Setting up multiple nodes can cause concurrent requests to your warehouse, leading to failures and retries. It can also increase your costs in the case of data warehouses like Snowflake, BigQuery, etc.
 </div>
 
 ## Sending test events
@@ -61,13 +65,13 @@ An open source RudderStack data plane URL typically looks like <code class="inli
 To check the status of your data plane, run the following command:
 
 ```bash
-CURL <DATA_PLANE_URL>/health
+curl <DATA_PLANE_URL>/health
 ```
 
 A sample command is shown below:
 
 ```bash
-CURL https://hosted.rudderlabs.com/health
+curl http://localhost:8080/health
 ```
 
 You will see the following output:
@@ -84,5 +88,3 @@ The RudderStack server (backend) supports two running modes:
 <div class="infoBlock">
 For more information on the supported running modes, refer to the <Link to="/user-guides/administrators-guide/high-availability/">RudderStack High Availability</Link>guide.
 </div>
-
-

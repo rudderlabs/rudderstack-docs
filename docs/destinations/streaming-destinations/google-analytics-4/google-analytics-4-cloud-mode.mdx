@@ -19,9 +19,49 @@ Google Analytics 4 does not officially support a complete server-to-server integ
   color={'blueviolet'}
 />
 
+## Tagging methods
+
+RudderStack supports both the `gtag` and `firebase` ways for tagging in websites in the cloud mode. However, note that:
+
+- If you use `gtag`, passing the `client_id` parameter is mandatory.
+- If you use `firebase`, passing the `app_instance_id` parameter is mandatory.
+
+<div class="infoBlock">
+Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a> guide for more information.
+</div>
+
+The mappings for the above-mentioned mandatory parameters are listed in the following table:
+
+| Parameters    | Mapping value  |
+| :-------------| :-----------------|
+| `client_id`         |  from `externalID` `ga4ClientId` or `anonymousId` or `messageId` |
+| `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  | 
+
+<div class="infoBlock">
+Refer to the <Link to="#how-do-i-obtain-app_instance_id">FAQ</Link> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
+</div>
+
+### Supported mappings
+
+The following table lists the mappings for the **optional** parameters (common for both `gtag` and `firebase`):
+
+| Optional Parameters    | Mapping value  | Description |
+| :-------------| :-----------------|:-----------------|
+| `user_id`         |  `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
+| `timestamp_micros`   |  `originalTimestamp`/`timestamp`| Timestamp in ISO 8601 format.|
+| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. If `context.device.adTrackingEnabled` is set as `true`, `non_personalised_ads` will be set to `false`. |
+
+<div class="infoBlock">
+Google Analytics 4 Measurement Protocol only supports timestamps 72 hours into the past and 15 minutes into the future. RudderStack discards any event with a timestamp out of this range.
+</div>
+
 ## Identify
 
 The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
+
+<div class="infoBlock">
+For more information on the dashboard settings related to <code class="inline-code">identify</code> events, refer to the <Link to="/destinations/streaming-destinations/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify settings</Link> section.
+</div>
 
 A sample `identify` call using `gtag` is shown below:
 
@@ -50,45 +90,9 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 });
 ```
 
-<div class="infoBlock">
-For more information on the dashboard settings related to <code class="inline-code">identify</code> events, refer to the <Link to="/destinations/streaming-destinations/google-analytics-4/setting-up-google-analytics-4-in-rudderstack/#identify">Identify settings</Link> section.
-</div>
-
 ## Track
 
 The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
-
-RudderStack supports both the `gtag` and `firebase` ways for tagging in websites in the cloud mode. However, note that:
-
-- If you use `gtag`, passing the `client_id` parameter is mandatory.
-- If you use `firebase`, passing the `app_instance_id` parameter is mandatory.
-
-<div class="infoBlock">
-Refer to the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a> guide for more information.
-</div>
-
-The mappings for the above-mentioned mandatory parameters are listed in the following table:
-
-| Parameters    | Mapping value  |
-| :-------------| :-----------------|
-| `client_id`         |  from `externalID` `ga4ClientId` or `anonymousId` or `messageId` |
-| `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  | 
-
-<div class="infoBlock">
-Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
-</div>
-
-The mappings for the optional parameters (common for `gtag` and `firebase` both) are listed in the following table:
-
-| Optional Parameters    | Mapping value  | Description |
-| :-------------| :-----------------|:-----------------|
-| `user_id`         |  `userId`, `traits.userId`, `traits.id`, `context.traits.userId`, `context.traits.id` | Unique identifier for a user which helps Google Analytics 4 know if two devices/browsers belong to the same user.|
-| `timestamp_micros`   |  `originalTimestamp` or `timestamp`| Timestamp in ISO 8601 format.|
-| `non_personalized_ads`   |  `context.device.adTrackingEnabled` | Indicates whether the events should be used for personalized ads. If `context.device.adTrackingEnabled` is set as `true`, `non_personalised_ads` will be set to `false`. |
-
-<div class="infoBlock">
-Google Analytics 4 Measurement Protocol only supports timestamps 72 hours into the past and 15 minutes into the future. RudderStack discards any event with a timestamp out of this range.
-</div>
 
 A sample `track` call using `gtag` is shown below:
 
@@ -184,6 +188,8 @@ rudderanalytics.page({}, {
   }],
 });
 ```
+
+### Supported mappings
 
 The following table lists the property mappings between RudderStack and Google Analytics 4: 
 
@@ -438,7 +444,9 @@ The following table lists the RudderStack and Google Analytics 4 properties mapp
   </tr>
 </table>
 
-Most of the above mentioned events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. The below table details out the common mappings for `Items` array:
+Most of the above mentioned events include the `products` parameter (mapped to the [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter) which accepts a `products` array.
+
+The below table details out the common mappings for the `products` array:
 
 | RudderStack    | Google Analytics 4  |
 | :-------------| :-----------------|
@@ -452,9 +460,9 @@ Most of the above mentioned events include [`items`](https://developers.google.c
 | properties.products.$.variant           | `item_variant`  |
 | properties.products.$.quantity           | `quantity`  |
 
-The below mentioned e-commerce events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array. 
+The below mentioned e-commerce events include the `products` parameter which accepts a `products` array. 
 
-| RudderStack    | Presence of `items` parameter |
+| RudderStack    | Presence of `products` parameter |
 | :-------------| :-----------------|
 | Product List Viewed         | Required        |
 | Product Clicked         | Required      |
@@ -469,7 +477,7 @@ The below mentioned e-commerce events include [`items`](https://developers.googl
 | Product Added to Wishlist           | Required  |
 | View Search Results           | Optional  |
 
-The following table details the parameter mappings present in the `Items` array, for the above events:
+The following table details the parameter mappings present in the `products` array, for the above events:
 
 | RudderStack    | Google Analytics 4  |
 | :-------------| :-----------------|
@@ -484,14 +492,14 @@ The following table details the parameter mappings present in the `Items` array,
 | properties.products.$.item_list_name           | `item_list_name`  |
 | properties.products.$.location_id           | `location_id`  |
 
-The below mentioned e-commerce events include [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter which accepts an `Item` array.
+The below mentioned e-commerce events include the `products` parameter (mapped to the [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter) which accepts a `products` array.
 
-| RudderStack    | Presence of `items` parameter |
+| RudderStack    | Presence of `products` parameter |
 | :-------------| :-----------------|
 | Promotion Viewed          | Required        |
 | Promotion Clicked      | Optional     |
 
-The following table details the parameter mappings present in the `Items` array, for the above events:
+The following table details the parameter mappings present in the `products` array, for the above events:
 
 | RudderStack    | Google Analytics 4  |
 | :-------------| :-----------------|
@@ -567,6 +575,36 @@ You must follow the below rules while choosing a name for the custom events:
 - Event names must start with a letter. Only letters, numbers, and underscores are permitted. **DO NOT** use spaces.
 - Do not use reserved prefixes and event names. Refer to the <a href="#faq">FAQ</a> section to know more about the reserved event names and prefixes.
 
+## Tracking active users and sessions
+
+As Google Analytics 4 only reports the users who engage with your website for a non-zero time, RudderStack sets the `engagement_time_msec` parameter to 1, by default. To track engagement time in your events, you can set the `engagement_time_msec` field to a different value.
+
+RudderStack maps the following properties to GA4's `engagement_time_msec` property:
+
+| RudderStack properties | Google Analytics 4 property |
+| :------------------------| :-------------|
+| `traits.engagementTimeMsec` <br />`context.traits.engagementTimeMsec` <br /> `traits.engagement_time_msec` <br /> `context.traits.engagement_time_msec` | `engagement_time_msec` |
+
+You can use the Google Analytics 4 `session_id` parameter to identify the session associated with a particular event. 
+
+<div class="infoBlock">
+To read more about sessions in Google Analytics 4, refer to this <a href="https://support.google.com/analytics/answer/9191807?hl=en#zippy=">Google Analytics 4 Help article</a>.
+</div>
+
+RudderStack maps the following properties to GA4's `session_id` property:
+
+| RudderStack properties | Google Analytics 4 property |
+| :------------------------| :-------------|
+| `traits.sessionId`<br />`context.traits.sessionId`<br />`traits.session_id`<br />`context.traits.session_id` | `session_id` |
+
+<div class="warningBlock">
+RudderStack automatically collects <code class="inline-code">engagement_time_msec</code> and <code class="inline-code">session_id</code> when sending events via the <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-device-mode/">device mode</Link>. However, they must be manually passed while sending events via the cloud mode.
+</div>
+
+<div class="infoBlock">
+For more information on the optional reporting parameters in Google Analytics 4, refer to their <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=firebase#optional_parameters_for_reports">documentation</a>.
+</div>
+
 ## FAQ
 
 ### I’ve set up GA4 as a destination in RudderStack but I’m not seeing the expected data flow through in the GA4 dashboard. What should I do?
@@ -595,9 +633,9 @@ Refer to the [GA4 documentation](https://support.google.com/analytics/answer/100
 
 Google Analytics 4 has some reserved event, parameter, and user property names that cannot be used. Refer to the [Measurement Protocol (Google Analytics 4)](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#reserved_names) guide for a complete list of reserved names.
 
-### How do I obtain the `app_instance_id`?
+### How do I obtain `app_instance_id`?
 
-You can retrieve the `app_instance_id` through the Firebase SDK depending on the platform where the SDK is installed: 
+You can retrieve `app_instance_id` through the Firebase SDK depending on the platform where the SDK is installed: 
 
 - [Android: `getAppInstanceId()`](https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics#public-taskstring-getappinstanceid)
 - [Kotlin: `getAppInstanceId()`](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/analytics/FirebaseAnalytics#getappinstanceid)
@@ -607,5 +645,3 @@ You can retrieve the `app_instance_id` through the Firebase SDK depending on the
 - [Unity: `GetAnalyticsInstanceIdAsync()`](https://firebase.google.com/docs/reference/unity/class/firebase/analytics/firebase-analytics#getanalyticsinstanceidasync)
 
 Refer to the [GA4 documentation](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=firebase#payload_post_body) for more information.
-
-

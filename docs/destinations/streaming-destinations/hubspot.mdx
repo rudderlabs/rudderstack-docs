@@ -1,5 +1,5 @@
 ---
-title: "HubSpot"
+title: "HubSpot (Legacy API V1)"
 description: Step-by-step guide on sending your event data from RudderStack to HubSpot using the legacy API.
 ---
 
@@ -8,7 +8,7 @@ description: Step-by-step guide on sending your event data from RudderStack to H
 RudderStack supports HubSpot as a destination where you can seamlessly send your event data.
 
 <div class="warningBlock">
-This HubSpot source uses the legacy API and will be deprecated soon. Refer to the <Link to="/destinations/streaming-destinations/hubspot-v2/">HubSpot V2</Link> guide for the latest documentation.
+This HubSpot source uses the legacy API and will be deprecated soon. Refer to the <Link to="/destinations/streaming-destinations/hubspot-v2/">HubSpot (New API)</Link> guide for the latest documentation.
 </div>
 
 
@@ -77,7 +77,7 @@ Refer to the <Link to="#faq">FAQ</Link> section for more information on obtainin
 <img src="../../assets/event-stream-destinations/hubspot-connection-settings-3.png" alt="HubSpot connection settings" />
 
 <div class="infoBlock">
-These settings are applicable only if you're sending events to HubSpot via the web device mode. Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
+These settings are applicable only if you're sending events to HubSpot via the web device mode. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 </div>
 
 ## Page
@@ -208,7 +208,7 @@ For the revenue events, a `value` or `revenue` key should be included in the eve
 
 The <Link to="/event-spec/standard-events/screen/">`screen`</Link> call lets you record whenever your user views their mobile screen, with any additional information about the viewed screen.
 
-If you have enabled screen views in your <Link to="/sources/sdks/rudderstack-android-sdk/">Android</Link> or <Link to="/sources/sdks/rudderstack-ios-sdk/">iOS</Link> app implementation, RudderStack will send this information to HubSpot.
+If you have enabled screen views in your <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link> or <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link> app implementation, RudderStack will send this information to HubSpot.
 
 RudderStack also forwards the `properties` you've passed along with the `screen` call without any changes.
 
@@ -218,6 +218,42 @@ A sample `screen` call sent via the iOS SDK is shown below:
 [[RSClient sharedInstance] screen:@"Main"
             properties:@{@"prop_key" : @"prop_value"}];
 ```
+
+## Connecting Reverse ETL sources
+
+If you're connecting a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source to your HubSpot destination that uses a <a href="https://developers.hubspot.com/docs/api/intro-to-auth#private-app-access-tokens">private app access token</a> for authentication, make sure your access token has the following scopes:
+
+```
+crm.lists.read
+crm.objects.contacts.read
+crm.objects.contacts.write
+crm.schemas.custom.read
+crm.objects.custom.read
+crm.objects.custom.write
+crm.schemas.custom.write
+crm.objects.companies.write
+crm.schemas.contacts.read
+crm.lists.write
+crm.objects.companies.read
+crm.objects.deals.read
+crm.objects.deals.write
+crm.schemas.companies.read
+crm.schemas.companies.write
+crm.schemas.contacts.write
+crm.schemas.deals.read
+crm.schemas.deals.write
+crm.objects.owners.read
+crm.objects.quotes.write
+crm.objects.quotes.read
+crm.schemas.quotes.read
+crm.objects.line_items.read
+crm.objects.line_items.write
+crm.schemas.line_items.read
+```
+
+<div class="infoBlock">
+For more information on adding the above scopes, refer to the <a href="https://developers.hubspot.com/docs/api/migrate-an-api-key-integration-to-a-private-app#create-a-new-private-app">HubSpot documentation</a>.
+</div>
 
 ## FAQ
 
@@ -241,5 +277,3 @@ To get the Access Token:
 ### Can I use HubSpot website analytics?
 
 Yes - RudderStack supports sending `page` calls in device mode which can be used for HubSpot website analytics.
-
-

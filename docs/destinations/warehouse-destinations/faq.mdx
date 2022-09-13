@@ -11,14 +11,14 @@ description: >-
 You will need to allowlist the following RudderStack IPs to enable network access:
 
 - 3.216.35.97
-- 34.198.90.241
-- 54.147.40.62
 - 23.20.96.9
 - 18.214.35.254
-- 35.83.226.133
-- 52.41.61.208
-- 44.227.140.138
-- 54.245.141.180
+- 54.147.40.62
+- 34.198.90.241
+- 100.20.239.77
+- 52.38.160.231
+- 34.211.241.254
+- 44.236.60.231
 
 The EU cluster IPs are listed below:
 
@@ -134,6 +134,17 @@ You can speed up your warehouse uploads by configuring the following parameters 
     <td><code class="inline-code">4</code></td>
   </tr>
 </table>
+
+### What happens if I exceed the table column limit in my warehouse destination?
+
+If you exceed the permissible table column limit in your warehouse, RudderStack will not sync data to it.
+
+### How can I handle the column count threshold in my warehouse?
+
+To avoid exceeding the column count threshold in your warehouse, you can do the following:
+
+- Go to your warehouse and drop the unwanted table columns.
+- If you're passing dynamic properties in the event payload, use the <Link to="/destinations/warehouse-destinations/json-column-support/">JSON Column Support</Link> feature.
 
 ## Namespace and warehouse schema
 
@@ -388,5 +399,3 @@ To avoid this, you can set the same namespace **for each source**, as shown:
 <img src="../../assets/dw-integrations/namespace.png" />
 
 Setting a namespace ensures that the mappings are consistent and only one `RUDDER_ID` is created for each user - irrespective of the number of sources connected to your warehouse destination.
-
-

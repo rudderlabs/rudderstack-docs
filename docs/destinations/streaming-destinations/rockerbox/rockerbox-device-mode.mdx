@@ -1,0 +1,71 @@
+---
+title: "Rockerbox Device Mode"
+description: Detailed technical documentation on sending events to Rockerbox using the RudderStack Web Device mode.
+---
+
+RudderStack lets you send your event data to Rockerbox via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK. 
+
+<div class="infoBlock">
+Find the open source JavaScript SDK code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/Rockerbox">GitHub repository</a>.
+</div>
+
+## Identify
+
+The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
+
+A sample `identify` call is as shown:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9Z", {
+    "email": "alex@example.com"
+})
+```
+
+The following table lists the **optional** properties and their mappings between RudderStack and Rockerbox:
+
+| RudderStack property   | Rockerbox property  | 
+| :-------------| :-----------------|
+| `userId` | `external_id`     |     
+| `traits.email`/`context.traits.email`        | `email`        | 
+| `traits.phone`/`context.traits.phone`    | `phone_number`        | 
+
+<div class="infoBlock">
+The <code class="inline-code">userId</code> is the ID for a logged-in user. It is a first-party identifier that persists across sessions. A unique user ID is essential in a conversion pixel for capturing the new or returning user's data. You can include as many user identifiers but only the first-party identifier should be passed to Rockerbox as <code class="inline-code">external_id</code>.
+</div>
+
+## Track
+
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
+
+<div class="infoBlock">
+RudderStack supports the <code class="inline-code">track</code> call in both the cloud and device modes for Rockerbox integration. Refer to the <Link to="/destinations/streaming-destinations/rockerbox/setting-up-rockerbox/#hybrid-mode">Hybrid mode</Link> for more information.
+</div>
+
+A sample `track` call is as shown:
+
+```javascript
+rudderanalytics.track(
+  "Product Added", {
+    product_id: "00000",
+    product_name: "Pink bolognas",
+    product_url: "http://www.yourdomain.com/products/pink-bolognas",
+  })
+```
+
+## Page
+  
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+
+The `page` call sends a `RB.track("view")` event to Rockerbox by default, along with any additional properties.
+
+A sample `page` call is as shown:
+
+```javascript
+rudderanalytics.page(
+  "Cart",
+  "Cart Viewed", {
+    title: "new blank page",
+    url: "/pages/new"
+  }
+);
+```

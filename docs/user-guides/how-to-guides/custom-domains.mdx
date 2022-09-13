@@ -4,7 +4,7 @@ description: >-
   Use your own domain to serve the RudderStack Javascript SDK and send events to your own domain.
 ---
 
-This guide contains the steps to use your own domain to route the events or proxy the <Link to="/sources/sdks/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</Link> via your own CDN. 
+This guide contains the steps to use your own domain to route the events or proxy the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</Link> via your own CDN. 
 
 <div class="warningBlock">
 You will need access to your domain’s DNS settings as well as your CDN settings.
@@ -140,7 +140,7 @@ After:
 <script src="https://subdomain.yourdomain.com/v1.1/rudder-analytics.min.js"></script>
 ```
 
-To <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link>, you can use the following URL: 
+To <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link>, you can use the following URL: 
 
 ```html
 <script>
@@ -151,7 +151,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 ```
 
 <div class="infoBlock">
-If you are using an older version of the JavaScript SDK (v1), refer to the <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</Link> to migrate to v1.1.
+If you are using an older version of the JavaScript SDK (v1), refer to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</Link> to migrate to v1.1.
 </div>
 
 ## Setup for sending events
@@ -196,7 +196,7 @@ rudderanalytics.load(
 You should be able to confirm that the events are routed through your own domain and not the `rudderstack.com` domain in the network tab of your browser console.
 
 <div class="infoBlock">
-Refer to this <Link to="/sources/sdks/rudderstack-javascript-sdk/faq/#how-to-check-if-the-data-is-being-transmitted-to-the-desired-destinations">JavaScript SDK FAQ</Link> for more information on verifying the flow of events.
+Refer to this <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/faq/#how-can-i-verify-if-the-sdk-sends-the-data-to-the-desired-destinations">JavaScript SDK FAQ</Link> for more information on verifying the flow of events.
 </div>
 
 ## Setup for fetching source configuration
@@ -281,7 +281,7 @@ The correct custom domain URL to access the JavaScript SDK should be in the foll
 <script src="https://subdomain.yourdomain.com/v1.1/rudder-analytics.min.js"></script>
 ```
 
-The correct custom domain URL to <Link to="/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link> should be in the following format: 
+The correct custom domain URL to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">load a device-mode SDK</Link> should be in the following format: 
 
 ```html
 <script>

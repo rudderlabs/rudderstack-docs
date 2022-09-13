@@ -1,0 +1,53 @@
+---
+title: "Rockerbox Cloud Mode"
+description:  Detailed technical documentation on sending events to Rockerbox using the RudderStack cloud mode.
+---
+
+RudderStack lets you send your event data to Rockerbox via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/rockerbox">GitHub repository</a>.
+</div>
+
+## Track
+
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
+
+<div class="infoBlock">
+RudderStack supports the <code class="inline-code">track</code> call in both the cloud and device modes for Rockerbox integration. Refer to the <Link to="/destinations/streaming-destinations/rockerbox/setting-up-rockerbox/#hybrid-mode">Hybrid mode</Link> for more information.
+</div>
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track(
+  "Order Completed", {
+    revenue: 30,
+    currency: "USD",
+    user_actual_id: 12345 
+  })
+```
+
+The following table lists the **required** properties and their mappings between RudderStack and Rockerbox:
+
+| RudderStack property   | Rockerbox property | 
+| :-------------| :-----------------|
+| `context.traits.email`/`properties.email`      | `email`   | 
+| `userId`        | `customer_id`        | 
+| `event`        | `action`        | 
+| `timestamp`   | `timestamp`      | 
+
+The following table lists the **optional** properties which are pre-defined in Rockerbox and their mappings with RudderStack:
+
+| RudderStack property  | Rockerbox property  | 
+| :-------------| :-----------------|
+| `properties.revenue`               | `revenue`      |
+| `properties.order_id`/`orderId`            | `orderId`          |
+| `properties.in_store`         | `in_store`  |
+| `properties.salesforce`         | `salesforce`  |
+| `context.traits.phone`           | `phone`  |
+| `properties.products.$.item_list_name`           | `item_list_name`  |
+| `properties.products.$.location_id`         | `location_id`  |
+| `properties.products.$.promotion_id`           | `promotion_id`  |
+| `properties.products.$.promotion_name`           | `promotion_name`  |
+

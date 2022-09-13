@@ -1,0 +1,260 @@
+---
+title: "Quickstart"
+description: Step-by-step guide on installing and using the JavaScript SDK for your website.
+aliases: ["JavaScript quickstart", "JavaScript SDK quickstart", "JS SDK quickstart"]
+---
+
+This guide lists the steps to quickly install and use the JavaScript SDK to identify your website users and track their actions.
+
+## Prerequisites
+
+To set up and use the RudderStack JavaScript SDK, the following prerequisites must be met:
+
+- Set up a [**RudderStack account**](https://app.rudderstack.com/signup).
+- <Link to="/dashboard-guides/sources/#adding-a-source">Set up a JavaScript source</Link> in the RudderStack dashboard.
+ 
+## Step 1: Install JavaScript SDK 
+
+### Using CDN
+
+To integrate the SDK with your website and load it **asynchronously**:
+1. Go to the **Setup** tab of your JavaScript source in the dashboard.
+2. Copy the following snippet by clicking on **Copy Snippet** and paste it in your website's `<head>` section:
+
+<img src="../../../../assets/event-stream-sources/javascript-setup.png" alt="JavaScript source write key" />
+
+<div class="successBlock">
+The SDK installation snippet (seen above) contains both the <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link>, by default.
+</div>
+
+Alternatively, you can copy and use the below snippet (same as above) by replacing the <Link to="/resources/glossary/#write-key">`WRITE_KEY`</Link> and <Link to="/dashboard-guides/overview/#data-plane-url">`DATA_PLANE_URL`</Link> with the actual values.
+
+```javascript
+<script type="text/javascript">
+!function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
+e.load(<WRITE_KEY>,<DATA_PLANE_URL>),
+e.page()}();
+</script>
+```
+
+To integrate the SDK with your website and load it **synchronously**, add any of the following scripts in your website's `<head>` section.
+
+**Minified code**
+
+```javascript
+<script>
+rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits"],i=0;i<methods.length;i++){var method=methods[i];rudderanalytics[method]=function(a){return function(){rudderanalytics.push([a].concat(Array.prototype.slice.call(arguments)))}}(method)}rudderanalytics.load(WRITE_KEY,DATA_PLANE_URL),rudderanalytics.page();
+</script>
+
+<script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js"></script>
+```
+
+**Non-minified code**
+
+```javascript
+<script>
+  rudderanalytics = window.rudderanalytics = [];
+  var methods = [
+    "load",
+    "page",
+    "track",
+    "identify",
+    "alias",
+    "group",
+    "ready",
+    "reset",
+    "getAnonymousId",
+    "setAnonymousId",
+    "getUserId",
+    "getUserTraits",
+    "getGroupId",
+    "getGroupTraits"
+  ];
+  for (var i = 0; i < methods.length; i++) {
+    var method = methods[i];
+    rudderanalytics[method] = (function (methodName) {
+      return function () {
+        rudderanalytics.push(
+          [methodName].concat(Array.prototype.slice.call(arguments))
+        );
+      };
+    })(method);
+  }
+
+  rudderanalytics.load(WRITE_KEY,DATA_PLANE_URL);
+  rudderanalytics.page();
+</script>
+
+<script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js"></script>
+```
+
+<div class="infoBlock">
+Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
+</div>
+
+<div class="infoBlock">
+There is an explicit <code class="inline-code">page</code> call at the end in all the above snippets. This is to ensure that a <code class="inline-code">page</code> call is sent whenever the SDK loads on a page. You can remove this call or modify it with any extra <code class="inline-code">page</code> properties. You can also add <code class="inline-code">page</code> calls in your application in places not tied directly to page load, for example, virtual page views and page renders on route change, such as in <Link to="#single-page-application">single-page applications</Link>.
+</div>
+
+### Using NPM 
+
+While it is recommended to use the above method to integrate the JavaScript SDK with your website, you can alternatively use the [NPM module](https://www.npmjs.com/package/rudder-sdk-js) for packaging RudderStack directly into your project.
+
+To install the JavaScript SDK via NPM, run the following command:
+
+```bash
+npm install rudder-sdk-js --save
+```
+
+<div class="warningBlock">
+Use this NPM module only for browser installation. To integrate RudderStack with your Node.js apps, refer to the <Link to="/sources/event-streams/sdks/rudderstack-node-sdk/">RudderStack Node.js SDK</Link> documentation.
+</div>
+
+Since the NPM module exports the related APIs on an already-defined object combined with the Node.js module caching, you should run the following code snippet **once** and use the exported object throughout your project:
+
+```jsx
+import * as rudderanalytics from "rudder-sdk-js";
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL);
+rudderanalytics.ready(() => {
+  console.log("We are all set!!!");
+});
+export { rudderanalytics };
+```
+
+Alternatively, you can do this with **ES5** using the `require` method, as shown:
+
+```jsx
+var rudderanalytics = require("rudder-sdk-js");
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL);
+rudderanalytics.ready(() => {
+  console.log("We are all set!!!");
+});
+exports.rudderanalytics = rudderanalytics;
+```
+
+<div class="infoBlock">
+Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
+</div>
+
+The related APIs exported by the module are `load`, `ready`, `identify`, `alias`, `page`, `track`, `group`, `reset`, `getAnonymousId`, `setAnonymousId`, `getUserId`, `getUserTraits`, `getGroupId`, and `getGroupTraits`.
+
+<div class="infoBlock">
+Refer to the sample <a href="https://github.com/rudderlabs/rudder-analytics-angular">Angular</a> and <a href="https://github.com/rudderlabs/rudder-analytics-react">React</a> projects for a detailed walkthrough of the above steps.
+</div>
+
+The installation code snippets discussed above perform the following actions:
+
+- Creates an array to store the events until the `analytics` object is ready.
+- Stores the following methods to replay them when the `analytics` object is ready:
+
+| Method           | Description                                          |
+| :--------------- | :--------------------------------------------------- |
+| <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/">`load()`</Link>     | Loads `analytics.js` with the specified write key. |
+| <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#track">`track()`</Link>   | Tracks user events along with the associated properties.          |
+| <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#identify">`identify()`</Link> | Identifies the users, records their traits, and associates them with their actions.        |
+|<Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#alias">`alias()`</Link>    | Maps a new user ID with an old ID.       |
+|<Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#group">`group()`</Link>    |  Links an identified user with a group such as a company, organization, or an account.       |
+| <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/#step-2-check-ready-state">`ready()`</Link>   | Fired when the SDK has initialized itself and the other third-party native SDK destinations.       |
+|<Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#reset">`reset()`</Link>    | Resets the information related to the previously identified user.       |
+|`getAnonymousId`   |  Fetches the current `anonymousId`.       |
+|`setAnonymousId`   | Sets the `anonymousId`.       |
+| `getUserId`   | Fetches the current `userId`.      |
+|`getUserTraits` |  Fetches the current user traits.       |
+| `getGroupId`    | Fetches the current `groupId`.       |
+| `getGroupTraits`  | Fetches the current group traits.       |
+
+- Loads the analytics object with the specified write key.
+- Makes a `page()`call to track the page views. It captures the whole URL including the UTM parameters as part of the `page` call payload, such as `path`, `referrer`, `search`, `title`, and `URL`. Refer to the <Link to="/event-spec/standard-events/page/#properties">`page`</Link> method to override these properties.
+
+## Step 2: Check ready state
+
+The JavaScript SDK provides the `ready` API with a `callback` parameter that triggers when the SDK is done initializing itself and the other third-party native SDK destinations.
+
+An example is shown below:
+
+```javascript
+rudderanalytics.ready(() => {
+    console.log("All set!");
+});
+```
+
+## Step 3: Identify users
+
+The <Link to="/event-spec/standard-events/identify/">`identify`</Link> method lets you identify a user and associate them with their actions. It also enables you to record any traits about them like their name, email, etc.
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify(
+    "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+        firstName: "Alex",
+        lastName: "Keener",
+        email: "alex@example.com",
+        phone: "+1-202-555-0146"
+    }, {
+        page: {
+            path: "/best-seller/1",
+            referrer: "https://www.google.com/search?q=estore+bestseller",
+            search: "estore bestseller",
+            title: "The best sellers offered by EStore",
+            url: "https://www.estore.com/best-seller/1"
+        }
+    },
+    () => {
+        console.log("identify call");
+    }
+);
+```
+
+The JavaScript SDK captures the `userId`, `email` and the <Link to="/event-spec/standard-events/common-fields/#contextual-fields">contextual information</Link> from the above snippet.
+
+<div class="infoBlock">
+The anonymous visitors are automatically assigned an <code class="inline-code">anonymousId</code>. Refer to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#anonymous-id">Anonymous ID</Link> section for more information.
+</div>
+
+## Step 4: Track user actions
+
+The <Link to="/event-spec/standard-events/track/"><code class="inline-code">track</code></Link> method lets you capture user events along with the associated properties.
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track(
+    "Order Completed", {
+        revenue: 77.6,
+        currency: "USD",
+    },
+    () => {
+        console.log("track call");
+    }
+);
+```
+
+The JavaScript SDK captures the `Order Completed` event along with `revenue`, `currency`, and `anonymousId` from the above snippet.
+
+<div class="successBlock">
+You can use the <code class="inline-code">track</code> method to track various success metrics for your website like user signups, item purchases, article bookmarks, and more.
+</div>
+
+
+## Supported browsers
+
+The JavaScript SDK supports the following browsers and their corresponding versions:
+
+| Browser         | Supported Versions |
+| :------------------ | :--------------------- |
+| Safari              | v7 or later            |
+| IE                  | v10 or later           |
+| Edge                | v80 or later           |
+| Mozilla Firefox     | v47 or later           |
+| Chrome              | v54 or later           |
+| Opera               | v43 or later           |
+
+
+<div class="infoBlock">
+You can try adding the browser <Link to="https://developer.mozilla.org/en-US/docs/Glossary/Polyfill">polyfills</Link> to your application if the SDK does not work on your browser.
+</div>
+
+## Single-page application
+
+The JavaScript SDK makes a `page` call after its initialization (explicitly called at the end of the installation script). However, in the case of a single-page application (SPA) where a route change does not reload the page, you need to make the `page` call explicitly after the route change on the frontend. For more information, refer to the <Link to="/user-guides/how-to-guides/rudderstack-jamstack-integration/rudderstack-nextjs-integration/#method-2-installing-and-configuring-the-javascript-sdk-using-npm-package-in-your-nextjs-app">RudderStack-Next.js Integration</Link> guide.

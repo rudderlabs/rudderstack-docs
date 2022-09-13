@@ -86,6 +86,11 @@ export const jsonData = [
     content: []
 },
 {
+    title: "User Management",
+    link: "/dashboard-guides/user-management/",
+    content: []
+},
+{
     title: "Permissions Management",
     link: "/dashboard-guides/permissions-management/",
     content: []
@@ -106,240 +111,258 @@ export const jsonData = [
         sectionTitle: "Sources",
         link: "/sources/",
         content: []
-    }, {
-        title: "SDKs",
-        link: "/sources/sdks/",
+    }, 
+    {
+        title: "Event Streams",
+        link: "/sources/event-streams",
         content: [
             {
-                title: "JavaScript",
-                sectionTitle: "Web",
-                link: "/sources/sdks/rudderstack-javascript-sdk/",
+                title: "SDKs",
+                link: "/sources/event-streams/sdks/",
                 content: [
                     {
-                        title: "Quick Start Guide",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/quick-start-guide/",
-                        content: []
-                    },
-                    {
-                        title: "JavaScript SDK Enhancements",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
-                        content: []
-                    },
-                    {
-                        title: "Data Storage in Cookies",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
-                        content: []
-                    },
-                    {
-                        title: "Querystring API",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/querystring-api/",
-                        content: []
-                    }, {
-                        title: "Detecting Ad-blocked Pages",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
-                        content: []
-                    }, {
-                        title: "Version Migration Guide",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/version-migration-guide/",
-                        content: []
-                    }, {
-                        title: "Consent Managers",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/consent-managers/",
+                        title: "JavaScript",
+                        sectionTitle: "Web",
+                        link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/",
                         content: [
                             {
-                                title: "OneTrust",
-                                link: "/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/",
+                                title: "Quickstart",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/",
+                                content: []
+                            },
+                            {
+                                title: "Load the SDK",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/",
+                                content: []
+                            },
+                            {
+                                title: "Supported API",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/",
+                                content: [],
+                            },
+                            {
+                                title: "Data Storage",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
+                                content: []
+                            },
+                            {
+                                title: "Filtering",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/filtering/",
+                                content: [],
+                            },
+                            {
+                                title: "Version Migration",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/",
+                                content: []
+                            },
+                            {
+                                title: "OneTrust Consent Manager",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/",
+                                content: [],
+                            },
+                            {
+                                title: "Detect Ad-blocked Pages",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/",
+                                content: []
+                            },
+                            {
+                                title: "Enhancements",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/",
+                                content: []
+                            },
+                            {
+                                title: "FAQ",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/faq/",
+                                content: []
+                            },
+                        ]
+                    },
+                    {
+                        title: "AMP Analytics",
+                        link: "/sources/event-streams/sdks/rudderstack-amp-analytics/",
+                        content: []
+                    },
+                    {
+                        title: "Android",
+                        sectionTitle: "Mobile",
+                        link: "/sources/event-streams/sdks/rudderstack-android-sdk/",
+                        content: [
+                            {
+                                title: "Adding Application Class",
+                                link: "/sources/event-streams/sdks/rudderstack-android-sdk/adding-an-application-class/",
+                                content: []
+                            }, {
+                                title: "Flushing Events",
+                                link: "/sources/event-streams/sdks/rudderstack-android-sdk/flushing-events-periodically/",
+                                content: []
+                            },
+                        ]
+                    },
+                    {
+                        title: "iOS",
+                        link: "/sources/event-streams/sdks/rudderstack-ios-sdk/",
+                        content: [
+                            {
+                                title: "iOS v2",
+                                link: "/sources/event-streams/sdks/rudderstack-ios-sdk/ios-v2/",
+                                content: []
+                            }, {
+                                title: "tvOS",
+                                link: "/sources/event-streams/sdks/rudderstack-ios-sdk/tvOS/",
+                                content: []
+                            }, {
+                                title: "macOS",
+                                link: "/sources/event-streams/sdks/rudderstack-ios-sdk/macos/",
+                                content: []
+                            }, {
+                                title: "watchOS",
+                                link: "/sources/event-streams/sdks/rudderstack-ios-sdk/watchOS/",
+                                content: []
+                            },
+                        ]
+                    },
+                    {
+                        title: "Unity",
+                        link: "/sources/event-streams/sdks/rudderstack-unity-sdk/",
+                        content: []
+                    }, {
+                        title: "React Native",
+                        link: "/sources/event-streams/sdks/rudderstack-react-native-sdk/",
+                        content: []
+                    }, {
+                        title: "Flutter",
+                        link: "/sources/event-streams/sdks/rudderstack-flutter-sdk/",
+                        content: [
+                            {
+                                title: "Flutter SDK v2",
+                                link: "/sources/event-streams/sdks/rudderstack-flutter-sdk/flutter-v2/",
+                                content: []
+                            }, {
+                                title: "Flutter SDK v1",
+                                link: "/sources/event-streams/sdks/rudderstack-flutter-sdk/flutter-v1/",
                                 content: []
                             },
                         ]
                     }, {
-                        title: "JavaScript SDK FAQs",
-                        link: "/sources/sdks/rudderstack-javascript-sdk/faq/",
+                        title: "Cordova",
+                        link: "/sources/event-streams/sdks/rudderstack-cordova-sdk/",
+                        content: []
+                    }, {
+                        title: "Java",
+                        sectionTitle: "Server",
+                        link: "/sources/event-streams/sdks/rudderstack-java-sdk/",
+                        content: []
+                    }, {
+                        title: "Python",
+                        link: "/sources/event-streams/sdks/rudderstack-python-sdk/",
+                        content: []
+                    }, {
+                        title: "Rust",
+                        link: "/sources/event-streams/sdks/rudderstack-rust-sdk/",
+                        content: []
+                    }, {
+                        title: "Node.js",
+                        link: "/sources/event-streams/sdks/rudderstack-node-sdk/",
+                        content: []
+                    }, {
+                        title: "Go",
+                        link: "/sources/event-streams/sdks/rudderstack-go-sdk/",
+                        content: []
+                    }, {
+                        title: "Ruby",
+                        link: "/sources/event-streams/sdks/rudderstack-ruby-sdk/",
+                        content: []
+                    }, {
+                        title: ".NET",
+                        link: "/sources/event-streams/sdks/rudderstack-dotnet-sdk/",
+                        content: []
+                    }, {
+                        title: "PHP",
+                        link: "/sources/event-streams/sdks/rudderstack-php-sdk/",
+                        content: []
+                    },
+                    {
+                        title: "Client-side Event Filtering",
+                        link: "/sources/event-streams/sdks/event-filtering/",
+                        content: []
+                    },
+                    {
+                        title: "SDK FAQ",
+                        link: "/sources/event-streams/sdks/faq/",
                         content: []
                     },
                 ]
             },
             {
-                title: "AMP Analytics",
-                link: "/sources/sdks/rudderstack-amp-analytics/",
-                content: []
-            },
-            {
-                title: "Android",
-                sectionTitle: "Mobile",
-                link: "/sources/sdks/rudderstack-android-sdk/",
+                title: "Cloud Apps",
+                link: "/sources/event-streams/cloud-apps/",
                 content: [
                     {
-                        title: "Adding Application Class",
-                        link: "/sources/sdks/rudderstack-android-sdk/adding-an-application-class/",
-                        content: []
-                    }, {
-                        title: "Flushing Events",
-                        link: "/sources/sdks/rudderstack-android-sdk/flushing-events-periodically/",
+                        title: "App Center",
+                        link: "/sources/event-streams/cloud-apps/appcenter/",
                         content: []
                     },
-                ]
-            },
-            {
-                title: "iOS",
-                link: "/sources/sdks/rudderstack-ios-sdk/",
-                content: [
                     {
-                        title: "iOS v2",
-                        link: "/sources/sdks/rudderstack-ios-sdk/ios-v2/",
-                        content: []
-                    }, {
-                        title: "tvOS",
-                        link: "/sources/sdks/rudderstack-ios-sdk/tvOS/",
-                        content: []
-                    }, {
-                        title: "macOS",
-                        link: "/sources/sdks/rudderstack-ios-sdk/macos/",
-                        content: []
-                    }, {
-                        title: "watchOS",
-                        link: "/sources/sdks/rudderstack-ios-sdk/watchOS/",
+                        title: "AppsFlyer",
+                        link: "/sources/event-streams/cloud-apps/appsflyer/",
                         content: []
                     },
-                ]
-            },
-            {
-                title: "Unity",
-                link: "/sources/sdks/rudderstack-unity-sdk/",
-                content: []
-            }, {
-                title: "React Native",
-                link: "/sources/sdks/rudderstack-react-native-sdk/",
-                content: []
-            }, {
-                title: "Flutter",
-                link: "/sources/sdks/rudderstack-flutter-sdk/",
-                content: [
                     {
-                        title: "Flutter SDK v2",
-                        link: "/sources/sdks/rudderstack-flutter-sdk/flutter-v2/",
+                        title: "Auth0",
+                        link: "/sources/event-streams/cloud-apps/auth0/",
+                        content: []
+                    },
+                    {
+                        title: "Braze",
+                        link: "/sources/event-streams/cloud-apps/braze-currents/",
+                        content: []
+                    },
+                    {
+                        title: "Canny",
+                        link: "/sources/event-streams/cloud-apps/canny/",
+                        content: []
+                    },
+                     {
+                        title: "Customer.io",
+                        link: "/sources/event-streams/cloud-apps/customerio/",
                         content: []
                     }, {
-                        title: "Flutter SDK v1",
-                        link: "/sources/sdks/rudderstack-flutter-sdk/flutter-v1/",
+                        title: "Extole",
+                        link: "/sources/event-streams/cloud-apps/extole/",
+                        content: []
+                    }, {
+                        title: "Iterable",
+                        link: "/sources/event-streams/cloud-apps/iterable/",
+                        content: []
+                    }, {
+                        title: "Looker",
+                        link: "/sources/event-streams/cloud-apps/looker/",
+                        content: []
+                    }, {
+                        title: "PostHog",
+                        link: "/sources/event-streams/cloud-apps/posthog/",
+                        content: []
+                    },
+                    {
+                        title: "Segment",
+                        link: "/sources/event-streams/cloud-apps/segment/",
+                        content: []
+                    },
+                    {
+                        title: "Shopify",
+                        link: "/sources/event-streams/cloud-apps/shopify/",
+                        content: []
+                    },
+                    {
+                        title: "Webhook Source",
+                        link: "/sources/event-streams/cloud-apps/webhook-source/",
                         content: []
                     },
                 ]
-            }, {
-                title: "Cordova",
-                link: "/sources/sdks/rudderstack-cordova-sdk/",
-                content: []
-            }, {
-                title: "Java",
-                sectionTitle: "Server",
-                link: "/sources/sdks/rudderstack-java-sdk/",
-                content: []
-            }, {
-                title: "Python",
-                link: "/sources/sdks/rudderstack-python-sdk/",
-                content: []
-            }, {
-                title: "Rust",
-                link: "/sources/sdks/rudderstack-rust-sdk/",
-                content: []
-            }, {
-                title: "Node.js",
-                link: "/sources/sdks/rudderstack-node-sdk/",
-                content: []
-            }, {
-                title: "Go",
-                link: "/sources/sdks/rudderstack-go-sdk/",
-                content: []
-            }, {
-                title: "Ruby",
-                link: "/sources/sdks/rudderstack-ruby-sdk/",
-                content: []
-            }, {
-                title: ".NET",
-                link: "/sources/sdks/rudderstack-dotnet-sdk/",
-                content: []
-            }, {
-                title: "PHP",
-                link: "/sources/sdks/rudderstack-php-sdk/",
-                content: []
-            },
-            {
-                title: "Client-side Event Filtering",
-                link: "/sources/sdks/event-filtering/",
-                content: []
-            },
-            {
-                title: "SDK FAQs",
-                link: "/sources/sdks/faq/",
-                content: []
-            },
+            }
         ]
-    },
+    }, 
     {
-        title: "Cloud Apps",
-        link: "/sources/cloud-apps/",
-        content: [
-            {
-                title: "App Center",
-                link: "/sources/cloud-apps/appcenter/",
-                content: []
-            },
-            {
-                title: "AppsFlyer",
-                link: "/sources/cloud-apps/appsflyer/",
-                content: []
-            },
-            {
-                title: "Auth0",
-                link: "/sources/cloud-apps/auth0/",
-                content: []
-            },
-            {
-                title: "Braze",
-                link: "/sources/cloud-apps/braze-currents/",
-                content: []
-            },
-            {
-                title: "Canny",
-                link: "/sources/cloud-apps/canny/",
-                content: []
-            },
-             {
-                title: "Customer.io",
-                link: "/sources/cloud-apps/customerio/",
-                content: []
-            }, {
-                title: "Extole",
-                link: "/sources/cloud-apps/extole/",
-                content: []
-            }, {
-                title: "Iterable",
-                link: "/sources/cloud-apps/iterable/",
-                content: []
-            }, {
-                title: "Looker",
-                link: "/sources/cloud-apps/looker/",
-                content: []
-            }, {
-                title: "PostHog",
-                link: "/sources/cloud-apps/posthog/",
-                content: []
-            }, {
-                title: "Shopify",
-                link: "/sources/cloud-apps/shopify/",
-                content: []
-            }, {
-                title: "Segment",
-                link: "/sources/cloud-apps/segment/",
-                content: []
-            },
-            {
-                title: "Webhook Source",
-                link: "/sources/cloud-apps/webhook-source/",
-                content: []
-            },
-        ]
-    }, {
         title: "Cloud Extract",
         link: "/sources/extract/",
         content: [
@@ -397,18 +420,25 @@ export const jsonData = [
                 link: "/sources/extract/intercom/",
                 content: []
             }, {
-                title: "Intercom v2",
+                title: "Intercom V2",
                 link: "/sources/extract/intercom-v2/",
                 content: []
             }, {
                 title: "Mailchimp",
                 link: "/sources/extract/mailchimp/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Mixpanel",
                 link: "/sources/extract/mixpanel/",
                 content: []
-            }, {
+            },
+            {
+                title: "Mixpanel V2",
+                link: "/sources/extract/mixpanel-v2/",
+                content: []
+            }, 
+            {
                 title: "Marketo",
                 link: "/sources/extract/marketo/",
                 content: []
@@ -443,7 +473,7 @@ export const jsonData = [
                 ]
             },
             {
-                title: "Salesforce v2",
+                title: "Salesforce V2",
                 link: "/sources/extract/salesforce-v2/",
                 content: []
             },
@@ -452,8 +482,12 @@ export const jsonData = [
                 link: "/sources/extract/salesforce-pardot/",
                 content: []
             }, {
-                title: "Sendgrid",
+                title: "SendGrid",
                 link: "/sources/extract/sendgrid/",
+                content: []
+            },{
+                title: "SendGrid V2",
+                link: "/sources/extract/sendgrid-v2/",
                 content: []
             }, {
                 title: "Stripe",
@@ -578,6 +612,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "ConvertFlow",
+                link: "/destinations/streaming-destinations/convertflow/",
+                content: []
+            },
+            {
                 title: "Google Optimize",
                 link: "/destinations/streaming-destinations/google-optimize/",
                 content: []
@@ -673,10 +712,30 @@ export const jsonData = [
                 title: "Lotame",
                 link: "/destinations/streaming-destinations/lotame/",
                 content: []
-            }, {
+            },
+            {
                 title: "Pinterest Tag",
                 link: "/destinations/streaming-destinations/pinterest-ads/",
-                content: []
+                content: [
+                    {
+                        title: "Setting up Pinterest Tag",
+                        link:
+                            "/destinations/streaming-destinations/pinterest-ads/setting-up-pinterest-ads/",
+                        content: [],
+                    },
+                    {
+                        title: "Cloud Mode",
+                        link:
+                            "/destinations/streaming-destinations/pinterest-ads/pinterest-ads-cloud-mode/",
+                        content: [],
+                    },
+                    {
+                        title: "Device Mode",
+                        link:
+                            "/destinations/streaming-destinations/pinterest-ads/pinterest-ads-device-mode/",
+                        content: [],
+                    },
+                ]
             },
             {
                 title: "Reddit Pixel",
@@ -852,7 +911,11 @@ export const jsonData = [
                 title: "Quantum Metric",
                 link: "/destinations/streaming-destinations/quantummetric/",
                 content: []
-            }, {
+            },  {
+                title: "Shynet",
+                link: "/destinations/streaming-destinations/shynet/",
+                content: []
+            },{
                 title: "Singular",
                 link: "/destinations/streaming-destinations/singular/",
                 content: [
@@ -900,6 +963,29 @@ export const jsonData = [
                 title: "Kochava",
                 link: "/destinations/streaming-destinations/kochava/",
                 content: []
+            },{
+                title: "Rockerbox",
+                link: "/destinations/streaming-destinations/rockerbox/",
+                content: [
+                    {
+                        title: "Setting up Rockerbox",
+                        link:
+                            "/destinations/streaming-destinations/rockerbox/setting-up-rockerbox/",
+                        content: [],
+                    },
+                    {
+                        title: "Cloud Mode",
+                        link:
+                            "/destinations/streaming-destinations/rockerbox/rockerbox-cloud-mode/",
+                        content: [],
+                    },
+                    {
+                        title: "Device Mode",
+                        link:
+                            "/destinations/streaming-destinations/rockerbox/rockerbox-device-mode/",
+                        content: [],
+                    },
+                ]
             }, {
                 title: "TVSquared",
                 link: "/destinations/streaming-destinations/tvsquared/",
@@ -914,11 +1000,23 @@ export const jsonData = [
                 title: "Kustomer",
                 link: "/destinations/streaming-destinations/kustomer/",
                 content: []
-            }, {
+            },
+            {
+                title: "LiveChat",
+                link: "/destinations/streaming-destinations/livechat/",
+                content: []
+            }, 
+            {
                 title: "Slack",
                 link: "/destinations/streaming-destinations/slack/",
                 content: []
-            }, {
+            },
+            {
+                title: "SnapEngage",
+                link: "/destinations/streaming-destinations/snapengage/",
+                content: []
+            },
+            {
                 title: "Trengo",
                 link: "/destinations/streaming-destinations/trengo/",
                 content: []
@@ -936,12 +1034,17 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Freshsales",
+                link: "/destinations/streaming-destinations/freshsales/",
+                content: []
+            },
+            {
                 title: "HubSpot",
                 link: "/destinations/streaming-destinations/hubspot/",
                 content: []
             },
             {
-                title: "HubSpot V2",
+                title: "HubSpot (New API)",
                 link: "/destinations/streaming-destinations/hubspot-v2/",
                 content: []
             },
@@ -1037,11 +1140,18 @@ export const jsonData = [
                         content: []
                     },
                 ]
-            },  {
+            },
+            {
+                title: "Freshmarketer",
+                link: "/destinations/streaming-destinations/freshmarketer/",
+                content: []
+            },  
+            {
                 title: "Iterable",
                 link: "/destinations/streaming-destinations/iterable/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Klaviyo",
                 link: "/destinations/streaming-destinations/klaviyo/",
                 content: []
@@ -1061,11 +1171,18 @@ export const jsonData = [
                 title: "Marketo Lead Import",
                 link: "/destinations/streaming-destinations/marketo-lead-import/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "MoEngage",
                 link: "/destinations/streaming-destinations/moengage/",
                 content: []
-            }, {
+            },
+            {
+                title: "Mautic",
+                link: "/destinations/streaming-destinations/mautic/",
+                content: []
+            },  
+            {
                 title: "Ometria",
                 link: "/destinations/streaming-destinations/ometria/",
                 content: []
@@ -1127,9 +1244,35 @@ export const jsonData = [
                 ]
             },
             {
-                title: "Google Sheets",
+                title: "Monday",
                 sectionTitle: "Productivity",
+                link: "/destinations/streaming-destinations/monday/",
+                content: []
+            },
+            {
+                title: "Google Sheets",
                 link: "/destinations/streaming-destinations/google-sheets/",
+                content: []
+            },
+            {
+                title: "ClickUp",
+                link: "/destinations/streaming-destinations/clickup/",
+                content: []
+            },
+            {
+                title: "Zapier",
+                link: "/destinations/streaming-destinations/zapier/",
+                content: []
+            },
+            {
+                title: "AWS Lambda",
+                sectionTitle: "Serverless",
+                link: "/destinations/streaming-destinations/aws-lambda/",
+                content: []
+            },
+            {
+                title: "Google Cloud Functions",
+                link: "/destinations/streaming-destinations/google-cloud-functions/",
                 content: []
             },
             {
@@ -1181,11 +1324,13 @@ export const jsonData = [
                 title: "Apache Kafka",
                 link: "/destinations/streaming-destinations/kafka/",
                 content: []
-            }, {
+            },
+            {
                 title: "Azure Event Hubs",
                 link: "/destinations/streaming-destinations/azure-event-hubs/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "BigQuery Stream",
                 link: "/destinations/streaming-destinations/bigquery-stream/",
                 content: []
@@ -1220,6 +1365,10 @@ export const jsonData = [
             }, {
                 title: "Gainsight PX",
                 link: "/destinations/streaming-destinations/gainsight-px/",
+                content: []
+            },{
+                title: "InMoment (Wootric)",
+                link: "/destinations/streaming-destinations/inmoment/",
                 content: []
             },{
                 title: "Pendo",
@@ -1318,7 +1467,13 @@ export const jsonData = [
         title: "Transformations",
         sectionTitle: "Features",
         link: "/features/transformations/",
-        content: []
+        content: [
+            {
+                title: "FAQ",
+                link: "/features/transformations/faq",
+                content: [],
+            },
+        ]
     },
     {
         title: "Data Governance",
@@ -1379,6 +1534,11 @@ export const jsonData = [
             {
                 title: "Alias",
                 link: "/event-spec/standard-events/alias/",
+                content: []
+            },
+            {
+                title: "Merge",
+                link: "/event-spec/standard-events/merge/",
                 content: []
             },
             {
@@ -1483,10 +1643,16 @@ export const jsonData = [
                 title: "Migrating from Segment to RudderStack",
                 link: "/user-guides/migration-guides/rudderstack-migration-guide/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Migrating Your Warehouse Destination from Segment to RudderStack",
                 link: "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/",
                 content: []
+            },
+            {
+                title: "Migrating from Self-hosted RudderStack to RudderStack Cloud",
+                link: "/user-guides/migration-guides/switch-to-rudderstack-hosted-data-plane/",
+                content: [],
             },
         ]
     }, {
@@ -1568,11 +1734,6 @@ export const jsonData = [
                 title: "How to Use Custom Domains",
                 link: "/user-guides/how-to-guides/custom-domains/",
                 content: []
-            },
-            {
-                title: "How to Switch from Self-hosted to RudderStack-hosted Data Plane",
-                link: "/user-guides/how-to-guides/switch-to-rudderstack-hosted-data-plane/",
-                content: [],
             },
             {
                 title: "How to Use AWS Lambda Functions with RudderStack",

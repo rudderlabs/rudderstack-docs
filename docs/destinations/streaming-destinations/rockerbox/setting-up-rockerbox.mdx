@@ -1,0 +1,80 @@
+---
+title: "Setting up Rockerbox"
+description: Step-by-step guide on setting up Rockerbox as a destination in RudderStack.
+---
+
+Before configuring Rockerbox as a destination in RudderStack, verify if the source platform is supported by Rockerbox by referring to the table below:
+
+| **Connection Mode** | **Web**      | **Mobile** | **Server** |
+| :------------------ | :------------ | :----- | :----- |
+| **Device Mode**     | **Supported** | **-**  | **-**  |
+| **Cloud Mode**      | **Supported** | **Supported**  | **Supported**  |
+
+<div class="infoBlock">
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+</div>
+
+Once you have confirmed that the source platform supports sending events to Rockerbox, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Rockerbox**.
+2. Assign a name to your destination and click **Continue**.
+
+## Connection settings
+
+To successfully configure Rockerbox as a destination, configure the following settings:
+
+<img src="../../../assets/event-stream-destinations/rockerbox-connection-settings.png" alt="Rockerbox Connection Settings in RudderStack" />
+
+- **Advertiser Id**: Enter your Rockerbox Advertiser Id.
+
+<div class="infoBlock">
+Advertiser Id is a required field for sending events to Rockerbox via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>. To obtain it, contact your <a href="https://help.rockerbox.com/article/5t050dmcxv-webhooks#requirements:~:text=or%20other%20formats-,Server%2Dside%20specs,-You%20will%20need">Rockerbox account manager</a>.
+</div>
+
+- **Map your RockerBox events to RudderStack Events**: Enter the corresponding RudderStack and RockerBox events you want to be mapped.
+
+<div class="successBlock">
+You can specify multiple <strong>RudderStack events</strong> for one <strong>Rockerbox event</strong> and vice versa.
+</div>
+    
+### Client-side events filtering
+
+This setting lets you specify which events should be blocked or allowed to flow through to Rockerbox.
+
+<img src="../../../assets/event-stream-destinations/rockerbox-connection-settings-2.png" alt="Rockerbox Connection Settings in RudderStack" />
+
+
+<div class="infoBlock">
+This option is applicable only if you're sending events to Rockerbox via the web device mode. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
+</div>
+
+### Web SDK settings
+
+<img src="../../../assets/event-stream-destinations/rockerbox-connection-settings-3.png" alt="Rockerbox Connection Settings in RudderStack" />
+
+These settings are applicable only if you are sending events to Rockerbox via the web device mode:
+
+- **Client Auth ID**: Enter your Rockerbox Client Auth ID.
+
+<div class="infoBlock">
+You can obtain the  Client Auth ID from your <strong>Rockerbox All Pages</strong> tag available in the Rockerbox Attribution platform. For more information on obtaining it, refer to the <a href="https://help.rockerbox.com/article/unydvsq7jr-site-direct-all-pages-pixel#:~:text=Your%20pixel%20will%20have%20an%20alphanumeric%20ID%20instead%20of%20the%20CLIENT_AUTH_ID%20placeholder">Rockerbox documentation</a>.
+</div>
+
+- **Custom Domain**: Enter the custom domain from where you want to load the pixels. 
+
+<div class="infoBlock">
+Rockerbox lets you use a Custom Tracking Domain to load the Rockerbox trackers and pixels from your website's domain (for example, <code class="inline-code">rb.mysite.com</code>) instead of  <code class="inline-code">getrockerbox.com</code>. For more details, refer to the <a href="https://help.rockerbox.com/article/iel8eh361t-cname-integration">Rockerbox documentation</a>.
+</div>
+
+- **Enable Cookie Sync**: Enable this setting if you are using a custom domain. It ensures that the Custom Tracking Domain functionality works as expected.
+- **Use device-mode to send events**: Enable this setting to send all the events from the JavaScript SDK to Rockerbox via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+- **Use device-mode to send track events**: Enable this setting to send **only** `track` events from the JavaScript SDK to Rockerbox via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>. Refer to the <Link to="#hybrid-mode">Hybrid mode</Link> for more information.
+- **OneTrust Cookie Categories**: This setting lets you map <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to RudderStack's consent purposes.
+
+## Hybrid mode
+
+Hybrid mode lets you use a destination in the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud</Link> as well as <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> simultaneously. It means that you can route some calls through server side (<Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>), whereas others through the client side SDK (<Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>). This is helpful in some specific use-cases and scenarios only possible in a particular connection mode.
+
+<div class="infoBlock">
+In RockerBox, the <code class="inline-code">identify</code> and <code class="inline-code">page</code> calls are supported in device mode whereas the <code class="inline-code">track</code> calls are supported in both the cloud and device mode.
+</div>
