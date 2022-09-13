@@ -23,6 +23,7 @@ RudderStack currently supports session tracking only for the following events:
 
 - <Link to="/event-spec/standard-events/identify/">Identify</Link>
 - <Link to="/event-spec/standard-events/track/">Track</Link>
+- <Link to="/event-spec/standard-events/page/">Page</Link>
 - <Link to="/event-spec/standard-events/group/">Group</Link>
 - <Link to="/event-spec/standard-events/screen/">Screen</Link>
 - <Link to="/event-spec/standard-events/alias/">Alias</Link>
@@ -53,9 +54,11 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 
 Every time the user interacts with the website, the SDK triggers a new event (`track`, `page`, `identify`, etc.), and resets the session expiration time by adding `timeout` to the last received event's `timestamp`.
 
-### What happens if I set `timeout` to 0?
+### What happens if I set `timeout` to 0 or less than 10 ms?
 
-If you set the session's `timeout` to 0, RudderStack disables automatic session tracking.
+If you set the session's `timeout` to 0, RudderStack disables automatic session tracking. This is because upon setting the `timeout` to 0, RudderStack creates a new session for each event. As such, enabling automatic session tracking serves no purpose.
+
+If your session `timeout` is less than 10 ms, RudderStack gives a caution but proceeds with the session tracking.
 
 ### Which session tracking-related information does RudderStack store?
 
@@ -90,7 +93,7 @@ The scope of manual session tracking depends on whether the automatic session tr
 
 RudderStack stores the `sessionId`, the last event timestamp (used to determine <Link to="/event-streams/sdks/session-tracking/#session-expiration-in-mobile-sdks">session expiration</Link>), and the status of automatic session tracking in the following locations:
 
-| Platform | Location |
+| Platform | Class |
 | :---------| :--------|
-| Android | `SharedPreference` |
-| iOS | `UserDefaults` |
+| Android | [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences) |
+| iOS | [`UserDefaults`](https://developer.apple.com/documentation/foundation/userdefaults) |
