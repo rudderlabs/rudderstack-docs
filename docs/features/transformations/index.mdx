@@ -14,42 +14,56 @@ RudderStack's **Transformations** feature enables you to write custom JavaScript
 You can use this feature across your <Link to="/sources/event-streams/cloud-apps/">Cloud Apps</Link>, <Link to="/sources/reverse-etl/">Reverse ETL</Link>, and <Link to="/sources/extract/">Cloud Extract</Link> pipelines.
 
 <div class="infoBlock">
-Refer to our <a href="https://github.com/rudderlabs/sample-user-transformers">Sample RudderStack Transformations</a> repository for some useful templates that you can use to create your own transformations.
+In <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, the Transformations feature is only available for the Pro/Enterprise customers.
+<GhBadge
+  url={'https://rudderstack.com/pricing/'}
+  label={'Plan'}
+  message={'Pro/Enterprise'}
+  color={'blueviolet'}
+/>
+In <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, the Transformations feature is only available for the Enterprise customers.
+<GhBadge
+  url={'https://www.rudderstack.com/enterprise-quote/'}
+  label={'Plan'}
+  message={'Enterprise'}
+  color={'blueviolet'}
+/>
 </div>
 
+
 <div class="warningBlock">
-The Transformations feature is supported while  sending events to destinations via both the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> and <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud modes</Link>. However, only the  <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>, <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-react-native-sdk/">React-Native</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-cordova-sdk/">Cordova</Link> SDKs are supported in the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+While using the Transformations feature to send events to destinations via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>, <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-react-native-sdk/">React-Native</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-cordova-sdk/">Cordova</Link> SDKs are supported.
 </div>
 
 ## Key features
 
-Some key features of RudderStack transformations are listed below:
+Some key features of RudderStack Transformations are listed below:
 
-- You can apply the transformations to your events in real-time.
-- You can programmatically add and remove transformations using the <Link to="/api/transformation-api/">Transformations API</Link>.
+- You can apply the Transformations to your events in real-time.
+- You can programmatically add and remove Transformations using the <Link to="/api/transformation-api/">Transformations API</Link>.
 - They're easier to build, manage, and debug, and reuse.
-- You can create an organization-wide sandbox where your team can store the transformations before publishing them in a production environment.
-- You can version control your transformations.
+- You can create an organization-wide sandbox where your team can store the Transformations before publishing them in a production environment.
+- You can version control your Transformations.
 
 <div class="infoBlock">
 Read more about why your data pipeline needs to have an efficient event transformations capability in the <a href="https://rudderstack.com/blog/the-future-of-data-pipeline-tools-must-include-better-transformations-than-etl-ever-had">RudderStack blog</a>.
 </div>
 
-## How do transformations work?
+## How do Transformations work?
 
-At a high level, once you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination, RudderStack:
+At a high level, once you <Link to="/features/transformations/using-transformations#adding-a-transformation">add a Transformation</Link> and connect it to a destination, RudderStack:
 
-1. Tracks and collects events at the source
-1. Applies the transformation logic to the your events
-1. Forwards the transformed event to your connected destination
+1. Tracks and collects events at the source.
+2. Applies the transformation logic to the your events.
+3. Forwards the transformed event to your connected destination.
 
 <img src="../../assets/features/transformations-workflow.png" alt="Transformations workflow" />
 
 <div class="infoBlock">
-Refer to the <Link to="/features/transformations/faq/">Transformations FAQ</Link> for commonly asked questions on this feature.
+Refer to the <a href="https://github.com/rudderlabs/sample-user-transformers">Sample RudderStack Transformations</a> repository for some useful templates that you can use to create your own transformations.
 </div>
 
-### Use case
+## Use case
 
 Suppose you want to set the `context.os` field to `Android` for all the events, irrespective of the actual platform RudderStack tracks the event from. You can write a simple transformation to do this:
 
@@ -64,10 +78,13 @@ The `transformEvent` function overrides the event's `context.os.name` and sets i
 
 <img src="../../assets/features/adding-a-transformation-3.png" alt="Transformation use-case" />
 
-## Transformations in device mode
+## Useful guides
 
-In case of mobile SDKs, RudderStack stores the events in the local DB before sending them for transformation. So if the transformation fails for any reason e.g., due to network unavailability we again try after some time. In this way, events will not be lost due to network issues.
-    
-- For Mobile SDKs only, users can easily revert to and from the SDK with the DMT feature.
-- This feature will currently only be available for enterprise customers.
-- Events can be filtered based on the integration options passed along with the event and/or [event filtering](https://www.rudderstack.com/docs/sources/event-streams/sdks/event-filtering/) set in the RudderStack dashboard.
+Refer to the following guides to know more about how to use the Transformations feature:
+
+| Guide          | Description    |
+| :------------------- | :------------------------- |
+| <Link to="/features/transformations/using-transformations">Using Transformations</Link>    | Detailed information on how to add, connect, delete transformations, and their usage via API functions.|
+| <Link to="/features/transformations/using-libraries">Using Libraries</Link>    |  Detailed information on how to add, use, import, and delete libraries.|
+| <Link to="/features/transformations/faq">FAQ</Link>     | Commonly asked questions on Transformations feature and their solutions.     |
+

@@ -3,6 +3,8 @@ title: "Using Transformations"
 description: Detailed technical documentation on how to use the RudderStack's Transformations feature.
 ---
 
+This guide takes you through the detailed steps on how to use the transformations along with different features.
+
 ## Adding a transformation
 
 To add a new transformation in the RudderStack dashboard, follow these steps:
@@ -206,7 +208,7 @@ export async function transformEvent(event) {
 
 ## Limitations
 
-You should take into account the following memory and time limits when invoking a transformation:
+The following memory and time limits are applicable when invoking a transformation in device or cloud mode:
 
 | Parameter    | Limit     |
 | :----------- | :-------- |
@@ -217,10 +219,10 @@ You should take into account the following memory and time limits when invoking 
 The user transformation fails if these limits are exceeded.
 </div>
 
-### Additional device mode limitations 
+### Additional limitations in device mode
 
 Along with the above-mentioned limitations, the following are applicable when using a transformation in the device mode:
 
 - Events can't be pushed to the destination SDKs in real-time.
-- Latency in sending the events depend upon the network availability and server response.
-- For iOS SDK, the background processing of an event is not supported when the app is closed. The backlog event is sent the next time the app is opened.
+- The network availability and server response can lead to latency while sending the events.
+- The iOS SDK does not support background processing of an event when the app is closed. However, the backlog event is sent the next time the app is opened.

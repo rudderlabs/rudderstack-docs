@@ -5,16 +5,6 @@ description: Answers to some of the commonly asked questions related to RudderSt
 
 ## Transformations
 
-### What are RudderStack transformations? How do they work?
-
-RudderStack's **Transformations** feature enables you to code custom JavaScript functions to implement specific use-cases on your event data. Some of the use-cases are:
-
-- Filtering / sampling events
-- Cleaning / aggregating data
-- Data masking or removing sensitive PII information in the events to ensure data privacy
-- Enriching events by implementing static logic or leveraging an external API
-- Using an API to implement specific actions on the events
-
 ### Are there any sample user transformations I can refer to?
 
 Yes, you can refer to the [Sample RudderStack Transformations](https://github.com/rudderlabs/sample-user-transformers) GitHub repository.
@@ -29,31 +19,15 @@ A transformation is always connected to a destination. RudderStack gives you the
 
 No, it is not possible to connect multiple transformations to a destination. Instead, you can implement multiple use-cases in the same transformation, for example, event filtering followed by cleaning.
 
-### Where does RudderStack apply the transformations? Is it on the source or the destination events?
-
-RudderStack tracks and collects the events at the source, applies the transformation logic to the events, and then forwards the transformed events to the destination (connected to the source).
-
-The following image summarizes the transformation workflow:
-
-<img src="../../assets/features/transformations-workflow.png" alt="Transformations workflow" />
-
 ### Can I write a transformation that can be applied to a small batch of events?
 
-Yes, you can use the `transformBatch` function instead of `transformEvent`.
-
-```javascript
-export function transformBatch(events, metadata) {
-    return events;
-}
-```
+Yes, you can use the `transformBatch` function to apply a transformation to a batch of events.
 
 <div class="infoBlock">
-For more information on using the <code class="inline-code">transformBatch</code> function, refer to the <Link to="/features/transformations/#using-transformbatch-instead-of-transformevent">Using <code class="inline-code">transformBatch</code> instead of <code class="inline-code">transformEvent</code></Link> section.
+For more information, refer to the <Link to="/features/transformations/using-transformations#applying-transformation-on-a-batch-of-events">Applying transformation on a batch of events</Link> section.
 </div>
 
-<div class="dangerBlock">
-If you are using <code class="inline-code">transformBatch</code> and want to ensure event ordering, make sure you pass on the <code class="inline-code">messageId</code> from the input event to the output event. Without the <code class="inline-code">messageId</code>, there is a strong possibility that RudderStack will <strong>not</strong> maintain the event ordering.
-</div>
+
 
 ### What is a referenced transformation?
 
@@ -81,21 +55,31 @@ Using the <Link to ="/api/transformation-api/">Transformations API</Link>, you c
 
 Once the revisions meet the test criteria, you can restore and publish them for production use.
 
-## Tranformations in device mode 
+## Using Transformations in device mode 
 
-### How should I choose between event filtering and tranformations in device mode?
+### While sending events in device mode, how should I choose between event filtering and transformations?
 
-You should go for event filtering when you need to allowlist or denylist any sets of events. However, if you want to mask your data or remove sensitive PII information from the events to ensure data privacy, you should opt for the transformations.
+You can choose any based on your requirements:
 
-### Is there any trade-off while using the transformations in device mode?
+- **<Link to="/sources/event-streams/sdks/event-filtering/">Event filtering</Link>**: When you need to specify which events should be discarded or allowed to flow through to the destination.
+- **Transformations**: When you need to mask the data, enrich events, implement specific actions on events or remove sensitive PII information from the events.
 
-Yes, RudderStack sends an HTTP request for each event transformation which can cause latency. Also, it increases the network consumption substantially which is an overhead.
+In case you are using both the above-mentioned options, your events are filtered (based on the integration options passed along with the event and/or event filtering set in the RudderStack dashboard) and transformed (based on the applied transformation) before being sent to the destination.
+
+### Is there any added cost to use the transformations in device mode?
+ 
+Yes, while applying transformations in device mode, RudderStack sends a network call for each event which is an extra overhead.
     
-    
-### In case of device mode transformation, can I switch back to the previous version of an SDK?
+### Can I switch back to the previous version of an SDK while using a device mode transformation?
 
 - For Mobile SDKs, yes, after an upgrade you can switch back to the previous version of SDK without the DMT feature.
 - For JS SDK, if you are using the npm package then you can switch to a specific version with or without DMT but for CDN this is not possible.
+
+### Will my event be lost in case of a network error while using a transformation in device mode?
+
+**No events are lost in case of mobile SDK's** as they are saved locally in the database before being sent to the destination. Once sent successfully, they're removed from the database.
+
+For JavaScript, React-Native, and Cordova SDKs, there is a chance of losing the  events in case of a network error.
 
 ## Libraries
 

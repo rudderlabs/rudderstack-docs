@@ -1,13 +1,11 @@
 ---
 title: "Using Libraries"
-description: Detailed technical documentation on RudderStack's Transformations feature.
+description: Detailed technical documentation on how to use the RudderStack's Libraries feature.
 ---
 
-## Libraries
+One of the key features of RudderStack Transformations is the ability to reuse the transformation code in other transformations using the **Libraries** feature.
 
-One of the key features of RudderStack transformations is the ability to reuse the transformation code in other transformations using the **Libraries** feature.
-
-### Adding a library
+## Adding a library
 
 To add a new library, follow these steps:
 
@@ -22,7 +20,7 @@ To add a new library, follow these steps:
 
 4. Click **Run Test** to ensure the library code has the correct syntax.
 
-### Using libraries in transformations
+## Using libraries in transformations
 
 To use the libraries in your existing transformations, refer to the **Import Library Name** option in the RudderStack dashboard, as shown:
 
@@ -34,7 +32,7 @@ RudderStack converts the library name into <strong>camel case without spaces</st
 
 You can then use the library in a transformation with a simple `import` statement. Refer to the below use case for more information.
 
-#### Use case
+### Use case
 
 Suppose you want to import a function `rudderEmail` from the `Is Rudder Email` library to filter events that don't have the email address containing the RudderStack domain.
 
@@ -64,7 +62,7 @@ On clicking **Run Test**, a sample event not containing the RudderStack email do
 
 <img src="../../assets/features/libraries-in-transformations-test.png" alt="Filtering out events using libraries in transformation" />
 
-### Importing multiple functions from a single library
+## Importing multiple functions from a single library
 
 The following snippets highlight how to properly import functions from a library:
 
@@ -106,9 +104,9 @@ import getPrice as gp from "getFinanceData";
 getPrice(ev)
 ```
 
-### Deleting a library
+## Deleting a library
 
-To delete a transformation, go to **Enhance** > **Transformations** and click the **Libraries** tab. button next to the transformation that you want to delete, as shown:
+To delete a library, go to **Enhance** > **Transformations** and click the **Libraries** tab. Click the **Delete** button next to the library you want to delete, as shown:
 
 <img src="../../assets/features/deleting-a-library.png" alt="Deleting a library" />
 
