@@ -137,7 +137,7 @@ By default, automatic session tracking is enabled in the <Link to="/sources/even
 RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 [builder withDataPlaneUrl:DATA_PLANE_URL];
 [builder withAutoSessionTracking:YES];  // Set to No to disable automatic session tracking
-[builder withSessionTimeoutMillis:300000];
+[builder withSessionTimeoutMillis:(5*60*1000)];
 [RSClient getInstance:WRITE_KEY config:[builder build]];
 ```
 </span>
@@ -148,7 +148,6 @@ RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
 ```swift
 let builder: RSConfigBuilder = RSConfigBuilder()
             .withDataPlaneUrl(DATA_PLANE_URL)
-            .withTrackLifecycleEvents(true)
             .withAutoSessionTracking(true)  // Set to false to disable automatic session tracking
             .withSessionTimeoutMillis(5*60*1000)
 RSClient.getInstance(WRITE_KEY, config: builder.build())
