@@ -1208,6 +1208,12 @@ export const postNavList = [
     link: "/destinations/streaming-destinations/userlist/",
     content: [],
   },
+  {
+    key: "user-com",
+    title: "User.com",
+    link: "/destinations/streaming-destinations/user-com/",
+    content: [],
+  },
    {
     key: "webengage",
     title: "WebEngage",
