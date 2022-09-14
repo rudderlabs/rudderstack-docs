@@ -142,7 +142,7 @@ The following table lists the supported property mappings between RudderStack an
 | `context.os.name` | `os` | String | Optional |
 
 <div class="warningBlock">
-Any user-provided cookie must be mapped to either <code class="inline-code">email</code> or <code class="inline-code">cv_id</code>. Otherwise, RudderStack will be unable to send this information to Woopra.
+Any user-provided cookie must be mapped to either <code class="inline-code">email</code> or <code class="inline-code">cv_id</code> when creating a new user or using the cookie for the first time. Otherwise, Woopra accepts the data but will reflect it <strong>only when</strong> that cookie is mapped to any other identifier.
 </div>
 
 RudderStack uses the below fields to identify a user, in the same precedence:
