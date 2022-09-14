@@ -1642,7 +1642,7 @@ export const jsonData = [
                 link: "/user-guides/how-to-guides/live-destination-event-debugger/",
                 content: []
             },{
-                title: "How to host RudderStack JavaScript SDK on your CDN/Storage",
+                title: "How to Host RudderStack JavaScript SDK on your CDN/Storage",
                 link: "/user-guides/how-to-guides/self-hosting-js-sdk/",
                 content: []
             }, 

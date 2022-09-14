@@ -2145,7 +2145,7 @@ export const postNavList = [
   },
   {
     key: "self-hosting-js-sdk",
-    title: "How to host RudderStack JavaScript SDK on your CDN/Storage",
+    title: "How to Host RudderStack JavaScript SDK on your CDN/Storage",
     link: "/user-guides/how-to-guides/self-hosting-js-sdk/",
     content: []
   },
