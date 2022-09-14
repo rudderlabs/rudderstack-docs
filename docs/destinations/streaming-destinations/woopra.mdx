@@ -39,7 +39,7 @@ For more information on obtaining your Woopra project name, refer to the <Link t
 </div>
 
 <div class="infoBlock">
-RudderStack uses this name as a fallback value if you do not provide it in your event's <code class="inline-code">integrations</code> object.
+RudderStack uses this name as a fallback value if it is absent in the event's <code class="inline-code">integrations</code> object. For more information, refer to the <Link to="#identify">Identify</Link> section below.
 </div>
 
 - **Cookie Name**: Enter the name of the cookie used to identify the visitor.
@@ -66,9 +66,20 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
   state: "Louisiana",
   firstName: "Alex",
   lastName: "Keener",
-  country: "USA"
+  country: "USA",
+  integrations: {
+    "woopra": {
+      "projectName": "abc.com"
+    }
+  }
 });
 ```
+
+You can specify your Woopra project name within the `integrations` object of the `identify` event, as seen in the above snippet. Alternatively, you can specify the project name via the **Project Name** dashboard setting while configuring the destination.
+
+<div class="infoBlock">
+If you provide the Woopra project name in both the dashboard settings as well as the <code class="inline-code">integrations</code> object, RudderStack gives precedence to the name specified in the <code class="inline-code">integrations</code> object.
+</div>
 
 ## Track
 
@@ -111,7 +122,6 @@ The following table lists the supported **optional** property mappings between R
 | `properties.{x}` | `ce_{x}` | - |
 | `name` | `event` | String (in lower case) |
 
-
 ## Supported property mappings
 
 The following table lists the supported property mappings between RudderStack and Woopra, **common to all the above events**:
@@ -130,6 +140,10 @@ The following table lists the supported property mappings between RudderStack an
 | `context.app.name` + `context.app.version` | `app` | String | Optional |
 | `ua.browser.name` + `ua.browser.version` | `browser` | String | Optional |
 | `context.os.name` | `os` | String | Optional |
+
+<div class="warningBlock">
+Any user-provided cookie must be mapped to either <code class="inline-code">email</code> or <code class="inline-code">cv_id</code>. Otherwise, RudderStack will be unable to send this information to Woopra.
+</div>
 
 RudderStack uses the below fields to identify a user, in the same precedence:
 
