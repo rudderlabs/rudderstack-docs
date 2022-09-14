@@ -68,7 +68,7 @@ For more information on how session tracking works in the JavaScript SDK, refer 
 ### Mobile SDKs
 
 <div class="warningBlock">
-To automatically track sessions in the Android and iOS SDK, <code class="inline-code">withTrackLifecycleEvents</code> should also be set to true. This is because RudderStack considers the <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-opened">Application Opened</Link> or <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-updated">Application Updated</Link> events as the start of a new session.
+To automatically track sessions in the Android and iOS SDK, <code class="inline-code">withTrackLifecycleEvents</code> should also be set to true. This is because RudderStack considers the <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-opened">Application Opened</Link>, <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-installed">Application Installed</Link>, or <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-updated">Application Updated</Link> events as the start of a new session.
 </div>
 
 #### Android
@@ -126,35 +126,26 @@ By default, automatic session tracking is enabled in the <Link to="/sources/even
 
 <Tabs>
   <TabList>
-    <Tab>Swift</Tab>
     <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
 <span>
 
-```swift
-RudderConfig config = new RudderConfig.Builder()
-  .withDataPlaneUrl(DATA_PLANE_URL)
-  
-  .withRecordScreenViews(true)
-  .withAutoSessionTracking(true) // To disable automatic session tracking, set to false
-  .withSessionTimeoutMillis(5*60*1000)
-  .build();
-
-let builder: RSConfigBuilder = RSConfigBuilder()
-            .withDataPlaneUrl(DATA_PLANE_URL)
-            .withTrackLifecycleEvents(true)
-            .withAutoSessionTracking(true)  // Set to false to disable automatic session tracking
-            .withSessionTimeoutMillis(60000)
-RSClient.getInstance(WRITE_KEY, config: builder.build())
+```objectivec
+RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
+[builder withDataPlaneUrl:DATA_PLANE_URL];
+[builder withAutoSessionTracking:YES];  // Set to No to disable automatic session tracking
+[builder withSessionTimeoutMillis:300000];
+[RSClient getInstance:WRITE_KEY config:[builder build]];
 ```
 </span>
       </TabPanel>
       <TabPanel>
 <span>
 
-```objectivec
+```swift
 let builder: RSConfigBuilder = RSConfigBuilder()
             .withDataPlaneUrl(DATA_PLANE_URL)
             .withTrackLifecycleEvents(true)
@@ -223,7 +214,7 @@ The following diagram summarizes the workflow:
 
 If session tracking is enabled in the mobile SDKs, the flow is as explained below:
 
-1. RudderStack starts the session once it receives the <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-opened">`Application Opened`</Link> or <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-updated">`Application Updated`</Link> event.
+1. RudderStack starts the session once it receives the <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-opened">`Application Opened`</Link>, <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-installed">`Application Installed`</Link>, or <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-updated">`Application Updated`</Link> event.
 2. The SDK then generates a `sessionId`.
 
 <div class="infoBlock">
