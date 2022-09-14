@@ -1281,6 +1281,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "rollbar",
+    title: "RollBar",
+    link: "/destinations/streaming-destinations/rollbar/",
+    content: [],
+  },
+  {
     key: "attribution",
     title: "Attribution",
     link: "/destinations/streaming-destinations/attribution/",

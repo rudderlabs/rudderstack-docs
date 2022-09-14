@@ -1,0 +1,85 @@
+---
+title: "Rollbar"
+description: Step-by-step guide on sending your event data from RudderStack to Rollbar.
+aliases: ["Rollbar destination"]
+---
+
+[Rollbar](https://rollbar.com/) is a real-time error tracking and monitoring tool. It helps you find and fix any errors in your code, including unhandled exceptions.
+
+RudderStack supports Rollbar as a destination where you can seamlessly send your event data.
+
+## Getting started
+
+Before configuring Rollbar as a destination in RudderStack, verify if the source platform is supported by Rollbar by referring to the table below:
+
+| Connection Mode | Web | Mobile | Server |
+| :--- | :--- | :--- | :--- |
+| Device mode | Supported | - | - |
+| Cloud mode | -  | - | - |
+
+<div class="infoBlock">
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+</div>
+
+Once you have confirmed that the source platform supports sending events to Rollbar, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Rollbar**.
+2. Assign a name to the destination and click on **Continue**.
+
+## Connection settings
+
+To successfully configure Rollbar as a destination, you will need to configure the following settings:
+
+<img src="../../assets/event-stream-destinations/rollbar-connection-settings.png" alt="Rollbar connection settings"/>
+
+- **Access Token**: Enter your Rollbar access token.
+
+<div class="infoBlock">
+For more information on obtaining your Rollbar access token, refer to the <Link to="#faq">FAQ</Link> section below.
+</div>
+
+- **Capture unhandled exceptions**: Enable this setting to catch and report any unhandled Promise rejections like Promise failures.
+- **Ignored Message**: Rollbar will ignore the excepts matching the specific exception messages added in this field. For example, you can ignore an exception message for a third-party browser plugin that is throwing errors by specifying it here.
+- **Capture Uncaught Exceptions**: This setting lets you record any uncaught exceptions from the `window.oneerror` toggle.
+- **Code Version**: Enter the version string, for example, a version number or Git SHA. This setting is applicable if you have enabled the **Source Maps** setting in Rollbar.
+- **Environment**: Specify the environment your code is running in.
+- **Guess Uncaught Frames**: Enable this setting for Rollbar to guess the frames in which an error was thrown. This is helpful in cases where the browser does not provide any line or column numbers.
+- **Source Map Enabled**: Enable this setting for Rollbar to perform efficient stack tracing and error grouping.
+
+<div class="infoBlock">
+Refer to the <a href="https://docs.rollbar.com/docs/source-maps">Rollbar source maps documentation</a> for more information.
+</div>
+
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Rollbar.
+
+<div class="infoBlock">
+For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+</div>
+
+- **Use device mode to send events**: As this is a <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
+
+## Identify
+
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to 
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify(
+  "1hKOmRA4GRlm", {
+    email: "alex@example.com",
+    name: "Alex Keener"
+  }
+);
+```
+
+### Supported mappings
+
+The following table lists the mappings between the RudderStack and Rollbar properties:
+
+| RudderStack property | Rollbar property | Data type | Presence
+|:---------------------|:-------------|:--------------|:--------------|
+
+
+## FAQ
+
