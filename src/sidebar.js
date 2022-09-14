@@ -338,6 +338,10 @@ export const jsonData = [
                         title: "Looker",
                         link: "/sources/event-streams/cloud-apps/looker/",
                         content: []
+                    },{
+                        title: "Mailmodo",
+                        link: "/sources/event-streams/cloud-apps/mailmodo/",
+                        content: []
                     }, {
                         title: "PostHog",
                         link: "/sources/event-streams/cloud-apps/posthog/",
@@ -427,7 +431,7 @@ export const jsonData = [
                 title: "Mailchimp",
                 link: "/sources/extract/mailchimp/",
                 content: []
-            }, 
+            },
             {
                 title: "Mixpanel",
                 link: "/sources/extract/mixpanel/",
