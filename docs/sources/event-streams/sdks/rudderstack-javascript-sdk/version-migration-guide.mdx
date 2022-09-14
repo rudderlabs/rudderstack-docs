@@ -65,7 +65,7 @@ To migrate the self-hosted JavaScript SDK to v1.1, follow any of the three optio
 
   <br/>
 
-  Meaning, the file name for the JavaScript SDK is `rudder-analytics.min.js`, and the device mode destination SDKs are located next to the core SDK file under the `js-integrations` directory, update the script tag in your website as shown:
+  In this structure, the file name for the JavaScript SDK is `rudder-analytics.min.js` and the device mode destination SDKs are located next to the core SDK file under the `js-integrations` directory. To migrate to v1.1, update the script tag in your website, as shown:
 
     ```html
     <script src="https://<subdomain>.<yourdomain>.com/<path-to-sdk-base-directory>/rudder-analytics.min.js"></script>
@@ -96,7 +96,7 @@ To migrate the self-hosted JavaScript SDK to v1.1, follow any of the three optio
   });
   // ...
   </script>
-  <script src="https://<subdomain>.<yourdomain>.com/<path-to-custom-analytics-file>/<custom-analytics-file.js>"></script>
+  <script src="https://<subdomain>.<yourdomain>.com/<path-to-custom-sdk-file>/<custom-sdk-file-name.js>"></script>
   ```
 
 
