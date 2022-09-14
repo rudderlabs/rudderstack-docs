@@ -1747,7 +1747,12 @@ export const jsonData = [
                 title: "How to Debug Live Destination Events",
                 link: "/user-guides/how-to-guides/live-destination-event-debugger/",
                 content: []
-            }, {
+            },{
+                title: "How to Host RudderStack JavaScript SDK on your CDN/Storage",
+                link: "/user-guides/how-to-guides/self-hosting-js-sdk/",
+                content: []
+            }, 
+            {
                 title: "How to Filter Events using Different Methods",
                 link: "/user-guides/how-to-guides/filter-events/",
                 content: []
