@@ -10,7 +10,7 @@ Another significant improvement in the latest version (v1.1) is that the <Link t
 
 ## Migrating to JavaScript SDK v1.1
 
-If you have installed the JavaScript SDK v1 from RudderStack CDN, you can simply upgrade it to v1.1 by updating the script tag in your website as shown:
+If you have installed the JavaScript SDK v1 from the RudderStack CDN, you can simply upgrade it to v1.1 by updating the script tag in your website, as shown:
 
 From **v1**:
 
@@ -26,18 +26,18 @@ To **v1.1**:
 
 ## Other migration scenarios
 
-The below section covers detailed steps to migrate to JavaScript SDK v1.1 depending on how you installed JavaScript SDK v1.
+This section covers the detailed steps on migrating to JavaScript SDK v1.1 depending on how you installed JavaScript SDK v1.
 
 ### Forwarded/proxied RudderStack CDN
 
 <div class="successBlock">
-Refer to the <Link to="/user-guides/how-to-guides/custom-domains/#setup-for-serving-the-sdk">Custom Domains</Link> guide to use a custom domain to forward or proxy the JavaScript SDK hosted on RudderStack CDN.
+Refer to the <Link to="/user-guides/how-to-guides/custom-domains/#setup-for-serving-the-sdk">Custom Domains</Link> guide to use a custom domain to forward or proxy the JavaScript SDK hosted on the RudderStack CDN.
 </div>
 
 The following steps assume that you are using AWS CloudFront to forward or proxy the RudderStack CDN:
 
 1.  Go to **Behaviors** and verify that the sub-path `/v1.1/*` is **not configured to be blocked** in any way. This is required to ensure that both the core SDK and destination SDKs are forwarded properly.
-2. Update the script tag in your website as shown:
+2. Update the script tag in your website, as shown:
 
 From **v1**:
 
@@ -71,7 +71,7 @@ To migrate the self-hosted JavaScript SDK to v1.1, follow any of the three optio
     <script src="https://<subdomain>.<yourdomain>.com/<path-to-sdk-base-directory>/rudder-analytics.min.js"></script>
     ```
 
-  - If the file name of your self-hosted JavaScript SDK is `rudder-analytics.min.js`, but the destination SDKs are **not** located next to the core SDK file under the `js-integrations` directory, update the script tag in your website as shown:
+  - If the file name of your self-hosted JavaScript SDK is `rudder-analytics.min.js` but the destination SDKs are **not** located next to the core SDK file under the `js-integrations` directory, update the script tag in your website, as shown:
 
       ```html
       <script>
@@ -121,8 +121,7 @@ npm install rudder-sdk-js@2.x.x
 ```
 ## Loading device mode destinations
 
-Depending on the dashboard settings, all the destination SDKs are loaded from https://cdn.rudderlabs.com/v1.1/js-integrations/ by default. A specific destination SDK can be located at:
-https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js
+Depending on the dashboard settings, all the destination SDKs are loaded from https://cdn.rudderlabs.com/v1.1/js-integrations/ by default. You can locate a specific destination SDK at https://cdn.rudderlabs.com/v1.1/js-integrations/&lt;destination_name&gt;.min.js.
 
 For example, the path for HubSpot is: https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js, and Google Analytics is: https://cdn.rudderlabs.com/v1.1/js-integrations/GA.min.js, etc.
 
