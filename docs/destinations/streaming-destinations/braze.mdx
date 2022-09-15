@@ -1,6 +1,6 @@
 ---
 title: "Braze"
-description: Step-by-step guide on sending your event data from RudderStack to Braze
+description: Step-by-step guide on sending your event data from RudderStack to Braze.
 ---
 
 Braze is an industry-leading customer engagement platform. It allows you to better understand your customers' in-app behavior and use the insights to improve your overall app experience, and increase engagement with them.
@@ -108,11 +108,18 @@ repositories {
 <span>
 
 ```groovy
-  implementation 'com.rudderstack.android.sdk:core:1.0.1'
-  implementation 'com.rudderstack.android.integration:braze:1.0.2'
-  implementation 'com.appboy:android-sdk-ui:6.0.+'
-  // if you haven't included Gson already
-  implementation 'com.google.code.gson:gson:2.8.6'
+implementation 'com.rudderstack.android.sdk:core:[1.0,2.0)'
+implementation 'com.rudderstack.android.integration:braze:[1.0.7,)'
+implementation 'com.google.code.gson:gson:2.8.9'
+```
+</span>
+</li>
+<li>Add the following permissions to the <code class="inline-code">AndroidManifest.xml</code> file:
+<span>
+
+```groovy
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
 </span>
 </li>
