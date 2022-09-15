@@ -67,6 +67,7 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
   firstName: "Alex",
   lastName: "Keener",
   country: "USA",
+  email: "alex@example.com",
   integrations: {
     "woopra": {
       "projectName": "abc.com"
@@ -80,6 +81,41 @@ You can specify your Woopra project name within the `integrations` object of the
 <div class="infoBlock">
 If you provide the Woopra project name in both the dashboard settings as well as the <code class="inline-code">integrations</code> object, RudderStack gives precedence to the name specified in the <code class="inline-code">integrations</code> object.
 </div>
+
+RudderStack uses the below fields to identify a user in the same order of precedence:
+
+| Precedence order | RudderStack property | Woopra property |
+| :----| :---- | :----- |
+| 1 | `userId` / `traits.userId` / `traits.id` / `context.traits.userId` / `context.traits.id` |  `cv_id` |
+| 2 | `traits.email` / `context.traits.email` / `properties.email` | `cv_email` | 
+| 3 | `context.externalId.woodpraId` / `anonymousId` | `cookie` |
+
+<div class="infoBlock">
+For a detailed list of the supported property mappings, refer to the <Link to="#standard-property-mappings">Standard property mappings</Link> section below.
+</div>
+
+Any user-provided cookie must be mapped to either `email` or `cv_id` when creating a new user or using the cookie for the first time. Otherwise, Woopra accepts the data but will reflect it **only when** that cookie is mapped to any of these identifiers.
+
+For example, Woopra accepts the following event but does not reflect the data in its dashboard:
+
+```javascript
+rudderanalytics.identify({
+  name: "Alex Keener",
+  country: "USA",
+  anonymousId: "hiu31e23r2ffwef",
+});
+```
+
+When you include a user identifier in the subsequent events as shown below, Woopra reflects all the user information present in the current and previous event.
+
+```javascript
+rudderanalytics.identify({
+  name: "Alex Keener",
+  country: "USA",
+  email: "alex@example.com",
+  anonymousId: "hiu31e23r2ffwef",
+});
+```
 
 ## Track
 
@@ -122,7 +158,7 @@ The following table lists the supported **optional** property mappings between R
 | `properties.{x}` | `ce_{x}` | - |
 | `name` | `event` | String (in lower case) |
 
-## Supported property mappings
+## Standard property mappings
 
 The following table lists the supported property mappings between RudderStack and Woopra, **common to all the above events**:
 
@@ -140,16 +176,6 @@ The following table lists the supported property mappings between RudderStack an
 | `context.app.name` + `context.app.version` | `app` | String | Optional |
 | `ua.browser.name` + `ua.browser.version` | `browser` | String | Optional |
 | `context.os.name` | `os` | String | Optional |
-
-<div class="warningBlock">
-Any user-provided cookie must be mapped to either <code class="inline-code">email</code> or <code class="inline-code">cv_id</code> when creating a new user or using the cookie for the first time. Otherwise, Woopra accepts the data but will reflect it <strong>only when</strong> that cookie is mapped to any other identifier.
-</div>
-
-RudderStack uses the below fields to identify a user, in the same precedence:
-
-1. `userId` / `traits.userId` / `traits.id` / `context.traits.userId` / `context.traits.id` (mapped to `cv_id`)
-2. `traits.email` / `context.traits.email` / `properties.email` (mapped to `cv_email`)
-3. `context.externalId.woodpraId` / `anonymousId` (mapped to `cookie`)
 
 ## FAQ
 
