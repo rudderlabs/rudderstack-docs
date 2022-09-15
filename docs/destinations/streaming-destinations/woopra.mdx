@@ -30,28 +30,40 @@ Once you have confirmed that the source platform supports sending events to Woop
 To successfully configure Woopra as a destination, you need to configure the following settings:
 
 <img src="../../assets/event-stream-destinations/woopra-connection-settings-1.png" alt="Woopra connection settings"/>
+
+- **Project Name**: Enter your Woopra project name. This is the domain you entered while setting up your project.
+
+<div class="infoBlock">
+For more information on getting your Woopra project name, refer to the <Link to="#faq">FAQ</Link> section below.
+</div>
+
+<div class="infoBlock">
+RudderStack uses this project name as a fallback value if it not specified in the event's <code class="inline-code">integrations</code> object. For more information, refer to the <Link to="#identify">Identify</Link> section below.
+</div>
+
+To send the events to Woopra via the <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>, you also need to configure the following settings:
+
 <img src="../../assets/event-stream-destinations/woopra-connection-settings-2.png" alt="Woopra connection settings"/>
-
-- **Project Name**: Enter your Woopra project name. This is the same as the domain you entered while setting up the project.
-
-<div class="infoBlock">
-For more information on obtaining your Woopra project name, refer to the <Link to="#faq">FAQ</Link> section below.
-</div>
-
-<div class="infoBlock">
-RudderStack uses this name as a fallback value if it is absent in the event's <code class="inline-code">integrations</code> object. For more information, refer to the <Link to="#identify">Identify</Link> section below.
-</div>
+<img src="../../assets/event-stream-destinations/woopra-connection-settings-3.png" alt="Woopra connection settings"/>
 
 - **Cookie Name**: Enter the name of the cookie used to identify the visitor.
 - **Cookie Domain**: Enter the domain scope of the Woopra cookie.
 - **Click Tracking**: Enable this setting to track user click interactions via links and buttons.
 - **Cookie Path**: Specify the cookie path that stores all the information related to tracking user click interactions via links and buttons.
-- **Download Tracking**: Enable this setting to track the downloads on the web page.
+- **Download Tracking**: If enabled, this setting lets you track the downloads on your web page.
 - **Hide Campaign**: Enable this setting to remove the captured campaign properties from the URL.
 - **Idle Timeout**: Enter the inactivity time (in ms) after which RudderStack considers the user to be offline. 
 - **Ignore Query URL**: If enabled, RudderStack ignores the URL's query component when the standard page view is called.
 - **Outgoing Ignore Subdomain**: If enabled, RudderStack does not track the links to the subdomains as outgoing links.
 - **Outgoing Tracking**: Enable this setting to track the external link clicks on the web page.
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Woopra.
+
+<div class="infoBlock">
+For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+</div>
+
+- **Use device mode to send events**: This setting **must be enabled** to send the events to Woopra via the web device mode.
+- **OneTrust Cookie Categories**: If **Use device mode to send events** is enabled, this setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Woopra.
 
 ## Identify
 
@@ -173,7 +185,7 @@ The following table lists the supported property mappings between RudderStack an
 | `traits.name` / `context.traits.name` | `cv_name` | String | Optional |
 | `traits.{x}` / `context.traits.{x}` | - | Optional, sent to Woopra as custom fields. |
 | `context.device.type` | `device` | String | Optional |
-| `context.app.name` + `context.app.version` | `app` | String | Optional |
+| `app` + `context.app.version` | `app` | String | Optional |
 | `ua.browser.name` + `ua.browser.version` | `browser` | String | Optional |
 | `context.os.name` | `os` | String | Optional |
 
