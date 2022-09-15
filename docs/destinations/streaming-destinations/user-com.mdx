@@ -3,7 +3,7 @@ title: "User.com"
 description: Step-by-step guide on sending your event data from RudderStack to User.com.
 ---
 
-[User.com](https://user.com/en/) is a marketing automation platform that helps boost customer engagement and improve conversion. It provides easy-to-use and robust tools for marketing, sales, management, and support teams.
+[User.com](https://user.com/en/) is a marketing automation platform that helps boost customer engagement and improve conversion. It also provides robust tools for marketing, sales, management, and support teams.
 
 RudderStack supports User.com as a destination where you can seamlessly send your event data.
 
@@ -48,7 +48,7 @@ For more information on obtaining the public REST API key and app subdomain, ref
 ## User lookup
 
 <div class="infoBlock">
-This lookup algorithm is applicable only for the <code class="inline-code">identify</code>, <code class="inline-code">track</code>, and <code class="inline-code">page</code>calls.
+This algorithm to look up a user is applicable only for the <code class="inline-code">identify</code>, <code class="inline-code">track</code>, and <code class="inline-code">page</code> calls.
 </div>
 
 RudderStack looks up for a user using the `user_key`, `email` or `phone` properties.
@@ -71,7 +71,7 @@ user: {
 });
 ```
 <div class="warningBlock">
-Only one of the above (<code class="inline-code">email</code> or <code class="inline-code">phone</code>) must be passed in a <code class="inline-code">lookup</code>. Also, the <code class="inline-code">email</code> or <code class="inline-code">phone</code> (whichever is passed) must have unique values in the User.com.
+Only one of the above (<code class="inline-code">email</code> or <code class="inline-code">phone</code>) must be passed in <code class="inline-code">lookup</code>. Also, the <code class="inline-code">email</code> or <code class="inline-code">phone</code> (whichever is passed) must have unique values in User.com.
 </div>
 
 The precedence order for looking up a user based on the above properties is:
@@ -110,7 +110,7 @@ The following table lists the mappings between RudderStack and User.com properti
 
 | RudderStack property | User.com property | Presence | 
 | :-------| :--------| :------| 
-| `userId` | `custom_id`(same as `userId`) | Required  | 
+| `userId` | `custom_id` | Required  | 
 | `firstName` | `first_name` | Optional | 
 | `lastName` | `last_name` | Optional |
 | `email` | `email` | Optional | 
@@ -219,7 +219,7 @@ The following table lists the mappings between RudderStack and User.com properti
 
 | RudderStack property | User.com property | | Presence | 
 | :-------| :--------| :------| 
-| `userId` | `custom_id`(same as `userId`) | Required  | 
+| `userId` | `custom_id`(user) | Required  | 
 | `groupId`/`traits.groupId` | `custom_id`(company) | Optional | 
 | `traits.name` | `name`(company name) | Optional |
 | `email` | `email` | Optional | 
