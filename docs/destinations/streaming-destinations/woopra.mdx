@@ -106,26 +106,32 @@ RudderStack uses the below fields to identify a user in the same order of preced
 For a detailed list of the supported property mappings, refer to the <Link to="#standard-property-mappings">Standard property mappings</Link> section below.
 </div>
 
-Any user-provided cookie must be mapped to either `email` or `cv_id` when creating a new user or using the cookie for the first time. Otherwise, Woopra accepts the data but will reflect it **only when** that cookie is mapped to any of these identifiers.
-
-For example, Woopra accepts the following event but does not reflect the data in its dashboard:
+Any user-provided cookie must be mapped to either `email` or `cv_id` when creating a new user or using the cookie for the first time. Otherwise, Woopra accepts the data but will reflect it **only when** that cookie is mapped to any of these identifiers. For example, Woopra accepts the following event but does not reflect the data in the dashboard:
 
 ```javascript
 rudderanalytics.identify({
   name: "Alex Keener",
   country: "USA",
-  anonymousId: "hiu31e23r2ffwef",
+} {
+  externalId: [{
+    id: "some_external_id_1",
+    type: "woopraId",
+  }, ],
 });
 ```
 
-When you include a user identifier in the subsequent events as shown below, Woopra reflects all the user information present in the current and previous event.
+When you include a user identifier (`email`) in the subsequent events as shown below, Woopra reflects all the user information present in the current and previous event.
 
 ```javascript
 rudderanalytics.identify({
   name: "Alex Keener",
-  country: "USA",
   email: "alex@example.com",
-  anonymousId: "hiu31e23r2ffwef",
+  country: "USA",
+} {
+  externalId: [{
+    id: "some_external_id_1",
+    type: "woopraId",
+  }, ],
 });
 ```
 
