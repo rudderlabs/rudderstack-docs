@@ -90,7 +90,6 @@ val rudderClient = RudderClient.getInstance(
     WRITE_KEY,
     RudderConfig.Builder()
         .withDataPlaneUrl(DATA_PLANE_URL)
-        .withTrackLifecycleEvents(true)
         .withAutoSessionTracking(true)  // Set to false to disable automatic session tracking
         .withSessionTimeoutMillis(5*60*1000)
         .build()
@@ -107,7 +106,6 @@ RudderClient rudderClient = RudderClient.getInstance(
     WRITE_KEY,
     new RudderConfig.Builder()
         .withDataPlaneUrl(DATA_PLANE_URL)
-        .withTrackLifecycleEvents(true)
         .withAutoSessionTracking(true) // Set to false to disable automatic session tracking
         .withSessionTimeoutMillis(5*60*1000)
         .build()
@@ -179,7 +177,7 @@ RudderStack also supports manual session tracking using the following methods th
 
 | Method | Parameters | Description |
 | :----| :----| :---- |
-| `startSession()` | `timestamp` (in ms) | RudderStack creates a new session and passes the event's `timestamp` as the <Link to="/sources/event-streams/sdks/session-tracking/faq/#how-does-rudderstack-determine-the-sessionid">`sessionId`</Link>. |
+| `startSession()` | - | RudderStack creates a new session and passes the event's `timestamp` as the <Link to="/sources/event-streams/sdks/session-tracking/faq/#how-does-rudderstack-determine-the-sessionid">`sessionId`</Link>. |
 | `startSession()` | `sessionId` (String) | You can pass a custom `sessionId` and trigger a new user session. |
 | `endSession()` | - | RudderStack clears the `sessionId` and ends the session. |
 
