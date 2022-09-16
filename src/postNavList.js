@@ -867,6 +867,11 @@ export const postNavList = [
     content: [],
   },
   {
+    title: "Quora Pixel",
+    link: "/destinations/streaming-destinations/quora-pixel/",
+    content: [],
+  },
+  {
     key: "firebase",
     title: "Firebase",
     link: "/destinations/streaming-destinations/firebase/",

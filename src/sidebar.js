@@ -915,7 +915,11 @@ export const jsonData = [
                 title: "Quantum Metric",
                 link: "/destinations/streaming-destinations/quantummetric/",
                 content: []
-            },  {
+            }, {
+                title: "Quora Pixel",
+                link: "/destinations/streaming-destinations/quora-pixel/",
+                content: []
+            }, {
                 title: "Shynet",
                 link: "/destinations/streaming-destinations/shynet/",
                 content: []
