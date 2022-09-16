@@ -1,5 +1,5 @@
 ---
-title: "HubSpot"
+title: "Setting up HubSpot"
 description: Step-by-step guide on sending your event data from RudderStack to HubSpot.
 ---
 
@@ -21,48 +21,66 @@ Once you have confirmed that the source platform supports sending events to HubS
 
 ## Connection settings
 
-### New API
-
-To successfully configure HubSpot as a destination using the <Link to="https://developers.hubspot.com/docs/api/overview">new API</Link>,  you can choose any of the two authorization types explained below:
+### Legacy API
+To successfully configure HubSpot as a destination using the **legacy API**:
 
 <img src="../../../assets/event-stream-destinations/hubspot-connection-settings.png" alt="HubSpot connection settings" align="left"/>
 
-<img src="../../../assets/event-stream-destinations/hubspot-connection-settings-2.png" alt="HubSpot connection settings" align="right"/>
+- **Hub ID**: Enter your HubSpot Hub ID.
 
+<div class="infoBlock">
+Refer to the <Link to="#faq">FAQ</Link> section for more information on getting the Hub ID.
+</div>
+
+- **API Version**: Select **Legacy API (v1)** from the dropdown. To work with the new HubSpot API, refer to the <Link to="#new-api">New API</Link> section.
+
+- **Authorization Type**: Choose any of the two authorization types explained below:
+
+<img src="../../../assets/event-stream-destinations/hubspot-connection-settings-auth-type-1.png" alt="HubSpot connection settings"/>
+
+- **Private Apps**: Enables you to use HubSpot's APIs to access specific data from your HubSpot account.
 - **Access Token**: Enter your HubSpot access token from the **Private Apps** section in the HubSpot dashboard.
 
 <div class="infoBlock">
 Refer to the <Link to="#faq">FAQ</Link> section for more information on getting the HubSpot access token.
 </div>
 
-- **API Version**: Select **New API (v3)** from the dropdown.
+ <img src="../../../assets/event-stream-destinations/hubspot-connection-settings-auth-type-2.png" alt="HubSpot connection settings"/>
 
-The **Private Apps** authorization type enables you to use HubSpot's APIs to access specific data from your HubSpot account.
-
-#### API Key authorization type
-
-The **API Key (deprecating soon)** authorization type lets you create custom applications using HubSpot's APIs.
+- **API Key (deprecating soon)**: Lets you create custom applications using HubSpot's APIs.
+- **API Key**: Enter your HubSpot API key. This field is mandatory to send data to HubSpot via the RudderStack cloud mode.
 
 <div class="warningBlock">
 This authorization type will be deprecated soon. Refer to <Link to="https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key">HubSpot documentation</Link> for more information.
 </div>
 
-<img src="../../assets/event-stream-destinations/hubspotv2-connection-settings-1.png" alt="HubSpot connection settings" />
-
-- **Hub ID**: Enter your HubSpot Hub ID.
-- **API Key**: Enter your HubSpot API key. This field is mandatory to send data to HubSpot via the RudderStack cloud mode.
-
 <div class="infoBlock">
-Refer to the <Link to="#faq">FAQ</Link> section to know where to get the Hub ID and API Key.
+Refer to the <Link to="#faq">FAQ</Link> section for more information on getting the API Key.
 </div>
 
-- **API Version**: Select **New API (v3)** from the dropdown.
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to HubSpot.
 
-### Event and property names
+<div class="infoBlock">
+For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+</div>
 
-<img src="../../assets/event-stream-destinations/hubspotv2-connection-settings-3.png" alt="HubSpot connection settings" />
+- **Use device mode to send events**: This setting **must be enabled** to send the events to HubSpot via the web device mode.
+- **OneTrust Cookie Categories**: If **Use device mode to send events** is enabled, this setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to HubSpot.
+
+### New API
+
+To successfully configure HubSpot as a destination using the **New API**, all the above-mentioned settings (<Link to="#legacy-api">Legacy API</Link>) are applicable except you need to select the **New API (v3)** in **API Version**, as shown:
+
+<img src="../../../assets/event-stream-destinations/hubspotv2-connection-settings-2.png" alt="HubSpot connection settings" />
+
+Some additional settings to configure HubSpot as a destination using the **New API** are as follows:
+
+<img src="../../../assets/event-stream-destinations/hubspotv2-connection-settings-3.png" alt="HubSpot connection settings" />
 
 - **HubSpot property name to be used as lookup field**: Enter the unique HubSpot property to be used as a lookup field for <Link to="https://developers.hubspot.com/docs/api/crm/contacts">HubSpot contacts</Link>.
+
+- **Create associations between object records**: 
+
 
 The below settings are only applicable for the <Link to="#private-apps-authorization-type">**Private Apps**</Link> authorization type:
 - **RudderStack Event Name**: Enter the RudderStack event name you want to map to the <Link to="https://developers.hubspot.com/docs/api/analytics/events#create-an-event">custom behavioral event</Link> created in HubSpot.
@@ -73,54 +91,25 @@ The below settings are only applicable for the <Link to="#private-apps-authoriza
 Refer to the <Link to="#custom-behavioral-events">Custom behavioral events</Link> section below for more information.
 </div>
 
+## FAQ
 
-### Client-side events filtering
+### Where do I get the API Key and Hub ID for HubSpot?
 
-<img src="../../assets/event-stream-destinations/hubspot-connection-settings-3.png" alt="HubSpot connection settings" />
+Refer to the following HubSpot guides to get the API Key and Hub ID:
 
-<div class="infoBlock">
-These settings are applicable only if you're sending events to HubSpot via the web device mode. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
-</div>
+- [Obtaining the API Key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key)
+- [Obtaining the Hub ID](https://knowledge.hubspot.com/account/manage-multiple-hubspot-accounts#identify-the-current-account-s-hub-id)
 
-To successfully configure HubSpot as a destination using the **legacy API**, you can choose any of the two authorization types explained below:
+### Where do I get the Access Token for HubSpot?
 
-#### Private Apps authorization type
+To get the Access Token:
 
-The **Private Apps** authorization type allows you to use HubSpot's APIs to access specific data from your HubSpot account.
+1. Log into your [HubSpot account](https://app.hubspot.com/login/).
+2. Go to **Integrations** > **Private Apps** from the left sidebar.
+3. Click on your app to see the below:
 
-<img src="../../assets/event-stream-destinations/hubspot-connection-settings-2.png" alt="HubSpot connection settings" />
+<img src="../../../assets/event-stream-destinations/Hubspot-access-token.png" />
 
-- **Access Token**: Enter your HubSpot access token from the **Private Apps** section in the HubSpot dashboard.
+### Can I use HubSpot website analytics?
 
-<div class="infoBlock">
-Refer to the <Link to="#faq">FAQ</Link> section to know where to get the HubSpot access token.
-</div>
-
-- **API Version**: Select **Legacy API** from the dropdown. To work with the new HubSpot API, refer to the <Link to="/destinations/streaming-destinations/hubspot-v2/">HubSpot V2</Link> guide.
-
-#### API Key authorization type
-
-The **API Key (deprecating soon)** authorization type allows you to create custom applications using HubSpot's APIs.
-
-<div class="warningBlock">
-This authorization type will be deprecated soon. Refer to <Link to="https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key">HubSpot documentation</Link> for more information.
-</div>
-
-<img src="../../assets/event-stream-destinations/hubspot-connection-settings-1.png" alt="HubSpot connection settings" />
-
-- **Hub ID**: Enter your HubSpot Hub ID.
-- **API Key**: Enter your HubSpot API key. This field is mandatory to send data to HubSpot via the RudderStack <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
-
-<div class="infoBlock">
-Refer to the <Link to="#faq">FAQ</Link> section for more information on obtaining the Hub ID and API Key.
-</div>
-
-- **API Version**: Select **Legacy API** from the dropdown. To work with the new HubSpot API, refer to the <Link to="/destinations/streaming-destinations/hubspot-v2/">HubSpot V2</Link> guide.
-
-### Client-side events filtering
-
-<img src="../../assets/event-stream-destinations/hubspot-connection-settings-3.png" alt="HubSpot connection settings" />
-
-<div class="infoBlock">
-These settings are applicable only if you're sending events to HubSpot via the web device mode. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
-</div>
+Yes - RudderStack supports sending `page` calls in device mode which can be used for HubSpot website analytics.
