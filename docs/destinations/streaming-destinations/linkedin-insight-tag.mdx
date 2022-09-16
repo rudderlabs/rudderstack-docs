@@ -50,6 +50,10 @@ For more information on getting your LinkedIn partner ID, refer to the <Link to=
 
 - **Event Conversion IDs**: Enter the event name you want the Insight Tag to track and the corresponding conversion ID.
 
+<div class="warningBlock">
+The event names are case-sensitive. For example, RudderStack accepts <code class="inline-code">Order Completed</code>, <code class="inline-code">Order completed</code>, and <code class="inline-code">order completed</code> as three different events.
+</div>
+
 <div class="infoBlock">
 For more information on getting the conversion ID, refer to the <Link to="#tracking-event-specific-conversions">Tracking event-specific conversions</Link> section below.
 </div>
@@ -63,7 +67,24 @@ For more information on this setting, refer to the <Link to="/sources/sdks/event
 - **Use device mode to send events**: As this is a <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
 - **OneTrust Cookie Categories**: This setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to the LinkedIn Insight Tag destination.
 
-## Tracking event-specific conversions
+## Supported conversion tracking methods
+
+The LinkedIn Insight Tag supports the following two conversion tracking methods:
+
+- Page load
+- Event-specific
+
+<div class="infoBlock">
+For more information on these tracking methods, refer to the <a href="https://www.linkedin.com/help/lms/answer/a425606?trk=hc-articlePage-peopleAlsoViewed">LinkedIn support page</a>.
+</div>
+
+### Tracking page loads
+
+In this method, the Insight Tag automatically loads and tracks the conversions when users visit any pages on your website. Upon loading successfully, you can view the conversion status in your [Campaign Manager](https://www.linkedin.com/campaignmanager/accounts) dashboard, as shown:
+
+<img src="../../assets/event-stream-destinations/insight-tag-campaign-manager.png" alt="LinkedIn Insight campaign manager dashboard" />
+
+### Tracking event-specific conversions
 
 To track event-specific conversions, you need to first set up an Online Tracking conversion and define an event-specific conversion tracking. To do so, follow these steps:
 
@@ -85,6 +106,31 @@ You will need to install this generated code in your website that automatically 
 </div>
 
 8. Finally, specify the **Event Name** for which the Insight Tag automatically loads this snippet and the corresponding conversion ID in the **Event Conversion IDs** dashboard setting.
+
+<div class="infoBlock">
+The event names are case-sensitive.
+</div>
+
+#### Use-case
+
+Suppose you add the following event name-conversion ID mapping in the RudderStack dashboard:
+
+<img src="../../assets/event-stream-destinations/insight-tag-usecase.png" alt="LinkedIn Insight event tracking use-case" />
+
+When you call the `Product Added` event, the LinkedIn Insight Tag automatically loads the snippet with the mapped conversion ID and tracks the conversion event.
+
+A sample `Product Added` event is shown below:
+
+```javascript
+rudderanalytics.track("Product Added", {
+  numberOfRatings: "12",
+  name: "item 1",
+});
+```
+
+<div class="warningBlock">
+RudderStack discards any <code class="inline-code">track</code> event that is not specified in the <strong>Event Conversion IDs</strong> dashboard setting.
+</div>
 
 ## FAQ
 
