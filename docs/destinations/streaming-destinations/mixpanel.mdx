@@ -34,11 +34,11 @@ Once you have confirmed that the source platform supports sending events to Mixp
 
 To successfully configure Mixpanel as a destination, you will need to configure the following settings:
 
-- **API Token**: Enter your Mixpanel API Token.
-- **API Secret**: Enter your Mixpanel API secret.
+- **API Token**: Enter your Mixpanel API Token. 
+- **API Secret**: Enter your Mixpanel API secret. For more information on obtaining the Mixpanel **API Token** and **API Secret** (also called **Project Secret**), refer to this <a href="https://help.mixpanel.com/hc/en-us/articles/115004502806-Find-Project-Token-">Mixpanel Help Center</a> page.
 
-<div class="infoBlock">
-For more information on obtaining the Mixpanel API Token and Secret, refer to this <a href="https://help.mixpanel.com/hc/en-us/articles/115004502806-Find-Project-Token-">Mixpanel Help Center</a> page.
+<div class="dangerBlock">
+Mixpanel will deprecate the <strong>Project Secret</strong> authentication method soon. It is highly recommended to use <strong>Service Accounts</strong> for authenticating your Mixpanel project. For more information, refer to this <a href="https://developer.mixpanel.com/reference/project-secret">Mixpanel API reference</a> guide.
 </div>
 
 - **Service Account Username**: Enter your Mixpanel service account username
