@@ -1,9 +1,10 @@
 ---
 title: "Mixpanel"
 description: Step-by-step guide on sending your event data from RudderStack to Mixpanel.
+aliases: ["Mixpanel destination"]
 ---
 
-[**Mixpanel**](https://mixpanel.com/) is a powerful, self-serve product analytics solution for your web and mobile apps. By analyzing the actions your users perform, you can unlock valuable customer insights to drive retention, engagement, and conversion.
+[Mixpanel](https://mixpanel.com/) is a powerful, self-serve product analytics solution for your web and mobile apps. By analyzing the actions your users perform, you can unlock valuable customer insights to drive retention, engagement, and conversion.
 
 RudderStack supports Mixpanel as a destination where you can seamlessly send your event data.
 
@@ -24,16 +25,10 @@ Before configuring your source and destination on the RudderStack, verify if the
 To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
-Once you have confirmed that the source supports sending events to Mixpanel, follow these steps:
+Once you have confirmed that the source platform supports sending events to Mixpanel, follow these steps:
 
-- From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Mixpanel**.
-- Assign a name to your destination and click on **Next**. You should then see the following screen:
-
-<img src="../../assets/event-stream-destinations/mixpanel-connection-settings-1.png" />
-<img src="../../assets/event-stream-destinations/mixpanel-connection-settings-2.png" />
-<img src="../../assets/event-stream-destinations/mixpanel-connection-settings-3.png" />
-<img src="../../assets/event-stream-destinations/mixpanel-connection-settings-4.png" />
-<img src="../../assets/event-stream-destinations/mixpanel-connection-settings-5.png" />
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Mixpanel**.
+2. Assign a name to the destination and click **Continue**.
 
 ### Connection settings
 
@@ -44,6 +39,19 @@ To successfully configure Mixpanel as a destination, you will need to configure 
 
 <div class="infoBlock">
 For more information on obtaining the Mixpanel API Token and Secret, refer to this <a href="https://help.mixpanel.com/hc/en-us/articles/115004502806-Find-Project-Token-">Mixpanel Help Center</a> page.
+</div>
+
+- **Service Account Username**: Enter your Mixpanel service account username
+- **Service  Account Secret**: Enter the secret associated with your service account.
+
+<div class="infoBlock">
+For more information on setting up your Mixpanel service account and getting the username and secret, refer to this <a href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#viewing-project-details">Mixpanel Help Center</a> page.
+</div>
+
+- **Project ID**: Enter your Mixpanel project ID.
+
+<div class="infoBlock">
+For more information on getting your Mixpanel project ID, refer to this <a href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#viewing-project-details">Mixpanel Help Center</a> page.
 </div>
 
 - **Data Residency**: Select the relevant option among `US` and `EU`. RudderStack will send your event data to the Mixpanel server in that region.
@@ -66,14 +74,12 @@ The following event mapping setting is applicable only if you are sending events
 
 - **Use New Mapping**: This option is disabled by default and sends the first name and last name as:
 
-    `$firstName : "John"`
- 
+    `$firstName : "John"` <br />
     `$lastName : "Keener"`
  
   If this option is enabled, RudderStack maps these fields to Mixpanel in the following way :
  
-   `$first_name : "John"`
- 
+   `$first_name : "John"` <br />
    `$last_name : "Keener"`
    
 <div class="infoBlock">
