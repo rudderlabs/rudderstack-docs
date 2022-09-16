@@ -64,11 +64,11 @@ You can choose any based on your requirements:
 - **<Link to="/sources/event-streams/sdks/event-filtering/">Event filtering</Link>**: When you need to specify which events should be discarded or allowed to flow through to the destination.
 - **Transformations**: When you need to mask the data, enrich events, implement specific actions on events or remove sensitive PII information from the events.
 
-In case you plan to use both the above-mentioned features, your events will be filtered (based on the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#integrationopts">`integrationOpts`</Link> passed along with the event and/or <Link to="/sources/event-streams/sdks/event-filtering/">event filtering</Link> in the RudderStack dashboard) and transformed (based on the applied transformation) before being sent to the destination.
+In case you plan to use both the above-mentioned features, your events will be filtered (based on the <Link to="/sources/event-streams/sdks/event-filtering/">event filtering</Link> settings in the RudderStack dashboard) and transformed (based on the applied transformation) before being sent to the destination.
 
 ### Is there any added cost to use the transformations in device mode?
  
-Yes, RudderStack sends a network call for each event when the transformations are used in the device mode. It leads to extra overhead and latency.
+Yes, RudderStack makes a network call for each event when the transformations are used in the device mode.
     
 ### Can I switch back to the previous version of an SDK while using a transformation in device mode?
 
