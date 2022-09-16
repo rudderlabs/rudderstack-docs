@@ -331,7 +331,7 @@ export const jsonData = [
                         link: "/sources/event-streams/cloud-apps/extole/",
                         content: []
                     }, {
-                        title: "Iterable",
+                        title: "Iterable Webhook",
                         link: "/sources/event-streams/cloud-apps/iterable/",
                         content: []
                     }, {
