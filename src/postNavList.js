@@ -1371,6 +1371,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "woopra",
+    title: "Woopra",
+    link: "/destinations/streaming-destinations/woopra/",
+    content: [],
+  },
+  {
     key: "fb-custom-audience",
     title: "Facebook Custom Audience",
     link: "/destinations/streaming-destinations/fb-custom-audience/",
