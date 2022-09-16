@@ -66,7 +66,7 @@ You can choose any based on your requirements:
 
 In case you plan to use both the above-mentioned features, your events will be filtered (based on the <Link to="/sources/event-streams/sdks/event-filtering/">event filtering</Link> settings in the RudderStack dashboard) and transformed (based on the applied transformation) before being sent to the destination.
 
-### Is there any added cost to use the transformations in device mode?
+### Is there any added performance cost to using the transformations in device mode?
  
 Yes, RudderStack makes a network call for each event when the transformations are used in the device mode.
     
@@ -75,13 +75,13 @@ Yes, RudderStack makes a network call for each event when the transformations ar
 - **For Mobile SDKs**: Yes, you can switch back to the previous SDK version. However, the transformation might not be supported in the previous version.
 - **For JavaScript SDK**: It depends on the SDK installation method:
     - If installed through RudderStack CDN, it's not possible to downgrade the SDK version.
-    - If installed through NPM, it's possible to downgrade the SDK version and choose whether to use the transformation or not. 
+    - If installed through NPM, it's possible to downgrade the SDK version. However, the transformation might not be supported in the previous version.
 
 ### Will my event be lost in case of a network error while using a transformation in device mode?
 
 **No events are lost in case of mobile SDK's** as they are saved locally in the database before being sent to the destination. Once sent successfully, they're removed from the database.
 
-However, there is a chance of events getting lost while sending them via JavaScript SDK in case of a network error.
+However, there is a chance of events getting lost while sending them via JavaScript SDK in case of a network error as they are not persisted. However, the SDK retries multiple times before dropping the event.
 
 ## Libraries
 
