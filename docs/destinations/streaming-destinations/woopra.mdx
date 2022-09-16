@@ -31,14 +31,14 @@ To successfully configure Woopra as a destination, you need to configure the fol
 
 <img src="../../assets/event-stream-destinations/woopra-connection-settings-1.png" alt="Woopra connection settings"/>
 
-- **Project Name**: Enter your Woopra project name. This is the domain you entered while setting up your project.
+- **Project Name**: Enter your Woopra project name. This is the domain name you entered while setting up your project.
 
 <div class="infoBlock">
 For more information on getting your Woopra project name, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
 <div class="infoBlock">
-RudderStack uses this project name as a fallback value if it not specified in the event's <code class="inline-code">integrations</code> object. For more information, refer to the <Link to="#identify">Identify</Link> section below.
+RudderStack uses this project name as a fallback value if it is not specified in the event's <code class="inline-code">integrations</code> object. For more information, refer to the <Link to="#identify">Identify</Link> section below.
 </div>
 
 To send the events to Woopra via the <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>, you also need to configure the following settings:
@@ -106,7 +106,7 @@ RudderStack uses the below fields to identify a user in the same order of preced
 For a detailed list of the supported property mappings, refer to the <Link to="#standard-property-mappings">Standard property mappings</Link> section below.
 </div>
 
-Any user-provided cookie must be mapped to either `email` or `userId` when creating a new user or using the cookie for the first time. Otherwise, Woopra accepts the data but will reflect it **only when** that cookie is mapped to any of these identifiers. For example, Woopra accepts the following event but does not reflect the data in the dashboard:
+Any user-provided cookie must be mapped to either `email` or `userId` when creating a new user or using the cookie for the first time. Otherwise, Woopra accepts the data but reflects it **only when** that cookie is mapped to any of these identifiers. For example, Woopra accepts the following event but does not reflect the data in the dashboard:
 
 ```javascript
 rudderanalytics.identify({
@@ -120,7 +120,7 @@ rudderanalytics.identify({
 });
 ```
 
-When you include a user identifier (`email`) in the subsequent events as shown below, Woopra reflects all the user information present in the current and previous event.
+When you include a user identifier (`email`) in the subsequent events as shown below, Woopra reflects all the user information present in the current and previous events.
 
 ```javascript
 rudderanalytics.identify({
@@ -189,7 +189,7 @@ The following table lists the supported property mappings between RudderStack an
 | `context.ip` | `cv_ip` | IP address | Optional |
 | `traits.company` | `cv_company` | String | Optional |
 | `traits.name` / `context.traits.name` | `cv_name` | String | Optional |
-| `traits.{x}` / `context.traits.{x}` | - | Optional, sent to Woopra as custom fields. |
+| `traits.{x}` / `context.traits.{x}` | - | Custom fields | Optional |
 | `context.device.type` | `device` | String | Optional |
 | `context.app.name` | `app` | String | Optional |
 | `ua.browser.name` + `ua.browser.version` | `browser` | String | Optional |
