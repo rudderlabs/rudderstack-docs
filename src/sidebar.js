@@ -742,6 +742,11 @@ export const jsonData = [
                 ]
             },
             {
+                title: "Quora Pixel",
+                link: "/destinations/streaming-destinations/quora-pixel/",
+                content: []
+            },
+            {
                 title: "Reddit Pixel",
                 link: "/destinations/streaming-destinations/reddit-pixel/",
                 content: []
@@ -915,7 +920,8 @@ export const jsonData = [
                 title: "Quantum Metric",
                 link: "/destinations/streaming-destinations/quantummetric/",
                 content: []
-            },  {
+            },
+            {
                 title: "Shynet",
                 link: "/destinations/streaming-destinations/shynet/",
                 content: []
