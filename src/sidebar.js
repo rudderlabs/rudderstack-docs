@@ -1054,7 +1054,17 @@ export const jsonData = [
                     {
                         title: "Cloud Mode",
                         link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/",
-                        content: []
+                        content: [
+                            {
+                                title: "Legacy API",
+                                link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-legacy-api-cloud/",
+                                content: []
+                            },{
+                                title: "New API",
+                                link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-new-api-cloud",
+                                content: []
+                            },
+                        ]
                     },
                     {
                         title: "Device Mode",
