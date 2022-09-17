@@ -47,11 +47,12 @@ RudderStack then takes the event name `Product Viewed` and maps it to Quora's `S
 A sample `Product Viewed` event is shown below:
 
 ```javascript
-rudderanalytics.track("Product Viewed", {
-  numberOfRatings: "12",
-  name: "item 1",
-});
+rudderanalytics.track("Product Viewed");
 ```
+
+<div class="warningBlock">
+You can only pass the event name to Quora Pixel. It does not accept any event properties.
+</div>
 
 RudderStack sends any event for which the mapping is not specified in the dashboard as a `Generic` event.
 
