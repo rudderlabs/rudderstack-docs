@@ -1,19 +1,18 @@
 ---
 title: "HubSpot Device Mode (Legacy API)"
-description: >-
-  Detailed technical documentation on sending events to HubSpot's legacy API using the RudderStack web device mode.
+description: >- 
+Detailed technical documentation on sending events to HubSpot via device mode using the legacy API.
 ---
 
-RudderStack lets you send the event data to HubSpot via web <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the [legacy API](https://legacydocs.hubspot.com/docs/overview?_ga=2.34803302.670362313.1663315856-97001172.1658910392).
+RudderStack supports the following API calls while sending data to Hubspot via web <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the [legacy API](https://legacydocs.hubspot.com/docs/overview?_ga=2.34803302.670362313.1663315856-97001172.1658910392).
 
 <div class="infoBlock">
-Find the open source code in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/HubSpot">GitHub repository</a>.
+Find the open source code for HubSpot's web device mode in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/HubSpot">GitHub repository</a>.
 </div>
-
 
 ## Identify
 
-RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a contact in HubSpot. The user's email ID **must be present** in the `identify` call's `traits`.
+RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a contact in HubSpot. The contact's email ID **must be present** in the `identify` call's `traits`.
 
 You must call either <code class="inline-code">page</code> or <code class="inline-code">track</code> after the <code class="inline-code">identify</code> call to create a contact. The previously made <code class="inline-code">page</code> and <code class="inline-code">track</code> calls will automatically be associated with that contact once they are identified.
 
@@ -66,11 +65,7 @@ HubSpot discards any property that does not exist and returns a <strong>400 Bad 
 
 ### Dates
 
-For sending properties of type `date`, send them as the epoch time or as a `date` object. RudderStack will convert it to the required HubSpot format (midnight UTC).
-
-## Page
-
-You must make an initial <code class="inline-code">page</code> call to send event data to HubSpot. It lets you record your website's page views with any additional relevant information about the viewed page. 
+For sending properties of `date` type, you can send them as the epoch time or as a `date` object. RudderStack converts them to the required HubSpot format (midnight UTC).
 
 ## Track
 

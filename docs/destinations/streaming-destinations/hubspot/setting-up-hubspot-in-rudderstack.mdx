@@ -29,12 +29,7 @@ To successfully configure HubSpot as a destination using the [legacy API](https:
 
 <img src="../../../assets/event-stream-destinations/hubspot-connection-settings.png" alt="HubSpot connection settings"/>
 
-- **Hub ID**: Enter your HubSpot Hub ID. For more information, refer to the [Hub ID](https://knowledge.hubspot.com/account/manage-multiple-hubspot-accounts#identify-the-current-account-s-hub-id) documentation.
-
-<div class="warningBlock">
-If you are using the HubSpot destination with a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source, this field is not required and can be set up as N/A.
-</div>
-
+- **Hub ID**: Enter your HubSpot Hub ID. For more information on obtaining it, refer to the [HubSpot documentation](https://knowledge.hubspot.com/account/manage-multiple-hubspot-accounts#identify-the-current-account-s-hub-id).
 - **API Version**: Select **Legacy API (v1)** from the dropdown. To work with the new HubSpot API, refer to the <Link to="#new-api">New API</Link> section.
 - **Authorization Type**: Choose **Private Apps** or **API Key** authorization types as explained below:
 1. **Private Apps** lets you use HubSpot's APIs to access specific data from your HubSpot account.
@@ -51,7 +46,7 @@ This authorization type will be deprecated soon. Refer to the <Link to="https://
 
  <img src="../../../assets/event-stream-destinations/hubspot-connection-settings-auth-type-2.png" alt="HubSpot connection settings"/>
 
--  **API Key**: Enter your HubSpot API key. For more information, refer to the [ API Key](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key) documentation.
+-  **API Key**: Enter your HubSpot API key. For more information on obtaining it, refer to the [HubSpot documentation](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key).
 
 <div class="warningBlock">
 <strong>API key</strong> is a required field to send data to HubSpot via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
@@ -69,12 +64,17 @@ To successfully configure HubSpot as a destination using the [new API](https://d
 
 <br/>
 
-Other additional settings for the **new API** configuration are as follows:
+Additional settings to configure HubSpot using the **new API** are as follows:
 
 <img src="../../../assets/event-stream-destinations/hubspotv2-connection-settings-3.png" alt="HubSpot connection settings" />
 
-- **HubSpot property name to be used as lookup field**: Enter a unique property to be used as a lookup field for <Link to="https://developers.hubspot.com/docs/api/crm/contacts">HubSpot contacts</Link>. The lookup field entered here **must also** be passed in the `identify` call as it's value will be used to look up the contact. Refer to the <Link to="/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-new-api-cloud#identify">`identify` call</Link> for more information.
-- **Create associations between object records**: Enable this setting to create associations between the object records while using a Reverse ETL source. Refer to <Link to="/destinations/streaming-destinations/hubspot/connect-reverse-etl-source/#creating-association-between-object-records">Creating associations between object records</Link> for more information.
+- **HubSpot property name to be used as lookup field**: Enter a unique property to be used as a lookup field for <Link to="https://developers.hubspot.com/docs/api/crm/contacts">HubSpot contacts</Link>. The lookup field entered here **must also** be passed in the `identify` call's `traits` as it's value will be used to look up the contact. Refer to the <Link to="/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-new-api-cloud#identify">`identify` call</Link> for more information.
+
+<div class="warningBlock">
+If you are connecting the HubSpot destination to a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source, you can skip setting this field and pass N/A as the value.
+</div>
+
+- **Create associations between object records**: Enable this setting to create associations between the object records while using a Reverse ETL source. Refer to the <Link to="/destinations/streaming-destinations/hubspot/connect-reverse-etl-source/#creating-association-between-object-records">Creating associations between object records</Link> section for more information.
 
 The below settings are only applicable for the **Private Apps** authorization type:
 - **RudderStack Event Name**: Enter the RudderStack event name you want to map to the <Link to="https://developers.hubspot.com/docs/api/analytics/events#create-an-event">custom behavioral event</Link> created in HubSpot.

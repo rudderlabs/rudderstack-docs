@@ -1,15 +1,13 @@
 ---
 title: "HubSpot Cloud Mode (Legacy API)"
-description: Step-by-step guide on sending your event data from RudderStack to HubSpot in cloud mode using the legacy API.
+description: Detailed technical documentation on sending events to HubSpot via cloud mode using the legacy API.
 ---
 
-RudderStack supports making the following API calls while sending data to Hubspot's [legacy](https://legacydocs.hubspot.com/docs/overview?_ga=2.34803302.670362313.1663315856-97001172.1658910392) API in <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+RudderStack supports the following API calls while sending data to Hubspot via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> using the [legacy API](https://legacydocs.hubspot.com/docs/overview?_ga=2.34803302.670362313.1663315856-97001172.1658910392).
 
 ## Identify
 
-RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a contact in HubSpot. The user's email ID must be present in the `identify` call's `traits`.
-
-In the cloud mode, the <code class="inline-code">identify</code> call will create or update a contact in HubSpot. You are not required to call <code class="inline-code">page</code> or <code class="inline-code">track</code> later in order to create the contact.
+RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a contact in HubSpot. The contact's email ID must be present in the `identify` call's `traits`.
 
 A sample `identify` call is as shown:
 
@@ -44,7 +42,7 @@ HubSpot supports the following traits as special fields:
 
 RudderStack supports sending custom properties to HubSpot via the `identify` call. These properties will update the `contact` property you have **already created** in HubSpot, as shown:
 
-<img src="../../../assets/event-stream-destinations/hubspot-create-property.png" alt="HubSpot create property" />
+<img src="../../../../assets/event-stream-destinations/hubspot-create-property.png" alt="HubSpot create property" />
 
 <div class="infoBlock">
 Refer to the <a href="https://knowledge.hubspot.com/crm-setup/manage-your-properties">HubSpot Knowledge Base</a> for more information on creating custom properties.
@@ -60,7 +58,7 @@ HubSpot discards any property that does not exist and returns a <strong>400 Bad 
 
 ### Dates
 
-For sending properties of type `date`, send them as the epoch time or as a `date` object. RudderStack will convert it to the required HubSpot format (midnight UTC).
+For sending properties of `date` type, you can send them as the epoch time or as a `date` object. RudderStack converts them to the required HubSpot format (midnight UTC).
 
 ## Track
 
@@ -98,9 +96,7 @@ For the revenue events, a `value` or `revenue` key should be included in the eve
 
 The <Link to="/event-spec/standard-events/screen/">`screen`</Link> call lets you record whenever your user views their mobile screen, with any additional information about the viewed screen.
 
-If you have enabled screen views in your <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link> or <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link> app implementation, RudderStack will send this information to HubSpot.
-
-RudderStack also forwards the `properties` you've passed along with the `screen` call without any changes.
+If you have enabled screen views in your <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link> or <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link> app implementation, RudderStack will send this information to HubSpot. RudderStack also forwards the `properties` you've passed along with the `screen` call without any changes.
 
 A sample `screen` call sent via the iOS SDK is shown below:
 
