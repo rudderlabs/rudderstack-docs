@@ -1,0 +1,66 @@
+---
+title: "Connecting Reverse ETL source"
+description: Detailed technical documentation on the configurations required while connecting a reverse ETL source to send data to HubSpot.
+---
+
+RudderStack supports the following API calls while sending data to Hubspot's [new](https://developers.hubspot.com/docs/api/overview) API in <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+
+
+## Predefined identifiers
+
+While connecting a Reverse ETL source with HubSpot destination using the Visual Data Mapper feature, you need to select a HubSpot object where you want to sync the data, as shown:
+
+In the Choose Identifier section, you can choose a warehouse column and HubSpot field to map your records. If you have selected a standard HubSpot object, the below Predefined unique identifiers are shown along wuth any unique property of the object:
+
+| Object | Predefined unique fields   |
+| :------------------ | :------------ | 
+| companies     | domain     | 
+| contacts      | email      |
+| deals     | dealname     | 
+| line_items      | name      |
+| quotes     | hs_quote_number     | 
+
+If you have selected a custom HubSpot object, only the unique fields are shown which can be selected as unique identifier.
+
+## Syncing Hubspot Associations
+
+This section is only applicable for sending events to HubSpot via new API. If you have enabled the **create associations between object record** settings in the dashboard
+
+Below steps highlight the configuration required for syncing associations
+
+
+## Connecting Reverse ETL sources
+
+If you're connecting a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source to HubSpot that uses a <a href="https://developers.hubspot.com/docs/api/intro-to-auth#private-app-access-tokens">private app access token</a> for authentication, make sure your access token has the following scopes:
+
+```
+crm.lists.read
+crm.objects.contacts.read
+crm.objects.contacts.write
+crm.schemas.custom.read
+crm.objects.custom.read
+crm.objects.custom.write
+crm.schemas.custom.write
+crm.objects.companies.write
+crm.schemas.contacts.read
+crm.lists.write
+crm.objects.companies.read
+crm.objects.deals.read
+crm.objects.deals.write
+crm.schemas.companies.read
+crm.schemas.companies.write
+crm.schemas.contacts.write
+crm.schemas.deals.read
+crm.schemas.deals.write
+crm.objects.owners.read
+crm.objects.quotes.write
+crm.objects.quotes.read
+crm.schemas.quotes.read
+crm.objects.line_items.read
+crm.objects.line_items.write
+crm.schemas.line_items.read
+```
+
+<div class="infoBlock">
+For more information on adding the above scopes, refer to the <a href="https://developers.hubspot.com/docs/api/migrate-an-api-key-integration-to-a-private-app#create-a-new-private-app">HubSpot documentation</a>.
+</div>

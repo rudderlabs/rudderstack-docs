@@ -1,13 +1,9 @@
 ---
 title: "HubSpot Cloud Mode (New API)"
-description: Step-by-step guide on sending your event data from RudderStack to HubSpot using the new HubSpot API.
+description: Step-by-step guide on sending your event data from RudderStack to HubSpot in cloud mode using the new API.
 ---
 
-RudderStack lets you send your event data to HubSpot via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
-
-<div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/hs">GitHub repository</a>.
-</div>
+RudderStack supports the following API calls while sending data to Hubspot's [new](https://developers.hubspot.com/docs/api/overview) API in <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
 
 ## Identify
 
@@ -27,6 +23,21 @@ rudderanalytics.identify({
   custom_date1: new Date("2019-10-14T11:15:53.296Z"),
 })
 ```
+
+The lookup field passed in the dashboard must be passed in the `identify` call's `traits` as well. For example, if you have passed `sampleField` in the **HubSpot property name to be used as lookup field** dashboard setting, you need to pass its value in the `identify` call as shown below:
+
+```javascript
+rudderanalytics.identify({
+  firstName: "Alex",
+  sampleField: "phone",
+  phone: "+1-202-555-0146"
+})
+```
+Using this feature, you can change the lookup field anytime through the `identify` call without editing your dashboard settings.
+
+<div class="infoBlock">
+If you pass a lookup field in the dashboard but not under the <code class="inline-code">identify</code> traits, RudderStack  will take <code class="inline-code">email</code> as the default lookup field.
+</div>
 
 ## Track
 
@@ -96,40 +107,4 @@ The following table lists the **optional** and default property mappings between
 | `context.device.name`            | `hs_device_name`            |          
 | `properties.elementClass`/`properties.hsElementClass`               | `hs_element_class`               |             
 | `properties.elementId`/`properties.hsElementId`              | `hs_element_id`              |    
-
-## Connecting Reverse ETL sources
-
-If you're connecting a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source to your HubSpot destination that uses a <a href="https://developers.hubspot.com/docs/api/intro-to-auth#private-app-access-tokens">private app access token</a> for authentication, make sure your access token has the following scopes:
-
-```
-crm.lists.read
-crm.objects.contacts.read
-crm.objects.contacts.write
-crm.schemas.custom.read
-crm.objects.custom.read
-crm.objects.custom.write
-crm.schemas.custom.write
-crm.objects.companies.write
-crm.schemas.contacts.read
-crm.lists.write
-crm.objects.companies.read
-crm.objects.deals.read
-crm.objects.deals.write
-crm.schemas.companies.read
-crm.schemas.companies.write
-crm.schemas.contacts.write
-crm.schemas.deals.read
-crm.schemas.deals.write
-crm.objects.owners.read
-crm.objects.quotes.write
-crm.objects.quotes.read
-crm.schemas.quotes.read
-crm.objects.line_items.read
-crm.objects.line_items.write
-crm.schemas.line_items.read
-```
-
-<div class="infoBlock">
-For more information on adding the above scopes, refer to the <a href="https://developers.hubspot.com/docs/api/migrate-an-api-key-integration-to-a-private-app#create-a-new-private-app">HubSpot documentation</a>.
-</div>
 
