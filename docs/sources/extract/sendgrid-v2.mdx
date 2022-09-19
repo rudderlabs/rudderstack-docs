@@ -48,7 +48,9 @@ For more information on the schedule types, refer to the <Link to="/sources/extr
 
 ### Selecting the data to import
 
-Choose the SendGrid data that you wish to ingest via RudderStack. You can either select all the data or choose specific SendGrid data attributes as per your requirement.
+Choose the SendGrid data to ingest via RudderStack. Refer to the <Link to="#supported-resources">Supported resources</Link> section below for more information. 
+
+You can either select all the data or choose specific SendGrid data attributes as per your requirement.
 
 <img src="../../assets/cloud-extract-sources/sendgridv2-connection-settings-3.png" alt="Selecting the data to import" />
 
@@ -61,6 +63,43 @@ You can further connect this source to your data warehouse by clicking on **Add 
 <div class="successBlock">
 Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
 </div>
+
+## Supported resources
+
+RudderStack supports syncing the following resources from SendGrid to your warehouse destination:
+
+| Resource | Full Refresh sync support | Incremental sync support | SendGrid API endpoint |
+| :---| :---- | :---- | :---- |
+| `blocks` |  Yes | Yes | `/suppression/blocks` |
+| `bounces` | Yes | Yes |  `/suppression/bounces` |
+| `campaigns` | Yes | No |  `/marketing/campaigns`|
+| `contacts` | Yes | No |  `/marketing/contacts` |
+| `global_suppressions` | Yes | Yes |  `/suppression/unsubscribes`|
+| `invalid_emails` | Yes | Yes | `/suppression/invalid_emails` |
+| `lists` | Yes | No |  `/marketing/lists`|
+| `messages` | Yes | Yes |  `/messages`|
+| `segments` | Yes | No |  `/marketing/segments` |
+| `single_sends` | Yes | No |  `/marketing/stats/singlesends`|
+| `spam_reports` | Yes | Yes |  `/suppression/spam_reports` |
+| `stats_automations` | Yes | No |  `/marketing/stats/automations` |
+| `suppression_group_members` | Yes | No |  `/asm/suppressions`|
+| `suppression_groups` | Yes | No |   `/asm/groups`|
+| `templates` |  Yes | No |  `/templates`|
+
+<div class="infoBlock">
+For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
+</div>
+
+Note the following restrictions for the `campaigns`, `messages`, and `single_sends` resources:
+
+- `campaigns`: SendGrid currently supports two kinds of marketing campaigns - **legacy** and **new** marketing campaigns. However, RudderStack only supports the new marketing campaigns. 
+
+<div class="warningBlock">
+If your SendGrid account uses legacy marketing campaigns, you might get a <strong>403 Forbidden</strong> error while ingesting data from this resource.
+</div>
+
+- `messages`: To ingest data from this resource, you must have purchased access to the Email Activity Feed API. For more information, refer to the <a href="https://docs.sendgrid.com/api-reference/e-mail-activity/filter-all-messages">SendGrid API documentation</a>. 
+- `single_sends`: RudderStack uses the `stats` API instead of `marketing` to ingest the data from this resource.
 
 ## FAQ
 

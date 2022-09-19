@@ -78,6 +78,31 @@ To trigger a sync manually, go to the **Syncs** tab in your Cloud Extract source
 
 <img src="../../assets/cloud-extract-sources/sync-schedule-manual.png" alt="Manual sync schedule" />
 
+## Sync modes
+
+A sync mode determines how RudderStack reads the data from a source and writes to a warehouse destination.
+
+Currently, RudderStack supports the following two sync modes:
+
+- Full Refresh
+- Incremental
+
+### Full Refresh
+
+In this mode, RudderStack retrieves **all** the available information from the source, **regardless** of whether it has been synced previously.
+
+<div class="infoBlock">
+In this mode, RudderStack replaces all the existing data with the new data.
+</div>
+
+### Incremental
+
+In this mode, RudderStack syncs or replicates only the **new** or **modified** data. RudderStack does not replicate the data that has been already synced before.
+
+<div class="infoBlock">
+During incremental syncs, RudderStack only updates the the existing rows that have been modified as opposed to adding a new version of the row with the updated data.
+</div>
+
 ## FAQ
 
 ### Can I change my sync schedule type?
@@ -95,5 +120,3 @@ Yes, you can.
 RudderStack considers strict time windows to schedule syncs if you do not explicitly set the time under **Sync Starting At**.
 
 Suppose you create a source at 12:30 hrs UTC, specify the **Frequency** as 3 hours, and do not specify any time under **Sync Starting At**. In this case, as the time falls in the 12:00-13:00 time window, RudderStack will run the next sync at 15:00 hrs UTC (12:00 + 03:00 = 15:00 hrs).
-
-
