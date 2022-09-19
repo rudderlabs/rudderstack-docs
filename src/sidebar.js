@@ -1071,6 +1071,11 @@ export const jsonData = [
                         link: "/destinations/streaming-destinations/hubspot/hubspot-device-mode/",
                         content: []
                     },
+                    {
+                        title: "Connecting Reverse ETL Source",
+                        link: "/destinations/streaming-destinations/hubspot/connect-reverse-etl-source/",
+                        content: []
+                    },
                 ]
             },
             {
