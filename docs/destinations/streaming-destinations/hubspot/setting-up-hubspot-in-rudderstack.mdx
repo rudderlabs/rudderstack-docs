@@ -74,7 +74,7 @@ Other additional settings for the **New API** are as follows:
 <img src="../../../assets/event-stream-destinations/hubspotv2-connection-settings-3.png" alt="HubSpot connection settings" />
 
 - **HubSpot property name to be used as lookup field**: Enter a unique property to be used as a lookup field for <Link to="https://developers.hubspot.com/docs/api/crm/contacts">HubSpot contacts</Link>. The lookup field provided here must be passed in the `identify` call as it's value will be used for looking up a contact. Refer <Link to="/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-new-api-cloud#identify">`identify` call</Link> for more information.
-- **Create associations between object records**: 
+- **Create associations between object records**: Enable this setting to create associations between the records. Refer to <Link to="/destinations/streaming-destinations/hubspot/connect-reverse-etl-source/#creating-association-between-object-records">Creating associations between object records</Link> for more information.
 
 The below settings are only applicable for the **Private Apps** authorization type:
 - **RudderStack Event Name**: Enter the RudderStack event name you want to map to the <Link to="https://developers.hubspot.com/docs/api/analytics/events#create-an-event">custom behavioral event</Link> created in HubSpot.
