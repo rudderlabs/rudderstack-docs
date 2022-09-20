@@ -33,7 +33,12 @@ Once you have confirmed that the source platform supports sending events to Ampl
 
 To successfully configure Amplitude as a destination, you will need to configure the following settings:
 
-- **API Key**: You can find the Amplitude API key in the [Amplitude dashboard](https://analytics.amplitude.com/apitestorg/settings/profile?redirect=1).
+- **API Key**: You can find the Amplitude API key in your [Amplitude dashboard](https://analytics.amplitude.com/login/).
+
+<div class="infoBlock">
+To get the API key, you need to create an organization and a project in Amplitude. For more information, refer to this <a href="https://help.amplitude.com/hc/en-us/articles/207108137-Quick-start-guide-Create-your-organization-and-first-project">Amplitude support page</a>. 
+</div>
+
 - **API Secret Key required for deletion of users**: Enter your API Secret Key required for user deletion.
 - **Residency Server**: Based on the Amplitude data center you have configured, select the residency server from the below options:
   - **Standard Server**
@@ -640,10 +645,6 @@ rudderClient.reset();
 </Tabs>
 
 ## FAQ
-
-### How do I get the Amplitude API Key?
-
-You can find the Amplitude API key in the [Amplitude Settings Page](https://analytics.amplitude.com/apitestorg/settings/profile?redirect=1).
 
 ### Why are all my session IDs `-1` in Amplitude?
 
