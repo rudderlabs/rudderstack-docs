@@ -34,18 +34,18 @@ RudderStack also lets you start and end user sessions manually. Refer to the <Li
 
 ### JavaScript SDK
 
-In case of the JavaScript SDK, RudderStack considers the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/">SDK initialization</Link> to be the start of the session, as shown:
+In case of the JavaScript SDK, RudderStack considers the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/">SDK initialization</Link> to be the start of the session.
+
+To disable automatic session tracking, you can set the load option `autoTrack` to `false`, as shown:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
   sessions: {
-    autoTrack: true,  // Set to false to disable automatic session tracking
+    autoTrack: false,  // Set to false to disable automatic session tracking
   },
   ...<otherLoadOptions>
 });
 ```
-
-To disable automatic session tracking, you can set the load option `autoTrack` to `false`.
 
 By default, a session is active until **30 minutes of inactivity** have elapsed since the last received event. However, you can adjust this limit using the `timeout` load option, as shown:
 
