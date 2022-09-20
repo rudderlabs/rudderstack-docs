@@ -27,8 +27,6 @@ Yes, you can use the `transformBatch` function to apply a transformation to a ba
 For more information, refer to the <Link to="/features/transformations/using-transformations#applying-transformation-on-a-batch-of-events">Applying transformation on a batch of events</Link> section.
 </div>
 
-
-
 ### What is a referenced transformation?
 
 If a library `L` is <Link to="/features/transformations/using-libraries">imported by the transformations</Link> `T1`, `T2`, and `T3`, then `T1`, `T2`, and `T3`are called the referenced transformations to `L`.
@@ -61,14 +59,14 @@ Once the revisions meet the test criteria, you can restore and publish them for 
 
 You can choose any based on your requirements:
 
-- **<Link to="/sources/event-streams/sdks/event-filtering/">Event filtering</Link>**: When you need to specify which events should be discarded or allowed to flow through to the destination.
-- **Transformations**: When you need to mask the data, enrich events, implement specific actions on events or remove sensitive PII information from the events.
+- **<Link to="/sources/event-streams/sdks/event-filtering/">Event filtering</Link>**: When you just want to filter out the events based on the event names. The event filtering takes place within the SDK and is **only applicable** for the `track` events.
+- **Transformations**: Transformations is a generic feature which can be used to manipulate the events, mask data, enrich events, implement specific actions on events. It involves a call to an external RudderStack service.
 
 In case you plan to use both the above-mentioned features, your events will be filtered (based on the <Link to="/sources/event-streams/sdks/event-filtering/">event filtering</Link> settings in the RudderStack dashboard) and transformed (based on the applied transformation) before being sent to the destination.
 
 ### Is there any added performance cost to using the transformations in device mode?
  
-Yes, RudderStack makes a network call for each event when the transformations are used in the device mode.
+Yes, RudderStack makes a network call for each event (in case of JavaScript SDK) or a batch of events (in case of mobile SDKs) when the transformations are used in the device mode.
     
 ### Can I switch back to the previous version of an SDK while using a transformation in device mode?
 
