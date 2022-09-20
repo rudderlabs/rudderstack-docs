@@ -8,9 +8,9 @@ description: >-
 This guide is applicable for the Reverse ETL sources configured using the <strong>Table</strong> option. If you have configured your Reverse ETL source using the <strong>Model</strong> option, refer to the <Link to="/sources/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</Link> guide.
 </div>
 
-RudderStack gives you two options to map your columns to specific destination fields while importing the data:
+RudderStack gives you two options to map your warehouse columns to specific destination fields while importing the data:
 
-- Map with <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visualizer</Link> (Currently supported only for selective destinations)
+- Map with Visualizer (Refer to the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> guide for the list of the supported destinations.)
 - Map with JSON
 
 This guide lists the JSON mapping settings required to import and sync data from your warehouse table to the specified destination.
@@ -29,7 +29,7 @@ The settings to import and sync data from your warehouse table are as shown:
 RudderStack supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <Link to="/sources/reverse-etl/common-settings/sync-modes/">Sync Modes</Link> guide.
 </div>
 
-- **Primary Key**: Select the column to uniquely identify your records in the warehouse.
+- **Primary Key**: Select a column from the table specified above to uniquely identify your records in the warehouse.
 
 <div class="infoBlock">
 RudderStack uses this column for diffing in the case of incremental syncs.
