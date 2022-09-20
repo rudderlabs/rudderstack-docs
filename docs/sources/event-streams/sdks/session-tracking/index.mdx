@@ -24,6 +24,15 @@ The following RudderStack SDKs support the session tracking feature:
 </ul>
 </div>
 
+If the session tracking feature is enabled, you can expect the following properties in your event's `context` object:
+
+- `sessionId` (Number): The unique session ID.
+- `sessionStart` (Boolean): Present in the first event, indicating the start of the session.
+
+<div class="warningBlock">
+The session tracking feature overrides any <code class="inline-code">sessionId</code> set in the event's <code class="inline-code">context</code> object. Hence, it is strongly recommended to send any session-related information in the event's traits or properties.
+</div>
+
 ## Automatic session tracking
 
 **By default, the above-mentioned RudderStack SDKs automatically track the user sessions**. This means that RudderStack automatically determines the start and end of a session depending on the inactivity time configured in the SDK.
@@ -34,7 +43,7 @@ RudderStack also lets you start and end user sessions manually. Refer to the <Li
 
 ### JavaScript SDK
 
-In case of the JavaScript SDK, RudderStack considers the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/">SDK initialization</Link> to be the start of the session.
+In case of the JavaScript SDK, RudderStack considers the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/">SDK initialization</Link> as the start of a user session.
 
 To disable automatic session tracking, you can set the load option `autoTrack` to `false`, as shown:
 
@@ -62,7 +71,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 Every time a new event is generated (`track`, `page`, `identify`, etc.), the SDK resets the session expiration time by adding the configured `timeout` (default **30 minutes**) to the last received event's <Link to="/event-spec/standard-events/common-fields/#clock-skew-considerations">`timestamp`</Link>.
 
 <div class="infoBlock">
-For more information on how session tracking works in the JavaScript SDK, refer to the <Link to="#session-tracking-flows">Session tracking flows</Link> section below.
+For more information on how session tracking works in the JavaScript SDK, refer to the <Link to="#session-tracking-flow">Session tracking flow</Link> section below.
 </div>
 
 ### Mobile SDKs
@@ -164,7 +173,7 @@ By default, a session is active until **5 minutes of inactivity** have elapsed. 
 If the duration between the last received event and the next `Application Opened` event is more than `sessionTimeoutMillis`, RudderStack starts a new session. Otherwise, it continues the previous session.
 
 <div class="infoBlock">
-For more information on how session tracking works in the mobile SDKs, refer to the <Link to="#session-tracking-flows">Session tracking flows</Link> section below.
+For more information on how session tracking works in the mobile SDKs, refer to the <Link to="#session-tracking-flow">Session tracking flow</Link> section below.
 </div>
 
 ## Manual session tracking
@@ -185,7 +194,7 @@ RudderStack also supports manual session tracking using the following methods th
 Note that manual session tracking overrides automatic session tracking. If <Link to="#automatic-session-tracking">automatic session tracking</Link> is enabled and you call the <code class="inline-code">startSession()</code> API, then RudderStack will disable automatic session tracking <strong>until the app is closed completely</strong>. For more information, refer to the <Link to="/sources/event-streams/sdks/session-tracking/faq/#manual-session-tracking-persistence">FAQ</Link> section.
 </div>
 
-## Session tracking flows
+## Session tracking flow
 
 The following sections describe how the session tracking works in the RudderStack SDKs.
 
