@@ -80,16 +80,7 @@ To trigger a sync manually, go to the **Syncs** tab in your Cloud Extract source
 
 ## Sync modes
 
-A sync mode determines how RudderStack reads the data from a source and writes to a warehouse destination.
-
-Currently, RudderStack supports the following two sync modes:
-
-- Full Refresh
-- Incremental
-
-<div class="infoBlock">
-In case a resource supports both the sync modes, RudderStack currently uses the <strong>Incremental</strong> mode for syncing the data.
-</div>
+A sync mode determines how RudderStack reads the data from a source and writes to a warehouse destination. RudderStack supports the following sync modes:
 
 ### Full Refresh
 
@@ -105,6 +96,10 @@ In this mode, RudderStack syncs or replicates only the **new** or **modified** d
 
 <div class="infoBlock">
 During the incremental syncs, RudderStack only updates the the existing rows that have been modified as opposed to adding a new version of the row with the updated data.
+</div>
+
+<div class="infoBlock">
+In case a resource supports both the sync modes, RudderStack uses the <strong>Incremental</strong> mode for syncing the data.
 </div>
 
 ## FAQ
