@@ -27,8 +27,6 @@ Yes, you can use the `transformBatch` function to apply a transformation to a ba
 For more information, refer to the <Link to="/features/transformations/using-transformations#applying-transformation-on-a-batch-of-events">Applying transformation on a batch of events</Link> section.
 </div>
 
-
-
 ### What is a referenced transformation?
 
 If a library `L` is <Link to="/features/transformations/using-libraries">imported by the transformations</Link> `T1`, `T2`, and `T3`, then `T1`, `T2`, and `T3`are called the referenced transformations to `L`.
@@ -68,7 +66,7 @@ In case you plan to use both the above-mentioned features, your events will be f
 
 ### Is there any added performance cost to using the transformations in device mode?
  
-Yes, RudderStack sends a network call for each event when the transformations are used in the device mode. It leads to extra overhead and latency.
+Yes, RudderStack makes a network call for each event (in case of JavaScript SDK) or a batch of events (in case of mobile SDKs) when the transformations are used in the device mode.
     
 ### Can I switch back to the previous version of an SDK while using a transformation in device mode?
 
