@@ -546,7 +546,7 @@ You can configure your client based on the following parameters using `RudderCon
 | `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server. .                                                                                                                                                                                                       | `10 seconds`                                                               |
 | `configRefreshInterval` | `int`     | Fetches the config from dashboard after the specified time.                                                                                                                                                                                     | `2 hours`                                                                        |
 | `trackLifecycleEvents`  | `boolean` | Specify whether the SDK will capture application life cycle events automatically.       | `true`                                                                     |
-| `autoSessionTracking` | `boolean` | Determines if the SDK automatically tracks the user sessions. | `true` |
+| `autoSessionTracking` | `boolean` | Determines if the SDK automatically tracks the user sessions. Refer to <Link to="#tracking-user-sessions">Tracking user sessions</Link> for more information. | `true` |
 | `sessionTimeout` | `int` | Maximum inactivity period before the session expires. | `300000 ms` (5 minutes) |
 | `recordScreenViews`     | `boolean` | Specify whether the SDK will capture screen view events automatically.                                                                                                                                                                                         | `false`                                                                    |
 | `enableBackgroundMode`  | `boolean` | Specify whether the SDK should send the events for some time when the app is moved to the background. Currently it is available only for `iOS` & `tvOS`. | `false`                                                                    |
@@ -796,6 +796,45 @@ RSOption *identifyOptions = [[RSOption alloc] init];
 ## Tracking user sessions
 
 By default, the iOS SDK automatically tracks the user sessions. This means that RudderStack automatically determines the start and end of a user session depending on the inactivity time configured in the SDK (default time is 5 minutes).
+
+<div class="warningBlock">
+To automatically track sessions in the iOS SDK, <code class="inline-code">withTrackLifecycleEvents</code> should also be set to true. This is because RudderStack considers the <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-opened">Application Opened</Link>, <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-installed">Application Installed</Link>, or <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-updated">Application Updated</Link> events as the start of a new session.
+</div>
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
+[builder withDataPlaneUrl:DATA_PLANE_URL];
+[builder withAutoSessionTracking:YES];  // Set to No to disable automatic session tracking
+[builder withSessionTimeoutMillis:(5*60*1000)];
+[RSClient getInstance:WRITE_KEY config:[builder build]];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let builder: RSConfigBuilder = RSConfigBuilder()
+            .withDataPlaneUrl(DATA_PLANE_URL)
+            .withAutoSessionTracking(true)  // Set to false to disable automatic session tracking
+            .withSessionTimeoutMillis(5*60*1000)
+RSClient.getInstance(WRITE_KEY, config: builder.build())
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+To disable automatic session tracking, set `withAutoSessionTracking` to `false`.
 
 <div class="infoBlock">
 For more information on the user sessions and how to track them using the iOS SDK, refer to the <Link to="/sources/event-streams/sdks/session-tracking/">Session Tracking</Link> guide.

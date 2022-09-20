@@ -7,7 +7,11 @@ description: Answers to the generally asked questions related to RudderStack's s
 
 ### How does RudderStack determine the `sessionId`?
 
-RudderStack passes the event's `timestamp` (in milliseconds) as the `sessionId`. It **does not** attach any user information to this `sessionId` so that they cannot be traced back or identified only with the `sessionId`.
+RudderStack passes the event's `timestamp` (in milliseconds) as the `sessionId`. 
+
+### Does RudderStack attach any user information to the `sessionId`?
+
+RudderStack **does not** attach any user information to the `sessionId`. This is so that a user cannot be traced back or identified only with the `sessionId`.
 
 ### What happens if automatic session tracking is enabled but I call the `startSession()` API?
 
@@ -37,22 +41,6 @@ If you manually trigger a session using the `startSession()` API, RudderStack wi
 RudderStack will end the active session and generate a new session.
 
 ## JavaScript SDK
-
-### What is the `timeout` option in automatic session tracking?
-
-In case of the JavaScript SDK, a session is active until **30 minutes of inactivity** have elapsed since the last received event. However, you can adjust this limit using the `timeout` load option, as shown:
-
-```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-  sessions: {
-    autoTrack: true,
-    timeout: 10 * 60 * 1000,  // 10 min in milliseconds
-  },
-  ...<otherLoadOptions>
-});
-```
-
-Every time the user interacts with the website, the SDK triggers a new event (`track`, `page`, `identify`, etc.), and resets the session expiration time by adding `timeout` to the last received event's `timestamp`.
 
 ### What happens if I set `timeout` to 0 or less than 10 ms?
 

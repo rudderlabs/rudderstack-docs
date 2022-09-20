@@ -593,7 +593,7 @@ You can configure your client based on the following parameters using `RudderCon
 | `sleepcount`          | Integer     | Minimum waiting time to flush the events to the RudderStack server. The minimum value can be set to `1 second`.      | `10 seconds`                                             |
 | `configRefreshInterval` | Integer     | The SDK will fetch the config from `dashboard` after the specified time          | `2 hours`       |
 | `trackLifecycleEvents`  | Boolean | Determines if the SDK will automatically capture the application lifecycle events.                     | `true`                                                   |
-| `autoSessionTracking` | Boolean | Determines if the SDK automatically tracks the user sessions. | `true` |
+| `autoSessionTracking` | Boolean | Determines if the SDK automatically tracks the user sessions. Refer to <Link to="#tracking-user-sessions">Tracking user sessions</Link> for more information. | `true` |
 | `sessionTimeout` | Integer | Maximum inactivity period before the session expires. | `300000 ms` (5 minutes) |
 | `recordScreenViews`     | Boolean | Determines if the SDK will automatically capture the screen view events.                   | `false`            |
 | `autoCollectAdvertId`  | Boolean | Determines if the SDK will collect the advertisement ID.  | `false` |
@@ -879,6 +879,53 @@ rudderClient.identify(
 ## Tracking user sessions
 
 By default, the Android SDK automatically tracks the user sessions. This means that RudderStack automatically determines the start and end of a user session depending on the inactivity time configured in the SDK (default time is 5 minutes).
+
+<div class="warningBlock">
+To automatically track sessions in the Android SDK, <code class="inline-code">withTrackLifecycleEvents</code> should also be set to true. This is because RudderStack considers the <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-opened">Application Opened</Link>, <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-installed">Application Installed</Link>, or <Link to="/event-spec/standard-events/application-lifecycle-events-spec/#application-updated">Application Updated</Link> events as the start of a new session.
+</div>
+
+<Tabs>
+  <TabList>
+    <Tab>Kotlin</Tab>
+    <Tab>Java</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```kotlin
+val rudderClient = RudderClient.getInstance(
+    this,
+    WRITE_KEY,
+    RudderConfig.Builder()
+        .withDataPlaneUrl(DATA_PLANE_URL)
+        .withAutoSessionTracking(true)  // Set to false to disable automatic session tracking
+        .withSessionTimeoutMillis(5*60*1000)
+        .build()
+)
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+RudderClient rudderClient = RudderClient.getInstance(
+    this,
+    WRITE_KEY,
+    new RudderConfig.Builder()
+        .withDataPlaneUrl(DATA_PLANE_URL)
+        .withAutoSessionTracking(true) // Set to false to disable automatic session tracking
+        .withSessionTimeoutMillis(5*60*1000)
+        .build()
+);
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+To disable automatic session tracking, set `withAutoSessionTracking` to `false`.
 
 <div class="infoBlock">
 For more information on the user sessions and how to track them using the Android SDK, refer to the <Link to="/sources/event-streams/sdks/session-tracking/">Session Tracking</Link> guide.
