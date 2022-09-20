@@ -86,7 +86,7 @@ The following table lists the **optional** properties and their mappings between
 The custom behavorial events can be used for both the authentication types. However, they must have the <code class="inline-code">analytics.behavioral_events.send</code> permission to be used for private apps.
 </div>
 
-[Custom behavioral events](https://developers.hubspot.com/docs/api/analytics/events) are account-defined events in HubSpot that store event details in the event properties. You can create custom behavioral events and their associated properties in the RudderStack dashboard as explained in the <Link to="/destinations/streaming-destinations/hubspot-v2/#event-and-property-names">event and property names</Link> section.
+[Custom behavioral events](https://developers.hubspot.com/docs/api/analytics/events) are account-defined events in HubSpot that store event details in the event properties. You can create custom behavioral events and their associated properties in the RudderStack dashboard as explained in the <Link to="/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/#new-api">New API</Link> section.
 
 The following parameters are sent in the custom behavorial events:
 - **Identifier**: Either the contact ID, email, or <Link to="https://developers.hubspot.com/docs/api/events/tracking-code">utk</Link> (user token) of the contact associated with the event. The utk is the user token stored in the visitor's `hubspotutk` browser cookie.
