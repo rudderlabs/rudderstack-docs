@@ -48,27 +48,13 @@ For more information on the schedule types, refer to the <Link to="/sources/extr
 
 ### Selecting the data to import
 
-Choose the SendGrid data to ingest via RudderStack. Refer to the <Link to="#supported-resources">Supported resources</Link> section below for more information. 
-
-You can either select all the data or choose specific SendGrid data attributes as per your requirement.
+You can choose the SendGrid data you want to ingest by selecting the required resources:
 
 <img src="../../assets/cloud-extract-sources/sendgridv2-connection-settings-3.png" alt="Selecting the data to import" />
 
-SendGrid is now configured as a source. RudderStack will start ingesting data from SendGrid as per your specified schedule and frequency.
+The below table mentions the syncs and API endpoints supported by these resources from SendGrid to your warehouse destination:
 
-You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
-
-<img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
-
-<div class="successBlock">
-Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
-</div>
-
-## Supported resources
-
-RudderStack supports syncing the following resources from SendGrid to your warehouse destination:
-
-| Resource | Full Refresh sync support | Incremental sync support | SendGrid API endpoint |
+| Resource | Full Refresh sync | Incremental sync | SendGrid API endpoint |
 | :---| :---- | :---- | :---- |
 | `blocks` |  Yes | Yes | `/suppression/blocks` |
 | `bounces` | Yes | Yes |  `/suppression/bounces` |
@@ -100,6 +86,17 @@ If your SendGrid account uses legacy marketing campaigns, you might get a <stron
 
 - `messages`: To ingest data from this resource, you must have purchased access to the Email Activity Feed API. For more information, refer to the <a href="https://docs.sendgrid.com/api-reference/e-mail-activity/filter-all-messages">SendGrid API documentation</a>. 
 - `single_sends`: RudderStack uses the [`stats`](https://docs.sendgrid.com/api-reference/marketing-campaign-stats/get-all-single-sends-stats) API instead of the `marketing` API to ingest the data from this resource.
+
+SendGrid is now configured as a source. RudderStack will start ingesting data from SendGrid as per your specified schedule and frequency.
+
+You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
+
+<img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
+
+<div class="successBlock">
+Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
+</div>
+
 
 ## FAQ
 
