@@ -110,23 +110,23 @@ The following table lists the mappings between RudderStack and User.com properti
 
 | RudderStack property | User.com property | Presence | 
 | :-------| :--------| :------| 
-| `userId` | `custom_id` | Required  | 
-| `firstName` | `first_name` | Optional | 
-| `lastName` | `last_name` | Optional |
-| `email` | `email` | Optional | 
-| `phone` | `phone_number` | Optional | 
+| `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `custom_id` | Required  | 
+| `traits.firstName`/`traits.firstname`/`traits.first_name`/`context.traits.firstName`/`context.traits.firstname`/`context.traits.first_name` | `first_name` | Optional | 
+| `traits.lastName`/`traits.lastname`/`traits.last_name`/``context.traits.lastName`/`context.traits.lastname`/`context.traits.last_name` | `last_name` | Optional |
+| `traits.email`/`context.traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Optional | 
+| `traits.phone`/`context.traits.phone`/`properties.phone` | `phone_number` | Optional | 
 | `traits.tags`/`context.traits.tags`|`tags` | Optional | 
-| `city` | `city` | Optional | 
-| `region` | `region` | Optional | 
-| `country` | `country` | Optional | 
-| `gender` | `gender` | Optional | 
+| `traits.address.city`/`context.traits.address.city` | `city` | Optional | 
+| `traits.region`/`context.traits.region` | `region` | Optional | 
+| `traits.country`/`context.traits.country` | `country` | Optional | 
+| `traits.gender`/`context.traits.gender` | `gender` | Optional | 
 | `traits.status`/`context.traits.status` | `status` | Optional | 
 | `traits.googleUrl`/`context.traits.googleUrl` | `google_url` | Optional | 
 | `traits.linkedinUrl`/`context.traits.linkedinUrl` | `linkedin_url` | Optional | 
 | `traits.twitterUrl`/`context.traits.twitterUrl` | `twitter_url` | Optional | 
 | `traits.facebookUrl`/`context.traits.facebookUrl` | `facebook_url` | Optional | 
-| `avatar` | `gravatar_url` | Optional | 
-| `timezone` | `timezone` | Optional | 
+| `traits.avatar`/`context.traits.avatar`/`traits.avatarURL`/`context.traits.avatarURL`/`traits.avatar_URL`/`context.traits.avatar_URL` | `gravatar_url` | Optional | 
+| `traits.timezone`/`context.traits.timezone` | `timezone` | Optional | 
 
 ## Track
 
@@ -157,7 +157,7 @@ The following table lists the mappings between RudderStack and User.com properti
 | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id` | `user_id` | Required  | 
 | `event` | `name` | Required | 
 | `properties` | `data` | Optional |
-| `timestamp` | `timestamp` | Optional | 
+| `originalTimestamp`/`timestamp` | `timestamp` | Optional | 
 
 ## Page
 
@@ -190,7 +190,7 @@ The following table lists the mappings between RudderStack and User.com properti
 | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id` | `client_user` | Required  | 
 | `traits.url`/`context.traits.url` | `page_domain` | Required | 
 | `traits.path`/`context.traits.path` | `page_path` | Required |
-| `timestamp` | `timestamp` | Required | 
+| `originalTimestamp`/`timestamp` | `timestamp` | Required | 
 
 ## Group
 
@@ -219,17 +219,17 @@ The following table lists the mappings between RudderStack and User.com properti
 
 | RudderStack property | User.com property | | Presence | 
 | :-------| :--------| :------| 
-| `userId` | `custom_id`(user) | Required  | 
+| `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`/`anonymousId` | `custom_id`(user) | Required  | 
 | `groupId`/`traits.groupId` | `custom_id`(company) | Optional | 
 | `traits.name` | `name`(company name) | Optional |
-| `email` | `email` | Optional | 
-| `address` | `address` | Optional | 
-| `city` | `city` | Optional |
-| `region` | `region` | Optional | 
-| `country` | `country` | Optional | 
-| `description` | `description` | Optional | 
-| `phone` | `phone_numbers` | Optional | 
-| `zipcode`| `postal_code` | Optional | 
+| `traits.email`/`context.traits.email`/`properties.email`/`context.externalId.0.id` | `email` | Optional | 
+| `traits.address`/`context.traits.address` | `address` | Optional | 
+| `traits.address.city`/`context.traits.address.city` | `city` | Optional |
+| `traits.region`/`context.traits.region` | `region` | Optional | 
+| `traits.country`/`context.traits.country` | `country` | Optional | 
+| `traits.description` | `description` | Optional | 
+| `traits.phone`/`context.traits.phone`/`properties.phone` | `phone_numbers` | Optional | 
+| `traits.zip`/`traits.zipcode`/`traits.address.zipcode`/`traits.address.postalcode`/`context.traits.zip`/`context.traits.zipcode`/`context.traits.address.zipcode`/`context.traits.address.postalcode`| `postal_code` | Optional | 
 | `traits.size` | `size` | Optional | 
 | `traits.tags` | `tags` | Optional | 
 
