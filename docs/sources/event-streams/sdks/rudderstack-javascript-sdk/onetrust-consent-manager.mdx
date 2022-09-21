@@ -69,40 +69,31 @@ You need to enable OneTrust for a given JavaScript source. To do so, specify the
 <!-- OneTrust Cookies Consent Notice end for samplewebsite.com -->
 ```
 
-2. **Load the JavaScript SDK only after a user provides consent.**
+2. **Load the JavaScript SDK only after the user provides consent.**
 
-The JavaScript SDK determines the events to send to a destination based on the user's consent type.
+The JavaScript SDK determines whether to send events to a destination based on the user's consent type.
 
-One way to load the JavaScript SDK after the user provides the consent is to modify the `OptanonWrapper()` callback function provided by OneTrust, as shown:
+One way to load the JavaScript SDK after the user provides the consent is to modify the `OptanonWrapper()` callback function provided by OneTrust. You also need to add the `cookieConsentManager` option in the `load()` call as shown:
 
 ```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-    cookieConsentManager: {
+function OptanonWrapper() {
+  if (window.OneTrust.IsAlertBoxClosed()) {
+    // Load the SDK
+    rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+      cookieConsentManager: {
         oneTrust: {
-            enabled: true
+          enabled: true
         }
-    },
-    //other options
-});
+      },
+      //other options
+    });
+  }
+}
 ```
 
 <div class="infoBlock">
 If a user updates the consent settings, the web page must be refreshed for the changes to take effect in the SDK.
 </div>
-
-3. Add the `cookieConsentManager` option in the `load()` call as shown:
-
-```javascript
-rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-        cookieConsentManager: {
-            oneTrust: {
-                enabled: true
-            }
-        },
-        //other options
-    }
-);
-```
 
 Once completed, RudderStack reads the consented categories and filters the destinations accordingly.
 

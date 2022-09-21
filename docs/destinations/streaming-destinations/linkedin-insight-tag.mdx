@@ -3,93 +3,165 @@ title: "LinkedIn Insight Tag"
 description: >-
   Step-by-step guide on sending your event data from RudderStack to LinkedIn
   Insight Tag.
+aliases: ["LinkedIn Insight Tag destination"]
 ---
 
-The [**LinkedIn Insight Tag**](https://business.linkedin.com/marketing-solutions/insight-tag) is a JavaScript code for your website that lets you learn more about your customers and optimize your marketing campaigns. You can also use the LinkedIn Insight Tag to track your conversions and retarget your website visitors and customers who interact with your ads.
+The [LinkedIn Insight Tag](https://business.linkedin.com/marketing-solutions/insight-tag) is a JavaScript code for your website that lets you track your conversions and retarget your website visitors and customers who interact with your ads. You can use the resulting insights to learn more about your customers and optimize your marketing campaigns.
 
-RudderStack lets you send your user events directly to LinkedIn by supporting LinkedIn Insight Tag as a destination.
+RudderStack supports integration with the LinkedIn Insight Tag where you can seamlessly send your event data to LinkedIn.
 
 <div class="infoBlock">
 Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations">GitHub repository</a>.
 </div>
 
-## Integration Workflow
-
-The following flow explains how this integration works:
-
-- The user configures **LinkedIn Insight Tag** as a destination in RudderStack.
-- The user loads the RudderStack JavaScript SDK on their website.
-- The JavaScript SDK automatically loads the Insight Tag tracking code.
-
-<div class="warningBlock">
-If you are already using LinkedIn Insight Tag on your website, we highly recommend you remove it.
-</div>
-
-<div class="infoBlock">
-The LinkedIn Insight Tag lets you collect the data related to your members' website visit, including the URL, IP Address, referrer, device and browser characteristics, and timestamp.
-</div>
-
-<div class="successBlock">
-The RudderStack SDK loads asynchronously with your website. When loading the LinkedIn Insight Tag tracking snippet, it will not slow down your website's performance at all.
-</div>
-
 ## Getting started
 
-To enable sending your event data to LinkedIn Insight Tag, you will first need to add it as a destination in RudderStack.
-
 <div class="warningBlock">
-This integration is a device mode-only destination for the web (JavaScript) source. For more information on the RudderStack device mode, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+If you are already using LinkedIn Insight Tag on your website, removing it is highly recommended. This is because the RudderStack SDK automatically loads the Insight Tag tracking code and it may cause a conflict with the existing installation. For more information on the integration's workflow, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
-| **Connection Mode** | **Web**       | **Mobile** | **Server** |
-| :------------------ | :------------ | :--------- | :--------- |
-| **Device mode**     | **Supported** | -          | -          |
-| **Cloud mode**      | -             | -          | -          |
+Before configuring LinkedIn Insight Tag as a destination in RudderStack, verify if the source platform is supported by LinkedIn Insight Tag by referring to the table below:
 
-Once you have confirmed that the platform supports sending events to LinkedIn, perform the steps below:
-
-- From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source and **LinkedIn Insight Tag** as a destination.
-- Assign a name to your destination and click on **Next**. You should now see the following **Connection Settings** page.
-
-<img src="https://user-images.githubusercontent.com/59817155/123381912-f36d8980-d5ae-11eb-9f4c-cb75fb42ba47.png" /><span class="imageTitle">Configuration Settings</span>
-
-## LinkedIn Insight Tag Configuration Settings
-
-To successfully configure LinkedIn Insight Tag as a destination, you will need a **Partner ID**. To get the Partner ID, follow the steps below:
-
-- Sign in to [**LinkedIn Campaign Manager**](https://www.linkedin.com/campaignmanager/login).
-- Then, you will need to create an ad account. Enter your account name, an optional LinkedIn page, and currency information. As of now, no payment is required.
-
-<img src="https://user-images.githubusercontent.com/59817155/123381910-f23c5c80-d5ae-11eb-843c-5b1a0e4dedd2.png" /><span class="imageTitle">Campaign Manager ad Account</span>
-
-- Next, you will need the **Partner ID**. Click on your account name and locate the **Account Assets** dropdown menu. Select **Insight Tag** as shown:
-
-<img src="https://user-images.githubusercontent.com/59817155/123381898-f0729900-d5ae-11eb-9cfa-f5063eeebb81.png" /><span class="imageTitle">Account Assets</span>
-
-- If you are using the LinkedIn Insight Tag for the first time, you will see the **Install my Insight Tag** option.
-
-<img src="https://user-images.githubusercontent.com/59817155/123381916-f4062000-d5ae-11eb-945a-960e2dce869e.png" /><span class="imageTitle">Insight Tag</span>
+| Connection Mode | Web | Mobile | Server |
+| :--- | :--- | :--- | :--- |
+| Device mode | Supported | - | - |
+| Cloud mode | -  | - | - |
 
 <div class="infoBlock">
-
-If you have already set up your Insight Tag before, you will see the **Manage Insight Tag** option. Click on it and choose **See Tag**.
-
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
-- Next, click on **I will use a tag manager**. You should now be able to see your **Partner ID**.
+Once you have confirmed that the source platform supports sending events to LinkedIn Insight Tag, follow these steps:
 
-<img src="https://user-images.githubusercontent.com/59817155/123381921-f49eb680-d5ae-11eb-9135-48b3e6f7aac7.png" /><span class="imageTitle">Partner ID</span>
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **LinkedIn Insight Tag**.
+2. Assign a name to the destination and click **Continue**.
 
-- Copy and paste this **Partner ID** in the RudderStack dashboard to complete the configuration.
+### Connection settings
 
-You should now be able to see the website domains on which the Insight Tag is loaded.
+To successfully configure LinkedIn Insight Tag as a destination, you will need to configure the following settings:
 
-<img src="https://user-images.githubusercontent.com/59817155/123381914-f36d8980-d5ae-11eb-91a1-31f90e7e3557.png" /><span class="imageTitle">Domains</span>
+<img src="../../assets/event-stream-destinations/insight-tag-connection-settings.png" alt="LinkedIn Insight Tag connection settings" />
 
-## FAQs
+- **Partner ID**: Enter your LinkedIn partner ID.
 
-### Will the LinkedIn Insight Tag slow down my website?
+<div class="infoBlock">
+For more information on getting your LinkedIn partner ID, refer to the <Link to="#where-can-i-find-my-linkedin-partner-id">FAQ</Link> section below.
+</div>
+
+- **Event Conversion IDs**: Enter the event name you want the Insight Tag to track and the corresponding conversion ID.
+
+<div class="warningBlock">
+The event names are case-sensitive. For example, RudderStack accepts <code class="inline-code">Order Completed</code>, <code class="inline-code">Order completed</code>, and <code class="inline-code">order completed</code> as three different events.
+</div>
+
+<div class="infoBlock">
+For more information on getting the conversion ID, refer to the <Link to="#tracking-event-specific-conversions">Tracking event-specific conversions</Link> section below.
+</div>
+
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to the LinkedIn Insight Tag.
+
+<div class="infoBlock">
+For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+</div>
+
+- **Use device mode to send events**: As this is a <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
+- **OneTrust Cookie Categories**: This setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to the LinkedIn Insight Tag destination.
+
+## Tracking page loads
+
+<div class="infoBlock">
+For more information on the tracking methods supported by the Insight Tag, refer to the <a href="https://www.linkedin.com/help/lms/answer/a425606?trk=hc-articlePage-peopleAlsoViewed">LinkedIn support page</a>.
+</div>
+
+In this method, the Insight Tag automatically loads and tracks the conversions when users visit any pages on your website. Upon loading successfully, you can view the conversion status in your [Campaign Manager](https://www.linkedin.com/campaignmanager/accounts) dashboard, as shown:
+
+<img src="../../assets/event-stream-destinations/insight-tag-campaign-manager.png" alt="LinkedIn Insight campaign manager dashboard" />
+
+## Tracking event-specific conversions
+
+To track event-specific conversions, you need to first set up an Online Tracking conversion and define an event-specific conversion tracking. To do so, follow these steps:
+
+1. Sign into your [LinkedIn Campaign Manager](https://www.linkedin.com/campaignmanager/accounts).
+2. Click your account name and go to **Analyze** > **Conversion Tracking**.
+3. Click the **Create Conversion** button and select **Online Conversion**.
+
+<img src="../../assets/event-stream-destinations/insight-tag-online-conversion.png" alt="LinkedIn Insight online conversion option" />
+
+4. Name your conversion and enter the relevant settings. For more information, refer to this <a href="https://www.linkedin.com/help/lms/answer/a425606/set-up-linkedin-conversion-tracking?lang=en">LinkedIn support page</a>.
+5. Click **Next step** and select the campaign to track your conversion.
+6. Under **Manually set up conversions**, go to **Define your conversion tracking method** and select **Event-specific**. 
+7. Click **Copy code**. You will find the conversion ID listed here, as shown:
+
+<img src="../../assets/event-stream-destinations/insight-tag-conversion-id.png" alt="LinkedIn Insight online conversion ID" />
+
+<div class="infoBlock">
+You will need to install this generated code in your website that automatically loads and  tracks conversions for the specified event.
+</div>
+
+8. Finally, specify the **Event Name** for which the Insight Tag automatically loads this snippet and the corresponding conversion ID in the **Event Conversion IDs** dashboard setting.
+
+<div class="infoBlock">
+The event names are case-sensitive.
+</div>
+
+#### Use-case
+
+Suppose you add the following event name-conversion ID mapping in the RudderStack dashboard:
+
+<img src="../../assets/event-stream-destinations/insight-tag-usecase.png" alt="LinkedIn Insight event tracking use-case" />
+
+When you call the `Product Added` event, the LinkedIn Insight Tag automatically loads the snippet with the mapped conversion ID and tracks the conversion event.
+
+A sample `Product Added` event is shown below:
+
+```javascript
+rudderanalytics.track("Product Added", {
+  numberOfRatings: "12",
+  name: "item 1",
+});
+```
+
+<div class="warningBlock">
+RudderStack discards any <code class="inline-code">track</code> event that is not specified in the <strong>Event Conversion IDs</strong> dashboard setting.
+</div>
+
+## FAQ
+
+### How does this integration work?
+
+The RudderStack-LinkedIn Insight Tag integration workflow is explained below:
+
+1. Configure **LinkedIn Insight Tag** as a destination in the [RudderStack dashboard](https://www.app.rudderstack.com/).
+2. Install the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/#step-1-install-javascript-sdk">RudderStack JavaScript SDK</Link> on your website.
+3. The JavaScript SDK automatically loads the Insight Tag tracking code.
+4. The Insight Tag starts tracking the user activities on your website.
+
+### What information can I track using the LinkedIn Insight Tag?
+
+The LinkedIn Insight Tag lets you collect the data related to your users' website visits, including the URL, IP address, referrer, device and browser characteristics, and timestamp.
+
+### Where can I find my LinkedIn partner ID?
+
+To get the Partner ID, open the Insight Tag and get the value corresponding to the  `_linkedin_partner_id` parameter, as shown:
+
+<img src="../../assets/event-stream-destinations/insight-tag-partner-id.png" alt="LinkedIn Insight Tag partner ID" />
+
+Alternatively, you can follow the steps in this <a href="https://www.linkedin.com/help/lms/answer/a417869/access-your-linkedin-partner-id?lang=en">LinkedIn support page</a> to access your LinkedIn partner ID.
+
+<div class="warningBlock">
+Each LinkedIn Insight Tag has a unique Partner ID. If the Partner ID of the tag on your website does not match the Partner ID in your account, the Insight Tag will be unable to collect the page loads and event-specific conversions.
+</div>
+
+### How can I verify if the event-specific conversions are tracked successfully?
+
+Once you configure the **Event Conversion IDs** setting in the RudderStack dashboard, the LinkedIn Insight Tag automatically loads the code snippet and tracks the conversions for the specified events. 
+
+If the script has loaded correctly, it shows the label **Conversion status: Active** against the events in your dashboard, as shown:
+
+<img src="../../assets/event-stream-destinations/insight-tag-conversion-status.png" alt="LinkedIn Insight conversion status" />
+
+In case the script has not loaded correctly, you will see the **Conversion Status** as **Unverified**, **No recent activity**, or **Inactive**.
+
+### Will this integration slow my website down?
 
 The RudderStack SDK loads asynchronously with your website. When loading the LinkedIn Insight Tag tracking snippet, it will not slow down your website's performance at all.
-
-

@@ -344,14 +344,26 @@ export const jsonData = [
                         link: "/sources/event-streams/cloud-apps/extole/",
                         content: []
                     }, {
-                        title: "Iterable",
+                        title: "Iterable Webhook",
                         link: "/sources/event-streams/cloud-apps/iterable/",
                         content: []
-                    }, {
+                    }, 
+                    {
                         title: "Looker",
                         link: "/sources/event-streams/cloud-apps/looker/",
                         content: []
-                    }, {
+                    }, 
+                    {
+                        title: "Mailmodo",
+                        link: "/sources/event-streams/cloud-apps/mailmodo/",
+                        content: []
+                    },
+                    {
+                        title: "Monday",
+                        link: "/sources/event-streams/cloud-apps/monday/",
+                        content: []
+                    },
+                    {
                         title: "PostHog",
                         link: "/sources/event-streams/cloud-apps/posthog/",
                         content: []
@@ -440,7 +452,7 @@ export const jsonData = [
                 title: "Mailchimp",
                 link: "/sources/extract/mailchimp/",
                 content: []
-            }, 
+            },
             {
                 title: "Mixpanel",
                 link: "/sources/extract/mixpanel/",
@@ -725,9 +737,34 @@ export const jsonData = [
                 title: "Lotame",
                 link: "/destinations/streaming-destinations/lotame/",
                 content: []
-            }, {
+            },
+            {
                 title: "Pinterest Tag",
                 link: "/destinations/streaming-destinations/pinterest-ads/",
+                content: [
+                    {
+                        title: "Setting up Pinterest Tag",
+                        link:
+                            "/destinations/streaming-destinations/pinterest-ads/setting-up-pinterest-ads/",
+                        content: [],
+                    },
+                    {
+                        title: "Cloud Mode",
+                        link:
+                            "/destinations/streaming-destinations/pinterest-ads/pinterest-ads-cloud-mode/",
+                        content: [],
+                    },
+                    {
+                        title: "Device Mode",
+                        link:
+                            "/destinations/streaming-destinations/pinterest-ads/pinterest-ads-device-mode/",
+                        content: [],
+                    },
+                ]
+            },
+            {
+                title: "Quora Pixel",
+                link: "/destinations/streaming-destinations/quora-pixel/",
                 content: []
             },
             {
@@ -904,7 +941,12 @@ export const jsonData = [
                 title: "Quantum Metric",
                 link: "/destinations/streaming-destinations/quantummetric/",
                 content: []
-            }, {
+            },
+            {
+                title: "Shynet",
+                link: "/destinations/streaming-destinations/shynet/",
+                content: []
+            },{
                 title: "Singular",
                 link: "/destinations/streaming-destinations/singular/",
                 content: [
@@ -927,6 +969,11 @@ export const jsonData = [
                         content: [],
                     },
                 ]
+            },
+            {
+                title: "Woopra",
+                link: "/destinations/streaming-destinations/woopra/",
+                content: []
             },
             {
                 title: "Adjust",
@@ -989,7 +1036,13 @@ export const jsonData = [
                 title: "Kustomer",
                 link: "/destinations/streaming-destinations/kustomer/",
                 content: []
-            }, {
+            },
+            {
+                title: "LiveChat",
+                link: "/destinations/streaming-destinations/livechat/",
+                content: []
+            }, 
+            {
                 title: "Slack",
                 link: "/destinations/streaming-destinations/slack/",
                 content: []
@@ -1011,8 +1064,13 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Freshsales",
+                title: "Custify",
                 sectionTitle: "CRM",
+                link: "/destinations/streaming-destinations/custify/",
+                content: []
+            },
+            {
+                title: "Freshsales",
                 link: "/destinations/streaming-destinations/freshsales/",
                 content: []
             },
@@ -1044,11 +1102,6 @@ export const jsonData = [
                 title: "Segment",
                 sectionTitle: "Customer Data Platform",
                 link: "/destinations/streaming-destinations/segment/",
-                content: []
-            },
-            {
-                title: "Shynet",
-                link: "/destinations/streaming-destinations/shynet/",
                 content: []
             },
             {
@@ -1227,9 +1280,19 @@ export const jsonData = [
                 ]
             },
             {
-                title: "Google Sheets",
+                title: "Monday",
                 sectionTitle: "Productivity",
+                link: "/destinations/streaming-destinations/monday/",
+                content: []
+            },
+            {
+                title: "Google Sheets",
                 link: "/destinations/streaming-destinations/google-sheets/",
+                content: []
+            },
+            {
+                title: "ClickUp",
+                link: "/destinations/streaming-destinations/clickup/",
                 content: []
             },
             {
@@ -1716,7 +1779,12 @@ export const jsonData = [
                 title: "How to Debug Live Destination Events",
                 link: "/user-guides/how-to-guides/live-destination-event-debugger/",
                 content: []
-            }, {
+            },{
+                title: "How to Host RudderStack JavaScript SDK on your CDN/Storage",
+                link: "/user-guides/how-to-guides/self-hosting-js-sdk/",
+                content: []
+            }, 
+            {
                 title: "How to Filter Events using Different Methods",
                 link: "/user-guides/how-to-guides/filter-events/",
                 content: []

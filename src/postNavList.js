@@ -374,6 +374,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "monday",
+    title: "Monday",
+    link: "/sources/event-streams/cloud-apps/monday/",
+    content: [],
+  },
+  {
     key: "appcenter",
     title: "App Center",
     link: "/sources/event-streams/cloud-apps/appcenter/",
@@ -410,9 +416,21 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "custify",
+    title: "Custify",
+    link: "/sources/cloud-apps/custify/",
+    content: [],
+  },
+  {
     key: "looker",
     title: "Looker",
     link: "/sources/event-streams/cloud-apps/looker/",
+    content: [],
+  },
+  {
+    key: "mailmodo",
+    title: "Mailmodo",
+    link: "/sources/event-streams/cloud-apps/mailmodo/",
     content: [],
   },
   {
@@ -431,12 +449,6 @@ export const postNavList = [
     key: "segment",
     title: "Segment",
     link: "/sources/event-streams/cloud-apps/segment/",
-    content: [],
-  },
-  {
-    key: "shynet",
-    title: "Shynet",
-    link: "/sources/event-streams/cloud-apps/shynet/",
     content: [],
   },
   {
@@ -873,6 +885,11 @@ export const postNavList = [
     content: [],
   },
   {
+    title: "Quora Pixel",
+    link: "/destinations/streaming-destinations/quora-pixel/",
+    content: [],
+  },
+  {
     key: "firebase",
     title: "Firebase",
     link: "/destinations/streaming-destinations/firebase/",
@@ -957,6 +974,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "shynet",
+    title: "Shynet",
+    link: "/sources/event-streams/cloud-apps/shynet/",
+    content: [],
+  },
+  {
     key: "singular",
     title: "Singular",
     link: "/destinations/streaming-destinations/singular/",
@@ -1002,6 +1025,12 @@ export const postNavList = [
     key: "variance",
     title: "Variance",
     link: "/destinations/streaming-destinations/variance/",
+    content: [],
+  },
+  {
+    key: "clickup",
+    title: "ClickUp",
+    link: "/destinations/streaming-destinations/clickup/",
     content: [],
   },
   {
@@ -1377,6 +1406,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "woopra",
+    title: "Woopra",
+    link: "/destinations/streaming-destinations/woopra/",
+    content: [],
+  },
+  {
     key: "fb-custom-audience",
     title: "Facebook Custom Audience",
     link: "/destinations/streaming-destinations/fb-custom-audience/",
@@ -1398,6 +1433,26 @@ export const postNavList = [
     key: "lotame",
     title: "Lotame",
     link: "/destinations/streaming-destinations/lotame/",
+    content: [],
+  },
+  {
+    title: "Pinterest Tag",
+    link: "/destinations/streaming-destinations/pinterest-ads/",
+    content: [],
+  },
+  {
+    title: "Setting up Pinterest Tag",
+    link: "/destinations/streaming-destinations/pinterest-ads/setting-up-pinterest-ads/",
+    content: [],
+  },
+  {
+    title: "Cloud Mode",
+    link: "/destinations/streaming-destinations/pinterest-ads/pinterest-ads-cloud-mode/",
+    content: [],
+  },
+  {
+    title: "Device Mode",
+    link: "/destinations/streaming-destinations/pinterest-ads/pinterest-ads-device-mode/",
     content: [],
   },
   {
@@ -1557,6 +1612,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "livechat",
+    title: "LiveChat",
+    link: "/destinations/streaming-destinations/livechat/",
+    content: [],
+  },
+  {
     key: "canny",
     title: "Canny",
     link: "/destinations/streaming-destinations/canny/",
@@ -1640,6 +1701,12 @@ export const postNavList = [
     title: "ConvertFlow",
     link: "/destinations/streaming-destinations/convertflow/",
     content: [],
+  },
+  {
+    key: "monday",
+    title: "Monday",
+    link: "/destinations/streaming-destinations/monday/",
+    content: []
   },
   {
     key: "google-sheets",
@@ -2220,6 +2287,12 @@ export const postNavList = [
     title: "How to Filter Events using Different Methods",
     link: "/user-guides/how-to-guides/filter-events/",
     content: [],
+  },
+  {
+    key: "self-hosting-js-sdk",
+    title: "How to Host RudderStack JavaScript SDK on your CDN/Storage",
+    link: "/user-guides/how-to-guides/self-hosting-js-sdk/",
+    content: []
   },
   {
     key: "how-to-filter-selective-destinations",
