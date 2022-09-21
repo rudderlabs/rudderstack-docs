@@ -38,7 +38,7 @@ To successfully configure Mailmodo as a destination, you will need to configure 
 For more information on obtaining your Mailmodo API key, refer to the <Link to="#FAQ">FAQ</Link> section below.
 </div>
 
-- **List Name**: This field is **only applicable** for the `identify` call. Enter the name of the Mailmodo list where contacts should be added. If not provided, `rudderstack` is taken as the default list name. 
+- **List Name**: This field is **only applicable** for the `identify` call. Enter the name of the Mailmodo list where contacts should be added. If not provided, `Rudderstack` is taken as the default list name. 
 
 ## Identify
 
@@ -83,7 +83,7 @@ The following table lists the mappings between the RudderStack and Mailmodo prop
 
 | RudderStack property | Mailmodo property | Presence |
 | :--------------| :---------| :--------------|
-| `traits.email`/`context.traits.email` | `value.email` | Required |
+| `traits.email`/`context.traits.email` | `values.email` | Required |
 | `traits.{accepted-param}`/`context.traits.{accepted-param}` | `values.data.{any-param}` | Optional |
 
 <div class="warningBlock">
