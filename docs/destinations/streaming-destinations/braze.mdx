@@ -44,7 +44,7 @@ When creating a new Braze Rest API Key for your app, you only need to select the
 </div>
 
 <div class="infoBlock">
-For more information on obtaining your Braze app key and the REST API key, refer to the <a href="https://www.braze.com/docs/user_guide/administrative/app_settings/developer_console/api_settings_tab/">Braze documentation</a>. Alternatively, you can refer to this <a href="https://www.braze.co.jp/docs/api/api_key/#where-can-i-find-it">REST API Key Overview</a> guide.
+For more information on obtaining your Braze app key and the REST API key, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
 - **Data Center**: Specify the data center associated with your Braze account. The easiest way to get your data center details is to log into your Braze account and observing your URL. Some examples are shown below:
@@ -68,7 +68,7 @@ For more information on this setting, refer to the <Link to="/sources/sdks/event
 - **Use device mode to send events**: Enable this setting to send events to Braze via the <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 - **OneTrust Cookie Categories**: This setting lets you associate the <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Braze.
 
-## Adding Device Mode Integration
+## Adding device mode integration
 
 Depending on your platform of integration, follow the steps below to add Braze to your project:
 
@@ -286,3 +286,19 @@ rudderanalytics.group("12345", {
 ```
 
 Once you send a `group` event, RudderStack sends a custom attribute to Braze with the name as `ab_rudder_group_<groupId>` and the value as `true`. For example, if the `groupId` is `123456`, then RudderStack creates a custom attribute with the name `ab_rudder_group_123456` and sends it to Braze with its value to `true`.
+
+## FAQ
+
+### Where can I find the Braze App Key and REST API Key?
+
+To obtain your Braze App Key and REST API Key, follow these steps:
+
+1. Log into your [Braze dashboard](https://dashboard.braze.com/auth).
+2. Go to **Settings** > **Developer Console**.
+3. You can find the REST API key for your app under the **Identifier** column, as shown:
+
+<img src="../../assets/event-stream-destinations/braze-api-key.png" alt="Braze REST API Key" />
+
+4. You can find your Braze App Key in the **Identification** section, as shown:
+
+<img src="../../assets/event-stream-destinations/braze-app-key.png" alt="Braze App Key" />
