@@ -1,11 +1,12 @@
 ---
 title: "Braze"
-description: Step-by-step guide on sending your event data from RudderStack to Braze
+description: Step-by-step guide on sending your event data from RudderStack to Braze.
+aliases: ["Braze destination"]
 ---
 
-Braze is an industry-leading customer engagement platform. It allows you to better understand your customers' in-app behavior and use the insights to improve your overall app experience, and increase engagement with them.
+[Braze](https://www.braze.com/) is a customer engagement platform that helps you better understand your customers' in-app behavior and use the insights to improve your users' app experience.
 
-With RudderStack's SDK for mobile and web platforms, you can send your in-app event data to Braze directly for contextual analysis.
+RudderStack supports Braze as a destination where you can seamlessly send your event data.
 
 <div class="infoBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/braze">GitHub repository</a>.
@@ -13,7 +14,7 @@ Find the open source transformer code for this destination in the <a href="https
 
 ## Getting started
 
-Before getting started, please determine whether the platform you are sending your event data from is supported. Refer to the following table for the supported source types and connection modes:
+Before configuring Braze as a destination in RudderStack, verify if the source platform is supported by Braze by referring to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -24,31 +25,50 @@ Before getting started, please determine whether the platform you are sending yo
 To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
-Follow these steps once you have added a source in the RudderStack app:
+Once you have confirmed that the source platform supports sending events to Braze, follow these steps:
 
-<img src="../../assets/braze.png" />
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Braze**.
+2. Assign a name to the destination and click on **Continue**.
+
+### Connection settings
+
+To successfully configure Braze as a destination, you need to configure the following settings:
+
+<img src="../../assets/event-stream-destinations/braze-connection-settings.png" alt="Braze connection settings" />
+
+- **App Key**: Enter your Braze app key.
+- **REST API Key**: Enter the REST API key associated with your project.
 
 <div class="infoBlock">
-
-When creating a new Braze Rest API Key for your app, you will only need to select the **users.track**, **users.identify**, and **users.alias.new** endpoints under the **User Data** permissions
-
+When creating a new Braze Rest API Key for your app, you only need to select the <strong>users.track</strong>, <strong>users.identify</strong>, and <strong>users.alias.new</strong> endpoints under the <strong>User Data</strong> permissions.
 </div>
 
-- Once you have added the source, configure the Braze settings to complete the setup.
-- Both the **App Key** and the **Rest Api Key** can be found in the **Developer Console** underneath the **Settings** section in your Braze dashboard \(left-side menu\)
-- In the **Developer Console** under the **API Settings** tab, there should be 4 sections.
-- To get the **App Key**, go to the **Identification** section and look up your **App Name**. The key will then be the associated **Identifier** string. You can find more information [here](https://www.braze.com/docs/api/api_key/#where-can-i-find-it-1).
-- To get the **Rest Api Key**, go to the **Rest API Keys** section and look for the **API Key Name** that you created. The key will then be the associated **Identifier** string. You can find more information [here](https://www.braze.com/docs/api/api_key/#where-can-i-find-it).
-- To get the correct **Data Center** details, you can follow this very clear [Braze Instances](https://www.braze.com/docs/user_guide/administrative/access_braze/braze_instances/) guide. An example of a Data Instance would be `US-01`. The easiest way to get your **Data Center** details is to simply log in to your Braze account and look at your URL. Your URL will map to what **Data Center** you will enter.
+<div class="infoBlock">
+For more information on obtaining your Braze app key and the REST API key, refer to the <Link to="#faq">FAQ</Link> section below.
+</div>
 
-| URL                            | Data Center Input |
-| :----------------------------- | :---------------- |
+- **Data Center**: Specify the data center associated with your Braze account. The easiest way to get your data center details is to log into your Braze account and observing your URL. Some examples are shown below:
+
+| URL                            | Data Center instance |
+| :------------------- | :---------------- |
 | https://dashboard-01.braze.com | US-01             |
 | https://dashboard-03.braze.com | US-03             |
 | https://dashboard-01.braze.eu  | EU-01             |
-| etc.                           | etc.              |
 
-## Adding Device Mode Integration
+<div class="infoBlock">
+For more information on getting your data center instance, refer to the <a href="https://www.braze.com/docs/user_guide/administrative/access_braze/braze_instances">Braze instances</a> page.
+</div>
+
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Braze.
+
+<div class="infoBlock">
+For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+</div>
+
+- **Use device mode to send events**: Enable this setting to send events to Braze via the <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+- **OneTrust Cookie Categories**: This setting lets you associate the <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Braze.
+
+## Adding device mode integration
 
 Depending on your platform of integration, follow the steps below to add Braze to your project:
 
@@ -60,8 +80,8 @@ Depending on your platform of integration, follow the steps below to add Braze t
   </TabList>
     <TabPanels>
       <TabPanel>
-        Please follow these steps to add Braze to your iOS project:
-<ul>
+        Follow these steps to add Braze to your iOS project:
+<ol>
 <li>Open the <code class="inline-code">Podfile</code> of your project and add the following line:
 <span>
 
@@ -69,15 +89,9 @@ Depending on your platform of integration, follow the steps below to add Braze t
 pod 'Rudder-Braze'
 ```
 </span>
-  followed by the command as shown:
-<span>
-
-```bash
-$ pod install
-```
-</span>
 </li>
-<li>Finally change the SDK initialization to the following snippet:
+<li>Run the <code class="inline-code">pod install</code> command.</li>
+<li>Finally, change the SDK initialization to the following snippet:
 <span>
 
 ```objectivec
@@ -88,11 +102,11 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 ```
 </span>
 </li>
-</ul>
+</ol>
       </TabPanel>
       <TabPanel>
         To add Braze to your Android project, follow these steps:
-<ul>
+<ol>
 <li>Open your <code class="inline-code">app/build.gradle</code> (Module: app) file, and add the following:
 <span>
 
@@ -108,11 +122,18 @@ repositories {
 <span>
 
 ```groovy
-  implementation 'com.rudderstack.android.sdk:core:1.0.1'
-  implementation 'com.rudderstack.android.integration:braze:1.0.2'
-  implementation 'com.appboy:android-sdk-ui:6.0.+'
-  // if you haven't included Gson already
-  implementation 'com.google.code.gson:gson:2.8.6'
+implementation 'com.rudderstack.android.sdk:core:[1.0,2.0)'
+implementation 'com.rudderstack.android.integration:braze:[1.0.7,)'
+implementation 'com.google.code.gson:gson:2.8.9'
+```
+</span>
+</li>
+<li>Add the following permissions to the <code class="inline-code">AndroidManifest.xml</code> file:
+<span>
+
+```groovy
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
 </span>
 </li>
@@ -132,11 +153,11 @@ repositories {
 ```
 </span>
 </li>
-</ul>
+</ol>
       </TabPanel>
       <TabPanel>
-        To add Braze to your React Native project:
-<ul>
+        To add Braze to your React Native project, follow these steps:
+<ol>
 <li>Add the RudderStack-Braze module to your app by running the following command:
 <span>
 
@@ -179,124 +200,105 @@ rudderClient.setup(WRITE_KEY, config)
 ```
 </span>
 </li>
-</ul>
+</ol>
       </TabPanel>
     </TabPanels>
 </Tabs>
 
 ## Identify
 
-The `identify` call is used to associate a user to their actions. Apart from capturing a unique user ID, RudderStack also captures optional traits associated with that user, such as name, email, IP address, etc.
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to identify a user in Braze in any of the following cases:
 
-A sample `identify`call captured from the RudderStack Android SDK looks like the following code snippet:
+- When the user registers to the app for the first time.
+- When they log into their app.
+- When they update their information.
+
+A sample `identify` call is shown below:
 
 ```javascript
-rudderanalytics.identify("userid", {
-  name: "John Doe",
-  title: "CEO",
-  email: "name.surname@domain.com",
-  company: "Company123",
-  phone: "123-456-7890",
-  state: "Texas",
-  rating: "Hot",
-  city: "Austin",
-  postalCode: "12345",
-  country: "US",
-  street: "Sample Address",
-  state: "TX",
-})
+rudderanalytics.identify(
+  "1hKOmRA4GRlm", {
+    email: "alex@example.com",
+    name: "Alex Keener"
+  }
+);
 ```
-
-<div class="infoBlock">
-
-Ideally, the `identify` method is called when the user registers to the app for the first time. It can also be called after the user logs into the app, or updates their information.
-
-</div>
 
 ## Track
 
-The `track` call captures all the activities that the user performs, along with any other properties that are associated with those activities. Each of these activities or actions is considered by RudderStack as an **event**. For more information on the `track` call, please refer to the <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> guide.
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record the customer events, that is, the actions that they perform, along with any properties associated with them.
 
-A sample `track` call looks like the following code snippet:
-
-```javascript
-rudderanalytics.track("Track me", {
-  category: "category",
-  label: "label",
-  value: "value",
-})
-```
-
-For example, consider the following code snippet for a `track` event `Order Completed` from your JavaScript SDK:
+A sample `track` call is shown below:
 
 ```javascript
-rudderanalytics.track("Order Completed", {
-  checkout_id: "fksdjfsdjfisjf9sdfjsd9f",
-  order_id: "50314b8e9bcf000000000000",
-  affiliation: "Google Store",
-  total: 27.5,
-  subtotal: 22.5,
-  revenue: 25.0,
-  shipping: 3,
-  tax: 2,
-  discount: 2.5,
-  coupon: "hasbros",
-  currency: "USD",
-  products: [
-    {
-      product_id: "507f1f77bcf86cd799439011",
-      sku: "45790-32",
-      name: "Monopoly: 3rd Edition",
-      price: 19,
-      quantity: 1,
-      category: "Games",
-      url: "https://www.example.com/product/path",
-      image_url: "https:///www.example.com/product/path.jpg",
-    },
-    {
-      product_id: "505bd76785ebb509fc183733",
-      sku: "46493-32",
-      name: "Uno Card Game",
-      price: 3,
-      quantity: 2,
-      category: "Games",
-    },
-  ],
-})
+rudderanalytics.track("Product Added", {
+  numberOfRatings: "12",
+  name: "item 1",
+});
 ```
 
 ### Order Completed
 
-When you call the `track` method for an event with the name `Order Completed` using the eCommerce API, RudderStack sends the products listed in the event to Braze as purchases.
+When you call the `track` method for an `Order Completed` event, RudderStack sends the product information present in the event to Braze as **purchases**.
+
+A sample `Order Completed` event is shown below:
+
+```javascript
+rudderanalytics.track("Order Completed", {
+  userId: "1hKOmRA4GRlm",
+  currency: "USD",
+  products: [{
+      product_id: "123454387",
+      name: "Game",
+      price: 15.99
+    }
+  ],
+});
+```
 
 ## Page
 
-The `page` call allows you to record your website's page views, with the additional relevant information about the page being viewed. For more information on the `page` call, please refer to the <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> guide.
+The <Link to="/event-spec/standard-events/page/">`page`</Link> call allows you to record your website's page views, with the additional relevant information about the viewed page.
 
 A sample`page` call is as shown below:
 
 ```javascript
-rudderanalytics.page("PublicFacingCategory", "HomePage", {
-  title: "Welcome RudderStack",
-  url: "http://www.rudderstack.com",
-  time: "2020-02-11T13:16:23.858Z",
+rudderanalytics.page("Cart", "Cart Viewed", {
+  path: "/cart",
+  referrer: "test.com",
+  search: "term",
+  title: "test_item",
+  url: "http://test.in",
 })
 ```
-
-The above call is made through the RudderStack JavaScript SDK, and sent to Braze as a track event with name set to the page name.
 
 ## Group
 
-The `group` call is made to associate the user with a group. The example of a `group` call is as shown below:
+You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to link an identified user with a group, such as a company, organization, or an account.
 
 ```javascript
-rudderanalytics.group("test_group_id", {
-  name: "Group Name",
+rudderanalytics.group("12345", {
+  name: "MyGroup",
+  industry: "IT",
+  employees: 450,
+  plan: "basic"
 })
 ```
 
-Once you send the `group` event, RudderStack will send a custom attribute to Braze with the name as `ab_rudder_group_<groupId>` where `groupId` is the ID you've passed in the `group` call, and will set the value to `true`.
+Once you send a `group` event, RudderStack sends a custom attribute to Braze with the name as `ab_rudder_group_<groupId>` and the value as `true`. For example, if the `groupId` is `123456`, then RudderStack creates a custom attribute with the name `ab_rudder_group_123456` and sends it to Braze with its value to `true`.
 
-For example, if the `groupId` is `test_group_id` then RudderStack will create a custom attribute to Braze with the name `ab_rudder_group_test_group_id` and set the value to `true`.
+## FAQ
 
+### Where can I find the Braze App Key and REST API Key?
 
+To obtain your Braze App Key and REST API Key, follow these steps:
+
+1. Log into your [Braze dashboard](https://dashboard.braze.com/auth).
+2. Go to **Settings** > **Developer Console**.
+3. You can find the REST API key for your app under the **Identifier** column, as shown:
+
+<img src="../../assets/event-stream-destinations/braze-api-key.png" alt="Braze REST API Key" />
+
+4. You can find your Braze App Key in the **Identification** section, as shown:
+
+<img src="../../assets/event-stream-destinations/braze-app-key.png" alt="Braze App Key" />
