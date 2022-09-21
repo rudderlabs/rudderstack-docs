@@ -85,12 +85,24 @@ The following table lists the mappings between the RudderStack and Mailmodo prop
 
 | RudderStack property | Mailmodo property | Presence |
 | :--------------| :---------| :--------------|
-| `traits.email`/`context.traits.email` | `values.email` | Required |
-| `traits.{accepted-param}`/`context.traits.{accepted-param}` | `values.data.{any-param}` | Optional |
-
-<div class="warningBlock">
-To know more about the <code class="inline-code">accepted-param</code> and their mappings, refer to the <a href="https://github.com/rudderlabs/rudder-transformer/blob/master/v0/destinations/mailmodo/data/identifyConfig.json">Github repository</a>.
-</div>
+| `traits.email`/`context.traits.email`/`properties.email` | `values.email` | Required |
+| `traits.firstName`/`context.traits.firstName` | `values.data.first_name` | Optional |
+| `traits.lastName`/`context.traits.lastName` | `values.data.lastName` | Optional |
+| `traits.name`/`context.traits.name` | `values.data.name` | Optional |
+| `traits.gender`/`context.traits.gender` | `values.data.gender` | Optional |
+| `traits.age`/`context.traits.age` | `values.data.age` | Optional (Integer format) |
+| `traits.birthday`/`context.traits.birthday` | `values.data.birthday` | Optional (ISO format/UNIX timestamp) |
+| `traits.phone`/`context.traits.phone` | `values.data.phone` | Optional |
+| `traits.city`/`context.traits.city`/`traits.address.city`/`context.traits.address.city` | `values.data.city` | Optional |
+| `traits.address`/`context.traits.address` | `address1` + `address2` | Optional |
+| `traits.state`/`context.traits.state`/`traits.address.state`/`context.traits.address.state` | `values.data.state` | Optional |
+| `traits.country`/`context.traits.country`/`traits.address.country`/`context.traits.address.country` | `values.data.country` | Optional |
+| `traits.zipcode`/`context.traits.zipcode` | `values.data.postal_code` | Optional |
+| `traits.designation`/`context.traits.designation` | `values.data.designation` | Optional |
+| `traits.company`/`context.traits.company` | `values.data.company` | Optional |
+| `traits.industry`/`context.traits.industry` | `values.data.industry` | Optional |
+| `traits.description`/`context.traits.description` | `values.data.description` | Optional |
+| `traits.anniversaryDate`/`context.traits.anniversaryDate`/`traits.anniversary_date`/`context.traits.anniversary_date` | `values.data.anniversary_date` | Optional (ISO format/UNIX timestamp) |
 
 ## Track
 
