@@ -207,11 +207,10 @@ rudderClient.setup(WRITE_KEY, config)
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to identify a user in Braze. 
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to identify a user in Braze in any of the following cases:
 
-You should call `identify` in any of the following cases:
-- When the user registers to the app for the first time
-- When they log into their app
+- When the user registers to the app for the first time.
+- When they log into their app.
 - When they update their information.
 
 A sample `identify` call is shown below:
@@ -240,7 +239,7 @@ rudderanalytics.track("Product Added", {
 
 ### Order Completed
 
-When you call the `track` method for an `Order Completed` event, RudderStack sends the product information present to Braze as **purchases**.
+When you call the `track` method for an `Order Completed` event, RudderStack sends the product information present in the event to Braze as **purchases**.
 
 A sample `Order Completed` event is shown below:
 
@@ -286,4 +285,4 @@ rudderanalytics.group("12345", {
 })
 ```
 
-Once you send a `group` event, RudderStack sends a custom attribute to Braze with the name as `ab_rudder_group_<groupId>` and the value as `true`. For example, if the `groupId` is `123456` then RudderStack will create a custom attribute to Braze with the name `ab_rudder_group_test_123456` and set the value to `true`.
+Once you send a `group` event, RudderStack sends a custom attribute to Braze with the name as `ab_rudder_group_<groupId>` and the value as `true`. For example, if the `groupId` is `123456`, then RudderStack creates a custom attribute with the name `ab_rudder_group_123456` and sends it to Braze with its value to `true`.
