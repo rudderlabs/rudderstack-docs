@@ -44,10 +44,10 @@ For more information on obtaining your Mailmodo API key, refer to the <Link to="
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to [add contacts to your Mailmodo list](https://www.mailmodo.com/developers/6661e4fb7833e-bulk-add-contact-to-a-list/). If a contact already exists, the contact details are updated.
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to [add contacts to your Mailmodo list](https://www.mailmodo.com/developers/6661e4fb7833e-bulk-add-contact-to-a-list/). If a contact already exists, RudderStack updates the contact details.
 
 <div class="warningBlock">
-No more than 100 contacts can be added in a single  <code class="inline-code">identify</code> call.
+You cannot add more than 100 contacts in a single <code class="inline-code">identify</code> call.
 </div>
 
 A sample `identify` call is shown below:
@@ -105,7 +105,7 @@ The following table lists the mappings between the RudderStack and Mailmodo prop
 | `traits.anniversaryDate`/`context.traits.anniversaryDate`/`traits.anniversary_date`/`context.traits.anniversary_date` | `values.data.anniversary_date` | Optional (ISO format/UNIX timestamp) |
 
 <div class="infoBlock">
-Any property apart from the above is sent as a custom property inside <code class="inline-code">traits/context.traits</code> and is mapped to <code class="inline-code">values.data</code> before being sent to Mailmodo.
+RudderStack sends any property apart from the ones mentioned above as a custom property inside <code class="inline-code">traits/context.traits</code> and maps it to <code class="inline-code">values.data</code> before sending it to Mailmodo.
 </div>
 
 ## Track
@@ -144,7 +144,6 @@ The following table lists the mappings between the RudderStack and Mailmodo prop
 | `traits.email`/`context.traits.email`/`properties.email` | `email` | Required |
 | `timestamp` | `ts` | Optional (UNIX epoch in seconds)|
 | `properties` | `event_properties` | Optional |
-
 
 ## FAQ
 
