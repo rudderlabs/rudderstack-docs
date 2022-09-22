@@ -41,7 +41,7 @@ For your Blob Storage destination, RudderStack requires the <strong>Write</stron
 
 <img src="../../assets/event-stream-destinations/sas-token-permissions.png" alt="Setting SAS token permissions" />
 
-If you're using Blob Storage as an intermediate object storage for your data warehouse destinations, you will need to assign the following permissions for your SAS token:
+If you're using Blob Storage as an intermediate object storage for your data warehouse destinations, you need to assign the following permissions for your SAS token:
 
 | Warehouse destination | Minimum required permissions |
 | :----- | :----- |
@@ -71,7 +71,7 @@ To successfully configure Azure Blob Storage as a destination, you will need to 
 - **Azure Blob Storage Container Name**: Enter the name of your Blob Storage container used to store the data.
 - **Prefix**: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder. For example, `https://<account_name>.blob.core.windows.net/<container_name>/<prefix>/`
 - **Azure Blob Storage Account Name**: Enter your Azure Blob Storage account name that you copied in the <Link to="#setting-up-azure-blob-storage">Setting up Azure Blob Storage</Link> section above.
-- **Azure Blob Storage Account Key**: If **Use shared access signature (SAS) Tokens** is **disabled**, enter the access key associated with your Blob Storage account.
+- **Azure Blob Storage Account Key**: This option is only applicable if **Use shared access signature (SAS) Tokens** is **disabled**. In that case, enter the access key associated with your Blob Storage account.
 - **Use shared access signature (SAS) Tokens**: Enable this setting to use a shared access signature (SAS) token to grant limited access to your Azure storage resources.
 
 <img src="../../assets/event-stream-destinations/azure-blob-storage-connection-2.png" alt="Azure Blob Storage connection settings" />
