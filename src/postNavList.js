@@ -362,6 +362,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "monday",
+    title: "Monday",
+    link: "/sources/event-streams/cloud-apps/monday/",
+    content: [],
+  },
+  {
     key: "appcenter",
     title: "App Center",
     link: "/sources/event-streams/cloud-apps/appcenter/",
@@ -398,9 +404,21 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "custify",
+    title: "Custify",
+    link: "/sources/cloud-apps/custify/",
+    content: [],
+  },
+  {
     key: "looker",
     title: "Looker",
     link: "/sources/event-streams/cloud-apps/looker/",
+    content: [],
+  },
+  {
+    key: "mailmodo",
+    title: "Mailmodo",
+    link: "/sources/event-streams/cloud-apps/mailmodo/",
     content: [],
   },
   {
@@ -852,6 +870,11 @@ export const postNavList = [
     key: "quantummetric",
     title: "Quantum Metric",
     link: "/destinations/streaming-destinations/quantummetric/",
+    content: [],
+  },
+  {
+    title: "Quora Pixel",
+    link: "/destinations/streaming-destinations/quora-pixel/",
     content: [],
   },
   {
@@ -1368,6 +1391,12 @@ export const postNavList = [
     key: "snapchat-conversion",
     title: "Snapchat Conversion",
     link: "/destinations/streaming-destinations/snapchat-conversion/",
+    content: [],
+  },
+  {
+    key: "woopra",
+    title: "Woopra",
+    link: "/destinations/streaming-destinations/woopra/",
     content: [],
   },
   {
@@ -2246,6 +2275,12 @@ export const postNavList = [
     title: "How to Filter Events using Different Methods",
     link: "/user-guides/how-to-guides/filter-events/",
     content: [],
+  },
+  {
+    key: "self-hosting-js-sdk",
+    title: "How to Host RudderStack JavaScript SDK on your CDN/Storage",
+    link: "/user-guides/how-to-guides/self-hosting-js-sdk/",
+    content: []
   },
   {
     key: "how-to-filter-selective-destinations",

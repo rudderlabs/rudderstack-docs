@@ -417,6 +417,49 @@ The `screen` method accepts the following parameters:
 | `properties` | `NSDictionary` | No       | Extra property object that you want to pass along with the `screen` call. |
 | `options`    | `RudderOption` | No       | Extra options to be passed along with the `screen` event.                |
 
+### Automatically capturing screen views
+
+To automatically capture the screen views, you can enable the `recordScreenViews` parameter while initializing the SDK, as shown:
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
+[builder withDataPlaneUrl:DATA_PLANE_URL];
+[builder withRecordScreenViews:YES];
+[RSClient getInstance:WRITE_KEY config:[builder build]];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let builder: RSConfigBuilder = RSConfigBuilder()
+            .withDataPlaneUrl(DATA_PLANE_URL)
+            .withRecordScreenViews(true)
+RSClient.getInstance(WRITE_KEY, config: builder.build())
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+Note that if automatic screen recording is enabled, RudderStack removes every instance of `ViewController` in the `screen` event.
+
+For example, if automatic screen recording is enabled and you set the `ViewController` class name to `HomeViewController`, then the SDK sets the screen event name to `Home`.
+
+<div class="infoBlock">
+For more details related to this implementation, refer to the <a href="https://github.com/rudderlabs/rudder-sdk-ios/blob/791f71c94b323d20d59dacc8aa8bb8626ad62245/Sources/Classes/UIViewController%2BRSScreen.m#L53">RudderStack iOS SDK repository</a>.
+</div>
+
 ## Group
 
 The `group` call associates a user to a specific organization. A sample `group` call for the API is below:
@@ -546,7 +589,7 @@ You can configure your client based on the following parameters using `RudderCon
 | `sleepTimeout`          | `int`     | Minimum waiting time to flush the events to the server. .                                                                                                                                                                                                       | `10 seconds`                                                               |
 | `configRefreshInterval` | `int`     | Fetches the config from dashboard after the specified time.                                                                                                                                                                                     | `2 hours`                                                                        |
 | `trackLifecycleEvents`  | `boolean` | Specify whether the SDK will capture application life cycle events automatically.                                                                                                                                                                              | `true`                                                                     |
-| `recordScreenViews`     | `boolean` | Specify whether the SDK will capture screen view events automatically.                                                                                                                                                                                         | `false`                                                                    |
+| `recordScreenViews`     | `boolean` | Specify whether the SDK will capture screen view events automatically. Refer to <Link to="#automatically-capturing-screen-views">Automatically capturing screen views</Link> for more details.     | `false`                                                                    |
 | `enableBackgroundMode`  | `boolean` | Specify whether the SDK should send the events for some time when the app is moved to the background. Currently it is available only for `iOS` & `tvOS`. | `false`                                                                    |
 | `controlPlaneUrl`       | `string`  | This parameter should be changed **only if** you are self-hosting the control plane. Check the [**Self-hosted control plane**](https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-ios-sdk/#self-hosted-control-plane) section below for more information. The iOS SDK will add `/sourceConfig` along with this URL to fetch the required configuration. | `https://api.rudderlabs.com`       |
 

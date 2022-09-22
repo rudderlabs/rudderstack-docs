@@ -66,6 +66,23 @@ RudderStack stores the data in the form of staging files in the object storage a
 RudderStack also provides the <Link to="/user-guides/administrators-guide/event-replay/">event replay</Link> feature for the <a href="https://www.rudderstack.com/enterprise-quote/">enterprise customers</a> wherein you can back up your event data and replay it in case of any failures.
 </div>
 
+### Can I tie a value in the  rudder_discards table back to the actual event in another table?
+
+Yes, you can. 
+
+The <Link to="/destinations/warehouse-destinations/warehouse-schema/#how-rudderstack-handles-data-type-mismatch">`rudder_discards`</Link> table contains columns like `row_id` (corresponding to the event's `messageId`), `table_name`, `column_name`, and `column_value`. 
+
+You can use the `table_name` and map the `row_id` to the `id` column in your event’s table.
+
+<div class="infoBlock">
+The <code class="inline-code">rudder_discards</code> table is applicable for all the warehouse destinations except the following data lake destinations:
+<ul>
+  <li><Link to="/destinations/warehouse-destinations/s3-datalake/">Amazon S3 Data Lake</Link></li>
+  <li><Link to="/destinations/warehouse-destinations/azure-datalake/">Azure Data Lake</Link></li>
+  <li><Link to="/destinations/warehouse-destinations/gcs-datalake/">Google Cloud Storage Data Lake</Link></li>
+</ul>
+</div>
+
 ## Staging
 
 ### What are the files written in the location `<namespace>/rudder-warehouse-staging-logs/`?

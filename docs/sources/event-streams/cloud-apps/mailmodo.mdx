@@ -1,0 +1,189 @@
+---
+title: "Mailmodo"
+description: Step-by-step guide on ingesting your event data from Mailmodo into RudderStack.
+aliases: ["Mailmodo source"]
+---
+
+[Mailmodo](https://www.mailmodo.com/) is an interactive email marketing tool. It provides several features such as transactional campaigns, email automation and drip emails with customer journeys, WYSIWYG email editor, and many other tool integrations.
+
+This guide will help you set up Mailmodo as a source in RudderStack.
+
+## Getting started
+
+Follow these steps to set up your Mailmodo source in the RudderStack dashboard:
+
+1. Go to your [RudderStack dashboard](https://app.rudderstack.com/) and click **Add Source**. From the list of **Event Streams** sources, select **Mailmodo**.
+2. Assign a name to your source and click **Continue**.
+3. Your Mailmodo source is now configured. Note the **Webhook URL** in the **Settings** tab, as shown:
+
+<img src="../../../assets/event-stream-sources/Mailmodo-2.png" alt="Mailmodo source webhook URL" />
+
+4. Log into your <a href="https://manage.mailmodo.com/auth/logi">Mailmodo account</a> and enter the **Webhook URL** based on the required format. Mailmodo can send data to a webhook in any of the following ways:    
+
+- By setting it up as an action in the user journey. Follow the detailed steps from [Mailmodo documentation](https://support.mailmodo.com/support/solutions/articles/84000365396-send-webhook-as-an-action-in-the-journey):
+
+<img src="../../../assets/event-stream-sources/webhook_url_1.png" alt="Mailmodo source webhook URL" />
+
+- By adding Mailmodo's webhook integration from the template builder and use it to export data. Follow the detailed steps from [Mailmodo documentation](https://support.mailmodo.com/support/solutions/articles/84000351525-exporting-mailmodo-template-submissions-to-your-software-stack-using-webhook):
+
+<img src="../../../assets/event-stream-sources/webhook_url_2.png" alt="Mailmodo source webhook URL" />
+
+## Event transformation
+
+RudderStack ingests the Mailmodo events after converting them into the RudderStack event format. It also maps the following properties from the Mailmodo event payload to the RudderStack properties:
+
+| Mailmodo property  | RudderStack property| Notes |
+| :------------------ | :------------- |:------------- |
+| `mailmodoUserId`  | `context.externalId[0].type`    | Only when [the webhook is set up as an action in the user journey](https://support.mailmodo.com/support/solutions/articles/84000365396-send-webhook-as-an-action-in-the-journey). |
+| `triggerData.userId`        | `context.externalId[0].value`        | Only when [the webhook is set up as an action in the user journey](https://support.mailmodo.com/support/solutions/articles/84000365396-send-webhook-as-an-action-in-the-journey). |
+| SHA-256 hash of `triggerData.email`/`recipientData.email`/`recipientEmail` | `anonymousId`        | -|
+| `triggerData.email`/`recipientData.email`/`recipientEmail` | `context.traits.email`        | -|
+| `triggerData.triggerSource`     | `event`   | If `triggerData.triggerSource` is not present, the event name is sent as **Form Submitted**.  |
+| `recipientData`    | `context.traits`  | - |
+| `recordedAt.ts`     | `originalTimestamp`   |- |
+
+<div class="infoBlock">
+Barring <code class="inline-code">recipientData</code>, <code class="inline-code">recordedAt</code>, <code class="inline-code">email</code>, and <code class="inline-code">userId</code>, RudderStack assigns the rest of the payload fields to <code class="inline-code">properties</code> after flattening them.
+</div>
+
+## How RudderStack creates the event payload
+
+This section details how RudderStack receives the data from Mailmodo source for different formats and creates the resulting payload.
+
+- If you choose to send webhook as an action in the journey, a sample payload sent by Mailmodo is shown below:
+
+```json
+{
+  "triggerData": {
+    "data": {},
+    "eventProperty": {
+      "Name": "APPLE iPhone 13 (Blue, 128 GB)",
+      "Category": "Mobiles",
+      "Is Purchased": "false",
+      "Price": "829",
+      "Currency": "USD"
+    },
+    "triggerSource": "New Custom Event Trigger - Product Viewed",
+    "email": "alex@example.com",
+    "userId": "d3775892-****-4f2f-b9d5-e49810eb2cae",
+    "journeyId": "3f135bf7-****-4e31-b265-f61cfe1bd423"
+  }
+}
+```
+
+RudderStack transforms the above payload into the following payload:
+
+```json
+{
+  "anonymousId": "26c9ad4b531287858155ffa834be13dddc2c45df6e29af7230408953d732dd92",
+  "context": {
+    "externalId": [{
+      "id": "d3775892-****-4f2f-b9d5-e49810eb2cae",
+      "type": "mailmodoUserId"
+    }],
+    "traits": {
+      "email": "alex@example.com"
+    },
+    "integration": {
+      "name": "Mailmodo",
+      "version": "1.0.0"
+    },
+    "library": {
+      "name": "unknown",
+      "version": "unknown"
+    }
+  },
+  "event": "New Custom Event Trigger - Product Viewed",
+  "integrations": {
+    "Mailmodo": false
+  },
+  "properties": {
+    "triggerData.eventProperty.Category": "Mobiles",
+    "triggerData.eventProperty.Currency": "USD",
+    "triggerData.eventProperty.Is Purchased": "false",
+    "triggerData.eventProperty.Name": "APPLE iPhone 13 (Blue, 128 GB)",
+    "triggerData.eventProperty.Price": "829",
+    "triggerData.journeyId": "3f135bf7-****-4e31-b265-f61cfe1bd423",
+    "triggerData.triggerSource": "New Custom Event Trigger - Product Viewed"
+  },
+  "type": "track"
+}
+```
+
+
+- If you choose to export the Mailmodo template submissions to your software stack using a webhook, a sample payload sent by Mailmodo is shown below:
+
+```json
+{
+  "fuuid": "27905",
+  "next-step-id": "success",
+  "total-steps": "3",
+  "responseId": "b9a5d224-cc5a-4e64-9800-5a3db9515fdf",
+  "recipientEmail": "alex@example.com",
+  "formId": "formosztd5",
+  "recordedAt": {
+    "ts": 1662695704,
+    "date": "2022-09-09",
+    "hour": 9,
+    "minute": 25
+  },
+  "submissionSource": "amp",
+  "elementjbtz42": "Everything ",
+  "element8jzo13": ["Reliable", "High Quality", "Useful"],
+  "recipientData": {
+    "email": "alex@example.com"
+  },
+  "recommend": "9",
+  "liking": "upvote",
+  "satisfaction": "4",
+  "campaignId": "0b53e1bf-84ae-4198-9184-8a4d6e1fa3dd",
+  "campaignName": "Campaign-testing"
+}
+```
+
+RudderStack transforms the above payload into the following payload:
+
+```json
+{
+  "anonymousId": "cd5dbd2727742c2957771e61eef4e296f3fb263294e184fcb8af98b7ccd372c7",
+  "context": {
+    "integration": {
+      "name": "Mailmodo",
+      "version": "1.0.0"
+    },
+    "library": {
+      "name": "unknown",
+      "version": "unknown"
+    },
+    "traits": {
+      "email": "alex@example.com",
+      "recipientData": {
+        "email": "alex@example.com"
+      }
+    }
+  },
+  "event": "Form Submitted",
+  "integrations": {
+    "Mailmodo": false
+  },
+  "originalTimestamp": "2022-09-09T03:55:04.000Z",
+  "properties": {
+    "campaignId": "0b53e1bf-84ae-4198-9184-8a4d6e1fa3dd",
+    "campaignName": "Campaign-testing",
+    "element8jzo13[0]": "Reliable",
+    "element8jzo13[1]": "High Quality",
+    "element8jzo13[2]": "Useful",
+    "elementjbtz42": "Everything ",
+    "formId": "formosztd5",
+    "fuuid": "27905",
+    "liking": "upvote",
+    "next-step-id": "success",
+    "recommend": "9",
+    "responseId": "b9a5d224-cc5a-4e64-9800-5a3db9515fdf",
+    "satisfaction": "4",
+    "submissionSource": "amp",
+    "total-steps": "3"
+  },
+  "type": "track"
+}
+```

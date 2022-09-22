@@ -331,14 +331,26 @@ export const jsonData = [
                         link: "/sources/event-streams/cloud-apps/extole/",
                         content: []
                     }, {
-                        title: "Iterable",
+                        title: "Iterable Webhook",
                         link: "/sources/event-streams/cloud-apps/iterable/",
                         content: []
-                    }, {
+                    }, 
+                    {
                         title: "Looker",
                         link: "/sources/event-streams/cloud-apps/looker/",
                         content: []
-                    }, {
+                    }, 
+                    {
+                        title: "Mailmodo",
+                        link: "/sources/event-streams/cloud-apps/mailmodo/",
+                        content: []
+                    },
+                    {
+                        title: "Monday",
+                        link: "/sources/event-streams/cloud-apps/monday/",
+                        content: []
+                    },
+                    {
                         title: "PostHog",
                         link: "/sources/event-streams/cloud-apps/posthog/",
                         content: []
@@ -427,7 +439,7 @@ export const jsonData = [
                 title: "Mailchimp",
                 link: "/sources/extract/mailchimp/",
                 content: []
-            }, 
+            },
             {
                 title: "Mixpanel",
                 link: "/sources/extract/mixpanel/",
@@ -738,6 +750,11 @@ export const jsonData = [
                 ]
             },
             {
+                title: "Quora Pixel",
+                link: "/destinations/streaming-destinations/quora-pixel/",
+                content: []
+            },
+            {
                 title: "Reddit Pixel",
                 link: "/destinations/streaming-destinations/reddit-pixel/",
                 content: []
@@ -911,7 +928,8 @@ export const jsonData = [
                 title: "Quantum Metric",
                 link: "/destinations/streaming-destinations/quantummetric/",
                 content: []
-            },  {
+            },
+            {
                 title: "Shynet",
                 link: "/destinations/streaming-destinations/shynet/",
                 content: []
@@ -938,6 +956,11 @@ export const jsonData = [
                         content: [],
                     },
                 ]
+            },
+            {
+                title: "Woopra",
+                link: "/destinations/streaming-destinations/woopra/",
+                content: []
             },
             {
                 title: "Adjust",
@@ -1028,8 +1051,13 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Freshsales",
+                title: "Custify",
                 sectionTitle: "CRM",
+                link: "/destinations/streaming-destinations/custify/",
+                content: []
+            },
+            {
+                title: "Freshsales",
                 link: "/destinations/streaming-destinations/freshsales/",
                 content: []
             },
@@ -1738,7 +1766,12 @@ export const jsonData = [
                 title: "How to Debug Live Destination Events",
                 link: "/user-guides/how-to-guides/live-destination-event-debugger/",
                 content: []
-            }, {
+            },{
+                title: "How to Host RudderStack JavaScript SDK on your CDN/Storage",
+                link: "/user-guides/how-to-guides/self-hosting-js-sdk/",
+                content: []
+            }, 
+            {
                 title: "How to Filter Events using Different Methods",
                 link: "/user-guides/how-to-guides/filter-events/",
                 content: []
