@@ -1,35 +1,35 @@
 ---
-title: "Signl4"
-description: Step-by-step guide on ingesting your event data from Signl4 into RudderStack.
-aliases: ["Signl4 source"]
+title: "SIGNL4"
+description: Step-by-step guide on ingesting your event data from SIGNL4 into RudderStack.
+aliases: ["SIGNL4 source"]
 ---
 
-[Signl4](https://www.signl4.com/) is a tool for instant mobile alerting which generates real-time alerts to inform teams about any incidents. It automatically delivers critical information to the right people at the right time.
+[SIGNL4](https://www.signl4.com/) is a tool for instant mobile alerting which generates real-time alerts to inform teams about any incidents. It automatically delivers critical information to the right people at the right time.
 
 ## Getting started
 
-Follow these steps to set up your Signl4 source in the RudderStack dashboard:
+Follow these steps to set up your SIGNL4 source in the RudderStack dashboard:
 
-1. Go to your [RudderStack dashboard](https://app.rudderstack.com/) and click **Add Source**. From the list of **Event Streams** sources, select **Signl4**.
+1. Go to your [RudderStack dashboard](https://app.rudderstack.com/) and click **Add Source**. From the list of **Event Streams** sources, select **SIGNL4**.
 2. Assign a name to your source and click **Continue**.
-3. Your Signl4 source is now configured. Note the **Webhook URL** in the **Settings** tab, as shown:
+3. Your SIGNL4 source is now configured. Note the **Webhook URL** in the **Settings** tab, as shown:
 
-<img src="../../../assets/event-stream-sources/signl4-source.png" alt="Signl4 source webhook URL" />
+<img src="../../../assets/event-stream-sources/signl4-source.png" alt="SIGNL4 source webhook URL" />
 
-4. Log into your <a href="https://connect.signl4.com/">Signl4 account</a>. 
+4. Log into your <a href="https://connect.signl4.com/">SIGNL4 account</a>. 
 5. Go to **Teams** > **Developer** and enter a name and the **Webhook URL** under **Outbound Webhooks** section, as shown:
 
-<img src="../../../assets/event-stream-sources/signl4-source-webhook.png" alt="Signl4 source webhook URL" />
+<img src="../../../assets/event-stream-sources/signl4-source-webhook.png" alt="SIGNL4 source webhook URL" />
 
 6. Finally, click **Add**. 
 
 ## Event transformation
 
-Signl4 acts as a webhook source and ingests all the events mentioned in [Signl4 documentation](https://www.signl4.com/outbound-webhooks/#N10).
+SIGNL4 acts as a webhook source and ingests all the events mentioned in [SIGNL4 documentation](https://www.signl4.com/outbound-webhooks/#N10).
 
 Each event has a unique code present in the <code class="inline-code">eventType</code> property. The event name is mapped on the basis of this code as explained below:
 
-| `eventType` code  | Event name | Signl4 action |
+| `eventType` code  | Event name | SIGNL4 action |
 | :------------------ | :------------- |:------------- |
 | 200  | New Alert Created    | New alert created in SIGNL4. |
 | 201 | Alert Confirmed/Alert Resolved    | Alert confirmed by the user. Alert resolved if the statusCode is 4. |
@@ -41,9 +41,9 @@ Each event has a unique code present in the <code class="inline-code">eventType<
 | 303  | Somebody Punched-Out   | When a team member goes off duty. |
 | Any other  | Alert Updated    | Default. |
 
-RudderStack ingests the Signl4 events after converting them into the RudderStack event format. It also maps the following properties from the Signl4 event payload to the RudderStack properties:
+RudderStack ingests the SIGNL4 events after converting them into the RudderStack event format. It also maps the following properties from the SIGNL4 event payload to the RudderStack properties:
 
-| Signl4 property  | RudderStack property| 
+| SIGNL4 property  | RudderStack property| 
 | :------------------ | :------------- |
 | `eventType`  | `event`    | 
 | `eventRaisedUtc`        | `originalTimestamp`        | 
@@ -63,9 +63,9 @@ RudderStack ingests the Signl4 events after converting them into the RudderStack
 
 ## How RudderStack creates the event payload
 
-This section details how RudderStack receives the data from Signl4 source and creates the resulting payload.
+This section details how RudderStack receives the data from SIGNL4 source and creates the resulting payload.
 
-A sample payload sent by Signl4 is shown below:
+A sample payload sent by SIGNL4 is shown below:
 
 ```json
 {
@@ -75,8 +75,8 @@ A sample payload sent by Signl4 is shown below:
     "id": "1578ebd9-0a27-44ab-bc8e-52cd7d32e81d"
   },
   "user": {
-    "username": "Rene",
-    "mailaddress": "rene@signl4.com",
+    "username": "Alex",
+    "mailaddress": "alex@signl4.com",
     "id": "f0bd5063-9588-51cf-b3d9-94e5647dedc5"
   },
   "alert": {
@@ -105,8 +105,8 @@ RudderStack transforms the above payload into the following payload:
       "version": "unknown"
     },
     "traits": {
-      "name": "Rene",
-      "email": "rene@signl4.com"
+      "name": "Alex",
+      "email": "alex@signl4.com"
     },
     "externalId": [{
       "type": "signl4UserId",
