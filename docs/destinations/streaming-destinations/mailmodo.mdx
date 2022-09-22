@@ -104,6 +104,10 @@ The following table lists the mappings between the RudderStack and Mailmodo prop
 | `traits.description`/`context.traits.description` | `values.data.description` | Optional |
 | `traits.anniversaryDate`/`context.traits.anniversaryDate`/`traits.anniversary_date`/`context.traits.anniversary_date` | `values.data.anniversary_date` | Optional (ISO format/UNIX timestamp) |
 
+<div class="infoBlock">
+Any property apart from the above is sent as a custom property inside <code class="inline-code">traits/context.traits</code> and is mapped to <code class="inline-code">values.data</code> before being sent to Mailmodo.
+</div>
+
 ## Track
 
 You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to [add custom events for a contact](https://www.mailmodo.com/developers/93cba3fa7f1ea-add-event/).
