@@ -4,10 +4,10 @@ description: Step-by-step guide on ingesting your event data from SIGNL4 into Ru
 aliases: ["SIGNL4 source"]
 ---
 
-[SIGNL4](https://www.signl4.com/) is a tool for instant mobile alerting which generates real-time alerts to inform teams about any incidents. It automatically delivers critical information to the right people at the right time.
+[SIGNL4](https://www.signl4.com/) is a tool for instant mobile alerting. It generates real-time alerts to inform teams about any incidents and automatically delivers critical information to the right people at the right time.
 
-<div class="infoBlock">
-Apart from SIGNL4 source, RudderStack also supports <a href ="/destinations/streaming-destinations/signl4/">SIGNL4 as a destination</a>.
+<div class="successBlock">
+RudderStack also supports SIGNL4 as a destination. Refer to the <Link to="/destinations/streaming-destinations/signl4/">SIGNL4 destination documentation</Link> for more information.
 </div>
 
 ## Getting started
@@ -21,7 +21,7 @@ Follow these steps to set up your SIGNL4 source in the RudderStack dashboard:
 <img src="../../../assets/event-stream-sources/signl4-source.png" alt="SIGNL4 source webhook URL" />
 
 4. Log into your <a href="https://connect.signl4.com/">SIGNL4 account</a>. 
-5. Go to **Teams** > **Developer** and enter a name and the **Webhook URL** under **Outbound Webhooks** section, as shown:
+5. Go to **Teams** > **Developer**. Add a name and the **Webhook URL** under **Outbound Webhooks**, as shown:
 
 <img src="../../../assets/event-stream-sources/signl4-source-webhook.png" alt="SIGNL4 source webhook URL" />
 
@@ -31,7 +31,7 @@ Follow these steps to set up your SIGNL4 source in the RudderStack dashboard:
 
 SIGNL4 acts as a webhook source and ingests all the events mentioned in [SIGNL4 documentation](https://www.signl4.com/outbound-webhooks/#N10).
 
-Each event has a unique code present in the <code class="inline-code">eventType</code> property. The event name is mapped on the basis of this code as explained below:
+Each event has a unique code present in the <code class="inline-code">eventType</code> property. The event name is mapped on the basis of this code, as explained below:
 
 | `eventType` code  | Event name | SIGNL4 action |
 | :------------------ | :------------- |:------------- |
@@ -43,7 +43,7 @@ Each event has a unique code present in the <code class="inline-code">eventType<
 | 301  | Duty Period Ended    | Duty period ended for a team. |
 | 302  | Somebody Punched-In    | When a team member comes on duty. |
 | 303  | Somebody Punched-Out   | When a team member goes off duty. |
-| Any other  | Alert Updated    | Default. |
+| Any other  | Alert Updated    | Default behavior. |
 
 RudderStack ingests the SIGNL4 events after converting them into the RudderStack event format. It also maps the following properties from the SIGNL4 event payload to the RudderStack properties:
 
@@ -97,7 +97,7 @@ A sample payload sent by SIGNL4 is shown below:
 }
 ```
 
-RudderStack transforms the above payload into the following payload:
+RudderStack transforms the above payload into the following <Link to="/event-spec/standard-events/track/">`track`</Link> payload:
 
 ```json
 {
