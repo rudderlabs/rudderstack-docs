@@ -32,14 +32,14 @@ Each event has a unique code present in the <code class="inline-code">eventType<
 | `eventType` code  | Event name | Signl4 action |
 | :------------------ | :------------- |:------------- |
 | 200  | New Alert Created    | New alert created in SIGNL4. |
-| 201 | Alert Confirmed/Alert Resolved    | Alert confirmed/acknowledged by the user. Alert Resolved if the statusCode is 4. |
+| 201 | Alert Confirmed/Alert Resolved    | Alert confirmed by the user. Alert resolved if the statusCode is 4. |
 | 202  | Alert Escalated    | Alert escalated when not confirmed in specified time. |
 | 203  | Alert Annotated   | Message/Annotation sent by the receiver for an alert. |
 | 300  | Duty Period Started    | Duty period started for a team. |
 | 301  | Duty Period Ended    | Duty period ended for a team. |
 | 302  | Somebody Punched-In    | When a team member comes on duty. |
 | 303  | Somebody Punched-Out   | When a team member goes off duty. |
-| Any other  | Alert Updated    | Default |
+| Any other  | Alert Updated    | Default. |
 
 RudderStack ingests the Signl4 events after converting them into the RudderStack event format. It also maps the following properties from the Signl4 event payload to the RudderStack properties:
 
