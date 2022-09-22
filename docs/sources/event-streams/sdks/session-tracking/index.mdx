@@ -15,14 +15,13 @@ A single session can contain multiple page views or screen views, events, social
 
 You can use RudderStack's session tracking feature to determine the average time users spend on an app and how they engage with it. By combining the session metadata with the usage data like event tracking, you can better understand the user's product journey and analyze their behavior effectively. You can also use the resulting insights to identify problems and optimization opportunities in your product workflow.
 
-<div class="infoBlock">
 The following RudderStack SDKs support the session tracking feature:
-<ul>
-<li><Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link></li>
-<li><Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link></li>
-<li><Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link></li>
-</ul>
-</div>
+
+| RudderStack SDK | Minimum supported version |
+| :---- | :---- |
+| <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link> | <ul><li><strong>v1</strong> - <a href="https://github.com/rudderlabs/rudder-sdk-js/releases/tag/v1.16.0">1.16.0</a> (CDN)</li><li><strong>v1.1</strong> - <a href="https://github.com/rudderlabs/rudder-sdk-js/releases/tag/v2.15.0">2.15.0</a> (CDN & NPM)</li></ul> |
+| <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link> | <strong>v1.7.0</strong> |
+| <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link> | <strong>v1.7.0</strong> |
 
 If the session tracking feature is enabled, you can expect the following properties in your event's `context` object:
 
