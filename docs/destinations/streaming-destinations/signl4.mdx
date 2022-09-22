@@ -4,7 +4,7 @@ description: Step-by-step guide on sending your event data from RudderStack to S
 aliases: ["SIGNL4 destination"]
 ---
 
-[SIGNL4](https://www.signl4.com/) is a tool for instant mobile alerting which generates real-time alerts to inform teams about any incidents. It automatically delivers critical information to the right people at the right time.
+[SIGNL4](https://www.signl4.com/) is a tool for instant mobile alerting that generates real-time alerts to inform teams about any incidents. It automatically delivers critical information to the right people at the right time.
 
 <div class="infoBlock">
 Apart from SIGNL4 destination, RudderStack also supports <a href ="/sources/event-streams/cloud-apps/signl4/">SIGNL4 as a source</a>.
@@ -47,24 +47,24 @@ To understand the following connection settings in detail, refer to the [SIGNL4 
 <img src="../../assets/event-stream-destinations/signl4-conn-settings-1.png" alt="SIGNL4 connection setting"/>
 <img src="../../assets/event-stream-destinations/signl4-conn-settings-2.png" alt="SIGNL4 connection setting"/>
 
-Except for **X-S4-Filtering**, RudderStack dashboard provides the following fields for each of the above-mentioned settings:
+Except for **X-S4-Filtering**, the RudderStack dashboard provides the following fields for each of the above-mentioned settings:
 
 - **Default Value**: Enter the actual value for the setting.
 - **RudderStack property name**: Enter a property name whose actual value will be taken from the payload and assigned to the setting.
 
-Although these fields are optional, the higher priority is given to the **RudderStack property name** if both are specified,.
+Although these fields are optional, a higher priority is given to the **RudderStack property name** if both are specified.
 
 For example:
-- If you provide `new` in the **Default value** for **X-S4-Status**. The output payload will contain `X-S4-Status: new`.
-- If you provide `alert_status` in the **RudderStack property name** field. Then, the value for **X-S4-Status** will be taken from `properties.alert_status`. Susppose the value for `properties.alert_status` is set to `resolved`. Hence, the output payload will contain `X-S4-Status: resolved`.
+- If you provide `new` in the **Default value** for **X-S4-Status**, the output payload will contain `X-S4-Status: new`.
+- If you provide `alert_status` in the **RudderStack property name** field, then the value for **X-S4-Status** will be taken from `properties.alert_status`. Suppose the value for `properties.alert_status` is set to `resolved`. Hence, the output payload will contain `X-S4-Status: resolved`.
 
-If you provide values in both the fields, the final output payload will contain `X-S4-Status: resolved`, as the **RudderStack property name** field is given higher priority.
+If you provide values in both fields, the final output payload will contain `X-S4-Status: resolved`, as the **RudderStack property name** field is given higher priority.
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call can be used to push alerts for the events having a particular alert title, alert message, or other additional details.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call can be used to push alerts for events with a particular alert title, alert message, or other additional details.
 
-The category of alert raised in the SIGNL4 dashboard is decided on the basis of keywords in the payload. Reference: [here](https://account.signl4.com/manage/Category). For example, an event payload containing any of the keywords like `ambulance` ,`doctor` ,`hospital` ,`nurse`, `surgery` etc., are categorized as **Healthcare**.
+The keywords present in the payload decide the category of alert raised in the SIGNL4 dashboard. To know more about these categories, refer to the [SIGNL4 documentation](https://account.signl4.com/manage/Category). For example, an event payload containing keywords like `ambulance`, `doctor`, `hospital`, `nurse`, `surgery`, etc., is categorized as **Healthcare**.
 
 A sample `track` call is shown below:
 
@@ -77,7 +77,7 @@ rudderanalytics.track(event, {
 });
 ```
 
-You can pass any key-value pair in the `track` call which is mapped as it is in the SIGNL4 destination.
+You can pass any key-value pair in the `track` call, which is mapped as it is in the SIGNL4 destination.
 
 ### Property mapping
 
@@ -92,7 +92,7 @@ The following table lists the mappings between RudderStack and SIGNL4 properties
 
 ### Where can I find the SIGNL4 API Key?
 
-The team secret of your SIGNL4 team is the API key in RudderStack dashboard. To find the team secret, follow these steps:
+The team secret of your SIGNL4 team is the API key in the RudderStack dashboard. To find the team secret, follow these steps:
 
 1. Log into your [SIGNL4 dashboard](https://connect.signl4.com/)
 2. Select **Teams**, as shown:

@@ -934,6 +934,10 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/shynet/",
                 content: []
             },{
+                title: "SIGNL4",
+                link: "/destinations/streaming-destinations/signl4/",
+                content: []
+            },{
                 title: "Singular",
                 link: "/destinations/streaming-destinations/singular/",
                 content: [
