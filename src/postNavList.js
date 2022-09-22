@@ -404,9 +404,9 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "custify",
-    title: "Custify",
-    link: "/sources/cloud-apps/custify/",
+    key: "clickup",
+    title: "ClickUp",
+    link: "/sources/cloud-apps/clickup/",
     content: [],
   },
   {
