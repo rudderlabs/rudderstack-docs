@@ -1096,9 +1096,15 @@ export const jsonData = [
                 sectionTitle: "Error Reporting",
                 link: "/destinations/streaming-destinations/bugsnag/",
                 content: []
-            }, {
+            },
+            {
                 title: "Sentry",
                 link: "/destinations/streaming-destinations/sentry/",
+                content: []
+            },
+            {
+                title: "Rollbar",
+                link: "/destinations/streaming-destinations/rollbar/",
                 content: []
             },
             {
