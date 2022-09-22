@@ -61,9 +61,6 @@ RudderStack ingests the Signl4 events after converting them into the RudderStack
 | `subscription.id`     | `properties.subscription.id`   |
 | `alert.acknowledgedUserIds`     | `properties.alert.acknowledgedUserIds`   |
 
-
-
-
 ## How RudderStack creates the event payload
 
 This section details how RudderStack receives the data from Signl4 source and creates the resulting payload.
@@ -101,7 +98,7 @@ RudderStack transforms the above payload into the following payload:
 ```json
 {
   "type": "track",
-  "event": "New Signl Created",
+  "event": "Alert Annotated",
   "context": {
     "library": {
       "name": "unknown",
@@ -125,7 +122,10 @@ RudderStack transforms the above payload into the following payload:
     "alert.statusCode": 0,
     "alert.eventId": "2518783235949759942_fbc7b4a4-badd-47b8-9e1d-702fb6a1a0b2",
     "alert.externalEventId": "INC091210",
-    "alert.id": "2518783235958846071_4e2dfab2-4717-42bc-8d37-8682402309c2"
+    "alert.id": "2518783235958846071_4e2dfab2-4717-42bc-8d37-8682402309c2",
+    "subscription.id": "183f8d00-3bb8-4636-9a8f-89d6af26374a",
+    "annotation.id": "2518783235661483318_99ebffe0-1b90-40ef-990a-fbd842484761",
+    "message": "OK, I'll take care of it."
   },
   "anonymousId": "6f0a3dc76a335860e17fa1d8ab779742e2ca",
   "integrations": {
