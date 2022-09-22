@@ -12,15 +12,34 @@ Follow these steps to set up your Signl4 source in the RudderStack dashboard:
 
 1. Go to your [RudderStack dashboard](https://app.rudderstack.com/) and click **Add Source**. From the list of **Event Streams** sources, select **Signl4**.
 2. Assign a name to your source and click **Continue**.
-3. Your Signl4 source is now configured. Note the source **Write key**, as shown:
+3. Your Signl4 source is now configured. Note the **Webhook URL** in the **Settings** tab, as shown:
 
-<img src="../../../assets/event-stream-sources/Signl4-2.png" alt="Signl4 source webhook URL" />
+<img src="../../../assets/event-stream-sources/signl4-source.png" alt="Signl4 source webhook URL" />
 
-4. Finally, connect the source to your desired destination.
+4. Log into your <a href="https://connect.signl4.com/">Signl4 account</a>. 
+5. Go to **Teams** > **Developer** and enter a name and the **Webhook URL** under **Outbound Webhooks** section, as shown:
+
+<img src="../../../assets/event-stream-sources/signl4-source-webhook.png" alt="Signl4 source webhook URL" />
+
+6. Finally, click **Add**. 
 
 ## Event transformation
 
-Signl4 works as a webhook source and ingests all the events mentioned in [Signl4 documentation](https://www.signl4.com/outbound-webhooks/#N10).
+Signl4 acts as a webhook source and ingests all the events mentioned in [Signl4 documentation](https://www.signl4.com/outbound-webhooks/#N10).
+
+Each event has a unique code present in the <code class="inline-code">eventType</code> property. The event name is mapped on the basis of this code as explained below:
+
+| `eventType` code  | Event name | Signl4 action |
+| :------------------ | :------------- |:------------- |
+| 200  | New Alert Created    | New alert created in SIGNL4. |
+| 201 | Alert Confirmed/Alert Resolved    | Alert confirmed/acknowledged by the user. Alert Resolved if the statusCode is 4. |
+| 202  | Alert Escalated    | Alert escalated when not confirmed in specified time. |
+| 203  | Alert Annotated   | Message/Annotation sent by the receiver for an alert. |
+| 300  | Duty Period Started    | Duty period started for a team. |
+| 301  | Duty Period Ended    | Duty period ended for a team. |
+| 302  | Somebody Punched-In    | When a team member comes on duty. |
+| 303  | Somebody Punched-Out   | When a team member goes off duty. |
+| Any other  | Alert Updated    | Default |
 
 RudderStack ingests the Signl4 events after converting them into the RudderStack event format. It also maps the following properties from the Signl4 event payload to the RudderStack properties:
 
@@ -43,9 +62,7 @@ RudderStack ingests the Signl4 events after converting them into the RudderStack
 | `alert.acknowledgedUserIds`     | `properties.alert.acknowledgedUserIds`   |
 
 
-<div class="infoBlock">
-Each event has a unique code present in the <code class="inline-code">eventType</code> property. The event name is mapped on the basis of this code.
-</div>
+
 
 ## How RudderStack creates the event payload
 
