@@ -1,0 +1,87 @@
+---
+title: "Session Tracking FAQ"
+description: Answers to the generally asked questions related to RudderStack's session tracking feature.
+---
+
+## Generic
+
+### How does RudderStack determine the `sessionId`?
+
+RudderStack passes the event's `timestamp` (in milliseconds) as the `sessionId`. 
+
+### Does RudderStack attach any user information to the `sessionId`?
+
+RudderStack **does not** attach any user information to the `sessionId`. This is so that a user cannot be traced back or identified only with the `sessionId`.
+
+### What happens if automatic session tracking is enabled but I call the `startSession()` API?
+
+If you call the `startSession()` API while automatic session tracking is enabled, RudderStack ends the existing session and starts a new session. Also, it disables automatic session tracking.
+
+### What happens to the existing session if I call the `reset()` API?
+
+If you call the <Link to="/event-spec/standard-events/">`reset()`API</Link>, RudderStack ends the existing session and generates a new one.
+
+### Which events and APIs does RudderStack support for session tracking?
+
+RudderStack currently supports session tracking only for the following events:
+
+- <Link to="/event-spec/standard-events/identify/">Identify</Link>
+- <Link to="/event-spec/standard-events/track/">Track</Link>
+- <Link to="/event-spec/standard-events/page/">Page</Link>
+- <Link to="/event-spec/standard-events/group/">Group</Link>
+- <Link to="/event-spec/standard-events/screen/">Screen</Link>
+- <Link to="/event-spec/standard-events/alias/">Alias</Link>
+
+### Is automatic session tracking permanently disabled if I trigger manual session tracking?
+
+If you manually trigger a session using the `startSession()` API, RudderStack will disable automatic session tracking only till the app is closed.
+
+### What happens if I manually trigger a new session during an active session?
+
+RudderStack will end the active session and generate a new session.
+
+## JavaScript SDK
+
+### What happens if I set `timeout` to 0 or less than 10 ms?
+
+If you set the session's `timeout` to 0, RudderStack disables automatic session tracking. This is because upon setting the `timeout` to 0, RudderStack creates a new session for each event. As such, enabling automatic session tracking serves no purpose.
+
+If your session `timeout` is less than 10 ms, RudderStack gives a caution but proceeds with the session tracking.
+
+### Which session tracking-related information does RudderStack store?
+
+RudderStack persists the following session tracking-related information in local storage/cookie in a new field called `rl_session`.
+
+| Parameter | Data type | Description |
+| :---- | :---- | :-----|
+| `sessionId` | String | Uniquely identifies a session. |
+| Session expiration time | Number | Time when the session expires. RudderStack calculates it as the last event's `timestamp` + `timeout`. |
+| Manual session tracking status | Boolean | - |
+| Automatic session tracking status | Boolean | - |
+| Session started | Boolean | A flag that identifies the first event of the session. |
+
+### What happens I close a website tab and reopen it after some time?
+
+If the time between closing the tab and reopening it is less than the session timeout (default is 30 minutes), then RudderStack continues the same session. Otherwise, it starts a new session.
+
+## Mobile SDKs
+
+### What is the scope of persistence in case of automatic session tracking? 
+
+When an application is closed completely and launched from scratch, RudderStack checks if the inactivity timeout of the previous automatically tracked session has elapsed. If yes, RudderStack creates a new session, otherwise it continues the previous session.
+
+<h3 id="#manual-session-tracking-persistence">What is the scope of persistence in case of manual session tracking?</h3>
+
+The scope of manual session tracking depends on whether the automatic session tracking feature is enabled.
+
+- If automatic session tracking is **enabled**: On the next app launch (from scratch), RudderStack clears the manual session even if <Link to="/event-streams/sdks/session-tracking/#manual-session-tracking">`endSession()`</Link> is not called and generates a new **automatic** session.
+- If automatic session tracking is **disabled**: On the next app launch, the manual session will still be active and cleared only when the user ends the session using `endSession()`.
+
+### Where does RudderStack store the `sessionId`, last event time, and automatic session tracking status?
+
+RudderStack stores the `sessionId`, the last event timestamp (used to determine <Link to="/event-streams/sdks/session-tracking/#session-expiration-in-mobile-sdks">session expiration</Link>), and the status of automatic session tracking in the following locations:
+
+| Platform | Class |
+| :---------| :--------|
+| Android | [`SharedPreferences`](https://developer.android.com/reference/android/content/SharedPreferences) |
+| iOS | [`UserDefaults`](https://developer.apple.com/documentation/foundation/userdefaults) |

@@ -24,6 +24,7 @@ You can use **loadOptions** in the above `load` call to define various options w
   configUrl: string,  // defaults to https://api.rudderlabs.com
   queueOptions: QueueOpts,
   loadIntegration: boolean, // defaults to true.
+  sessions: SessionOpts,
   secureCookie: boolean, // defaults to false.
   destSDKBaseURL: string, // defaults to https://cdn.rudderlabs.com/v1.1/js-integrations
   useBeacon: boolean, // defaults to false.
@@ -42,6 +43,7 @@ The detailed description of these parameters is as follows:
 |  `configUrl`          | String                              |  The <Link to="/get-started/rudderstack-open-source/control-plane-lite/">Control Plane</Link> endpoint serving your destination configurations. Default value is `https://api.rudderlabs.com`. Note that `sourceConfig` is automatically appended to this endpoint in the format `https://api.rudderlabs.com/<source_config_url>/sourceConfig`  |
 |  `queueOpts`          | <Link to="#queueopts">QueueOpts</Link>         | Contains the options to control the behavior of the persistence queue that buffers the events before sending them to the data plane.          |
 |  `loadIntegration`    | Boolean                             | Determines whether the destination SDKs are fetched by the SDK or not. Default value is `True`. Supported for **Amplitude** and **Google Analytics**.                      |
+| `sessions`  | <Link to="#sessionopts">SessionOpts</Link> | Captures the details specific to session tracking. |
 | `secureCookie`        | Boolean                             | Determines whether the SDK sends the cookie to the storage backend via HTTPS. Default value is `False`. |
 | `destSDKBaseURL`      | String                              | Path used by the SDK to load the integrations. Default value is  `https://cdn.rudderlabs.com/v1.1/js-integrations`. <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/#case-3-self-hosting-rudderstacks-cdn">Reference</Link>.    | 
 | `useBeacon`           | Boolean                             | Determines whether the SDK <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#sending-events-using-beacon">sends event payloads via Beacon</Link>. Default value is `False`.  |
@@ -95,6 +97,19 @@ The following table describes the above `integer` type (optional) parameters in 
 | `backoffFactor` |  Exponential base.                                      | 2                 |
 | `maxAttempts`   |  Maximum number of attempts to send the event to the destination.     | 10                |
 | `maxItems`      |  Maximum number of events kept in the storage.                        | 100               |
+
+#### `SessionOpts`
+
+The `SessionOpts` object contains the options related to the SDK's automatic session tracking behavior. Its structure is defined as follows:
+
+| **Parameter**   | **Description**                                                      | **Default value** |
+| :-------------- |  :--------------------------------------------------------------------|:------------------|
+| `autoTrack` | Determines if the SDK should automatically track the user sessions. | `true` |
+| `timeout` | The maximum inactivity period before the session expires. | `1800000 ms` (30 minutes) |
+
+<div class="infoBlock">
+For more information on using the <code class="inline-code">SessionOpts</code> object, refer to the <Link to="/sources/event-streams/sdks/session-tracking/#automatic-session-tracking">Session Tracking</Link> guide.
+</div>
 
 #### `cookieConsentManager`
 
@@ -171,3 +186,23 @@ Run the `rudderanalytics` command in the console. If it returns the following co
 ```
 
 If it gives an `undefined` error, you need to verify the SDK installation.
+
+## Tracking user sessions
+
+By default, the JavaScript SDK automatically tracks the user sessions. This means that RudderStack automatically determines the start and end of a user session depending on the inactivity time configured in the SDK (default time is 30 minutes).
+
+```javascript
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+  sessions: {
+    autoTrack: true,
+    timeout: 10 * 60 * 1000,  // 10 min in milliseconds
+  },
+  ...<otherLoadOptions>
+});
+```
+
+To disable automatic session tracking, you can set the load option `autoTrack` to `false`.
+
+<div class="infoBlock">
+For more information on the user sessions and how to track them using the JavaScript SDK, refer to the <Link to="/sources/event-streams/sdks/session-tracking/">Session Tracking</Link> guide.
+</div>
