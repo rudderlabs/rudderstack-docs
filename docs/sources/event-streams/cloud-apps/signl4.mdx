@@ -1,0 +1,139 @@
+---
+title: "SIGNL4"
+description: Step-by-step guide on ingesting your event data from SIGNL4 into RudderStack.
+aliases: ["SIGNL4 source"]
+---
+
+[SIGNL4](https://www.signl4.com/) is a tool for instant mobile alerting. It generates real-time alerts to inform teams about any incidents and automatically delivers critical information to the right people at the right time.
+
+<div class="successBlock">
+RudderStack also supports SIGNL4 as a destination. Refer to the <Link to="/destinations/streaming-destinations/signl4/">SIGNL4 destination documentation</Link> for more information.
+</div>
+
+## Getting started
+
+Follow these steps to set up your SIGNL4 source in the RudderStack dashboard:
+
+1. Go to your [RudderStack dashboard](https://app.rudderstack.com/) and click **Add Source**. From the list of **Event Streams** sources, select **SIGNL4**.
+2. Assign a name to your source and click **Continue**.
+3. Your SIGNL4 source is now configured. Note the **Webhook URL** in the **Settings** tab, as shown:
+
+<img src="../../../assets/event-stream-sources/signl4-source.png" alt="SIGNL4 source webhook URL" />
+
+4. Log into your <a href="https://connect.signl4.com/">SIGNL4 account</a>. 
+5. Go to **Teams** > **Developer**. Add a name and the **Webhook URL** under **Outbound Webhooks**, as shown:
+
+<img src="../../../assets/event-stream-sources/signl4-source-webhook.png" alt="SIGNL4 source webhook URL" />
+
+6. Finally, click **Add**. 
+
+## Event transformation
+
+SIGNL4 acts as a webhook source and ingests all the events mentioned in [SIGNL4 documentation](https://www.signl4.com/outbound-webhooks/#N10).
+
+Each event has a unique code present in the <code class="inline-code">eventType</code> property. The event name is mapped on the basis of this code, as explained below:
+
+| `eventType` code  | Event name | SIGNL4 action |
+| :------------------ | :------------- |:------------- |
+| 200  | New Alert Created    | New alert created in SIGNL4. |
+| 201 | Alert Confirmed/Alert Resolved    | Alert confirmed by the user. Alert resolved if the statusCode is 4. |
+| 202  | Alert Escalated    | Alert escalated when not confirmed in specified time. |
+| 203  | Alert Annotated   | Message/Annotation sent by the receiver for an alert. |
+| 300  | Duty Period Started    | Duty period started for a team. |
+| 301  | Duty Period Ended    | Duty period ended for a team. |
+| 302  | Somebody Punched-In    | When a team member comes on duty. |
+| 303  | Somebody Punched-Out   | When a team member goes off duty. |
+| Any other  | Alert Updated    | Default behavior. |
+
+RudderStack ingests the SIGNL4 events after converting them into the RudderStack event format. It also maps the following properties from the SIGNL4 event payload to the RudderStack properties:
+
+| SIGNL4 property  | RudderStack property| 
+| :------------------ | :------------- |
+| `eventType`  | `event`    | 
+| `eventRaisedUtc`        | `originalTimestamp`        | 
+| `user.id` | `context.externalId`        | 
+| `id`        | `messageId`|
+| `team.id`     | `properties.team.id`   | 
+| `annotation.message`    | `properties.annotation.message`  |
+| `annotation.id`     | `properties.annotation.id`   |
+| `alert.eventId`  | `properties.alert.eventId`    | 
+| `alert.id`        | `properties.alert.id`        | 
+| `alert.externalEventId` | `properties.alert.externalEventId`        | 
+| `alert.statusCode`        | `properties.alert.statusCode`|
+| `user.username`     | `context.traits.name`   | 
+| `user.mailaddress`    | `context.traits.email`  |
+| `subscription.id`     | `properties.subscription.id`   |
+| `alert.acknowledgedUserIds`     | `properties.alert.acknowledgedUserIds`   |
+
+## How RudderStack creates the event payload
+
+This section details how RudderStack receives the data from SIGNL4 source and creates the resulting payload.
+
+A sample payload sent by SIGNL4 is shown below:
+
+```json
+{
+  "eventType": 203,
+  "eventRaisedUtc": "2018-04-17T15:00:32Z",
+  "subscription": {
+    "id": "1578ebd9-0a27-44ab-bc8e-52cd7d32e81d"
+  },
+  "user": {
+    "username": "Alex",
+    "mailaddress": "alex@signl4.com",
+    "id": "f0bd5063-9588-51cf-b3d9-94e5647dedc5"
+  },
+  "alert": {
+    "statusCode": 0,
+    "eventId": "2518783235949759942_fbc7b4a4-badd-47b8-9e1d-702fb6a1a0b2",
+    "externalEventId": "INC091210",
+    "id": "2518783235958846071_4e2dfab2-4717-42bc-8d37-8682402309c2"
+  },
+  "annotation": {
+    "message": "OK, I'll take care about it.",
+    "id": "2518783235661483318_99ebffe0-1b90-40ef-990a-fbd842484761"
+  },
+  "id": "141c0f88-7831-4d5e-b055-f6e83c269770"
+}
+```
+
+RudderStack transforms the above payload into the following <Link to="/event-spec/standard-events/track/">`track`</Link> payload:
+
+```json
+{
+  "type": "track",
+  "event": "Alert Annotated",
+  "context": {
+    "library": {
+      "name": "unknown",
+      "version": "unknown"
+    },
+    "traits": {
+      "name": "Alex",
+      "email": "alex@signl4.com"
+    },
+    "externalId": [{
+      "type": "signl4UserId",
+      "id": "f0bd5063-9588-51cf-b3d9-94e5647dedc5",
+    }],
+    "integration": {
+      "name": "SIGNL4"
+    }
+  },
+  "messageId": "141c0f88-7831-4d5e-b055-f6e83c269770",
+  "originalTimestamp": "2017-09-01T08:11:37.000Z",
+  "properties": {
+    "alert.statusCode": 0,
+    "alert.eventId": "2518783235949759942_fbc7b4a4-badd-47b8-9e1d-702fb6a1a0b2",
+    "alert.externalEventId": "INC091210",
+    "alert.id": "2518783235958846071_4e2dfab2-4717-42bc-8d37-8682402309c2",
+    "subscription.id": "183f8d00-3bb8-4636-9a8f-89d6af26374a",
+    "annotation.id": "2518783235661483318_99ebffe0-1b90-40ef-990a-fbd842484761",
+    "message": "OK, I'll take care of it."
+  },
+  "anonymousId": "6f0a3dc76a335860e17fa1d8ab779742e2ca",
+  "integrations": {
+    "SIGNL4": false
+  }
+}
+```

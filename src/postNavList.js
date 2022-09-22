@@ -446,6 +446,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "signl4",
+    title: "Signl4",
+    link: "/sources/event-streams/cloud-apps/signl4/",
+    content: []
+  },
+  {
     key: "segment",
     title: "Segment",
     link: "/sources/event-streams/cloud-apps/segment/",
