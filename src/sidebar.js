@@ -1205,7 +1205,11 @@ export const jsonData = [
                 title: "Mailchimp",
                 link: "/destinations/streaming-destinations/mailchimp/",
                 content: []
-            }, {
+            },{
+                title: "Mailmodo",
+                link: "/destinations/streaming-destinations/mailmodo/",
+                content: []
+            },  {
                 title: "Marketo",
                 link: "/destinations/streaming-destinations/marketo/",
                 content: []
