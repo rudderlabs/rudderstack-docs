@@ -65,14 +65,13 @@ If you provide values in both fields, the final output payload will contain `X-S
 Refer to the <a href="https://connect.signl4.com/webhook/docs/index.html">SIGNL4 documentation</a> to know more about these connection settings.
 </div>
 
-- **Event to title mapping**: Enter the event name and alert title you want to be mapped corresponding to each other.
-
+- **Event to title mapping**: Enter the event name and alert title you want to be mapped corresponding to each other. If no value is provided, the alert title is taken same as the event name.
 
 ## Signl categories
 
 In SIGNL4, the categories can be used to mark and tag Signls, for example, based on severity, type or relating IT systems, machines, sensors and services. Refer to the [SIGNL4 documentation](https://account.signl4.com/manage/Category) to know more about different categories.
 
-The keywords present in the payload decide the category of an alert raised in the SIGNL4 dashboard. For example, an event payload containing keywords like `ambulance`, `doctor`, `hospital`, `nurse`, `surgery`, etc., is categorized as **Healthcare**.
+The **X-S4-Service** setting in the RudderStack dashboard can be used to specify the Signl category. If not provided, the keywords present in the payload decide the category of the alert. For example, an event payload containing keywords like `ambulance`, `doctor`, `hospital`, `nurse`, `surgery`, etc., is categorized as **Healthcare**.
 
 <img src="../../assets/event-stream-destinations/categories-signl4.png" alt="SIGNL4 connection setting"/>
 
