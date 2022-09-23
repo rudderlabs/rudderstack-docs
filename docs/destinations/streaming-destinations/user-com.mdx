@@ -3,7 +3,7 @@ title: "User.com"
 description: Step-by-step guide on sending your event data from RudderStack to User.com.
 ---
 
-[User.com](https://user.com/en/) is a marketing automation platform that helps boost customer engagement and improve conversion. It also provides robust tools for marketing, sales, management, and support teams.
+[User.com](https://user.com/en/) is a popular marketing automation platform. It provides robust tools for the marketing, sales, management, and support teams to boost their brand value, enhance customer engagement, and increase conversions.
 
 RudderStack supports User.com as a destination where you can seamlessly send your event data.
 
@@ -41,17 +41,17 @@ For more information on obtaining the public REST API key and app subdomain, ref
 </div>
 
 - **Map Rudder user attributes to User.com attributes**: Enter the custom user attributes you want to map for RudderStack and User.com correspondingly.
-- **Map RudderStack event name to User.com event name**: Enter the event names you want to map for RudderStack and User.com correspondingly. You can map one or more RudderStack events to a single User.com event but not vice-versa.
-- **Map your event property**: Enter the RudderStack and User.com event properties you want to map for the above-mentioned event names. You can map a RudderStack property to a single User.com property and vice-versa.
+- **Map RudderStack event name to User.com event name**: Use this setting to map the RudderStack event names to specific User.com events. You can map one or more RudderStack events to a single User.com event but **not** vice-versa.
+- **Map your event property**: Enter the RudderStack and User.com event properties you want to map for the above-mentioned event names. You can map a RudderStack property only to one User.com property and vice-versa.
 - **Map Rudder company attributes to User.com company attributes**: Enter the custom company attributes you want to map for RudderStack and User.com correspondingly.
 
 ## User lookup
 
 <div class="infoBlock">
-This algorithm to look up a user is applicable only for the <code class="inline-code">identify</code>, <code class="inline-code">track</code>, and <code class="inline-code">page</code> calls.
+This functionality is applicable only for the <code class="inline-code">identify</code>, <code class="inline-code">track</code>, and <code class="inline-code">page</code> calls.
 </div>
 
-RudderStack looks up for a user using the `user_key`, `email` or `phone` properties.
+RudderStack looks up a user in User.com using the `user_key`, `email`, or `phone` properties.
 
 - You can pass the `user_key` in the `externalId` array, as shown:
 
@@ -71,7 +71,7 @@ user: {
 });
 ```
 <div class="warningBlock">
-Only one of the above (<code class="inline-code">email</code> or <code class="inline-code">phone</code>) must be passed in <code class="inline-code">lookup</code>. Also, the <code class="inline-code">email</code> or <code class="inline-code">phone</code> (whichever is passed) must have unique values in User.com.
+You must pass only one of <code class="inline-code">email</code> or <code class="inline-code">phone</code> in <code class="inline-code">lookup</code>. Also, <code class="inline-code">email</code> or <code class="inline-code">phone</code> (whichever is passed) must have unique values in User.com.
 </div>
 
 The precedence order for looking up a user based on the above properties is:
@@ -82,7 +82,7 @@ The precedence order for looking up a user based on the above properties is:
 
 ## Identify 
 
-You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create a new user in User.com. If the user already exists, the user details are updated.
+You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create a new user in User.com. If the user already exists, RudderStack updates the user details.
 
 A sample `identify` call is shown below:
 
@@ -130,7 +130,7 @@ The following table lists the mappings between RudderStack and User.com properti
 
 ## Track
 
-You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to record a new event, which in turn, can be used to filter and bucket users in User.com.
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to record a new event which, in turn, can be used to filter and bucket users in User.com.
 
 A sample `track` call is shown below:
 
@@ -150,7 +150,7 @@ rudderanalytics.track('Add to cart', {
 
 ### Property mapping
 
-The following table lists the mappings between RudderStack and User.com properties for `track` call:
+The following table lists the mappings between RudderStack and User.com properties for the `track` call:
 
 | RudderStack property | User.com property | Presence | 
 | :-------| :--------| :------| 
@@ -215,7 +215,7 @@ rudderanalytics.group(
 
 ### Property mapping
 
-The following table lists the mappings between RudderStack and User.com properties for `group` call:
+The following table lists the mappings between RudderStack and User.com properties for the `group` call:
 
 | RudderStack property | User.com property | | Presence | 
 | :-------| :--------| :------| 
@@ -239,7 +239,7 @@ The following table lists the mappings between RudderStack and User.com properti
 
 To get your public REST API key, follow these steps:
 
-1. Log into <a href="https://app.user.com/accounts/login/">User.com dashboard</a> and go to your App. 
+1. Log into your <a href="https://app.user.com/accounts/login/">User.com dashboard</a> and go to your app. 
 2. Click **Settings** > **App settings** > **Advanced** > **Public REST API keys**.
 3. Click **Create API key**, as shown:
 
@@ -249,7 +249,7 @@ To get your public REST API key, follow these steps:
 
 To get your app subdomain, follow these steps:
 
-1. Log into <a href="https://app.user.com/accounts/login/">User.com dashboard</a> and go to your App. 
-2. Click **Settings** > **Setup && Integrations** to see the app domain. The subdomain is the part of the complete domain excluding `.user.com`, as shown:
+1. Log into your <a href="https://app.user.com/accounts/login/">User.com dashboard</a> and go to your app. 
+2. Click **Settings** > **Setup & Integrations** to see the app domain. The subdomain is the part of the complete domain excluding `.user.com`, as shown:
 
 <img src="../../assets/event-stream-destinations/user-com-dashboard-2.png" alt="User.com connection settings" />
