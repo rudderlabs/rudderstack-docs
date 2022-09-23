@@ -1,42 +1,38 @@
 ---
 title: "Control Plane Setup"
 description: >-
-  Step-by-step guide on setting up your self-hosted control plane using the Control Plane Lite utility.
+  Step-by-step guide on self-hosting your control plane using Control Plane Lite.
 ---
 
-RudderStack's control plane manages the configuration of your sources and destinations.
+RudderStack's <Link to="/resources/rudderstack-architecture/#control-plane">control plane</Link> provides a UI that lets you manage your source and destination configurations.
 
-<div class="infoBlock">
-For more information on the control plane, refer to <Link to="/resources/rudderstack-architecture/">RudderStack Architecture</Link>.
+<div class="successBlock">
+The easiest way to manage your configurations is through <a href="https://app.rudderstack.com/signup">RudderStack Cloud</a>. It is free, requires no setup, and has some useful features like <Link to="/dashboard-guides/live-events/">Live Events</Link> and <Link to="/features/transformations/">Transformations</Link>.
 </div>
 
-The easiest way to manage these configurations is through RudderStack's [self-hosted control plane](https://app.rudderstack.com/). It is free, requires no setup, and has some useful features like <Link to="/dashboard-guides/live-events/">Live Events</Link> and <Link to="/features/transformations/">Transformations</Link>.
+To self-host your source-destination configurations, you can use the open-source <a href="https://github.com/rudderlabs/config-generator">Control Plane Lite</a> utility to set up your own control plane. It lets you manage your data pipelines locally by exporting or importing your configurations from a JSON file.
 
-If you don't wish to sign up for RudderStack and want to self-host these configurations instead, you can use the open-source **Control Plane Lite** utility to set up your own control plane. You can then manage the source and destination configurations locally by exporting or importing from a JSON file.
-
-<div class="warningBlock">
-The control plane set up using Control Plane Lite does not support Live Events and Transformations.
+<div class="dangerBlock">
+<a href="https://github.com/rudderlabs/config-generator">Control Plane Lite</a> is no longer actively maintained. As a result, some of the <a href="https://app.rudderstack.com/signup">RudderStack Cloud</a> features may not be available in your self-hosted control plane.
 </div>
 
 ## Setting up the control plane
 
-To set up your self-hosted control plane using the Control Plane Lite utility, follow these steps:
-
 <div class="infoBlock">
-
 Make sure you have <a href="https://nodejs.org/en/download/">Node.js</a> installed before setting up your self-hosted control plane.
 </div>
 
-1. Clone the [RudderStack Control Plane Lite](https://github.com/rudderlabs/config-generator) repository. 
-2. Open your terminal and navigate to the **Config Generator** folder. Then, run the following commands:  
+To set up your self-hosted control plane using Control Plane Lite, follow these steps:
 
+1. Clone the [RudderStack Control Plane Lite](https://github.com/rudderlabs/config-generator) repository. 
+2. Open your terminal and navigate to the **Config Generator** folder. Then, run the following commands:
 
 ```bash
   npm install
   npm start
 ```
 
-3. Upon successful setup, you can access the dashboard at `http://localhost:3000` by default.
+3. After the setup is complete, you can access the dashboard at `http://localhost:3000` by default.
 
 <img src="../../assets/rudderstack-open-source/control-plane-lite-dashboard.png" alt="Control Plane Lite dashboard" />
 
