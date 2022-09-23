@@ -992,6 +992,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "signl4",
+    title: "SIGNL4",
+    link: "/destinations/streaming-destinations/signl4/",
+    content: [],
+  },
+  {
     key: "setting-up-singular-in-rudderstack",
     title: "Setting up Singular",
     link: "/destinations/streaming-destinations/singular/setting-up-singular-in-rudderstack/",
