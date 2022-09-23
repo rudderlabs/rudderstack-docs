@@ -4,7 +4,7 @@ description: Step-by-step guide on sending your event data from RudderStack to S
 aliases: ["SIGNL4 destination"]
 ---
 
-[SIGNL4](https://www.signl4.com/) is a tool for instant mobile alerting. It generates real-time alerts to inform teams about any incidents and automatically delivers critical information to the right people at the right time.
+[SIGNL4](https://www.signl4.com/) is a tool for instant mobile alerting. It generates real-time alerts to inform teams about incidents and automatically delivers critical information to the right people at the right time.
 
 <div class="successBlock">
 RudderStack also supports SIGNL4 as a source. Refer to the <Link to="/sources/event-streams/cloud-apps/signl4/">SIGNL4 source</Link> documentation for more information.
@@ -37,14 +37,14 @@ To successfully configure SIGNL4 as a destination, you will need to configure th
 <img src="../../assets/event-stream-destinations/signl4-connection-settings-2.png" alt="SIGNL4 connection setting"/>
 - **X-S4-Location**: Enter the location in `latitude, longitude` format to display the correct location on the map in the mobile app.
 <img src="../../assets/event-stream-destinations/signl4-connection-settings.png" alt="SIGNL4 connection setting"/>
-- **X-S4-Status**: Enter the status of the alert by choosing the **new**, **acknowledged**, or **resolved** values.
+- **X-S4-Status**: Enter the alert status by choosing the **new**, **acknowledged**, or **resolved** values.
 <img src="../../assets/event-stream-destinations/signl4-conn-settings-3.png" alt="SIGNL4 connection setting"/>
 - **X-S4-AlertingScenario**: Enter a value to control how SIGNL4 notifies the team:
   - single_ack: Only one person needs to acknowledge the alert.
   - multi_ack: All on-duty persons need to acknowledge the alert. 
-  - emergency: All persons irrespective of their duty status are notified and need to acknowledge the alert.
+  - emergency: All persons, irrespective of their duty status, are notified and need to acknowledge the alert.
 <img src="../../assets/event-stream-destinations/signl4-conn-settings-2.png" alt="SIGNL4 connection setting"/>
-- **X-S4-ExternalID**: Use this field to pass the unique ID of a record, if an event originates from that record in a third party system. 
+- **X-S4-ExternalID**: Use this field to pass the unique ID of a record if an event originates from that record in a third-party system. 
 <img src="../../assets/event-stream-destinations/signl4-conn-settings-5.png" alt="SIGNL4 connection setting"/>
 
 As can be observed, RudderStack dashboard provides the following fields for each of the above-mentioned settings:
@@ -54,9 +54,9 @@ As can be observed, RudderStack dashboard provides the following fields for each
 
 Although these fields are optional, a higher priority is given to the **RudderStack property name** if both are specified. For example:
 - If you provide `new` in the **Default value** field for **X-S4-Status**, the output payload will contain `X-S4-Status: new`.
-- If you provide `alert_status` in the **RudderStack property name** field, then the value for **X-S4-Status** will be taken from `properties.alert_status`. Suppose the value for `properties.alert_status` is set to `resolved`, the output payload will contain `X-S4-Status: resolved`.
+- If you provide `alert_status` in the **RudderStack property name** field, then the **X-S4-Status** value is taken from `properties.alert_status`. Suppose the value for `properties.alert_status` is set to `resolved`, the output payload will contain `X-S4-Status: resolved`.
 
-If you provide values in both fields, the final output payload will contain `X-S4-Status: resolved`, as the **RudderStack property name** is given a higher priority.
+If you provide values in both fields, the final output payload will contain `X-S4-Status: resolved`, as the **RudderStack property name** is given the higher priority.
 
 - **X-S4-Filtering**: Enable this setting and **Filter events/Signls** setting in the SIGNL4 dashboard to send an alert notification only if the input payload contains any keyword for a category. Refer to the <Link to="#signl-categories">Signl categories</Link> section to know more about keywords and category categories.
 <img src="../../assets/event-stream-destinations/signl4-conn-settings-4.png" alt="SIGNL4 connection setting"/>
@@ -65,13 +65,13 @@ If you provide values in both fields, the final output payload will contain `X-S
 Refer to the <a href="https://connect.signl4.com/webhook/docs/index.html">SIGNL4 documentation</a> to know more about these connection settings.
 </div>
 
-- **Event to title mapping**: Enter the event name and alert title you want to be mapped corresponding to each other. If no value is provided, the alert title is taken same as the event name.
+- **Event to title mapping**: Enter the event name and alert title you want to be mapped corresponding to each other. If you do not provide any value, the alert title is set as the event name.
 
 ## Signl categories
 
-In SIGNL4, the categories can be used to mark and tag Signls, for example, based on severity, type or relating IT systems, machines, sensors and services. Refer to the [SIGNL4 documentation](https://account.signl4.com/manage/Category) to know more about different categories.
+In SIGNL4, you can use the categories to mark and tag Signls, for example, based on severity, type or relating IT systems, machines, sensors, and services. Refer to the [SIGNL4 documentation](https://account.signl4.com/manage/Category) to know more about different categories.
 
-The **X-S4-Service** setting in the RudderStack dashboard can be used to specify the Signl category. If not provided, the keywords present in the payload decide the category of the alert. For example, an event payload containing keywords like `ambulance`, `doctor`, `hospital`, `nurse`, `surgery`, etc., is categorized as **Healthcare**.
+You can use the **X-S4-Service** setting in the RudderStack dashboard to specify the Signl category. If not provided, the keywords present in the payload decide the category of the alert. For example, an event payload containing keywords like `ambulance`, `doctor`, `hospital`, `nurse`, `surgery`, etc., is categorized as **Healthcare**.
 
 <img src="../../assets/event-stream-destinations/categories-signl4.png" alt="SIGNL4 connection setting"/>
 
@@ -90,7 +90,7 @@ rudderanalytics.track(event, {
 });
 ```
 
-You can pass any key-value pair in the `track` call, which is mapped as it is in the SIGNL4 destination.
+You can pass any key-value pair in the `track` call; it is mapped as it is in the SIGNL4 destination.
 
 ### Property mapping
 
