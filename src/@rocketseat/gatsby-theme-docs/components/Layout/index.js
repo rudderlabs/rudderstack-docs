@@ -3,11 +3,13 @@ import { useState, useRef, Fragment, useEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { jsx, css } from '@emotion/react'
 import PropTypes from 'prop-types'
+import {Link} from 'gatsby'
 
 import TableOfContents from '../Docs/TOC/index'
 import Sidebar from '../Sidebar'
 import { Container, Main, Children } from './styles'
 import DocsNavigation from '../../../../components/DocsNavigation'
+import IndexPage from '../../../../components/indexPage'
 import tailwindConfig from '../../../../../tailwind.config'
 import '../../../../css/docs-critical.css'
 import '../../../../css/tailwind.css'
@@ -116,6 +118,7 @@ export default function Layout({ children, title, headings, description }) {
                   </a>
                   .
                 </p>
+               <IndexPage/>
               </div>
             </div>
           </Children>
