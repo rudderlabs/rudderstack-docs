@@ -4,14 +4,14 @@ description: >-
   Detailed technical documentation on the Content Security Policy by the RudderStack JavaScript SDK.
 ---
 
-The JavaScript SDK
-* We can talk about the content security policy issue and the need for whitelisting domains.
-Rather than hosting all that info in one place, each destination should have a section/note at the end displaying the domain if it supports web device mode.
+Content Security Policy is a security standard which significantly reduces the risk from certain type of cross-site scripting, clickjacking, and data injection attacks in modern browsers.
 
-* discuss steps to whitelisting domains as it'd be customer specific
+The JavaScript SDK uses the content security policy to add an extra layer of protection from any such unexpected acenarios. Hence, while using RudderStack JavaScript SDK with any device mode destination, you need to whitelist the domain from where the device mode destination needs to be loaded.
 
-add the domain in the allowed domains?
+<div class="warningBlock">
+If you do not add the domain to your allowed domains, the destination SDK will not load.
+</div>
 
-* the domains used for different device mode integrations
+You can refer to the device mode destination documentation to obtain the destination specific domain which needs to be whitelisted. 
 
-Reference to get the domain from supported destination docs.
+what content-security-policy to be enabled in the application if we connect any device-mode destination. when a new device mode destination is connected, the requests are blocked if they are not added to csp. each destination should have a section/note at the end displaying the domain if it supports web device mode.
