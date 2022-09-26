@@ -147,7 +147,7 @@ export default function TableOfContents({ headings = [], disableTOC = false, con
                   </g>
                 </svg>
               </span>
-              <span className="inline-block pr-2 align-middle">Contents</span>
+              <span className="inline-block pr-2 align-middle">On this page</span>
             </h2>
             <nav>
               <ul>
