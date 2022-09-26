@@ -7,7 +7,7 @@ description: >-
 RudderStack's <Link to="/resources/rudderstack-architecture/#control-plane">control plane</Link> provides a UI that lets you manage your source and destination configurations.
 
 <div class="successBlock">
-The easiest way to manage your configurations is through <a href="https://app.rudderstack.com/signup">RudderStack Cloud</a>. It is free, requires no setup, and has some useful features like <Link to="/dashboard-guides/live-events/">Live Events</Link> and <Link to="/features/transformations/">Transformations</Link>.
+The easiest way to manage your configurations is through the RudderStack hosted control plane, that is, <a href="https://app.rudderstack.com/signup">RudderStack Cloud</a>. It does not require any setup, and has some additional features like <Link to="/dashboard-guides/live-events/">Live Events</Link> and <Link to="/features/transformations/">Transformations</Link>.
 </div>
 
 To self-host your source-destination configurations, you can use the open-source <a href="https://github.com/rudderlabs/config-generator">Control Plane Lite</a> utility to set up your own control plane. It lets you manage your data pipelines locally by exporting or importing your configurations from a JSON file.
@@ -18,10 +18,10 @@ To self-host your source-destination configurations, you can use the open-source
 
 ## Setting up the control plane
 
-Before setting up your self-hosted control plane, make sure you have installed <a href="https://nodejs.org/en/download/">Node.js</a>.
+Before setting up your self-hosted control plane, make sure you have installed <a href="https://nodejs.org/en/blog/release/v14.17.3/">Node.js</a>.
 
 <div class="warningBlock">
-Node.js v16 and higher are not supported. For the best experience, using Node.js v14 is strongly recommended.
+Use Node.js v14 for the best experience as the higher versions are not supported.
 </div>
 
 To set up your self-hosted control plane using Control Plane Lite, follow these steps: 
@@ -156,20 +156,17 @@ cp config/sample.env .env
 
 Once you have completed these steps above successfully, <Link to="/get-started/rudderstack-open-source/sending-test-events/">send test events</Link> to verify the installation.
 
-### Control plane URL
+## Using SDK sources set up in self-hosted control plane
 
-RudderStack's SDKs expect the source configurations and the associated device mode destination configurations for initialization. When self-hosting the control plane, you must serve these configurations (exported JSON files) on your web server and point the SDKs to them. 
+To use the RudderStack SDKs set up as sources in the self-hosted control plane, follow these steps:
 
-These configurations must be available at `<CONTROL_PLANE_URL>/sourceConfig`. For more information, follow the below steps:
-
-1. Set up your control plane using the Control Plane Lite utility. 
+1. [Set up](#setting-up-the-control-plane) the control plane using the Control Plane Lite utility. 
 2. Go to the dashboard, set up your source, and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button, as shown:
 
 <img src="../../assets/rudderstack-open-source/export-source-config.png" alt="Export source config option" />
 
-3. Host the exported file on your server such that they can be accessed via the path `<CONTROL_PLANE_URL>/sourceConfig`. Provide the base URL of your server `<CONTROL_PLANE_URL>` serving this file in your SDK initialization code snippet. 
-
-For more information, refer to the following sections in the respective SDK guides:
+3. Host the exported file on your server such that it can be accessed via the path `<CONTROL_PLANE_URL>/sourceConfig`. 
+4. Provide the base URL of your server (`<CONTROL_PLANE_URL>`) serving this file in your SDK initialization code snippet. For more information on SDK initialization, refer to the following sections in the respective SDK guides:
 
 * <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#loading-sdk-for-self-hosted-control-plane">JavaScript SDK instructions</Link>
 * <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/#configuring-your-rudderstack-client">Android SDK instructions</Link>
@@ -181,7 +178,7 @@ For more information, refer to the following sections in the respective SDK guid
 The RudderStack SDKs automatically fetch the configuration by appending <code class="inline-code">/sourceConfig</code> to the base server URL provided above. For example, <code class="inline-code">&#123;CONTROL_PLANE_URL&#125;/sourceConfig</code>.
 </div>
 
-A sample exported source configuration is shown below:
+A sample source configuration exported from the dashboard is shown below:
 
 ```json
 {
@@ -203,58 +200,9 @@ A sample exported source configuration is shown below:
       "createdAt": "2019-11-12T12:39:19.885Z",
       "updatedAt": "2020-06-18T11:54:06.114Z"
     },
-    "destinations": [
-      {
-        "id": "1im927dBatOkbj1oPCV5JntGMj7",
-        "name": "test-HJ",
-        "enabled": true,
-        "config": {
-          "siteID": "dd41289"
-        },
-        "destinationDefinition": {
-          "config": {
-            "destConfig": {
-              "web": [
-                "useNativeSDK"
-              ],
-              "defaultConfig": [
-                "siteID"
-              ]
-            },
-            "secretKeys": [],
-            "excludeKeys": [],
-            "includeKeys": [
-              "siteID"
-            ],
-            "supportedSourceTypes": [
-              "web"
-            ]
-          },
-          "id": "1SxbQXdfQ2NzIdqNO3GceshF4V0",
-          "name": "HOTJAR",
-          "displayName": "Hotjar",
-          "createdAt": "2019-10-31T07:49:37.450Z",
-          "updatedAt": "2020-09-05T10:02:39.744Z"
-        }
-      }
-    ]
   },
   "metadata": {
     "version": "1.0.2"
   }
 }
 ```
-
-## FAQ
-
-### How do I obtain the control plane URL for a self-hosted environment?
-
-
-To use the control plane URL to initialize your SDKs, follow these steps:
-
-1. [Set up](#setting-up-the-control-plane) the control plane using the Control Plane Lite utility.
-2. Go to the dashboard, configure the source, and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button as shown:
-
-<img src="../../assets/rudderstack-open-source/export-source-config.png" alt="Export source config option" />
-
-3. Host the exported file on your own server such that the configuration is available at  `<CONTROL_PLANE_URL>/sourceConfig`.
