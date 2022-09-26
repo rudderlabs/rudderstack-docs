@@ -17,7 +17,7 @@ To set up SendGrid as a source in RudderStack, follow these steps:
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
 2. Go to **Sources** > **New source** > **Cloud Extract** and select **SendGrid V2** from the list of sources.
-3. Assign a name to your source and click on **Next**.
+3. Assign a name to your source and click **Next**.
 
 ### Connection settings
 
@@ -29,7 +29,7 @@ To set up SendGrid as a source in RudderStack, follow these steps:
 - **Start time**: Choose the start date from which you want RudderStack to ingest the SendGrid data. RudderStack will not replicate any data before this date.
 
 <div class="infoBlock">
-For more information on the required permissions for the API key, refer to the <a href="#faq">FAQ</a> section below.
+For more information on the required permissions for the API key, refer to the <a href="#faq">FAQ</a> section below
 </div>
 
 ### Destination settings
@@ -52,7 +52,7 @@ You can choose the SendGrid data you want to ingest by selecting the required re
 
 <img src="../../assets/cloud-extract-sources/sendgridv2-connection-settings-3.png" alt="Selecting the data to import" />
 
-The below table mentions the syncs and API endpoints supported by these resources from SendGrid to your warehouse destination:
+The below table mentions the syncs and API endpoints supported by the SendGrid resources fwhile syncing data to your warehouse destination:
 
 | Resource | Full Refresh sync | Incremental sync | SendGrid API endpoint |
 | :---| :---- | :---- | :---- |
@@ -89,11 +89,11 @@ If your SendGrid account uses legacy marketing campaigns, you might get a <stron
 
 SendGrid is now configured as a source. RudderStack will start ingesting data from SendGrid as per your specified schedule and frequency.
 
-You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
+You can further connect this source to your data warehouse by clicking the **Add Destination** button, as shown:
 
 <img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
 
-<div class="successBlock">
+<div class="infoBlock">
 Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
 </div>
 
