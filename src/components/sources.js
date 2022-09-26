@@ -27,7 +27,7 @@ export default function Sources({ category, type }) {
     <ul class="columns">
       {sources.map(edge => (
         <li>
-          <Link to={`https://github.com/rudderlabs/rudderstack-docs/edit/main/docs/${edge.node.link}`}>{edge.node.displayName}</Link>
+          <Link to={edge.node.link}>{edge.node.displayName}</Link>
         </li>
       ))}
     </ul>
