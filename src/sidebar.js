@@ -445,11 +445,8 @@ export const jsonData = [
                 title: "HubSpot",
                 link: "/sources/extract/hubspot-v2/",
                 content: []
-            }, {
-                title: "Intercom",
-                link: "/sources/extract/intercom/",
-                content: []
-            }, {
+            }, 
+            {
                 title: "Intercom V2",
                 link: "/sources/extract/intercom-v2/",
                 content: []

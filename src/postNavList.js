@@ -518,12 +518,6 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "intercom",
-    title: "Intercom",
-    link: "/sources/extract/intercom/",
-    content: [],
-  },
-  {
     key: "mailchimp",
     title: "Mailchimp",
     link: "/sources/extract/mailchimp/",
