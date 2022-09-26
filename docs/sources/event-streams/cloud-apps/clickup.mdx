@@ -182,5 +182,99 @@ RudderStack transforms the above payload into the following <Link to="/event-spe
 ```
 
 <div class="infoBlock">
-To send this data to the downstream destinations, you need to transform it into a destination-specific format using RudderStack's <Link to="/features/transformations/">Transformations</Link> feature.
+To send this data to the downstream destinations, you need to transform it into a destination-specific format using RudderStack's <Link to="/features/transformations/">Transformations</Link> feature. Refer to the below <Link to="#use-case">use case</Link> for more information.
 </div>
+
+## Use case
+
+Consider a scenario where a new contact is automatically created in HubSpot whenever a new assignee is added to a ClickUp task. 
+
+To do this, set up a ClickUp source by following the steps in the <Link to="#getting-started">Getting started</Link> section above. Then, connect this source to the <Link to="https://www.rudderstack.com/docs/destinations/streaming-destinations/hubspot-v2/">HubSpot destination</Link>.
+
+Once the connection is set up, RudderStack automatically receives a payload from ClickUp whenever a new assignee is added to a ClickUp task. It then transforms the payload in the following format:
+
+```json
+{
+  "anonymousId": "38c5a078-c1ea-4024-9628-7f8971aeb915",
+  "event": "webhook_source_event",
+  "messageId": "cbd5e04a-8e0b-4bf9-959d-26c4d8e455b0",
+  "properties": {
+    "event": "taskAssigneeUpdated",
+    "history_items": [{
+      "after": {
+        "color": "#02579b",
+        "email": "alex@example.com",
+        "id": 61217234,
+        "initials": "A",
+        "profilePicture": null,
+        "username": "Alex"
+      },
+      "data": {},
+      "date": "1663044688239",
+      "field": "assignee_rem",
+      "id": "3141509348132974740",
+      "parent_id": "175476135",
+      "source": null,
+      "type": 1,
+      "user": {
+        "color": "#536cfe",
+        "email": "jane@doe.com",
+        "id": 55300044,
+        "initials": "JD",
+        "profilePicture": null,
+        "username": "Jane Doe"
+      }
+    }],
+    "task_id": "2rc0nvx",
+    "webhook_id": "3425a884-4f24-4d81-a373-1991c2d20743"
+  },
+  "rudderId": "0240a617-9492-47f8-ac5c-c842ab2cd9f4",
+  "type": "track"
+}
+```
+
+To automatically add a new contact in HubSpot for this event, you need to add the following user transformation and <Link to="/features/transformations/#connecting-transformation-to-a-destination">connect it to your HubSpot destination</Link>:
+
+```javascript
+export function transformEvent(event, metadata) {
+  let indetifyEvent;
+
+  if (event.properties.event === "taskAssigneeUpdated") {
+    indetifyEvent = {
+      type: "identify",
+      userId: event.properties?.history_items[0]?.after?.id,
+      traits: {
+        email: event.properties?.history_items[0]?.after?.email
+      }
+    }
+  }
+  return indetifyEvent;
+}
+```
+
+RudderStack sends the following transformed event payload to HubSpot:
+
+```javascript
+{
+  "version": "1",
+  "type": "REST",
+  "method": "POST",
+  "endpoint": "https://api.hubapi.com/contacts/v1/contact/batch/",
+  "headers": {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer ******2b27"
+  },
+  "params": {},
+  "body": {
+    "JSON": {},
+    "JSON_ARRAY": {
+      "batch": "[{\"email\":\"alex@example.com\",\"properties\":[]}]"
+    },
+    "XML": {},
+    "FORM": {}
+  },
+  "files": {}
+}
+```
+
+The above payload then creates the contact in HubSpot.
