@@ -156,20 +156,17 @@ cp config/sample.env .env
 
 Once you have completed these steps above successfully, <Link to="/get-started/rudderstack-open-source/sending-test-events/">send test events</Link> to verify the installation.
 
-## Using RudderStack SDKs
+## Using SDK sources set up in self-hosted control plane
 
-To use RudderStack SDKs as sources in the self-hosted control plane, you need to set up the source, export its configuration, host it at `<CONTROL_PLANE_URL>/sourceConfig` path, and finally point the SDKs to them. 
-
-The following steps explain this in detail:
+To use the RudderStack SDKs set up as sources in the self-hosted control plane, follow these steps:
 
 1. [Set up](#setting-up-the-control-plane) the control plane using the Control Plane Lite utility. 
 2. Go to the dashboard, set up your source, and export the source configuration by clicking the **EXPORT SOURCE CONFIG** button, as shown:
 
 <img src="../../assets/rudderstack-open-source/export-source-config.png" alt="Export source config option" />
 
-3. Host the exported file on your server such that it can be accessed via the path `<CONTROL_PLANE_URL>/sourceConfig`. Provide the base URL of your server (`<CONTROL_PLANE_URL>`) serving this file in your SDK initialization code snippet. 
-
-For more information on SDK initialization, refer to the following sections in the respective SDK guides:
+3. Host the exported file on your server such that it can be accessed via the path `<CONTROL_PLANE_URL>/sourceConfig`. 
+4. Provide the base URL of your server (`<CONTROL_PLANE_URL>`) serving this file in your SDK initialization code snippet. For more information on SDK initialization, refer to the following sections in the respective SDK guides:
 
 * <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#loading-sdk-for-self-hosted-control-plane">JavaScript SDK instructions</Link>
 * <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/#configuring-your-rudderstack-client">Android SDK instructions</Link>
