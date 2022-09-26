@@ -1,0 +1,39 @@
+---
+title: "Setting up June"
+description: Step-by-step guide on setting up June as a destination in RudderStack.
+---
+
+RudderStack supports sending event data to June via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
+
+| **Connection Mode** | **Web**           | **Mobile** | **Server** |
+| :------------------ | :------------ | :----- | :----- |
+| **Device Mode**     | **Supported** | **-**  | **-**  |
+| **Cloud Mode**      | **Supported** | **Supported**  | **Supported**  |
+
+Once you have confirmed that the source platform supports sending events to June, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **June**.
+2. Assign a name to your destination and click **Continue**.
+
+## Connection settings
+
+To successfully configure June as a destination, configure the following settings:
+
+- **API Key**: Enter the API key from June dashboard. Refer to the <Link to="#faq">FAQ</Link> section for more information on obtaining the API key. 
+
+- **Client-side Events Filtering**: This setting is **only applicable** for the device-mode integrations and lets you specify which events should be blocked or allowed to flow through to June. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+    
+
+## FAQ
+
+### How do I obtain the June API key?
+
+1. Login into your [June Dashboard](https://www.june.so/).
+2. Click on your `workspace` > `Settings & Integrations.`
+3. Under `Integrations` , Click on `June SDK` to open the modal.
+4. Now select and copy the `API key`.
+5. If no API key is present , Click on `Create new key`.
+
+<img src="../../../assets/event-stream-destinations/measurement-id.png" />
+
+### How do I obtain the API Secret?

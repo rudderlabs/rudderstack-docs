@@ -938,6 +938,28 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "june",
+    title: "June",
+    link: "/destinations/streaming-destinations/june/",
+    content: [],
+  },
+  {
+    key: "setting-up-june-in-rudderstack",
+    title: "Setting up June",
+    link: "/destinations/streaming-destinations/june/setting-up-june-in-rudderstack/",
+    content: []
+}, {
+    key: "june-cloud-mode",
+    title: "Cloud Mode",
+    link: "/destinations/streaming-destinations/june/june-cloud-mode/",
+    content: []
+}, {
+    key: "june-device-mode",
+    title: "Device Mode",
+    link: "/destinations/streaming-destinations/june/june-device-mode/",
+    content: []
+},
+  {
     key: "inmoment",
     title: "InMoment (Wootric)",
     link: "/destinations/streaming-destinations/inmoment/",

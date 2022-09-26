@@ -1,0 +1,123 @@
+---
+title: "June Device Mode"
+description: Detailed technical documentation on sending events to June using the RudderStack Web Device mode.
+---
+
+RudderStack lets you send your event data to June destination via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK.
+
+<div class="infoBlock">
+Find the open source JavaScript SDK code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/june">GitHub repository</a>.
+</div>
+
+## Identify
+
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to identify new users or update existing user's details.
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9Z", {
+  name: "Alex Keener",
+  email: "alex@example.com"
+})
+```
+
+### Property mappings
+
+The following table lists the properties and their mappings between RudderStack and June for the `identify` call:
+
+| RudderStack property   | June property  | Data type | Presence |
+| :-------------| :-----------------|:-------------| :-----------------|
+| `userId`/`context.traits.userId`/`context.traits.id`       | `userId`        | String | Required |
+| `context.traits`              | `traits`      |Object | Optional |
+
+
+## Track
+
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
+
+RudderStack sends `track` calls to June as a `track` event.
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Product Reviewed", {
+  review_id: "345676543",
+  product_id: "123454387",
+  rating: 3.0,
+  review_body: "Average product, expected much more.",
+  groupId: "89103",
+});
+```
+<div class="infoBlock">
+If you're identifying companies, you should pass the groupId in track call.
+</div>
+
+### Property mappings
+
+The following table lists the properties and their mappings between RudderStack and June for the `track` call:
+
+| RudderStack property   | June property  | Data type | Presence |
+| :-------------| :-----------------|:-------------| :-----------------|
+| `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`       | `userId`        | String | Required |
+| `originalTimestamp`/`timestamp`  | `timestamp`      |String (ISO 8601 date format yyyy-MM-ddTHH:mm:ss.SSSZ) | Required |
+| `event`            | `event`      | String | Required |
+| `properties`            | `properties`      | Object | Optional |
+| `context.externalId.id` when `context.externalId.type` = `juneGroupId`/`properties.groupId`   | `context.groupId`    | String | Optional |
+
+
+## Page
+  
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+    
+RudderStack sends Page calls to June as a `PageView` event.
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.page("Home")
+```
+
+### Property mappings
+
+The following table lists the properties and their mappings between RudderStack and June for the `track` call:
+
+| RudderStack property   | June property  | Data type | Presence |
+| :-------------| :-----------------|:-------------| :-----------------|
+| `name`            | `name`      | String | Optional |
+| `properties`            | `properties`      | Object | Optional |
+
+## Group
+
+You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to identify companies. RudderStack sends group calls to create/update company details in June.
+
+<div class="infoBlock">
+It's imperative to set up your user identification calls before group calls To create a company successfully. Otherwise, it won't work.
+</div>
+
+A sample `group` call is shown below:
+
+```javascript
+rudderanalytics.group("23Np893Z6", {
+  name: "ABC company",
+  employees: 100,
+  Industry: "Video game publisher",
+  Founded: 1979
+});
+```
+### Property mappings
+
+The following table lists the properties and their mappings between RudderStack and June for the `group` call:
+
+| RudderStack property   | June property  | Data type | Presence |
+| :-------------| :-----------------|:-------------| :-----------------|
+| `traits`             | `traits`      | Object | Optional |
+| `groupId`/`traits.groupId`              | `groupId`      | String | Required |
+
+
+## FAQ
+
+### How can I enable Google Signals in GA4?
+
+
+
