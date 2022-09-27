@@ -187,6 +187,14 @@ Run the `rudderanalytics` command in the console. If it returns the following co
 
 If it gives an `undefined` error, you need to verify the SDK installation.
 
+## Allowlist domain to load device mode destination
+
+While using JavaScript SDK with any [device mode destination](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations), you need to whitelist the domain from where the destination is loaded.
+
+This is required as the JavaScript SDK uses a content security policy to add an extra layer of protection from any type of cross-site scripting, clickjacking, and data injection attacks.
+
+You can refer to the device mode <Link to="/destinations/streaming-destinations/">destination documentation</Link> to obtain the destination specific domain which needs to be whitelisted. 
+
 ## Tracking user sessions
 
 By default, the JavaScript SDK automatically tracks the user sessions. This means that RudderStack automatically determines the start and end of a user session depending on the inactivity time configured in the SDK (default time is 30 minutes).
