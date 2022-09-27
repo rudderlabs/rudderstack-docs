@@ -189,7 +189,7 @@ If it gives an `undefined` error, you need to verify the SDK installation.
 
 ## Allowlist destination domain
 
-While using JavaScript SDK with any [device mode destination](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations), you need to allowlist the domain from where the destination is loaded. This is required as the JavaScript SDK uses a content security policy to add an extra layer of protection from any type of cross-site scripting, clickjacking, and data injection attacks.
+While using the JavaScript SDK with any [device mode destination](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations), you need to allowlist the domain from where the destination SDK will load. This is required as the JavaScript SDK uses a content security policy to add an extra layer of protection from any type of cross-site scripting, clickjacking, and data injection attacks.
 
 You can refer to the specific <Link to="/destinations/streaming-destinations/">destination's documentation</Link> to obtain the domain which needs to be allowlisted. 
 
