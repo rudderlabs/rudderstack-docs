@@ -187,13 +187,11 @@ Run the `rudderanalytics` command in the console. If it returns the following co
 
 If it gives an `undefined` error, you need to verify the SDK installation.
 
-## Allowlist domain to load device mode destination
+## Allowlist destination domain
 
-While using JavaScript SDK with any [device mode destination](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations), you need to whitelist the domain from where the destination is loaded.
+While using JavaScript SDK with any [device mode destination](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations), you need to allowlist the domain from where the destination is loaded. This is required as the JavaScript SDK uses a content security policy to add an extra layer of protection from any type of cross-site scripting, clickjacking, and data injection attacks.
 
-This is required as the JavaScript SDK uses a content security policy to add an extra layer of protection from any type of cross-site scripting, clickjacking, and data injection attacks.
-
-You can refer to the device mode <Link to="/destinations/streaming-destinations/">destination documentation</Link> to obtain the destination specific domain which needs to be whitelisted. 
+You can refer to the specific <Link to="/destinations/streaming-destinations/">destination's documentation</Link> to obtain the domain which needs to be allowlisted. 
 
 ## Tracking user sessions
 
