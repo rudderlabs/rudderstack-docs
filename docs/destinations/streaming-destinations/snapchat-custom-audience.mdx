@@ -1,0 +1,99 @@
+---
+title: "Snapchat Custom Audience"
+description: >-
+  Step-by-step guide on sending your event data from RudderStack to Snapchat Custom Audience.
+---
+
+[Snapchat Custom Audience](https://businesshelp.snapchat.com/s/article/create-sam-audience?language=en_US) matches data from your Snapchat customer list (email, phone number, or mobile advertiser ID) with the Snapchat community.
+
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/">GitHub repository</a>.
+</div>
+
+## Getting started
+
+RudderStack supports sending events to Snapchat Custom Audience via the following <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link>:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     |       -        |        -       |        -       |
+| **Cloud mode**      |       -        |           -    |    Supported           |
+
+Once you have confirmed that the source platform supports sending events to Snapchat Custom Audience, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Snapchat Custom Audience**.
+2. Assign a name to your destination and click **Continue**.
+
+### Connection settings 
+
+To successfully set up Snapchat Custom Audience as a destination, you need to configure the following settings:
+
+- **Account ID**: Enter your Snapchat account ID. For more information on getting your account ID, refer to this <a href="https://businesshelp.snapchat.com/s/article/biz-acct-id?language=en_US">Snapchat support page</a>.
+- **Audience ID**: 
+- **Schema**: 
+- **Disable hashing**:  This setting is enabled by default and hashes the `email`, `phone`, and `mobileId` in the SHA-256 format. For more information, refer to the <a href="https://marketingapi.snapchat.com/docs/#removing-users">Snapchat Marketing API reference</a>. 
+
+## `audienceList` event structure
+
+<div class="infoBlock">
+RudderStack supports both <a href="https://marketingapi.snapchat.com/docs/#adding-users">additions</a> and <a href="https://marketingapi.snapchat.com/docs/#removing-users">deletions</a> to an audience list.
+</div>
+
+The following code snippet shows a sample `audienceList` call:
+
+```json
+{
+  "type": "audiencelist",
+  "event": "Order Created",
+  "sentAt": "2022-06-14T12:34:53.514Z",
+  "traits": null,
+  "userId": "6201002000600",
+  "context": {
+    "library": {
+      "name": "RudderStack Shopify Cloud",
+      "version": "1.0.0"
+    },
+    "integration": {
+      "name": "SHOPIFY"
+    }
+  },
+  "rudderId": "b66112d4-a5af-4856-a6e4-2dbad7104c91",
+  "messageId": "99a56bfb-45bf-4852-a911-03f73c3fdcdf",
+  "timestamp": "2022-06-14T12:34:48.000Z",
+  "properties": {
+    "listData": {
+      "add": [{
+        "email": "alex@example",
+        "phone": "+1-202-555-0146",
+        "country": "USA",
+        "lastName": "Keener",
+        "firstName": "Alex ",
+        "postalCode": "90009"
+      }]
+    }
+  },
+  "receivedAt": "2022-06-14T12:34:53.113Z",
+  "request_ip": "35.231.104.198",
+  "anonymousId": "760bf220-046f-4c2a-ad2b-3424be593740",
+  "integrations": {
+    "SHOPIFY": true
+  },
+  "originalTimestamp": "2022-06-14T12:34:53.514Z"
+}
+```
+
+## Schema fields mapping
+
+The following table details the mapping of the schema fields (as specified in the RudderStack dashboard) and the <a href="https://marketingapi.snapchat.com/docs/?&_ga=2.64649388.22530882.1663148304-88679508.1663136652#create-an-audience-segment">Snapchat Marketing API</a>.
+
+ RudderStack schema field | Snapchat Custom Audience field |
+| :-----| :--------|
+| `properties.listData.add.email` | `users.data.[sha256(email)]` |
+| `properties.listData.add.phone` | `users.data.[sha256(phone)]` |
+| `properties.listData.add.mobileId` | `users.data.[sha256(mobileId)]` |
+
+## FAQ
+
+### How do I create a Customer List Audience in Snapchat?
+
+For detailed steps on creating a Snapchat Customer List Audience, refer to this <a href="https://businesshelp.snapchat.com/s/article/create-sam-audience?language=en_US">Snapchat support page</a>.

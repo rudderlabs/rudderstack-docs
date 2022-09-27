@@ -714,11 +714,13 @@ export const jsonData = [
                 title: "Facebook App Events",
                 link: "/destinations/streaming-destinations/facebook-app-events/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Facebook Custom Audience",
                 link: "/destinations/streaming-destinations/fb-custom-audience/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Facebook Pixel",
                 link: "/destinations/streaming-destinations/fb-pixel/",
                 content: []
@@ -776,7 +778,13 @@ export const jsonData = [
                 title: "Reddit Pixel",
                 link: "/destinations/streaming-destinations/reddit-pixel/",
                 content: []
-            }, {
+            }, 
+            {
+                title: "Snapchat Custom Audience",
+                link: "/destinations/streaming-destinations/snapchat-custom-audience/",
+                content: []
+            }, 
+            {
                 title: "Snapchat Conversion",
                 link: "/destinations/streaming-destinations/snapchat-conversion/",
                 content: []

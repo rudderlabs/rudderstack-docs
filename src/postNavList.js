@@ -1448,6 +1448,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "snapchat-custom-audience",
+    title: "Snapchat Custom Audience",
+    link: "/destinations/streaming-destinations/snapchat-custom-audience/",
+    content: [],
+  },
+  {
     key: "google-adwords-remarketing-list",
     title: "Google Adwords Remarketing List(Customer Match)",
     link: "/destinations/streaming-destinations/google-adwords-remarketing-list/",
