@@ -11,7 +11,7 @@ Find the open-source transformer code for this destination in the <a href="https
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create new users or update existing users' details in June. RudderStack sends the `identify` call to June as an `identify` event. 
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create new users or update existing users' details in June. RudderStack sends the `identify` call to June as an [`identify`](https://www.june.so/docs/api#:~:text=Copy-,Identifying%20users,-You%20can%20use) event. 
 
 A sample `identify` call is shown below:
 
@@ -35,18 +35,34 @@ The following table lists the property mappings between RudderStack and June for
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them. RudderStack sends the `track` call to June as a `track` event.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them. RudderStack sends the `track` call to June as a [`track`](https://www.june.so/docs/api#:~:text=Copy-,Send%20track%20events,-In%20order%20to) event.
 
 A sample `track` call is shown below:
 
 ```javascript
+// groupId using properties object
 rudderanalytics.track("Product Reviewed", {
-  review_id: "345676543",
-  product_id: "123454387",
+  review_id: "12345",
+  product_id: "123",
   rating: 3.0,
   review_body: "Average product, expected much more.",
-  groupId: "89103",
+  groupId: "5H7ASAIEQO",
 });
+
+// groupId using context.externalId array
+rudderanalytics.track(
+  "Product Reviewed", {
+    review_id: "12345",
+    product_id: "123",
+    rating: 3.0,
+    review_body: "Average product, expected much more.",
+  }, {
+    externalId: [{
+      type: "juneGroupId",
+      id: "5H7ASAIEQO",
+    }, ],
+  }
+);
 ```
 
 ### Property mappings
@@ -58,20 +74,15 @@ The following table lists the property mappings between RudderStack and June for
 | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`       | `userId`        | String | Required |
 | `event`            | `event`      | String | Required |
 | `originalTimestamp`/`timestamp`  | `timestamp`      |String *(ISO 8601 date format yyyy-MM-ddTHH:mm:ss.SSSZ)* | Required |
-| `traits`/`context.traits`              | `traits`      |Object | Optional |
 | `properties`            | `properties`      | Object | Optional |
-| `context.externalId.id` (when `context.externalId.type` = `juneGroupId`/`properties.groupId`)  | `context.groupId`    | String | Optional |
+| <ul><li>`context.externalId.id` (when `context.externalId.type` = `juneGroupId`)</li><li>`properties.groupId`</li></ul>   | `context.groupId`    | String | Optional |
 
 ## Group
 
-You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to create a new company or update an existing company's details in June.
+You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to create a new company or update an existing company's details in June. Refer to the [June documentation](https://www.june.so/docs/api#:~:text=Identifying%20companies%20(optional)) for more information.
 
 <div class="warningBlock">
-To create a company or update the company details, the <code class="inline-code">groupId</code> should be passed in the <code class="inline-code">track</code> call.
-</div>
-
-<div class="warningBlock">
-Make sure that you make an <code class="inline-code">identify</code> call before a <code class="inline-code">group</code> call to create a company successfully.
+To identify a company, pass the <code class="inline-code">groupId</code> in the <code class="inline-code">track</code> call. It allows you to specify which company performed that specific event.
 </div>
 
 A sample `group` call is shown below:

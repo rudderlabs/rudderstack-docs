@@ -43,13 +43,29 @@ Make sure that you make an <code class="inline-code">identify</code> call before
 A sample `track` call is shown below:
 
 ```javascript
+// groupId using properties object
 rudderanalytics.track("Product Reviewed", {
-  review_id: "345676543",
-  product_id: "123454387",
+  review_id: "12345",
+  product_id: "123",
   rating: 3.0,
   review_body: "Average product, expected much more.",
-  groupId: "89103",
+  groupId: "5H7ASAIEQO",
 });
+
+// groupId using context.externalId array
+rudderanalytics.track(
+  "Product Reviewed", {
+    review_id: "12345",
+    product_id: "123",
+    rating: 3.0,
+    review_body: "Average product, expected much more.",
+  }, {
+    externalId: [{
+      type: "juneGroupId",
+      id: "5H7ASAIEQO",
+    }, ],
+  }
+);
 ```
 
 ### Property mappings
@@ -60,7 +76,7 @@ The following table lists the property mappings between RudderStack and June for
 | :-------------| :-----------------|:-------------| :-----------------|
 | `event`            | `event`      | String | Required |
 | `properties`            | `properties`      | Object | Optional |
-| `context.externalId.id` (when `context.externalId.type` = `juneGroupId`/`properties.groupId`)   | `context.groupId`    | String | Optional |
+| <ul><li>`context.externalId.id` (when `context.externalId.type` = `juneGroupId`)</li><li>`properties.groupId`</li></ul>   | `context.groupId`    | String | Optional |
 
 
 ## Page
@@ -87,7 +103,7 @@ The following table lists the property mappings between RudderStack and June for
 You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to create a new company or update an existing company's details in June.
 
 <div class="warningBlock">
-To create a company or update the company details, the <code class="inline-code">groupId</code> should be passed in the <code class="inline-code">track</code> call.
+To identify a company, pass the <code class="inline-code">groupId</code> in the <code class="inline-code">track</code> call. It allows you to specify which company performed that specific event.
 </div>
 
 <div class="warningBlock">
@@ -110,9 +126,8 @@ The following table lists the property mappings between RudderStack and June for
 
 | RudderStack property   | June property  | Data type | Presence |
 | :-------------| :-----------------|:-------------| :-----------------|
-| `event`            | `event`      | String | Required |
-| `properties`            | `properties`      | Object | Optional |
-| `context.externalId.id` (when `context.externalId.type` = `juneGroupId`/`properties.groupId`)  | `context.groupId`    | String | Optional |
+| `groupId`/`traits.groupId`            | `groupId`      | String | Required |
+| `traits`            | `traits`      | Object | Optional |
 
 ## FAQ
 
