@@ -76,7 +76,7 @@ The following table lists the property mappings between RudderStack and June for
 | :-------------| :-----------------|:-------------| :-----------------|
 | `event`            | `event`      | String | Required |
 | `properties`            | `properties`      | Object | Optional |
-| <ul><li>`context.externalId.id` (when `context.externalId.type` = `juneGroupId`)</li><li>`properties.groupId`</li></ul>   | `context.groupId`    | String | Optional |
+| <ul><li>If `context.externalId.id` (when `context.externalId.type` = `juneGroupId`) is present.</li><li>Otherwise, `properties.groupId`.</li></ul>  | `context.groupId`    | String | Optional |
 
 
 ## Page
