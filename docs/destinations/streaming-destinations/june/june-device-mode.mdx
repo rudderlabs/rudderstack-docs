@@ -6,12 +6,12 @@ description: Detailed technical documentation on sending events to June using th
 RudderStack lets you send your event data to June destination via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK.
 
 <div class="infoBlock">
-Find the open source JavaScript SDK code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/june">GitHub repository</a>.
+Find the open-source code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/june">GitHub repository</a>.
 </div>
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to identify new users or update existing user's details.
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create new users or update existing users' details in June. RudderStack sends the `identify` call to June as an `identify` event. 
 
 A sample `identify` call is shown below:
 
@@ -24,7 +24,7 @@ rudderanalytics.identify("1hKOmRA4el9Z", {
 
 ### Property mappings
 
-The following table lists the properties and their mappings between RudderStack and June for the `identify` call:
+The following table lists the property mappings between RudderStack and June for the `identify` call:
 
 | RudderStack property   | June property  | Data type | Presence |
 | :-------------| :-----------------|:-------------| :-----------------|
@@ -34,9 +34,11 @@ The following table lists the properties and their mappings between RudderStack 
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them. RudderStack sends the `track` call to June as a `track` event.
 
-RudderStack sends `track` calls to June as a `track` event.
+<div class="warningBlock">
+Make sure that you make an <code class="inline-code">identify</code> call before a <code class="inline-code">track</code> call.
+</div>
 
 A sample `track` call is shown below:
 
@@ -49,30 +51,23 @@ rudderanalytics.track("Product Reviewed", {
   groupId: "89103",
 });
 ```
-<div class="infoBlock">
-If you're identifying companies, you should pass the groupId in track call.
-</div>
 
 ### Property mappings
 
-The following table lists the properties and their mappings between RudderStack and June for the `track` call:
+The following table lists the property mappings between RudderStack and June for the `track` call:
 
 | RudderStack property   | June property  | Data type | Presence |
 | :-------------| :-----------------|:-------------| :-----------------|
-| `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`       | `userId`        | String | Required |
-| `originalTimestamp`/`timestamp`  | `timestamp`      |String (ISO 8601 date format yyyy-MM-ddTHH:mm:ss.SSSZ) | Required |
 | `event`            | `event`      | String | Required |
 | `properties`            | `properties`      | Object | Optional |
-| `context.externalId.id` when `context.externalId.type` = `juneGroupId`/`properties.groupId`   | `context.groupId`    | String | Optional |
+| `context.externalId.id` (when `context.externalId.type` = `juneGroupId`/`properties.groupId`)   | `context.groupId`    | String | Optional |
 
 
 ## Page
   
-The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
-    
-RudderStack sends Page calls to June as a `PageView` event.
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page. RudderStack sends the `page` call to June as a `PageView` event.
 
-A sample `track` call is shown below:
+A sample `page` call is shown below:
 
 ```javascript
 rudderanalytics.page("Home")
@@ -80,7 +75,7 @@ rudderanalytics.page("Home")
 
 ### Property mappings
 
-The following table lists the properties and their mappings between RudderStack and June for the `track` call:
+The following table lists the property mappings between RudderStack and June for the `page` call:
 
 | RudderStack property   | June property  | Data type | Presence |
 | :-------------| :-----------------|:-------------| :-----------------|
@@ -89,10 +84,14 @@ The following table lists the properties and their mappings between RudderStack 
 
 ## Group
 
-You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to identify companies. RudderStack sends group calls to create/update company details in June.
+You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to create a new company or update an existing company's details in June.
 
-<div class="infoBlock">
-It's imperative to set up your user identification calls before group calls To create a company successfully. Otherwise, it won't work.
+<div class="warningBlock">
+To create a company or update the company details, the <code class="inline-code">groupId</code> should be passed in the <code class="inline-code">track</code> call.
+</div>
+
+<div class="warningBlock">
+Make sure that you make an <code class="inline-code">identify</code> call before a <code class="inline-code">group</code> call to create a company successfully.
 </div>
 
 A sample `group` call is shown below:
@@ -107,17 +106,23 @@ rudderanalytics.group("23Np893Z6", {
 ```
 ### Property mappings
 
-The following table lists the properties and their mappings between RudderStack and June for the `group` call:
+The following table lists the property mappings between RudderStack and June for the `group` call:
 
 | RudderStack property   | June property  | Data type | Presence |
 | :-------------| :-----------------|:-------------| :-----------------|
-| `traits`             | `traits`      | Object | Optional |
-| `groupId`/`traits.groupId`              | `groupId`      | String | Required |
-
+| `event`            | `event`      | String | Required |
+| `properties`            | `properties`      | Object | Optional |
+| `context.externalId.id` (when `context.externalId.type` = `juneGroupId`/`properties.groupId`)  | `context.groupId`    | String | Optional |
 
 ## FAQ
 
-### How can I enable Google Signals in GA4?
+### Can I make an `identify` or `track` call using `anonymousId`?
+
+No, you can't. June does not stitches identities together or offers anonymous user merging. It is rather used for logged-in experiences where you can measure user activation and retention.
+
+### My user is created as `Unknown` in June dashboard. What might be the reason?
+
+June categorizes a user as `Unknown` if the `firsName`, `lastName`, `name`, `username`, or `email` is not present in the `identify` call's `traits`.
 
 
 
