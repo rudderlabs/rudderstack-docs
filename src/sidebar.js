@@ -1173,7 +1173,8 @@ export const jsonData = [
                 title: "Customer.io",
                 link: "/destinations/streaming-destinations/customer.io/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Drip",
                 link: "/destinations/streaming-destinations/drip/",
                 content: [
@@ -1195,7 +1196,21 @@ export const jsonData = [
             {
                 title: "Engage",
                 link: "/destinations/streaming-destinations/engage/",
-                content: []
+                content: [
+                    {
+                        title: "Setting Up Engage in RudderStack",
+                        link: "/destinations/streaming-destinations/engage/setting-up-engage/",
+                        content: []
+                    }, {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/engage/engage-cloud-mode/",
+                        content: []
+                    }, {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/engage/engage-device-mode/",
+                        content: []
+                    },
+                ]
             },
             {
                 title: "Freshmarketer",
