@@ -5,7 +5,7 @@ description: Step-by-step guide on ingesting data from HubSpot into RudderStack.
 
 [HubSpot](https://www.HubSpot.com/) is a leading marketing and CRM platform that helps you track leads as well as inbound marketing and sales.
 
-This document guides you in setting up HubSpot as a source in RudderStack. Once configured, RudderStack automatically ingests your specified HubSpot data and routes it to your data warehouse.
+This document guides you in setting up HubSpot as a source in RudderStack. Once configured, RudderStack automatically ingests your HubSpot data and routes it to your specified data warehouse destination.
 
 <div class="warningBlock">
 All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
@@ -23,25 +23,17 @@ To set up HubSpot as a source in RudderStack, follow these steps:
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
 2. Go to **Sources** > **New source** > **Cloud Extract** and select **HubSpot** from the list of sources.
-3. Assign a name to your source and click on **Continue**.
+3. Assign a name to your source and click **Continue**.
 
 ### Connection settings
 
 * **HubSpot Credentials**: Click **Connect with HubSpot** and grant RudderStack the necessary permissions to access your HubSpot data.
 
-<img src="../../assets/cloud-extract-sources/hubspot-connection-settings-1.png" alt="HubSpot connection settings" />
-
 <div class="infoBlock">
-
 Your HubSpot account and the related details will then automatically appear under <strong>Choose an account</strong>.
 </div>
 
-* **Start Date**: Select the date from when RudderStack should ingest your HubSpot data.
-
-<div class="warningBlock">
-
-RudderStack will not replicate any data before this date.
-</div>
+* **Start Date**: Select the date from when RudderStack ingests your HubSpot data. RudderStack will not replicate any data before this date.
 
 ### Destination settings
 
@@ -54,15 +46,72 @@ The following settings specify how RudderStack sends the ingested data from HubS
     - **Manual**: You are required to run the syncs manually.
 
 <div class="infoBlock">
-
 For more information on the schedule types, refer to the <Link to="/sources/extract/common-settings/">Common Settings</Link> guide.
 </div>
 
 ### Selecting the data to import
 
-Choose the HubSpot data that you wish to ingest via RudderStack. You can either select all the data or choose specific HubSpot data attributes as per your requirement.
+You can choose the HubSpot data you want to ingest by selecting the required resources:
 
 <img src="../../assets/cloud-extract-sources/hubspot-connection-settings-2.png" alt="Selecting the data to import" />
+
+The below table mentions the syncs and API endpoints supported by the HubSpot resources to your warehouse destination:
+
+| Resource | Full Refresh sync | Incremental sync | HubSpot API endpoint |
+| :---| :---- | :---- | :---- |
+| `campaigns` |  Yes | No | `/email/public/v1/campaigns/{campaignId}` |
+| `companies` | Yes | Yes |  `/crm/v3/objects/company` |
+| `contact_lists` | Yes | Yes |  `/contacts/v1/lists` |
+| `contacts` | Yes | Yes |  `/crm/v3/objects/contact` |
+| `contacts_list_memberships` | Yes | No |  `/contacts/v1/lists/all/contacts/all`|
+| `deal_pipelines` | Yes | No | `/crm-pipelines/v1/pipelines/deals` |
+| `deals` | Yes | Yes |  `/crm/v3/objects/deals/search`|
+| `email_events` | Yes | Yes |  `/email/public/v1/events`|
+| `engagements` | Yes | Yes |  `/engagements/v1/engagements/paged` or <br /> [`/engagements/v1/engagements/recent/modified`](https://legacydocs.hubspot.com/docs/methods/engagements/get-recent-engagements) |
+| `feedback_submissions` | Yes | Yes |  `/crm/v3/objects/feedback_submissions`|
+| `forms` | Yes | No |  `/marketing/v3/forms/` |
+| `form_submissions` | Yes | No |  `/form-integrations/v1/submissions/forms/:form_guid` |
+| `line_items` | Yes | Yes |  `/crm/v3/objects/line_items`|
+| `marketing_emails` | Yes | No |   `/marketing-emails/v1/emails/with-statistics` |
+| `owners` |  Yes | No |  `/owners/v2/owners/`|
+| `property_history` |  Yes | Yes |  `/crm/v3/objects/products`|
+| `subscription_changes` |  Yes | Yes |  `/email/public/v1/subscriptions/timeline`|
+| `tickets` |  Yes | Yes |  `/crm/v3/objects/tickets`|
+| `ticket_pipelines` |  Yes | No |  `/crm/v3/pipelines/ticket`|
+| `workflows` |  Yes | No |  `/automation/v3/workflows`|
+| `quotes` |  Yes | Yes |  `/crm/v3/objects/quote`|
+
+<div class="infoBlock">
+For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
+</div>
+
+Note that the objects in the `engagements` stream can be of the following types:
+
+- `note`
+- `email`
+- `task`
+- `meeting`
+- `call`
+
+Depending on the engagement type, RudderStack sets different properties for the object in the `engagements_metadata` table in the warehouse destination:
+
+| Engagement type | `engagements_metadata` columns with non-null values |
+| :--- | :----|
+| `call` | `toNumber`, `fromNumber`, `status`, `externalId`, <br />`durationMilliseconds`, `externalAccountId`, `recordingUrl`,<br />`body`, `disposition` |
+| `email` | `subject`, `html`, `text` |
+| `meeting` | `body`, `startTime`, `endTime`, `title` |
+| `note` | `body` |
+| `task` | `body`, `status`, `forObjectType` |
+
+<div class="infoBlock">
+For the <code class="inline-code">email</code> engagement type, RudderStack also creates the records in the following four related tables:
+<ul>
+<li><code class="inline-code">engagements_metadata_from</code></li>
+<li><code class="inline-code">engagements_metadata_to</code></li>
+<li><code class="inline-code">engagements_metadata_cc</code></li>
+<li><code class="inline-code">engagements_metadata_bcc</code></li>
+</ul>
+</div>
 
 HubSpot is now configured as a source. RudderStack will start ingesting data from HubSpot as per your specified schedule and frequency.
 
@@ -71,7 +120,6 @@ You can further connect this source to your data warehouse by clicking on **Add 
 <img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
 
 <div class="successBlock">
-
 Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
 </div>
 
@@ -83,4 +131,6 @@ Yes, it is.
 
 RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
 
+### How does RudderStack sync the HubSpot data?
 
+Upon configuring the source, RudderStack first connects to your HubSpot instance and pulls all the historical data. Subsequently, RudderStack syncs the data to your warehouse based on your specified sync schedule and frequency.
