@@ -1052,6 +1052,12 @@ export const postNavList = [
     content: [],
   },
   {
+  key: "zendesk-support",
+  title: "Zendesk Support",
+  link: "/sources/extract/zendesk-support/",
+  content: []
+  },
+  {
     key: "delighted",
     title: "Delighted",
     link: "/destinations/streaming-destinations/delighted/",
