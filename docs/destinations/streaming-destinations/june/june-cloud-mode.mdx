@@ -13,6 +13,10 @@ Find the open-source transformer code for this destination in the <a href="https
 
 You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create a new user or update an existing user's details in June. RudderStack sends the `identify` call to June using their [`identify`](https://www.june.so/docs/api#:~:text=Copy-,Identifying%20users,-You%20can%20use) API. 
 
+<div class="infoBlock">
+Make sure that you make an <code class="inline-code">identify</code> call before making a <code class="inline-code">track</code> or <code class="inline-code">group</code> call.
+</div>
+
 A sample `identify` call is shown below:
 
 ```javascript
