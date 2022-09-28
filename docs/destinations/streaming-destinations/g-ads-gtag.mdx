@@ -38,16 +38,16 @@ To set up Google Ads as a destination, you need to configure the following setti
 - **Click Event Conversion**: For `track` call, you can configure **Click Event Conversion**. 
   - **Conversion Label**: Enter your Google Ads conversion label. 
   - **Name**: Enter the name of the `track` event to be sent.
-- **Send Page View**: Enable this setting to configure Google Ads to automatically send your `page` events.
+- **Send Page View**: Enable this setting to automatically send your `page` events to Google Ads.
 - **Conversion Linker**: This setting is enabled by default. If you don't want the global site tag (`gtag.js`) to set first-party cookies on your website domain, disable this setting. Refer to the [Google Ads documentation](https://support.google.com/google-ads/answer/7521212?hl=en) for more information on the Conversion Linker feature.
 
 <div class="warningBlock">
 Disabling this setting can lead to less accurate conversion measurements.
 </div>
 
-- **Disable Ad Personalization**: Enable this setting to programmatically disable ad personalization. Refer to the [Google Ads documentation](https://developers.google.com/analytics/devguides/collection/gtagjs/display-features#disable_advertising_personalization) for more information on disabling the advertising personalization feature.
+- **Disable Ad Personalization**: Enable this setting to programmatically disable ad personalization. Refer to the [Google Ads documentation](https://developers.google.com/analytics/devguides/collection/gtagjs/display-features#disable_advertising_personalization) for more information.
 - **Use device mode to send events**: As this is a web device mode-only destination, this setting is enabled by default and cannot be disabled.
-- **Dynamic Remarketing**: Enable this setting to allow RudderStack to leverage Google Ads' Dynamic Remarketing feature for event tracking. Dynamic Remarketing lets you tailor your ads based on your users' previous interactions with your website. Refer to the [Google Ads documentation](https://support.google.com/google-ads/answer/7305793) for more information on this feature.
+- **Dynamic Remarketing**: Enable this setting to allow RudderStack to leverage Google Ads' Dynamic Remarketing feature for event tracking. [Dynamic Remarketing](https://support.google.com/google-ads/answer/7305793) lets you tailor your ads based on your users' previous interactions with your website.
 - **OneTrust Cookie Categories**: This setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Google Ads.
 
 ## Track
