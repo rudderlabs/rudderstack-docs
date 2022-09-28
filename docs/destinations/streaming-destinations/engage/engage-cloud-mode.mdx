@@ -22,10 +22,10 @@ The following table lists the RudderStack attributes and their mappings with the
 
 | RudderStack property   | Engage property  | Data type |
 | :-------------| :-----------------| :------|
-| `userId`, `externalId.engageId`, `traits.userid`, `traits.id`, `context.traits.userId`, `context.traits.id` <br /> (**Required**) | `uid`     |     Alphanumeric |
+|  `externalId.engageId`, `userId`, `traits.userid`, `traits.id`, `context.traits.userId`, `context.traits.id` <br /> (**Required**) | `uid`     |     Alphanumeric |
 | `traits.firstName`, `traits.firstname`, `traits.first_name`, `context.traits.firstName`, `context.traits.firstname`, `context.traits.first_name` <br /> (**Optional**) | `first_name`     |     String |
 | `traits.lastName`, `traits.lastname`, `traits.last_name`, `context.traits.lastName`, `context.traits.lastname`, `context.traits.last_name` <br /> (**Optional**) | `last_name`     |     String |
-| `traits.email`, `context.traits.email`, `properties.email`, `context.externalId.0.id` <br /> (**Optional**) | `email`     |     String |
+| `traits.email`, `context.traits.email`, `properties.email` <br /> (**Optional**) | `email`     |     String |
 | `traits.phone`, `context.traits.phone`, `properties.phone` <br /> (**Optional**) | `number`     |     Number of format `^[0-9]{7,15}$` |
 | Other user traits  <br /> (**Optional**) | `meta` | String / Integer / Boolean |
 | `originalTimestamp` <br /> (**Optional**) | `createdAt` | Timestamp (ISO 8601 format) |
@@ -66,7 +66,7 @@ The following table lists the RudderStack attributes and their mappings with the
 
 | RudderStack property   | Engage property  | Data type |
 | :-------------| :-----------------| :------|
-| `userId`, `externalId.engageId`, `traits.userid`, `traits.id`, `context.traits.userId`, `context.traits.id` <br /> (**Required**) | `uid`     |     Alphanumeric |
+| `externalId.engageId`, `userId`, `traits.userid`, `traits.id`, `context.traits.userId`, `context.traits.id` <br /> (**Required**) | `uid`     |     Alphanumeric |
 | `event` <br /> (**Required**) | `event` | String |
 | `originalTimestamp` <br /> (**Optional**) | `timestamp` | Timestamp (ISO 8601 format) |
 | `properties` <br /> (**Optional**) | `properties` | Object |
@@ -85,7 +85,7 @@ The following table lists the RudderStack event properties and their mappings wi
 
 | RudderStack property   | Engage property  | Data type |
 | :-------------| :-----------------| :------|
-| `userId`, `externalId.engageId`, `traits.userid`, `traits.id`, `context.traits.userId`, `context.traits.id` <br /> (**Required**) | `uid`     |     Alphanumeric |
+| `externalId.engageId`, `userId`, `traits.userid`, `traits.id`, `context.traits.userId`, `context.traits.id` <br /> (**Required**) | `uid`     |     Alphanumeric |
 | `Visited {Category} {Name} Page` <br /> (**Required**) | `event` | String | 
 | `originalTimestamp` <br /> (**Optional**) | `timestamp` | Timestamp (ISO 8601 format) |
 | `properties` <br /> (**Optional**) | `properties` | Object |
@@ -116,7 +116,7 @@ You can pass the following parameters in the `group` event along with the `userI
 | RudderStack property   | Engage property  | Data type |
 | :-------------| :-----------------| :------|
 | `groupId` <br /> (**Required**)  | `id` | String |
-| `userId`, `externalId.engageId` <br /> (**Optional**) | `uid`     |     Alphanumeric |
+| `externalId.engageId`, `userId` <br /> (**Optional**) | `uid`     |     Alphanumeric |
 | `subscriber_status` <br /> (**Optional**) <br /> (**Default: `true`**) | `subscribed` | Boolean |
 | `traits.operation` <br /> (**Optional**) <br /> (**Acceptable values: `add`/`remove`**) | - | String | 
 
@@ -133,7 +133,7 @@ The following table lists the additional property mappings with the Engage prope
 
 When sending `group` events to Engage it is important to note the following:
 
-- To remove a user from a group (`"operation": "remove"`), you need to provide the `userId` in the event. 
+- To remove a user from a group (`"operation": "remove"`), you need to provide the `userId` or  `externalId` in the event. 
 - If the user's ID is not known, then either `email` or `phone` is required for looking up the user in Engage.
 - If a user is found with an associated `email` or `phone` (in that priority), then Engage links the user to the provided Engage List ID. Otherwise, it creates a new user with the provided details and then links them to the List ID.
 
