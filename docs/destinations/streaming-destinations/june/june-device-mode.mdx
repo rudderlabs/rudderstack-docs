@@ -11,7 +11,11 @@ Find the open-source code for this destination in the <a href="https://github.co
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create new users or update existing users' details in June. RudderStack sends the `identify` call to June as an [`identify`](https://www.june.so/docs/api#:~:text=Copy-,Identifying%20users,-You%20can%20use) event.  
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create new users or update existing users' details in June. RudderStack sends the `identify` call to June as an [`identify`](https://www.june.so/docs/api#:~:text=Copy-,Identifying%20users,-You%20can%20use) event.
+
+<div class="infoBlock">
+Make sure that you make an <code class="inline-code">identify</code> call before making a <code class="inline-code">track</code>, <code class="inline-code">group</code>, or <code class="inline-code">page</code> call.
+</div>
 
 A sample `identify` call is shown below:
 
@@ -35,10 +39,6 @@ The following table lists the property mappings between RudderStack and June for
 ## Track
 
 The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them. RudderStack sends the `track` call to June as a [`track`](https://www.june.so/docs/api#:~:text=Copy-,Send%20track%20events,-In%20order%20to) event.
-
-<div class="warningBlock">
-Make sure that you make an <code class="inline-code">identify</code> call before a <code class="inline-code">track</code> call.
-</div>
 
 A sample `track` call is shown below:
 
@@ -106,10 +106,6 @@ You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> cal
 If you are using a <code class="inline-code">group</code> call to identify a company, it is recommended to pass the <code class="inline-code">groupId</code> in the <code class="inline-code">track</code> call. It allows you to specify which company performed that specific event. For more information, refer to the <a href="https://www.june.so/docs/api#:~:text=Copy-,Send%20track%20events,-In%20order%20to">June documentation</a>.
 </div>
 
-<div class="warningBlock">
-Make sure that you make an <code class="inline-code">identify</code> call before a <code class="inline-code">group</code> call to create a company successfully.
-</div>
-
 A sample `group` call is shown below:
 
 ```javascript
@@ -138,6 +134,3 @@ No, you can't. June does not stitch identities together or support merging anony
 ### My user is created as `Unknown` in June dashboard. What might be the reason?
 
 June categorizes a user as `Unknown` if the `firstName`, `lastName`, `name`, `username`, or `email` is not present in the `traits` object of the `identify` call.
-
-
-
