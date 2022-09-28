@@ -82,7 +82,7 @@ The following table lists the property mappings between RudderStack and June for
 You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to create a new company or update an existing company's details in June. Refer to the [June documentation](https://www.june.so/docs/api#:~:text=Identifying%20companies%20(optional)) for more information.
 
 <div class="warningBlock">
-If you are using a <code class="inline-code">group</code> call to identify a company, it is recommended to pass the <code class="inline-code">groupId</code> in the <code class="inline-code">track</code> call. It allows you to specify which company performed that specific event.
+If you are using a <code class="inline-code">group</code> call to identify a company, it is recommended to pass the <code class="inline-code">groupId</code> in the <code class="inline-code">track</code> call. It allows you to specify which company performed that specific event. For more information, refer to the <a href="https://www.june.so/docs/api#:~:text=Copy-,Send%20track%20events,-In%20order%20to">June documentation</a>.
 </div>
 
 A sample `group` call is shown below:
@@ -102,7 +102,7 @@ The following table lists the property mappings between RudderStack and June for
 
 | RudderStack property   | June property  | Data type | Presence |
 | :-------------| :-----------------|:-------------| :-----------------|
-| `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`       | `userId`        | String | <ul><li>Required while creating a company.</li><li>Optional while updating the company details.</li></ul>  |
+| `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`       | `userId`        | String | <ul><li>Required for creating a company.</li><li>Optional for updating the company details.</li></ul>  |
 | `originalTimestamp`/`timestamp`  | `timestamp`      |DateTime *(ISO 8601 date format yyyy-MM-ddTHH:mm:ss.SSSZ)* | Required |
 | `groupId`/`traits.groupId`              | `groupId`      |String | Required |
 | `traits`/`context.traits`              | `traits`      |Object | Optional |
@@ -111,8 +111,8 @@ The following table lists the property mappings between RudderStack and June for
 
 ### Can I make an `identify` or `track` call using `anonymousId`?
 
-No, you can't. June does not stitches identities together or offers anonymous user merging. It is rather used for logged-in experiences where you can measure user activation and retention.
+No, you can't. June does not stitch identities together or support merging anonymous users. Rather, it is best used to measure user activation and retention when the user is logged in.
 
 ### My user is created as `Unknown` in June dashboard. What might be the reason?
 
-June categorizes a user as `Unknown` if the `firsName`, `lastName`, `name`, `username`, or `email` is not present in the `identify` call's `traits`.
+June categorizes a user as `Unknown` if the `firstName`, `lastName`, `name`, `username`, or `email` is not present in the `traits` object of the `identify` call.
