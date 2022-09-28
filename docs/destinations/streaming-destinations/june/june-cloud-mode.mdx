@@ -29,7 +29,7 @@ The following table lists the property mappings between RudderStack and June for
 | RudderStack property   | June property  | Data type | Presence |
 | :-------------| :-----------------|:-------------| :-----------------|
 | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`       | `userId`        | String | Required |
-| `originalTimestamp`/`timestamp`  | `timestamp`      |String *(ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`)* | Required |
+| `originalTimestamp`/`timestamp`  | `timestamp`      |DateTime *(ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`)* | Required |
 | `traits`/`context.traits`              | `traits`      |Object | Optional |
 
 
@@ -73,7 +73,7 @@ The following table lists the property mappings between RudderStack and June for
 | :-------------| :-----------------|:-------------| :-----------------|
 | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`       | `userId`        | String | Required |
 | `event`            | `event`      | String | Required |
-| `originalTimestamp`/`timestamp`  | `timestamp`      |String *(ISO 8601 date format yyyy-MM-ddTHH:mm:ss.SSSZ)* | Required |
+| `originalTimestamp`/`timestamp`  | `timestamp`      |DateTime *(ISO 8601 date format yyyy-MM-ddTHH:mm:ss.SSSZ)* | Required |
 | `properties`            | `properties`      | Object | Optional |
 | <ul><li>If `context.externalId.id` (when `context.externalId.type` = `juneGroupId`) is present.</li><li>Otherwise, `properties.groupId`.</li></ul>   | `context.groupId`    | String | Optional |
 
@@ -103,7 +103,7 @@ The following table lists the property mappings between RudderStack and June for
 | RudderStack property   | June property  | Data type | Presence |
 | :-------------| :-----------------|:-------------| :-----------------|
 | `userId`/`traits.userId`/`traits.id`/`context.traits.userId`/`context.traits.id`       | `userId`        | String | <ul><li>Required while creating a company.</li><li>Optional while updating the company details.</li></ul>  |
-| `originalTimestamp`/`timestamp`  | `timestamp`      |String *(ISO 8601 date format yyyy-MM-ddTHH:mm:ss.SSSZ)* | Required |
+| `originalTimestamp`/`timestamp`  | `timestamp`      |DateTime *(ISO 8601 date format yyyy-MM-ddTHH:mm:ss.SSSZ)* | Required |
 | `groupId`/`traits.groupId`              | `groupId`      |String | Required |
 | `traits`/`context.traits`              | `traits`      |Object | Optional |
 
