@@ -28,19 +28,58 @@ Once you have confirmed that the source platform supports sending events to Goog
 
 ### Connection Settings
 
-To successfully set up June as a destination, configure the following settings:
+To successfully set up Google Analytics as a destination, configure the following settings:
 
-<div class="infoBlock">
-For more information on getting your Google Analytics tracking ID, refer to the <Link to="#faq">FAQ</Link> section below.
-</div>
+- **Tracking ID**: Refer to the <Link to="#faq">FAQ</Link> section for more information on getting your Google Analytics tracking ID.
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Google Analytics. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide. 
+- **Remarketing, Display Ads and Demographic Reports**: 
+- **Enable Enhanced Link Attribution**: 
+- **Include the Querystring in Page Views**: 
+- **Custom Dimensions & Metrics**: 
+- **Property & Trait Mapping**:
+- **Enable Server Side Identify**:
+- **Server Side Identify Event Category**:
+- **Server Side Identify Event Action**:
+- **Anonymize IP Addresses**:
+- **Enable Enhanced Ecommerce**:
+- **Add the non-interaction flag to all events**:
+- **Send user-id to GA**:
+- **Use device-mode to send events**:
+- **Track Categorized Pages**:
+- **Track Named Pages**:
+- **Sample Rate**:
+- **Site Speed Sample Rate**:
+- **Reset dimensions on Page calls**:
+- **Set Custom Dimensions & Metrics to the Page**:
+- **Use Named Tracker**:
+- **Cookie Domain Name**:
+- **Optimize Container ID**:
+- **Use Google AMP Client ID**:
+- **OneTrust Cookie Categories**:
+- **Disable Md5 encryption from Client ID**: 
+  - When set to `true`, the `client id` is mapped from either of the following:
+    - `integrations` object
+    ```json
+     "integrations": {
+     "Google Analytics": {
+      "clientId": "clientId"
+    }}
+    ```
 
-<img src="../../assets/event-stream-destinations/ga-connection-settings-1.png" alt="Google Analytics dashboard settings" />
-<img src="../../assets/event-stream-destinations/ga-connection-settings-2.png" alt="Google Analytics dashboard settings" />
-<img src="../../assets/event-stream-destinations/ga-connection-settings-3.png" alt="Google Analytics dashboard settings" />
-<img src="../../assets/event-stream-destinations/ga-connection-settings-4.png" alt="Google Analytics dashboard settings" />
-<img src="../../assets/event-stream-destinations/ga-connection-settings-5.png" alt="Google Analytics dashboard settings" />
 
-Once the destination is set up, events from RudderStack will automatically start flowing to Google Analytics. You can see the events in Google Analytics' real-time view.
+
+    - `externalId`
+     ```json
+     "externalId": [{
+     "id": "externalClientId",
+     "type": "gaExternalId"
+    }]
+    ```
+    - `traits.cid`
+
+    If none of the above is present, `client id` falls back to the `anonymousId`. In case if `anonymousId` is also not present, it is set as **undefined.**
+
+  - When set to `false` and the `integrations` object, `externalId` , `traits.cid` and `anonymousId` are absent, the `userId` is MD5 hashed and set as the `clientId`.
 
 ## Page
 
@@ -106,6 +145,21 @@ rudderanalytics.page("home", {
 For a server-side page call, the application name is passed from RudderStack's <code class="inline-code">context.app.name</code> as <code class="inline-code">an</code>, otherwise the event will be rejected by GA.
 If the <strong>Include the Querystring in Page Views</strong> option is enabled in the RudderStack destination settings, then the entire URL with the querystring will be sent as <code class="inline-code">dp</code> (Document Path). Otherwise, the querystring will be removed from the URL.
 </div>
+
+#### Page title in device mode
+
+Depending on the presence of `message.properties.category` and `message.name` properties, the page title is set as one of the following in the device mode: 
+
+| `message.properties.category`  | `message.name`        | Page title|
+| :--------- | :------------ | :------------ |
+| Absent  | Absent     |  `pageTitle` = `message.properties.title`|
+| Absent  | Present     |  `pageTitle` = `message.name`|
+| Present  | Absent     |  `pageTitle` = `message.properties.category`|
+| Present  | Present     |  `pageTitle` = `${rudderElement.message.properties.category} ${rudderElement.message.name}`|
+
+#### Page title in cloud mode
+
+The page title is set as the `properties.title` or ` context.page.title` in the cloud mode.
 
 ## Identify
 
