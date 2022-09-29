@@ -1,7 +1,70 @@
 ---
-title: "How to Create RudderStack IAM Role for Role-based Authentication"
+title: "RudderStack IAM Role for AWS-based Destinations"
 description: >-
-  
+  Step-by-step guide on creating a RudderStack IAM role for authenticating AWS-based destinations.
 ---
 
-## 
+This guide walks you through the steps for creating a RudderStack IAM role. This role will be used for authenticating RudderStack in the following AWS-based destinations:
+
+- <Link to="/destinations/streaming-destinations/amazon-s3/">S3</Link>
+- <Link to="/destinations/streaming-destinations/amazon-eventbridge/">EventBridge</Link>
+- <Link to="/destinations/streaming-destinations/amazon-kinesis/">Kinesis</Link>
+- <Link to="/destinations/streaming-destinations/amazon-kinesis-firehose/">Kinesis Firehose</Link>
+- <Link to="/destinations/streaming-destinations/aws-lambda/">Lambda</Link>
+- <Link to="/destinations/streaming-destinations/aws-personalize/">Personalize</Link>
+
+<div class="warningBlock">
+Access keys-based authentication method will be deprecated in the future. Hence, setting up a RudderStack IAM role is strongly recommended.
+</div>
+
+## Creating a RudderStack IAM role
+
+To set up a new RudderStack IAM role, follow these steps:
+
+1. Sign in to your AWS Management Console and open the <a href="https://console.aws.amazon.com/iam/">IAM console</a>.
+2. In the left navigation pane, click **Roles** followed by **Create role**.
+3. Under **Trusted entity type**, select **AWS account**, as shown:
+
+<img src="../assets/destinations/aws-role-1.png" alt="Setting up AWS IAM Role for RudderStack" />
+
+4. Select **Another AWS account** and under **Account ID**, enter `422074288268`, the account ID associated with RudderStack.
+5. Under **Options** check **Require external ID** and enter your <Link to="/resources/glossary/#workspace-token">workspace token</Link> as the **External ID**.
+6. Optionally, you can choose to enable **Require MFA** based on your organization's security policies and requirements. Enabling this setting restricts the role only to the users who sign in with <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html">multi-factor authentication (MFA)</a>.
+
+<img src="../assets/destinations/aws-role-2.png" alt="Setting up AWS IAM Role for RudderStack" />
+
+7. Review all the settings carefully and click **Next** to proceed.
+8. Select your destination-specific permission policies applicable for the RudderStack IAM role. To create a new policy from scratch, click **Create policy**. For more information, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html#access_policies_create-start">Creating IAM policies</a> guide.
+9. **Optional**: You can also set a <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">permissions boundary</a>. Expand the **Set permissions boundary** section, choose **Use a permissions boundary to control the maximum role permissions**, and select the policy to use for the permissions boundary. An example is shown below:
+
+<img src="../assets/destinations/aws-role-3.png" alt="Setting up AWS IAM Role for RudderStack" />
+
+10. Review all the settings carefully and click **Next** to proceed.
+11. Enter a unique name for your role. Note that this name cannot be distinguished by case. For example, you cannot create a role named `RUDDERSTACK` if `rudderstack` already exists.
+
+<div class="warningBlock">
+You cannot edit the name of the role after it has been created.
+</div>
+
+12. **Optional**: Enter the description for this role.
+13. To edit the use cases and permissions for the role, click the **Edit** button next to the **Step 1: Select trusted entities** or **Step 2: Add permissions** sections.
+
+<img src="../assets/destinations/aws-role-4.png" alt="Setting up AWS IAM Role for RudderStack" />
+
+14. **Optional**: You can also add metadata to the role by attaching tags as key-value pairs. For more information, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html">Tagging IAM resources</a> guide.
+15. Finally, click **Create role** to complete the setup.
+
+<div class="warningBlock">
+You also need to give the individual users the trusted account permissions to switch to this newly created role in the console, or assume the role programmatically. For more information, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_permissions-to-switch.html">Granting a user permissions to switch roles</a> guide.
+</div>
+
+## Destination-specific policy permissions
+
+Refer to the following sections for the destination-specific policy permissions:
+
+- <Link to="/destinations/streaming-destinations/amazon-s3/#permissions">S3</Link>
+- <Link to="">EventBridge</Link>
+- <Link to="">Kinesis</Link>
+- <Link to="">Kinesis Firehose</Link>
+- <Link to="">Lambda</Link>
+- <Link to="/destinations/streaming-destinations/aws-personalize/#connection-settings">Personalize</Link>
