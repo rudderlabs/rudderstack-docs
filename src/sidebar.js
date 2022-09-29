@@ -1198,7 +1198,7 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/engage/",
                 content: [
                     {
-                        title: "Setting Up Engage in RudderStack",
+                        title: "Setting Up Engage",
                         link: "/destinations/streaming-destinations/engage/setting-up-engage/",
                         content: []
                     }, {

@@ -12,11 +12,10 @@ Find the open source transformer code for this destination in the <a href="https
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update the user in Engage.
+You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a user in Engage. To update a user's email, you need to provide the <Link to="/destinations/streaming-destinations/engage/setting-up-engage/#connection-settings">**Engage Private Key**</Link> in the dashboard settings.
 
 RudderStack uses the <a href="https://engage.so/docs/api/users">Create or update a User</a> API to add a new user to your Engage account.
 
-To update the user's email, you need to provide the <Link to="/destinations/streaming-destinations/engage/setting-up-engage/#connection-settings">**Engage Private Key**</Link> in the dashboard settings.
 
 The following table lists the RudderStack attributes and their mappings with the Engage properties:
 
@@ -26,8 +25,8 @@ The following table lists the RudderStack attributes and their mappings with the
 | `traits.firstName`, `traits.firstname`, `traits.first_name`, `context.traits.firstName`, `context.traits.firstname`, `context.traits.first_name` <br /> (**Optional**) | `first_name`     |     String |
 | `traits.lastName`, `traits.lastname`, `traits.last_name`, `context.traits.lastName`, `context.traits.lastname`, `context.traits.last_name` <br /> (**Optional**) | `last_name`     |     String |
 | `traits.email`, `context.traits.email`, `properties.email` <br /> (**Optional**) | `email`     |     String |
-| `traits.phone`, `context.traits.phone`, `properties.phone` <br /> (**Optional**) | `number`     |     Number of format `^[0-9]{7,15}$` |
-| Other user traits  <br /> (**Optional**) | `meta` | String / Integer / Boolean |
+| `traits.phone`, `context.traits.phone`, `properties.phone` <br /> (**Optional**) | `number`     |     Number *(`^[0-9]{7,15}$` format)* |
+| Other user traits  <br /> (**Optional**) | `meta` | String/Integer/Boolean |
 | `originalTimestamp` <br /> (**Optional**) | `createdAt` | Timestamp (ISO 8601 format) |
 | `externalId.engageListId`, `config.listIds` <br /> (**Optional**) | `lists` | Array of List ID |
 
@@ -131,7 +130,7 @@ The following table lists the additional property mappings with the Engage prope
 | Other user traits  <br /> (**Optional**) | `meta` | String / Integer / Boolean |
 | `originalTimestamp` <br /> (**Optional**) | `createdAt` | Timestamp (ISO 8601 format) |
 
-When sending `group` events to Engage it is important to note the following:
+When sending `group` events to Engage, it is important to note the following:
 
 - To remove a user from a group (`"operation": "remove"`), you need to provide the `userId` or  `externalId` in the event. 
 - If the user's ID is not known, then either `email` or `phone` is required for looking up the user in Engage.
