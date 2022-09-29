@@ -80,9 +80,25 @@ For more information on the schedule types, refer to the <Link to="/sources/extr
 
 ### Selecting the data to import
 
-Choose the Mixpanel data that you wish to ingest via RudderStack. You can either select all the data or choose specific Mixpanel data attributes as per your requirement.
+You can choose the Mixpanel data you want to ingest by selecting the required resources:
 
 <img src="../../assets/cloud-extract-sources/mixpanel-connection-settings-2.png" alt="Selecting the data to import" />
+
+The below table mentions the syncs and API endpoints supported by these resources from Mixpanel to your warehouse destination:
+
+| Resource | Full Refresh sync | Incremental sync | Mixpanel API endpoint |
+| :---| :---- | :---- | :---- |
+| `revenue` |  Yes | Yes | `/suppression/blocks` |
+| `funnels` | Yes | Yes |  `/suppression/bounces` |
+| `export` | Yes | Yes |  `/marketing/campaigns`|
+| `engage` | Yes | No |  `/marketing/contacts` |
+| `cohorts` | Yes | Yes |  `/suppression/unsubscribes`|
+| `cohort_members` | Yes | No | `/suppression/invalid_emails` |
+| `annotations` | Yes | No |  `/marketing/lists`|
+
+<div class="infoBlock">
+For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
+</div>
 
 Mixpanel is now configured as a source. RudderStack will start ingesting data from Mixpanel as per your specified schedule and frequency.
 
