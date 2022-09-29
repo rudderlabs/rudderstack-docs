@@ -47,7 +47,7 @@ While connecting a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source wi
 
 <img src="../../../assets/event-stream-destinations/predefined_object_hubspot.png" alt="HubSpot connection settings"/>
 
-If you select a standard HubSpot **Object**, the **Destination fields** dropdown shows the predefined unique identifiers along with any other unique field of the object. These predefined unique identifiers are mentioned in the below table corresponding to the standard HubSpot objects:
+If you select a standard HubSpot **Object**, the **Destination fields** dropdown displays the predefined unique identifiers along with any other unique field of the object. These predefined unique identifiers are mentioned in the below table corresponding to the standard HubSpot objects:
 
 | Standard HubSpot object | Predefined unique identifiers   |
 | :------------------ | :------------ | 
@@ -57,7 +57,7 @@ If you select a standard HubSpot **Object**, the **Destination fields** dropdown
 | Line Item      | Name      |
 | Quote     | Quote number     | 
 
-If you select a custom HubSpot **Object**, only the unique fields of the object are shown in the **Destination fields** dropdown.
+If you select a custom HubSpot **Object**, only the unique fields of the object are displayed in the **Destination fields** dropdown.
 
 ## Creating association between object records
 
@@ -68,17 +68,16 @@ This section is <strong>applicable only</strong> when you want to send events to
 You can create association between the HubSpot object records while connecting your HubSpot destination to a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> feature. Follow the below steps to do so:
 
 1. Add a Reverse ETL source and add the HubSpot destination to it. For detailed steps on adding a source and destination, you can refer to the <Link to="https://www.rudderstack.com/docs/get-started/quickstart/">Quickstart</Link> section.
-2. Configure the <Link to="/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/#new-api">HubSpot connection settings</Link> in the RudderStack dashboard and enable the **Create associations between object record** setting. 
-3. Click **Continue**.
-4. Select the required Schema and Table whose data you want to sync to HubSpot.
-5. Select the HubSpot **Object** for which you want to create the association. 
-6. In the next dropdown, select the HubSpot object with which you want to associate the above-mentioned object.
-7. Based on the object selections, the relevant associations (from HubSpot account) are populated in the **Association** dropdown. You can select the required one, as shown:
+2. While configuring the <Link to="/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/#new-api">HubSpot connection settings</Link> in the RudderStack dashboard, enable the **Create associations between object record** setting and click **Continue**.
+3. Select the required **Schema** and **Table** whose data you want to sync to HubSpot.
+4. Select the HubSpot **Object** for which you want to create the association. 
+5. In the next dropdown, select the HubSpot object with which you want to associate the above-mentioned object.
+6. Based on the object selections, the relevant associations (from HubSpot account) are populated in the **Association** dropdown. You can select the required one, as shown:
 
 <img src="../../../assets/event-stream-destinations/sync-associations-hubspot.png" alt="HubSpot connection settings"/>
 
-8. In the **Choose Identifier** section,  choose a warehouse column and destination field to map your records from the source to the destination. You can choose any destination field from the dropdown which will act as a unique identifier.
-9. Choose a warehouse column each for **From Record ID** and **To Record ID** fields which will act as Hubspot's unique ID to identify an object.
+7. In the **Choose Identifier** section,  choose a warehouse column and destination field to map your records from the source to the destination. You can choose any destination field from the dropdown which will act as a unique identifier.
+8. Choose a warehouse column each for **From Record ID** and **To Record ID** fields which will act as Hubspot's unique ID to identify an object.
 
 <img src="../../../assets/event-stream-destinations/unique-identifier-hubspot.png" alt="HubSpot connection settings"/>
 

@@ -46,14 +46,12 @@ This authorization type will be deprecated soon. Refer to the <Link to="https://
 
  <img src="../../../assets/event-stream-destinations/hubspot-connection-settings-auth-type-2.png" alt="HubSpot connection settings"/>
 
--  **API Key**: Enter your HubSpot API key. For more information on obtaining it, refer to the [HubSpot documentation](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key).
+-  **API Key**: Enter your HubSpot API key. For more information on obtaining it, refer to the [HubSpot documentation](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key). This is a required field to send data to HubSpot via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
 
-<div class="warningBlock">
-<strong>API key</strong> is a required field to send data to HubSpot via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
-</div>
+The below settings are **applicable only** if you want to send events to HubSpot via the web <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>:
 
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to HubSpot. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
-- **Use device mode to send events**: This setting **must be enabled** to send the events to HubSpot via the web <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+- **Use device mode to send events**: Enable this setting to send the events to HubSpot via the web <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 - **OneTrust Cookie Categories**: If **Use device mode to send events** is enabled, this setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to HubSpot.
 
 ### New API
