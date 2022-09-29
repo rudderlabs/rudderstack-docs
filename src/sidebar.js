@@ -423,6 +423,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Customer.io",
+                link: "/sources/extract/customerio/",
+                content: []
+            },
+            {
                 title: "Facebook Ads",
                 link: "/sources/extract/facebook-ads/",
                 content: []
