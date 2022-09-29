@@ -1,11 +1,10 @@
 ---
 title: "Google Analytics"
 description: >-
-  Step-by-step guide on sending your event data from RudderStack to Google
-  Analytics
+  Step-by-step guide on sending your event data from RudderStack to Google Analytics.
 ---
 
-Google Analytics is the world's most popular analytics service that lets you track and report your website traffic across a variety of sources.
+[Google Analytics](https://analytics.google.com/) is one of the most popular analytics service that lets you track and report your website traffic across a variety of sources.
 
 RudderStack supports Google Analytics as a destination and makes requests to its endpoints through the [Google Analytics Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1).
 
@@ -15,25 +14,21 @@ Find the open source transformer code for this destination in the <a href="https
 
 ## Getting started
 
-Before configuring Google Analytics as a destination in RudderStack, verify if the source platform is supported by Google Analytics by referring to the table below:
+RudderStack supports sending event data to Google Analytics via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
 | **Device Mode**     | **Supported** | -             | -             |
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
-<div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
-</div>
-
 Once you have confirmed that the source platform supports sending events to Google Analytics, follow these steps:
 
-1.  From your [RudderStack dashboard](https://app.rudderstack.com), add the source. Then, from the list of destinations, select **Google Analytics**.
-2. Assign a name to the destination and click on **Next**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com), add the source. Then, from the list of destinations, select **Google Analytics**.
+2. Assign a name to the destination and click **Continue**.
 
 ### Connection Settings
 
-To successfully configure **Google Analytics** as a destination, you will need to configure the following settings where **Tracking ID** is the only required field.
+To successfully set up June as a destination, configure the following settings:
 
 <div class="infoBlock">
 For more information on getting your Google Analytics tracking ID, refer to the <Link to="#faq">FAQ</Link> section below.
