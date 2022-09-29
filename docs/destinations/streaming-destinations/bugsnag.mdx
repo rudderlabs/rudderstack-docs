@@ -16,8 +16,9 @@ RudderStack supports sending event data to Bugsnag via the following <a href="ht
 | **Device mode**     | **Supported** | **Supported** | -          |
 | **Cloud mode**      | -             | -             | -          |
 
+
 <div class="infoBlock">
-While using the RudderStack <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">JavaScript SDK </Link> source with Bugsnag, you need to allowlist this <code class="inline-code">https://d2wy8f7a9ursnm.cloudfront.net/v6/bugsnag.min.js</code> domain to load the Bugsnag SDK successfully.
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Bugsnag native SDK is loaded from <code class="inline-code">https://d2wy8f7a9ursnm.cloudfront.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist</Link> this domain to load the Bugsnag SDK successfully.
 </div>
 
 Once you have confirmed that the platform supports sending events to Bugsnag, follow these steps:
