@@ -28,7 +28,8 @@ The following table lists the RudderStack event properties and their mappings wi
 
 | RudderStack property   | Engage property  | Data type |
 | :-------------| :-----------------| :------|
-| `externalId.engageId`, `userId` <br /> (**Required**) | `id`     |     String |
+| `externalId.engageId`, `userId` <br /> (Required) | `id`     |     String |
+| `context.traits` <br /> (Optional) | `payload` | Object |
 
 ## Track
 
@@ -51,9 +52,9 @@ The following table lists the RudderStack event properties and their mappings wi
 
 | RudderStack property   | Engage property  | Data type |
 | :-------------| :-----------------| :------|
-| `externalId.engageId`, `userId` <br /> (**Required**) | `id`     |     String |
-| `event` <br /> (**Required**) | `event`     |     String |
-| `propertes` <br /> (**Optional**) | `properties`     |     Object |
+| `externalId.engageId`, `userId` <br /> (Required) | `id`     |     String |
+| `event` <br /> (Required) | `event`     |     String |
+| `propertes` <br /> (Optional) | `properties`     |     Object |
 
 ## Page
   
@@ -77,6 +78,6 @@ The following table lists the RudderStack event properties and their mappings wi
 
 | RudderStack property   | Engage property  | Data type |
 | :-------------| :-----------------| :------|
-| `externalId.engageId`, `userId` <br /> (**Required**) | `id`     |     String |
-| `Visited {Category} {Name} Page` <br /> (**Optional**) | `event`     |     String |
-| `propertes` <br /> (**Optional**) | `properties`     |     Object |
+| `externalId.engageId`, `userId` <br /> (Required) | `id`     |     String |
+| `Visited {Category} {Name} Page` <br /> (Optional) | `event`     |     String |
+| `propertes` <br /> (Optional) | `properties`     |     Object |
