@@ -335,7 +335,12 @@ export const jsonData = [
                         link: "/sources/event-streams/cloud-apps/canny/",
                         content: []
                     },
-                     {
+                    {
+                        title: "ClickUp",
+                        link: "/sources/event-streams/cloud-apps/clickup/",
+                        content: []
+                    },
+                    {
                         title: "Customer.io",
                         link: "/sources/event-streams/cloud-apps/customerio/",
                         content: []
