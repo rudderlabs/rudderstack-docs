@@ -533,11 +533,17 @@ export const jsonData = [
                 title: "Zendesk",
                 link: "/sources/extract/zendesk/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Zendesk Chat",
                 link: "/sources/extract/zendesk-chat/",
                 content: []
             },
+            {
+                title: "Zendesk Chat V2",
+                link: "/sources/extract/zendesk-chat-v2/",
+                content: [],
+              },
         ]
     }, {
         title: "Reverse ETL",

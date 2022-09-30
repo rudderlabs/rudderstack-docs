@@ -621,6 +621,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "zendesk-chat-v2",
+    title: "Zendesk Chat V2",
+    link: "/sources/extract/zendesk-chat-v2/",
+    content: [],
+  },
+  {
     key: "intercom-v2",
     title: "Intercom v2",
     link: "/sources/extract/intercom-v2/",
