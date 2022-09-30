@@ -538,6 +538,10 @@ export const jsonData = [
                 title: "Zendesk Chat",
                 link: "/sources/extract/zendesk-chat/",
                 content: []
+            },{
+                title: "Zendesk Support",
+                link: "/sources/extract/zendesk-support/",
+                content: []
             },
             {
                 title: "Zendesk Chat V2",
