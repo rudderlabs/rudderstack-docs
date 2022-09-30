@@ -37,10 +37,15 @@ To set up Zendesk Chat as a Cloud Extract source, you need to configure the foll
 - **Start Date**: Choose the start date from which you want RudderStack to ingest the Zendesk Chat data. RudderStack will not replicate any data before this date.
 
 <div class="warningBlock">
-If you do not specify the start date, RudderStack will replicate all your data by default.
+You will not be able to proceed if you do not specify the start date.
 </div>
 
 - **Subdomain**: Enter the subdomain from your Zendesk account's URL. For example, if your Zendesk account URL is `sample.zendesk.com`, the subdomain would be `sample`.
+
+<div class="warningBlock">
+It is <strong>mandatory</strong> to provide a subdomain if your Zendesk account URL is of the format <code class="inline-code">sample.zendesk.com</code>. However, if you only have a Zendesk Chat account and the URL does not follow this format, you can skip this field and set up your source without specifying a subdomain.
+</div>
+
 - **Authentication**: Select an authentication method from the dropdown:
     - **OAuth2.0**: Click **Connect with Zendesk Chat** to authenticate your account.
     - **Access token**: Enter your Zendesk Chat access token. Refer to the [Zendesk Chat documentation](https://support.zendesk.com/hc/en-us/articles/4408882184986-Getting-an-OAuth-access-token-for-testing-purposes) for more details on obtaining this token.
