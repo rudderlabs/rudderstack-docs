@@ -742,6 +742,8 @@ A sample regulation request body for deleting a user in AppsFlyer is shown below
       <TabPanel>
 <span>
 
+<p>In this case, you must specify either the <Link to="#connection-settings"><strong>Android App ID</strong>/ <strong>iOS App ID</strong></Link> in the RudderStack dashboard setting.</p>
+
 ```json
 {
   "regulationType": "suppress_with_delete",
@@ -756,10 +758,13 @@ A sample regulation request body for deleting a user in AppsFlyer is shown below
   }]
 }
 ```
+
 </span>
       </TabPanel>
       <TabPanel>
 <span>
+
+<p>In this case, you must specify the <Link to="#connection-settings"><strong>iOS App ID</strong></Link> in the RudderStack dashboard setting.</p>
 
 ```json
 {
@@ -775,10 +780,13 @@ A sample regulation request body for deleting a user in AppsFlyer is shown below
   }]
 }
 ```
+
 </span>
       </TabPanel>
       <TabPanel>
 <span>
+
+<p>In this case, you must specify the <Link to="#connection-settings"><strong>Android App ID</strong></Link> in the RudderStack dashboard setting.</p>
 
 ```json
 {
@@ -794,19 +802,11 @@ A sample regulation request body for deleting a user in AppsFlyer is shown below
   }]
 }
 ```
+
 </span>
       </TabPanel>
     </TabPanels>
 </Tabs>
-
-<div class="infoBlock">
-To delete a user using the Data Regulation API, the following dashboard settings are required:
-<ul>
-  <li>If you're providing the AppsFlyer ID in the regulation request, then either of <Link to="#connection-settings"><strong>Android App ID</strong> or <strong>iOS App ID</strong></Link> must be specified in the settings.</li>
-  <li>If you're providing the iOS advertising ID, then <strong>iOS App ID</strong> must be specified.</li>
-  <li>If you're providing the Android advertising ID, then <strong>Android App ID</strong> must be specified in the dashboard.</li>
-</ul>
-</div>
 
 ## Track
 
@@ -961,5 +961,3 @@ const appsFlyerId = await AppsFlyerIntegrationFactory.getAppsFlyerId()
 </Tabs>
 
 Once you obtain the AppsFlyer ID, you can send events via the cloud mode by by including the `externalId` key within your events' `context`. For more information, refer to the [**Sending events via the RudderStack cloud mode**](#sending-events-via-the-rudderstack-cloud-mode) section above.
-
-
