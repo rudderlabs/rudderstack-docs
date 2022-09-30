@@ -42,6 +42,22 @@ You can leverage RudderStack's <Link to="/api/data-regulation-api/">Data Regulat
 To delete a user in Engage, you need to specify the <Link to="/destinations/streaming-destinations/engage/setting-up-engage/#connection-settings">Engage Private Key</Link> in the dashboard settings.
 </div>
 
+A sample regulation request body for deleting a user in Engage is shown below:
+
+```json
+{
+  "regulationType": "suppress_with_delete",
+  "destinationIds": [
+    "2FIKkByqn37FhzczP23eZmURciA"
+  ],
+  "users": [{
+    "userId": "1hKOmRA4GRlm",
+    "phone": "+1-202-555-0146",
+    "email": "alex@example.com"
+  }]
+}
+```
+
 RudderStack deletes the user account in Engage using the <a href="https://engage.so/docs/api/users#delete-user">Delete User API</a>.
 
 ## Track
