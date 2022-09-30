@@ -639,6 +639,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "customerio",
+    title: "Customer.io",
+    link: "/sources/extract/customerio/",
+    content: []
+  },
+  {
     key: "common-settings",
     title: "Common Settings",
     link: "/sources/extract/common-settings/",
