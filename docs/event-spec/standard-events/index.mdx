@@ -41,5 +41,5 @@ The event data collected by RudderStack has a JSON structure, which has the <Lin
 <div class="dangerBlock">
 <strong>It is strongly recommended to pass large integer values in your events as strings</strong>. This is to ensure that the values are correctly transmitted to all the systems(including various downstream destinations) without any issues.<br /><br />
 
-RudderStack follows the <a href="https://www.rfc-editor.org/rfc/rfc7159#section-6">RFC 7159 standards</a> which has an upper limit of 2 <sup>53</sup> for integers. If the values you pass in your events exceed this number, the library <strong>automatically truncates it</strong>. Furthermore, certain downstream destinations might have their own limitations on parsing such integer values.
+RudderStack follows the <a href="https://www.rfc-editor.org/rfc/rfc7159#section-6">RFC 7159 standards</a> which has an upper limit of 2 <sup>53</sup> for integers. If the values you pass in your events exceed this number, <strong>they may lose precision</strong>. Furthermore, certain downstream destinations might have their own limitations on parsing such integer values.
 </div>
