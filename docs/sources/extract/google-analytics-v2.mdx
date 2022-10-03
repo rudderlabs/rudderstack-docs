@@ -48,9 +48,17 @@ The rest of the settings are as follows:
 
 - **Replication Start Date**: Choose the start date from which you want RudderStack to ingest the Google Analytics data. RudderStack will not replicate any data before this date.
 - **View ID**: Enter the ID of the Google Analytics View you want to fetch the data from. Refer to this [documentation](https://docs.acquia.com/customer-data-platform/connectors/web-analytics-provider/google-analytics-profileid/) for more information on obtaining the View ID.
-- **Custom Reports (Optional)**: Use this field to sync your [custom reports](https://support.google.com/analytics/answer/1033013?hl=en) from Google Analytics. Click **Add Report** and enter the **Report Name**, **Metrics**, and **Dimensions** which RudderStack will add as a JSON array, for example: `{"name": string, "dimensions": [string], "metrics": [string]}`.
+- **Custom Reports (Optional)**: Use this field to sync your [custom reports](https://support.google.com/analytics/answer/1033013?hl=en) from Google Analytics. You can sync multiple reports.
 
-<img src="../../assets/cloud-extract-sources/ga-custom-report.png" alt="Google Analytics credentials" />
+  To add a custom report, click **Add Report** and enter the **Report Name**, **Metrics**, and **Dimensions** as shown:
+
+  <img src="../../assets/cloud-extract-sources/ga-custom-report.png" alt="Google Analytics credentials" />
+
+  You can also edit/delete an existing report, as shown:
+
+  <img src="../../assets/cloud-extract-sources/edit-custom-report.png" alt="Google Analytics credentials" />
+  <br/>
+  <img src="../../assets/cloud-extract-sources/delete-custom-report.png" alt="Google Analytics credentials" />
 
 - **Data request time increment in days (Optional)**: Enter the number of days after which RudderStack should request data from the Google Analytics API. It is recommended to set this value to 1 to avoid getting the [sampled data](https://support.google.com/analytics/answer/2637192#zippy=%2Cin-this-article). The minimum and maximum allowed values for this field are 1 and 364 respectively.
 
