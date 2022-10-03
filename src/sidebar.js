@@ -1194,8 +1194,7 @@ export const jsonData = [
                 title: "Customer.io",
                 link: "/destinations/streaming-destinations/customer.io/",
                 content: []
-            }, 
-            {
+            }, {
                 title: "Drip",
                 link: "/destinations/streaming-destinations/drip/",
                 content: [
@@ -1210,25 +1209,6 @@ export const jsonData = [
                     }, {
                         title: "Device Mode",
                         link: "/destinations/streaming-destinations/drip/drip-web-device-mode/",
-                        content: []
-                    },
-                ]
-            },
-            {
-                title: "Engage",
-                link: "/destinations/streaming-destinations/engage/",
-                content: [
-                    {
-                        title: "Setting Up Engage",
-                        link: "/destinations/streaming-destinations/engage/setting-up-engage/",
-                        content: []
-                    }, {
-                        title: "Cloud Mode",
-                        link: "/destinations/streaming-destinations/engage/engage-cloud-mode/",
-                        content: []
-                    }, {
-                        title: "Device Mode",
-                        link: "/destinations/streaming-destinations/engage/engage-device-mode/",
                         content: []
                     },
                 ]
