@@ -751,6 +751,10 @@ export const jsonData = [
                 title: "Google Ads Enhanced Conversions",
                 link: "/destinations/streaming-destinations/google-adwords-enhanced-conversions/",
                 content: []
+            },{
+                title: "Google Ads Offline Conversions",
+                link: "/destinations/streaming-destinations/google-adwords-offline-conversions/",
+                content: []
             }, {
                 title: "Google Ads Remarketing Lists (Customer Match)",
                 link: "/destinations/streaming-destinations/google-adwords-remarketing-list/",
