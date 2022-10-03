@@ -70,7 +70,7 @@ For more information on the schedule types, refer to the <Link to="/sources/extr
 
 ### Selecting the data to import
 
-You can choose the Google Analytics data you want to ingest by selecting the required resources:
+You can choose the predefined reports from which you want to ingest the data from Google Analytics by selecting them here:
 
 <img src="../../assets/cloud-extract-sources/ga-resources.png" alt="Selecting the data to import" />
 
@@ -91,6 +91,10 @@ The below table mentions the syncs supported by these resources from Google Anal
 
 <div class="infoBlock">
 For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
+</div>
+
+<div class="infoBlock">
+To sync the data in incremental mode, you must include the <code class="inline-code">ga:date</code> dimension in your report. Otherwise, RudderStack will sync the data in full refresh mode.
 </div>
 
 Google Analytics is now configured as a source. RudderStack will start ingesting data from Google Analytics as per your specified schedule and frequency.
