@@ -444,6 +444,10 @@ export const jsonData = [
                 link: "/sources/extract/google-analytics/",
                 content: []
             }, {
+                title: "Google Analytics V2",
+                link: "/sources/extract/google-analytics-v2/",
+                content: []
+            }, {
                 title: "Google Search Console",
                 link: "/sources/extract/google-search-console/",
                 content: []
