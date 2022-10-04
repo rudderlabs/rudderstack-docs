@@ -86,7 +86,28 @@ rudderanalytics.track(
 )
 ```
 
-The `track` call also supports <Link to="https://legacydocs.hubspot.com/docs/methods/enterprise_events/http_api#:~:text=%26favorite_color%3Dorange-,External%20id,-%26id%3D%7Bvalue%7D">`externalId`</Link> as a parameter which is mapped from `externalID` `hubspotId`.
+The `track` call also supports <Link to="https://legacydocs.hubspot.com/docs/methods/enterprise_events/http_api#:~:text=%26favorite_color%3Dorange-,External%20id,-%26id%3D%7Bvalue%7D">`externalId`</Link> as a parameter which is mapped from `externalID` `hubspotId`. A sample `track` call containing the `externalId` is as shown:
+
+```javascript
+rudderanalytics.track(
+  "Order Completed", {
+  value: 30,
+}, {
+  context: {
+    traits: {
+      firstname: "Alex",
+      city: "New Orleans",
+      country: "USA",
+      phone: "+1-202-555-0146",
+      email: "alex@example.com",
+    },
+  },
+  externalId: [{
+    type: "hubspotId",
+    id: "6556"
+  }]
+})
+```
 
 ### Revenue events
 
