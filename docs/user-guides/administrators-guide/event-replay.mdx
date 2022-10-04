@@ -21,14 +21,14 @@ RudderStack's **event replay** feature lets you backup your event data and repla
 RudderStack can store the following types of event data and replay it to the specified destinations:
 
 - Raw events captured through various sources. RudderStack stores these events in batches of 100,000 events.
-- Event payloads sent by RudderStack in case of delivery failures along with the errors(stored approximately every 30 seconds).
+- Event payloads sent by RudderStack in case of delivery failures along with the errors (stored approximately every 30 seconds).
 
 ## Data storage options
 
 RudderStack offers the following data storage options for the event replay functionality:
 
 - **No data retention** (default): RudderStack does not store any event data and hence it cannot be replayed.
-- **RudderStack S3 Storage**: Event data is stored in RudderStack's Amazon S3 bucket on a rolling 30-day basis, i.e., RudderStack deletes the event data 30 days after it was stored.
+- **RudderStack S3 Storage**: Event data is stored in RudderStack's Amazon S3 bucket on a rolling 30-day basis, that is, RudderStack deletes the event data 30 days after it was stored.
 - **Choose your object storage**: Event data is stored in your object storage. RudderStack currently supports Amazon S3, Google Cloud Storage, Azure Blob Storage, and MinIO as the object storage options. 
 
 The following section provides more details on how to set up your object storage.
@@ -75,4 +75,13 @@ If you choose to set up your own object storage for backing up and replaying the
   </TabPanels>
 </Tabs>
 
+## FAQ
+
+### How can I replay my events?
+
+Depending on the way you store the event data, you can choose any of the below to replay your events:
+
+**RudderStack storage**: If your event data is stored in RudderStack's Amazon S3 bucket, then it is highly recommended to [contact the customer success team](mailto:%20support@rudderstack.com) to replay the events to avoid any unfavorable circumstances.
+
+**Your own object storage**: If your event data is stored in your own object storage, then ... 
 
