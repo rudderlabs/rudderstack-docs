@@ -500,6 +500,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "google-analytics-v2",
+    title: "Google Analytics V2",
+    link: "/sources/extract/google-analytics-v2/",
+    content: [],
+  },
+  {
     key: "google-search-console",
     title: "Google Search Console",
     link: "/sources/extract/google-search-console/",
