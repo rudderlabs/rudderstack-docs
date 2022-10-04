@@ -1041,16 +1041,28 @@ export const postNavList = [
   },
   {
     key: "hubspot",
-    title: "HubSpot (Legacy API)",
+    title: "HubSpot",
     link: "/destinations/streaming-destinations/hubspot/",
     content: [],
   },
   {
-    key: "hubspot-v2",
-    title: "HubSpot (New API)",
-    link: "/destinations/streaming-destinations/hubspot-v2/",
-    content: [],
-  },
+    key: "setting-up-hubspot-in-rudderstack",
+    title: "Setting up HubSpot",
+    link: "/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/",
+    content: []
+},
+{
+    key: "hubspot-cloud-mode", 
+    title: "Cloud Mode",
+    link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/",
+    content: []
+},
+{
+    key: "hubspot-device-mode", 
+    title: "Device Mode",
+    link: "/destinations/streaming-destinations/hubspot/hubspot-device-mode/",
+    content: []
+},
   {
     key: "variance",
     title: "Variance",

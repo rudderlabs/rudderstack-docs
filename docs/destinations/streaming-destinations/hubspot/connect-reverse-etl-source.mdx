@@ -1,0 +1,87 @@
+---
+title: "Connecting Reverse ETL Source to HubSpot"
+description: Detailed technical documentation on some configurations to use while connecting a Reverse ETL source with HubSpot destination.
+---
+
+This guide takes you through the required scopes, predefined identifiers, and creating the association between the object records while connecting a Reverse ETL source to HubSpot destination.
+
+## Required scopes
+
+If you're connecting a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source to HubSpot that uses a <a href="https://developers.hubspot.com/docs/api/intro-to-auth#private-app-access-tokens">private app access token</a> for authentication, make sure your access token has the following scopes:
+
+```
+crm.lists.read
+crm.objects.contacts.read
+crm.objects.contacts.write
+crm.schemas.custom.read
+crm.objects.custom.read
+crm.objects.custom.write
+crm.schemas.custom.write
+crm.objects.companies.write
+crm.schemas.contacts.read
+crm.lists.write
+crm.objects.companies.read
+crm.objects.deals.read
+crm.objects.deals.write
+crm.schemas.companies.read
+crm.schemas.companies.write
+crm.schemas.contacts.write
+crm.schemas.deals.read
+crm.schemas.deals.write
+crm.objects.owners.read
+crm.objects.quotes.write
+crm.objects.quotes.read
+crm.schemas.quotes.read
+crm.objects.line_items.read
+crm.objects.line_items.write
+crm.schemas.line_items.read
+```
+
+<div class="infoBlock">
+For more information on adding the above scopes, refer to the <a href="https://developers.hubspot.com/docs/api/migrate-an-api-key-integration-to-a-private-app#create-a-new-private-app">HubSpot documentation</a>.
+</div>
+
+## Predefined identifiers
+
+While connecting a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source with HubSpot using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> feature, you need to select a HubSpot **Object** where you want to sync the data. Further, you can choose a warehouse column and HubSpot field to map your records in the <Link to="/sources/reverse-etl/features/visual-data-mapper/#choosing-the-identifier">Choose identifier</Link> section, as shown:
+
+<img src="../../../assets/event-stream-destinations/predefined_object_hubspot.png" alt="HubSpot connection settings"/>
+
+If you select a standard HubSpot **Object**, the **Destination fields** dropdown displays the predefined unique identifiers along with any other unique field of the object. These predefined unique identifiers are mentioned in the below table corresponding to the standard HubSpot objects:
+
+| Standard HubSpot object | Predefined unique identifiers   |
+| :------------------ | :------------ | 
+| Company     | Company Domain Name     | 
+| Contact      | Email      |
+| Deal     | Deal Name     | 
+| Line Item      | Name      |
+| Quote     | Quote number     | 
+
+If you select a custom HubSpot **Object**, only the unique fields of the object are displayed in the **Destination fields** dropdown.
+
+## Creating association between object records
+
+<div class="infoBlock">
+This section is <strong>applicable only</strong> when you want to send events to HubSpot via the <a href="https://developers.hubspot.com/docs/api/overview">new API</a>.
+</div>
+
+You can create association between the HubSpot object records while connecting your HubSpot destination to a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> feature. Follow the below steps to do so:
+
+1. Add a Reverse ETL source and add the HubSpot destination to it. For detailed steps on adding a source and destination, you can refer to the <Link to="https://www.rudderstack.com/docs/get-started/quickstart/">Quickstart</Link> section.
+2. While configuring the <Link to="/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/#new-api">HubSpot connection settings</Link> in the RudderStack dashboard, enable the **Create associations between object record** setting and click **Continue**.
+3. Select the required **Schema** and **Table** whose data you want to sync to HubSpot.
+4. Select the HubSpot **Object** for which you want to create the association. 
+5. In the next dropdown, select the HubSpot object with which you want to associate the above-mentioned object.
+6. Based on the object selections, the relevant associations (from HubSpot account) are populated in the **Association** dropdown. You can select the required one, as shown:
+
+<img src="../../../assets/event-stream-destinations/sync-associations-hubspot.png" alt="HubSpot connection settings"/>
+
+7. In the **Choose identifier** section,  choose a warehouse column and destination field to map your records from the source to the destination. You can choose any destination field from the dropdown which will act as a unique identifier.
+
+<img src="../../../assets/event-stream-destinations/unique-identifier-hubspot-1.png" alt="HubSpot connection settings"/>
+
+8. Choose a warehouse column each for **From Record ID** and **To Record ID** fields which will act as Hubspot's unique ID to identify an object.
+
+<img src="../../../assets/event-stream-destinations/unique-identifier-hubspot.png" alt="HubSpot connection settings"/>
+
+Similarly, you can create more of such associations between the object records.

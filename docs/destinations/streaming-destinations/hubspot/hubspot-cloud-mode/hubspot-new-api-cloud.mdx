@@ -1,0 +1,110 @@
+---
+title: "HubSpot Cloud Mode (New API)"
+description: Detailed technical documentation on sending events to HubSpot via cloud mode using the new API.
+---
+
+RudderStack supports the following API calls while sending data to Hubspot via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> using the [new API](https://developers.hubspot.com/docs/api/overview).
+
+## Identify
+
+RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to check if a contact exists, if it does, RudderStack updates the contact with new information. Otherwise, it creates a new contact.
+
+A sample `identify` call is as shown:
+
+```javascript
+rudderanalytics.identify({
+  firstName: "Alex",
+  city: "New Orleans",
+  country: "USA",
+  phone: "+1-202-555-0146",
+  email: "alex@example.com",
+  custom_flavor: "chocolate",
+  custom_date: 1574769933368,
+  custom_date1: new Date("2019-10-14T11:15:53.296Z"),
+})
+```
+
+The lookup field passed in the **HubSpot property name to be used as lookup field** dashboard setting must also be passed in the `traits` object of the `identify` call. For example, if you have passed `sampleField` in the dashboard, you must pass it and its corresponding value in the `identify` call, as shown:
+
+```javascript
+rudderanalytics.identify({
+  firstName: "Alex",
+  sampleField: "phone",
+  phone: "+1-202-555-0146"
+})
+```
+If you choose to use the lookup field (`sampleField` in the above example), you can change the lookup value (`phone` in the above example) anytime just by passing the new value in the `identify` call without editing your dashboard setting.
+
+<div class="infoBlock">
+If you pass a lookup field in the dashboard setting but not under the <code class="inline-code">identify</code> call's <code class="inline-code">traits</code>, RudderStack  will take <code class="inline-code">email</code> as the default lookup field.
+</div>
+
+## Track
+
+A <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record various user actions and any properties associated with them. 
+
+To associate a `track` call with a user, you need to specify the user's `email` under `context.traits`. 
+
+<div class="infoBlock">
+RudderStack associates the <code class="inline-code">track</code> events with the same user only after you make a successful <code class="inline-code">identify</code> call. However, if you send a <code class="inline-code">track</code> call without making any <code class="inline-code">identify</code> call first and there is no contact present in HubSpot, RudderStack will not associate the events as there is no identifier.
+</div>
+
+A sample `track` event is as shown:
+
+```javascript
+rudderanalytics.track(
+  "Order Completed", {
+    value: 30,
+  }, {
+    context: {
+      traits: {
+        firstname: "Alex",
+        city: "New Orleans",
+        country: "USA",
+        phone: "+1-202-555-0146",
+        email: "alex@example.com",
+      },
+    },
+  }
+)
+```
+
+### Property mappings
+
+The following table lists the **optional** properties and their mappings between RudderStack and HubSpot for the `track` call:
+
+| RudderStack property         | HubSpot property      | 
+| :--------------------------- | :--------------------- |
+| `traits.utk`/`context.traits.utk`/`properties.utk`  | `utk`     | 
+| `email`        | `email`       |
+| `properties.occurred_at`/`originalTimestamp`  | `occurredAt`       |         
+| `traits.objectId`/`context.traits.objectId`/`properties.objectId`    | `objectId`     |            
+
+### Custom behavioral events
+
+<div class="warningBlock">
+The custom behavorial events can be used for both the authentication types. However, they must have the <code class="inline-code">analytics.behavioral_events.send</code> permission to be used for private apps.
+</div>
+
+[Custom behavioral events](https://developers.hubspot.com/docs/api/analytics/events) are account-defined events in HubSpot that store event details in the event properties. You can create custom behavioral events and their associated properties in the RudderStack dashboard as explained in the <Link to="/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/#new-api">New API</Link> section.
+
+The following parameters are sent in the custom behavorial events:
+- **Identifier**: Either the contact ID, email, or <Link to="https://developers.hubspot.com/docs/api/events/tracking-code">utk</Link> (user token) of the contact associated with the event. The utk is the user token stored in the visitor's `hubspotutk` browser cookie.
+- **Event name:** The internal name of the event which can be found in HubSpot.
+- **Properties object**: When you create a custom behavioral event in HubSpot, some default properties are provided with those events, explained in the below section.
+
+#### Property mappings
+
+The following table lists the **optional** and default property mappings between RudderStack and HubSpot for custom behavioral events:
+
+| RudderStack property         | HubSpot property      | 
+| :--------------------------- | :--------------------- |
+| `properties.assetDescription`/`properties.hsAssetDescription`  | `hs_asset_description`     | 
+| `properties.assetType`/`properties.hsAssetType`               | `hs_asset_type`       
+| `properties.campaignId`           | `hs_campaign_id`       |         
+| `traits.address.city`/`context.traits.address.city`/`properties.address.city`           | `hs_city`            |          
+| `traits.address.country`/`context.traits.address.country`/`properties.address.country` | `hs_country`       |            
+| `context.device.name`            | `hs_device_name`            |          
+| `properties.elementClass`/`properties.hsElementClass`               | `hs_element_class`               |             
+| `properties.elementId`/`properties.hsElementId`              | `hs_element_id`              |    
+

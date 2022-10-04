@@ -1109,14 +1109,40 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "HubSpot (Legacy API)",
+                title: "HubSpot",
                 link: "/destinations/streaming-destinations/hubspot/",
-                content: []
-            },
-            {
-                title: "HubSpot (New API)",
-                link: "/destinations/streaming-destinations/hubspot-v2/",
-                content: []
+                content: [
+                    {
+                        title: "Setting up HubSpot",
+                        link: "/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/",
+                        content: []
+                    },
+                    {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/",
+                        content: [
+                            {
+                                title: "Legacy API",
+                                link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-legacy-api-cloud/",
+                                content: []
+                            },{
+                                title: "New API",
+                                link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-new-api-cloud",
+                                content: []
+                            },
+                        ]
+                    },
+                    {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/hubspot/hubspot-device-mode/",
+                        content: []
+                    },
+                    {
+                        title: "Connecting to Reverse ETL Source",
+                        link: "/destinations/streaming-destinations/hubspot/connect-reverse-etl-source/",
+                        content: []
+                    },
+                ]
             },
             {
                 title: "Salesforce",
