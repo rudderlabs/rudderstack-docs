@@ -34,7 +34,7 @@ To successfully configure Google Ads Offline Conversions as a destination, follo
 - **User Identifier Source**: Select the type of user identifier source from the dropdown. Refer to the [Google documentation](https://developers.google.com/google-ads/api/rest/reference/rest/v11/UserIdentifier#UserIdentifierSource) for more information on different source types.
 - **Conversion Environment**: Select the conversion environment of the uploaded conversion from the dropdown. Refer to the [Google documentation](https://developers.google.com/google-ads/api/rest/reference/rest/v11/customers/uploadClickConversions#ConversionEnvironment) for more information on different conversion environments.
 - **Default user identifier for click conversions**: Select the default user identifier from `email` or `phone` that must be passed as a user identifier.
-- **Hash User Identifying Information (SHA-256)**: This setting is enabled by default and hashes the user identifying information like `email`, `phone number`, `first name`, `last name` and `address` using SHA-256.
+- **Hash User Identifying Information (SHA-256)**: This setting is enabled by default and hashes the user identifying information like `email` and `phone number` using SHA-256.
 - **Validate Only**: Enable this setting to only validate the request and not execute it. Refer to the [Google documentation](https://developers.google.com/google-ads/api/rest/reference/rest/v11/customers/uploadClickConversions) for more information.
 
 ## Track
@@ -60,24 +60,24 @@ The following table lists the property mappings between RudderStack and Google A
 
 | RudderStack property | Google Ads Offline Conversions property | Presence |
 | :-----| :--------| :--------| 
-| `properties.gbraid` | `conversions[0].gbraid` | Optional |
-| `properties.wbraid`  | `conversions[0].wbraid` | Optional |
-| `properties.externalAttributionCredit` | `conversions[0].externalAttributionData.externalAttributionCredit` | Optional |
-| `properties.externalAttributionModel` | `conversions[0].externalAttributionData.externalAttributionModel` | Optional |
-| `"properties.merchantId"` | `conversions[0].cartData.merchantId` | Optional |
-| `properties.feedCountryCode` | `conversions[0].cartData.feedCountryCode` | Optional |
-| `properties.feedLanguageCode` | `conversions[0].cartData.feedLanguageCode` | Optional |
-| `properties.localTransactionCost` | `conversions[0].cartData.localTransactionCost` | Optional |
-| `ordeproperties.product_id`/`properties.sku` | `conversions[0].cartData.items[0].productId` | Optional |
-| `properties.quantity` | `conversions[0].cartData.items[0].quantity` | Optional |
-| `properties.price` | `conversions[0].cartData.items[0].unitPrice` | Optional |
-| `properties.userIdentifierSource` | `conversions[0].userIdentifiers[0].userIdentifierSource` | Optional |
-| `properties.conversionEnvironment` | `conversions[0].conversionEnvironment` | Optional |
-| `properties.gclid` | `conversions[0].gclid` | Optional |
-| `properties.conversionDateTime`/`originalTimestamp` | `conversions[0].conversionDateTime` | Required |
-| `properties.conversionValue`/`properties.total`/`properties.value`/`properties.revenue` | `conversions[0].conversionValue` | Optional |
-| `properties.currencyCode`/`properties.currency` | `conversions[0].currencyCode` | Optional |
-| `properties.orderId`/`properties.order_id` | `conversions[0].orderId` | Optional |
+| `properties.gbraid` | `gbraid` | Optional |
+| `properties.wbraid`  | `wbraid` | Optional |
+| `properties.externalAttributionCredit` | `externalAttributionCredit` | Optional |
+| `properties.externalAttributionModel` | `externalAttributionModel` | Optional |
+| `properties.merchantId` | `merchantId` | Optional |
+| `properties.feedCountryCode` | `feedCountryCode` | Optional |
+| `properties.feedLanguageCode` | `feedLanguageCode` | Optional |
+| `properties.localTransactionCost` | `localTransactionCost` | Optional |
+| `ordeproperties.product_id`/`properties.sku` | `productId` | Optional |
+| `properties.quantity` | `quantity` | Optional |
+| `properties.price` | `unitPrice` | Optional |
+| `properties.userIdentifierSource` | `userIdentifierSource` | Optional |
+| `properties.conversionEnvironment` | `conversionEnvironment` | Optional |
+| `properties.gclid` | `gclid` | Optional |
+| `properties.conversionDateTime`/`originalTimestamp` | `conversionDateTime` | Required |
+| `properties.conversionValue`/`properties.total`/`properties.value`/`properties.revenue` | `conversionValue` | Optional |
+| `properties.currencyCode`/`properties.currency` | `currencyCode` | Optional |
+| `properties.orderId`/`properties.order_id` | `orderId` | Optional |
 
 ### Call conversion
 
@@ -97,11 +97,11 @@ The following table lists the property mappings between RudderStack and Google A
 
 | RudderStack property | Google Ads Offline Conversions property | Presence |
 | :-----| :--------| :--------| 
-| `properties.callerId` | `conversions[0].callerId` | Required |
-| `properties.callStartDateTime`  | `conversions[0].callStartDateTime` | Required |
-| `properties.conversionDateTime`/`originalTimestamp` | `conversions[0].conversionDateTime` | Required |
-| `properties.conversionValue`/`properties.total`/`properties.value`/`properties.revenue` | `conversions[0].conversionValue` | Optional |
-| `properties.currencyCode`/`properties.currency` | `conversions[0].currencyCode` | Optional |
+| `properties.callerId` | `callerId` | Required |
+| `properties.callStartDateTime`  | `callStartDateTime` | Required |
+| `properties.conversionDateTime`/`originalTimestamp` | `conversionDateTime` | Required |
+| `properties.conversionValue`/`properties.total`/`properties.value`/`properties.revenue` | `conversionValue` | Optional |
+| `properties.currencyCode`/`properties.currency` | `currencyCode` | Optional |
 
 ## FAQ
 
