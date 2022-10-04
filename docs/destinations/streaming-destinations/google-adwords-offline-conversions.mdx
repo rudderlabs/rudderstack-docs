@@ -3,11 +3,11 @@ title: "Google AdWords Offline Conversions"
 description: Step-by-step guide on sending your event data from RudderStack to Google AdWords Offline Conversions.
 ---
 
-[Google Adwords Offline Conversions](https://support.google.com/google-ads/answer/2998031?hl=en&ref_topic=7280668) lets you improve your conversion measurement accuracy by securely sending first-party conversion data from your website to Google.
+[Google Adwords Offline Conversions](https://support.google.com/google-ads/answer/2998031?hl=en&ref_topic=7280668) lets you measure your sale conversions in the offline mode once a user clicks on your ad but does not directly proceed to the sale in the online mode.
 
 ## Getting started
 
-RudderStack supports sending event data to June via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
+RudderStack supports sending event data to Google Adwords Offline Conversions via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**         | **Mobile**   | **Server**        |
 | :-------------------| :-------------- | :----------- | :-----------------|
@@ -28,67 +28,38 @@ To successfully configure Google AdWords Offline Conversions as a destination, f
 
 - **Customer ID**: Enter the ID associated with your Google Ads account. Refer to the <Link to="#faq">FAQ</Link> section for more information on obtaining the Customer ID.
 - **Subaccount**: Enable this setting if you are using a Google Ads subaccount. Refer to the <a href="https://support.google.com/campaignmanager/answer/2829448?hl=en#zippy=%2Cwhat-are-subaccounts">Google Ads Help Center</a> documentation for more information on subaccounts.
-- **Map your events with Google Ads Offline Conversions**: Enter the RudderStack event name corresponding to the Google ads offline conversions type (click or call)
-- **Map your Google Ads Conversions Names**: The same RudderStack event names must be provided here which will correspond to the Google Ads conversion names created in the Google Ads dashboard.
-- **Map your variable names to custom Google Ads variables**:
-- **User Identifier Source**: Refer to the [Google documentation](https://developers.google.com/google-ads/api/rest/reference/rest/v11/UserIdentifier#UserIdentifierSource) for more information.
-- **Conversion Environment**: Refer to the [Google documentation](https://developers.google.com/google-ads/api/rest/reference/rest/v11/customers/uploadClickConversions#ConversionEnvironment) for more information.
-- **Default user identifier for click conversions**: Mention the default user identifier that needs to be passed as either email or phone is required for user identifier
-- **Hash User Identifying Information (SHA-256)**:
-- **Validate Only**: Refer to the [Google documentation](https://developers.google.com/google-ads/api/rest/reference/rest/v11/customers/uploadClickConversions) for more information.
+- **Map your events with Google Ads Offline Conversions**: Enter the RudderStack event name you want to map to the **Click** or **Call** Google Ads Offline conversion type.
+- **Map your Google Ads Conversions Names**: Enter the RudderStack event name corresponding to the Google Ads Conversion names created in the Google Ads dashboard.
+- **Map your variable names to custom Google Ads variables**: Enter the custom variable name you want to map to the Google Ads custom variable. Refer to the <Link to="#faq">FAQ</Link> section for more information on creating custom variables in Google Ads dashboard.
+- **User Identifier Source**: Select the type of user identifier source from the dropdown. Refer to the [Google documentation](https://developers.google.com/google-ads/api/rest/reference/rest/v11/UserIdentifier#UserIdentifierSource) for more information on different source types.
+- **Conversion Environment**: Select the conversion environment of the uploaded conversion from the dropdown. Refer to the [Google documentation](https://developers.google.com/google-ads/api/rest/reference/rest/v11/customers/uploadClickConversions#ConversionEnvironment) for more information on different conversion environments.
+- **Default user identifier for click conversions**: Select the default user identifier from `email` or `phone` that must be passed as a user identifier.
+- **Hash User Identifying Information (SHA-256)**: This setting is enabled by default and hashes the user identifying information like `email`, `phone number`, `first name`, `last name` and `address` using SHA-256.
+- **Validate Only**: Enable this setting to only validate the request and not execute it. Refer to the [Google documentation](https://developers.google.com/google-ads/api/rest/reference/rest/v11/customers/uploadClickConversions) for more information.
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you record and send the conversion events along with any properties associated with them. 
+RudderStack associates the <Link to="/event-spec/standard-events/track">`track`</Link> event with the event name defined in the **Map your Google Ads Conversions Names** dashboard setting.
 
-Track event will get associated with the event name defined from the dashboard
+RudderStack supports the following conversion types:
 
-We have 
-1. `click` conversion
-2. `call` conversion
+### Click conversion
 
-A sample `track` call is shown below:
+RudderStack supports the [Google Ads Click Conversion API](https://developers.google.com/google-ads/api/rest/reference/rest/v11/customers/uploadClickConversions#ClickConversion) which processes the given click conversions.
+
+A sample `track` call for a click conversion is shown below:
 
 ```javascript
-rudderanalytics.track("Order Completed", {
-  checkout_id: "12345",
-  orderId: "123",
-  affiliation: "Apple Store",
-  gclid: "abcd1234",
-  conversionDateTime: "2019-01-01 12:32:45-08:00",
-  adjustedValue: 100,
-  currencyCode: "INR",
-  adjustmentDateTime: "2019-01-01 12:32:45-08:00",
-  total: 20,
-  revenue: 15.0,
-  shipping: 22,
-  tax: 1,
-  discount: 1.5,
-  coupon: "SAVE45",
-  currency: "USD",
-  products: [
-    {
-      product_id: "FS247",
-      sku: "G-32",
-      name: "Monopoly",
-      price: 14,
-      quantity: 1,
-      category: "Games",
-      url: "https://www.estore.com/product/funskool-monopoly",
-    },
-  ],
-})
+rudderanalytics.track('sign up completed', {
+  gclid: "gclid_value",
+  conversionDateTime: "2022-05-20 12:32:45-08:00"
+});
 ```
-### Click Conversions
 
+The following table lists the property mappings between RudderStack and Google AdWords Offline Conversions for the click conversion type:
 
-
-### Supported mapping
-
-The following table details the mapping of the fields specified in the RudderStack dashboard and Google AdWords Offline Conversions, along with the relevant guidelines:
-
-| RudderStack field | Google AdWords Offline Conversions field | Guidelines |
-| :-----| :--------| :------|
+| RudderStack field | Google AdWords Offline Conversions field | 
+| :-----| :--------| 
 | `properties.gbraid` | `conversions[0].gbraid` | 
 | `properties.wbraid`  | `conversions[0].wbraid` |
 | `properties.externalAttributionCredit` | `conversions[0].externalAttributionData.externalAttributionCredit` | 
@@ -108,8 +79,29 @@ The following table details the mapping of the fields specified in the RudderSta
 | `properties.currencyCode`/`properties.currency` | `conversions[0].currencyCode` | 
 | `properties.orderId`/`properties.order_id` | `conversions[0].orderId` | 
 
-### Call Conversion
+### Call conversion
 
+RudderStack supports the [Google Ads Call Conversion API](https://developers.google.com/google-ads/api/rest/reference/rest/v11/customers/uploadCallConversions) which processes the given call conversions.
+
+A sample `track` call for a call conversion is shown below:
+
+```javascript
+rudderanalytics.track('login', {
+  callerId: "callerId_value",
+  callStartDateTime: "2022-08-12 15:01:30+05:30",
+  conversionDateTime: "2022-09-24 12:32:45-08:00"
+});
+```
+
+The following table lists the property mappings between RudderStack and Google AdWords Offline Conversions for the call conversions type:
+
+| RudderStack field | Google AdWords Offline Conversions field | 
+| :-----| :--------| 
+| `properties.callerId` | `conversions[0].callerId` | 
+| `properties.callStartDateTime`  | `conversions[0].callStartDateTime` |
+| `properties.conversionDateTime`/`originalTimestamp` | `conversions[0].conversionDateTime` | 
+| `properties.conversionValue`/`properties.total`/`properties.value`/`properties.revenue` | `conversions[0].conversionValue` |
+| `properties.currencyCode`/`properties.currency` | `conversions[0].currencyCode` |
 
 ## FAQ
 
@@ -120,4 +112,5 @@ To get the customer ID associated with your Google Ads account, click on the **H
 <img src="../../assets/event-stream-destinations/google-adwords-remarketing-lists-customer-id.png" alt="Google AdWords Offline Conversions connection settings" />
 
 ### How to create Custom variables?
+
 TOOLS AND SETTINGS → under Measurement - Conversions → Custom Variables - + (sign) - (Create a new conversion custom variable)
