@@ -1072,7 +1072,7 @@ export const jsonData = [
                         content: []
                     },
                     {
-                        title: "Connecting Reverse ETL Source",
+                        title: "Connecting to Reverse ETL Source",
                         link: "/destinations/streaming-destinations/hubspot/connect-reverse-etl-source/",
                         content: []
                     },
