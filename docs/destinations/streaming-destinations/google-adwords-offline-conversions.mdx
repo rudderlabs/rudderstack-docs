@@ -58,26 +58,26 @@ rudderanalytics.track('sign up completed', {
 
 The following table lists the property mappings between RudderStack and Google AdWords Offline Conversions for the click conversion type:
 
-| RudderStack property | Google AdWords Offline Conversions property | 
-| :-----| :--------| 
-| `properties.gbraid` | `conversions[0].gbraid` | 
-| `properties.wbraid`  | `conversions[0].wbraid` |
-| `properties.externalAttributionCredit` | `conversions[0].externalAttributionData.externalAttributionCredit` | 
-| `properties.externalAttributionModel` | `conversions[0].externalAttributionData.externalAttributionModel` |
-| `"properties.merchantId"` | `conversions[0].cartData.merchantId` | 
-| `properties.feedCountryCode` | `conversions[0].cartData.feedCountryCode` | 
-| `properties.feedLanguageCode` | `conversions[0].cartData.feedLanguageCode` | 
-| `properties.localTransactionCost` | `conversions[0].cartData.localTransactionCost` |
-| `ordeproperties.product_id`/`properties.skurId` | `conversions[0].cartData.items[0].productId` | 
-| `properties.quantity` | `conversions[0].cartData.items[0].quantity` | 
-| `properties.price` | `conversions[0].cartData.items[0].unitPrice` | 
-| `properties.userIdentifierSource` | `conversions[0].userIdentifiers[0].userIdentifierSource` |
-| `properties.conversionEnvironment` | `conversions[0].conversionEnvironment` | 
-| `properties.gclid` | `conversions[0].gclid` | 
-| `properties.conversionDateTime`/`originalTimestamp` | `conversions[0].conversionDateTime` | 
-| `properties.conversionValue`/`properties.total`/`properties.value`/`properties.revenue` | `conversions[0].conversionValue` | 
-| `properties.currencyCode`/`properties.currency` | `conversions[0].currencyCode` | 
-| `properties.orderId`/`properties.order_id` | `conversions[0].orderId` | 
+| RudderStack property | Google AdWords Offline Conversions property | Presence |
+| :-----| :--------| :--------| 
+| `properties.gbraid` | `conversions[0].gbraid` | Optional |
+| `properties.wbraid`  | `conversions[0].wbraid` | Optional |
+| `properties.externalAttributionCredit` | `conversions[0].externalAttributionData.externalAttributionCredit` | Optional |
+| `properties.externalAttributionModel` | `conversions[0].externalAttributionData.externalAttributionModel` | Optional |
+| `"properties.merchantId"` | `conversions[0].cartData.merchantId` | Optional |
+| `properties.feedCountryCode` | `conversions[0].cartData.feedCountryCode` | Optional |
+| `properties.feedLanguageCode` | `conversions[0].cartData.feedLanguageCode` | Optional |
+| `properties.localTransactionCost` | `conversions[0].cartData.localTransactionCost` | Optional |
+| `ordeproperties.product_id`/`properties.sku` | `conversions[0].cartData.items[0].productId` | Optional |
+| `properties.quantity` | `conversions[0].cartData.items[0].quantity` | Optional |
+| `properties.price` | `conversions[0].cartData.items[0].unitPrice` | Optional |
+| `properties.userIdentifierSource` | `conversions[0].userIdentifiers[0].userIdentifierSource` | Optional |
+| `properties.conversionEnvironment` | `conversions[0].conversionEnvironment` | Optional |
+| `properties.gclid` | `conversions[0].gclid` | Optional |
+| `properties.conversionDateTime`/`originalTimestamp` | `conversions[0].conversionDateTime` | Required |
+| `properties.conversionValue`/`properties.total`/`properties.value`/`properties.revenue` | `conversions[0].conversionValue` | Optional |
+| `properties.currencyCode`/`properties.currency` | `conversions[0].currencyCode` | Optional |
+| `properties.orderId`/`properties.order_id` | `conversions[0].orderId` | Optional |
 
 ### Call conversion
 
@@ -95,13 +95,13 @@ rudderanalytics.track('login', {
 
 The following table lists the property mappings between RudderStack and Google AdWords Offline Conversions for the call conversions type:
 
-| RudderStack property | Google AdWords Offline Conversions property | 
-| :-----| :--------| 
-| `properties.callerId` | `conversions[0].callerId` | 
-| `properties.callStartDateTime`  | `conversions[0].callStartDateTime` |
-| `properties.conversionDateTime`/`originalTimestamp` | `conversions[0].conversionDateTime` | 
-| `properties.conversionValue`/`properties.total`/`properties.value`/`properties.revenue` | `conversions[0].conversionValue` |
-| `properties.currencyCode`/`properties.currency` | `conversions[0].currencyCode` |
+| RudderStack property | Google AdWords Offline Conversions property | Presence |
+| :-----| :--------| :--------| 
+| `properties.callerId` | `conversions[0].callerId` | Required |
+| `properties.callStartDateTime`  | `conversions[0].callStartDateTime` | Required |
+| `properties.conversionDateTime`/`originalTimestamp` | `conversions[0].conversionDateTime` | Required |
+| `properties.conversionValue`/`properties.total`/`properties.value`/`properties.revenue` | `conversions[0].conversionValue` | Optional |
+| `properties.currencyCode`/`properties.currency` | `conversions[0].currencyCode` | Optional |
 
 ## FAQ
 
