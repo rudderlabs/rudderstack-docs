@@ -28,18 +28,24 @@ To successfully configure Google AdWords Offline Conversions as a destination, f
 
 - **Customer ID**: Enter the ID associated with your Google Ads account. Refer to the <Link to="#faq">FAQ</Link> section for more information on obtaining the Customer ID.
 - **Subaccount**: Enable this setting if you are using a Google Ads subaccount. Refer to the <a href="https://support.google.com/campaignmanager/answer/2829448?hl=en#zippy=%2Cwhat-are-subaccounts">Google Ads Help Center</a> documentation for more information on subaccounts.
-- **Map your events with Google Ads Offline Conversions**: Enter the list of events on which you want to perform Offline conversions. RudderStack will discard any events that are not specified in this list.
-- **Map your Google Ads Conversions Names**: Enabled by default, this setting hash encrypts the user identifiers, such as email, phone number, first name, last name and street address.
+- **Map your events with Google Ads Offline Conversions**: Enter the RudderStack event name corresponding to the Google ads offline conversions type (click or call)
+- **Map your Google Ads Conversions Names**: The same RudderStack event names must be provided here which will correspond to the Google Ads conversion names created in the Google Ads dashboard.
 - **Map your variable names to custom Google Ads variables**:
-- **User Identifier Source**:
-- **Conversion Environment**:
-- **Default user identifier for click conversions**:
+- **User Identifier Source**: Refer to the [Google documentation](https://developers.google.com/google-ads/api/rest/reference/rest/v11/UserIdentifier#UserIdentifierSource) for more information.
+- **Conversion Environment**: Refer to the [Google documentation](https://developers.google.com/google-ads/api/rest/reference/rest/v11/customers/uploadClickConversions#ConversionEnvironment) for more information.
+- **Default user identifier for click conversions**: Mention the default user identifier that needs to be passed as either email or phone is required for user identifier
 - **Hash User Identifying Information (SHA-256)**:
-- **Validate Only**:
+- **Validate Only**: Refer to the [Google documentation](https://developers.google.com/google-ads/api/rest/reference/rest/v11/customers/uploadClickConversions) for more information.
 
 ## Track
 
 The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you record and send the conversion events along with any properties associated with them. 
+
+Track event will get associated with the event name defined from the dashboard
+
+We have 
+1. `click` conversion
+2. `call` conversion
 
 A sample `track` call is shown below:
 
@@ -73,16 +79,9 @@ rudderanalytics.track("Order Completed", {
   ],
 })
 ```
+### Click Conversions
 
-<div class="infoBlock">
-
-RudderStack uses the <code class="inline-code"><a href="https://developers.google.com/google-ads/api/rest/reference/rest/v9/customers/uploadConversionAdjustments" target="_blank">ConversionAdjustment</a></code> method to send these events to Google Ads.
-</div>
-
-<div class="warningBlock">
-
-RudderStack will discard any <code class="inline-code">track</code> call where <code class="inline-code">orderId</code> is not present. This is because <code class="inline-code">orderId</code> is a required field for enhancement.
-</div>
+### Call Conversion
 
 ### Supported mapping
 
