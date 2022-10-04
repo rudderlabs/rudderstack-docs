@@ -13,7 +13,7 @@ Find the open source code for HubSpot's web device mode in the <a href="https://
 
 RudderStack sends the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a contact in HubSpot. The contact's email ID **must be present** in the `traits` object of the `identify` call.
 
-You must call either <code class="inline-code">page</code> or <code class="inline-code">track</code> after the <code class="inline-code">identify</code> call to create a contact. The previously made <code class="inline-code">page</code> and <code class="inline-code">track</code> calls will automatically be associated with that contact once they are identified.
+You must call either <code class="inline-code">page</code> or <code class="inline-code">track</code> after the <code class="inline-code">identify</code> call to create a contact. RudderStack automatically associates the previously made <code class="inline-code">page</code> and <code class="inline-code">track</code> calls with that contact once they are identified.
 
 A sample `identify` call is as shown:
 
@@ -114,4 +114,4 @@ rudderanalytics.page({
 
 ### Can I use HubSpot website analytics?
 
-Yes - RudderStack supports sending `page` calls in device mode which can be used for HubSpot website analytics.
+Yes, you can. RudderStack supports sending `page` calls in device mode which can be used for HubSpot website analytics.

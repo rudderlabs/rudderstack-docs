@@ -27,9 +27,9 @@ As HubSpot's legacy API will be deprecated soon, it is recommended to use the ne
 ### Legacy API
 To successfully configure HubSpot as a destination using the [legacy API](https://legacydocs.hubspot.com/docs/overview?_ga=2.34803302.670362313.1663315856-97001172.1658910392):
 
-- **Hub ID**: Enter your HubSpot Hub ID. Refer to the [HubSpot documentation](https://knowledge.hubspot.com/account/manage-multiple-hubspot-accounts#identify-the-current-account-s-hub-id) for more information on how to obtain it.
-- **Authorization Type**: Choose **Private Apps** or **API Key** authorization types as explained below:
-    1. **Private Apps** lets you use HubSpot's APIs to access specific data from your HubSpot account.
+- **Hub ID**: Enter your HubSpot Hub ID. Refer to the [HubSpot documentation](https://knowledge.hubspot.com/account/manage-multiple-hubspot-accounts#identify-the-current-account-s-hub-id) for more information on obtaining your Hub ID.
+- **Authorization Type**: Select the authorization type from **Private Apps** or **API Key**, as explained below:
+    1. **Private Apps** lets you use the HubSpot's APIs to access specific data from your HubSpot account.
 
     <img src="../../../assets/event-stream-destinations/hubspot-connection-settings-auth-type-1.png" alt="HubSpot connection settings"/>
 
@@ -43,12 +43,12 @@ To successfully configure HubSpot as a destination using the [legacy API](https:
 
     <img src="../../../assets/event-stream-destinations/hubspot-connection-settings-auth-type-2.png" alt="HubSpot connection settings"/>
 
-    -  **API Key**: Enter your HubSpot API key. For more information on obtaining it, refer to the [HubSpot documentation](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key). This is a required field to send data to HubSpot via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+    -  **API Key**: Enter your HubSpot API key. This is a required field to send data to HubSpot via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>. For more information on obtaining the API key, refer to the [HubSpot documentation](https://knowledge.hubspot.com/integrations/how-do-i-get-my-hubspot-api-key).
 
 
 - **API Version**: Select **Legacy API (v1)** from the dropdown. To work with the new HubSpot API, refer to the <Link to="#new-api">New API</Link> section.
 
-The below settings are **applicable only** if you want to send events to HubSpot via the web <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>:
+The below settings are applicable **only if** you want to send events to HubSpot via the web <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>:
 
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to HubSpot. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
 - **Use device mode to send events**: Enable this setting to send the events to HubSpot via the web <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
@@ -66,10 +66,10 @@ Additional settings to configure HubSpot using the **new API** are as follows:
 
 <img src="../../../assets/event-stream-destinations/hubspotv2-connection-settings-3.png" alt="HubSpot connection settings" />
 
-- **HubSpot property name to be used as lookup field**: Enter a unique property to be used as a lookup field for <Link to="https://developers.hubspot.com/docs/api/crm/contacts">HubSpot contacts</Link>. The lookup field entered here **must also** be passed in the `identify` call's `traits` as it's value will be used to look up the contact. Refer to the <Link to="/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-new-api-cloud#identify">`identify` call</Link> for more information.
+- **HubSpot property name to be used as lookup field**: Enter a unique property to be used as a lookup field for the  <Link to="https://developers.hubspot.com/docs/api/crm/contacts">HubSpot contacts</Link>. The lookup field entered here **must also** be passed in the `identify` call's `traits` as its value will be used to look up the contact. Refer to the <Link to="/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-new-api-cloud#identify">`identify` call</Link> for more information.
 
 <div class="warningBlock">
-If you are connecting the HubSpot destination to a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source, you can skip setting this field and pass N/A as the value.
+If you are connecting the HubSpot destination to a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source, you can skip setting this field and pass <code class="inline-code">N/A</code> as the value.
 </div>
 
 - **Create associations between object records**: Enable this setting to create associations between the object records while using a Reverse ETL source. Refer to the <Link to="/destinations/streaming-destinations/hubspot/connect-reverse-etl-source/#creating-association-between-object-records">Creating associations between object records</Link> section for more information.

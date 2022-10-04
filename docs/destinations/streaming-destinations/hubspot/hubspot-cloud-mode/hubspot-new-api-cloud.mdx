@@ -46,7 +46,7 @@ A <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you rec
 To associate a `track` call with a user, you need to specify the user's `email` under `context.traits`. 
 
 <div class="infoBlock">
-RudderStack associates the <code class="inline-code">track</code> events with the same user after an <code class="inline-code">identify</code> request is successfully made. However, if you send a <code class="inline-code">track</code> call without making any <code class="inline-code">identify</code> call first, and there is no contact in HubSpot, there will be no association of events as there is no identifier.
+RudderStack associates the <code class="inline-code">track</code> events with the same user only after you make a successful <code class="inline-code">identify</code> call. However, if you send a <code class="inline-code">track</code> call without making any <code class="inline-code">identify</code> call first and there is no contact present in HubSpot, RudderStack will not associate the events as there is no identifier.
 </div>
 
 A sample `track` event is as shown:

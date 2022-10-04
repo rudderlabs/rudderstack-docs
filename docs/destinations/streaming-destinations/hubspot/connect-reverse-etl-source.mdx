@@ -3,7 +3,7 @@ title: "Connecting Reverse ETL Source to HubSpot"
 description: Detailed technical documentation on some configurations to use while connecting a Reverse ETL source with HubSpot destination.
 ---
 
-This guide takes you through the required scopes, predefined identifiers and creating association between object records while connecting a Reverse ETL source to HubSpot destination.
+This guide takes you through the required scopes, predefined identifiers, and creating the association between the object records while connecting a Reverse ETL source to HubSpot destination.
 
 ## Required scopes
 
@@ -43,7 +43,7 @@ For more information on adding the above scopes, refer to the <a href="https://d
 
 ## Predefined identifiers
 
-While connecting a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source with HubSpot using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> feature, you need to select a HubSpot **Object** where you want to sync the data. Further, you can choose a warehouse column and HubSpot field to map your records in the <Link to="/sources/reverse-etl/features/visual-data-mapper/#choosing-the-identifier">choose identifier</Link> section, as shown:
+While connecting a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source with HubSpot using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> feature, you need to select a HubSpot **Object** where you want to sync the data. Further, you can choose a warehouse column and HubSpot field to map your records in the <Link to="/sources/reverse-etl/features/visual-data-mapper/#choosing-the-identifier">Choose identifier</Link> section, as shown:
 
 <img src="../../../assets/event-stream-destinations/predefined_object_hubspot.png" alt="HubSpot connection settings"/>
 
@@ -76,9 +76,9 @@ You can create association between the HubSpot object records while connecting y
 
 <img src="../../../assets/event-stream-destinations/sync-associations-hubspot.png" alt="HubSpot connection settings"/>
 
-7. In the **Choose Identifier** section,  choose a warehouse column and destination field to map your records from the source to the destination. You can choose any destination field from the dropdown which will act as a unique identifier.
+7. In the **Choose identifier** section,  choose a warehouse column and destination field to map your records from the source to the destination. You can choose any destination field from the dropdown which will act as a unique identifier.
 8. Choose a warehouse column each for **From Record ID** and **To Record ID** fields which will act as Hubspot's unique ID to identify an object.
 
 <img src="../../../assets/event-stream-destinations/unique-identifier-hubspot.png" alt="HubSpot connection settings"/>
 
-Similarly, you can continue to create more associations between object records.
+Similarly, you can create more of such associations between the object records.
