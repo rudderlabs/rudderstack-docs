@@ -1496,6 +1496,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "google-adwords-offline-conversions",
+    title: "Google Adwords Offline Conversions",
+    link: "/destinations/streaming-destinations/google-adwords-offline-conversions/",
+    content: [],
+  },
+  {
     key: "lotame",
     title: "Lotame",
     link: "/destinations/streaming-destinations/lotame/",
