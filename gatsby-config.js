@@ -133,6 +133,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: 'https://www.rudderstack.com',
+      },
+    },
+    {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         output: `/sitemaps`,
