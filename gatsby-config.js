@@ -3,6 +3,7 @@ require('dotenv').config({
 })
 
 module.exports = {
+  trailingSlash: 'always',
   pathPrefix: `/docs`,
   flags: {
     FAST_DEV: true,
@@ -149,7 +150,7 @@ module.exports = {
           return allMdxPages.map(page => ({ path: `/${page.slug}` }))
         },
         serialize: ({ path }) => ({
-          url: path,
+          url: `${path}${path.endsWith('/') ? '' : '/'}`,
           changefreq: 'daily',
           priority: 0.7,
         }),
