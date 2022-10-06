@@ -30,7 +30,7 @@ Once you have confirmed that the source platform supports sending events to Kine
 To successfully set up Kinesis Firehose as a destination, you need to configure the following settings:
 
 - **AWS Region**: Enter the AWS region in which you have created the Kinesis Firehose stream. This is a required field.
- **Role-based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating a AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
+- **Role-based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating a AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
   - **IAM Role ARN**: Enter the ARN of the IAM role.
 
 <div class="warningBlock">
@@ -66,7 +66,7 @@ You also need to create an IAM role and attach the policy containing the necessa
 - To create an IAM role, follow the instructions on [Creating an IAM role](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html#roles-creatingrole-user-console).
 - For more information on creating an IAM policy, refer to this <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html">AWS documentation</a>.
 
-A sample permissions policy that allows a user to put event data into Kinesis Firehose is shown below:
+A sample permissions policy that allows a user to send event data into Kinesis Firehose is shown below:
 
 ```javascript
 {
