@@ -6,50 +6,50 @@ description: >-
 
 [Amazon EventBridge](https://aws.amazon.com/eventbridge/) is a serverless event bus that allows you to connect applications using data from your own apps, integrated SaaS applications, or AWS services.
 
-RudderStack allows you to configure Amazon EventBridge as a destination to which you can send your event data seamlessly.
+RudderStack supports Amazon EventBridge as a destination where you can seamlessly send your event data.
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/eventbridge">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/eventbridge">GitHub repository</a>.
 </div>
 
 ## Getting started
 
-In order to enable dumping data to Amazon EventBridge, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Amazon EventBridge. Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Amazon EventBridge. Refer to the table below:
+RudderStack supports sending event data to EventBridge via the following <Link to="/rudderstack-cloud/rudderstack-connection-modes/">connection modes</Link>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
 | **Device mode**     | -             | -             | -             |
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
-<div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+Once you have confirmed that the source platform supports sending events to EventBridge, follow these steps:
+
+1. From your RudderStack dashboard, add the source. Then, from the list of destinations, select **AWS EventBridge**.
+2. Assign a name to your destination and click **Continue**.
+
+### Connection settings
+
+To successfully set up EventBridge as a destination, you need to configure the following settings:
+
+- **AWS Region**: Enter the AWS region in which you have created the EventBridge bus. This is a required field.
+- **Role-based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating a AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
+  - **IAM Role ARN**: Enter the ARN of the IAM role.
+
+<div class="warningBlock">
+It is highly recommended to enable this setting as the access keys-based authentication will be deprecated in the future.
 </div>
 
-Once you have confirmed that the platform supports sending events to EventBridge, perform the steps below:
+- If **Role-based Authentication** is disabled, you need to enter the **AWS Access Key ID** and **AWS Secret Access Key** to authorize RudderStack in order to write to the configured event bus. Refer to the <Link to="#policy-permissions">Policy permissions</Link> section below for more information on specifying the required permissions to write to your event bus.
+- **Event Bus Name**: Specify the name of the event bus where you want to send the events. RudderStack sends the event to the default bus if no event bus name is specified.
+- **Detail Type**: Specify the event's detail type to send to EventBridge. This is a **required** field
+- **Amazon Resource Name:** This field contains an ARN (Amazon Resource Name) that identifies a resource involved in your EventBridge setup. To add multiple ARNs (for multiple targets involved in your setup), click **+ ADD MORE**.
 
-- Set up a source in the [RudderStack dashboard](https://app.rudderstack.com/).
-- Select the destination as **Amazon EventBridge**. Give your destination a name and then click on **Continue**.
-- Next, in the **Settings** section, fill all the fields with the relevant information and click **Next**. 
+## Policy permissions
 
-A brief description of each of these fields is mentioned below:
+To authorize RudderStack, you need to create an IAM policy that provides the required permission to write to your event bus. Refer to the <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/iam-identity-based-access-control-eventbridge.html">Using Identity-Based Policies (IAM Policies) for EventBridge</a> guide to know the applicable policies.
 
-<img src="../../assets/image (70).png" />
+A sample permissions policy that allows a user to put event data into EventBridge is shown below:
 
-- **AWS Credentials**
-  - **AWS Region**: Enter the AWS region in which you have created the EventBridge bus.This is a **required** field.
-  - The **AWS Access Key ID** and **AWS Secret Access Key** are required to authorize RudderStack in order to write to the configured event bus.
-
-<div class="infoBlock">
-To authorize RudderStack, you will need to create an IAM policy that provides the required permission to write to your event bus. Refer to the <a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/iam-identity-based-access-control-eventbridge.html">Using Identity-Based Policies (IAM Policies) for EventBridge</a> guide to know the applicable policies.
-</div>
-
-<div class="successBlock">
-Note that if the AWS credentials are already configured on your machine where the RudderStack server is set up, you will not need the security credentials.
-</div>
-
-The following snippet shows an example of a permissions policy that allows a user to put event data into Kinesis:
-
-```javascript
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -63,25 +63,17 @@ The following snippet shows an example of a permissions policy that allows a use
 }
 ```
 
-- **EventBridge Settings**
-  - **Event Bus Name:** Specify the name of the event bus you want to send the events to. If no event bus name is specified, the event will be sent to the default bus.
-  - **Detail Type:** Specify the value for `detail-type` , which you would like to send to EventBridge.This is a **required** field.
-- **Amazon Resources**
-  - **Amazon Resource Name:** This field contains an ARN \(Amazon Resource Name\) that identifies a resource that is involved in your EventBridge setup. To add multiple ARNs \(for targets which might be involved in your setup\), you can click on **+ ADD MORE**.
+## Sending events to EventBridge
 
-## Sending events to Amazon EventBridge
-
-We map a RudderStack event to an EventBridge event in the following manner:
+You can map a RudderStack event to an EventBridge event in the following manner:
 
 | RudderStack          | EventBridge        |
 | :------------------- | :----------------- |
-| Event payload        | **`Detail`**       |
-| Amazon Resource Name | **`Resources`**    |
-| Detail Type          | **`DetailType`**   |
-| Event Bus Name       | **`EventBusName`** |
-| `"rudderstack"`      | **`Source`**       |
+| Event payload        | `Detail`       |
+| Amazon Resource Name |`Resources`   |
+| Detail Type          | `DetailType`   |
+| Event Bus Name       | `EventBusName` |
+| `"rudderstack"`      | `Source`      |
 
-- **Event Payload** - This is the generated event payload
-- **Amazon Resource Name, Detail Type, Event Bus Name** - These are the values you configured while setting up the destination with RudderStack.
-
-
+- **Event Payload**: This is the generated event payload
+- **Amazon Resource Name, Detail Type, Event Bus Name**: These are the values you configured while setting up the destination with RudderStack.
