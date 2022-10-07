@@ -44,7 +44,12 @@ For more information on the AWS regions, refer to the <a href="https://aws.amazo
 It is highly recommended to enable this setting as the access keys-based authentication will be deprecated in the future.
 </div>
 
-- If **Role-based Authentication** is disabled, you need to enter the **AWS Access Key ID** and **AWS Secret Access Key** to authorize RudderStack to send data to your Lambda function. Refer to the <Link to="#policy-permissions">Policy permissions</Link> section below for more information on specifying the required permissions.
+- If **Role-based Authentication** is disabled, you need to enter the **AWS Access Key ID** and **AWS Secret Access Key** to authorize RudderStack. 
+
+<div class="infoBlock">
+In both the role-based and access key-based authentication methods, you need to set a policy specifying the required permissions for RudderStack to send data to your Lambda function. Refer to the <Link to="#policy-permissions">Policy permissions</Link> section below for more information. 
+</div>
+
 - **Lambda**: Enter the name of the Lambda function to be invoked. RudderStack supports the following formats:
 
 | Name format | Example |
