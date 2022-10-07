@@ -32,30 +32,30 @@ To successfully set up Google Analytics as a destination, configure the followin
 
 - **Tracking ID**: Refer to the <Link to="#faq">FAQ</Link> section for more information on getting your Google Analytics tracking ID.
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Google Analytics. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide. 
-- **Remarketing, Display Ads and Demographic Reports**: 
-- **Enable Enhanced Link Attribution**: 
-- **Include the Querystring in Page Views**: 
-- **Custom Dimensions & Metrics**: 
-- **Property & Trait Mapping**:
+- **Remarketing, Display Ads and Demographic Reports**: Enable this setting to . Refer to the [Google documentation](https://support.google.com/analytics/answer/2444872?hl=en#zippy=%2Cin-this-article) for more information. 
+- **Enable Enhanced Link Attribution**: Enable this setting to retrieve detailed reports for the links clicked on your site. Refer to the [Google documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-link-attribution) for more information.
+- **Include the Querystring in Page Views**: Enable this setting to include the querystring in your page views.
+- **Custom Dimensions & Metrics**: Enter the event name, traits or properties you want to map to the corresponding custom dimensions and metrics. Refer to the [Custom Dimensions & Metrics](https://support.google.com/analytics/answer/10075209?hl=en) documentation for more information.
+- **Property & Trait Mapping**: Enter the property you want to map to the Google Analytics content grouping.  Refer to the [Content Grouping](https://support.google.com/analytics/answer/2853423?hl=en) documentation for more information.
 - **Enable Server Side Identify**:
 - **Server Side Identify Event Category**:
 - **Server Side Identify Event Action**:
-- **Anonymize IP Addresses**:
-- **Enable Enhanced Ecommerce**:
-- **Add the non-interaction flag to all events**:
-- **Send user-id to GA**:
-- **Use device-mode to send events**:
-- **Track Categorized Pages**:
-- **Track Named Pages**:
-- **Sample Rate**:
-- **Site Speed Sample Rate**:
-- **Reset dimensions on Page calls**:
-- **Set Custom Dimensions & Metrics to the Page**:
-- **Use Named Tracker**:
-- **Cookie Domain Name**:
-- **Optimize Container ID**:
-- **Use Google AMP Client ID**:
-- **OneTrust Cookie Categories**:
+- **Anonymize IP Addresses**: Enable this setting to anonymize the IP Address. Refer to the [Google documentation](https://support.google.com/analytics/answer/2763052?hl=en) for more information.
+- **Enable Enhanced Ecommerce**: Enable this setting to get detailed reports on ecommerce. Refer to the [Enhanced ecommerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce) documentation for more information.
+- **Add the non-interaction flag to all events**: Enable this setting to add a non-interaction flag to every non-enhanced ecommerce event tracked to Google Analytics.
+- **Send user-id to GA**: Enable this setting to send the user Id to Google Analytics. It lets you analyze the groups of sessions across different devices.
+- **Use device-mode to send events**: Enable this setting to send events to Google Analytics via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+- **Track Categorized Pages**: This setting is enabled by default and enables you to track the pages having a category associated with them.
+- **Track Named Pages**: This setting is enabled by default and enables you to track only the pages having a name.
+- **Sample Rate**: Enter the percentage of users which RudderStack should track. The default value is 100. 
+- **Site Speed Sample Rate**: Enter the sample size for Site Speed data collection.  The default value is 1.
+- **Reset dimensions on Page calls**: Enter the properties (already mapped as custom dimensions) that need to be reset for each page call. This is useful in case of an SPA website where custom dimensions need to be reset between `page` calls.
+- **Set Custom Dimensions & Metrics to the Page**: This setting is enabled by default and passes the custom dimensions and metrics as properties for all events on a given page. When disabled, RudderStack only passes the custom dimensions and metrics as part of the payload of the event with which they are explicitly associated.
+- **Use Named Tracker**: Enable this setting to push the events to a Google Analytics tracker named as `rudderGATracker` instead of the default tracker. When disabled, a default tracker which is internally given the name `t0` is set and events are pushed to it. Refer to the [Google documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers) documentation for more information.
+- **Cookie Domain Name**: The default value of this is set to `auto` . However, you can change it in the destination settings. You can get more information on this feature by referring to [Google documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs/domains).
+- **Optimize Container ID**: Enter your Optimize Container ID which will integrate with Google Analytics Optimize plugin.
+- **Use Google AMP Client ID**: Enable this setting to uniquely identify users who engage with your content on AMP and non-AMP pages. Refer to the [Google documentation](https://support.google.com/analytics/answer/7486764?hl=en&ref_topic=7378717#zippy=%2Cin-this-article) for more information.
+- **OneTrust Cookie Categories**: This setting lets you map <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to RudderStack's consent purposes.
 - **Disable Md5 encryption from Client ID**: 
   - When set to `true`, the `client id` is mapped from either of the following:
     - `integrations` object
@@ -65,8 +65,6 @@ To successfully set up Google Analytics as a destination, configure the followin
       "clientId": "clientId"
     }}
     ```
-
-
 
     - `externalId`
      ```json
@@ -594,7 +592,6 @@ You can turn on **Anonymize IP Address** in the RudderStack destination settings
 
 ### Cookie Domain Name
 
-The default value of this is set to `auto` . However, you can change it in the destination settings. You can get more information on this feature by referring to [Google documentation](https://developers.google.com/analytics/devguides/collection/analyticsjs/domains).
 
 ### Cross-domain Tracking
 
