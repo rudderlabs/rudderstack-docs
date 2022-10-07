@@ -37,7 +37,7 @@ To successfully configure AWS Lambda as a destination, you need to configure the
 For more information on the AWS regions, refer to the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/">AWS Regions and Availability Zones</a> guide.
 </div>
 
-- **Role-based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating a AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
+- **Role-based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating an AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
   - **IAM Role ARN**: Enter the ARN of the IAM role.
 
 <div class="warningBlock">
@@ -73,7 +73,7 @@ The following permission need to be attached to the role while setting up the po
 "Action": ["lambda:InvokeFunction"]
 ```
 
-A sample permissions policy that allows a user to send event data into Personalize is shown below:
+A sample permissions policy that allows a user to send event data into AWS Lambda is shown below:
 
 ```json
 {

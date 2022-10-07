@@ -31,7 +31,7 @@ To successfully set up Kinesis as a destination, you need to configure the follo
 
 - **Region**: Enter the AWS Region in which you have created the Kinesis stream.
 - **Stream name**: Specify the name of your Kinesis stream.
-- **Role-based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating a AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
+- **Role-based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating an AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
   - **IAM Role ARN**: Enter the ARN of the IAM role.
 
 <div class="warningBlock">
@@ -43,7 +43,7 @@ It is highly recommended to enable this setting as the access keys-based authent
 
 ## Policy permissions
 
-To authorize RudderStack to write to your stream. For that, you need to create a IAM policy that provides the necessary permissions to write to your data stream. Refer to [Controlling Access to Amazon Kinesis Data Streams Resources Using IAM](https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html) for the applicable policies. 
+To authorize RudderStack to write to your stream, you must create an IAM policy that provides the necessary permissions to write to your data stream. Refer to [Controlling Access to Amazon Kinesis Data Streams Resources Using IAM](https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html) for the applicable policies. 
 
 A sample permissions policy is shown below:
 

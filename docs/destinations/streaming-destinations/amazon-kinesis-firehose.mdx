@@ -30,7 +30,7 @@ Once you have confirmed that the source platform supports sending events to Kine
 To successfully set up Kinesis Firehose as a destination, you need to configure the following settings:
 
 - **AWS Region**: Enter the AWS region in which you have created the Kinesis Firehose stream. This is a required field.
-- **Role-based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating a AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
+- **Role-based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating an AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
   - **IAM Role ARN**: Enter the ARN of the IAM role.
 
 <div class="warningBlock">
@@ -42,7 +42,7 @@ It is highly recommended to enable this setting as the access keys-based authent
 
 ## Sending events to Kinesis Firehose
 
-RudderStack supports sending `identify`, `page`, and `track` events to specific Kinesis Firehose streams by configuring them in the dashboard.
+RudderStack supports sending the `identify`, `page`, and `track` events to specific Kinesis Firehose streams by configuring them in the dashboard.
 
 You can also send an event `type` as `page`, `identify`, or `track`. For the `track` events, you can specify the event name based on the event name in the payload. For example:
 
@@ -91,7 +91,7 @@ A sample permissions policy that allows a user to send event data into Kinesis F
 
 - If there is no delivery stream set for an event in the dashboard settings, RudderStack will not send the event to the Firehose stream.
 - If an event is set with a delivery stream, RudderStack sends the payload to the configured delivery stream.
-- If you have set the event `type`, **Event Name**, and `*` for mapping purposes, RudderStack gives the topmost priority to event name, followed by `type`, and then `*`.  For example. let the type of event be `track` and **Event Name** be `Product Added`. RudderStack does the mapping as shown:
+- If you have set the event `type`, **Event Name**, and `*` for mapping purposes, RudderStack gives the topmost priority to the event name, followed by `type`, and then `*`.  For example, if the type of event is `track` and **Event Name** is `Product Added`, RudderStack does the mapping as shown:
 
 <img src="../../assets/screenshot-2020-07-14-at-10.37.02-pm.png" />
 

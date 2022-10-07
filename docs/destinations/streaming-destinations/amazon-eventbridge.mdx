@@ -40,7 +40,7 @@ It is highly recommended to enable this setting as the access keys-based authent
 
 - If **Role-based Authentication** is disabled, you need to enter the **AWS Access Key ID** and **AWS Secret Access Key** to authorize RudderStack in order to write to the configured event bus. Refer to the <Link to="#policy-permissions">Policy permissions</Link> section below for more information on specifying the required permissions to write to your event bus.
 - **Event Bus Name**: Specify the name of the event bus where you want to send the events. RudderStack sends the event to the default bus if no event bus name is specified.
-- **Detail Type**: Specify the event's detail type to send to EventBridge. This is a **required** field
+- **Detail Type**: Specify the event's detail type to send to EventBridge. This is a **required** field.
 - **Amazon Resource Name:** This field contains an ARN (Amazon Resource Name) that identifies a resource involved in your EventBridge setup. To add multiple ARNs (for multiple targets involved in your setup), click **+ ADD MORE**.
 
 ## Policy permissions
