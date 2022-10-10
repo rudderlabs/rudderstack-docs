@@ -36,7 +36,7 @@ To successfully set up Google Analytics as a destination, configure the followin
 - **Enable Enhanced Link Attribution**: Enable this setting to retrieve the detailed reports of links clicked on your website. Refer to the [Enhanced Link Attribution](https://support.google.com/analytics/answer/2444872?hl=en#zippy=%2Cin-this-article) guide for more information. 
 - **Include the Querystring in Page Views**: Enable this setting to include the query string in your page views along with the URL to be sent to Google Analytics. For more information on this feature, refer to the <Link to="#site-search">Site search</Link> section. 
 - **Custom Dimensions & Metrics**: Enter the event name, traits or properties you want to map to the corresponding custom dimensions and metrics. For more information on this setting, refer to the <Link to="#custom-dimensions">Custom dimensions</Link> section. 
-- **Property & Trait Mapping**: Enter the property you want to map to the Google Analytics content grouping.  Refer to the [Content Grouping](https://support.google.com/analytics/answer/2853423?hl=en) guide for more information.
+- **Property & Trait Mapping**: Enter the property you want to map to the Google Analytics content grouping. For more information on this feature, refer to the <Link to="#content-groupings">Content groupings</Link> section. 
 - **Enable Server Side Identify**: Enable this setting to trigger the `identify` calls from the server-side.
 - **Server Side Identify Event Category**: Specify the event category of the `identify` call triggered from the server-side. Any specified category is sent as `ec` or the default value is set to `All`.
 - **Server Side Identify Event Action**: Specify the event action of the `identify` call triggered from the server-side. Any specified action is sent as `ea` or the default value is set to `User Enriched`.
@@ -51,7 +51,7 @@ To successfully set up Google Analytics as a destination, configure the followin
 - **Sample Rate**: Enter the percentage of users which RudderStack should track. The default value is 100. 
 - **Site Speed Sample Rate**: Enter the sample size for Site Speed data collection.  The default value is 1.
 - **Reset dimensions on Page calls**: Specify the dimensions (set in the `page` call properties) that need to be reset and assigned a new value.
-- **Set Custom Dimensions & Metrics to the Page**: This setting is enabled by default and passes the custom dimensions and metrics as properties for all the events on a given page. When disabled, RudderStack only passes the custom dimensions and metrics as part of the event payload with which they are explicitly associated.
+- **Set Custom Dimensions & Metrics to the Page**: This setting is enabled by default and passes the custom dimensions and metrics as properties for all the events on a given page. When disabled, RudderStack only passes the custom dimensions and metrics as part of the event payload with which they are explicitly associated. For more information on this feature, refer to the <Link to="#custom-dimensions">Custom dimensions</Link> section. 
 - **Use Named Tracker**: Enable this setting to push events to the `rudderGATracker` Google Analytics tracker instead of the default tracker. For more information on this feature, refer to the <Link to="##named-tracker">Named tracker</Link> section. 
 - **Cookie Domain Name**: Specify the domain name on which the `_ga` cookie should set on.The default value is set to `auto`. Refer to the [Cookies and User Identification](https://developers.google.com/analytics/devguides/collection/analyticsjs/domains) guide for more information.
 - **Optimize Container ID**: Enter your Optimize container ID to integrate with the Google Analytics [Optimize plugin](https://support.google.com/optimize/answer/6262084#optimize-ga-plugin).
@@ -186,72 +186,28 @@ Depending on the presence of `message.properties.category` and `message.name` pr
 
 The page title is set as the `properties.title` or ` context.page.title` in the cloud mode.
 
-## Custom Dimensions
-
-In Google Analytics, you can configure [custom dimensions](https://support.google.com/analytics/answer/10075209?hl=en) in the [Admin](https://support.google.com/analytics/answer/6132368?hl=en) page.
-
-There are multiple scopes for custom dimensions, such as `hits`, `session`, `user`, and `products` (if **Enhanced e-commerce** setting is enabled). Once these are set up in Google Analytics, the traits and properties can be mapped to custom dimensions in the RudderStack dashboard.
-
-A custom dimension should be set as `dimension{index}` . For example, `dimension1` is mapped accordingly when the user sets the dimension in GA settings as shown below. Similarly, you can set up different metrics.
-
-<img src="../../assets/image (59).png" />
-
-<img src="../../assets/image (36).png" />
-
-An `identify` call with custom dimensions is recorded after the next `track` or `page` call.
-
-```javascript
-rudderanalytics.identify({
-  Gender: 'Female'
-});
-
-rudderanalytics.track('Viewed History');
-```
-
-
-
-## Non-Interaction Events
-
-If the non-interaction setting is enabled in the RudderStack destination settings, `nonInteraction` with value `1` will be sent. Refer to the [Non-Interaction Events](https://support.google.com/analytics/answer/1033068#NonInteractionEvents&zippy=%2Cin-this-article) guide for more information.
-
-```javascript
-{
-  "action": "track",
-  "event": "Track Page",
-  "properties": {
-    "nonInteraction": 1
-  }
-}
-```
-
-In Google Analytics, some events can be tagged as non-interaction events. On the server-side, it is set in `ni` .
-
 ## E-Commerce
 
-RudderStack supports basic E-Commerce tracking for Google Analytics.
-
-The required steps are:
+RudderStack supports basic e-commerce tracking for Google Analytics. The required steps are:
 
 - For every order completed, `orderId` is required. For each product in the order, there must be an `id` and `name`. Other properties are optional.
-- The E-Commerce tracking should be enabled otherwise it will not be shown in the reports.
+- The e-commerce tracking should be enabled otherwise it will not be shown in the reports.
 
-## Enhanced E-Commerce
+### Enhanced e-commerce
 
-Enhanced E-Commerce allows you to derive insights on the E-Commerce events by combining impression data, product data, promotion data and action data. This is a necessity for product-scoped custom dimensions. Refer to the [Enhanced ecommerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce) documentation for more information.
+[Enhanced e-commerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce) allows you to derive insights on the e-commerce events by combining impression data, product data, promotion data and action data. This is a necessity for product-scoped custom dimensions.
 
-Enhanced E-Commerce must be enabled in Google Analytics, and should follow RudderStack's <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link>.
+Enhanced e-commerce setting must be enabled in RudderStack dashboard, Google Analytics, and should follow RudderStack's <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link>.
 
 The required steps are:
 
-- Similar to E-Commerce tracking, for every order completed the `orderId` is required. For each product, `id` and `name`are required.
+- Similar to e-commerce tracking, for every order completed the `orderId` is required. For each product, `id` and `name`are required.
 - The product ID or name must be passed for all the events that has the product details. `product_id` will check if `properties.product_id` is present or not. Else `properties.sku` will be picked.
 - `order_id` is required for refunded orders.
 
-To send Enhanced E-Commerce events, please enable it in the RudderStack destination settings page.
+#### Measuring Checkout Steps
 
-### Measuring Checkout Steps
-
-The Checkout steps feature is a key difference between the regular E-Commerce and Enhanced E-Commerce tracking, and a major feature of the latter.
+The Checkout steps feature is a key difference between the regular e-commerce and Enhanced e-commerce tracking, and a major feature of the latter.
 
 You can configure the checkout funnel in the Google Analytics admin interface as shown below:
 
@@ -276,11 +232,7 @@ rudderanalytics.track('checkout step completed', {
           });
 ```
 
-<div class="infoBlock">
-For more information, refer to the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide.
-</div>
-
-### Measuring Promotions
+#### Measuring Promotions
 
 ```javascript
 rudderanalytics.track('promotion viewed', {
@@ -303,7 +255,7 @@ rudderanalytics.track('promotion clicked', {
           });
 ```
 
-### Coupons
+#### Coupons
 
 You can add the `coupon` property if you want to send coupon data to **`order completed`**.
 
@@ -340,9 +292,9 @@ rudderanalytics.track('order completed', {
           });
 ```
 
-### Measuring Product Impressions
+#### Measuring Product Impressions
 
-Information related to impressions of the users who have viewed or filtered through the product can be collected through Enhanced E-Commerce. The product impressions are mapped to **`product list viewed`** and **`product list filtered`** events.
+Information related to impressions of the users who have viewed or filtered through the product can be collected through Enhanced e-commerce. The product impressions are mapped to **`product list viewed`** and **`product list filtered`** events.
 
 ```javascript
 rudderanalytics.track('product list filtered', {
@@ -400,7 +352,7 @@ rudderanalytics.track('Product List Viewed', {
           });
 ```
 
-### Refunds
+#### Refunds
 
 For full refunds :
 
@@ -432,17 +384,19 @@ rudderanalytics.track('order refunded', {
           });
 ```
 
-## Passing Cookies from Universal Analytics
 
-`clientId` \(cid\) is used to keep a track of the unique visitors to your website.
 
-A Google Analytics universal cookie will look like the following:
+## Passing cookies from Universal Analytics
+
+The `clientId` (cid) is used to keep a track of the unique visitors to your website.
+
+The Google Analytics universal cookie looks like the following:
 
 ```
 _ga=GA1.2.476220681.159039102;
 ```
 
-The `clientId` is `476220681.159039102` which can be cross-checked by running the following snippet:
+The `clientId` here is `476220681.159039102` which can be cross-checked by running the following snippet:
 
 ```
 ga(function (tracker) {
@@ -451,11 +405,11 @@ ga(function (tracker) {
 });
 ```
 
-For server-side calls, if `clientId` is passed manually by sending `anonymousId` and if the **Send User ID** setting is enabled in the destination settings along with `cid`, then RudderStack passes the `userId` as the `uid`.
+For server-side calls, if `clientId` is passed manually by sending `anonymousId` and if the **Send user-id to GA** setting is enabled in the RudderStack dashboard along with `cid`, then RudderStack passes the `userId` as the `uid`.
 
 ### How RudderStack takes the `clientId`
 
-RudderStack takes the `clientId` in the following **decreasing** order of priority:
+RudderStack takes the `clientId` in the following priority order:
 
 1. From the `integrations` object while initializing the SDK, as shown:
 
@@ -468,38 +422,23 @@ RudderStack takes the `clientId` in the following **decreasing** order of priori
 },
 ```
 
-2. From the `gaExternalId` by setting it as the `clientId`, if specified in the payload.
-3. From `anonymousId`, if present.
+2. From `gaExternalId` by setting it as the `clientId`, if specified in the payload.
+
+```json
+ "externalId": [{
+ "id": "externalClientId",
+ "type": "gaExternalId"
+}]
+```
+
+3. From `traits.cid`
+
+4. From `anonymousId`. If `anonymousId` is not present, it is set as **undefined.**
 
 <div class="infoBlock">
-If the <strong>Disable MD5 encryption from Client ID</strong> setting is disabled in the dashboard, RudderStack passes the <code class="inline-code">userId</code> as the <code class="inline-code">clientId</code> in the MD5-hashed format.
+If the <strong>Disable MD5 encryption from Client ID</strong> setting is disabled in the dashboard and the <code class="inline-code">integrations</code> object, <code class="inline-code">externalId</code>, <code class="inline-code">traits.cid</code>, and <code class="inline-code">anonymousId</code> are absent, RudderStack passes the <code class="inline-code">userId</code> as the <code class="inline-code">clientId</code> in the MD5-hashed format.
 <img src="../../assets/event-stream-destinations/ga-md5-encryption-disabled.png" alt="MD5 disabled" />
 </div>
-
-
- - When enabled, `client id` is mapped from one of the following:
-    - `integrations` object
-    ```json
-     "integrations": {
-     "Google Analytics": {
-      "clientId": "clientId"
-    }}
-    ```
-
-    - `externalId`
-     ```json
-     "externalId": [{
-     "id": "externalClientId",
-     "type": "gaExternalId"
-    }]
-    ```
-   
-
-    - `traits.cid`
-
-  - If none of the above is present, `client id` is mapped from the `anonymousId`. If `anonymousId` is absent, it is set as **undefined.**
-
-  - When set to `false` and the `integrations` object, `externalId`, `traits.cid`, and `anonymousId` are absent, the `userId` is MD5 hashed and set as the `clientId`.
 
 ## User Agent
 
@@ -547,19 +486,55 @@ The sample code below shows how to send `gclid` and `dclid` using `externalID`:
 
 There are some other important features associated with Google Analytics integration, as described in the sections below:
 
+## Custom Dimensions
+
+In Google Analytics, you can configure [custom dimensions](https://support.google.com/analytics/answer/10075209?hl=en) in the [Admin](https://support.google.com/analytics/answer/6132368?hl=en) page.
+
+There are multiple scopes for custom dimensions, such as `hits`, `session`, `user`, and `products` (if **Enhanced e-commerce** setting is enabled). Once these are set up in Google Analytics, the traits and properties can be mapped to custom dimensions in the RudderStack dashboard.
+
+A custom dimension should be set as `dimension{index}` . For example, `dimension1` is mapped accordingly when the user sets the dimension in GA settings as shown below. Similarly, you can set up different metrics.
+
+<img src="../../assets/image (59).png" />
+
+<img src="../../assets/image (36).png" />
+
+An `identify` call with custom dimensions is recorded after the next `track` or `page` call.
+
+```javascript
+rudderanalytics.identify({
+  Gender: 'Female'
+});
+
+rudderanalytics.track('Viewed History');
+```
+
+## Non-Interaction Events
+
+The non-interaction parameter in the events lets you specify how to determine the bounce rate for pages on your site that also include event measurement. Refer to the [Non-Interaction Events](https://support.google.com/analytics/answer/1033068#NonInteractionEvents&zippy=%2Cin-this-article) guide for more information.
+
+If the non-interaction setting is enabled in the RudderStack dashboard, the `nonInteraction` value is set to `1`. 
+
+```javascript
+{
+  "action": "track",
+  "event": "Track Page",
+  "properties": {
+    "nonInteraction": 1
+  }
+}
+```
+
+In Google Analytics, some events can be tagged as non-interaction events. On the server-side, it is set in `ni`.
+
 ### Named Tracker
 
-If you turn on the named tracker in RudderStack destination setting under the **Other Settings** option, Rudder will push the events to a GA tracker named as `rudderGATracker` instead of the default tracker.
+If you enable the **Named Tracker** setting in RudderStack dashboard, RudderStack pushes the events to a Google Analytics tracker named `rudderGATracker` instead of the default tracker. Refer to the [Creating Trackers](https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers) guide for more information on creating trackers.
 
-For more information on creating trackers follow [this guide](https://developers.google.com/analytics/devguides/collection/analyticsjs/creating-trackers).
-
-If it is turned off default tracker which is internally given the name `t0` will be set.
+If disabled, a default tracker is set with the name `t0`.
 
 #### Multiple Trackers
 
-A 2nd tracker can be set in the ready callback function of RudderStack SDK.
-
-An example of sending events to GA with another tracking id:
+A second tracker can be set in the `ready` callback function of the RudderStack SDK. An example of sending events to Google Analytics with another tracking id:
 
 ```javascript
 // without any tracker name
@@ -577,13 +552,6 @@ window.rudderanalytics.ready(() => {
 })
 ```
 
-### Anonymize IP Address
-
-You can turn on **Anonymize IP Address** in the RudderStack destination settings under the **Other Settings** option. Once this setting is enabled, Google Analytics anonymizes the address at the earliest possible stage of the collection network.
-
-### Cookie Domain Name
-
-
 ### Cross-domain Tracking
 
 There are two ways to do this:
@@ -594,10 +562,6 @@ There are two ways to do this:
 ### Ignored Referrers
 
 For Universal profiles, this can be edited in Google Analytics directly.
-
-### Remarketing
-
-This feature is used to tag visitors for remarketing campaign. Enable the **Remarketing, Display Ads and Demographic Reports** option in the **Reporting** section of the destination settings to utilize this feature.
 
 ### Site Search
 
@@ -613,7 +577,7 @@ If the query is `abc.com/s=xyz`the setting should be as follows:
 
 ### Content Groupings
 
-You can set the content group mapping in the RudderStack dashboard and Google Analytics, as shown in the images below:
+You can set the [content grouping](https://support.google.com/analytics/answer/2853423?hl=en) mappings in the RudderStack dashboard and Google Analytics, as shown in the images below:
 
 <img src="../../assets/image (67).png" /><span class="imageTitle">Content Group Mapping in RudderStack</span>
 
@@ -621,40 +585,9 @@ You can set the content group mapping in the RudderStack dashboard and Google An
 
 When you send a `page` call with the custom properties, RudderStack will use the value of the property you designate as the value of the specified content grouping.
 
-<div class="infoBlock">
-
-For more information on content grouping, refer to this <a href="https://support.google.com/analytics/answer/2853423?hl=en#:~:text=Content%20Grouping%20lets%20you%20group,page%20title%2C%20or%20screen%20name">guide</a>.
-</div>
-
-### Sample Rate
-
-This feature specifies what percentage of users should be tracked. The default value is set to be 100.
-
-### Site Speed Sample Rate
-
-This feature defines the sample size for Site Speed data collection. The default value is set to 1.
-
-### Server-side Identification
-
-If enabled, the `identify` calls will be made only from the server-side.
-
-### Server-side Identification Event Action and Category.
-
-If any action is specified, it will go as `ea` otherwise it will default to `User Enriched`
-
-If any category is specified, it will go as `ec` otherwise it will default to `All`
-
-### AMP Client ID
-
-If enabled, Google’s AMP Client ID API will uniquely identify users who engage with your content on the AMP and non-AMP pages.
-
-### Reset Dimension On page call
-
-If the specified dimension is set in the properties of the `page` call, it will be reset to null and a new value will be set.
-
 ## FAQ
 
-### Where can I find the Google Analytics tracking ID?
+#### Where can I find the Google Analytics tracking ID?
 
 To find your Google Analytics tracking ID, follow these steps:
 
@@ -666,7 +599,7 @@ To find your Google Analytics tracking ID, follow these steps:
 
 <img src="../../assets/event-stream-destinations/ga-tracking-id-2.png" alt="Google Analytics tracking ID" />
 
-### What are custom metrics and custom dimensions?
+#### What are custom metrics and custom dimensions?
 
 **Custom metrics** and **custom dimensions** are fields that allow you to track custom properties associated with your events using RudderStack.
 
@@ -674,25 +607,25 @@ Metrics is for event properties having numeric data type while dimensions is for
 
 Please refer to the [Getting Started](#getting-started) section above in this document to know how to specify these fields on the RudderStack platform.
 
-### My website uses HTTPS. Do I need to change any settings for accurate Google Analytics tracking?
+#### My website uses HTTPS. Do I need to change any settings for accurate Google Analytics tracking?
 
 Yes. In the **Property Setup**, please change the website URL from HTTP \(default\) to HTTPS as shown:
 
 <img src="../../assets/image (49).png" />
 
-### Can I view real-time reports of my event data?
+#### Can I view real-time reports of my event data?
 
 Yes, you can. Please check the Real-time reports in Google Analytics. A sample dashboard is as shown:
 
 <img src="../../assets/faq2.png" />
 
-### How do I view the already processed events for a particular day?
+#### How do I view the already processed events for a particular day?
 
 Please adjust the Google Analytics' default reporting time frame from a month ago to **the required date**, in order to view the processed events of that day.
 
 <img src="../../assets/faq1.png" />
 
-### Why are my page views in Google Analytics different when sent from device mode as against the cloud mode?
+#### Why are my page views in Google Analytics different when sent from device mode as against the cloud mode?
 
 There could be 2 reasons for this:
 
