@@ -5,52 +5,37 @@ description: Step-by-step guide on sending your event data from RudderStack to A
 
 [Amazon Kinesis](https://aws.amazon.com/kinesis/) enables you to ingest, buffer and process streaming data in real-time. It can handle any amount of streaming data and process data from hundreds of thousands of sources with very low latencies along with the flexibility to choose the tools that best suit the requirements of your application.
 
-RudderStack supports Amazon Kinesis as a destination where you can seamlessly send your event data.
+RudderStack allows you to configure Amazon Kinesis as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
-Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kinesis">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kinesis">GitHub repository</a>.
 </div>
 
 ## Getting started
 
-RudderStack supports sending event data to Kinesis via the following <Link to="/rudderstack-cloud/rudderstack-connection-modes/">connection modes</Link>:
+In order to enable dumping data to Amazon Kinesis, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Amazon Kinesis. Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Amazon Kinesis. Refer to the table below:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
 | **Device mode**     | -             | -             | -             |
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
-Once you have confirmed that the source platform supports sending events to Kinesis, follow these steps:
-
-1. From your RudderStack dashboard, add the source. Then, from the list of destinations, select **AWS Kinesis**.
-2. Assign a name to your destination and click **Continue**.
-
-### Connection settings
-
-To successfully set up Kinesis as a destination, you need to configure the following settings:
-
-- **Region**: Enter the AWS Region in which you have created the Kinesis stream.
-- **Stream name**: Specify the name of your Kinesis stream.
-- **Role-based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating an AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
-  - **IAM Role ARN**: Enter the ARN of the IAM role.
-
-<div class="warningBlock">
-It is highly recommended to enable this setting as the access keys-based authentication will be deprecated in the future.
-</div>
-
-- If **Role-based Authentication** is disabled, you need to enter the **AWS Access Key ID** and **AWS Secret Access Key** to authorize RudderStack to write to your Kinesis stream.
-
 <div class="infoBlock">
-In both the role-based and access key-based authentication methods, you need to set a policy specifying the required permissions for RudderStack to write to your Kinesis stream. Refer to the <Link to="#policy-permissions">Policy permissions</Link> section below for more information. 
+To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
-- **Use MessageId as Partition Key**: By default, RudderStack uses `userId` ( or `anonymousId`, if `userId` is not present in the payload) as the partition key. You can enable this setting to set your event's `messageId` as the partition key for your Kinesis stream. This enables your data to be more evenly distributed across the shards in the stream.
+Once you have confirmed that the platform supports sending events to Kinesis, perform the steps below:
 
-## Policy permissions
+To do so, please follow these steps:
 
-To authorize RudderStack to write to your stream, you must create an IAM policy that provides the necessary permissions to write to your data stream. Refer to [Controlling Access to Amazon Kinesis Data Streams Resources Using IAM](https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html) for the applicable policies. 
+- Select **Amazon Kinesis** as a destination in the RudderStack dashboard.
+- Next, in the **Connection Settings**, fill all the fields with the relevant information and click **Next**.
 
-A sample permissions policy is shown below:
+<img src="../../assets/image (7).png" />
+
+- **Region**: AWS Region in which you have created the Kinesis stream
+- **Stream name:** The name of your Kinesis stream
+- **Credentials:** AWS Access Key ID and Secret Access Key to authorize RudderStack to write to your stream. For that, you need to create an IAM Policy that will provide permission to write to your data stream. Please refer to [Controlling Access to Amazon Kinesis Data Streams Resources Using IAM](https://docs.aws.amazon.com/streams/latest/dev/controlling-access.html) for the applicable policies. A sample policy is as below:
 
 ```javascript
 {
@@ -65,10 +50,20 @@ A sample permissions policy is shown below:
 }
 ```
 
-## FAQ
+<div class="infoBlock">
 
-### How do I verify if the events are published to my Kinesis stream?
+If the AWS credentials are **already configured** on your machine where the RudderStack server is set up, you will **not** need the security credentials.
 
-To verify that RudderStack has successfully sent the events to your configured Kinesis stream, you can check the **Live Events** tab of your source.
+</div>
 
-To verify if the events are successfully delivered or check for any delivery failures, go to the **Live Events** tab of your configured destination.
+- There is an option of `messageId` being used as a **Partition Key**. By default, we will use `userId` \( if `userId` is not present in the payload, then `anonymousId` \) as a partition key, but if you enable this, we will use `messageId` as the partition key. This enables your data to be more evenly distributed across the shards in the Kinesis stream.
+
+## FAQs
+
+### Why are the events not published to my Kinesis stream
+
+Verify that you are sending the events in the **Live Events** tab of your source.
+
+Check if there are any delivery failures in the **Live Events** tab of your destination.
+
+

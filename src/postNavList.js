@@ -75,11 +75,6 @@ export const postNavList = [
     content: [],
   },
   {
-    title: "Creating RudderStack IAM Role for AWS-based Destinations",
-    link: "/destinations/aws-iam-role-for-rudderstack/",
-    content: []
-  },
-  {
     key: "rudderstack-connection-modes",
     title: "Connection Modes: Cloud Mode vs Device Mode",
     link: "/destinations/rudderstack-connection-modes/",
