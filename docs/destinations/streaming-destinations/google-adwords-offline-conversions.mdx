@@ -69,8 +69,8 @@ The following table lists the property mappings between RudderStack and Google A
 | RudderStack property | Google Ads Offline Conversions property | Notes |
 | :-----| :--------| :--------| 
 | `properties.conversionDateTime`<br/>`originalTimestamp` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `conversionDateTime` | -|
-| `email` | `hashedEmail` | If **User Identifier Source** is set in the dashboard, either `email` or `phone` must be passed. |
-| `phone` | `hashedPhoneNumber` | If **User Identifier Source** is set in the dashboard, either `email` or `phone` must be passed. |
+| `traits.email`<br/>`context.traits.email`| `hashedEmail` | If **User Identifier Source** is set in the dashboard, either `email` or `phone` must be passed. |
+| `traits.phone`<br/>`context.traits.phone` | `hashedPhoneNumber` | If **User Identifier Source** is set in the dashboard, either `email` or `phone` must be passed. |
 | `properties.gclid` | `gclid` |  -|
 | `properties.gbraid` | `gbraid` |  -|
 | `properties.wbraid`  | `wbraid` |  -|
