@@ -11,7 +11,7 @@ Find the open-source code for this destination in the <a href="https://github.co
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create new users or update existing users' details in June. RudderStack sends the `identify` call to June as an [`identify`](https://www.june.so/docs/api#:~:text=Copy-,Identifying%20users,-You%20can%20use) event.
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create new users or update existing users' details in June. RudderStack sends the `identify` call to June as an [`identify`](https://www.june.so/docs/identifying-users) event.
 
 <div class="infoBlock">
 Make sure that you make an <code class="inline-code">identify</code> call before making a <code class="inline-code">track</code>, <code class="inline-code">group</code>, or <code class="inline-code">page</code> call.
@@ -38,7 +38,7 @@ The following table lists the property mappings between RudderStack and June for
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them. RudderStack sends the `track` call to June as a [`track`](https://www.june.so/docs/api#:~:text=Copy-,Send%20track%20events,-In%20order%20to) event.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them. RudderStack sends the `track` call to June as a [`track`](https://www.june.so/docs/tracking-events) event.
 
 A sample `track` call is shown below:
 
@@ -100,10 +100,10 @@ The following table lists the property mappings between RudderStack and June for
 
 ## Group
 
-You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to create a new company or update an existing company's details in June. Refer to the [June documentation](https://www.june.so/docs/api#:~:text=Identifying%20companies%20(optional)) for more information.
+You can use the <Link to="/event-spec/standard-events/group/">`group`</Link> call to create a new company or update an existing company's details in June. Refer to the [June documentation](https://www.june.so/docs/tracking-groups) for more information.
 
 <div class="warningBlock">
-If you are using a <code class="inline-code">group</code> call to identify a company, it is recommended to pass the <code class="inline-code">groupId</code> in the <code class="inline-code">track</code> call. It allows you to specify which company performed that specific event. For more information, refer to the <a href="https://www.june.so/docs/api#:~:text=Copy-,Send%20track%20events,-In%20order%20to">June documentation</a>.
+If you are using a <code class="inline-code">group</code> call to identify a company, it is recommended to pass the <code class="inline-code">groupId</code> in the <code class="inline-code">track</code> call. It allows you to specify which company performed that specific event. For more information, refer to the <a href="https://www.june.so/docs/tracking-groups">June documentation</a>.
 </div>
 
 A sample `group` call is shown below:
