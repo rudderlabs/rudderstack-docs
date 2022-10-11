@@ -142,14 +142,10 @@ Do not specify both <code class="inline-code">sourceIds</code> and <code class="
 
 ### `users`
 
-The API lets you specify the users for whom you want to set the data regulation. These users can be identified either by their `userId`, `phone`, or `email`.
+The API lets you specify the users for whom you want to set the data regulation. These users can be identified either by their `userId` or any other custom key.
 
 <div class="infoBlock">
-<strong>Only <code class="inline-code">userId</code> is a mandatory field</strong>. The other fields are optional as some destinations require phone number or email to associate a given user and do not strictly identify a user by their user ID.
-</div>
-
-<div class="warningBlock">
-It is recommended to provide the user's <code class="inline-code">phone</code> and <code class="inline-code">email</code> <strong>at your own discretion and only if it is required</strong>.
+<strong>Only <code class="inline-code">userId</code> is a mandatory field</strong>. In addition, you can pass any custom key to identify a user as per your requirement.
 </div>
 
 * **Sample suppression request**
