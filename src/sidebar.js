@@ -357,6 +357,11 @@ export const jsonData = [
                         title: "Looker",
                         link: "/sources/event-streams/cloud-apps/looker/",
                         content: []
+                    },
+                    {
+                        title: "Mailjet",
+                        link: "/sources/event-streams/cloud-apps/mailjet/",
+                        content: []
                     }, 
                     {
                         title: "Mailmodo",
