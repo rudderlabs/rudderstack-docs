@@ -914,6 +914,24 @@ export const jsonData = [
                 title: "Indicative",
                 link: "/destinations/streaming-destinations/indicative/",
                 content: []
+            },{
+                title: "June",
+                link: "/destinations/streaming-destinations/june/",
+                content: [
+                    {
+                        title: "Setting up June",
+                        link: "/destinations/streaming-destinations/june/setting-up-june-in-rudderstack/",
+                        content: []
+                    }, {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/june/june-cloud-mode/",
+                        content: []
+                    }, {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/june/june-device-mode/",
+                        content: []
+                    },
+                ]
             }, {
                 title: "Keen.io",
                 link: "/destinations/streaming-destinations/keen/",
