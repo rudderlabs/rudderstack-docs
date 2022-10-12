@@ -3,39 +3,33 @@ title: Serenytics
 description: Step-by-step guide to send your event data from RudderStack to Serenytics.
 ---
 
-[Serenytics](https://www.serenytics.com/) is an all-in-one collaborative platform for data preparation and visualization. It comes with an embedded Redshift data warehouse, an ETL, a Python scheduler, and a dashboard editor. Serenytics can be used for marketing data such as Adobe Campaign, Selligent and Google Ads, SQL-based databases, for big data projects and more.
+[Serenytics](https://www.serenytics.com/) is an all-in-one collaborative platform for data preparation and visualization. It comes with an embedded Redshift data warehouse, an ETL, a Python scheduler, and a dashboard editor. Serenytics can be used for marketing data such as Adobe Campaign, Selligent, and Google Ads, SQL-based databases, big data projects, and more.
 
 When combined with RudderStack, you can manipulate your data (aggregate, filter, create functions) and compute all the KPIs you need, creating live dashboards with your analysis, and sharing them easily.
 
 Serenytics is optimal for small to mid-size companies looking to create dashboards and merge data from many sources with a simple platform.
 
-
 <div class="infoBlock">
-Find the open source transformer code for this destination in this <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/serenytics">GitHub repository</a>.
+Find the open source code for this destination in this <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/serenytics">GitHub repository</a>.
 </div>
 
 ## Getting started
 
-Before configuring Serenytics as a destination in RudderStack, verify if the source platform is supported by Serenytics by referring to the table below:
+RudderStack supports sending event data to Serenytics via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
 | **Device mode**     | - | -             | -             |
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
-
-<div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
-</div>
-
 Once you have confirmed that the source platform supports sending events to Serenytics, follow these steps:
 
-- From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Serenytics**.
-- Assign a name to your destination and click **Next**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Serenytics**.
+2. Assign a name to your destination and click **Continue**.
 
-### Connection settings
+## Connection settings
 
-To configure Serenytics as a destination, first retrieve your data storage URL from the Serenytics dashboard. The URL should look something like ```https://api.serenytics.com/api/data_source/058ae0ed-0092-4fc3-83a9-fcc128e1f42d/push/7df2f94141a985582c6c125db8b8e413ae6afec2```
+To configure Serenytics as a destination, first, retrieve your data storage URL from the Serenytics dashboard. The URL should look something like ```https://api.serenytics.com/api/data_source/058ae0ed-0092-4fc3-83a9-fcc128e1f42d/push/7df2f94141a985582c6c125db8b8e413ae6afec2```
 
 Add the data storage URL to the URL fields in **Connection Settings**:
 
@@ -43,9 +37,9 @@ Add the data storage URL to the URL fields in **Connection Settings**:
 
 ## Supported Calls
 
-All RudderStack events will be sent to Serenytics and stored in the Serenytics warehouse. The most common events for each RudderStack method will be mapped automatically to the Serenytics naming convention. See the method-specific table below for a reference of the standard mappings.
+All RudderStack events are sent to Serenytics and stored in the Serenytics warehouse. The most common events for each RudderStack method are mapped automatically to the Serenytics naming convention. See the method-specific table below for a reference of the standard mappings.
 
-Properties/fields that are not included in the mapping tables will be passed as `trait_{key_name}` in the Serenytics dashboard.
+Properties/fields that are not included in the mapping tables are passed as `trait_{key_name}` in the Serenytics dashboard.
 
 For example, in this example RudderStack event:
 
@@ -65,7 +59,7 @@ rudderanalytics.identify(
   );
 ```
 
-The `userId` and `email` properties will map to `user_id` and `email`, and the remaining traits will show up as `trait_phone`, etc.:
+The `userId` and `email` properties are mapped to `user_id` and `email`, and the remaining traits are mapped as `trait_phone`, etc.:
 
 ```json
 {
@@ -97,19 +91,19 @@ rudderanalytics.identify("1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
 
 **Event parameter mapping**:
 
-| RudderStack property | Serenytics property | Required? |
-| --- | --- | --- |
-| messageId | id  | No |
-|  userId | user_id | No |
-| ["context.ip", "request_ip"] | ["context.ip", "request_ip"] | No |
-|  firstName | first_name | No |
-|  lastName | last_name | No |
-|  ["traits.age", "context.traits.age"] | age | No |
-| email | email | No |
-| receivedAt | received_at | No |
-| sentAt | sent_at | No |
-| originalTimestamp | original_timestamp | No |
-| timestamp | timestamp | No |
+| RudderStack property | Serenytics property | 
+| --- | --- | 
+| `messageId` | `id`  | 
+| `userId` | `user_id` | 
+| `context.ip`<br/> `request_ip` | `context.ip`<br/>`request_ip` | 
+| `firstName` | `first_name` | 
+| `lastName` | `last_name` | 
+| `traits.age`<br/> `context.traits.age` | `age` | 
+| `email` | `email` | 
+| `receivedAt` | `received_at` |
+| `sentAt` | `sent_at` | 
+| `originalTimestamp` | `original_timestamp` | 
+| `timestamp` | `timestamp` | 
 
 ### Track
 
@@ -117,23 +111,24 @@ The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you ca
 
 **Event parameter mapping**:
 
-| RudderStack property | Serenytics property | Required? |
-| --- | --- | --- |
-| messageId | id | No |
-| anonymousId | anonymous_id | No |
-| event | event | Yes |
-| ["context.ip", "request_ip"] | context_ip | No |
-| receivedAt | received_at | No |
-| sentAt | sent_at | No |
-| originalTimestamp | original_timestamp | No |
-| timestamp | timestamp | No |
-| properties.price | price | No |
-| properties.currency | currency | No |
-| properties.product_id | product_id | No |
-| properties.product_name | product_name | No |
+| RudderStack property | Serenytics property | 
+| --- | --- | 
+| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | 
+| `messageId` | `id` | 
+| `anonymousId` | `anonymous_id` | 
+| `context.ip` <br/>`request_ip` | `context_ip` | 
+| `receivedAt` | `received_at` |
+| `sentAt` | `sent_at` | 
+| `originalTimestamp` | `original_timestamp` |
+| `timestamp` | `timestamp` | 
+| `properties.price` | `price` | 
+| `properties.currency` | `currency` | 
+| `properties.product_id` | `product_id` | 
+| `properties.product_name` | `product_name` | 
+
 ### Group
 
-The <Link to="/event-spec/standard-events/group">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, e.g., company name, number of employees, etc.
+The <Link to="/event-spec/standard-events/group">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, fo example, company name, number of employees, etc.
 
 A sample `group` call is shown below:
 
@@ -149,15 +144,15 @@ rudderanalytics.group(
 
 **Event parameter mapping**:
 
-| RudderStack property | Serenytics property | Required? |
-| --- | --- | --- |
-| ["previousId", "anonymousId"] | previous_id | No |
-| userId | user_id | Yes |
-| ["context.ip", "request_ip"] | context_ip | No |
-| receivedAt | received_at | No |
-| sentAt | sent_at | No |
-| originalTimestamp | original_timestamp | No |
-| timestamp | timestamp | No |
+| RudderStack property | Serenytics property | 
+| --- | --- | 
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `user_id` | 
+| `previousId` <br/>`anonymousId` | `previous_id` | 
+| `context.ip` <br/>`request_ip` | `context_ip` | 
+| `receivedAt` | `received_at` | 
+| `sentAt` | `sent_at` | 
+| `originalTimestamp` | `original_timestamp` |
+| `timestamp` | `timestamp` | 
 
 ### Page
 
@@ -165,45 +160,41 @@ The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you rec
 
 **Event parameter mapping**:
 
-| RudderStack property | Destination property | Required? |
-| --- | --- | --- |
-| messageId | id | No |
-| anonymousId | anonymous_id | No |
-| ["name", "properties.name"] | name | No |
-| ["context.ip", "request_ip"] | context_ip | No |
-| receivedAt | received_at | No |
-| sentAt | sent_at | No |
-| originalTimestamp | original_timestamp | No |
-| timestamp | timestamp | No |
-| properties.category | category | No |
-| properties.path | path | No |
-| pageUrl |  url | No |
-| properties.title | title | No |
+| RudderStack property | Destination property | 
+| --- | --- | 
+| `messageId` | `id` |
+| `anonymousId` | `anonymous_id` |
+| `name` <br/>`properties.name` | `name` |
+| `context.ip` <br/>`request_ip` | `context_ip` |
+| `receivedAt` | `received_at` |
+| `sentAt` | `sent_at` |
+| `originalTimestamp` | `original_timestamp` |
+| `timestamp` | `timestamp` |
+| `properties.category` | `category` |
+| `properties.path` | `path` |
+| `pageUrl` |  `url` |
+| `properties.title` | `title` |
 
 ### Screen
 
 The <Link to="/event-spec/standard-events/screen/">`screen`</Link> call lets you record whenever your user views their mobile screen with any additional relevant information about the screen. 
 
-<div class="infoBlock">
-The <code class="inline-code">screen</code> call is the mobile equivalent of the <code class="inline-code">page</code> call.
-</div>
-
 **Event parameter mapping**:
 
-| RudderStack property | Serenytics property | Required? |
-| --- | --- | --- |
-| messageId | id | No |
-| anonymousId | anonymous_id | No |
-| ["name", "properties.name"] | name | No |
-| ["context.ip", "request_ip"] | context_ip | No |
-| receivedAt | received_at | No |
-| sentAt | sent_at | No |
-| originalTimestamp | original_timestamp | No |
-| timestamp | timestamp | No |
-| properties.category | category | No |
-| properties.path | path | No |
-| pageUrl |  url | No |
-| properties.title | title | No |
+| RudderStack property | Serenytics property |
+| --- | --- | 
+| `messageId` | `id` |
+| `anonymousId` | `anonymous_id` |
+| `name` <br/>`properties.name` | `name` |
+| `context.ip` <br/>`request_ip` | `context_ip` |
+| `receivedAt` | `received_at` |
+| `sentAt` | `sent_at` |
+| `originalTimestamp` | `original_timestamp` |
+| `timestamp` | `timestamp` |
+| `properties.category` | `category` |
+| `properties.path` | `path` |
+| `pageUrl` |  `url` |
+| `properties.title` | `title` |
 
 ### Alias
 
@@ -211,21 +202,20 @@ The <Link to="/event-spec/standard-events/alias/">`alias`</Link> call lets you m
 
 **Event parameter mapping**:
 
-| RudderStack property | Serenytics property | Required? |
-| --- | --- | --- |
-| ["previousId", "anonymousId"] | previous_id | No |
-| userId | user_id | Yes |
-| ["context.ip", "request_ip"] | context_ip | No |
-| receivedAt | received_at | No |
-| sentAt | sent_at | No |
-| originalTimestamp | original_timestamp | No |
-| timestamp | timestamp | No |
+| RudderStack property | Serenytics property | 
+| --- | --- | 
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `user_id` | 
+| `previousId` <br/>`anonymousId` | `previous_id` |
+| `context.ip` <br/>`request_ip` | `context_ip` | 
+| `receivedAt` | `received_at` | 
+| `sentAt` | `sent_at` | 
+| `originalTimestamp` | `original_timestamp` | 
+| `timestamp` | `timestamp` | 
 
 ## FAQ
 
 ### How do I get the data storage URL?
     
-1. Log in to the Serenytics dashboard and click the , then you see the dashboard click the **Data** tab.
-1. From the data tab, click the `New data source` button then a popup appears then select the **Serenytics Datawarehouse** tab and and then **Storage**. 
-1. From your newly-create source, retrieve `Url` from the **Configuration** tab. Use this URL to populate your connection settings in RudderStack.
-
+1. Log in to the [Serenytics dashboard](https://app.serenytics.com/studio/login) and click the **Data** tab.
+2. Click the **New data source** button and select the **Serenytics Datawarehouse** tab > **Storage** from the popup. 
+3. From your newly-create source, retrieve the `Url` from the **Configuration** tab. Use this URL to populate your connection settings in RudderStack.
