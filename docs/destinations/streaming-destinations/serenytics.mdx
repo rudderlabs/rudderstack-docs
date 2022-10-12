@@ -147,6 +147,8 @@ rudderanalytics.group(
 );
 ```
 
+**Event parameter mapping**:
+
 | RudderStack property | Serenytics property | Required? |
 | --- | --- | --- |
 | ["previousId", "anonymousId"] | previous_id | No |
@@ -160,6 +162,8 @@ rudderanalytics.group(
 ### Page
 
 The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+
+**Event parameter mapping**:
 
 | RudderStack property | Destination property | Required? |
 | --- | --- | --- |
@@ -184,6 +188,8 @@ The <Link to="/event-spec/standard-events/screen/">`screen`</Link> call lets you
 The <code class="inline-code">screen</code> call is the mobile equivalent of the <code class="inline-code">page</code> call.
 </div>
 
+**Event parameter mapping**:
+
 | RudderStack property | Serenytics property | Required? |
 | --- | --- | --- |
 | messageId | id | No |
@@ -199,11 +205,11 @@ The <code class="inline-code">screen</code> call is the mobile equivalent of the
 | pageUrl |  url | No |
 | properties.title | title | No |
 
-
-
 ### Alias
 
 The <Link to="/event-spec/standard-events/alias/">`alias`</Link> call lets you merge different identities of a known user.
+
+**Event parameter mapping**:
 
 | RudderStack property | Serenytics property | Required? |
 | --- | --- | --- |
