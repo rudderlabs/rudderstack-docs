@@ -97,7 +97,6 @@ https://api.rudderstack.com/v2/regulations
 ```
 
 <div class="infoBlock">
-
 RudderStack supports the <code class="inline-code">suppress_with_delete</code> request for the following destinations:
 <ul>
   <li><Link to="/destinations/streaming-destinations/amplitude/">Amplitude</Link></li>
@@ -109,7 +108,11 @@ RudderStack supports the <code class="inline-code">suppress_with_delete</code> r
   <li><Link to="/destinations/streaming-destinations/redis/">Redis</Link></li>
   <li><Link to="/destinations/streaming-destinations/amazon-s3/">S3</Link></li>
 </ul>
+
+You can delete a user by specifying the <code class="inline-code">userId</code> or any custom identifier in the event for all the above-mentioned destinations except <strong>Redis</strong> and <strong>S3</strong>. For <strong>Redis</strong> and <strong>S3</strong>, RudderStack supports deleting a user only by specifying the <code class="inline-code">userId</code>.
 </div>
+
+
 
 ### `regulationType`
 
