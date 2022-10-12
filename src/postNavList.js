@@ -1214,6 +1214,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "mailjet",
+    title: "Mailmodo",
+    link: "/destinations/streaming-destinations/mailjet/",
+    content: [],
+  },
+  {
     key: "mailmodo",
     title: "Mailmodo",
     link: "/destinations/streaming-destinations/mailmodo/",
