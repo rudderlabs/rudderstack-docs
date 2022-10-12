@@ -78,6 +78,7 @@ Follow the below steps to add Adjust to your project depending on your integrati
     <Tab>iOS v2</Tab>
     <Tab>Android</Tab>
     <Tab>Unity</Tab>
+    <Tab>Flutter</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -267,6 +268,47 @@ RudderClient rudderClient = RudderClient.GetInstance(
 </span>
 </li>
 </ol>
+      </TabPanel>
+<TabPanel>
+Follow the steps below to add Adjust to your Flutter Project:
+<ul>
+<li>Add the following <code class="inline-code">dependency</code> to the <code class="inline-code">dependencies</code> section of your <code class="inline-code">pubspec.yaml</code> file.
+<span>
+
+```yaml
+rudder_integration_adjust_flutter: 1.0.0
+```
+</span>
+</li>
+<li>After that, run the below command to install the above added dependency:
+<span>
+
+```groovy
+flutter pub get
+```
+</span>
+</li>
+<li>And then, import the<code class="inline-code">RudderIntegrationAdjustFlutter</code> in your <code class="inline-code">application</code> where you are initializing the SDK.
+<span>
+
+```dart
+import 'package:rudder_integration_adjust_flutter/rudder_integration_adjust_flutter.dart';
+```
+</span>
+</li>
+
+<li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> as shown:
+<span>
+
+```dart
+final RudderController rudderClient = RudderController.instance;
+RudderConfigBuilder builder = RudderConfigBuilder();
+builder.withFactory(RudderIntegrationAdjustFlutter());
+rudderClient.initialize(<WRITE_KEY>, config: builder.build(), options: null);
+```
+</span>
+</li>
+</ul>
       </TabPanel>
     </TabPanels>
 </Tabs>
