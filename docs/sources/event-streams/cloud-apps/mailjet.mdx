@@ -22,7 +22,7 @@ Follow these steps to set up your Mailjet source in the RudderStack dashboard:
 5. Click your profile and select **Account Settings**. Under the **Rest API** section, click **Event notifications (webhooks)**.
 You can either select all the events or the specific ones and add the webhook URL, as shown:
 
-<img src="../../../assets/event-stream-sources/webhook_url_2.png" alt="Mailjet source webhook URL" />
+<img src="../../../assets/event-stream-sources/mailjet-webhook.png" alt="Mailjet source webhook URL" />
 
 ## Event transformation
 
@@ -53,9 +53,59 @@ This section details how RudderStack receives the data from Mailjet source and c
 A sample payload sent by Mailjet is shown below:
 
 ```json
+{
+  "event": "open",
+  "time": 1664443614,
+  "MessageID": 94857068804950690,
+  "Message_GUID": "54d6cdec-f659-4547-8926-13d9c4126b82",
+  "email": "alex@example.com",
+  "mj_campaign_id": 108760,
+  "mj_contact_id": 399962859,
+  "customcampaign": "mj.nl=58424",
+  "ip": "66.249.84.231",
+  "geo": "US",
+  "agent": "Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0 (via ggpht.com GoogleImageProxy)",
+  "CustomID": "",
+  "Payload": ""
+}
 ```
 
 RudderStack transforms the above payload into the following <Link to="/event-spec/standard-events/track/">`track`</Link> payload:
 
 ```json
+{
+  "Message": {
+    "context": {
+      "library": {
+        "name": "unknown",
+        "version": "unknown"
+      },
+      "integration": {
+        "name": "MailJet"
+      },
+      "traits": {
+        "email": "alex@example.com"
+      },
+      "ip": "66.249.84.231",
+      "userAgent": "Mozilla/5.0 (Windows NT 5.1; rv:11.0) Gecko Firefox/11.0 (via ggpht.com GoogleImageProxy)",
+      "externalId": [{
+        "type": "mailjetContactId",
+        "id": 399962859
+      }]
+    },
+    "integrations": {
+      "MailJet": false
+    },
+    "type": "track",
+    "event": "open",
+    "properties": {
+      "ip": "66.249.84.231",
+      "customcampaign": "mj.nl=58424",
+      "mj_campaign_id": 108760,
+      "Payload": ""
+    },
+    "originalTimestamp": "2022-09-29T09:26:54.000Z",
+    "userId": "9c51bf2b379a4c773b1eaa9732405b86"
+  }
+}
 ```
