@@ -29,9 +29,11 @@ Once you have confirmed that the source platform supports sending events to Sere
 
 ## Connection settings
 
-To configure Serenytics as a destination, first, retrieve your data storage URL from the Serenytics dashboard. The URL should look something like ```https://api.serenytics.com/api/data_source/058ae0ed-0092-4fc3-83a9-fcc128e1f42d/push/7df2f94141a985582c6c125db8b8e413ae6afec2```
+To configure Serenytics as a destination, first retrieve your data storage URL from the Serenytics dashboard under the **Data** tab. 
 
-Add the data storage URL to the URL fields in **Connection Settings**:
+<img src="../../assets/event-stream-destinations/serenytics-data-storage-url.png" caption="cool"/><br/>
+
+Then in the RudderStack dashboard, add the data storage URL to the URL fields in **Connection Settings**.<br/>
 
 <img src="../../assets/event-stream-destinations/serenytics-connection-settings.png"/>
 
@@ -144,15 +146,14 @@ rudderanalytics.group(
 
 **Event parameter mapping**:
 
-| RudderStack property | Serenytics property | 
+| RudderStack property | Serenytics property  |
 | --- | --- | 
-| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `user_id` | 
-| `previousId` <br/>`anonymousId` | `previous_id` | 
-| `context.ip` <br/>`request_ip` | `context_ip` | 
-| `receivedAt` | `received_at` | 
-| `sentAt` | `sent_at` | 
+| `groupId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `id` |
+| `context.ip` <br/>`request_ip` | `context_ip` |
+| `receivedAt` | `received_at` |
+| `sentAt` | `sent_at` |
 | `originalTimestamp` | `original_timestamp` |
-| `timestamp` | `timestamp` | 
+| `timestamp` | `timestamp` |
 
 ### Page
 
