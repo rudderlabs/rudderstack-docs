@@ -52,6 +52,8 @@ RudderStack supports the following three types of <Link to="/event-spec/standard
 
 You can map certain `track` events to Iterable's purchase events ([API reference](https://api.iterable.com/api/docs#commerce_trackPurchase)) by specifying them in the <Link to="/destinations/streaming-destinations/iterable/setting-up-iterable/#web-sdk-settings">**Mapping to trigger the purchase events**</Link> setting of the RudderStack dashboard, as shown:
 
+<img src="../../../assets/event-stream-destinations/iterable-purchaseevents.png" alt="Iterable connection settings" />
+
 A sample `track` call for a purchase event is shown below:
 
 ```javascript
@@ -95,7 +97,9 @@ The following table lists the mappings between the RudderStack event properties 
 
 ### `getInAppMessages` events
 
-You can send this type of `track` events to track the users in-app activities and accordingly display pop-up messages and push notifications for them. You can map these events by specifying them in the <Link to="/destinations/streaming-destinations/iterable/setting-up-iterable/#web-sdk-settings">**Mapping to trigger the getInApp messages**</Link> setting of the RudderStack dashboard.
+You can send this type of `track` events to track the users in-app activities and accordingly display pop-up messages and push notifications for them. You can map these events by specifying them in the <Link to="/destinations/streaming-destinations/iterable/setting-up-iterable/#web-sdk-settings">**Mapping to trigger the getInApp messages**</Link> setting of the RudderStack dashboard, as shown:
+
+<img src="../../../assets/event-stream-destinations/iterable-getinappmessages.png" alt="Iterable connection settings" />
 
 You can also customize the display configuration for the push notifications using the <Link to="/destinations/streaming-destinations/iterable/setting-up-iterable/#in-app-message-settings">In-app message settings</Link> in the RudderStack dashboard.
 
