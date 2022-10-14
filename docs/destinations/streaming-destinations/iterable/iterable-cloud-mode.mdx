@@ -1,13 +1,13 @@
 ---
-title: "Engage Cloud Mode"
-description:  Detailed technical documentation on sending events to Engage using the RudderStack cloud mode.
-aliases: ["Engage destination"]
+title: "Iterable Cloud Mode"
+description:  Detailed technical documentation on sending events to Iterable using the RudderStack cloud mode.
+aliases: ["Iterable destination"]
 ---
 
-RudderStack lets you send your event data to Engage via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+RudderStack lets you send your event data to Iterable via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/iterable">GitHub repository</a>.
 </div>
 
 <div class="infoBlock">
@@ -51,7 +51,6 @@ Similarly, RudderStack uses Iterable's [browser token registration API](https://
 If the `deviceToken` associated with the push notification is present in `context` of the event payload, then RudderStack will map the user with the device to register for push. This will add the data if it doesn't exist yet. It will also update data fields on the device.
 
 <div class="infoBlock">
-
 To know more about Iterable's push notification registration feature for mobile devices, refer to their <a href="https://support.iterable.com/hc/en-us/articles/115000331943#_2-create-a-mobile-app-in-iterable">Android</a> and <a href="https://support.iterable.com/hc/en-us/articles/115000315806#_4-create-a-mobile-app-in-iterable">iOS</a> documentation.
 </div>
 
@@ -60,15 +59,13 @@ To know more about Iterable's push notification registration feature for mobile 
 When you call the `page` method, the RudderStack sends a `track` event to Iterable with the `userId`, `email`, and `eventName` parameters. If the user does not already exist in Iterable, RudderStack will add them to the system as long as `email` is present in the event. If `email` is not present, Iterable will reject the event.
 
 <div class="infoBlock">
-
 Iterable requires <code class="inline-code">email</code> for the first time you call <code class="inline-code">page</code> for a given user. The subsequent events can contain <code class="inline-code">userId</code>.
 </div>
 
 If the name of your page is `Application Home`, then RudderStack sends the event to Iterable as `Application Home Page`.
 
 <div class="warningBlock">
-
-The event name will differ according to the settings you specify in the RudderStack dashboard. Refer to the <a href="#connection-settings">Connection settings</a> section above for more information.
+The event name will differ according to the settings you specify in the RudderStack dashboard. Refer to the <Link to="#connection-settings">Connection settings</Link> section above for more information.
 </div>
 
 A sample `page` call is shown below:
@@ -90,8 +87,7 @@ The `screen` event is the mobile equivalent of the `page`. When you make a `scre
 If the name of your screen is `Main Activity`, RudderStack sends the event to Iterable as `Main Activity Screen`.
 
 <div class="warningBlock">
-
-The event name will differ according to the settings you specify in the RudderStack dashboard. Refer to the <a href="#connection-settings">Connection settings</a> section above for more information.
+The event name will differ according to the settings you specify in the RudderStack dashboard. Refer to the <Link to="#connection-settings">Connection settings</Link> section above for more information.
 </div>
 
 A sample `screen` call is as shown:
@@ -119,7 +115,6 @@ rudderanalytics.alias("new@email.com", "current@email.com");
 When you make a `track` call, RudderStack uses Iterable's [Track API](https://api.iterable.com/api/docs#events_track) to send the events. The event properties are sent as data fields in the request, while the name of the event is sent as a custom event.
 
 <div class="warningBlock">
-
 Iterable requires <code class="inline-code">email</code> for the first time you send a <code class="inline-code">track</code> event for a given user. If a user does not exist, Iterable creates new users for those <code class="inline-code">track</code> calls which have <code class="inline-code">email</code>.
 </div>
 
@@ -148,7 +143,6 @@ You can find the relevant details of the e-commerce events in the <Link to="/eve
 RudderStack supports the e-commerce event `Order Completed` and sends the other events as generic `track` events. Refer to the corresponding Iterable endpoint details in the [Track a purchase API](https://api.iterable.com/api/docs#commerce_trackPurchase).
 
 <div class="infoBlock">
-
 RudderStack requires the user properties, item properties, and <code class="inline-code">total</code> to successfully send the <strong>Order Completed</strong> event.
 </div>
 
@@ -188,7 +182,6 @@ rudderanalytics.track("Order Completed", {
 RudderStack supports the e-commerce event `Product Added` or `Product Removed` and sends the information to Iterable via the [updateCart endpoint](https://api.iterable.com/api/docs#commerce_updateCart), corresponding to updating a user's shopping cart items.
 
 <div class="warningBlock">
-
 RudderStack requires the user and item properties to successfully send the <strong>Order Completed</strong> event to Iterable. Also, you must  send the whole updated cart details and not just the updated individual items added/removed from the cart.
 </div>
 
