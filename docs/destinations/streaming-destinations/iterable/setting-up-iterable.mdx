@@ -1,0 +1,66 @@
+---
+title: "Setting up Iterable"
+description: Step-by-step guide on setting up Iterable as a destination in RudderStack.
+aliases: ["Iterable.so", "Iterable destination"]
+---
+
+RudderStack supports sending events to Iterable via the following <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link>:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     |        Supported       |               |               |
+| **Cloud mode**      |        Supported       |  Supported   |   Supported            |
+
+Once you have confirmed that the source platform supports sending events to Iterable, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Iterable**.
+2. Assign a name to your destination and click **Continue**.
+
+## Connection settings
+
+To successfully configure Iterable as a destination, you will need to configure the following settings:
+
+<img src="../../assets/event-stream-destinations/iterable-connection-settings.png" alt="Iterable connection settings" />
+
+- **Iterable API Key**: Enter your Iterable API key. You can obtain it by going to the **API Configuration Settings** section in your Iterable account.
+
+### Other settings
+
+- **Map All Pages to Single Event Name**: If this setting is enabled, all the pages will be tracked to Iterable with the same event name.
+  - For `page` events, RudderStack will set the event name as `Loaded a Page`.
+  - For `screen` events, RudderStack will set the event name as `Loaded a Screen`.
+- **Track All Pages**: If this setting is enabled, all the page events will be sent to Iterable.
+- **Track Categorized Pages**: If this setting is enabled, only pages with a category present will be tracked.
+- **Track Named Pages**: If this setting is enabled, RudderStack will track only the pages having a name.
+
+### Web SDK settings
+
+The following settings are applicable if you're sending the events to Iterable via the <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the <Link to="https://github.com/Iterable/iterable-web-sdk">Iterable web SDK (Beta)</Link>:
+
+<div class="infoBlock">
+It is highly recommended to use this method if you want to leverage Iterable's web push notifications feature for your website.
+</div>
+
+- **Use device mode to send events**: Enable this setting to send your events to Iterable via the web device mode.
+- **Mapping to trigger the getInApp messages**: Use this setting to specify the event names for which you want to trigger the website push notifications.
+- **Mapping to trigger the purchase events**: Use this setting to specify the event names for which you want to trigger the Iterable purchase events.
+- **Identifier to identify a user over a session**: Select the identifier from **Email** and **UserID**. RudderStack uses this identifier to uniquely identify a user during the session.
+- **Trigger a track event for web in-app push**: Enable this setting to track your website in-app push notifications.
+- **Package Name**: Enter the name of your website for which the in-app notifications are shown.
+- **Time (in ms) for messages to animate in and out**: 
+- 
+
+
+## FAQ
+
+### Where can I find the Iterable API key?
+
+You can get the Iterable API key by navigating to **Integrations** > **API Keys**. For more information, refer to this [Iterable documentation](https://support.iterable.com/hc/en-us/articles/360043464871-API-Keys).
+
+### What does the **Track Named Pages** setting imply?
+
+If the **Track Named Pages** setting is enabled in the RudderStack dashboard, RudderStack will only track the pages that have a name assigned to them.
+
+### What does the **Track Categorized Pages** imply?
+
+If the **Track Categorized Pages** setting is enabled in the RudderStack dashboard, RudderStack will only track the pages that have a category assigned to them.
