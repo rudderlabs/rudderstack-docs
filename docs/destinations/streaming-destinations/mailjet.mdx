@@ -30,7 +30,7 @@ To successfully set up Mailjet as a destination, you need to configure the follo
 
 - **Mailjet API Key**: Enter your Mailjet API key. For more information on obtaining your API key, refer to the <Link to="#faq">FAQ</Link> section below.
 - **Mailjet API Secret**: Enter your Mailjet secret key.
-- **Mailjet Contact List ID**: Enter your Mailjet contact list ID. RudderStack will use this ID if the list ID is not provided via the `externalId` field in the event's payload.
+- **Mailjet Contact List ID**: Enter your Mailjet contact list ID. RudderStack will use this ID if the list ID is not provided via the `externalId` field in the event's payload. For more information on obtaining your contact list ID, refer to the <Link to="#faq">FAQ</Link> section below.
 - **Map RudderStack user attributes to Mailjet contact properties**: Use this setting to map your RudderStack event properties to specific custom properties created in the Mailjet dashboard. For more information on creating and managing contact properties, refer to this <a href="https://documentation.mailjet.com/hc/en-us/articles/360043176353-How-to-create-manage-contact-properties-">Mailjet documentation</a>.
 
 <div class="warningBlock">
@@ -89,3 +89,13 @@ To obtain your Mailjet API key and secret, follow these steps:
 2. From the top right section of the dashboard, click your name and go to **Account settings** > **REST API** > **API Key Management (Primary and Sub-account)**. Your primary API key and secret will listed here, as shown:
 
 <img src="../../assets/event-stream-destinations/mailjet-apikey-secret.png" alt="Mailjet API key and secret key" />
+
+### Where can I find contact list ID in Mailjet?
+
+To get your Mailjet contact list ID, follow these steps:
+
+1. Log into your [Mailjet dashboard](https://app.mailjet.com/account).
+2. Go to **Contacts** > **Contact Lists**.
+3. You can find your contact lists and the associated IDs listed here, as shown:
+
+<img src="../../assets/event-stream-destinations/mailjet-contactlistid.png" alt="Mailjet contact list ID" />
