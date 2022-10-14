@@ -7,7 +7,7 @@ description: >-
 [Mailjet](https://www.mailjet.com/) is a popular email marketing and delivery platform. It lets you create and send impactful email marketing campaigns, newsletters, and automated emails to grow your business.
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/mailjet">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/mailjet">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -36,7 +36,7 @@ To successfully set up Mailjet as a destination, you need to configure the follo
 Refer to the <Link to="#faq">FAQ</Link> section for more information on obtaining the Mailjet API Key, secret key, and contact list ID.
 </div>
 
-- **Map RudderStack user attributes to Mailjet contact properties**: Use this setting to map your RudderStack event properties to specific custom properties created in the Mailjet dashboard. For more information on creating and managing contact properties, refer to this <a href="https://documentation.mailjet.com/hc/en-us/articles/360043176353-How-to-create-manage-contact-properties-">Mailjet documentation</a>.
+- **Map RudderStack user attributes to Mailjet contact properties**: Use this setting to map your RudderStack event properties to specific custom properties created in the Mailjet dashboard. For more information on creating and managing contact properties, refer to the <a href="https://documentation.mailjet.com/hc/en-us/articles/360043176353-How-to-create-manage-contact-properties-">Mailjet documentation</a>.
 
 <div class="warningBlock">
 Mailjet will not create a contact for the event properties configured in the RudderStack dashboard but not created in Mailjet.
@@ -70,7 +70,7 @@ rudderanalytics.identify('1hKOmRA4el9Z', {
 When sending events to Mailjet, note the following:
 
 - The `email` field is mandatory. Otherwise, Mailjet rejects the events.
-- You can specify the Mailjet list ID either via the RudderStack dashboard or from the `externalId` field.
+- You can specify the Mailjet list ID either in the **Mailjet Contact List ID** setting of the RudderStack dashboard or in the `externalId` field.
 - You can specify the Mailjet action (adding/removing user) in the `Action` field of the `integrations` object. If no action is specified, RudderStack sets this field to `addnoforce`, by default.
 
 <div class="infoBlock">
@@ -85,7 +85,7 @@ The following table lists the mappings between the RudderStack attributes and th
 | :--------------| :---------|
 | `traits.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `Email` |
 | `traits.name` | `Name` |
-| `context.traits.IsExcludedFromCampaigns`, `traits.IsExcludedFromCampaigns` | `IsExcludedFromCampaigns` |
+| `context.traits.IsExcludedFromCampaigns` <br/> `traits.IsExcludedFromCampaigns` | `IsExcludedFromCampaigns` |
 
 
 ## FAQ
