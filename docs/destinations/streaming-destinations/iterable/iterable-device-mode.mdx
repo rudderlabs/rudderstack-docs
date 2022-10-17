@@ -1,0 +1,150 @@
+---
+title: "Iterable Device Mode"
+description: Detailed technical documentation on sending events to Iterable using the RudderStack web device mode.
+aliases: ["Iterable destination"]
+---
+
+RudderStack lets you send your event data to Iterable via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK.
+
+<div class="successBlock">
+You can use this connection mode to dynamically send web in-app messages to your customers along with customized push notifications.
+</div>
+
+<div class="infoBlock">
+Find the open source JavaScript SDK code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/Iterable">GitHub repository</a>.
+</div>
+
+## Identify
+
+For the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call, RudderStack uses either <a href="https://github.com/Iterable/iterable-web-sdk#initialize">Iterable's `setEmail` or `setUserId` method</a> to identify a given user. You can configure this using the <Link to="/destinations/streaming-destinations/iterable/setting-up-iterable/#web-sdk-settings">**Identifier to identify a user over a session**</Link> setting in the RudderStack dashboard.
+
+<div class="infoBlock">
+Making an <code class="inline-code">identify</code> call is necessary to associate the <code class="inline-code">track</code> events and trigger the web push notifications for an identified user.
+</div>
+
+<div class="infoBlock">
+By default, RudderStack prioritizes <code class="inline-code">email</code> over <code class="inline-code">userId</code>.
+</div>
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("", {
+    "email": "alex@example.com"
+},{ "integrations": {
+    "ITERABLE": {
+        "jwt_token" : "eyJhbGciOiJIUzXXXXXXXXX6IkpXVCJ9.eyJlbXXXXXXXXhc2hhc3ZpQHJ1ZGRlcnN0XXXXXXXXXXdCI6MTY2NTAzMTkzNCwiZXhwIjXXXXXXXXxNjY2MDMxOTM0fQ.u0wwq6YOB2GXXXXXXXXX2O9GUpW6BHRF5PCmk"
+    }
+}})
+```
+
+When you call `identify`, RudderStack initializes the SDK using the `email`/`userId` and the JWT token from the `integrations` object.
+
+<div class="warningBlock">
+RudderStack <strong>does not</strong> automatically generate JWT tokens on the users' behalf to initialize the Iterable web SDK for security reasons. You need to set a specific authorization logic within your web app to generate a JWT before you can start making requests using the SDK.
+</div>
+
+<div class="infoBlock">
+To generate the JWT token for initializing the Iterable web SDK, refer to the <a href="https://support.iterable.com/hc/en-us/articles/360050801231-JWT-Enabled-API-Keys-#sample-python-code-for-jwt-generation">Iterable support page</a>.
+</div>
+
+## Track
+
+RudderStack supports the following three types of <Link to="/event-spec/standard-events/track">`track`</Link> events in the web device mode:
+
+### Purchase events
+
+You can map certain `track` events to Iterable's purchase events ([API reference](https://api.iterable.com/api/docs#commerce_trackPurchase)) by specifying them in the <Link to="/destinations/streaming-destinations/iterable/setting-up-iterable/#web-sdk-settings">**Mapping to trigger the purchase events**</Link> setting of the RudderStack dashboard, as shown:
+
+<img src="../../../assets/event-stream-destinations/iterable-purchaseevents.png" alt="Iterable connection settings" />
+
+A sample `track` call for a purchase event is shown below:
+
+```javascript
+rudderanalytics.track("purchase event", {
+  checkout_id: "12345",
+  order_id: "1234",
+  affiliation: "Apple Store",
+  total: 20,
+  revenue: 15.0,
+  shipping: 22,
+  tax: 1,
+  discount: 1.5,
+  coupon: "ImagePro",
+  currency: "USD",
+  products: [{
+      product_id: "123",
+      sku: "G-15",
+      name: "Chess",
+      price: 14,
+      quantity: 1,
+      category: "Games",
+      url: "https://www.mywebsite.com/product/path",
+      image_url: "https://www.mywebsite.com/product/path.jpg",
+    }
+  ],
+})
+```
+
+The following table lists the mappings between the RudderStack event properties and the Iterable properties in case of the purchase events:
+
+| RudderStack property | Iterable property |
+| :--------------| :---------|
+| `properties.name` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `items[].name` |
+| `properties.order_id` <br/> `properties.checkout_id` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `id` |
+| `properties.total` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `total` |
+| `properties.product_id` | `items[].id` |
+| `properties.sku` | `items[].sku` |
+| `properties.price` | `items[].price` |
+| `properties.quantity` | `items[].quantity` |
+| `properties.image_url` | `items[].url` |
+
+The above properties can be passed in any of the following ways:
+- `properties` object (for a single product), as shown in the above table.
+- `products` array as multiple objects (for multiple products), for example, `properties.products[0].name`. One example where you can have an array of products is the <Link to="/event-spec/ecommerce-events-spec/ordering/#order-completed">Order Completed</Link> event.
+
+### `getInAppMessages` events
+
+You can send this type of `track` events to track the users in-app activities and accordingly display pop-up messages and push notifications for them. The below image shows an example of a web push notification:
+
+<img src="../../../assets/event-stream-destinations/web-push-notifications-iterable.png" />
+
+You can map these events by specifying them in the <Link to="/destinations/streaming-destinations/iterable/setting-up-iterable/#web-sdk-settings">**Mapping to trigger the getInApp messages**</Link> setting of the RudderStack dashboard, as shown:
+
+<img src="../../../assets/event-stream-destinations/iterable-getinappmessages.png" alt="Iterable connection settings" />
+
+You can also customize the display configuration for the push notifications using the <Link to="/destinations/streaming-destinations/iterable/setting-up-iterable/#in-app-message-settings">In-app message settings</Link> in the RudderStack dashboard.
+
+<div class="infoBlock">
+In case multiple <code class="inline-code">getInAppMessages</code> events are triggered, the SDK delivers all the queued in-app notifications.
+</div>
+
+A sample `track` call mapped to Iterable's `getInAppMessages` events is shown below:
+
+```javascript
+rudderanalytics.track("trigger event",{})
+```
+
+### Custom events
+
+RudderStack sends all the `track` events that are not mapped to Iterable's purchase events or `getInAppMessages` events as custom events.
+
+A sample custom `track` event is shown below:
+
+```javascript
+rudderanalytics.track(
+  "custom event", {
+    custom_id: "22222",
+    name: "Some item",
+    website_url: "http://www.exampledomain.com/products/some-item",
+  })
+```
+
+The following table lists the mappings between the RudderStack event properties and the Iterable properties in case of the custom events:
+
+| RudderStack property | Iterable property |
+| :--------------| :---------|
+| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `eventName` |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if email is not present.</span> | `userId` |
+| `context.traits.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if userId is not present.</span> | `email` |
+| `properties` | `dataFields` |

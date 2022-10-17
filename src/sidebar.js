@@ -1302,8 +1302,22 @@ export const jsonData = [
             {
                 title: "Iterable",
                 link: "/destinations/streaming-destinations/iterable/",
-                content: []
-            }, 
+                content: [
+                    {
+                        title: "Setting Up Iterable",
+                        link: "/destinations/streaming-destinations/iterable/setting-up-iterable/",
+                        content: []
+                    }, {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/iterable/iterable-cloud-mode/",
+                        content: []
+                    }, {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/iterable/iterable-device-mode/",
+                        content: []
+                    },
+                ]
+            },
             {
                 title: "Klaviyo",
                 link: "/destinations/streaming-destinations/klaviyo/",
