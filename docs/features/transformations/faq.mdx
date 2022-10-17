@@ -5,16 +5,6 @@ description: Answers to some of the commonly asked questions related to RudderSt
 
 ## Transformations
 
-### What are RudderStack transformations? How do they work?
-
-RudderStack's **Transformations** feature enables you to code custom JavaScript functions to implement specific use-cases on your event data. Some of the use-cases are:
-
-- Filtering / sampling events
-- Cleaning / aggregating data
-- Data masking or removing sensitive PII information in the events to ensure data privacy
-- Enriching events by implementing static logic or leveraging an external API
-- Using an API to implement specific actions on the events
-
 ### Are there any sample user transformations I can refer to?
 
 Yes, you can refer to the [Sample RudderStack Transformations](https://github.com/rudderlabs/sample-user-transformers) GitHub repository.
@@ -29,35 +19,17 @@ A transformation is always connected to a destination. RudderStack gives you the
 
 No, it is not possible to connect multiple transformations to a destination. Instead, you can implement multiple use-cases in the same transformation, for example, event filtering followed by cleaning.
 
-### Where does RudderStack apply the transformations? Is it on the source or the destination events?
-
-RudderStack tracks and collects the events at the source, applies the transformation logic to the events, and then forwards the transformed events to the destination (connected to the source).
-
-The following image summarizes the transformation workflow:
-
-<img src="../../assets/features/transformations-workflow.png" alt="Transformations workflow" />
-
 ### Can I write a transformation that can be applied to a small batch of events?
 
-Yes, you can use the `transformBatch` function instead of `transformEvent`.
-
-```javascript
-export function transformBatch(events, metadata) {
-    return events;
-}
-```
+Yes, you can use the `transformBatch` function to apply a transformation to a batch of events.
 
 <div class="infoBlock">
-For more information on using the <code class="inline-code">transformBatch</code> function, refer to the <Link to="/features/transformations/#using-transformbatch-instead-of-transformevent">Using <code class="inline-code">transformBatch</code> instead of <code class="inline-code">transformEvent</code></Link> section.
-</div>
-
-<div class="dangerBlock">
-If you are using <code class="inline-code">transformBatch</code> and want to ensure event ordering, make sure you pass on the <code class="inline-code">messageId</code> from the input event to the output event. Without the <code class="inline-code">messageId</code>, there is a strong possibility that RudderStack will <strong>not</strong> maintain the event ordering.
+For more information, refer to the <Link to="/features/transformations/using-transformations#applying-transformation-on-a-batch-of-events">Applying transformation on a batch of events</Link> section.
 </div>
 
 ### What is a referenced transformation?
 
-If a library `L` is <Link to="/features/transformations/#using-libraries-in-transformations">imported by the transformations</Link> `T1`, `T2`, and `T3`, then `T1`, `T2`, and `T3`are called the referenced transformations to `L`.
+If a library `L` is <Link to="/features/transformations/using-libraries">imported by the transformations</Link> `T1`, `T2`, and `T3`, then `T1`, `T2`, and `T3`are called the referenced transformations to `L`.
 
 ### I used to write transformations like `function transform(events) {}`. Why am I not able to create new transformations this way?
 
@@ -73,13 +45,41 @@ export function transformEvent(event, metadata) {
 
 You cannot update an existing `Version: V0` transformation to the current version.
 
-Instead, you can <Link to="/features/transformations/#adding-a-transformation">create a new transformation</Link> based on the <Link to="/features/transformations/#transformevent-definition">`transformEvent` definition</Link>, then reconnect your destinations with this transformation. Finally, delete the existing `Version: V0` transformation.
+Instead, you can <Link to="/features/transformations/using-transformations#adding-a-transformation">create a new transformation</Link> based on the <Link to="/features/transformations/using-transformations#transformevent-function">`transformEvent` function</Link>, then reconnect your destinations with this transformation. Finally, delete the existing `Version: V0` transformation.
 
-## What are transformation and library revisions?
+### What are transformation and library revisions?
 
 Using the <Link to ="/api/transformation-api/">Transformations API</Link>, you can create and store a transformation or library as a draft without publishing them. These are called revisions.
 
 Once the revisions meet the test criteria, you can restore and publish them for production use.
+
+## Using Transformations in device mode 
+
+### While sending events in device mode, how should I choose between event filtering and transformations?
+
+You can choose any based on your requirements:
+
+- **<Link to="/sources/event-streams/sdks/event-filtering/">Event filtering</Link>**: When you just want to filter out the events based on the event names. The event filtering takes place within the SDK and is **only applicable** for the `track` events.
+- **Transformations**: Transformations is a generic feature which can be used to manipulate the events, mask data, enrich events, implement specific actions on events. It involves a call to an external RudderStack service.
+
+In case you plan to use both the above-mentioned features, your events will be filtered (based on the <Link to="/sources/event-streams/sdks/event-filtering/">event filtering</Link> settings in the RudderStack dashboard) and transformed (based on the applied transformation) before being sent to the destination.
+
+### Is there any added performance cost to using the transformations in device mode?
+ 
+Yes, RudderStack makes a network call for each event (in case of JavaScript SDK) or a batch of events (in case of mobile SDKs) when the transformations are used in the device mode.
+    
+### Can I switch back to the previous version of an SDK while using a transformation in device mode?
+
+- **For Mobile SDKs**: Yes, you can switch back to the previous SDK version. However, the transformation might not be supported in the previous version.
+- **For JavaScript SDK**: It depends on the SDK installation method:
+    - If installed through RudderStack CDN, it's not possible to downgrade the SDK version.
+    - If installed through NPM, it's possible to downgrade the SDK version. However, the transformation might not be supported in the previous version.
+
+### Will my event be lost in case of a network error while using a transformation in device mode?
+
+**No events are lost in case of mobile SDK's** as they are saved locally in the database before being sent to the destination. Once sent successfully, they're removed from the database.
+
+However, there is a chance of events getting lost while sending them via JavaScript SDK in case of a network error as they are not persisted. However, the SDK retries multiple times before dropping the event.
 
 ## Libraries
 
@@ -99,13 +99,13 @@ For more information, refer to the <Link to="/features/transformations/#how-rudd
 
 ### Why am I not able to update my library?
 
-If you update a library, <Link to="/features/transformations/#how-rudderstack-tests-library-updates">RudderStack tests the new library code</Link> along with the referenced transformation code. This ensures that the transformation does not break due to any changes in the library.
+If you update a library, <Link to="/features/transformations/faq#how-does-rudderstack-test-any-library-updates">RudderStack tests the new library code</Link> along with the referenced transformation code. This ensures that the transformation does not break due to any changes in the library.
 
 If you're unable to update the library, it is likely that that the transformation is breaking because of the changes. Add the referenced transformation code and test the changes thoroughly.
 
 ### What is a referenced library?
 
-If a transformation `T` <Link to="/features/transformations/#using-libraries-in-transformations">imports a library</Link> `L` in its code, then `L` is called as a referenced library to `T`. 
+If a transformation `T` <Link to="/features/transformations/using-libraries">imports a library</Link> `L` in its code, then `L` is called as a referenced library to `T`. 
 
 ### I cannot import libraries into my existing transformations. What should I do?
 
@@ -115,7 +115,7 @@ If you cannot import libraries into your existing transformations, there is a st
 
 To import the libraries in a transformation, follow these steps:
 
-1. Create a new transformation by following the steps in the <Link to="/features/transformations/#adding-a-transformation">Adding a transformation</Link> section.
-2. Add the updated transformation code as specified in the <Link to="/features/transformations/#transformevent-definition">`transformEvent` definition</Link> section.
-3. Connect the transformation to your destination. For more information, refer to the <Link to="/features/transformations/#connecting-transformation-to-a-destination">Connecting a transformation to the destination</Link> section.
-4. You can then import libraries in the transformation. For more information, refer to the <Link to="/features/transformations/#using-libraries-in-transformations">Using libraries in transformations</Link> section.
+1. Create a new transformation by following the steps in the <Link to="/features/transformations/using-transformations#adding-a-transformation">Adding a transformation</Link> section.
+2. Add the updated transformation code as specified in the <Link to="/features/transformations/using-transformations#transformevent-function">`transformEvent` function</Link> section.
+3. Connect the transformation to your destination. For more information, refer to the <Link to="/features/transformations/using-transformations#connecting-transformation-to-a-destination">Connecting a transformation to the destination</Link> section.
+4. You can then import libraries in the transformation. For more information, refer to the <Link to="/features/transformations/using-libraries">Using libraries in transformations</Link> section.

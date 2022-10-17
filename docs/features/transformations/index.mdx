@@ -15,45 +15,35 @@ RudderStack's **Transformations** feature enables you to write custom JavaScript
   videoId={'C11Na9oIv-E'}
 />
 
-You can use this feature across your <Link to="/sources/cloud-apps/">Cloud Apps</Link>, <Link to="/sources/reverse-etl/">Reverse ETL</Link>, and <Link to="/sources/extract/">Cloud Extract</Link> pipelines.
+You can use this feature across your <Link to="/sources/event-streams/">Event Streams</Link>, <Link to="/sources/extract/">Cloud Extract</Link>, and <Link to="/sources/reverse-etl/">Reverse ETL</Link> pipelines.
 
 <div class="infoBlock">
-Refer to our <a href="https://github.com/rudderlabs/sample-user-transformers">Sample RudderStack Transformations</a> repository for some useful templates that you can use to create your own transformations.
+  <ul>
+<li>In <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, you can use up to 3 transformations in the free plan. To use unlimited Transformations, you need to be a <a href="https://rudderstack.com/pricing/">Pro/Enterprise</a> user.</li>
+
+<li>In <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, the Transformations feature is only available for the <a href="https://www.rudderstack.com/enterprise-quote/">Enterprise</a> users.</li>
+ </ul>
 </div>
 
 <div class="warningBlock">
-You can use transformations only when sending events to destinations via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+While using the Transformations feature to send events to destinations via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>, <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-react-native-sdk/">React-Native</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-cordova-sdk/">Cordova</Link> SDKs are supported.
 </div>
 
 ## Key features
 
-Some key features of RudderStack transformations are listed below:
+Some key features of RudderStack Transformations are listed below:
 
-- You can apply the transformations to your events in real-time.
-- You can programmatically add and remove transformations using the <Link to="/api/transformation-api/">Transformations API</Link>.
+- You can apply the Transformations to your events in real-time.
+- You can programmatically add and remove Transformations using the <Link to="/api/transformation-api/">Transformations API</Link>.
 - They're easier to build, manage, and debug, and reuse.
-- You can create an organization-wide sandbox where your team can store the transformations before publishing them in a production environment.
-- You can version control your transformations.
+- You can create an organization-wide sandbox where your team can store the Transformations before publishing them in a production environment.
+- You can version control your Transformations.
 
 <div class="infoBlock">
 Read more about why your data pipeline needs to have an efficient event transformations capability in the <a href="https://rudderstack.com/blog/the-future-of-data-pipeline-tools-must-include-better-transformations-than-etl-ever-had">RudderStack blog</a>.
 </div>
 
-## How do transformations work?
-
-At a high level, once you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination, RudderStack:
-
-1. Tracks and collects events at the source
-1. Applies the transformation logic to the your events
-1. Forwards the transformed event to your connected destination
-
-<img src="../../assets/features/transformations-workflow.png" alt="Transformations workflow" />
-
-<div class="infoBlock">
-Refer to the <Link to="/features/transformations/faq/">Transformations FAQ</Link> for commonly asked questions on this feature.
-</div>
-
-### Use case
+## Use case
 
 Suppose you want to set the `context.os` field to `Android` for all the events, irrespective of the actual platform RudderStack tracks the event from. You can write a simple transformation to do this:
 
@@ -92,32 +82,6 @@ You can also add other functions and call them from within <code class="inline-c
   <img src="../../assets/features/adding-a-transformation-3.png" alt="Adding a Transformation" />
 
 7. To save the transformation, click **Save**.
-
-### Debugging with logs
-
-RudderStack enables you to capture any event-related information in the form of logs while running a test on your transformation. You can do this by including the `log` function in your transformation code. 
-
-An example of using the `log` function is shown below:
-
-```javascript
-export function transformEvent(event, metadata) {
-  const meta = metadata(event);
-  event.sourceId = meta.sourceId;
-
-  log("Event Name is", event.event, ";", "Message ID is", event.messageId);
-  log("Source ID is", meta.sourceId);
-
-  return event;
-}
-```
-
-On adding the above transformation and clicking **Run Test**, you can see the resulting log in the **Logs** section of the dashboard, as shown:
-
-<img src="../../assets/features/transformation-log.png" alt="Transformation log" />
-
-<div class="infoBlock">
-You can pass a string, number, or an object as an argument to the <code class="inline-code">log</code> function.
-</div>
 
 ## Connecting transformation to a destination
 
@@ -194,133 +158,6 @@ export function transformEvent(event, metadata) {
 }
 ```
 
-## Applying transformation on a batch of events
-
-You can also perform any aggregation or roll-up operation on a batch of events using the `transformBatch` function instead of `transformEvent`, as shown:
-
-```javascript
-export function transformBatch(events, metadata) {
-    return events;
-}
-```
-
-<div class="dangerBlock">
-If you want to ensure event ordering while using <code class="inline-code">transformBatch</code>, make sure you pass the <code class="inline-code">messageId</code> from the input event to the output event. Without the <code class="inline-code">messageId</code>, RudderStack will <strong>not</strong> guarantee the event ordering. It is highly recommended to use <code class="inline-code">transformEvent</code> as much as possible, as it ensures event ordering.
-</div>
-
-## Libraries
-
-One of the key features of RudderStack transformations is the ability to reuse the transformation code in other transformations using the **Libraries** feature.
-
-### Adding a library
-
-To add a new library, follow these steps:
-
-1. In the [RudderStack dashboard](https://app.rudderstack.com/), go to **Enhance** > **Transformations** and click the **Libraries** tab, as shown:
-
-<img src="../../assets/features/adding-a-library-1.png" alt="Adding a library" />
-
-2. Click **New library**.
-3. Add the library **Name**, **Description** and write the function you want to reuse across different transformations. You can also add multiple functions in a single library, as shown:
-
-<img src="../../assets/features/adding-a-library-2.png" alt="Adding a library" />
-
-4. Click **Run Test** to ensure the library code has the correct syntax.
-
-### Using libraries in transformations
-
-To use the libraries in your existing transformations, refer to the **Import Library Name** option in the RudderStack dashboard, as shown:
-
-<img src="../../assets/features/libraries-in-transformations.png" alt="Using libraries in transformations" />
-
-<div class="infoBlock">
-RudderStack converts the library name into <strong>camel case without spaces</strong>; this becomes your <strong>library handle</strong> which you can use across multiple transformations. For example, if your library name is <code class="inline-code">Sample Transformation Library</code>, then the library handle would be <code class="inline-code">sampleTransformationLibrary</code>.
-</div>
-
-You can then use the library in a transformation with a simple `import` statement. Refer to the below use case for more information.
-
-#### Use case
-
-Suppose you want to import a function `rudderEmail` from the `Is Rudder Email` library to filter events that don't have the email address containing the RudderStack domain.
-
-The `rudderEmail` function is as follows:
-
-```javascript
-export function rudderEmail(email) {
-    return /@(rudderlabs|rudderstack)| \+ruddertest/.test(email);
-}
-```
-
-The following code snippet demonstrates how you can implement this in a transformation:
-
-```javascript
-import { rudderEmail } from "isRudderEmail";
-export function transformEvent(event) {
-  const email =
-    event.context && event.context.traits && event.context.traits.email;
-  if (email) {
-    if (!rudderEmail(email)) return;
-  }
-  return event;
-}
-```
-
-On clicking **Run Test**, a sample event not containing the RudderStack email domain is filtered out, as shown:
-
-<img src="../../assets/features/libraries-in-transformations-test.png" alt="Filtering out events using libraries in transformation" />
-
-### Importing multiple functions from a single library
-
-The following snippets highlight how to properly import functions from a library:
-
-```javascript
-// ---------------
-import { getLoss } from "getFinanceData";
-
-// OR
-
-import { getLoss, getRevenue, getProfit } from "getFinanceData";
-import {
-  getLoss,
-  getRevenue,
-  getProfit
-} from "getFinanceData";
-
-// For default getPrice import
-import getPrice, { getRevenue, getProfit } from "getFinanceData";
-
-// alias imports
-import getPrice as gp, { getRevenue as gr, getProfit } from "getFinanceData";
-// usage: gp(event), gr(event), getProfit(ev)
-
-import * as GFD from "getFinanceData";
-// usage: GFD.getRevenue(ev), GFD.getProfit(ev)
-// for default import: GFD.default(ev)
-```
-
-The following snippets highlight the **incorrect** way of importing the library functions:
-
-```javascript
-// -----------------
-import * from "getFinanceData";
-getPrice(ev)
-
-// OR
-
-import getPrice as gp from "getFinanceData";
-getPrice(ev)
-```
-
-### Deleting a library
-
-To delete a transformation, go to **Enhance** > **Transformations** and click the **Libraries** tab. button next to the transformation that you want to delete, as shown:
-
-<img src="../../assets/features/deleting-a-library.png" alt="Deleting a library" />
-
-<div class="warningBlock">
-You cannot delete a <Link to="/features/transformations/faq#what-is-a-referenced-library">referenced library</Link>.
-</div>
-
 ## Making external API requests
 
 You can make any number of external API requests in your transformation functions and use the response to enrich your events. 
@@ -380,20 +217,3 @@ export async function transformEvent(event) {
   return event;
 }
 ```
-
-## Limits
-
-You should take into account the following memory and time limits when invoking a transformation:
-
-| Parameter    | Limit     |
-| :----------- | :-------- |
-| Memory limit | 128 MB      |
-| Execution time limit   | 4 seconds |
-
-<div class="dangerBlock">
-The user transformation fails if these limits are exceeded.
-</div>
-
-## FAQ
-
-For answers to some of the commonly asked questions on this feature, refer to the <Link to="/features/transformations/faq/">FAQ</Link> guide.
