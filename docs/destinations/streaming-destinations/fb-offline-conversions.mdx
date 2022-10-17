@@ -106,8 +106,10 @@ If your server has access to Facebook’s Lead IDs from their Lead Ads product, 
 ```
 
 Note the following points:
- - If you are sending `products` array through `properties` then make sure that every product only contains id, quantity, brand, category and price  if you send anything apart from this for product description then facebook-servers will throw an error
 
+ - If you send a `products` array using `properties` object, make sure that every product contains only the `id`, `quantity`, `brand`, `category`, and `price` properties. Facebook will throw an error on encountering any property apart from these.
+ - RudderStack sends a conversion event if it contains a `userId`. It is recommended to send as much user data through `context.traits` for better attribution results.
+ - You can send either the `firstName` and `lastName` separately or just the `name` property. RudderStack maps it to `fn` and `ln` respectively.
 
 ### Property mappings
 
@@ -127,9 +129,9 @@ The following table lists the event property mappings between RudderStack and Fa
 | `traits.email`<br/>`context.traits.email` <br/>`properties.email` <br/>`context.externalId.0.id`     | `email`              |
 | `traits.phone`<br/>`context.traits.phone`<br/>`properties.phone`   | `phone`                |
 | `traits.gender`<br/>`context.traits.gender`    | `gen`      |
-|`traits.birthday`<br/>`context.traits.birthday`<br/>`traits.dateOfBirth`<br/>`context.traits.dateOfBirth`<br/>`traits.dateofbirth`<br/>`context.dateofbirth`<br/>`traits.dob`<br/>`context.traits.dob`<br/>`traits.DOB`<br/>`context.traits.DOB`|`doby`|
+|`traits.birthday`<br/>`context.traits.birthday`<br/>`traits.dateOfBirth`<br/>`context.traits.dateOfBirth`<br/>`traits.dateofbirth`<br/>`context.dateofbirth`<br/>`traits.dob`<br/>`context.traits.dob`<br/>`traits.DOB`<br/>`context.traits.DOB`|`doby`| The expected format is `DD, MM, YYYY`. RudderStack extracts the year, month and day before sending it to Facebook Offline Conversions. |
 | `traits.firstName`<br/>`traits.firstname`<br/>`traits.first_name`<br/>`context.traits.firstName`<br/>`context.traits.firstname`<br/>`context.traits.first_name`    | `fn`      |
-| `traits.lastName`<br/>`traits.lastname`<br/>`traits.last_name`<br/>`context.traits.lastName`<br/>`context.traits.lastname`<br/>`context.traits.last_name`    | `ln`      |
+| `traits.lastName`<br/>`traits.lastname`<br/>`traits.last_name`<br/>`context.traits.lastName`<br/>`context.traits.lastname`<br/>`context.traits.last_name`    | `ln`      | 
 |`traits.address.city`<br/>`context.traits.address.city`|`ct`|
 | `traits.state`<br/>`context.traits.state`     | `st`           |
 | `traits.zip`<br/>`traits.zipcode`<br/>`traits.zip_code`<br/>`traits.zipCode`<br/>`traits.postalcode`<br/>`traits.postal_code`<br/>`traits.postalCode`<br/>`traits.address.zipcode`<br/>`traits.address.zip_code`       | `zip`             |
