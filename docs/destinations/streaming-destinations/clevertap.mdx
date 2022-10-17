@@ -818,3 +818,12 @@ A sample regulation request body for deleting a user in CleverTap is shown below
   }]
 }
 ```
+## Alias
+
+The <Link to="/event-spec/standard-events/alias/">`alias`</Link> call lets you merge different identities of a known user.
+
+A sample `alias` call is shown below:
+
+```javascript
+rudderanalytics.alias("newUserId","userId");
+```
