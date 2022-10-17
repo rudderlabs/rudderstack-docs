@@ -4,6 +4,20 @@ description: Detailed technical documentation on using the RudderStack's Transfo
 ---
 
 
+## How do transformations work in device mode?
+
+At a high level, once you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination, RudderStack:
+
+1. Tracks and collects events at the source
+1. Applies the transformation logic to the your events
+1. Forwards the transformed event to your connected destination
+
+<img src="../../assets/features/transformations-workflow.png" alt="Transformations workflow" />
+
+<div class="infoBlock">
+Refer to the <Link to="/features/transformations/faq/">Transformations FAQ</Link> for commonly asked questions on this feature.
+</div>
+
 ## Limitations
 
 The following memory and time limits are applicable when invoking a transformation in the device or cloud mode:
