@@ -28,15 +28,16 @@ Once you have confirmed that the source platform supports sending events to Face
 To successfully configure Facebook Offline Conversions as a destination, you will need to configure the following settings:
 
 - **System User Access Token**: Enter your system user access token generated inside Business Manager. with ads_management permission. Please add the corresponding developer app and ad account as asset.The system user needs to have admin permissions
-
-
-
-Facebook Offline Conversions ID. This is required for sending events via both cloud and device modes. 
 - **Map your events with Facebook Standard Events**: Use this setting to map the standard Facebook events with custom event names. You can map one or more RudderStack events to a standard Facebook event but **not** vice-versa.
 - **Map Facebook Standard Events With Event Set IDs**: Use this setting to map the standard Facebook events with Facebook event set ids. You can map one or more standard Facebook events to Facebook event set ids and vice-versa.
-- **Value Field Identifier**: Enter your Facebook business access token required to send the events via the cloud mode.
+
+<div class="infoBlock">
+If a Facebook standard event is mapped to more than one event set ID, RudderStack will send event for every event set ID.
+</div>
+
+- **Value Field Identifier**: Enter the identifier which should be assigned to the value field of Facebook payload. The default value is set to `properties.value`.
 - **Limited Data Usage**: Enable this setting to let RudderStack take the data processing information from the payload and send it to Facebook.
-- **Enable Hashing**: Enter your Facebook business access token required to send the events via the cloud mode.
+- **Enable Hashing**: This setting is enabled by default and hash encodes the user data using `SHA256`.
 
 <div class="infoBlock">
 For more information on obtaining your Facebook Offline Conversions ID and Business Access Token, refer to the <a href="#faq">FAQ</a> section below.
@@ -46,9 +47,13 @@ For more information on obtaining your Facebook Offline Conversions ID and Busin
 
 You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to capture user events along with the properties associated with them.
 
+<div class="infoBlock">
+Keep in mind that Facebook’s furthest possible attribution window is 28 days. It is recommended that you send your server side track conversions within 62 days of the offline conversion occuring
+</div>
+
 The event name sent in the `track` call must be mapped in the **Map Facebook Standard Events With Event Set IDs** RudderStack dashboard setting, otherwise an error is thrown.
 
-A sample call looks like the following code snippet:
+A sample `track` call is shown below:
 
 ```javascript
 rudderanalytics.track({
@@ -91,7 +96,7 @@ rudderanalytics.track({
 });
 ```
 
-The `leadId` will come through `externalId`, as shown:
+If your server has access to Facebook’s Lead IDs from their Lead Ads product, you can opt to send this using integration specific options. The `leadId` will come through `externalId`, as shown:
 
 ```javascript
 "externalId": [{
@@ -100,17 +105,21 @@ The `leadId` will come through `externalId`, as shown:
 }, ],
 ```
 
+Note the following points:
+ - If you are sending `products` array through `properties` then make sure that every product only contains id, quantity, brand, category and price  if you send anything apart from this for product description then facebook-servers will throw an error
+
+
 ### Property mappings
 
-RudderStack maps the following events to the Facebook standard events:
+The following table lists the event property mappings between RudderStack and Facebook Offline Conversions:
 
-| RudderStack Event          | Facebook Standard Event |
-| :-------------------- | :---------------------- |
+| RudderStack property          | Facebook Offline Conversions property| Notes |
+| :-------------------- | :---------------------- |:---------------------- |
 | `userId` <br/>`traits.userId`<br/> `traits.id`<br/>`context.traits.userId`<br/>`context.traits.id`<br/>`anonymousId"` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `extern_id`           |
 | `originalTimestamp` <br/>`timestamp`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `ViewContent`           |
 | `event`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `event_name`             |
-| `properties.currency`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `currency`              |
-| `properties.total`<br/>`properties.price`<br/>`properties.value`<br/>`properties.revenue` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `value` (currency value)                |
+| `properties.currency`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `currency`              | If not provided, `USD` is used as the default value. |
+| `properties.total`<br/>`properties.price`<br/>`properties.value`<br/>`properties.revenue` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `value` (currency value)                | If not provided, `0` is used as the default value. |
 | `properties.item_number`    | `item_number`      |
 |`properties.order_id`<br/>`properties.orderId`|`order_id`|
 | `properties`     | `custom_data`           |
@@ -134,16 +143,6 @@ RudderStack maps the following events to the Facebook standard events:
 
 ## FAQ
 
-#### Where can I find the Pixel ID?
-
-To get your Pixel ID, go to your Facebook Ads Manager account. On the left navigation bar, select Business Tools, and click on **Events Manager** under **Manage Business**.
-
-<img src="../../assets/screen-shot-2021-03-03-at-1.22.01-pm.png" />
-
-In the Data Sources, you should be able to see your Pixel ID underneath your site name.
-
-<img src="../../assets/screen-shot-2021-03-03-at-1.19.03-pm.png" />
-
 #### Where can I find the Business Access Token?
 
 In order to use the Facebook Conversions API, you need to generate an access token. We recommend using the Facebook Events Manager to do so, by following these steps:
@@ -157,24 +156,8 @@ In order to use the Facebook Conversions API, you need to generate an access tok
 For more information on how to use this access token or to generate your access token via your own app, refer to the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/get-started/#via-events-manager">Facebook documentation</a>.
 </div>
 
-#### Can I hash my user data before sending it to RudderStack?
+#### How to manage permission for event sets
 
-Yes. Facebook Offline Conversions requires all user data, data coming from `context.traits`, to be hashed. This includes `email`, `phone`, `birthday`, `address`, etc. By default, RudderStack will automatically hash all of the necessary properties for you. However, if you would like to hash these traits before sending to RudderStack then you need to add this code to the event.
-
-```javascript
-rudderanalytics.track(
-  "some_event_name",
-  { some_properties },
-  {
-    integrations: {
-      "Facebook Offline Conversions": {
-        hashed: true,
-      },
-    },
-  }
-)
-```
-
-The `integrations` object with these key-values will tell RudderStack not to hash the traits in `context.traits` because they are already hashed. Otherwise, RudderStack will hash your data again and Facebook will not be able to match the traits. Please keep in mind that Facebook will not accept un-hashed data.
+Refer to the [Facebook dcoumentation](https://www.facebook.com/business/help/629677790575687?id=565900110447546)
 
 
