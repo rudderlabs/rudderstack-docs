@@ -19,6 +19,10 @@ Find the open source JavaScript SDK code for this destination in the <a href="ht
 For the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call, RudderStack uses either <a href="https://github.com/Iterable/iterable-web-sdk#initialize">Iterable's `setEmail` or `setUserId` method</a> to identify a given user. You can configure this using the <Link to="/destinations/streaming-destinations/iterable/setting-up-iterable/#web-sdk-settings">**Identifier to identify a user over a session**</Link> setting in the RudderStack dashboard.
 
 <div class="infoBlock">
+Making an <code class="inline-code">identify</code> call is necessary to associate the <code class="inline-code">track</code> events and trigger the web push notifications for an identified user.
+</div>
+
+<div class="infoBlock">
 By default, RudderStack prioritizes <code class="inline-code">email</code> over <code class="inline-code">userId</code>.
 </div>
 
@@ -94,6 +98,10 @@ The following table lists the mappings between the RudderStack event properties 
 | `properties.price` | `items[].price` |
 | `properties.quantity` | `items[].quantity` |
 | `properties.image_url` | `items[].url` |
+
+The above properties can be passed in any of the following ways:
+- `properties` object (for a single product), as shown in the above table.
+- `products` array as multiple objects (for multiple products), for example, `properties.products[0].name`. One example where you can have an array of products is the <Link to="/event-spec/ecommerce-events-spec/ordering/#order-completed">Order Completed</Link> event.
 
 ### `getInAppMessages` events
 
