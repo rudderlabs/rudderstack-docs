@@ -3,11 +3,7 @@ title: "Facebook Offline Conversions"
 description: Step-by-step guide on sending your event data from RudderStack to Facebook Offline Conversions.
 ---
 
-[Facebook Offline Conversions](https://www.facebook.com/business/help/1142103235885551?id=565900110447546) enables offline event tracking, so marketers can run campaigns, upload transaction data, and compare in-store transactions.
-
-<div class="infoBlock">
-RudderStack leverages the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/">Conversions API</a> for sending server-side events to this destination.
-</div>
+[Facebook Offline Conversions](https://www.facebook.com/business/help/1142103235885551?id=565900110447546) lets you measure your sales in the offline world as a result of your online Facebook ads. It helps you leverage the offline events data by tracking the in-store purchases, phone orders, bookings etc.
 
 <div class="infoBlock">
 Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/facebook_offline_conversions">GitHub repository</a>.
@@ -15,7 +11,7 @@ Find the open source code for this destination in the <a href="https://github.co
 
 ## Getting started
 
-RudderStack supports sending event data to June via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
+RudderStack supports sending event data to Facebook Offline Conversions via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -25,17 +21,21 @@ RudderStack supports sending event data to June via the following <a href="https
 Once you have confirmed that the source platform supports sending events to Facebook Offline Conversions, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Facebook Offline Conversions**.
-2. Assign a name to your destination and click on **Continue**.
+2. Assign a name to your destination and click **Continue**.
 
 ### Connection settings
 
 To successfully configure Facebook Offline Conversions as a destination, you will need to configure the following settings:
 
-- **System User Access Token**: Enter your Facebook Offline Conversions ID. This is required for sending events via both cloud and device modes. 
-- **Map your events with Facebook Standard Events**: Enter your Facebook business access token required to send the events via the cloud mode.
-- **Map Facebook Standard Events With Event Set IDs**: Enter your Facebook Offline Conversions ID. This is required for sending events via both cloud and device modes. 
+- **System User Access Token**: Enter your system user access token generated inside Business Manager. with ads_management permission. Please add the corresponding developer app and ad account as asset.The system user needs to have admin permissions
+
+
+
+Facebook Offline Conversions ID. This is required for sending events via both cloud and device modes. 
+- **Map your events with Facebook Standard Events**: Use this setting to map the standard Facebook events with custom event names. You can map one or more RudderStack events to a standard Facebook event but **not** vice-versa.
+- **Map Facebook Standard Events With Event Set IDs**: Use this setting to map the standard Facebook events with Facebook event set ids. You can map one or more standard Facebook events to Facebook event set ids and vice-versa.
 - **Value Field Identifier**: Enter your Facebook business access token required to send the events via the cloud mode.
-- **Limited Data Usage**: Enter your Facebook Offline Conversions ID. This is required for sending events via both cloud and device modes. 
+- **Limited Data Usage**: Enable this setting to let RudderStack take the data processing information from the payload and send it to Facebook.
 - **Enable Hashing**: Enter your Facebook business access token required to send the events via the cloud mode.
 
 <div class="infoBlock">
@@ -44,7 +44,9 @@ For more information on obtaining your Facebook Offline Conversions ID and Busin
 
 ## Track
 
-The `track` call lets you track custom events as they occur in your web application.
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to capture user events along with the properties associated with them.
+
+The event name sent in the `track` call must be mapped in the **Map Facebook Standard Events With Event Set IDs** RudderStack dashboard setting, otherwise an error is thrown.
 
 A sample call looks like the following code snippet:
 
@@ -89,44 +91,46 @@ rudderanalytics.track({
 });
 ```
 
-In addition to the above call, a `contentType` in the integrations options can be available. If present, it will precede the default value or dashboard settings of `contentType`.
+The `leadId` will come through `externalId`, as shown:
 
 ```javascript
-rudderanalytics.track(
-  "Product Added",
-  {
-    order_ID: "123",
-    category: "boots",
-    product_name: "yellow_cowboy_boots",
-    price: 99.95,
-    currency: "EUR",
-    revenue: 2000,
-    value: 3000,
-    checkinDate: "Thu Mar 24 2018 17:46:45 GMT+0000 (UTC)",
-  },
-  {
-    "Facebook Offline Conversions": { contentType: "mycustomtype" },
-  }
-)
+"externalId": [{
+  "id": "leadId-value",
+  "type": "LeadId"
+}, ],
 ```
+
+### Property mappings
 
 RudderStack maps the following events to the Facebook standard events:
 
 | RudderStack Event          | Facebook Standard Event |
 | :-------------------- | :---------------------- |
-| `userId",
-"traits.userId",
-"traits.id",
-"context.traits.userId",
-"context.traits.id",
-"anonymousId"` | `ViewContent`           |
-| `Product Viewed`      | `ViewContent`           |
-| `Product Added`       | `AddToCart`             |
-| `Order Completed`     | `Purchase`              |
-| `Products Searched`   | `Search`                |
-| `Checkout Started`    | `InitiateCheckout`      |
-
-|`userId`|`extern_id`|
+| `userId` <br/>`traits.userId`<br/> `traits.id`<br/>`context.traits.userId`<br/>`context.traits.id`<br/>`anonymousId"` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `extern_id`           |
+| `originalTimestamp` <br/>`timestamp`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `ViewContent`           |
+| `event`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `event_name`             |
+| `properties.currency`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `currency`              |
+| `properties.total`<br/>`properties.price`<br/>`properties.value`<br/>`properties.revenue` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `value` (currency value)                |
+| `properties.item_number`    | `item_number`      |
+|`properties.order_id`<br/>`properties.orderId`|`order_id`|
+| `properties`     | `custom_data`           |
+| `properties.products`       | `contents`             |
+| `traits.email`<br/>`context.traits.email` <br/>`properties.email` <br/>`context.externalId.0.id`     | `email`              |
+| `traits.phone`<br/>`context.traits.phone`<br/>`properties.phone`   | `phone`                |
+| `traits.gender`<br/>`context.traits.gender`    | `gen`      |
+|`traits.birthday`<br/>`context.traits.birthday`<br/>`traits.dateOfBirth`<br/>`context.traits.dateOfBirth`<br/>`traits.dateofbirth`<br/>`context.dateofbirth`<br/>`traits.dob`<br/>`context.traits.dob`<br/>`traits.DOB`<br/>`context.traits.DOB`|`doby`|
+| `traits.firstName`<br/>`traits.firstname`<br/>`traits.first_name`<br/>`context.traits.firstName`<br/>`context.traits.firstname`<br/>`context.traits.first_name`    | `fn`      |
+| `traits.lastName`<br/>`traits.lastname`<br/>`traits.last_name`<br/>`context.traits.lastName`<br/>`context.traits.lastname`<br/>`context.traits.last_name`    | `ln`      |
+|`traits.address.city`<br/>`context.traits.address.city`|`ct`|
+| `traits.state`<br/>`context.traits.state`     | `st`           |
+| `traits.zip`<br/>`traits.zipcode`<br/>`traits.zip_code`<br/>`traits.zipCode`<br/>`traits.postalcode`<br/>`traits.postal_code`<br/>`traits.postalCode`<br/>`traits.address.zipcode`<br/>`traits.address.zip_code`       | `zip`             |
+| `traits.country`<br/>`context.traits.country`     | `country`           |
+| `context.device.advertisingId`     | `madid`           |
+| `context.userAgent`       | `client_user_agent`             |
+| `traits.action_source`<br/>`context.traits.action_source`<br/>`properties.action_source`       | `action_source`             |
+| `context.page.url`<br/>`properties.url`     | `event_source_url`           |
+| `context.fbc`     | `fbc`           |
+| `context.fbp`       | `fbp`             |
 
 ## FAQ
 
