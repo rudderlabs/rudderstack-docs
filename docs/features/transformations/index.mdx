@@ -15,19 +15,16 @@ RudderStack's **Transformations** feature enables you to write custom JavaScript
   videoId={'C11Na9oIv-E'}
 />
 
-You can use this feature across your <Link to="/sources/event-streams/">Event Streams</Link>, <Link to="/sources/extract/">Cloud Extract</Link>, and <Link to="/sources/reverse-etl/">Reverse ETL</Link> pipelines.
+RudderStack supports the usage of transformations across your <Link to="/sources/event-streams/">Event Streams</Link>, <Link to="/sources/extract/">Cloud Extract</Link>, and <Link to="/sources/reverse-etl/">Reverse ETL</Link> pipelines in both the cloud and device modes. Refer to the <Link to="/sources/event-streams/">Device Mode Transformations</Link> and <Link to="/sources/event-streams/">Cloud Mode Transformations</Link> documentation for more details on using transformations in each <Link to="/destinations/rudderstack-connection-modes/">connection mode</Link>.
 
-<div class="infoBlock">
-  <ul>
-<li>In <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, you can use up to 3 transformations in the free plan. To use unlimited Transformations, you need to be a <a href="https://rudderstack.com/pricing/">Pro/Enterprise</a> user.</li>
+The below table summarizes the availability of Transformations feature across different [pricing plans](https://www.rudderstack.com/pricing/):
 
-<li>In <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, the Transformations feature is only available for the <a href="https://www.rudderstack.com/enterprise-quote/">Enterprise</a> users.</li>
- </ul>
-</div>
+| Connection Mode | Free       | Pro   | Enterprise    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Cloud mode**      | Upto 3 | ✅  | ✅   |
+| **Device mode**     | ❌    | ❌      | ✅        |
 
-<div class="warningBlock">
-While using the Transformations feature to send events to destinations via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>, <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-react-native-sdk/">React-Native</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-cordova-sdk/">Cordova</Link> SDKs are supported.
-</div>
+
 
 ## Key features
 

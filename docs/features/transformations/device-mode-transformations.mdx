@@ -1,38 +1,102 @@
 ---
-title: "Using Transformations in Device Mode"
-description: Detailed technical documentation on using the RudderStack's Transformations feature in device mode.
+title: "Transformations in Device Mode"
+description: Detailed technical documentation on the features available while using transformations with device mode destinations.
 ---
 
+<div class="warningBlock">
+Only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>, <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-react-native-sdk/">React-Native</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-cordova-sdk/">Cordova</Link> SDKs support using the Transformations feature to send events to the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations.
+</div>
 
-## How do transformations work in device mode?
+<GhBadge
+  url={'https://rudderstack.com/enterprise-quote'}
+  label={'Plan'}
+  message={'Enterprise'}
+  color={'blueviolet'}
+/>
 
-At a high level, once you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination, RudderStack:
+When you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destination, RudderStack:
 
-1. Tracks and collects events at the source
-1. Applies the transformation logic to the your events
-1. Forwards the transformed event to your connected destination
+1. SDK sends the events to the routing server to transform the event.
+2. Sends the events to the transformation server to apply the transformation.
+3. Returns the transformed event to the routing server.
+4. Returns the transformed event to the SDK.
+5. Sends the transformed event to the device mode destinations.
 
-<img src="../../assets/features/transformations-workflow.png" alt="Transformations workflow" />
+<img src="../../assets/features/device-mode-transformations-workflow.png" alt="Transformations workflow" />
+
+## SDK setup
+
+After <Link to="#adding-a-transformation">adding a transformation</Link> and <Link to="/features/transformations/#connecting-transformation-to-a-destination">connecting it to a destination</Link> supporting the device mode, you can connect your SDK source to it.
+
+Further, follow the below steps for setting up the required SDK:
+
+<Tabs>
+  <TabList>
+    <Tab>JavaScript</Tab>
+    <Tab>Android</Tab>
+    <Tab>iOS</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+
+The detailed steps to setup the JavaScript SDK are mentioned in the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/">Quickstart guide</Link>. You just need to change the CDN URL in the SDK installation snippet to: <code class="inline-code">https://cdn.rudderlabs.com/v1.1/beta/dmt/v1/rudder-analytics.min.js</code> 
+
+Alternatively, you can use the following snippet:
+
+<span>
+
+```javascript
+<script type="text/javascript">
+!function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1.1/beta/dmt/v1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
+e.load(<WRITE_KEY>,<DATA_PLANE_URL>),
+e.page()}();
+</script>
+```
+</span>
+
+</TabPanel>
+<TabPanel>
 
 <div class="infoBlock">
-Refer to the <Link to="/features/transformations/faq/">Transformations FAQ</Link> for commonly asked questions on this feature.
+Device mode transformations are supported in <strong>Android SDK v1.8.0 and above</strong>.
 </div>
+
+Install the Android SDK following the detailed steps mentioned in <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/#installing-the-sdk">Installing the Android SDK</Link> section. Additionally, add the following dependency in the Android app level <code class="inline-code">build.gradle</code>:
+<span>
+
+```groovy
+implementation 'com.rudderstack.android.sdk:core:1.8.0-beta.1'
+```
+</span>
+    </TabPanel>
+<TabPanel>
+
+<div class="infoBlock">
+Device mode transformations are supported in <strong>iOS SDK v1.8.0 and above</strong>.
+</div>
+
+Install the iOS SDK following the detailed steps mentioned in <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/#installing-the-rudderstack-ios-sdk">Installing the iOS SDK</Link> section. Additionally, add the following dependency in <code class="inline-code">Podfile</code>:
+<span>
+
+```ruby
+pod 'Rudder', '1.8.0.beta.1'
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
 ## Limitations
 
-The following memory and time limits are applicable when invoking a transformation in the device or cloud mode:
-
-| Parameter    | Limit     |
-| :----------- | :-------- |
-| Memory limit | 128 MB      |
-| Execution time limit   | 4 seconds |
-
-<div class="dangerBlock">
-The user transformation fails if these limits are exceeded.
-</div>
-
-Along with the above-mentioned limitations, the following are applicable when using a transformation in the device mode:
+The following limitations are applicable when invoking a transformation in the device mode:
 
 - Events are not sent to the destination SDKs in real-time.
 - The network availability and server response can lead to latency while sending the events.
 - The iOS SDK does not support background processing of an event when the app is closed. However, the backlog event is sent the next time the app is opened.
+- The transformation fails if the following memory and time limits are exceeded:
+
+    | Parameter    | Limit     |
+    | :----------- | :-------- |
+    | Memory limit | 128 MB      |
+    | Execution time limit   | 4 seconds |
+
