@@ -190,9 +190,9 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 </ul>
       </TabPanel>
 <TabPanel>
-Follow the steps below to add Leanplum to your Flutter Project:
-<ul>
-<li>Add the following <code class="inline-code">dependency</code> to the <code class="inline-code">dependencies</code> section of your <code class="inline-code">pubspec.yaml</code> file.
+Follow the below steps to add Leanplum to your Flutter Project:
+<ol>
+<li>Add the following dependency to the <code class="inline-code">dependencies</code> section of your <code class="inline-code">pubspec.yaml</code> file.
 <span>
 
 ```yaml
@@ -200,7 +200,7 @@ rudder_integration_leanplum_flutter: 1.0.0
 ```
 </span>
 </li>
-<li>After that, run the below command to install the above added dependency:
+<li>Run the below command to install the dependency added in the above step:
 <span>
 
 ```groovy
@@ -208,7 +208,7 @@ flutter pub get
 ```
 </span>
 </li>
-<li>And then, import the<code class="inline-code">RudderIntegrationLeanplumFlutter</code> in your <code class="inline-code">application</code> where you are initializing the SDK.
+<li>Import the <code class="inline-code">RudderIntegrationLeanplumFlutter</code> in your application where you are initializing the SDK.
 <span>
 
 ```dart
@@ -228,18 +228,17 @@ rudderClient.initialize(<WRITE_KEY>, config: builder.build(), options: null);
 ```
 </span>
 </li>
-
-<li>On iOS Platform, Leanplum needs to be linked as either a dynamic/static Framework with your app, which can be done by adding the below to your iOS/Podfile:
-<span>
+</ol>
+<div class="infoBlock">
+For iOS platform, Leanplum needs to be linked either as a dynamic or static framework with your application. The same can be done by adding the below to your <code class="inline-code">Podfile</code>:
 
 ```ruby
 use_frameworks! :linkage=> :static // linking statically
 (or)
 use_frameworks! :linkage=> :dynamic // linking dynamically
 ```
-</span>
-</li>
-</ul>
+
+</div>
       </TabPanel>
     </TabPanels>
 </Tabs>

@@ -226,9 +226,9 @@ rudderClient.setup(WRITE_KEY, config)
 </ol>
   </TabPanel>
   <TabPanel>
-Follow the steps below to add App Center to your Flutter Project:
-<ul>
-<li>Add the following <code class="inline-code">dependency</code> to the <code class="inline-code">dependencies</code> section of your <code class="inline-code">pubspec.yaml</code> file.
+Follow the below steps to add App Center to your Flutter Project:
+<ol>
+<li>Add the following dependency to the <code class="inline-code">dependencies</code> section of your <code class="inline-code">pubspec.yaml</code> file.
 <span>
 
 ```yaml
@@ -236,7 +236,7 @@ rudder_integration_appcenter_flutter: 1.1.0
 ```
 </span>
 </li>
-<li>After that, run the below command to install the above added dependency:
+<li>Run the below command to install the dependency added in the above step:
 <span>
 
 ```groovy
@@ -244,7 +244,7 @@ flutter pub get
 ```
 </span>
 </li>
-<li>And then, import the<code class="inline-code">RudderIntegrationAppcenterFlutter</code> in your <code class="inline-code">application</code> where you are initializing the SDK.
+<li>Import the <code class="inline-code">RudderIntegrationAppcenterFlutter</code> in your application where you are initializing the SDK.
 <span>
 
 ```dart
@@ -264,19 +264,20 @@ rudderClient.initialize(<WRITE_KEY>, config: builder.build(), options: null);
 ```
 </span>
 </li>
+</ol>
 
-<li>On Android Platform, Open <code class="inline-code">android/app/build.gradle</code> and ensure that <code class="inline-code">android.defaultConfig.minSdkVersion</code> is set to atleast <code class="inline-code">21</code>
-<li>On iOS Platform, If you want to link Appcenter as a framework instead of library to your app, you would be able to link it statically but not dynamically as Appcenter requires it which can be achieved by the below:
-<span>
+<div class="infoBlock">
+For Android platform, make sure that the <code class="inline-code">android.defaultConfig.minSdkVersion</code> is set to atleast <code class="inline-code">21</code> by checking it in the <code class="inline-code">android/app/build.gradle</code> file.
+</div>
+
+<div class="infoBlock">
+For iOS platform, you can link App Center as a framework instead of a library with your application by linking it statically as shown below:
 
 ```ruby
 use_frameworks! :linkage=> :static
 ```
-
-</span>
-</li>
-</ul>
-      </TabPanel>
+</div>
+     </TabPanel>
        <TabPanel>
         To add App Center to your Cordova project, follow these steps:
 <ol>
