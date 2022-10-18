@@ -138,7 +138,7 @@ The following table lists the event property mappings between RudderStack and Fa
 Note the following important points while sending event data to Facebook Offline Conversions:
 
 - At least one [`match_key`](https://developers.facebook.com/docs/marketing-api/offline-conversions/#:~:text=one%20API%20call.-,Match%20Keys,-match_keys%20is%20a) is required to send an event successfully. RudderStack uses SHA256 encoding to hash all the `match_keys` that include personally identifiable data in compliance with Facebook's privacy requirements.
-- If you send a `products` array using the `properties` object, make sure that every `product` contains only the `id`, `quantity`, `brand`, `category`, and `price` properties. Facebook throws an error on encountering any property apart from these.
+- If you send a `products` array using the `properties` object, Rudderstack sends only the `id`, `quantity`, `brand`, `category`, and `price` properties for each product. The reason is that Facebook throws an error on encountering any property apart from these.
 - If you send an event name as **Product List Viewed**, the value of [`content_type`](https://developers.facebook.com/docs/marketing-api/offline-conversions/#:~:text=Example%3A%2016.00-,content_type,-type%3A%20string) key is set as `product_group` otherwise, it is set as `product`.
 - RudderStack sends a conversion event as long as it contains a `userId`. However, it is recommended to send as much user data through `context.traits` for better attribution results.
 - You can send either the `firstName` and `lastName` separately or just the `name` property. RudderStack maps it to `fn` and `ln` on its own.
