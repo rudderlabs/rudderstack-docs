@@ -24,7 +24,7 @@ No, it is not possible to connect multiple transformations to a destination. Ins
 Yes, you can use the `transformBatch` function to apply a transformation to a batch of events.
 
 <div class="infoBlock">
-For more information, refer to the <Link to="/features/transformations/using-transformations#applying-transformation-on-a-batch-of-events">Applying transformation on a batch of events</Link> section.
+For more information, refer to the <Link to="/features/transformations/cloud-mode-transformations#applying-transformation-on-a-batch-of-events">Applying transformation on a batch of events</Link> section.
 </div>
 
 #### What is a referenced transformation?
@@ -45,7 +45,7 @@ export function transformEvent(event, metadata) {
 
 You cannot update an existing `Version: V0` transformation to the current version.
 
-Instead, you can <Link to="/features/transformations/using-transformations#adding-a-transformation">create a new transformation</Link> based on the <Link to="/features/transformations/using-transformations#transformevent-function">`transformEvent` function</Link>, then reconnect your destinations with this transformation. Finally, delete the existing `Version: V0` transformation.
+Instead, you can <Link to="/features/transformations/#adding-a-transformation">create a new transformation</Link> based on the <Link to="/features/transformations/#transformevent-function">`transformEvent` function</Link>, then reconnect your destinations with this transformation. Finally, delete the existing `Version: V0` transformation.
 
 #### What are transformation and library revisions?
 
@@ -115,7 +115,7 @@ If you cannot import libraries into your existing transformations, there is a st
 
 To import the libraries in a transformation, follow these steps:
 
-1. Create a new transformation by following the steps in the <Link to="/features/transformations/using-transformations#adding-a-transformation">Adding a transformation</Link> section.
-2. Add the updated transformation code as specified in the <Link to="/features/transformations/using-transformations#transformevent-function">`transformEvent` function</Link> section.
-3. Connect the transformation to your destination. For more information, refer to the <Link to="/features/transformations/using-transformations#connecting-transformation-to-a-destination">Connecting a transformation to the destination</Link> section.
+1. Create a new transformation by following the steps in the <Link to="/features/transformations/#adding-a-transformation">Adding a transformation</Link> section.
+2. Add the updated transformation code as specified in the <Link to="/features/transformations/#transformevent-function">`transformEvent` function</Link> section.
+3. Connect the transformation to your destination. For more information, refer to the <Link to="/features/transformations/#connecting-transformation-to-a-destination">Connecting a transformation to the destination</Link> section.
 4. You can then import libraries in the transformation. For more information, refer to the <Link to="/features/transformations/using-libraries">Using libraries in transformations</Link> section.
