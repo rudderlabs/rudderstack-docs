@@ -156,6 +156,7 @@ Once you add Amplitude as a destination in the [RudderStack dashboard](https://a
     <Tab>iOS v2</Tab>
     <Tab>Android</Tab>
     <Tab>React Native</Tab>
+    <Tab>Flutter</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -389,6 +390,51 @@ rudderClient.setup(WRITE_KEY, config)
 </span>
 </li>
 </ol>
+      </TabPanel>
+<TabPanel>
+Follow the below steps to add Amplitude to your Flutter Project:
+<ol>
+<li>Add the following dependency to the <code class="inline-code">dependencies</code> section of your <code class="inline-code">pubspec.yaml</code> file.
+<span>
+
+```yaml
+rudder_integration_amplitude_flutter: ^1.0.1
+```
+</span>
+</li>
+<li>Run the below command to install the dependency added in the above step:
+<span>
+
+```groovy
+flutter pub get
+```
+</span>
+</li>
+<li>Import the <code class="inline-code">RudderIntegrationAmplitudeFlutter</code> in your application where you are initializing the SDK.
+<span>
+
+```dart
+import 'package:rudder_integration_amplitude_flutter/rudder_integration_amplitude_flutter.dart';
+```
+</span>
+</li>
+
+<li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> as shown:
+<span>
+
+```dart
+final RudderController rudderClient = RudderController.instance;
+RudderConfigBuilder builder = RudderConfigBuilder();
+builder.withFactory(RudderIntegrationAmplitudeFlutter());  
+rudderClient.initialize(<WRITE_KEY>, config: builder.build(), options: null);
+```
+</span>
+</li>
+</ol>
+
+<div class="infoBlock">
+For iOS platform, make sure that the minimum deployment target for your application's target is at least 10.
+</div>
       </TabPanel>
     </TabPanels>
 </Tabs>

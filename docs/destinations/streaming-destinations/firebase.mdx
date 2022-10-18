@@ -8,7 +8,7 @@ description: Step-by-step guide on sending your event data from RudderStack to F
 RudderStack supports Firebase as a <Link to="/destinations/rudderstack-connection-modes#device-mode">mobile device mode</Link> to which you can seamlessly send your customer data for analytics.
 
 <div class="warningBlock">
-Firebase device mode support is not available for the <Link to="/sources/event-streams/sdks/rudderstack-cordova-sdk/">Cordova</Link> and <Link to="/sources/event-streams/sdks/rudderstack-flutter-sdk/">Flutter</Link> SDKs.
+Firebase device mode support is not available for the <Link to="/sources/event-streams/sdks/rudderstack-cordova-sdk/">Cordova</Link> SDK.
 </div>
 
 ## Getting started
@@ -50,6 +50,7 @@ Depending on your platform of integration, follow the steps below to add Firebas
     <Tab>iOS v2</Tab>
     <Tab>Unity</Tab>
     <Tab>React Native</Tab>
+    <Tab>Flutter</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -345,6 +346,113 @@ Follow these steps to add Firebase to your React Native project:
 </li>
 </ol>
     </TabPanel>
+  <TabPanel>
+Follow the below steps to add Firebase to your Flutter Project:
+<ol>
+<li>Add the following dependency to the <code class="inline-code">dependencies</code> section of your <code class="inline-code">pubspec.yaml</code> file.
+<span>
+
+```yaml
+rudder_integration_firebase_flutter: ^1.0.1
+```
+</span>
+</li>
+<li>Run the below command to install the dependency added in the above step:
+<span>
+
+```groovy
+flutter pub get
+```
+</span>
+</li>
+<li>Import the <code class="inline-code">RudderIntegrationFirebaseFlutter</code> in your application where you are initializing the SDK.
+<span>
+
+```dart
+import 'package:rudder_integration_firebase_flutter/rudder_integration_firebase_flutter.dart';
+```
+</span>
+</li>
+
+<li>Change the initialization of your <code class="inline-code">RudderClient</code> as shown:
+<span>
+
+```dart
+final RudderController rudderClient = RudderController.instance;
+RudderConfigBuilder builder = RudderConfigBuilder();
+builder.withFactory(RudderIntegrationFirebaseFlutter());
+rudderClient.initialize(<WRITE_KEY>, config: builder.build(), options: null);
+```
+</span>
+</li>
+
+<li>Navigate to your app's <code class="inline-code">android</code> folder and follow the below steps:
+  <ul>
+  <li>Copy the <code class="inline-code">google-services.json</code> file in the <code class="inline-code">app</code> folder of your Android project. This file contains all the necessary information about the project and the integration.</li>
+  <li>Add the <code class="inline-code">classpath</code> under <code class="inline-code">dependencies</code> to your project level <code class="inline-code">build.gradle</code> file, as shown:
+<span>
+
+  ```groovy
+  buildscript {
+    repositories {
+      google()
+    }
+    dependencies {
+      // add this line
+      classpath 'com.google.gms:google-services:4.3.3'
+    }
+  }
+  ```
+</span>
+</li>
+<li>Add <code class="inline-code">mavenCentral()</code> as a repository under <code class="inline-code">buildscript.repositories</code> and <code class="inline-code">allprojects.repositories</code> to your project level <code class="inline-code">build.gradle</code> file, as shown:
+<span>
+
+  ```groovy
+  buildscript {
+    repositories {
+      google()
+      // should be added
+      mavenCentral()
+    }
+    dependencies {
+      classpath 'com.google.gms:google-services:4.3.3'
+    }
+  }
+  allprojects {
+    repositories {
+        google()
+        // should be added
+        mavenCentral()
+    }
+  }
+  ```
+</span>
+</li>
+<li>Next, add the plugins and dependencies to your <code class="inline-code">app/build.gradle</code> file, as shown:
+<span>
+
+  ```groovy
+  apply plugin: 'com.android.application'
+  apply plugin: 'com.google.gms.google-services'
+  ```
+</span>
+</li>
+<li>Add the necessary permissions under <code class="inline-code">AndroidManifest.xml</code>, as shown:
+<span>
+
+  ```markup
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  ```
+</span>
+</li>
+</ul>
+</li>
+<li>Finally, navigate to your app's <code class="inline-code">iOS</code> folder and add the <code class="inline-code">GoogleServices-Info.plist</code> file to the root of your XCode project.
+</li>
+</ol>
+      </TabPanel>
     </TabPanels>
 </Tabs>
 

@@ -77,6 +77,7 @@ Depending on your platform of integration, follow the steps below to add Braze t
     <Tab>iOS</Tab>
     <Tab>Android</Tab>
     <Tab>React Native</Tab>
+    <Tab>Flutter</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -197,6 +198,47 @@ const config = {
   withFactories: [braze],
 }
 rudderClient.setup(WRITE_KEY, config)
+```
+</span>
+</li>
+</ol>
+      </TabPanel>
+<TabPanel>
+Follow the below steps to add Braze to your Flutter Project:
+<ol>
+<li>Add the following dependency to the <code class="inline-code">dependencies</code> section of your <code class="inline-code">pubspec.yaml</code> file.
+<span>
+
+```yaml
+rudder_integration_braze_flutter: ^1.0.1
+```
+</span>
+</li>
+<li>Run the below command to install the dependency added in the above step:
+<span>
+
+```groovy
+flutter pub get
+```
+</span>
+</li>
+<li>Import the <code class="inline-code">RudderIntegrationBrazeFlutter</code> in your application where you are initializing the SDK.
+<span>
+
+```dart
+import 'package:rudder_integration_braze_flutter/rudder_integration_braze_flutter.dart';
+```
+</span>
+</li>
+
+<li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> as shown:
+<span>
+
+```dart
+final RudderController rudderClient = RudderController.instance;
+RudderConfigBuilder builder = RudderConfigBuilder();
+builder.withFactory(RudderIntegrationBrazeFlutter());
+rudderClient.initialize(<WRITE_KEY>, config: builder.build(), options: null);
 ```
 </span>
 </li>
