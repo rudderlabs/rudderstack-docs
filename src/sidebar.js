@@ -1827,6 +1827,11 @@ export const jsonData = [
                 content: []
             }, 
             {
+                title: "Migrating from Snowplow to RudderStack",
+                link: "/user-guides/migration-guides/snowplow-migration-guide/",
+                content: []
+            }, 
+            {
                 title: "Migrating Your Warehouse Destination from Segment to RudderStack",
                 link: "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/",
                 content: []

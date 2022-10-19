@@ -6,3 +6,716 @@ description: Step-by-step guide on migrating from Snowplow to RudderStack.
 This document explains the step-by-step process of migrating from Snowplow to RudderStack. It covers the necessary steps for replacing your instrumentation code and start using the RudderStack SDKs to track your events with minimal code changes.
 
 RudderStack provides a plugin for the RudderStack Android, iOS, and JavaScript SDKs to help the Snowplow customers migrate to RudderStack easily.
+
+## Migrating the workspace
+
+After creating a [RudderStack](https://app.rudderstack.com/signup?type=freetrial) account, you will see the following dashboard containing your <Link to="/dashboard-guides/overview/#data-plane-url">data plane URL</Link>:
+
+<img src="../../assets/user-guides/data-plane-url.png" alt="RudderStack data plane URL" />
+
+Similar to Snowplow, you will need to set up your source-destination connections in the dashboard and facilitate the event data flow.
+
+<div class="successBlock">
+Keep your source write key and the data plane URL handy.
+</div>
+
+If you need more support or want us to manage your hosting, you can [contact us](mailto:%20support@rudderstack.com).
+
+## Updating the SDK implementation
+
+Depending on the platform, follow these steps to move your existing SDK implementation to RudderStack:
+
+<Tabs>
+  <TabList>
+    <Tab>Android</Tab>
+    <Tab>iOS</Tab>
+    <Tab>JavaScript</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+      <ol>
+      <li>Open your project level <code class="inline-code">app/build.gradle</code>, and add the following lines of code:
+<span>
+
+```groovy
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+}
+allprojects {
+  repositories {
+    mavenCentral()
+  }
+}
+```
+</span>
+</li>
+<li>Then open your <code class="inline-code">app/build.gradle</code> and add the dependency under dependencies as shown below:
+<span>
+
+```groovy
+implementation 'com.rudderstack.android.snowplow:adapter:1.0.0.beta.1'
+```
+</span>
+</li>
+<li>Update your SDK initialization to the following snippet. Replace <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained above.
+<Tabs>
+  <TabList>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```java
+RSTracker tracker = new RSTracker()
+            .createTracker(
+                this, WRITE_KEY, networkConfiguration
+            );
+
+RSTracker tracker = new RSTracker()
+            .createTracker(
+                this, WRITE_KEY, DATA_PLANE_URL
+            );
+
+RSTracker tracker = new RSTracker()
+            .createTracker(
+                this, WRITE_KEY, networkConfiguration,
+                sessionConfiguration, trackerConfiguration,
+                subjectConfiguration
+            );
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val tracker = RSTracker()
+            .createTracker(
+                this, WRITE_KEY, networkConfiguration
+            )
+
+val tracker = RSTracker()
+            .createTracker(
+                this, WRITE_KEY, DATA_PLANE_URL
+            )
+
+val tracker = RSTracker()
+            .createTracker(
+                this, WRITE_KEY, networkConfiguration,
+                sessionConfiguration, trackerConfiguration,
+                subjectConfiguration
+            )
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+</li>
+</ol>
+
+NetworkConfiguration
+<Tabs>
+  <TabList>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```java
+// 1
+NetworkConfiguration networkConfiguration = new NetworkConfiguration(DATA_PLANE_URL);
+// 2
+NetworkConfiguration networkConfiguration = new NetworkConfiguration(DATA_PLANE_URL, CONTROL_PLANE_URL);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+// 1
+val networkConfiguration = NetworkConfiguration(DATA_PLANE_URL)
+// 2
+val networkConfiguration = NetworkConfiguration(DATA_PLANE_URL, CONTROL_PLANE_URL)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+SessionConfiguration
+<Tabs>
+  <TabList>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```java
+SessionConfiguration sessionConfiguration = new SessionConfiguration(
+  new TimeMeasure(1, TimeUnit.MINUTES),
+  new TimeMeasure(1, TimeUnit.MINUTES)
+);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val sessionConfiguration = SessionConfiguration(
+  TimeMeasure(1, TimeUnit.MINUTES),
+  TimeMeasure(1, TimeUnit.MINUTES)
+);
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+TrackerConfiguration
+<Tabs>
+  <TabList>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```java
+TrackerConfiguration trackerConfiguration = new TrackerConfiguration()
+  .base64Encoding(false)
+  .logLevel(LogLevel.VERBOSE)
+  .deepLinkContext(true)
+  .applicationContext(true)
+  .platformContext(true)
+  .geoLocationContext(true)
+  .lifecycleAutotracking(true)
+  .diagnosticAutotracking(true)
+  .screenViewAutotracking(true)
+  .screenContext(true)
+  .applicationContext(true)
+  .exceptionAutotracking(true)
+  .installAutotracking(true)
+  .userAnonymisation(false)
+  .appId(APP_ID);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val trackerConfiguration = TrackerConfiguration()
+  .base64Encoding(false)
+  .logLevel(LogLevel.VERBOSE)
+  .deepLinkContext(true)
+  .applicationContext(true)
+  .platformContext(true)
+  .geoLocationContext(true)
+  .lifecycleAutotracking(true)
+  .diagnosticAutotracking(true)
+  .screenViewAutotracking(true)
+  .screenContext(true)
+  .applicationContext(true)
+  .exceptionAutotracking(true)
+  .installAutotracking(true)
+  .userAnonymisation(false)
+  .appId(APP_ID)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+| Method/Variable name | Default      | 
+| :---------- | :------------ | 
+| logLevel     |        LogLevel.OFF       |           
+| lifecycleAutotracking      |   true            |           
+| screenViewAutotracking     |   true            |           
+| sessionContext      |         true      |        
+
+SubjectConfiguration
+
+RudderStack will call Identify API as soon as initialization is completed. userId will be mapped to RudderStack's userId. Other properties will be mapped to RudderStack's traits.
+
+<div class="infoBlock">
+userId is mandatory. If not provided, the call will be ignored.
+</div>
+
+<Tabs>
+  <TabList>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```java
+Traits.Address address = new Traits.Address()
+  .putCity("city value")
+  .putCountry("country value")
+  .putPostalCode("postalCode value")
+  .putState("state value")
+  .putStreet("street value");
+
+Traits.Company company = new Traits.Company()
+  .putName("name value")
+  .putId("id value")
+  .putIndustry("industry value");
+
+Traits traits = new Traits()
+  .putCompany(company)
+  .putAddress(address)
+  .putAge("age value")
+  .putBirthday("birthday value")
+  .putCreatedAt("createAt value")
+  .putDescription("description value")
+  .putEmail("email value")
+  .putFirstName("fName value")
+  .putGender("gender value")
+  .putId("id value")
+  .putLastName("lName value")
+  .putName("name value")
+  .putPhone("phone value")
+  .putTitle("title value")
+  .putUserName("userName value")
+  .put("Key-1", "value-1")
+  .put("Key-2", 20)
+  .put("Key-3", true);
+
+SubjectConfiguration subjectConfiguration = new SubjectConfiguration()
+  .userId("User-1")
+  .traits(traits);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val address: Traits.Address = Traits.Address()
+  .putCity("city value")
+  .putCountry("country value")
+  .putPostalCode("postalCode value")
+  .putState("state value")
+  .putStreet("street value")
+
+val company: Traits.Company = Traits.Company()
+  .putName("name value")
+  .putId("id value")
+  .putIndustry("industry value")
+
+val traits = Traits()
+  .putCompany(company)
+  .putAddress(address)
+  .putAge("age value")
+  .putBirthday("birthday value")
+  .putCreatedAt("createAt value")
+  .putDescription("description value")
+  .putEmail("email value")
+  .putFirstName("fName value")
+  .putGender("gender value")
+  .putId("id value")
+  .putLastName("lName value")
+  .putName("name value")
+  .putPhone("phone value")
+  .putTitle("title value")
+  .putUserName("userName value")
+  .put("Key-1", "value-1")
+  .put("Key-2", 20)
+  .put("Key-3", true)
+
+val subjectConfiguration = SubjectConfiguration()
+  .userId("User-1")
+  .traits(traits)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+<div class="successBlock">
+You can use the rest of your code without any changes as the RudderStack API is fully compatible with Snowplow.
+</div>
+      </TabPanel>
+      <TabPanel>
+<ol>
+<li>Add the SDK to your <code class="inline-code">Podfile</code> as shown:
+
+```ruby
+pod 'RudderSnowplowMigrator', '1.0.0.beta.1'
+```
+</li>
+<li>Then, run the following command:
+
+```ruby
+pod install
+```
+</li>
+<li>Update your SDK initialization to the following. Replace <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained above.
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+RSTracker *tracker = [RSTracker createTrackerWithWriteKey:WRITE_KEY network:networkConfig];
+
+RSTracker *tracker = [RSTracker createTrackerWithWriteKey:WRITE_KEY dataPlaneUrl:DATA_PLANE_URL];
+
+RSTracker *tracker = [RSTracker createTrackerWithWriteKey:WRITE_KEY network:networkConfig configurations:@[trackerConfig]];
+
+RSTracker *tracker = [RSTracker getDefaultTracker]
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let tracker = RSTracker.createTracker(
+            writeKey: WRITE_KEY,
+            network: networkConfig
+        )
+
+let tracker = RSTracker.createTracker(
+            writeKey: WRITE_KEY,
+            dataPlaneUrl: DATA_PLANE_URL
+        )
+
+let tracker = RSTracker.createTracker(
+            writeKey: WRITE_KEY,
+            network: networkConfig,
+            configurations: [trackerConfig, sessionConfig]
+        )
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+</li>
+</ol>
+NetworkConfiguration
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+// 1
+RSNetworkConfiguration *networkConfig = [[RSNetworkConfiguration alloc] initWithDataPlaneUrl:DATA_PLANE_URL];
+// 2
+RSNetworkConfiguration *networkConfig = [[RSNetworkConfiguration alloc] initWithDataPlaneUrl:DATA_PLANE_URL controlPlaneUrl:CONTROL_PLANE_URL];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+// 1
+let networkConfig = NetworkConfiguration(dataPlaneUrl: DATA_PLANE_URL)
+// 2
+let networkConfig = NetworkConfiguration(dataPlaneUrl: DATA_PLANE_URL, controlPlaneUrl: CONTROL_PLANE_URL)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+SessionConfiguration
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+RSSessionConfiguration *sessionConfig = [[RSSessionConfiguration alloc] initWithForegroundTimeout:[[NSMeasurement alloc] initWithDoubleValue:30 unit:NSUnitDuration.minutes] backgroundTimeout:[[NSMeasurement alloc] initWithDoubleValue:30 unit:NSUnitDuration.minutes]];
+
+// 2
+RSSessionConfiguration *sessionConfig = [[RSSessionConfiguration alloc] initWithForegroundTimeoutInSeconds:60 backgroundTimeoutInSeconds:60];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+// 1
+let sessionConfig = SessionConfiguration(
+  foregroundTimeout: Measurement(value: 30, unit: .minutes),
+  backgroundTimeout: Measurement(value: 30, unit: .minutes)
+)
+
+// 2
+let sessionConfig = SessionConfiguration(foregroundTimeoutInSeconds: 60, backgroundTimeoutInSeconds: 60)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+TrackerConfiguration
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+RSTrackerConfiguration * trackerConfig = [
+  [RSTrackerConfiguration alloc] init
+];
+[trackerConfig base64Encoding: YES];
+[trackerConfig logLevel: LogLevelDebug];
+[trackerConfig sessionContext: YES];
+[trackerConfig deepLinkContext: YES];
+[trackerConfig applicationContext: YES];
+[trackerConfig platformContext: YES];
+[trackerConfig geoLocationContext: NO];
+[trackerConfig screenContext: YES];
+[trackerConfig screenViewAutotracking: YES];
+[trackerConfig lifecycleAutotracking: YES];
+[trackerConfig installAutotracking: YES];
+[trackerConfig exceptionAutotracking: YES];
+[trackerConfig diagnosticAutotracking: NO];
+[trackerConfig userAnonymisation: NO];
+[trackerConfig appId: APP_ID];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let trackerConfig = TrackerConfiguration()
+  .base64Encoding(false)
+  .logLevel(.debug)
+  .deepLinkContext(true)
+  .applicationContext(true)
+  .platformContext(true)
+  .geoLocationContext(true)
+  .lifecycleAutotracking(true)
+  .diagnosticAutotracking(true)
+  .screenViewAutotracking(true)
+  .screenContext(true)
+  .applicationContext(true)
+  .exceptionAutotracking(true)
+  .installAutotracking(true)
+  .userAnonymisation(false)
+  .appId(APP_ID)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+| Method/Variable name | Default      | 
+| :---------- | :------------ | 
+| logLevel     |        LogLevel.OFF       |           
+| lifecycleAutotracking      |   true            |           
+| screenViewAutotracking     |   true            |           
+| sessionContext      |         true      |
+
+SubjectConfiguration
+
+RudderStack will call Identify API as soon as initialization is completed. userId will be mapped to RudderStack's userId. Other properties will be mapped to RudderStack's traits.
+
+<div class="infoBlock">
+userId is mandatory. If not provided, the call will be ignored.
+</div>
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+RSSubjectConfiguration * subjectConfig = [
+  [RSSubjectConfiguration alloc] init
+];
+[subjectConfig userId: @ "user_id"];
+[subjectConfig traits: @ {
+  @ "key_1": @ "value_1", @ "key_2": @20, @ "key_3": @YES
+}];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let subjectConfig = SubjectConfiguration()
+  .userId("user_id")
+  .traits(["key_1": "value_1", "key_2": 20, "key_3": true])
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+<div class="successBlock">
+You can use the rest of your code without any changes as the RudderStack API is fully compatible with Snowplow.
+</div>        
+      </TabPanel>
+      <TabPanel>
+<ul>
+<li>Add the SDK to your web application:
+<span>
+
+```markup
+<script>
+	rudderanalytics = window.rudderanalytics = [];
+
+	var methods = [
+		"load",
+		"page",
+		"track",
+		"identify",
+		"reset"
+	];
+	for (var i=0; i<methods.length; i++) {
+		var method = methods[i];
+		rudderanalytics[method] = function(methodName) {
+			return function() {
+				rudderanalytics.push([methodName, ...arguments]);
+			}
+		} (method)
+	}
+	rudderanalytics.load(<WRITE_KEY>, <DATA_PLANE_URL>);
+	rudderanalytics.page();
+</script>
+<script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js"></script>
+```
+</span>
+<div class="infoBlock">
+For the minified version of the above script, refer to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</Link> guide. 
+</div>
+
+<div class="infoBlock">
+If you are using an older version of the JavaScript SDK (v1), refer to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</Link> to migrate to v1.1.
+</div>
+</li>
+<li>Update the object. RudderStack uses <code class="inline-code">rudderanalytics</code> as the global object library as compared to Snowplow's <code class="inline-code">analytics</code> object.
+
+<div class="successBlock">
+You can use the rest of your code without any changes as the RudderStack API is fully compatible with Snowplow.
+</div>
+</li>
+</ul>
+      </TabPanel>
+      <TabPanel>
+      <ul>
+      <li>Change your .NET project's <strong>Dependencies</strong> to include the <code class="inline-code">RudderAnalytics</code> package via <a href="https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-powershell">NuGet</a></li>
+      <li>Then, initialize the RudderStack client by running the following code snippet. Replace <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained above.
+<span>
+
+```csharp
+using RudderStack;
+
+RudderAnalytics.Initialize(
+     <WRITE_KEY>,
+     new RudderConfig(dataPlaneUrl: <DATA_PLANE_URL>)
+);
+```
+</span>
+<div class="successBlock">
+You can use the rest of your code without any changes as the RudderStack API is fully compatible with Snowplow.
+</div>
+</li>
+</ul>
+    </TabPanel>
+    <TabPanel>
+      <ul>
+      <li>Install the RudderStack React Native SDK by running the following command:
+<span>
+
+```bash
+// npm
+npm install @rudderstack/rudder-sdk-react-native --save
+// yarn
+yarn add @rudderstack/rudder-sdk-react-native
+// navigate to iOS folder and run pod install
+pod install
+```
+</span>
+      </li>
+      <li>Then, import the React Native SDK.
+<span>
+
+```typescript
+import rudderClient from "@rudderstack/rudder-sdk-react-native"
+```
+</span>
+	</li>
+	<li>Next, change the SDK initialization as shown in the following snippet. Replace <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained above.
+<span>
+
+```typescript
+await rudderClient.setup(<WRITE_KEY>, {
+  dataPlaneUrl: <DATA_PLANE_URL>,
+  trackLifecycleEvents: true,
+  recordScreenViews: true,
+})
+```
+</span>
+</li>
+<li>Update the references to the <code class="inline-code">analytics</code> keyword in your application code with <code class="inline-code">rudderClient</code>.</li>
+<div class="successBlock">
+You can use the rest of your code without any changes as the RudderStack API is fully compatible with Snowplow.
+</div>
+</ul>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
+
+## Class names
+
+| Snowplow Class   | Java | Kotlin | Objective C | Swift |
+| :------------- | :-------------- |:------------- | :-------------- |
+| `NetworkConfiguration` | `NetworkConfiguration` | `NetworkConfiguration` | `RSNetworkConfiguration` | `NetworkConfiguration` |
+| `TrackerConfiguration` | `TrackerConfiguration` | `TrackerConfiguration` | `RSTrackerConfiguration` | `TrackerConfiguration` |
+| `SessionConfiguration` | `SessionConfiguration` | `SessionConfiguration` | `RSSessionConfiguration` | `SessionConfiguration` |
+| `SubjectConfiguration` | `SubjectConfiguration` | `SubjectConfiguration` | `RSSubjectConfiguration` | `SubjectConfiguration` |
+| `Structured` | `Structured` | `Structured` | `RSStructured` | `Structured` |
+| `ScreenView` | `ScreenView` | `ScreenView` | `RSScreenView` | `ScreenView` |
+| `Background` | `Background` | `Background` | `RSBackground` | `Background` |
+| `Foreground` | `Foreground` | `Foreground` | `RSForeground` | `Foreground` |
+| `SelfDescribing` | `SelfDescribing` | `SelfDescribing` | `RSSelfDescribing` | `SelfDescribing` |
+| `SelfDescribingJson` | `SelfDescribingJson` | `SelfDescribingJson` | `RSSelfDescribingJson` | `SelfDescribingJson` |
+| `TimeMeasure` | `TimeMeasure` | `TimeMeasure` | `N/A` | `N/A` |
+| `Snowplow` | `RSTracker` | `RSTracker` | `RSTracker` | `RSTracker` |
+
+
+## Sending events
+
+### Track 
+
+
+
+### Page/Screen
