@@ -1655,6 +1655,21 @@ export const jsonData = [
         link: "/features/transformations/",
         content: [
             {
+                title: "Using Libraries",
+                link: "/features/transformations/using-libraries",
+                content: [],
+            },
+            {
+                title: "Cloud Mode Transformations",
+                link: "/features/transformations/cloud-mode-transformations",
+                content: [],
+            },
+            {
+                title: "Device Mode Transformations",
+                link: "/features/transformations/device-mode-transformations",
+                content: [],
+            },
+            {
                 title: "FAQ",
                 link: "/features/transformations/faq",
                 content: [],

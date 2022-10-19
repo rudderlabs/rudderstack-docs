@@ -1,0 +1,115 @@
+---
+title: "Using Libraries"
+description: Detailed technical documentation on how to use the RudderStack's Libraries feature.
+---
+
+One of the key features of RudderStack Transformations is the ability to reuse the transformation code in other transformations using the **Libraries** feature.
+
+## Adding a library
+
+To add a new library, follow these steps:
+
+1. In the [RudderStack dashboard](https://app.rudderstack.com/), go to **Enhance** > **Transformations** and click the **Libraries** tab, as shown:
+
+<img src="../../assets/features/adding-a-library-1.png" alt="Adding a library" />
+
+2. Click **New library**.
+3. Add the library **Name**, **Description** and write the function you want to reuse across different transformations. You can also add multiple functions in a single library, as shown:
+
+<img src="../../assets/features/adding-a-library-2.png" alt="Adding a library" />
+
+4. Click **Run Test** to ensure the library code has the correct syntax.
+
+## Using libraries in transformations
+
+To use the libraries in your existing transformations, refer to the **Import Library Name** option in the RudderStack dashboard, as shown:
+
+<img src="../../assets/features/libraries-in-transformations.png" alt="Using libraries in transformations" />
+
+<div class="infoBlock">
+RudderStack converts the library name into <strong>camel case without spaces</strong>; this becomes your <strong>library handle</strong> which you can use across multiple transformations. For example, if your library name is <code class="inline-code">Sample Transformation Library</code>, then the library handle would be <code class="inline-code">sampleTransformationLibrary</code>.
+</div>
+
+You can then use the library in a transformation with a simple `import` statement. Refer to the below use case for more information.
+
+### Use case
+
+Suppose you want to import a function `rudderEmail` from the `Is Rudder Email` library to filter events that don't have the email address containing the RudderStack domain.
+
+The `rudderEmail` function is as follows:
+
+```javascript
+export function rudderEmail(email) {
+    return /@(rudderlabs|rudderstack)| \+ruddertest/.test(email);
+}
+```
+
+The following code snippet demonstrates how you can implement this in a transformation:
+
+```javascript
+import { rudderEmail } from "isRudderEmail";
+export function transformEvent(event) {
+  const email =
+    event.context && event.context.traits && event.context.traits.email;
+  if (email) {
+    if (!rudderEmail(email)) return;
+  }
+  return event;
+}
+```
+
+On clicking **Run Test**, a sample event not containing the RudderStack email domain is filtered out, as shown:
+
+<img src="../../assets/features/libraries-in-transformations-test.png" alt="Filtering out events using libraries in transformation" />
+
+## Importing multiple functions from a single library
+
+The following snippets highlight how to properly import functions from a library:
+
+```javascript
+// ---------------
+import { getLoss } from "getFinanceData";
+
+// OR
+
+import { getLoss, getRevenue, getProfit } from "getFinanceData";
+import {
+  getLoss,
+  getRevenue,
+  getProfit
+} from "getFinanceData";
+
+// For default getPrice import
+import getPrice, { getRevenue, getProfit } from "getFinanceData";
+
+// alias imports
+import getPrice as gp, { getRevenue as gr, getProfit } from "getFinanceData";
+// usage: gp(event), gr(event), getProfit(ev)
+
+import * as GFD from "getFinanceData";
+// usage: GFD.getRevenue(ev), GFD.getProfit(ev)
+// for default import: GFD.default(ev)
+```
+
+The following snippets highlight the **incorrect** way of importing the library functions:
+
+```javascript
+// -----------------
+import * from "getFinanceData";
+getPrice(ev)
+
+// OR
+
+import getPrice as gp from "getFinanceData";
+getPrice(ev)
+```
+
+## Deleting a library
+
+To delete a library, go to **Enhance** > **Transformations** and click the **Libraries** tab. Click the **Delete** button next to the library you want to delete, as shown:
+
+<img src="../../assets/features/deleting-a-library.png" alt="Deleting a library" />
+
+<div class="warningBlock">
+You cannot delete a <Link to="/features/transformations/faq#what-is-a-referenced-library">referenced library</Link>.
+</div>

@@ -2019,6 +2019,24 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "using-libraries",
+    title: "Using Libraries",
+    link: "/features/transformations/using-libraries",
+    content: [],
+  },
+  {
+    key: "cloud-mode-transformations",
+    title: "Cloud Mode Transformations",
+    link: "/features/transformations/cloud-mode-transformations",
+    content: [],
+  },
+  {
+      key: "device-mode-transformations",  
+      title: "Device Mode Transformations",
+      link: "/features/transformations/device-mode-transformations",
+      content: [],
+  },
+  {
     key: "faq",
     title: "Transformations FAQ",
     link: "/features/transformations/faq",
