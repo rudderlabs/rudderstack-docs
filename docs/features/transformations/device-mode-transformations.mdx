@@ -3,7 +3,7 @@ title: "Transformations in Device Mode"
 description: Detailed technical documentation on the setup required while using transformations with device mode destinations.
 ---
 
-RudderStack's Device Mode Transformations feature enables you to use the powerful user transformations with the [device mode-only destinations](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations), for example, Firebase, Hotjar, etc. 
+RudderStack's Device Mode Transformations feature enables you to use the powerful user transformations with the [device mode-only destinations](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations), for example, Firebase, Hotjar, etc.
 
 Using this feature, you can enrich the event data using your custom logic. Moreover, it provides an easier way to filter out the events to get rid of the bad data, sample events to reduce costs to some destinations, and many more interesting use cases. To learn more about the use cases, refer to the <Link to="/features/transformations/#use-case">Use case</Link> section.
 
@@ -16,6 +16,7 @@ Only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android
   label={'Plan'}
   message={'Enterprise'}
   color={'blueviolet'}
+  logo={'github'}
 />
 <GhBadge
   label={'Stability'}
@@ -24,7 +25,7 @@ Only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android
   logo={'github'}
 />
 
-## Device mode Transformations server architecture
+## Client Transformation service architecture
 
 RudderStack provides the Client Transformation service to facilitate the Transformations feature for device mode destinations. It ensures that the event ingestion to RudderStack backend isn't affected, assuring minimum response time from the RudderStack backend.
 
