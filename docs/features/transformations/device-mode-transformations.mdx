@@ -3,7 +3,9 @@ title: "Transformations in Device Mode"
 description: Detailed technical documentation on the setup required while using transformations with device mode destinations.
 ---
 
-RudderStack's Device Mode Transformations feature enables you to use the powerful User Transformation feature not only for the cloud-mode pipelines but also the device-mode only destinations, e.g., Firebase, Hotjar, etc. using this feature, you'll be able to enrich the event data using your custom logic. Moreover, it provides an easier way to filter events to get rid of the bad data, sample events to reduce costs to some destinations, and many more interesting use cases. To learn more about the use cases you can refer to the <Link to="/features/transformations/#use-case">Use case</Link> section.
+RudderStack's Device Mode Transformations feature enables you to use the powerful user transformations with the [device mode-only destinations](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations), for example, Firebase, Hotjar, etc. 
+
+Using this feature, you can enrich the event data using your custom logic. Moreover, it provides an easier way to filter out the events to get rid of the bad data, sample events to reduce costs to some destinations, and many more interesting use cases. To learn more about the use cases, refer to the <Link to="/features/transformations/#use-case">Use case</Link> section.
 
 <div class="warningBlock">
 Only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>  SDKs support the Transformations feature to send events to the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations.
@@ -22,23 +24,19 @@ Only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android
   logo={'github'}
 />
 
-## Device-Mode Transformation server Architecture
+## Device mode Transformations server architecture
 
-RudderStack has introduced the Client Transformation service to facilitate the transformation feature for device-mode destinations. This ensures that the even ingestion to RudderStack backend isn't affected, assuring minimum response time from the RudderStack backend.
+RudderStack provides the Client Transformation service to facilitate the Transformations feature for device mode destinations. It ensures that the event ingestion to RudderStack backend isn't affected, assuring minimum response time from the RudderStack backend.
 
 <img src="../../assets/features/device-mode-transformations-workflow.png" alt="Transformations workflow" />
 
-When you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination supporting the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, the following steps take place under the hood.
+When you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination supporting the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, the following steps are performed:
 
-1. RudderStack SDK sends the event to the Client Transformation service to multiplex the event for different destinations and connect with the transformations attached to those device-mode destinations.
-2. Client Transformation service reuses our Transformation service to transform the event according to the functions attached to the destinations.
-3. After the transformation, the transformed event is returned to the Client Transformation service.
+1. RudderStack SDK sends the event to the Client Transformation service. It multiplexes the event for different destinations and connects with the transformations attached to these device mode destinations.
+2. Client Transformation service sends the event to the RudderStack Transformation service to transform the event according to the functions defined in the attached transformations.
+3. After the transformation is applied, the transformed event is returned to the Client Transformation service.
 4. Client Transformation service responds to the SDK with the transformed events for all the destinations.
-5. Finally, the SDK parses the transformed events and forwards them to the device-mode destinations.
-
-<div class="infoBlock">
-Refer to the <Link to="/features/transformations/#use-case">Use case</Link> section to know more about how to accomplish a task using a transformation.
-</div>
+5. Finally, the SDK parses the transformed events and forwards them to the specified device-mode destinations.
 
 ## SDK setup
 
@@ -106,7 +104,7 @@ pod 'Rudder', '1.8.0.beta.1'
 
 The following limitations are applicable when invoking a transformation in the device mode:
 
-- The network unavailability can lead to higher latency than expected while sending the events to the destinations. RudderStack doesn't lose data due to the loss of the network. We store the events in the client device until those are successfully delivered to the destination.
+- The network unavailability can lead to higher latency than expected while sending the events to the destinations. RudderStack doesn't lose data due to the network loss and stores the events in the client device until those are successfully delivered to the destination.
 
 - The iOS SDK does not support the background processing of an event when the app is closed. However, the pending events are sent the next time the app is opened.
 
