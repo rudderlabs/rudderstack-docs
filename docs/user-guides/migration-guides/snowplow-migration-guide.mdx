@@ -995,94 +995,280 @@ tracker.track(screenView)
     </TabPanels>
 </Tabs>
        
+<TabPanel>
+Structured
 
+RudderStack will call Track API. action will be mapped to RudderStack’s event. Other properties like category, label, value, etc., will be mapped to RudderStack’s properties.<br/><br/>
 
-Your Android app must be on <strong>version 5.0 (API level 21) or higher</strong> for RudderStack to be able to send events to Intercom.<br/><br/>
-
-Once confirmed, follow these steps to add Intercom to your Android project:
-
-<ol>
-<li>In your app-level <code class="inline-code">build.gradle</code> file, add the following <code class="inline-code">repository</code>:
+<Tabs>
+  <TabList>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
 <span>
 
-```groovy
-repositories {
-    mavenCentral()
-}
+```java
+HashMap < String, Object > properties = new HashMap < > ();
+properties.put("key-1", "value 1");
+properties.put("key-2", 123);
+properties.put("key-3", 123.45);
+properties.put("key-4", true);
+properties.put("key-5", false);
+
+Structured structured = new Structured("Category_example", "Action_example")
+  .label("my-label")
+  .value(1234.23)
+  .property("my-property")
+  .properties(properties);
+
+tracker.track(structured);
 ```
 </span>
-</li>
-<li>Then, add the following under <code class="inline-code">dependencies</code>:
-<span>
-
-```groovy
-// Rudder core sdk and intercom extension
-implementation 'com.rudderstack.android.sdk:core:1.0.2'
-implementation 'com.rudderstack.android.integration:intercom:0.1.1'
-
-// intercom core sdk
-implementation 'io.intercom.android:intercom-sdk-base:6.+'
-
-// gson
-implementation 'com.google.code.gson:gson:2.8.6'
-
-// FCM
-implementation 'com.google.firebase:firebase-messaging:20.2.0'
-```
-</span>
-</li>
-<li>Change the initialization of your RudderStack client with the following:
+      </TabPanel>
+      <TabPanel>
 <span>
 
 ```kotlin
-val rudderClient:RudderClient = RudderClient.getInstance(
-    this,
-    WRITE_KEY,
-    RudderConfig.Builder()
-        .withDataPlaneUrl(DATA_PLANE_URL)
-        .withLogLevel(RudderLogger.RudderLogLevel.DEBUG) // optional
-        .withFactory(IntercomIntegrationFactory.FACTORY)
-        .build()
+val properties = mapOf < String, Any > (
+  "key-1"
+  to "value 1",
+  "key-2"
+  to 123,
+  "key-3"
+  to 123.45,
+  "key-4"
+  to true,
+  "key-5"
+  to false
 )
+
+val structured = Structured("Category_example", "Action_example")
+  .label("my-label")
+  .value(1234.23)
+  .property("my-property")
+  .properties(properties)
+
+tracker.track(structured)
 ```
 </span>
-</li>
-</ol>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+SelfDescribing
+
+RudderStack will call Track API with event action.
+action is mandatory. If not provided, the call will be ignored.
+
+<Tabs>
+  <TabList>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```java
+HashMap < String, Object > properties = new HashMap < > ();
+properties.put("action", "Action-2");
+properties.put("key-1", "value 1");
+
+// 1
+SelfDescribingJson selfDescribingJson = new SelfDescribingJson("schema", payload)
+SelfDescribing selfDescribing = new SelfDescribing(selfDescribingJson)
+
+// 2
+SelfDescribing selfDescribing = new SelfDescribing("schema", payload)
+
+tracker.track(selfDescribing);
+```
+</span>
       </TabPanel>
       <TabPanel>
-        If this is the first time you are integrating the RudderStack iOS SDK to your project, refer to the <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS SDK</Link> documentation for more information.<br/><br/>
-
-To add the RudderStack iOS SDK to your project, follow these steps:
-<ol>
-<li>Add the required pod followed by <code class="inline-code">pod install</code>:
 <span>
 
-```ruby
-pod 'Rudder-Intercom'
+```kotlin
+val payload = mapOf < String, Any > (
+  "action"
+  to "Action-2",
+  "key-2"
+  to "value-2"
+)
+
+// 1
+val selfDescribingJson = SelfDescribingJson("schema", payload)
+val selfDescribing = SelfDescribing(selfDescribingJson)
+
+// 2
+val selfDescribing = SelfDescribing("schema", payload)
+
+tracker.track(selfDescribing)
 ```
 </span>
-</li>
-<li>Initialize the client as follows:
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+Foreground
+
+RudderStack will call [Track](https://www.rudderstack.com/docs/event-spec/standard-events/track/) API with the event `Application Opened`. Other properties like `index`, `properties` will be mapped to RudderStack’s `properties`.
+
+This is not an automatic life cycle event. Properties like version, build, etc will not be present under `properties`.
+
+<Tabs>
+  <TabList>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
 <span>
 
-```objectivec
-RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
-[builder withDataPlaneUrl:DATA_PLANE_URL];
-[builder withFactory:[RudderIntercomFactory instance]];
-[builder withLoglevel:RSLogLevelDebug]; // optional
-[RSClient getInstance:WRITE_KEY config:[builder build]];
+```java
+HashMap < String, Object > properties = new HashMap < > ();
+properties.put("key-1", "value 1");
+properties.put("key-2", 123);
+properties.put("key-3", 123.45);
+properties.put("key-4", true);
+properties.put("key-5", false);
+
+Foreground foreground = new Foreground(1234);
+foreground.setProperties(properties);
+
+tracker.track(foreground);
 ```
 </span>
-</li>
-<li>Add a <strong>Privacy - Photo Library Usage Description</strong> entry to your <code class="inline-code">Info.plist</code>. This is <a href="https://developer.apple.com/library/content/qa/qa1937/_index.html">required by Apple</a> for applications that can access the photo library.
+      </TabPanel>
+      <TabPanel>
+<span>
 
-<div class="infoBlock">
+```kotlin
+val properties = mapOf < String, Any > (
+  "key-1"
+  to "value 1",
+  "key-2"
+  to 123,
+  "key-3"
+  to 123.45,
+  "key-4"
+  to true,
+  "key-5"
+  to false
+)
 
-  Users will be prompted for the permission to access the photo library only
-  when they tap the button to upload their images.
-</div>
-</li>
-</ol>
+Foreground foreground = Foreground(1234)
+foreground.properties = properties
+
+tracker.track(background)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+Background
+
+RudderStack will call [Track](https://www.rudderstack.com/docs/event-spec/standard-events/track/) API with the event `Application Backgrounded`. Other properties like `index`, `properties` will be mapped to RudderStack’s `properties`. 
+
+This is not an automatic life cycle event. Properties like version, build, etc will not be present under `properties`.
+
+
+<Tabs>
+  <TabList>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```java
+HashMap < String, Object > properties = new HashMap < > ();
+properties.put("key-1", "value 1");
+properties.put("key-2", 123);
+properties.put("key-3", 123.45);
+properties.put("key-4", true);
+properties.put("key-5", false);
+
+Background background = new Background(1234);
+background.setProperties(properties);
+
+tracker.track(background);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val properties = mapOf < String, Any > (
+  "key-1"
+  to "value 1",
+  "key-2"
+  to 123,
+  "key-3"
+  to 123.45,
+  "key-4"
+  to true,
+  "key-5"
+  to false
+)
+
+Background background = Background(1234)
+background.properties = properties
+
+tracker.track(background)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+ScreenView
+
+RudderStack will call Screen API. name will be mapped to RudderStack’s name. Other properties like screenId, previousName, previousId, etc., will be mapped to RudderStack’s properties.
+
+
+<Tabs>
+  <TabList>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```java
+ScreenView screenView = new ScreenView("MainActivity", UUID.randomUUID())
+  .type("type")
+  .previousName("previousName")
+  .previousId("previousId")
+  .previousType("previousType")
+  .transitionType("transitionType");
+
+tracker.track(screenView);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val screenView = ScreenView("MainActivity", UUID.randomUUID())
+  .type("type")
+  .previousName("previousName")
+  .previousId("previousId")
+  .previousType("previousType")
+  .transitionType("transitionType")
+
+tracker.track(screenView)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
       </TabPanel>
     </TabPanels>
 </Tabs>
