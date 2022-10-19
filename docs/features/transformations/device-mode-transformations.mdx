@@ -4,7 +4,7 @@ description: Detailed technical documentation on the setup required while using 
 ---
 
 <div class="warningBlock">
-Only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>, <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-react-native-sdk/">React-Native</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-cordova-sdk/">Cordova</Link> SDKs support the Transformations feature to send events to the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations.
+Only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>  SDKs support the Transformations feature to send events to the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations.
 </div>
 
 <GhBadge
@@ -20,15 +20,19 @@ Only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android
   logo={'github'}
 />
 
-When you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination supporting the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, RudderStack:
+When you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination supporting the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, the following steps occur in the backend:
 
-1. SDK sends the events to the routing server to transform the event.
-2. Sends the events to the transformation server to apply the transformation.
-3. Returns the transformed event to the routing server.
-4. Returns the transformed event to the SDK.
-5. Sends the transformed event to the device mode destinations.
+1. RudderStack SDK sends the events to the routing server.
+2. Routing server sends those events to the transformation server.
+3. Transformation server applies transformation to the events and returns the transformed events to the routing server.
+4. Routing server returns the transformed events to the SDK.
+5. SDK sends the transformed events to the specified device mode destinations.
 
 <img src="../../assets/features/device-mode-transformations-workflow.png" alt="Transformations workflow" />
+
+<div class="infoBlock">
+Refer to the <Link to="/features/transformations/#use-case">Use case</Link> section to know more about how to accomplish a task using a transformation.
+</div>
 
 ## SDK setup
 
@@ -96,12 +100,9 @@ pod 'Rudder', '1.8.0.beta.1'
 
 The following limitations are applicable when invoking a transformation in the device mode:
 
-- Events are not sent to the destination SDKs in real-time.
-- The network availability and server response can lead to latency while sending the events.
-- The iOS SDK does not support background processing of an event when the app is closed. However, the backlog event is sent the next time the app is opened.
-
-
-- The transformation fails if the following memory and time limits are exceeded:
+- The network availability and server response can lead to latency while sending the events. Hence, there might be some delays before the events are reflected in the destination SDKs.
+- The iOS SDK does not support the background processing of an event when the app is closed. However, the backlog event is sent the next time the app is opened.
+- The following memory and time limits must be followed:
 
     | Parameter    | Limit     |
     | :----------- | :-------- |

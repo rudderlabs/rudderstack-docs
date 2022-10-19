@@ -2019,15 +2019,15 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "cloud-mode-transformations",
+    title: "Cloud Mode Transformations",
+    link: "/features/transformations/cloud-mode-transformations",
+    content: [],
+  },
+  {
       key: "device-mode-transformations",  
       title: "Device Mode Transformations",
       link: "/features/transformations/device-mode-transformations",
-      content: [],
-  },
-  {
-      key: "cloud-mode-transformations",
-      title: "Cloud Mode Transformations",
-      link: "/features/transformations/cloud-mode-transformations",
       content: [],
   },
   {

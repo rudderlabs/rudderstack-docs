@@ -1656,13 +1656,13 @@ export const jsonData = [
                 content: [],
             },
             {
-                title: "Device Mode Transformations",
-                link: "/features/transformations/device-mode-transformations",
+                title: "Cloud Mode Transformations",
+                link: "/features/transformations/cloud-mode-transformations",
                 content: [],
             },
             {
-                title: "Cloud Mode Transformations",
-                link: "/features/transformations/cloud-mode-transformations",
+                title: "Device Mode Transformations",
+                link: "/features/transformations/device-mode-transformations",
                 content: [],
             },
             {
