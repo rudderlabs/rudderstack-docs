@@ -3,6 +3,10 @@ title: "Transformations in Device Mode"
 description: Detailed technical documentation on the setup required while using transformations with device mode destinations.
 ---
 
+RudderStack's Device Mode Transformations feature enables you to use the powerful user transformations with the [device mode-only destinations](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations), for example, Firebase, Hotjar, etc. 
+
+Using this feature, you can enrich the event data using your custom logic. Moreover, it provides an easier way to filter out the events to get rid of the bad data, sample events to reduce costs to some destinations, and many more interesting use cases. To learn more about the use cases, refer to the <Link to="/features/transformations/#use-case">Use case</Link> section.
+
 <div class="warningBlock">
 Only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>  SDKs support the Transformations feature to send events to the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations.
 </div>
@@ -20,19 +24,19 @@ Only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android
   logo={'github'}
 />
 
-When you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination supporting the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, the following steps occur in the backend:
+## Device mode Transformations server architecture
 
-1. RudderStack SDK sends the events to the routing server.
-2. Routing server sends those events to the transformation server.
-3. Transformation server applies transformation to the events and returns the transformed events to the routing server.
-4. Routing server returns the transformed events to the SDK.
-5. SDK sends the transformed events to the specified device mode destinations.
+RudderStack provides the Client Transformation service to facilitate the Transformations feature for device mode destinations. It ensures that the event ingestion to RudderStack backend isn't affected, assuring minimum response time from the RudderStack backend.
 
 <img src="../../assets/features/device-mode-transformations-workflow.png" alt="Transformations workflow" />
 
-<div class="infoBlock">
-Refer to the <Link to="/features/transformations/#use-case">Use case</Link> section to know more about how to accomplish a task using a transformation.
-</div>
+When you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination supporting the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, the following steps are performed:
+
+1. RudderStack SDK sends the event to the Client Transformation service. It multiplexes the event for different destinations and connects with the transformations attached to these device mode destinations.
+2. Client Transformation service sends the event to the RudderStack Transformation service to transform the event according to the functions defined in the attached transformations.
+3. After the transformation is applied, the transformed event is returned to the Client Transformation service.
+4. Client Transformation service responds to the SDK with the transformed events for all the destinations.
+5. Finally, the SDK parses the transformed events and forwards them to the specified device-mode destinations.
 
 ## SDK setup
 
@@ -49,7 +53,7 @@ Further, follow the below steps for setting up the required SDK:
     <TabPanels>
       <TabPanel>
 
-The detailed steps to setup the JavaScript SDK are mentioned in the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/">Quickstart guide</Link>. You just need to change the CDN URL in the SDK installation snippet to: <code class="inline-code">https://cdn.rudderlabs.com/v1.1/beta/dmt/v1/rudder-analytics.min.js</code> 
+The detailed steps to setup the JavaScript SDK are mentioned in the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/">Quickstart guide</Link>. You need to change the CDN URL in the SDK installation snippet to: <code class="inline-code">https://cdn.rudderlabs.com/v1.1/beta/dmt/v1/rudder-analytics.min.js</code>
 
 Alternatively, you can use the following snippet with the updated URL:
 
@@ -71,7 +75,7 @@ e.page()}();
 Device mode transformations are supported in <strong>Android SDK v1.8.0 and above</strong>.
 </div>
 
-Install the Android SDK following the detailed steps mentioned in <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/#installing-the-sdk">Installing the Android SDK</Link> section. Additionally, add the following dependency in the Android app level <code class="inline-code">build.gradle</code>:
+Install the Android SDK following the detailed steps mentioned in <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/#installing-the-sdk">Installing the Android SDK</Link> section. Additionally, use the following dependency in the Android app level <code class="inline-code">build.gradle</code>:
 <span>
 
 ```groovy
@@ -85,7 +89,7 @@ implementation 'com.rudderstack.android.sdk:core:1.8.0-beta.1'
 Device mode transformations are supported in <strong>iOS SDK v1.8.0 and above</strong>.
 </div>
 
-Install the iOS SDK following the detailed steps mentioned in <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/#installing-the-rudderstack-ios-sdk">Installing the iOS SDK</Link> section. Additionally, add the following dependency in <code class="inline-code">Podfile</code>:
+Install the iOS SDK following the detailed steps mentioned in <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/#installing-the-rudderstack-ios-sdk">Installing the iOS SDK</Link> section. Additionally, use the following dependency in <code class="inline-code">Podfile</code>:
 <span>
 
 ```ruby
@@ -100,8 +104,10 @@ pod 'Rudder', '1.8.0.beta.1'
 
 The following limitations are applicable when invoking a transformation in the device mode:
 
-- The network availability and server response can lead to latency while sending the events. Hence, there might be some delays before the events are reflected in the destination SDKs.
-- The iOS SDK does not support the background processing of an event when the app is closed. However, the backlog event is sent the next time the app is opened.
+- The network unavailability can lead to higher latency than expected while sending the events to the destinations. RudderStack doesn't lose data due to the network loss and stores the events in the client device until those are successfully delivered to the destination.
+
+- The iOS SDK does not support the background processing of an event when the app is closed. However, the pending events are sent the next time the app is opened.
+
 - The following memory and time limits must be followed:
 
     | Parameter    | Limit     |
