@@ -105,6 +105,11 @@ export const jsonData = [
     link: "/dashboard-guides/personal-access-token/",
     content: []
 },
+{
+    title: "Data Retention Opt-in",
+    link: "/dashboard-guides/data-retention/",
+    content: []
+},
     // Sources section
     {
         title: "Overview",
