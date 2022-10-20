@@ -27,9 +27,9 @@ RudderStack can store the following types of event data and replay it to the spe
 
 RudderStack offers the following data storage options for event replay functionality:
 
-- **No data retention** (default): RudderStack does not store any event data and hence it cannot be replayed.
-- **RudderStack S3 Storage**: Event data is stored in RudderStack's Amazon S3 bucket on a rolling 30-day basis. That is, RudderStack deletes the event data 30 days after it was stored.
-- **Choose your object storage**: Event data is stored in your object storage. RudderStack currently supports Amazon S3, Google Cloud Storage, Azure Blob Storage, and MinIO as the object storage options. 
+- **No data storage** (default): RudderStack does not store any event data and hence it cannot be replayed.
+- **Connect your own object storage** (recommended): Event data is stored in your object storage. RudderStack currently supports Amazon S3, Google Cloud Storage, Azure Blob Storage, and MinIO as the object storage options. 
+- **RudderStack cloud storage**: Event data is stored in RudderStack's Amazon S3 bucket on a rolling 30-day basis. That is, RudderStack deletes the event data 30 days after it was stored.
 
 To select your data retention option, see <Link to="/dashboard-guides/data-retention/#data-retention-options">Data Retention Options</Link>.
 
