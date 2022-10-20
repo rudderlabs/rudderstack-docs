@@ -1,7 +1,7 @@
 ---
-title: "Data Retention Opt-in"
+title: "Data Management"
 description: >-
-  Step-by-step guide on selecting and configuring your data retention policy.
+  Step-by-step guide on configuring your data management and retention.
 ---
 
 ## Overview
@@ -34,15 +34,15 @@ Our data retention policy defines data as they pertain to the primary components
 
 > All data that is in transit, i.e., **stored for less than 3 hours**, as an essential part of delivering the RudderStack product experience
 
-> - Data Plane: Actual RudderStack Events
+> - Data Plane: Events that hit the RudderStack gateway. See: <Link to="/resources/rudderstack-architecture/#data-plane-architecture">Data plane architecture</Link>
 > - Control Plane: Live Events 
 
 
 ### Non-Transient Customer Data
 
-> Data that persists for longer than 3 hours
+> Data that can persist greater than 3 hours only if configured by RudderStack user
 
-> - Data Plane: proc errors, gateway dumps
+> - Data Plane: procedure errors, gateway dumps
 > - Control Plane: Data in the reporting service (sample events, sample responses)
 
 
@@ -91,13 +91,13 @@ This data may be helpful with debugging efforts. We do not consider event name o
 Based on plan tier, we provide different functionality for your event storage, giving you the ability to toggle on or off the following kinds of data:
 
 - Sample events and responses
-- Proc errors
+- Procedure errors
 - Gateway dumps
 
 See the table below for storage items based on RudderStack plans.
 
 
-| **Pricing tier** | **Sample events/responses**       | **Proc errors**    | **Gateway dumps**    |
+| **Pricing tier** | **Sample events/responses**       | **Procedure errors**    | **Gateway dumps**    |
 | :------------------ | :------------ | :------------ | :------------ |
 | **Free tier**     |      ✅        |       ❌         |        ❌        |
 | **Pro**      |             ✅  |         ✅      |        ❌        |

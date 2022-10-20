@@ -106,7 +106,7 @@ export const jsonData = [
     content: []
 },
 {
-    title: "Data Retention Opt-in",
+    title: "Data Management",
     link: "/dashboard-guides/data-retention/",
     content: []
 },
