@@ -693,7 +693,7 @@ RudderStack sends a <Link to="/event-spec/standard-events/track/">`track`</Link>
 
 The below sample snippet contains Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">Structured</code></a> class. 
 
-RudderStack sends a <Link to="/event-spec/standard-events/track/">`track`</Link> call after mapping <code class="inline-code">Action_example</code> to RudderStack event. The rest of the properties, like <code class="inline-code">Category_example</code>, <code class="inline-code">label</code>, <code class="inline-code">value</code>, etc. are mapped to the RudderStack properties.<br/><br/>
+RudderStack sends a <Link to="/event-spec/standard-events/track/">`track`</Link> call after mapping <code class="inline-code">Action_example</code> to RudderStack event. The rest of the properties, like <code class="inline-code">Category_example</code>, <code class="inline-code">label</code>, <code class="inline-code">value</code>, etc. are mapped to the RudderStack properties.
 
 
 <Tabs>
@@ -757,11 +757,11 @@ tracker.track(structured)
 
 The below sample snippet contains Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">SelfDescribing</code></a> class. 
 
-RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call after mapping <code class="inline-code">Action_example</code> to RudderStack event. The rest of the properties, like <code class="inline-code">Category_example</code>, <code class="inline-code">label</code>, <code class="inline-code">value</code>, etc. are mapped to the RudderStack properties.<br/><br/>
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call after mapping <code class="inline-code">action</code> to RudderStack event.
 
-
-RudderStack will call Track API with event action.
-action is mandatory. If not provided, the call will be ignored.
+<div class="infoBlock">
+<code class="inline-code">action</code> is a mandatory field. If not provided, RudderStack does not sends any call.
+</div>
 
 <Tabs>
   <TabList>
@@ -813,11 +813,16 @@ tracker.track(selfDescribing)
     </TabPanels>
 </Tabs>
 
-Foreground
+<h3>Foreground class</h3>
 
-RudderStack will call [Track](https://www.rudderstack.com/docs/event-spec/standard-events/track/) API with the event `Application Opened`. Other properties like `index`, `properties` will be mapped to RudderStack’s `properties`.
+The below sample snippet contains Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">Foreground</code></a> class. 
 
-This is not an automatic life cycle event. Properties like version, build, etc will not be present under `properties`.
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call with the <code class="inline-code">Application Opened</code> event. The rest of the properties, like <code class="inline-code">index</code>, <code class="inline-code">properties</code>, etc. are mapped to the RudderStack properties.
+
+<div class="infoBlock">
+This is not an automatic life cycle event. Properties like <code class="inline-code">version</code>, <code class="inline-code">build</code>, etc. will not be present under <code class="inline-code">properties</code>.
+</div>
+
 
 <Tabs>
   <TabList>
@@ -870,11 +875,16 @@ tracker.track(background)
     </TabPanels>
 </Tabs>
 
-Background
 
-RudderStack will call [Track](https://www.rudderstack.com/docs/event-spec/standard-events/track/) API with the event `Application Backgrounded`. Other properties like `index`, `properties` will be mapped to RudderStack’s `properties`. 
+<h3>Background class</h3>
 
-This is not an automatic life cycle event. Properties like version, build, etc will not be present under `properties`.
+The below sample snippet contains Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">Background</code></a> class. 
+
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call with the <code class="inline-code">Application Backgrounded</code> event. The rest of the properties, like <code class="inline-code">index</code>, <code class="inline-code">properties</code>, etc. are mapped to the RudderStack properties.
+
+<div class="infoBlock">
+This is not an automatic life cycle event. Properties like <code class="inline-code">version</code>, <code class="inline-code">build</code>, etc. will not be present under <code class="inline-code">properties</code>.
+</div>
 
 
 <Tabs>
@@ -928,105 +938,49 @@ tracker.track(background)
     </TabPanels>
 </Tabs>
 
-ScreenView
-
-RudderStack will call Screen API. name will be mapped to RudderStack’s name. Other properties like screenId, previousName, previousId, etc., will be mapped to RudderStack’s properties.
-
-
-<Tabs>
-  <TabList>
-    <Tab>Java</Tab>
-    <Tab>Kotlin</Tab>
-  </TabList>
-    <TabPanels>
-      <TabPanel>
-<span>
-
-```java
-ScreenView screenView = new ScreenView("MainActivity", UUID.randomUUID())
-  .type("type")
-  .previousName("previousName")
-  .previousId("previousId")
-  .previousType("previousType")
-  .transitionType("transitionType");
-
-tracker.track(screenView);
-```
-</span>
-      </TabPanel>
-      <TabPanel>
-<span>
-
-```kotlin
-val screenView = ScreenView("MainActivity", UUID.randomUUID())
-  .type("type")
-  .previousName("previousName")
-  .previousId("previousId")
-  .previousType("previousType")
-  .transitionType("transitionType")
-
-tracker.track(screenView)
-```
-</span>
-      </TabPanel>
-    </TabPanels>
-</Tabs>
   </TabPanel>
       <TabPanel>      
 
-Structured
+<h3>Structured class</h3>
 
-RudderStack will call Track API. action will be mapped to RudderStack’s event. Other properties like category, label, value, etc., will be mapped to RudderStack’s properties.<br/><br/>
+The below sample snippet contains Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">Structured</code></a> class. 
+
+RudderStack sends a <Link to="/event-spec/standard-events/track/">`track`</Link> call after mapping <code class="inline-code">Action_example</code> to RudderStack event. The rest of the properties, like <code class="inline-code">Category_example</code>, <code class="inline-code">label</code>, <code class="inline-code">value</code>, etc. are mapped to the RudderStack properties.
 
 <Tabs>
   <TabList>
-    <Tab>Java</Tab>
-    <Tab>Kotlin</Tab>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
 <span>
 
-```java
-HashMap < String, Object > properties = new HashMap < > ();
-properties.put("key-1", "value 1");
-properties.put("key-2", 123);
-properties.put("key-3", 123.45);
-properties.put("key-4", true);
-properties.put("key-5", false);
+```objectivec
+RSStructured * structured = [
+  [RSStructured alloc] initWithCategory: @ "Category_example"
+  action: @ "Action_example"
+];
+[structured label: @ "my-label"];
+[structured property: @ "my-property"];
+[structured value: @5];
+[structured properties: @ {
+  @ "key_1": @ "value_1", @ "key_2": @ "value_2"
+}];
 
-Structured structured = new Structured("Category_example", "Action_example")
-  .label("my-label")
-  .value(1234.23)
-  .property("my-property")
-  .properties(properties);
-
-tracker.track(structured);
+[tracker track: structured];
 ```
 </span>
       </TabPanel>
       <TabPanel>
 <span>
 
-```kotlin
-val properties = mapOf < String, Any > (
-  "key-1"
-  to "value 1",
-  "key-2"
-  to 123,
-  "key-3"
-  to 123.45,
-  "key-4"
-  to true,
-  "key-5"
-  to false
-)
-
-val structured = Structured("Category_example", "Action_example")
+```swift
+let structured = Structured(category: "Category_example", action: "Action_example")
   .label("my-label")
-  .value(1234.23)
   .property("my-property")
-  .properties(properties)
+  .value(5)
+  .properties(["key_1": "value_1", "key_2": "value_2"])
 
 tracker.track(structured)
 ```
@@ -1034,53 +988,60 @@ tracker.track(structured)
       </TabPanel>
     </TabPanels>
 </Tabs>
-SelfDescribing
 
-RudderStack will call Track API with event action.
-action is mandatory. If not provided, the call will be ignored.
+<h3>SelfDescribing class</h3>
+
+The below sample snippet contains Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">SelfDescribing</code></a> class. 
+
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call after mapping <code class="inline-code">action</code> to RudderStack event.
+
+<div class="infoBlock">
+<code class="inline-code">action</code> is a mandatory field. If not provided, RudderStack does not sends any call.
+</div>
 
 <Tabs>
   <TabList>
-    <Tab>Java</Tab>
-    <Tab>Kotlin</Tab>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
 <span>
 
-```java
-HashMap < String, Object > properties = new HashMap < > ();
-properties.put("action", "Action-2");
-properties.put("key-1", "value 1");
-
+```objectivec
 // 1
-SelfDescribingJson selfDescribingJson = new SelfDescribingJson("schema", payload)
-SelfDescribing selfDescribing = new SelfDescribing(selfDescribingJson)
+RSSelfDescribingJson * selfDescribingJson = [
+  [RSSelfDescribingJson alloc] initWithSchema: @ "schema"
+  andDictionary: @ {
+    @ "action": @ "Action_2", @ "key_2": @ "value_2"
+  }
+];
+RSSelfDescribing * selfDescribing = [
+  [RSSelfDescribing alloc] initWithEventData: selfDescribingJson
+];
 
 // 2
-SelfDescribing selfDescribing = new SelfDescribing("schema", payload)
+RSSelfDescribing * selfDescribing = [
+  [RSSelfDescribing alloc] initWithSchema: @ "schema"
+  payload: @ {
+    @ "action": @ "Action_2", @ "key_2": @ "value_2"
+  }
+];
 
-tracker.track(selfDescribing);
+[tracker track: selfDescribing];
 ```
 </span>
       </TabPanel>
       <TabPanel>
 <span>
 
-```kotlin
-val payload = mapOf < String, Any > (
-  "action"
-  to "Action-2",
-  "key-2"
-  to "value-2"
-)
-
+```swift
 // 1
-val selfDescribingJson = SelfDescribingJson("schema", payload)
-val selfDescribing = SelfDescribing(selfDescribingJson)
+let selfDescribingJson = SelfDescribingJson(schema: "schema", andDictionary: ["action": "Action_2"])
+let selfDescribing = SelfDescribing(eventData: selfDescribingJson)
 
 // 2
-val selfDescribing = SelfDescribing("schema", payload)
+let selfDescribing = SelfDescribing(schema: "schema", payload: ["action": "Action_2"])
 
 tracker.track(selfDescribing)
 ```
@@ -1089,55 +1050,89 @@ tracker.track(selfDescribing)
     </TabPanels>
 </Tabs>
 
-Foreground
+<h3>Foreground class</h3>
 
-RudderStack will call [Track](https://www.rudderstack.com/docs/event-spec/standard-events/track/) API with the event `Application Opened`. Other properties like `index`, `properties` will be mapped to RudderStack’s `properties`.
+The below sample snippet contains Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">Foreground</code></a> class. 
 
-This is not an automatic life cycle event. Properties like version, build, etc will not be present under `properties`.
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call with the <code class="inline-code">Application Opened</code> event. The rest of the properties, like <code class="inline-code">index</code>, <code class="inline-code">properties</code>, etc. are mapped to the RudderStack properties.
+
+<div class="infoBlock">
+This is not an automatic life cycle event. Properties like <code class="inline-code">version</code>, <code class="inline-code">build</code>, etc. will not be present under <code class="inline-code">properties</code>.
+</div>
 
 <Tabs>
   <TabList>
-    <Tab>Java</Tab>
-    <Tab>Kotlin</Tab>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
 <span>
 
-```java
-HashMap < String, Object > properties = new HashMap < > ();
-properties.put("key-1", "value 1");
-properties.put("key-2", 123);
-properties.put("key-3", 123.45);
-properties.put("key-4", true);
-properties.put("key-5", false);
+```objectivec
+RSForeground * foreground = [
+  [RSForeground alloc] initWithIndex: @1
+];
+[foreground properties: @ {
+  @ "key_1": @ "value_1"
+}];
 
-Foreground foreground = new Foreground(1234);
-foreground.setProperties(properties);
-
-tracker.track(foreground);
+[tracker track: foreground];
 ```
 </span>
       </TabPanel>
       <TabPanel>
 <span>
 
-```kotlin
-val properties = mapOf < String, Any > (
-  "key-1"
-  to "value 1",
-  "key-2"
-  to 123,
-  "key-3"
-  to 123.45,
-  "key-4"
-  to true,
-  "key-5"
-  to false
-)
+```swift
+let foreground = Foreground(index: 1)
+  .properties(["key_1": "value_1"])
 
-Foreground foreground = Foreground(1234)
-foreground.properties = properties
+tracker.track(foreground)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+<h3>Background class</h3>
+
+The below sample snippet contains Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">Background</code></a> class. 
+
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call with the <code class="inline-code">Application Backgrounded</code> event. The rest of the properties, like <code class="inline-code">index</code>, <code class="inline-code">properties</code>, etc. are mapped to the RudderStack properties.
+
+<div class="infoBlock">
+This is not an automatic life cycle event. Properties like <code class="inline-code">version</code>, <code class="inline-code">build</code>, etc. will not be present under <code class="inline-code">properties</code>.
+</div>
+
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+RSBackground * background = [
+  [RSBackground alloc] initWithIndex: @1
+];
+[background properties: @ {
+  @ "key_1": @ "value_1"
+}];
+
+[tracker track: background];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let background = Background(index: 1)
+  .properties(["key_1": "value_1"])
 
 tracker.track(background)
 ```
@@ -1146,67 +1141,7 @@ tracker.track(background)
     </TabPanels>
 </Tabs>
 
-Background
 
-RudderStack will call [Track](https://www.rudderstack.com/docs/event-spec/standard-events/track/) API with the event `Application Backgrounded`. Other properties like `index`, `properties` will be mapped to RudderStack’s `properties`. 
-
-This is not an automatic life cycle event. Properties like version, build, etc will not be present under `properties`.
-
-
-<Tabs>
-  <TabList>
-    <Tab>Java</Tab>
-    <Tab>Kotlin</Tab>
-  </TabList>
-    <TabPanels>
-      <TabPanel>
-<span>
-
-```java
-HashMap < String, Object > properties = new HashMap < > ();
-properties.put("key-1", "value 1");
-properties.put("key-2", 123);
-properties.put("key-3", 123.45);
-properties.put("key-4", true);
-properties.put("key-5", false);
-
-Background background = new Background(1234);
-background.setProperties(properties);
-
-tracker.track(background);
-```
-</span>
-      </TabPanel>
-      <TabPanel>
-<span>
-
-```kotlin
-val properties = mapOf < String, Any > (
-  "key-1"
-  to "value 1",
-  "key-2"
-  to 123,
-  "key-3"
-  to 123.45,
-  "key-4"
-  to true,
-  "key-5"
-  to false
-)
-
-Background background = Background(1234)
-background.properties = properties
-
-tracker.track(background)
-```
-</span>
-      </TabPanel>
-    </TabPanels>
-</Tabs>
-
-ScreenView
-
-RudderStack will call Screen API. name will be mapped to RudderStack’s name. Other properties like screenId, previousName, previousId, etc., will be mapped to RudderStack’s properties.
 
 
 <Tabs>
@@ -1265,10 +1200,11 @@ You can use the following classes to send <Link to="/event-spec/standard-events/
     <TabPanels>
       <TabPanel>
 
-ScreenView
+<h3>ScreenView</h3>
 
-RudderStack will call Screen API. name will be mapped to RudderStack’s name. Other properties like screenId, previousName, previousId, etc., will be mapped to RudderStack’s properties.
+The below sample snippet contains Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">ScreenView</code></a> class. 
 
+RudderStack sends a <Link to="/event-spec/standard-events/screen/">screen</Link> call aftre mapping the with the <code class="inline-code">name</code> property to RudderStack event. The rest of the properties, like <code class="inline-code">screenId</code>, <code class="inline-code">previousName</code>, <code class="inline-code">previousId</code>, etc. are mapped to the RudderStack properties.
 
 <Tabs>
   <TabList>
@@ -1311,9 +1247,11 @@ tracker.track(screenView)
   </TabPanel>
       <TabPanel>  
 
-ScreenView
+<h3>ScreenView</h3>
 
-RudderStack will call Screen API. name will be mapped to RudderStack’s name. Other properties like screenId, previousName, previousId, etc., will be mapped to RudderStack’s properties.
+The below sample snippet contains Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">ScreenView</code></a> class. 
+
+RudderStack sends a <Link to="/event-spec/standard-events/screen/">screen</Link> call aftre mapping the with the <code class="inline-code">name</code> property to RudderStack event. The rest of the properties, like <code class="inline-code">screenId</code>, <code class="inline-code">previousName</code>, <code class="inline-code">previousId</code>, etc. are mapped to the RudderStack properties.
 
 
 <Tabs>
@@ -1326,14 +1264,25 @@ RudderStack will call Screen API. name will be mapped to RudderStack’s name. O
 <span>
 
 ```java
-ScreenView screenView = new ScreenView("MainActivity", UUID.randomUUID())
-  .type("type")
-  .previousName("previousName")
-  .previousId("previousId")
-  .previousType("previousType")
-  .transitionType("transitionType");
+RSScreenView * screen = [
+  [RSScreenView alloc] initWithName: @ "DemoScreenName"
+  screenId: [
+    [NSUUID alloc] init
+  ]
+];
+[screen type: @ "type"];
+[screen previousName: @ "previousName"];
+[screen previousId: @ "previousId"];
+[screen previousType: @ "previousType"];
+[screen transitionType: @ "transitionType"];
+[screen viewControllerClassName: @ "viewControllerClassName"];
+[screen topViewControllerClassName: @ "topViewControllerClassName"];
+[screen properties: @ {
+  @ "key_1": @ "value_1",
+    @ "key_2": @ "value_2"
+}];
 
-tracker.track(screenView);
+[tracker track: screen];
 ```
 </span>
       </TabPanel>
@@ -1341,14 +1290,20 @@ tracker.track(screenView);
 <span>
 
 ```kotlin
-val screenView = ScreenView("MainActivity", UUID.randomUUID())
+let screen = ScreenView(name: "DemoScreenName", screenId: UUID())
   .type("type")
   .previousName("previousName")
   .previousId("previousId")
   .previousType("previousType")
   .transitionType("transitionType")
+  .viewControllerClassName("viewControllerClassName")
+  .topViewControllerClassName("topViewControllerClassName")
+  .properties: ([
+    "key_1": "value_1",
+    "key_2": "value_2"
+  ])
 
-tracker.track(screenView)
+tracker.track(screen)
 ```
 </span>
       </TabPanel>
