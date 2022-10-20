@@ -1,12 +1,12 @@
 ---
 title: "Data Retention Opt-in"
 description: >-
-  Step-by-step guide on selecting and configuring up your data retention policy.
+  Step-by-step guide on selecting and configuring your data retention policy.
 ---
 
 ## Overview
 
-The purpose of this guide is to explain the RudderStack data retention policy and your options for opting in or out of data storage by RudderStack. Our default policy is not to store your event data, but there are times when it may be useful for you to have access to recent event data and replay them for testing and debugging. See <Link to="/user-guides/administrators-guide/event-replay/">Event Replay</Link> for details on this feature.
+The purpose of this guide is to explain the RudderStack data retention policy and your options for opting in or out of data storage by RudderStack. Our default policy is not to store your event data, but there are times when it may be useful for you to have access to recent event data and replay it for testing and debugging. See <Link to="/user-guides/administrators-guide/event-replay/">Event Replay</Link> for details on this feature.
 
 You have 3 options for how to store your event data:
 
@@ -59,21 +59,25 @@ We provide 3 options for your event data storage. To choose how you want to stor
 
 ### Do not store event data
 
-RudderStack will not store any of your event data. This is the default setting and the only available option on the RudderStack cloud free tier.
+If you choose this option, RudderStack will not store any of your event data. This is the default setting and the only available option on the RudderStack cloud free tier.
+
+<img src="../assets/dashboard-guides/no-data-storage.png" alt="Do not store event data."/>
+
 
 ### Store event data in your own cloud storage
 
 This is the recommended event storage option, and available on Pro and Enterprise plans. We support storage via AWS, GCS, Azure and MinIO if you select this option. Selecting this option will bring up a modal allowing you to connect a storage bucket with your RudderStack data.
 
-When connecting your cloud storage provider to RudderStack, you will first need to create a storage bucket and configure credentials for RudderStack to access the datastore. See <Link to="/user-guides/administrators-guide/event-replay/">Object storage setup</Link> for details on setting up storage objects.
+When connecting your cloud storage provider to RudderStack, you will first need to create a storage bucket and configure credentials for RudderStack to access the datastore. See <Link to="/user-guides/administrators-guide/event-replay/">Object storage setup</Link> for details.
 
 <img src="../assets/dashboard-guides/connect-cloud-storage.png"  alt="Store your data with your cloud provider."/>
 
 ### Store event data in RudderStack cloud storage
 
+Choosing this option will allow RudderStack to store and delete event data on a rolling 30-day basis.
+
 <img src="../assets/dashboard-guides/rs-cloud-storage.png" alt="Store in RudderStack cloud storage."/>
 
-Choosing this option will allow RudderStack to store and delete event data on a rolling 30-day basis.
 ## Sample event data
 
 When sample data is turned on, RudderStack will store and delete sample events and responses on a rolling 30-day basis.
@@ -82,22 +86,15 @@ This data may be helpful with debugging efforts. We do not consider event name o
 
 <img src="../assets/dashboard-guides/sample-event-data.png" alt="Opt in to sample event data storage."/>
 
+## Plan-based Options
 
-## Overview
+Based on plan tier, we provide different functionality for your event storage, giving you the ability to toggle on or off the following kinds of data:
 
-RudderStack
+- Sample events and responses
+- Proc errors
+- Gateway dumps
 
-- We updated our data retention policy to be clear and consistent
-- Based on plan tier, we are giving users different functionality for event storage, broken down into Sample Events and Responses (from Reporting Service), Gateway Dumps (every event that hits the gateway), and Proc Errors (basically the DLQ in current form)
-
-
-## Tier-based Options
-
-Based on plan tier, we provide different functionality for your event storage, broken down into Sample Events and Responses (from Reporting Service), Gateway Dumps (every event that hits the gateway), and Proc Errors 
-
-- Ability to toggle ON/OFF sample events and responses
-- Ability to provide your own storage *or* use RudderStack cloud storage **for proc errors** 
-- Ability to provide your own storage *or* use RudderStack cloud storage **for gateway dumps**
+See the table below for storage items based on RudderStack plans.
 
 
 | **Pricing tier** | **Sample events/responses**       | **Proc errors**    | **Gateway dumps**    |
