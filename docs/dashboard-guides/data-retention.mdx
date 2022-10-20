@@ -4,43 +4,17 @@ description: >-
   Step-by-step guide on selecting and configuring up your data retention policy.
 ---
 
-- overview
-- definitions
-- Event storage optionb (by plan)
-- UI explanation
-- <Link to="/user-guides/administrators-guide/event-replay/">Event Replay</Link>
-
-
 ## Overview
 
-We will not permanently store any customer data in our systems except
+The purpose of this guide is to explain the RudderStack data retention policy and your options for opting in or out of data storage by RudderStack. Our default policy is not to store your event data, but there are times when it may be useful for you to have access to recent event data and replay them for testing and debugging. See <Link to="/user-guides/administrators-guide/event-replay/">Event Replay</Link> for details on this feature.
 
+You have 3 options for how to store your event data:
 
-We store transient data for a maximum of 3 hours.
+- Do not store it anywhere
+- Store in your own cloud storage (recommended approach)
+- Store in RudderStack cloud storage (on a rolling 30-day basis)
 
-Non-transient data can be stored for the purposes of event replay and debugging in your warehouse.
-
-If you choose to opt in to RudderStack-hosted storage for non-transient data, the data will be stored on a 30-day rolling basis.
-
-Talk about how data retention works at Rudderstack, and how we have different types of transient and non-transient data. Also, your ability to opt in to RudderStack cloud storage for non-transient data will depend on your pricing plan.
-
-
-
-RudderStack doesn't want to store your data, so we let you decide.
-
-- Sample events and responses
-- Gateway dumps
-- Proc errors
-
-We have different options for storing transient event data:
-  - Do not store
-  - Store in your own cloud storage (recommended)
-  - Store in RudderStack cloud storage
-
-Data storage options vary based on your pricing plan
-
-
-
+The sections below define different types of RudderStack data and provide steps on opting in to the right storage option for your needs.
 
 ## Data Definitions
 
@@ -50,10 +24,10 @@ At RudderStack we do not permanently store customer data in our systems *except*
 2. Error Codes 
 3. Customer User Records: RudderStack usernames, passwords, and account and billing-related details
 
-All other customer data can be classified as either *transient* or *non-transient* and these data may either be stored in your location, e.g., AWS, or by RudderStack for up to 30 days. Storage options vary by the nature of the data and your RudderStack plan.
+All other customer data can be classified as either *transient* or *non-transient* and these data may either be stored in your location, e.g. AWS, or by RudderStack for up to 30 days. Storage options vary by the nature of the data and your RudderStack plan.
 
 <div class="infoBlock">
-Our data retention policy concerns data as they pertain to the primary components of our service, the <Link to="/resources/glossary/#data-plane">data plane</Link> and <Link to="/resources/glossary/#control-plane">control plane</Link>. 
+Our data retention policy defines data as they pertain to the primary components of our service, the <Link to="/resources/glossary/#data-plane">data plane</Link> and <Link to="/resources/glossary/#control-plane">control plane</Link>. 
 </div>
 
 ### Transient Customer Data
@@ -74,28 +48,40 @@ Our data retention policy concerns data as they pertain to the primary component
 
 ## Data Retention Options
 
-We provide 3 options for your event data storage.
+We provide 3 options for your event data storage. To choose how you want to store event data:
 
-1. **Do not store event data**
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. Navigate to **Settings** > **Data Management**.
+3. Choose one of the 3 data storage options in the *Data retention* section:
+
+<img src="../assets/dashboard-guides/data-retention.png" alt="Choose your data storage option."/>
+
+
+### Do not store event data
 
 RudderStack will not store any of your event data. This is the default setting and the only available option on the RudderStack cloud free tier.
 
-<img src="../assets/dashboard-guides/no-data-storage.png" alt="Do not store event data."/>
+### Store event data in your own cloud storage
 
-2. **Store in your own cloud storage**
-
-This is the recommended event storage option, and available on Pro and Enterprise plans. We support storage via AWS, GCS, Azure and MinIO if you select this option.
-
-
-<img src="../assets/dashboard-guides/connect-cloud-storage.png" alt="Store your data with your cloud provider."/>
+This is the recommended event storage option, and available on Pro and Enterprise plans. We support storage via AWS, GCS, Azure and MinIO if you select this option. Selecting this option will bring up a modal allowing you to connect a storage bucket with your RudderStack data.
 
 When connecting your cloud storage provider to RudderStack, you will first need to create a storage bucket and configure credentials for RudderStack to access the datastore. See <Link to="/user-guides/administrators-guide/event-replay/">Object storage setup</Link> for details on setting up storage objects.
 
+<img src="../assets/dashboard-guides/connect-cloud-storage.png"  alt="Store your data with your cloud provider."/>
+
+### Store event data in RudderStack cloud storage
+
+<img src="../assets/dashboard-guides/rs-cloud-storage.png" alt="Store in RudderStack cloud storage."/>
+
+Choosing this option will allow RudderStack to store and delete event data on a rolling 30-day basis.
 ## Sample event data
 
-When this is turned on, we’ll store and delete sample events and responses on a rolling 30-day basis.
+When sample data is turned on, RudderStack will store and delete sample events and responses on a rolling 30-day basis.
 
 This data may be helpful with debugging efforts. We do not consider event name or event type to be personally identifiable information (PII).
+
+<img src="../assets/dashboard-guides/sample-event-data.png" alt="Opt in to sample event data storage."/>
+
 
 ## Overview
 
@@ -121,18 +107,9 @@ Based on plan tier, we provide different functionality for your event storage, b
 | **Enterprise**      |        ✅       |    ✅           |   ✅            |
 
 
-## Setting it up
-
-Follow these steps to set up your data retention policy.
-
-1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
-2. Navigate to **Settings** > **Data Management**.
 
 
-In the *Data Management* tab, you will select your data retention policy from one of the 3 following options: 
 
-Do not store event data
-We won't store it
 
 
 
