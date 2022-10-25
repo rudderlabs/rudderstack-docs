@@ -1296,6 +1296,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "yandex-metrica",
+    title: "Yandex.Metrica",
+    link: "/destinations/streaming-destinations/yandex-metrica/",
+    content: [],
+  },
+  {
     key: "iterable",
     title: "Iterable",
     link: "/destinations/streaming-destinations/iterable/",
