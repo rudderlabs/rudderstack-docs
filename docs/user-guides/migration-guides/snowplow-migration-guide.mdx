@@ -228,7 +228,7 @@ The <code class="inline-code">&lt;Configurations&gt;</code> parameter in the abo
 
 ## Setting the configuration objects
 
-You can set values for the following Snowplow configuration objects. If not set, the default values are assigned.
+RudderStack supports setting values for the following Snowplow configuration objects. If not set, the default values are assigned.
 
 <Tabs>
   <TabList>
@@ -273,7 +273,7 @@ val networkConfiguration = NetworkConfiguration(DATA_PLANE_URL, CONTROL_PLANE_UR
 </Tabs>
 <h3>SessionConfiguration</h3>
 
-The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#session"><code class="inline-code">SessionConfiguration</code></a> class can be used to capture the sessions which help to track of the user activity in the app.
+The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#session"><code class="inline-code">SessionConfiguration</code></a> class can be used to capture the sessions which help to track of the user activity in the app as shown:
 
 <Tabs>
   <TabList>
@@ -379,7 +379,7 @@ Snowplow automatically captures and tracks the following data. Refer to the <a h
 The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/"><code class="inline-code">SubjectConfiguration</code></a> class can be used to capture basic information about the user and the app which is attached on all events as context entity.
 
 <div class="warningBlock">
-Snowplow does not provide any call to identify a user. Although, RudderStack sends an the <Link to="/event-spec/standard-events/identify/"><code class="inline-code">identify</code></Link> call if you provide the <code class="inline-code">SubjectConfiguration</code> while initializing the SDK. If not provided, a user is not identified. 
+Snowplow does not provide any call to identify a user. Although, RudderStack sends an the <Link to="/event-spec/standard-events/identify/"><code class="inline-code">identify</code></Link> call if you initialize <code class="inline-code">SubjectConfiguration</code> while initializing the SDK. If not initialized, the user is not identified. 
 </div>
 
 The <code class="inline-code">userId</code> field is mapped to RudderStack's <code class="inline-code">userId</code>. All the other properties are mapped to RudderStack's <code class="inline-code">traits</code> object.
@@ -519,7 +519,7 @@ let networkConfig = NetworkConfiguration(dataPlaneUrl: DATA_PLANE_URL, controlPl
 </Tabs>
 <h3>SessionConfiguration</h3>
 
-The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#session"><code class="inline-code">SessionConfiguration</code></a> class can be used to capture the sessions which help to track of the user activity in the app.
+The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#session"><code class="inline-code">SessionConfiguration</code></a> class can be used to capture the sessions which help to track of the user activity in the app as shown:
 
 <Tabs>
   <TabList>
@@ -630,7 +630,7 @@ Snowplow automatically captures and tracks the following data. Refer to the <a h
 The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/"><code class="inline-code">SubjectConfiguration</code></a> class can be used to capture basic information about the user and the app which is attached on all events as context entity.
 
 <div class="warningBlock">
-Snowplow does not provide any call to identify a user. Although, RudderStack sends an the <Link to="/event-spec/standard-events/identify/"><code class="inline-code">identify</code></Link> call if you provide the <code class="inline-code">SubjectConfiguration</code> while initializing the SDK. If not provided, a user is not identified. 
+Snowplow does not provide any call to identify a user. Although, RudderStack sends an the <Link to="/event-spec/standard-events/identify/"><code class="inline-code">identify</code></Link> call if you initialize <code class="inline-code">SubjectConfiguration</code> while initializing the SDK. If not initialized, the user is not identified. 
 </div>
 
 The <code class="inline-code">userId</code> field is mapped to RudderStack's <code class="inline-code">userId</code>. All the other properties are mapped to RudderStack's <code class="inline-code">traits</code> object.
@@ -698,7 +698,7 @@ The below table lists the corresponding class names in Snowplow and RudderStack 
 
 ## Sending event data
 
-You can migrate your existing events data from RudderStack to Snowplow as described below:
+You can migrate your existing events from RudderStack to Snowplow as described below:
 
 ### Identifying users
 
@@ -716,7 +716,7 @@ Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-fro
 Snowplow supports identifying a user by passing the <code class="inline-code">setUserId</code> property. A Snowplow event including the <code class="inline-code">setUserId</code> property triggers the <Link to="/event-spec/standard-events/identify"><code class="inline-code">identify</code></Link> call in RudderStack JavaScript SDK.
 
 <div class="infoBlock">
-RudderStack only supports the v2 Snowplow JavaScript tracker.
+RudderStack supports only the v2 Snowplow JavaScript tracker.
 </div>
 
 In the below sample call, <code class="inline-code">john.doe@email.com</code> is the <code class="inline-code">userId</code> and the <code class="inline-code">firstName</code>, <code class="inline-code">lastName</code>, and <code class="inline-code">city</code> are the user traits.
@@ -1196,13 +1196,7 @@ This is not an automatic lifecycle event. Hence, the properties like <code class
 </div>
       </TabPanel>
       <TabPanel>
-        RudderStack JavaScript SDK supports the following types of Snowplow events to track the users:
-        <ul>
-          <li>Custom structured events</li>
-          <li>Custom self described events (unstructured events)</li>
-          </ul>
-      
-        Snowplow's <code class="inline-code">trackStructEvent</code> and <code class="inline-code">trackSelfDescribingEvent</code> calls let you capture user events along with the associated properties. They trigger the track call in RudderStack JavaScript SDK.
+        RudderStack JavaScript SDK supports the Snowplow's <code class="inline-code">trackStructEvent</code> and <code class="inline-code">trackSelfDescribingEvent</code> calls to track the users. They capture user events along with their associated properties and trigger the <Link to="/event-spec/standard-events/track/"><code class="inline-code">track</code></Link> call in RudderStack JavaScript SDK.
 <br/><br/>
 A sample <code class="inline-code">trackSelfDescribingEvent</code> call is shown below:
 <span>
@@ -1222,7 +1216,7 @@ rs.snowplowAdapter('trackSelfDescribingEvent', {
 }); 
 ```
 </span>
-In the above example, the <code class="inline-code">trackSelfDescribingEvent</code> method tracks the Order Completed event along with other information like <code class="inline-code">revenue</code>, <code class="inline-code">currency</code>, and the <code class="inline-code">user_actual_id</code>, etc.
+In the above example, the <code class="inline-code">trackSelfDescribingEvent</code> method tracks the <code class="inline-code">Order Completed</code> event along with other information like <code class="inline-code">revenue</code>, <code class="inline-code">currency</code>, and <code class="inline-code">user_actual_id</code>, etc.
 <br/><br/>
 A sample <code class="inline-code">trackStructEvent</code> call is shown below:
 <span>
@@ -1237,7 +1231,7 @@ rs.snowplowAdapter('trackStructEvent', {
 });
 ```
 </span>
-In the above example, the <code class="inline-code">trackStructEvent</code> method tracks the Order Completed event along with other information like label, property, value. Only action field is mandatory.
+In the above example, the <code class="inline-code">trackStructEvent</code> method tracks the <code class="inline-code">Order Completed</code> event along with other information like <code class="inline-code">label</code>, <code class="inline-code">property</code>, and <code class="inline-code">value</code>, etc.
 
 <div class="infoBlock">
 The <code class="inline-code">action</code> field is mandatory.
@@ -1259,7 +1253,7 @@ The <code class="inline-code">action</code> field is mandatory.
       <TabPanel>
 Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">ScreenView</code></a> class captures whenever a new screen is loaded. A Snowplow event including the <code class="inline-code">ScreenView</code> class triggers the <Link to="/event-spec/standard-events/screen/">screen</Link> call in the RudderStack Android SDK.
 <br/><br/>
- RudderStack maps the <code class="inline-code">previousName</code> to RudderStack event name and the rest of the properties, like <code class="inline-code">screenId</code>, <code class="inline-code">previousName</code>, <code class="inline-code">previousId</code>, etc. to the RudderStack properties.
+ RudderStack maps the <code class="inline-code">previousName</code> to RudderStack event name and the rest of the properties, like <code class="inline-code">screenId</code>, <code class="inline-code">previousType</code>, <code class="inline-code">previousId</code>, etc. to the RudderStack properties.
 
 <Tabs>
   <TabList>
@@ -1304,7 +1298,7 @@ tracker.track(screenView)
 
 Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">ScreenView</code></a> class captures whenever a new screen is loaded. A Snowplow event including the <code class="inline-code">ScreenView</code> class triggers the <Link to="/event-spec/standard-events/screen/">screen</Link> call in the RudderStack iOS SDK.
 
- RudderStack maps the <code class="inline-code">previousName</code> to RudderStack event name and the rest of the properties, like <code class="inline-code">screenId</code>, <code class="inline-code">previousName</code>, <code class="inline-code">previousId</code>, etc. to the RudderStack properties.
+ RudderStack maps the <code class="inline-code">previousName</code> to RudderStack event name and the rest of the properties, like <code class="inline-code">screenId</code>, <code class="inline-code">previousType</code>, <code class="inline-code">previousId</code>, etc. to the RudderStack properties.
 
 <Tabs>
   <TabList>
@@ -1363,8 +1357,7 @@ tracker.track(screen)
 </Tabs>
       </TabPanel>
       <TabPanel>
-        Snowplow's <code class="inline-code">trackPageView</code> call lets you record your website's page views with any additional relevant information about the viewed page.<br/><br/>
-        A Snowplow event including the <code class="inline-code">trackPageView</code> call triggers the <Link to="/event-spec/standard-events/screen/">screen</Link> call in RudderStack JavaScript SDK.
+        Snowplow's <code class="inline-code">trackPageView</code> call lets you record your website's page views with any additional relevant information about the viewed page. A Snowplow event including the <code class="inline-code">trackPageView</code> call triggers the <Link to="/event-spec/standard-events/screen/">screen</Link> call in RudderStack JavaScript SDK.
         <br/>
         <br/>
         A sample <code class="inline-code">trackPageView</code> call is shown below:
@@ -1386,7 +1379,7 @@ rs.snowplowAdapter(
 );
 ```
 </span>
-In the above sample snippet, the page title and <Link to="/event-spec/standard-events/common-fields/#contextual-fields">contextual information</Link> is captured.
+In the above code snippet, page title and <Link to="/event-spec/standard-events/common-fields/#contextual-fields">contextual information</Link> is captured.
       </TabPanel>
     </TabPanels>
 </Tabs>
