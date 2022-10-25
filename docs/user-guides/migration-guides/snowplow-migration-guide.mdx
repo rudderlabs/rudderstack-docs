@@ -273,7 +273,7 @@ val networkConfiguration = NetworkConfiguration(DATA_PLANE_URL, CONTROL_PLANE_UR
 </Tabs>
 <h3>SessionConfiguration</h3>
 
-The <a href=""><code class="inline-code">SessionConfiguration</code></a>
+The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#session"><code class="inline-code">SessionConfiguration</code></a> class can be used to capture the sessions which help to track of the user activity in the app.
 
 <Tabs>
   <TabList>
@@ -519,7 +519,8 @@ let networkConfig = NetworkConfiguration(dataPlaneUrl: DATA_PLANE_URL, controlPl
 </Tabs>
 <h3>SessionConfiguration</h3>
 
-The <a href=""><code class="inline-code">SessionConfiguration</code></a>
+The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#session"><code class="inline-code">SessionConfiguration</code></a> class can be used to capture the sessions which help to track of the user activity in the app.
+
 <Tabs>
   <TabList>
     <Tab>Objective-C</Tab>
@@ -697,7 +698,7 @@ The below table lists the corresponding class names in Snowplow and RudderStack 
 
 ## Sending event data
 
-RudderStack maps the event data from Snowplow classes to the `track` or `page`/`screen` calls.
+You can migrate your existing events data from RudderStack to Snowplow as described below:
 
 ### Identifying users
 
@@ -873,7 +874,7 @@ tracker.track(selfDescribing)
 
 <h3>Custom foreground events</h3>
 
-RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call for Snowplow events containing the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">Foreground</code></a> class.
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call for Snowplow events containing the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/previous-versions/objective-c-tracker/objective-c-1-0-0/#foreground-and-background-events"><code class="inline-code">Foreground</code></a> class.
 
 RudderStack sends the event name as <code class="inline-code">Application Opened</code> and maps the rest of the properties, like <code class="inline-code">index</code>, <code class="inline-code">properties</code>, etc. to the RudderStack properties.
 
@@ -934,7 +935,7 @@ This is not an automatic lifecycle event. Hence, the properties like <code class
 
 <h3>Custom background events</h3>
 
-RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call for Snowplow events containing the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">Background</code></a> class.
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call for Snowplow events containing the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/previous-versions/objective-c-tracker/objective-c-1-0-0/#foreground-and-background-events"><code class="inline-code">Background</code></a> class.
 
 RudderStack sends the event name as <code class="inline-code">Application Backgrounded</code> and maps the rest of the properties, like <code class="inline-code">index</code>, <code class="inline-code">properties</code>, etc. to the RudderStack properties.
 
@@ -1106,7 +1107,7 @@ tracker.track(selfDescribing)
 
 <h3>Custom foreground events</h3>
 
-RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call for Snowplow events containing the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">Foreground</code></a> class.
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call for Snowplow events containing the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/previous-versions/objective-c-tracker/objective-c-1-0-0/#foreground-and-background-events"><code class="inline-code">Foreground</code></a> class.
 
 RudderStack sends the event name as <code class="inline-code">Application Opened</code> and maps the rest of the properties, like <code class="inline-code">index</code>, <code class="inline-code">properties</code>, etc. to the RudderStack properties.
 
@@ -1151,7 +1152,7 @@ This is not an automatic lifecycle event. Hence, the properties like <code class
 
 <h3>Custom background events</h3>
 
-RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call for Snowplow events containing the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">Background</code></a> class.
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call for Snowplow events containing the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/previous-versions/objective-c-tracker/objective-c-1-0-0/#foreground-and-background-events"><code class="inline-code">Background</code></a> class.
 
 RudderStack sends the event name as <code class="inline-code">Application Backgrounded</code> and maps the rest of the properties, like <code class="inline-code">index</code>, <code class="inline-code">properties</code>, etc. to the RudderStack properties.
 
