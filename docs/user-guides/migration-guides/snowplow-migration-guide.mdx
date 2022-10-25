@@ -202,6 +202,30 @@ let tracker = RSTracker.createTracker(
 Refer to the <Link to="#configuration-objects">Configuration objects</Link> scetion for more information on using these configuration objects.
 </div>
     </TabPanel>
+     <TabPanel>
+     Follow the below steps to migrate to RudderStack JavaScript SDK:
+   <ol>
+<li> Add the following code snippet in the <code class="inline-code">&lt;head&gt;</code> section of your website. Also, replace the <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained in the above section.
+
+```javascript
+<script>
+  rs=window.rs=[],rs.snoplowAdapter=function(){rs.push(Array.prototype.slice.call(arguments))},rs.snoplowAdapter("newTracker",<WRITE_KEY>,<DATA_PLANE_URL>,{<Configurations>});
+  //Optionally, use RudderStack JavaScript SDK load options
+  rudderanalytics.load();
+</script>
+
+<script src="https://cdn.rudderlabs.com/adapters/v1/rs-sp-adapter.min.js"></script>
+```
+The <code class="inline-code">&lt;Configurations&gt;</code> parameter in the above snippet can be replaced by the following properties which are mapped in RudderStack as shown:
+
+| Snowplow property| RudderStack property    | 
+| :---------- | :------------ | 
+| cookieDomain      |        setCookieDomain      |           
+| cookieSameSite      |   sameSiteCookie            |           
+| cookieSecure     |   secureCookie            |              
+
+</li></ol>
+</TabPanel>
   </TabPanels>
 </Tabs>
 
@@ -213,7 +237,6 @@ You can choose to define the Snowplow configuration objects and assign them the 
   <TabList>
     <Tab>Android</Tab>
     <Tab>iOS</Tab>
-    <Tab>JavaScript</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -647,8 +670,6 @@ let subjectConfig = SubjectConfiguration()
     </TabPanels>
 </Tabs>   
       </TabPanel>
-      <TabPanel>
-    </TabPanel>
   </TabPanels>
 </Tabs>
 
@@ -677,7 +698,39 @@ The below table lists the corresponding class names in Snowplow and RudderStack 
 
 RudderStack maps the event data from Snowplow classes to the `track` or `page`/`screen` calls.
 
-### Track 
+### Identifying users
+
+<Tabs>
+  <TabList>
+    <Tab>iOS/Android</Tab>
+    <Tab>JavaScript</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+For the Mobile SDKs, Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/"><code class="inline-code">SubjectConfiguration</code></a> object can be used to identify the users. Refer to the <Link to="/user-guides/migration-guides/snowplow-migration-guide/#defining-the-configuration-objects">Defining the configuration objects</Link> section for more information.
+      </TabPanel>
+      <TabPanel>
+
+Snowplow supports identifying a user by passing the <code class="inline-code">setUserId</code> property.
+
+A sample call including the <code class="inline-code">setUserId</code> property will trigger the <Link to="/event-spec/standard-events/identify"><code class="inline-code">identify</code></Link> call in RudderStack JavaScript SDK:
+
+<span>
+
+```javascript
+rs.snowplowAdapter('setUserId', 'john.doe@email.com', {
+  firstName: 'John',
+  lastName: 'Doe',
+  city: 'Barcelona',
+});
+```
+</span>
+In the above example, <code class="inline-code">john.doe@email.com</code> is the <code class="inline-code">userId</code> and the <code class="inline-code">firstName</code>, <code class="inline-code">lastName</code>, and <code class="inline-code">city</code> are the user traits.
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+### Tracking users
 
 RudderStack sends a <Link to="/event-spec/standard-events/track/">`track`</Link> call for the below mentioned Snowplow classes:
 
