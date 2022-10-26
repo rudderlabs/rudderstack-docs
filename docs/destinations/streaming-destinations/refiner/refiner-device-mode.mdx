@@ -1,83 +1,101 @@
 ---
-title: "Engage Device Mode"
-description: Detailed technical documentation on sending events to Engage using the RudderStack web device mode.
-aliases: ["Engage destination"]
+title: "Refiner Device Mode"
+description: Detailed technical documentation on sending events to Refiner using the RudderStack web device mode.
+aliases: ["Refiner destination"]
 ---
 
-RudderStack lets you send your event data to Engage via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK. 
-
-<div class="infoBlock">
-Find the open source JavaScript SDK code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations/refiner/">GitHub repository</a>.
-</div>
+RudderStack lets you send your event data to Refiner via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK.
 
 ## Identify
 
-The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
+You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a contact in Refiner. RudderStack uses the `identifyUser` method to send this information to Refiner.
 
-RudderStack sends the attributes to Engage as is, using their `identify()` API.
-
-A sample `identify` call is as shown:
+A sample `identify` call is shown below:
 
 ```javascript
-rudderanalytics.identify("1hKOmRA4el9Z", {
-    "email": "alex@example.com"
+rudderanalytics.identify("1hKOmRA4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com"
 })
 ```
 
-The following table lists the RudderStack event properties and their mappings with the Engage properties/attributes:
+<div class="warningBlock">
+<code class="inline-code">userId</code> is required to make an <code class="inline-code">identify</code> call successfully. 
+</div>
 
-| RudderStack property   | Engage property  | Data type |
-| :-------------| :-----------------| :------|
-| `externalId.engageId`, `userId` <br /> (Required) | `id`     |     String |
-| `context.traits` <br /> (Optional) | `payload` | Object |
+### Supported mappings
+
+The following table lists the RudderStack attributes and their mappings with the Refiner properties:
+
+| RudderStack property   | Refiner property  | 
+| :-------------| :-----------------| 
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `id` |
+| `properties.email` | `email` |
+| `context.traits` | traits |
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events and send them to Refiner as `trackEvent` events.
 
-RudderStack sends the event properties to Engage as is, using their `track()` API.
+<div class="warningBlock">
+Refiner does not store any additional properties sent with the <code class="inline-code">track</code> event.
+</div>
 
-A sample `track` call is as shown:
+A sample `track` call is shown below:
 
 ```javascript
-rudderanalytics.track(
-  "Product Added", {
-    product_id: "12345",
-    product_name: "Pink flowers",
-    product_url: "http://www.yourdomain.com/products/pink-flowers",
-  })
+rudderanalytics.track("Order Completed", {
+  orderId: "ORD122",
+  price: "5.67",
+  currency: "USD",
+});
 ```
 
-The following table lists the RudderStack event properties and their mappings with the Engage properties/attributes:
+The following table lists the RudderStack properties and their mappings with the Refiner properties:
 
-| RudderStack property   | Engage property  | Data type |
-| :-------------| :-----------------| :------|
-| `externalId.engageId`, `userId` <br /> (Required) | `id`     |     String |
-| `event` <br /> (Required) | `event`     |     String |
-| `propertes` <br /> (Optional) | `properties`     |     Object |
+| RudderStack property   | Refiner property  | 
+| :-------------| :-----------------| 
+| event name <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | event |
+
+## Group
+
+The <Link to="/event-spec/standard-events/group">`group`</Link> call lets you link an identified user with a group, such as a company, organization, or an account. Note that Refiner associates all the `group` traits with the `account` object associated with the user.
+
+A sample `group` call is shown below:
+
+```javascript
+rudderanalytics.group("group@123", {
+  name: "Sample Company",
+  employees: 1000,
+  industry: "Software",
+})
+```
+
+The following table lists the RudderStack properties and their mappings with the Refiner properties:
+
+| RudderStack property   | Refiner property  | 
+| :-------------| :-----------------| 
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `id` |
+| `properties.email` | `email` |
+| `groupId` | `account.id` |
+| `traits` | `account` |
 
 ## Page
-  
-The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
 
-RudderStack sends the page-related information to Engage as is, using their `track()` API.
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page and send this information to Refiner.
 
-A sample `page` call is as shown:
+<div class="infoBlock">
+The behavior of the <code class="inline-code">page</code> call is the same as the <Link to="#track"><code class="inline-code">track</code></Link> call described above.
+</div>
+
+A sample `page` event is shown below:
 
 ```javascript
-rudderanalytics.page(
-  "Cart",
-  "Cart Viewed", {
-    title: "new blank page",
-    url: "/pages/new"
-  }
-);
+rudderanalytics.page("Cart", "Cart Viewed", {
+  path: "/cart",
+  referrer: "samplewebsite.com",
+  search: "some item",
+  title: "New Item",
+  url: "http://samplewebsite.in",
+})
 ```
-
-The following table lists the RudderStack event properties and their mappings with the Engage properties/attributes:
-
-| RudderStack property   | Engage property  | Data type |
-| :-------------| :-----------------| :------|
-| `externalId.engageId`, `userId` <br /> (Required) | `id`     |     String |
-| `Visited {Category} {Name} Page` <br /> (Optional) | `event`     |     String |
-| `propertes` <br /> (Optional) | `properties`     |     Object |

@@ -12,142 +12,95 @@ Find the open source transformer code for this destination in the <a href="https
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a user in Refiner. To update a user's email, you need to provide the <Link to="/destinations/streaming-destinations/engage/setting-up-engage/#connection-settings">Refiner Private Key</Link> in the dashboard settings.
+You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a contact in Refiner.
 
-RudderStack uses the <a href="https://engage.so/docs/api/users">Create or update a User</a> API to add a new user to your Refiner account.
+A sample `identify` call is shown below:
 
+```javascript
+rudderanalytics.identify("1hKOmRA4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com"
+})
+```
+
+<div class="warningBlock">
+To make an <code class="inline-code">identify</code> call successfully, either of <code class="inline-code">email</code> or <code class="inline-code">userId</code> is required.
+</div>
+
+### Supported mappings
 
 The following table lists the RudderStack attributes and their mappings with the Refiner properties:
 
-| RudderStack property   | Refiner property  | Data type |
-| :-------------| :-----------------| :------|
-|  `externalId.engageId`, `userId`, `traits.userid`, `traits.id`, `context.traits.userId`, `context.traits.id` <br /> (Required) | `uid`     |     Alphanumeric |
-| `traits.firstName`, `traits.firstname`, `traits.first_name`, `context.traits.firstName`, `context.traits.firstname`, `context.traits.first_name` <br /> (Optional) | `first_name`     |     String |
-| `traits.lastName`, `traits.lastname`, `traits.last_name`, `context.traits.lastName`, `context.traits.lastname`, `context.traits.last_name` <br /> (Optional) | `last_name`     |     String |
-| `traits.email`, `context.traits.email`, `properties.email` <br /> (Optional) | `email`     |     String |
-| `traits.phone`, `context.traits.phone`, `properties.phone` <br /> (Optional) | `number`     |     Number *(In `^[0-9]{7,15}$` format)* |
-| Other user traits  <br /> (Optional) | `meta` | String/Integer/Boolean |
-| `originalTimestamp` <br /> (Optional) | `createdAt` | Timestamp *(ISO 8601 format)* |
-| `externalId.engageListId`, `config.listIds` <br /> (Optional) | `lists` | Array of List ID |
-
-<div class="infoBlock">
-RudderStack uses <code class="inline-code">externalId.engageListId</code> or <code class="inline-code">config.listIds</code> as a fallback value in case <code class="inline-code">userId</code>, <code class="inline-code">externalId.engageId</code>, <code class="inline-code">traits.userId</code>, <code class="inline-code">traits.id</code>, or <code class="inline-code">context.traits.id</code> is absent in the event.
-</div>
-
-### Deleting a user
-
-You can delete a user in Refiner using the <Link to="/api/data-regulation-api/#adding-a-suppression-with-delete-regulation">Suppression with Delete regulation</Link> of the RudderStack <Link to="/api/data-regulation-api/">Data Regulation API</Link>.
-
-<div class="infoBlock">
-To delete a user in Refiner, you need to specify the <Link to="/destinations/streaming-destinations/engage/setting-up-engage/#connection-settings">Refiner Private Key</Link> in the dashboard settings.
-</div>
-
-A sample regulation request body for deleting a user in Refiner is shown below:
-
-```json
-{
-  "regulationType": "suppress_with_delete",
-  "destinationIds": [
-    "2FIKkByqn37FhzczP23eZmURciA"
-  ],
-  "users": [{
-    "userId": "1hKOmRA4GRlm",
-    "phone": "+1-202-555-0146",
-    "email": "alex@example.com"
-  }]
-}
-```
-
-RudderStack deletes the user account in Refiner using the <a href="https://engage.so/docs/api/users#delete-user">Delete User API</a>.
+| RudderStack property   | Refiner property  | 
+| :-------------| :-----------------| 
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if email is absent.</span> | `id` |
+| `properties.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, userId is absent.</span> | `email` |
+| `traits` + `context.traits` | traits |
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the associated properties and send them to Refiner.
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events and send them to Refiner as `trackEvent` events. If a `track` event contains a `userId`, then Refiner updates the corresponding user information. Otherwise, it creates a new user.
 
-RudderStack uses the <a href="https://engage.so/docs/api/users#add-user-events">Add User events API</a> to send the user events to Refiner.
+<div class="warningBlock">
+Refiner does not store any additional properties sent with the <code class="inline-code">track</code> event.
+</div>
 
 A sample `track` call is shown below:
 
 ```javascript
-rudderanalytics.track(
-  "Order Completed", {
-    revenue: 30,
-    currency: "USD",
-    userId: "1hKOmRA4el9Z" 
-  })
+rudderanalytics.track("Order Completed", {
+  orderId: "ORD122",
+  price: "5.67",
+  currency: "USD",
+});
 ```
 
-The following table lists the RudderStack attributes and their mappings with the Refiner properties:
+The following table lists the RudderStack properties and their mappings with the Refiner properties:
 
-| RudderStack property   | Refiner property  | Data type |
-| :-------------| :-----------------| :------|
-| `externalId.engageId`, `userId`, `traits.userid`, `traits.id`, `context.traits.userId`, `context.traits.id` <br /> (Required) | `uid`     |     Alphanumeric |
-| `event` <br /> (Required) | `event` | String |
-| `originalTimestamp` <br /> (Optional) | `timestamp` | Timestamp *(ISO 8601 format)* |
-| `properties` <br /> (Optional) | `properties` | Object |
-
-<div class="warningBlock">
-The event name must be less than 32 characters. Otherwise, Refiner will reject the event.
-</div>
-
-## Page
-
-The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
-
-RudderStack sends the page-related information to Refiner using their <a href="https://engage.so/docs/api/users#add-user-events">Add User events API</a>.
-
-The following table lists the RudderStack event properties and their mappings with the Refiner properties:
-
-| RudderStack property   | Refiner property  | Data type |
-| :-------------| :-----------------| :------|
-| `externalId.engageId`, `userId`, `traits.userid`, `traits.id`, `context.traits.userId`, `context.traits.id` <br /> (Required) | `uid`     |     Alphanumeric |
-| `Visited {Category} {Name} Page` <br /> (Required) | `event` | String | 
-| `originalTimestamp` <br /> (Optional) | `timestamp` | Timestamp *(ISO 8601 format)* |
-| `properties` <br /> (Optional) | `properties` | Object |
-
-<div class="warningBlock">
-The event name must be less than 32 characters. Otherwise, Refiner will reject the event.
-</div>
+| RudderStack property   | Refiner property  | 
+| :-------------| :-----------------| 
+| `userId`  | `id` |
+| event name | event |
 
 ## Group
 
-You can use the <Link to="/event-spec/standard-events/group">`group`</Link> call to link an identified user to a specific Refiner list.
-
-RudderStack subscribes the user to the Refiner list using their <a href="https://engage.so/docs/api/lists#subscribe-to-a-list">Subscribe to a List API</a>.
+The <Link to="/event-spec/standard-events/group">`group`</Link> call lets you link an identified user with a group, such as a company, organization, or an account. Note that Refiner associates all the `group` traits with the `account` object associated with the user.
 
 A sample `group` call is shown below:
 
 ```javascript
-rudderanalytics.group("group01", {
-"userId": "1",
-"name": "Capsule Corp.",
-"subscriber_status": "false",
-"operation": "add"
-});
+rudderanalytics.group("group@123", {
+  name: "Sample Company",
+  employees: 1000,
+  industry: "Software",
+})
 ```
 
-You can pass the following parameters in the `group` event along with the `userId` (if known):
+The following table lists the RudderStack properties and their mappings with the Refiner properties:
 
-| RudderStack property   | Refiner property  | Data type |
-| :-------------| :-----------------| :------|
-| `groupId` <br /> (Required)  | `id` | String |
-| `externalId.engageId`, `userId` <br /> (Optional) | `uid`     |     Alphanumeric |
-| `subscriber_status` <br /> (Optional) <br /> *(Default: `true`)* | `subscribed` | Boolean |
-| `traits.operation` <br /> (Optional) <br /> *(Acceptable values: `add`/`remove`)* | - | String | 
+| RudderStack property   | Refiner property  | 
+| :-------------| :-----------------| 
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `id` |
+| `properties.email` | `email` |
+| `groupId` | `account.id` |
+| `traits` | `account` |
 
-The following table lists the additional property mappings with the Refiner properties:
+## Page
 
-| RudderStack property   | Refiner property  | Data type |
-| :-------------| :-----------------| :------|
-| `traits.firstName`, `traits.firstname`, `traits.first_name`, `context.traits.firstName`, `context.traits.firstname`, `context.traits.first_name` <br /> (Optional) | `first_name`     |     String |
-| `traits.lastName`, `traits.lastname`, `traits.last_name`, `context.traits.lastName`, `context.traits.lastname`, `context.traits.last_name` <br /> (Optional) | `last_name`     |     String |
-| `traits.email`, `context.traits.email`, `properties.email`, `context.externalId.0.id` <br /> (Required, if `phone` is not present) | `email`     |     String |
-| `traits.phone`, `context.traits.phone`, `properties.phone` <br /> (Required, if `email` is not present) | `number`     |     Number *(In `^[0-9]{7,15}$` format)* |
-| Other user traits  <br /> (Optional) | `meta` | String / Integer / Boolean |
-| `originalTimestamp` <br /> (Optional) | `createdAt` | Timestamp *(ISO 8601 format)* |
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page and send this information to Refiner.
 
-When sending `group` events to Refiner, it is important to note the following:
+<div class="infoBlock">
+The behavior of the <code class="inline-code">page</code> call is the same as the <Link to="#track"><code class="inline-code">track</code></Link> call described above. However, note that if you do not set the event name, RudderStack sets <code class="inline-code">pageView</code> as the event name by default.
+</div>
 
-- To remove a user from a group (`"operation": "remove"`), you need to provide the `userId` or  `externalId` in the event. 
-- If the user's ID is not known, then either `email` or `phone` is required for looking up the user in Refiner.
-- If a user is found with an associated `email` or `phone` (in that priority), then Refiner links the user to the provided Refiner List ID. Otherwise, it creates a new user with the provided details and then links them to the List ID.
+A sample `page` event is shown below:
+
+```javascript
+rudderanalytics.page("Cart", "Cart Viewed", {
+  path: "/cart",
+  referrer: "samplewebsite.com",
+  search: "some item",
+  title: "New Item",
+  url: "http://samplewebsite.in",
+})
+```
