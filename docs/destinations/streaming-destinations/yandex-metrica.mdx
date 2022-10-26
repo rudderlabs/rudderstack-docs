@@ -58,24 +58,7 @@ rudderanalytics.identify('1hKOmRA4el9Z', {
     }
 ```
 
-RudderStack uses Yandex.Metrica's [`setUserID`](https://yandex.com/support/metrica/objects/set-user-id.html?lang=en) method to associate the `userId` with the user's client ID during a particular session, as shown:
-
-```javascript
-ym(ABCD123, 'setUserID', "12345");
-```
-
-To update the information of a user with a specfic `userId`, RudderStack uses the [`userParams`](https://yandex.com/support/zout_metrica-de-2k55914b38f571cgc45c3db06adedbd0/objects/user-params.html?lang=en) method of Yandex.Metrica, as shown:
-
-```javascript
-ym(ABCD123, 'userParams', {
-  status: "Gold",
-  child: 1,
-  child_age: 13,
-  UserID: 12345
-});
-```
-
-In the above snippets, `ABCD123` represents the tag ID of your Yandex.Metrica tag. For more information on obtaining your tag ID, refer to the <Link to="#faq">FAQ</Link> section below.
+RudderStack uses Yandex.Metrica's [`setUserID`](https://yandex.com/support/metrica/objects/set-user-id.html?lang=en) method to associate the `userId` with the user's client ID during a particular session. To update the information of a user with a specfic `userId`, RudderStack uses the [`userParams`](https://yandex.com/support/zout_metrica-de-2k55914b38f571cgc45c3db06adedbd0/objects/user-params.html?lang=en) method.
 
 ### Supported mappings
 
@@ -133,27 +116,26 @@ You can also map any other event to the above Yandex.Metrica events via the dash
 
 ### Supported property mappings
 
-The following table lists the properties mapping for the `Product Viewed`, `Product Added`, and `Product Removed` events:
+The following table lists the properties mapping for Yandex.Metrica's `detail`, `add`, and `remove` events:
 
 | RudderStack property | Yandex.Metrica property |
 | :--------------| :---------|
-| `product_id` <br/> `sku` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if name is not present.</span> | `id` |
-| `name` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if product_id/sku is not present.</span> | `name` |
-| `brand` | `brand` |
-| `category` | `category` |
-| `coupon` | `coupon` |
-| `position` | `position` |
-| `price` | `price` |
-| `quantity` | `quantity` |
-| `variant` | `variant` |
+| `properties.product_id` <br/> `properties.sku` <br/> `properties.products[index].product_id` <br/> `properties.products[index].sku` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if name is not present.</span> | `id` |
+| `properties.name` <br /> `properties.products[index].name` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if product_id/sku is not present.</span> | `name` |
+| `properties.brand` <br /> `properties.products[index].brand` | `brand` |
+| `properties.category` <br /> `properties.products[index].category` | `category` |
+| `properties.coupon` <br /> `properties.products[index].coupon` | `coupon` |
+| `properties.position` <br /> `properties.products[index].position` | `position` |
+| `properties.price` <br /> `properties.products[index].price` | `price` |
+| `properties.quantity` <br /> `properties.products[index].quantity` | `quantity` |
+| `properties.variant` <br /> `properties.products[index].variant` | `variant` |
 
 The following mappings are applicable only for the `Order Completed` event:
 
 | RudderStack property | Yandex.Metrica property |
 | :--------------| :---------|
-| `order_id` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `id` |
-| `coupon` | `coupon` |
-| `revenue` | `revenue` |
+| `properties.order_id` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `id` |
+| `properties.revenue` | `revenue` |
 
 ## Page
 
@@ -171,18 +153,7 @@ rudderanalytics.page(
   });
 ```
 
-RudderStack uses Yandex.Metrica's [`hit`](https://yandex.com/support/metrica/objects/hit.html) method to send all the page view data. 
-
-An example of the `hit` method's usage is shown below:
-
-```javascript
-ym(ABCD123, 'hit', '#contacts', {
-  title: 'Contact information',
-  referer: 'http://example.com/#main'
-});
-```
-
-In the above snippet, `ABCD123` represents the tag ID of your Yandex.Metrica tag. For more information on obtaining your tag ID, refer to the <Link to="#faq">FAQ</Link> section below.
+RudderStack uses Yandex.Metrica's [`hit`](https://yandex.com/support/metrica/objects/hit.html) method to send all the page view data.
 
 ### Supported mappings
 
