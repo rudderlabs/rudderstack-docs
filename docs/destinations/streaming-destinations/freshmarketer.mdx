@@ -44,6 +44,8 @@ For more information on obtaining your Freshmarketer API key, refer to the <Link
 For more information on your organization URL and how to change it, refer to this <a href="https://support.freshworks.com/en/support/solutions/articles/50000002731-what-is-and-how-can-i-change-my-organization-url-">Freshmarketer support guide</a>.
 </div>
 
+- **Map your events with Freshmarketer Standard Events**: Use this setting to map the standard Freshmarketer events with custom event names.
+
 ## Identify
 
 You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update your Freshmarketer contact.
@@ -108,6 +110,50 @@ The following table lists the mappings between the RudderStack and Freshmarketer
 | `traits.contactStatusId`, `context.traits.contactStatusId` | `contact_status_id` | Optional |
 | `traits.salesAccountId`, `context.traits.salesAccountId` | `sales_account_id` | Optional |
 | `traits.lifecycleStageId`, `context.traits.lifecycleStageId` | `lifecycle_stage_id` | Optional |
+
+## Track
+  
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call can be used to track the activities of a user. Rudderstack supports the following events:
+- **Sales Activities**: Any type of interaction between a sales rep and a prospect is a sales activity. Such an activity might propel the sales process, helping the sales rep get closer to winning a deal.
+
+Through RudderStack we can create the status of the Customer. For creating the status either `salesActivityTypeId` or `salesActivityName` is required. We can create the lifeCycle stage from the Freshmarketer dashboard.
+
+
+- **Lifecycle Stage**: This event captures the decision journey of a customer. Through RudderStack we can update the status of the Customer. For updating the status either lifecycleStageId or lifecycleStageName is required. We can create the lifeCycle stage from the Freshmarketer dashboard. Here in image lifecycleStageName is Sales Qualified Lead start, final Customer , Lead, Customer . It can be edited and changed through their dashboard.
+
+<div class="infoBlock">
+<code class="inline-code">event</code> is a required field for the <code class="inline-code">track</code> call. 
+</div>
+
+A sample `track` call is shown below:
+
+```javascript
+
+```
+
+
+The following table property mappings:
+
+| RudderStack property          | Freshmarketer property|
+| :-------------------- | :---------------------- |
+| `properties.salesActivityName` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `sales_activity_name` |
+| `properties.title` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `title`            |
+| `properties.salesActivityTypeId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `sales_activity_type_id`             | 
+| `salesActivityOutcomeId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `sales_activity_outcome_id`              |
+| `properties.startDate` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `start_date`        |
+| `properties.endDate`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `end_date`      | 
+| `properties.notes`    | `notes`      |
+| `properties.ownerId` | `owner_id`| 
+| `context.externalId.id`     | `targetable_id`           |
+| `properties.products`       | `targetable_type`             |
+| `properties.createrId`    | `creater_id`              |
+| `originalTimestamp`  | `created_at`                |
+| `timestamp`   | `updated_at`      |
+|`properties.location` |`location`|
+| `latitude`<br/>`context.address.latitude`<br/> `context.location.latitude`   | `latitude`      |
+| `longitude`<br/>`context.address.longitude`<br/>`context.location.longitude`   | `longitude`      | 
+|`properties.checkedinAt`|`checkedin_at`|
+
 
 ## Group
 
