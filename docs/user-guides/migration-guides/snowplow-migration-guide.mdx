@@ -219,7 +219,7 @@ Refer to the the <Link to="#setting-the-configuration-objects">Setting the confi
   rudderanalytics.load();
 </script>
 
-<script src="https://cdn.rudderlabs.com/adapters/v1/rs-sp-adapter.min.js"></script>
+<script src="https://cdn.rudderlabs.com/adapter/sp/beta/v1/rs-sp-analytics.min.js"></script>
 ```
 The <code class="inline-code">&lt;Configurations&gt;</code> parameter in the above snippet can be replaced by the following Snowplow properties which are mapped to the RudderStack properties as shown:
 
@@ -981,7 +981,7 @@ tracker.track(background)
 </Tabs>
 
 <div class="infoBlock">
-This is not an automatic lifecycle event. Hence, the properties like <code class="inline-code">version</code>, <code class="inline-code">build</code>, etc. are not present under <code class="inline-code">properties</code>.
+This is not a default <Link to="/event-spec/standard-events/application-lifecycle-events-spec/">application lifecycle event</Link>. Hence, the properties like <code class="inline-code">version</code>, <code class="inline-code">build</code>, etc. are not present under <code class="inline-code">properties</code>.
 </div>
 
 <h3>Custom background events</h3>
@@ -1070,7 +1070,7 @@ tracker.track(background)
 </Tabs>
 
 <div class="infoBlock">
-This is not an automatic lifecycle event. Hence, the properties like <code class="inline-code">version</code>, <code class="inline-code">build</code>, etc. are not present under <code class="inline-code">properties</code>.
+This is not a default <Link to="/event-spec/standard-events/application-lifecycle-events-spec/">application lifecycle event</Link>. Hence, the properties like <code class="inline-code">version</code>, <code class="inline-code">build</code>, etc. are not present under <code class="inline-code">properties</code>.
 </div>
   </TabPanel>
       <TabPanel>
