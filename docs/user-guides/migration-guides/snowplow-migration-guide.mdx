@@ -337,10 +337,6 @@ SessionConfiguration sessionConfiguration = new SessionConfiguration(
 );
 ```
 </span>
-
-<div class="infoBlock">
-In Android SDK, RudderStack ignores the first argument as it is a dummy argument.
-</div>
       </TabPanel>
       <TabPanel>
 <span>
@@ -352,13 +348,13 @@ val sessionConfiguration = SessionConfiguration(
 );
 ```
 </span>
-
-<div class="infoBlock">
-In Android SDK, RudderStack ignores the first argument as it is a dummy argument.
-</div>
       </TabPanel>
     </TabPanels>
 </Tabs>
+
+<div class="warningBlock">
+You need to pass both the arguments for <code class="inline-code">SessionConfiguration</code> class as shown in the above code snippets. However, RudderStack ignores the first argument (as it is a dummy argument) and considers only the second argument (<code class="inline-code">backgroundTimeout</code>).
+</div>
 
 <div class="infoBlock">
 For mobile SDKs, Snowplow's default timeout session is 30 minutes whereas RuddeStack's default timeout session is 5 minutes. Refer to the <Link to="/sources/event-streams/sdks/session-tracking/#mobile-sdks">RudderStack Session Tracking</Link> documentation for more information.
