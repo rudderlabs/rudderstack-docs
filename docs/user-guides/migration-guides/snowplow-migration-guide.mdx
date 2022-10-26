@@ -3,11 +3,11 @@ title: "Migrating from Snowplow to RudderStack"
 description: Step-by-step guide on migrating from Snowplow to RudderStack.
 ---
 
-This document covers the necessary steps to migrate from [Snowplow](https://snowplow.io/) to RudderStack and replace your instrumentation code. Once done, you can start using the RudderStack SDKs to track your events with minimal code changes.
+This document covers the necessary steps to migrate from [Snowplow](https://snowplow.io/) to RudderStack and replace your instrumentation code. You can then start using the RudderStack SDKs to track your events with minimal code changes.
 
 ## Setting up RudderStack dashboard
 
-1. [Sign up](https://app.rudderstack.com/signup) for the RudderStack dashboard.
+1. [Sign up](https://app.rudderstack.com/signup) for RudderStack Cloud.
 2. Set up the source-destination connections in the dashboard to facilitate the event data flow. For more information on setting up the connections, refer to the <Link to="/get-started/quickstart/">Quickstart</Link> guide.
 
 <div class="successBlock">
@@ -58,7 +58,7 @@ implementation 'com.rudderstack.android.snowplow:adapter:1.0.0.beta.1'
 ```
 </span>
 </li>
-<li>Update your SDK initialization to any one of the following snippet (method 1, 2, or 3). Also, replace the <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained in the above section.
+<li>Update your SDK initialization to any one of the following snippet (method 1, 2, or 3 in the below snippets). Also, replace the <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained in the above section.
 <Tabs>
   <TabList>
     <Tab>Java</Tab>
@@ -233,7 +233,7 @@ RudderStack supports setting values for the following Snowplow configuration obj
 
 <h3>NetworkConfiguration</h3>
 
-The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/configuring-how-events-are-sent/"><code class="inline-code">NetworkConfiguration</code></a> class can be used to specify the collector endpoint as shown:
+The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/configuring-how-events-are-sent/"><code class="inline-code">NetworkConfiguration</code></a> class can be used to specify the collector endpoint, as shown:
 
 <Tabs>
   <TabList>
