@@ -1045,6 +1045,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Yandex.Metrica",
+                link: "/destinations/streaming-destinations/yandex-metrica/",
+                content: []
+            },
+            {
                 title: "Adjust",
                 sectionTitle: "Attribution",
                 link: "/destinations/streaming-destinations/adjust/",
