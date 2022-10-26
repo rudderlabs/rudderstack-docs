@@ -5,6 +5,13 @@ description: Step-by-step guide on migrating from Snowplow to RudderStack.
 
 This document covers the necessary steps to migrate from [Snowplow](https://snowplow.io/) to RudderStack and replace your instrumentation code. Once done, you can start using the RudderStack SDKs to track your events with minimal code changes.
 
+<GhBadge
+  label={'Stability'}
+  message={'Beta'}
+  color={'blueviolet'}
+  logo={'github'}
+/>
+
 ## Setting up RudderStack dashboard
 
 1. [Sign up](https://app.rudderstack.com/signup) for the RudderStack dashboard.
@@ -473,10 +480,10 @@ Snowplow automatically captures and tracks the following data. Refer to the <a h
 
 | Variable name | Default value     | 
 | :---------- | :------------ | 
-| logLevel     |        LogLevel.OFF       |           
-| lifecycleAutotracking      |   true            |           
-| screenViewAutotracking     |   true            |           
-| sessionContext      |         true      |   
+| `logLevel`     |        LogLevel.OFF       |           
+| `lifecycleAutotracking`      |   true            |           
+| `screenViewAutotracking`     |   true            |           
+| `sessionContext`      |         true      |   
 
 <div class="warningBlock">
 RudderStack ignores any variable other than the ones mentioned above.
