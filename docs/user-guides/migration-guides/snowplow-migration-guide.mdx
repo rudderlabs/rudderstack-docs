@@ -296,6 +296,11 @@ val networkConfiguration = NetworkConfiguration(DATA_PLANE_URL, CONTROL_PLANE_UR
       </TabPanel>
     </TabPanels>
 </Tabs>
+
+<div class="infoBlock">
+If not set, the default values for <code class="inline-code">dataPlaneUrl</code> and <code class="inline-code">controlPlaneUrl</code> are taken as <code class="inline-code">https://hosted.rudderlabs.com</code> and <code class="inline-code">https://api.rudderlabs.com</code> respectively.
+</div>
+
 <h3>SessionConfiguration</h3>
 
 The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#session"><code class="inline-code">SessionConfiguration</code></a> class can be used to capture sessions to track the user activity in the app, as shown:
