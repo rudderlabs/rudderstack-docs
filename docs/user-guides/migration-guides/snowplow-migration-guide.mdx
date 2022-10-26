@@ -226,27 +226,45 @@ The <code class="inline-code">&lt;Configurations&gt;</code> parameter in the abo
   </TabPanels>
 </Tabs>
 
-## Setting the configuration objects
+## Setting the configuration objects for mobile SDKs
 
-RudderStack supports setting values for the following Snowplow configuration objects. If not set, the default values are assigned.
+RudderStack supports setting values for the following Snowplow configuration objects in mobile SDKs (iOS/Android). If not set, the default values are assigned.
 
-<Tabs>
-  <TabList>
-    <Tab>Android</Tab>
-    <Tab>iOS</Tab>
-  </TabList>
-    <TabPanels>
-      <TabPanel>
+
 <h3>NetworkConfiguration</h3>
 
 The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/configuring-how-events-are-sent/"><code class="inline-code">NetworkConfiguration</code></a> class can be used to specify the collector endpoint as shown:
 
 <Tabs>
   <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
     <Tab>Java</Tab>
     <Tab>Kotlin</Tab>
   </TabList>
     <TabPanels>
+        <TabPanel>
+<span>
+
+```objectivec
+// 1
+RSNetworkConfiguration *networkConfig = [[RSNetworkConfiguration alloc] initWithDataPlaneUrl:DATA_PLANE_URL];
+// 2
+RSNetworkConfiguration *networkConfig = [[RSNetworkConfiguration alloc] initWithDataPlaneUrl:DATA_PLANE_URL controlPlaneUrl:CONTROL_PLANE_URL];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+// 1
+let networkConfig = NetworkConfiguration(dataPlaneUrl: DATA_PLANE_URL)
+// 2
+let networkConfig = NetworkConfiguration(dataPlaneUrl: DATA_PLANE_URL, controlPlaneUrl: CONTROL_PLANE_URL)
+```
+</span>
+      </TabPanel>
       <TabPanel>
 <span>
 
@@ -277,10 +295,38 @@ The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-a
 
 <Tabs>
   <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
     <Tab>Java</Tab>
     <Tab>Kotlin</Tab>
   </TabList>
     <TabPanels>
+        <TabPanel>
+<span>
+
+```objectivec
+RSSessionConfiguration *sessionConfig = [[RSSessionConfiguration alloc] initWithForegroundTimeout:[[NSMeasurement alloc] initWithDoubleValue:30 unit:NSUnitDuration.minutes] backgroundTimeout:[[NSMeasurement alloc] initWithDoubleValue:30 unit:NSUnitDuration.minutes]];
+
+// 2
+RSSessionConfiguration *sessionConfig = [[RSSessionConfiguration alloc] initWithForegroundTimeoutInSeconds:60 backgroundTimeoutInSeconds:60];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+// 1
+let sessionConfig = SessionConfiguration(
+  foregroundTimeout: Measurement(value: 30, unit: .minutes),
+  backgroundTimeout: Measurement(value: 30, unit: .minutes)
+)
+
+// 2
+let sessionConfig = SessionConfiguration(foregroundTimeoutInSeconds: 60, backgroundTimeoutInSeconds: 60)
+```
+</span>
+      </TabPanel>
       <TabPanel>
 <span>
 
@@ -312,10 +358,60 @@ The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-a
 
 <Tabs>
   <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
     <Tab>Java</Tab>
     <Tab>Kotlin</Tab>
   </TabList>
     <TabPanels>
+        <TabPanel>
+<span>
+
+```objectivec
+RSTrackerConfiguration * trackerConfig = [
+  [RSTrackerConfiguration alloc] init
+];
+[trackerConfig base64Encoding: YES];
+[trackerConfig logLevel: LogLevelDebug];
+[trackerConfig sessionContext: YES];
+[trackerConfig deepLinkContext: YES];
+[trackerConfig applicationContext: YES];
+[trackerConfig platformContext: YES];
+[trackerConfig geoLocationContext: NO];
+[trackerConfig screenContext: YES];
+[trackerConfig screenViewAutotracking: YES];
+[trackerConfig lifecycleAutotracking: YES];
+[trackerConfig installAutotracking: YES];
+[trackerConfig exceptionAutotracking: YES];
+[trackerConfig diagnosticAutotracking: NO];
+[trackerConfig userAnonymisation: NO];
+[trackerConfig appId: APP_ID];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let trackerConfig = TrackerConfiguration()
+  .base64Encoding(false)
+  .logLevel(.debug)
+  .deepLinkContext(true)
+  .applicationContext(true)
+  .platformContext(true)
+  .geoLocationContext(true)
+  .lifecycleAutotracking(true)
+  .diagnosticAutotracking(true)
+  .screenViewAutotracking(true)
+  .screenContext(true)
+  .applicationContext(true)
+  .exceptionAutotracking(true)
+  .installAutotracking(true)
+  .userAnonymisation(false)
+  .appId(APP_ID)
+```
+</span>
+      </TabPanel>
       <TabPanel>
 <span>
 
@@ -390,10 +486,36 @@ Note that <code class="inline-code">userId</code> is a mandatory field. If not p
 
 <Tabs>
   <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
     <Tab>Java</Tab>
     <Tab>Kotlin</Tab>
   </TabList>
     <TabPanels>
+        <TabPanel>
+<span>
+
+```objectivec
+RSSubjectConfiguration * subjectConfig = [
+  [RSSubjectConfiguration alloc] init
+];
+[subjectConfig userId: @ "user_id"];
+[subjectConfig traits: @ {
+  @ "key_1": @ "value_1", @ "key_2": @20, @ "key_3": @YES
+}];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let subjectConfig = SubjectConfiguration()
+  .userId("user_id")
+  .traits(["key_1": "value_1", "key_2": 20, "key_3": true])
+```
+</span>
+      </TabPanel>
       <TabPanel>
 <span>
 
@@ -480,200 +602,6 @@ val subjectConfiguration = SubjectConfiguration()
       </TabPanel>
     </TabPanels>
 </Tabs>
-      </TabPanel>
-      <TabPanel>
-        
-<h3>NetworkConfiguration</h3>
-
-The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/configuring-how-events-are-sent/"><code class="inline-code">NetworkConfiguration</code></a> class can be used to specify the collector endpoint as shown:
-
-<Tabs>
-  <TabList>
-    <Tab>Objective-C</Tab>
-    <Tab>Swift</Tab>
-  </TabList>
-    <TabPanels>
-      <TabPanel>
-<span>
-
-```objectivec
-// 1
-RSNetworkConfiguration *networkConfig = [[RSNetworkConfiguration alloc] initWithDataPlaneUrl:DATA_PLANE_URL];
-// 2
-RSNetworkConfiguration *networkConfig = [[RSNetworkConfiguration alloc] initWithDataPlaneUrl:DATA_PLANE_URL controlPlaneUrl:CONTROL_PLANE_URL];
-```
-</span>
-      </TabPanel>
-      <TabPanel>
-<span>
-
-```swift
-// 1
-let networkConfig = NetworkConfiguration(dataPlaneUrl: DATA_PLANE_URL)
-// 2
-let networkConfig = NetworkConfiguration(dataPlaneUrl: DATA_PLANE_URL, controlPlaneUrl: CONTROL_PLANE_URL)
-```
-</span>
-      </TabPanel>
-    </TabPanels>
-</Tabs>
-<h3>SessionConfiguration</h3>
-
-The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#session"><code class="inline-code">SessionConfiguration</code></a> class can be used to capture the sessions which help to track of the user activity in the app as shown:
-
-<Tabs>
-  <TabList>
-    <Tab>Objective-C</Tab>
-    <Tab>Swift</Tab>
-  </TabList>
-    <TabPanels>
-      <TabPanel>
-<span>
-
-```objectivec
-RSSessionConfiguration *sessionConfig = [[RSSessionConfiguration alloc] initWithForegroundTimeout:[[NSMeasurement alloc] initWithDoubleValue:30 unit:NSUnitDuration.minutes] backgroundTimeout:[[NSMeasurement alloc] initWithDoubleValue:30 unit:NSUnitDuration.minutes]];
-
-// 2
-RSSessionConfiguration *sessionConfig = [[RSSessionConfiguration alloc] initWithForegroundTimeoutInSeconds:60 backgroundTimeoutInSeconds:60];
-```
-</span>
-      </TabPanel>
-      <TabPanel>
-<span>
-
-```swift
-// 1
-let sessionConfig = SessionConfiguration(
-  foregroundTimeout: Measurement(value: 30, unit: .minutes),
-  backgroundTimeout: Measurement(value: 30, unit: .minutes)
-)
-
-// 2
-let sessionConfig = SessionConfiguration(foregroundTimeoutInSeconds: 60, backgroundTimeoutInSeconds: 60)
-```
-</span>
-      </TabPanel>
-    </TabPanels>
-</Tabs>
-<h3>TrackerConfiguration</h3>
-
-The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/"><code class="inline-code">TrackerConfiguration</code></a> class can be used to configure contexts and automatic events of the tracker, and general behaviour as shown:
-
-<Tabs>
-  <TabList>
-    <Tab>Objective-C</Tab>
-    <Tab>Swift</Tab>
-  </TabList>
-    <TabPanels>
-      <TabPanel>
-<span>
-
-```objectivec
-RSTrackerConfiguration * trackerConfig = [
-  [RSTrackerConfiguration alloc] init
-];
-[trackerConfig base64Encoding: YES];
-[trackerConfig logLevel: LogLevelDebug];
-[trackerConfig sessionContext: YES];
-[trackerConfig deepLinkContext: YES];
-[trackerConfig applicationContext: YES];
-[trackerConfig platformContext: YES];
-[trackerConfig geoLocationContext: NO];
-[trackerConfig screenContext: YES];
-[trackerConfig screenViewAutotracking: YES];
-[trackerConfig lifecycleAutotracking: YES];
-[trackerConfig installAutotracking: YES];
-[trackerConfig exceptionAutotracking: YES];
-[trackerConfig diagnosticAutotracking: NO];
-[trackerConfig userAnonymisation: NO];
-[trackerConfig appId: APP_ID];
-```
-</span>
-      </TabPanel>
-      <TabPanel>
-<span>
-
-```swift
-let trackerConfig = TrackerConfiguration()
-  .base64Encoding(false)
-  .logLevel(.debug)
-  .deepLinkContext(true)
-  .applicationContext(true)
-  .platformContext(true)
-  .geoLocationContext(true)
-  .lifecycleAutotracking(true)
-  .diagnosticAutotracking(true)
-  .screenViewAutotracking(true)
-  .screenContext(true)
-  .applicationContext(true)
-  .exceptionAutotracking(true)
-  .installAutotracking(true)
-  .userAnonymisation(false)
-  .appId(APP_ID)
-```
-</span>
-      </TabPanel>
-    </TabPanels>
-</Tabs>
-
-Snowplow automatically captures and tracks the following data. Refer to the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#auto-tracked-events-and-entities">Auto-tracked events and entities</a> section for more information.
-
-| Variable name | Default value    | 
-| :---------- | :------------ | 
-| logLevel     |        LogLevel.OFF       |           
-| lifecycleAutotracking      |   true            |           
-| screenViewAutotracking     |   true            |           
-| sessionContext      |         true      |
-
-<h3>SubjectConfiguration</h3>
-
-The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/"><code class="inline-code">SubjectConfiguration</code></a> class can be used to capture basic information about the user and the app which is attached on all events as context entity.
-
-<div class="warningBlock">
-Snowplow does not provide any call to identify a user. Although, RudderStack sends an the <Link to="/event-spec/standard-events/identify/"><code class="inline-code">identify</code></Link> call if you initialize <code class="inline-code">SubjectConfiguration</code> while initializing the SDK. If not initialized, the user is not identified. 
-</div>
-
-The <code class="inline-code">userId</code> field is mapped to RudderStack's <code class="inline-code">userId</code>. All the other properties are mapped to RudderStack's <code class="inline-code">traits</code> object.
-
-<div class="warningBlock">
-Note that <code class="inline-code">userId</code> is a mandatory field. If not provided, the <code class="inline-code">identify</code> call is ignored.
-</div>
-
-<Tabs>
-  <TabList>
-    <Tab>Objective-C</Tab>
-    <Tab>Swift</Tab>
-  </TabList>
-    <TabPanels>
-      <TabPanel>
-<span>
-
-```objectivec
-RSSubjectConfiguration * subjectConfig = [
-  [RSSubjectConfiguration alloc] init
-];
-[subjectConfig userId: @ "user_id"];
-[subjectConfig traits: @ {
-  @ "key_1": @ "value_1", @ "key_2": @20, @ "key_3": @YES
-}];
-```
-</span>
-      </TabPanel>
-      <TabPanel>
-<span>
-
-```swift
-let subjectConfig = SubjectConfiguration()
-  .userId("user_id")
-  .traits(["key_1": "value_1", "key_2": 20, "key_3": true])
-```
-</span>
-      </TabPanel>
-    </TabPanels>
-</Tabs>   
-      </TabPanel>
-  </TabPanels>
-</Tabs>
 
 ## Updating class names
 
@@ -694,7 +622,6 @@ The below table lists the corresponding class names in Snowplow and RudderStack 
 | `SelfDescribingJson` | `SelfDescribingJson` | `SelfDescribingJson` | `RSSelfDescribingJson` | `SelfDescribingJson` |
 | `TimeMeasure` | `TimeMeasure` | `TimeMeasure` | `N/A` | `N/A` |
 | `Snowplow` | `RSTracker` | `RSTracker` | `RSTracker` | `RSTracker` |
-
 
 ## Sending event data
 
