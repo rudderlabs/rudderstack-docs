@@ -663,7 +663,7 @@ Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-fro
 Snowplow supports identifying a user by passing the <code class="inline-code">setUserId</code> method. A Snowplow event including the <code class="inline-code">setUserId</code> method triggers the <Link to="/event-spec/standard-events/identify"><code class="inline-code">identify</code></Link> call in the RudderStack JavaScript SDK.
 
 <div class="infoBlock">
-RudderStack supports only the <code class="inline-code">setUserId</code> method of the Snowplow v2 JS tracker.
+RudderStack supports only the <code class="inline-code">setUserId</code> method of the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v2/">Snowplow v2 JS tracker</a>.
 </div>
 
 In the below sample call, <code class="inline-code">alex@example.com</code> is the <code class="inline-code">userId</code>, while <code class="inline-code">firstName</code>, <code class="inline-code">lastName</code>, and <code class="inline-code">city</code> are the user traits.
