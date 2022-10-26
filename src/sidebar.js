@@ -1015,7 +1015,8 @@ export const jsonData = [
                 title: "SIGNL4",
                 link: "/destinations/streaming-destinations/signl4/",
                 content: []
-            },{
+            },
+            {
                 title: "Singular",
                 link: "/destinations/streaming-destinations/singular/",
                 content: [
@@ -1530,12 +1531,6 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Google Tag Manager",
-                sectionTitle: "Tag Managers",
-                link: "/destinations/streaming-destinations/google-tag-manager/",
-                content: []
-            },
-            {
                 title: "Canny",
                 sectionTitle: "Surveys",
                 link: "/destinations/streaming-destinations/canny/",
@@ -1562,8 +1557,33 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Refiner",
+                link: "/destinations/streaming-destinations/refiner/",
+                content: [
+                    {
+                        title: "Setting Up Refiner",
+                        link: "/destinations/streaming-destinations/refiner/setting-up-refiner/",
+                        content: []
+                    }, {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/refiner/refiner-cloud-mode/",
+                        content: []
+                    }, {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/refiner/refiner-device-mode/",
+                        content: []
+                    },
+                ]
+            },
+            {
                 title: "WebEngage",
                 link: "/destinations/streaming-destinations/webengage/",
+                content: []
+            },
+            {
+                title: "Google Tag Manager",
+                sectionTitle: "Tag Managers",
+                link: "/destinations/streaming-destinations/google-tag-manager/",
                 content: []
             },
         ]

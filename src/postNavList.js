@@ -1290,6 +1290,24 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "refiner",
+    title: "Refiner",
+    link: "/destinations/streaming-destinations/refiner",
+    content: [],
+  },
+  {
+    key: "refiner-cloud-mode",
+    title: "Refiner Cloud Mode ",
+    link: "/destinations/streaming-destinations/refiner/refiner-cloud-mode/",
+    content: [],
+  },
+  {
+    key: "refiner-device-mode",
+    title: "Refiner Device Mode ",
+    link: "/destinations/streaming-destinations/refiner/refiner-device-mode/",
+    content: [],
+  },
+  {
     key: "leanplum",
     title: "Leanplum",
     link: "/destinations/streaming-destinations/leanplum/",
