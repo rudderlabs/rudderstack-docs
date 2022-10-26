@@ -337,6 +337,10 @@ SessionConfiguration sessionConfiguration = new SessionConfiguration(
 );
 ```
 </span>
+
+<div class="infoBlock">
+In Android SDK, RudderStack ignores the first argument as it is a dummy argument.
+</div>
       </TabPanel>
       <TabPanel>
 <span>
@@ -348,9 +352,17 @@ val sessionConfiguration = SessionConfiguration(
 );
 ```
 </span>
+
+<div class="infoBlock">
+In Android SDK, RudderStack ignores the first argument as it is a dummy argument.
+</div>
       </TabPanel>
     </TabPanels>
 </Tabs>
+
+<div class="infoBlock">
+For mobile SDKs, Snowplow's default timeout session is 30 minutes whereas RuddeStack's default timeout session is 5 minutes. Refer to the <Link to="/sources/event-streams/sdks/session-tracking/#mobile-sdks">RudderStack Session Tracking</Link> documentation for more information.
+</div>   
 
 <h3>TrackerConfiguration</h3>
 
@@ -468,7 +480,11 @@ Snowplow automatically captures and tracks the following data. Refer to the <a h
 | logLevel     |        LogLevel.OFF       |           
 | lifecycleAutotracking      |   true            |           
 | screenViewAutotracking     |   true            |           
-| sessionContext      |         true      |        
+| sessionContext      |         true      |   
+
+<div class="warningBlock">
+RudderStack ignores any variable other than the ones mentioned above.
+</div>
 
 <h3>SubjectConfiguration</h3>
 
@@ -622,6 +638,7 @@ The below table lists the corresponding class names in Snowplow and RudderStack 
 | `SelfDescribingJson` | `SelfDescribingJson` | `SelfDescribingJson` | `RSSelfDescribingJson` | `SelfDescribingJson` |
 | `TimeMeasure` | `TimeMeasure` | `TimeMeasure` | `N/A` | `N/A` |
 | `Snowplow` | `RSTracker` | `RSTracker` | `RSTracker` | `RSTracker` |
+| `LogLevel` | `LogLevel` | `LogLevel` | `LogLevel` | `LogLevel` |
 
 ## Sending event data
 
