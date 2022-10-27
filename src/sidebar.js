@@ -468,11 +468,18 @@ export const jsonData = [
                 title: "Intercom",
                 link: "/sources/extract/intercom/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Intercom V2",
                 link: "/sources/extract/intercom-v2/",
                 content: []
-            }, {
+            },
+            {
+                title: "Klaviyo",
+                link: "/sources/extract/klaviyo/",
+                content: []
+            },  
+            {
                 title: "Mailchimp",
                 link: "/sources/extract/mailchimp/",
                 content: []
