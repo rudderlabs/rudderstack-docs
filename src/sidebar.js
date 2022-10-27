@@ -473,11 +473,18 @@ export const jsonData = [
                 title: "Intercom",
                 link: "/sources/extract/intercom/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Intercom V2",
                 link: "/sources/extract/intercom-v2/",
                 content: []
-            }, {
+            },
+            {
+                title: "Klaviyo",
+                link: "/sources/extract/klaviyo/",
+                content: []
+            },  
+            {
                 title: "Mailchimp",
                 link: "/sources/extract/mailchimp/",
                 content: []
@@ -1047,6 +1054,11 @@ export const jsonData = [
             {
                 title: "Woopra",
                 link: "/destinations/streaming-destinations/woopra/",
+                content: []
+            },
+            {
+                title: "Yandex.Metrica",
+                link: "/destinations/streaming-destinations/yandex-metrica/",
                 content: []
             },
             {
@@ -1660,6 +1672,21 @@ export const jsonData = [
         link: "/features/transformations/",
         content: [
             {
+                title: "Using Libraries",
+                link: "/features/transformations/using-libraries",
+                content: [],
+            },
+            {
+                title: "Cloud Mode Transformations",
+                link: "/features/transformations/cloud-mode-transformations",
+                content: [],
+            },
+            {
+                title: "Device Mode Transformations",
+                link: "/features/transformations/device-mode-transformations",
+                content: [],
+            },
+            {
                 title: "FAQ",
                 link: "/features/transformations/faq",
                 content: [],
@@ -1833,6 +1860,11 @@ export const jsonData = [
             {
                 title: "Migrating from Segment to RudderStack",
                 link: "/user-guides/migration-guides/rudderstack-migration-guide/",
+                content: []
+            }, 
+            {
+                title: "Migrating from Snowplow to RudderStack",
+                link: "/user-guides/migration-guides/snowplow-migration-guide/",
                 content: []
             }, 
             {

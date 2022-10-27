@@ -1296,6 +1296,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "yandex-metrica",
+    title: "Yandex.Metrica",
+    link: "/destinations/streaming-destinations/yandex-metrica/",
+    content: [],
+  },
+  {
     key: "iterable",
     title: "Iterable",
     link: "/destinations/streaming-destinations/iterable/",
@@ -2017,6 +2023,24 @@ export const postNavList = [
     title: "Transformations",
     link: "/features/transformations/",
     content: [],
+  },
+  {
+    key: "using-libraries",
+    title: "Using Libraries",
+    link: "/features/transformations/using-libraries",
+    content: [],
+  },
+  {
+    key: "cloud-mode-transformations",
+    title: "Cloud Mode Transformations",
+    link: "/features/transformations/cloud-mode-transformations",
+    content: [],
+  },
+  {
+      key: "device-mode-transformations",  
+      title: "Device Mode Transformations",
+      link: "/features/transformations/device-mode-transformations",
+      content: [],
   },
   {
     key: "faq",
