@@ -64,7 +64,7 @@ Once you connect the Action Hub Server to your Looker instance by clicking the *
 
 <img src="../../../assets/event-stream-sources/looker-2.png" alt="Looker source write key" />
 
-3. Specify the **Rudder Server URL** to which Looker forwards the user looks data. The URL is `https://<your-dataplane-url>/v1/batch`.
+3. Specify the **Rudder Server URL** to which Looker forwards the user looks data. The URL is `https://<your-dataplane-url>/v1/batch`. For more information on obtaining your data plane URL, refer to the <Link to="/resources/glossary/#data-plane-url">RudderStack Glossary</Link>.
 
 <img src="../../../assets/event-stream-sources/looker-4.png" alt="Configuring the Rudder Write Key and Rudder Server URL" />
 
@@ -128,5 +128,5 @@ A sample `track` payload from the look's row data sent by the **RudderStack Trac
 ```
 
 <div class="infoBlock">
-The column names in your looks are transformed as <code class="inline-code">view name.column name</code> in the payload sent to RudderStack. If you want to change the names as per your end-destination, you can do so using RudderStack's <Link to="/transformations/">Transformations</Link> feature.
+The column names in your looks are transformed as <code class="inline-code">view name.column name</code> in the payload sent to RudderStack. If you want to change the names as per your destination, you can do so using RudderStack's <Link to="/transformations/">Transformations</Link> feature.
 </div>
