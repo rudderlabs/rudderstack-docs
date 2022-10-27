@@ -71,11 +71,11 @@ The below table mentions the syncs and [API endpoints](https://www.docs.develope
 
 | Resource | Full Refresh sync | Incremental sync | Primary key | Amplitude API endpoint |
 | :---| :---- | :---- | :---- | :---- |
-| `events` |  Yes | Yes | `uuid` |  `export` |
-| `cohorts` | Yes | No | `id` | `cohorts` |
-| `average_session_length` | No | Yes | `date` | `dashboard` |
-| `annotations` | Yes | No | `id` | `annotations` |
-| `active_users` | No | Yes |  `date` | `dashboard` |
+| `events` |  Yes | Yes | `uuid` |  `/export` |
+| `cohorts` | Yes | No | `id` | `/cohorts` |
+| `average_session_length` | No | Yes | `date` | `/dashboard` |
+| `annotations` | Yes | No | `id` | `/annotations` |
+| `active_users` | No | Yes |  `date` | `/dashboard` |
 
 <div class="infoBlock">
 For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
