@@ -35,9 +35,12 @@ To successfully configure Facebook Offline Conversions as a destination, you wil
 If a Facebook standard event is mapped to more than one event set ID, RudderStack will send an event for every event set ID.
 </div>
 
+- **Map Categories to Facebook Content Types**: Enter the category value and the corresponding Facebook [`content_type`](https://developers.facebook.com/docs/meta-pixel/get-started/advantage-catalog-ads#content-type) which should be mapped to each other. This `content_type` is sent to Facebook every time you send the specified category value via Rudderstack. Refer to the <Link to="/destinations/streaming-destinations/fb-offline-conversions/#sending-customized-content_type">Sending customized `content_type`</Link> section for more information on sending the customized `content_type` to Facebook.
 - **Value Field Identifier**: Enter the identifier you want to assign to the `value` field in Facebook's event payload. The default value is set to `properties.value`.
 - **Limited Data Usage**: Enable this setting to let RudderStack take the data processing information from the payload and send it to Facebook.
 - **Enable Hashing**: This setting is enabled by default and hash encodes the user data using `SHA256`. Facebook expects the user data to be hash encoded.
+
+
 
 ## Track
 
@@ -139,9 +142,38 @@ Note the following important points while sending event data to Facebook Offline
 
 - At least one [`match_key`](https://developers.facebook.com/docs/marketing-api/offline-conversions/#:~:text=one%20API%20call.-,Match%20Keys,-match_keys%20is%20a) is required to send an event successfully. RudderStack uses SHA256 encoding to hash all the `match_keys` that include personally identifiable data in compliance with Facebook's privacy requirements.
 - If you send a `products` array using the `properties` object, Rudderstack sends only the `id`, `quantity`, `brand`, `category`, and `price` properties for each product. The reason is that Facebook throws an error on encountering any property apart from these.
-- If you send an event name as **Product List Viewed**, the value of [`content_type`](https://developers.facebook.com/docs/marketing-api/offline-conversions/#:~:text=Example%3A%2016.00-,content_type,-type%3A%20string) key is set as `product_group` otherwise, it is set as `product`.
+- If you send an event name as **Product List Viewed**, the value of [`content_type`](https://developers.facebook.com/docs/meta-pixel/get-started/advantage-catalog-ads#content-type) key is set as `product_group` otherwise, it is set as `product`.
 - RudderStack sends a conversion event as long as it contains a `userId`. However, it is recommended to send as much user data through `context.traits` for better attribution results.
 - You can send either the `firstName` and `lastName` separately or just the `name` property. RudderStack maps it to `fn` and `ln` on its own.
+
+## Sending custom `content_type`
+
+You can either send the custom [`content_type`](https://developers.facebook.com/docs/meta-pixel/get-started/advantage-catalog-ads#content-type) by specifying it in the **Map Categories to Facebook Content Types** dashboard setting or via the `integrations` object, as shown:
+
+```javascript
+"integrations": {
+  "FacebookOfflineConversions": {
+    "contentType": "sending dedicated content type for this particular payload"
+  }
+}
+```
+
+The priority order of setting the `content_type` value is as follows:
+
+1. `content_type` provided in the `integrations` object is given the highest priority.
+2. `content_type` provided in the RudderStack dashboard is given the second highest priority.
+3. If none of the above is provided, the `content_type` is set to `product` by default, except in the following cases:
+  - If **Product List Viewed** event is sent:
+      - with `products` array, then the `content_type` is set to `product`.
+      - without the `products` array, then the `content_type` is set to `product_group`.
+  - If **Product Viewed** event is mapped in the RudderStack dashboard, then the `content_type` is set to `product`.
+  - If **Product Viewed** event is not mapped in RudderStack dashboard (default mapping is set to **View Content** event) and is sent:
+      - with `products` array, then the `content_type` is set to `product`.
+      - without the `products` array, then the `content_type` is set to `product_group`.
+  - If any other event is mapped to the Facebook standard event **View Content** in the RudderStack dashboard and is sent:
+      - with `products` array, then the `content_type` is set to `product`.
+      - without the `products` array, then the `content_type` is set to `product_group`.
+
 
 ## FAQ
 
