@@ -2,29 +2,35 @@
 title: "Personal Access Token"
 description: >-
   Step-by-step guide on generating and managing your personal access tokens required to use the RudderStack API.
+aliases: ["Personal access token", "Access token"]
 ---
 
 To consume all the public RudderStack APIs, you need an access token associated with your RudderStack account. This guide describes the steps to generate a **personal access token** and the operations associated with it.
+
+## Permissions
+
+RudderStack Cloud users with <Link to="/dashboard-guides/teammates/#read-write-user">Read-Write</Link> or <Link to="/dashboard-guides/teammates/#admin">Admin</Link> permissions can create a personal access tokens in their workspace and use them.
 
 ## Generating a personal access token
 
 Follow these steps to generate a personal access token:
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
-2. Go to **Settings** > **Personal access tokens**, as shown:
+2. Go to **Settings** and scroll down to **Personal access tokens** under the **Account** tab.
+3. Click the **Generate new token** button, as shown:
 
-<img src="../assets/rudderstack-api/personal-access-tokens-1.png" alt="Personal access tokens setting in RudderStack dashboard" />
+<img src="../assets/rudderstack-api/personal-access-token-1.png" alt="New personal access token in RudderStack dashboard" />
 
-3. Click on **Generate new token**, as shown:
+4. Enter the **Token name** and select the **Role** (access permissions) from the dropdown:
 
-<img src="../assets/rudderstack-api/new-personal-access-token.png" alt="New personal access token in RudderStack dashboard" />
+<img src="../assets/rudderstack-api/personal-access-token-2.png" alt="Personal access token name and role" />
 
-4. Enter your **Token name** and select the permissions (**Role**) associated with this token, from the dropdown:
+<div class="infoBlock">
+For more information on the Read-Only, Read-Write, and Admin permissions, refer to the <Link to="/dashboard-guides/user-management/#role-permissions">User Management</Link> guide.
+</div>
 
-<img src="../assets/rudderstack-api/personal-access-tokens-2.png" alt="Personal access token name and role" />
-
-5. Then, click on **Generate**.
-6. Copy and save the personal access token details securely.
+5. Then, click **Generate**.
+6. Copy and save the personal access token details securely. 
 
 <img src="../assets/rudderstack-api/personal-access-tokens-3.png" alt="Personal access token details" />
 
@@ -34,12 +40,4 @@ Make sure you copy the generated token as it will not be visible again once you 
 
 ## Deleting a personal access token
 
-To delete an existing token, click on the corresponding **Delete** option next to that token, and confirm by clicking on **Yes, delete**.
-
-To delete all the existing tokens, click on the **Revoke all** button on the top right and click on **Yes, delete**.
-
-## Permissions
-
-The RudderStack Cloud users only with <Link to="/dashboard-guides/teammates/#read-write-user">Read-Write</Link> access or <Link to="/dashboard-guides/teammates/#admin">Admin</Link> access permissions can create their own access tokens and use them.
-
-
+To delete an existing token, click the corresponding **Delete** option next to that token, and confirm by clicking **Yes, delete**.
