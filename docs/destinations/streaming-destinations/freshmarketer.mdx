@@ -114,23 +114,10 @@ The following table lists the mappings between the RudderStack and Freshmarketer
 ## Track
   
 The <Link to="/event-spec/standard-events/track/">`track`</Link> call can be used to track the activities of a user. Rudderstack supports the following events:
-- **Sales Activities**: Any type of interaction between a sales rep and a prospect is a sales activity. Such an activity might propel the sales process, helping the sales rep get closer to winning a deal.
 
-Through RudderStack we can create the status of the Customer. For creating the status either `salesActivityTypeId` or `salesActivityName` is required. We can create the lifeCycle stage from the Freshmarketer dashboard.
+- **Sales Activities**: This event captures any type of interaction between a sales representative and the prospect.
 
-
-- **Lifecycle Stage**: This event captures the decision journey of a customer. Through RudderStack we can update the status of the Customer. For updating the status either lifecycleStageId or lifecycleStageName is required. We can create the lifeCycle stage from the Freshmarketer dashboard. Here in image lifecycleStageName is Sales Qualified Lead start, final Customer , Lead, Customer . It can be edited and changed through their dashboard.
-
-<div class="infoBlock">
-<code class="inline-code">event</code> is a required field for the <code class="inline-code">track</code> call. 
-</div>
-
-A sample `track` call is shown below:
-
-```javascript
-
-```
-
+RudderStack supports creating the status of a user by taking either the `salesActivityTypeId` or `salesActivityName`.
 
 The following table property mappings:
 
@@ -154,6 +141,30 @@ The following table property mappings:
 | `longitude`<br/>`context.address.longitude`<br/>`context.location.longitude`   | `longitude`      | 
 |`properties.checkedinAt`|`checkedin_at`|
 
+
+- **Lifecycle Stage**: This event captures the decision journey of a customer. You can create the lifecycle stage in the Freshmarketer dashboard. For example, the below image shows a lifecycle stage where **Sales Qualified Lead start**, **final Customer**, **Lead**, and **Customer** are the lifecycle stage names. You can also change/edit these in the Freshmarketer dashboard.
+
+<img src="../../assets/event-stream-destinations/freshmarketer-connection-settings.png" alt="Freshmarketer connection settings" />
+
+RudderStack lets you update the status of a user by taking either the `lifecycleStageId` or `lifecycleStageName` (case-sensitive). 
+
+<div class="infoBlock">
+<code class="inline-code">event</code> is a required field for the <code class="inline-code">track</code> call. 
+</div>
+
+A sample `track` call is shown below:
+
+```javascript
+
+```
+
+The following table property mappings:
+
+| RudderStack property          | Freshmarketer property|
+| :-------------------- | :---------------------- |
+| `email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email` |
+| `lifecycleStageName` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if lifecycleStageId is absent.</span>  | `lifecycleStageName`  |
+| `lifecycleStageId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if lifecycleStageName is absent.</span>   | `lifecycle_stage_id`  |
 
 ## Group
 
@@ -222,6 +233,25 @@ The following table lists the mappings between the RudderStack and Freshmarketer
 | `traits.linkedinUserName`, `context.traits.linkedinUserName` | `linkedin` | Optional |
 | `createdAt` | `created_at` | Optional |
 | `timestamp` | `updated_at` | Optional |
+
+### Marketing lists
+
+Marketing lists help you group contacts into lists that you can quickly invoke for marketing campaigns and bulk emailing.
+
+RudderStack lets you add one or more contacts to the specified marketing list. You must provide the contact's `email` and `listId`/`listName` to add them to the marketing list. Also, RudderStack creates a new marketing list if the `listName` (case-sensitive) is not available.
+
+<div class="infoBlock">
+<code class="inline code">groupType</code>  is required and it should be <code class="inline code">accounts</code> or <code class="inline code">marketing_lists</code>.
+</div>
+
+The following table property mappings:
+
+| RudderStack property          | Freshmarketer property|
+| :-------------------- | :---------------------- |
+| `email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email` |
+| `listId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if listName is absent.</span>  | `listId`  |
+| `listName` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if listId is absent.</span>   | `listName`  |
+
 
 ## Type conversion and invalid format error
 
