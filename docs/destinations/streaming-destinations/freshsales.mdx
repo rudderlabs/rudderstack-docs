@@ -110,6 +110,85 @@ The following table lists the mappings between the RudderStack and Freshsales pr
 | `traits.salesAccountId`, `context.traits.salesAccountId` | `sales_account_id` | Optional |
 | `traits.lifecycleStageId`, `context.traits.lifecycleStageId` | `lifecycle_stage_id` | Optional |
 
+## Track
+  
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call can be used to track the user activities in Freshsales.
+
+<div class="infoBlock">
+<code class="inline-code">event</code> is a required field for making a <code class="inline-code">track</code> call.
+</div>
+
+Rudderstack supports the following `track` events:
+
+### Lifecycle stage
+
+Lifecycle stage events capture the decision journey of a customer. Refer to the [Freshsales documentation](https://support.freshsales.io/en/support/solutions/articles/50000003344-how-to-manage-lifecycle-stages-and-status-for-contacts-) to create lifecycle stages in Freshsales.
+
+RudderStack lets you update the status of a contact in their lifecycle stage by using either the `lifecycleStageId` or `lifecycleStageName`. 
+
+<div class="infoBlock">
+<code class="inline-code">lifecycleStageName</code> is a case-sensitive field and throws an error if not used in the intended manner.
+</div>
+
+A sample `track` call for a lifecycle stage event is shown below:
+
+```javascript
+rudderanalytics.track("eventName", {
+  email: "alex@example.com",
+  lifecycleStageId: 71010794467,
+  phone: "+1-202-555-0146",
+  owner_id: "70000090119",
+});
+```
+
+The following table lists the property mappings betweeen RudderStack and Freshsales for lifecycle stage events:
+
+| RudderStack property          | Freshsales property|
+| :-------------------- | :---------------------- |
+| `email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email` |
+| `lifecycleStageName` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if lifecycleStageId is absent.</span>  | `lifecycleStageName`  |
+| `lifecycleStageId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if lifecycleStageName is absent.</span>   | `lifecycle_stage_id`  |
+
+### Sales activities
+
+[Sales activities](https://developers.freshworks.com/crm/api/#sales-activities) events can be used to track any activity related to a contact/deal/account. Refer to the [Freshsales documentation](https://support.freshsales.io/en/support/solutions/articles/230199-how-to-configure-different-sales-activities-in-freshsales-) to create sales activities  in Freshsales.
+
+RudderStack lets you create the status of a contact by using either the `salesActivityTypeId` or `salesActivityName`.
+
+A sample `track` call for a sales activity event is shown below:
+
+```javascript
+rudderanalytics.track("eventName", {
+  salesActivityTypeId: "70000663932",
+  title: "new contact",
+  startDate: "2021-05-04T17:00:00+05:30",
+  endDate: "2022-06-04T17:30:00+05:30",
+  ownerId: "70054866612",
+});
+```
+
+The following table lists the property mappings betweeen RudderStack and Freshsales for sales activity events:
+
+| RudderStack property          | Freshsales property|
+| :-------------------- | :---------------------- |
+| `properties.salesActivityName` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `sales_activity_name` |
+| `properties.title` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `title`            |
+| `properties.salesActivityTypeId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `sales_activity_type_id`             | 
+| `salesActivityOutcomeId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `sales_activity_outcome_id`              |
+| `properties.startDate` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `start_date`        |
+| `properties.endDate`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `end_date`      | 
+| `properties.notes`    | `notes`      |
+| `properties.ownerId` | `owner_id`| 
+| `context.externalId.id`     | `targetable_id`           |
+| `properties.products`       | `targetable_type`             |
+| `properties.createrId`    | `creater_id`              |
+| `originalTimestamp`  | `created_at`                |
+| `timestamp`   | `updated_at`      |
+|`properties.location` |`location`|
+| `latitude`<br/>`context.address.latitude`<br/> `context.location.latitude`   | `latitude`      |
+| `longitude`<br/>`context.address.longitude`<br/>`context.location.longitude`   | `longitude`      | 
+|`properties.checkedinAt`|`checkedin_at`|
+
 ## Group
 
 The <Link to="/event-spec/standard-events/group/">`group`</Link> call lets you link an identified Freshsales contact with a company, organization, or an account. You can also record any custom group traits like the company name, number of employees, etc.
