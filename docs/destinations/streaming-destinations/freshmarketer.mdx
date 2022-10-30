@@ -4,7 +4,7 @@ description: Step-by-step guide on sending your event data from RudderStack to F
 aliases: ["Freshmarketer destination"]
 ---
 
-[Freshmarketer](https://www.freshworks.com/crm/marketing/) is a marketing automation tool that offers a unified marketing, sales, and CRM platform to engage your customer base and grow your business.
+[Freshmarketer](https://www.freshworks.com/crm/marketing/) is a [Freshsales](https://www.freshworks.com/) e-commerce CRM platform. It is a marketing automation tool that offers a unified marketing, sales, and CRM platform to engage your customer base and grow your business.
 
 RudderStack supports Freshmarketer as a destination where you can seamlessly send your event data.
 
@@ -74,52 +74,99 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 });
 ```
 
-### Supported mappings
-
 The following table lists the mappings between the RudderStack and Freshmarketer properties:
 
-| RudderStack property | Freshmarketer property | Presence |
-| :--------------| :---------| :--------------|
-| `traits.email`, `context.traits.email` | `emails` | Required |
-| `traits.firstname`, `traits.first_name`, `traits.firstName`,<br />`context.traits.firstname`, `context.traits.first_name`, `context.traits.firstName` | `first_name` | Optional |
-| `traits.lastname`, `traits.last_name`, `traits.lastName`,<br />`context.traits.lastname`, `context.traits.last_name`, `context.traits.lastName` | `last_name` | Optional |
-| `traits.subscriptionStatus`, `context.traits.subscriptionStatus` | `subscription_status` | Optional |
-| `traits.job_title`, `traits.jobTitle`, `context.traits.job_title`, `context.traits.jobTitle` | `job_title` | Optional |
-| `traits.phone`, `context.traits.phone` | `work_number` | Optional |
-| `userId` | `external_id` | Optional |
-| `traits.mobileNumber`, `context.traits.mobileNumber` | `mobile_number` | Optional |
-| `traits.address`, `context.traits.address` | `address` | Optional |
-| `traits.address.city`, `traits.city`, `context.traits.address.city`, `context.traits.city` | `city` | Optional |
-| `traits.address.state`, `traits.state`, `context.traits.address.state`, `context.traits.state` | `state` | Optional |
-| `traits.address.postalCode`, `traits.zip`, `traits.zipcode`, `context.traits.zip`, `context.traits.zipcode`, `context.traits.address.postalCode` | `zipcode` | Optional |
-| `traits.address.country`, `traits.country`, `context.traits.address.country`, `context.traits.country` | `country` | Optional |
-| `traits.salesAccounts`, `context.traits.salesAccounts` | `sales_accounts` | Optional |
-| `traits.territoryId`, `context.traits.territoryId` | `territory_id` | Optional |
-| `traits.leadSourceId`, `context.traits.leadSourceId` | `lead_source_id` | Optional |
-| `traits.ownerId`, `context.traits.ownerId` | `owner_id` | Optional |
-| `traits.subscriptionTypes`, `context.traits.subscriptionTypes` | `subscription_types` | Optional |
-| `traits.medium`, `context.traits.medium` | `medium` | Optional |
-| `traits.campaignId`, `traits.campaign_id`, `context.traits.campaignId`, `context.traits.campaign_id`, `context.campaign.name` | `campaign_id` | Optional |
-| `traits.keyword`, `context.traits.keyword`, `context.campaign.term` | `keyword` | Optional |
-| `traits.timeZone`, `context.traits.timeZone` | `time_zone` | Optional |
-| `traits.facebookUserName`, `context.traits.facebookUserName` | `facebook` | Optional |
-| `traits.twitterUserName`, `context.traits.twitterUserName` | `twitter` | Optional |
-| `traits.linkedinUserName`, `context.traits.linkedinUserName` | `linkedin` | Optional |
-| `createdAt` | `created_at` | Optional |
-| `timestamp` | `updated_at` | Optional |
-| `traits.contactStatusId`, `context.traits.contactStatusId` | `contact_status_id` | Optional |
-| `traits.salesAccountId`, `context.traits.salesAccountId` | `sales_account_id` | Optional |
-| `traits.lifecycleStageId`, `context.traits.lifecycleStageId` | `lifecycle_stage_id` | Optional |
+| RudderStack property | Freshmarketer property |
+| :--------------| :---------|
+| `traits.email` <br/>  `context.traits.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `emails` |
+| `traits.firstname` <br/>  `traits.first_name` <br/>  `traits.firstName`<br/> <br />`context.traits.firstname`<br/>  `context.traits.first_name`<br/>  `context.traits.firstName` | `first_name` |
+| `traits.lastname`<br/>  `traits.last_name`<br/>  `traits.lastName`<br/> <br />`context.traits.lastname`<br/>  `context.traits.last_name`<br/>  `context.traits.lastName` | `last_name` |
+| `traits.subscriptionStatus`<br/>  `context.traits.subscriptionStatus` | `subscription_status` |
+| `traits.job_title`<br/>  `traits.jobTitle`<br/>  `context.traits.job_title`<br/>  `context.traits.jobTitle` | `job_title` |
+| `traits.phone`<br/>  `context.traits.phone` | `work_number` |
+| `userId` | `external_id` | 
+| `traits.mobileNumber`<br/>  `context.traits.mobileNumber` | `mobile_number` | 
+| `traits.address`<br/>  `context.traits.address` | `address` | 
+| `traits.address.city`<br/>  `traits.city`<br/>  `context.traits.address.city`<br/>  `context.traits.city` | `city` |
+| `traits.address.state`<br/>  `traits.state`<br/>  `context.traits.address.state`<br/>  `context.traits.state` | `state` |
+| `traits.address.postalCode`<br/>  `traits.zip`<br/>  `traits.zipcode`<br/>  `context.traits.zip`<br/>  `context.traits.zipcode`<br/>  `context.traits.address.postalCode` | `zipcode` |
+| `traits.address.country`<br/>  `traits.country`<br/>  `context.traits.address.country`<br/>  `context.traits.country` | `country` |
+| `traits.salesAccounts`<br/>  `context.traits.salesAccounts` | `sales_accounts` |
+| `traits.territoryId`<br/>  `context.traits.territoryId` | `territory_id` |
+| `traits.leadSourceId`<br/>  `context.traits.leadSourceId` | `lead_source_id` |
+| `traits.ownerId`<br/>  `context.traits.ownerId` | `owner_id` |
+| `traits.subscriptionTypes`<br/>  `context.traits.subscriptionTypes` | `subscription_types` |
+| `traits.medium`<br/>  `context.traits.medium` | `medium` | 
+| `traits.campaignId`<br/>  `traits.campaign_id`<br/>  `context.traits.campaignId`<br/>  `context.traits.campaign_id`<br/>  `context.campaign.name` | `campaign_id` | 
+| `traits.keyword`<br/>  `context.traits.keyword`<br/>  `context.campaign.term` | `keyword` |
+| `traits.timeZone`<br/>  `context.traits.timeZone` | `time_zone` |
+| `traits.facebookUserName`<br/>  `context.traits.facebookUserName` | `facebook` |
+| `traits.twitterUserName`<br/>  `context.traits.twitterUserName` | `twitter` |
+| `traits.linkedinUserName`<br/>  `context.traits.linkedinUserName` | `linkedin` |
+| `createdAt` | `created_at` | 
+| `timestamp` | `updated_at` | 
+| `traits.contactStatusId`<br/>  `context.traits.contactStatusId` | `contact_status_id` |
+| `traits.salesAccountId`<br/>  `context.traits.salesAccountId` | `sales_account_id` |
+| `traits.lifecycleStageId`<br/>  `context.traits.lifecycleStageId` | `lifecycle_stage_id` |
 
 ## Track
   
-The <Link to="/event-spec/standard-events/track/">`track`</Link> call can be used to track the activities of a user. Rudderstack supports the following events:
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call can be used to track the user activities in Freshmarketer.
 
-- **Sales Activities**: This event captures any type of interaction between a sales representative and the prospect.
+<div class="infoBlock">
+<code class="inline-code">event</code> is a required field for making a <code class="inline-code">track</code> call.
+</div>
 
-RudderStack supports creating the status of a user by taking either the `salesActivityTypeId` or `salesActivityName`.
+Rudderstack supports the following `track` events:
 
-The following table property mappings:
+### Lifecycle stage
+
+Lifecycle stage events capture the decision journey of a customer. Refer to the [Freshsales documentation](https://support.freshsales.io/en/support/solutions/articles/50000003344-how-to-manage-lifecycle-stages-and-status-for-contacts-) to create lifecycle stages in Freshmarketer.
+
+RudderStack lets you update the status of a contact in their lifecycle stage by using either the `lifecycleStageId` or `lifecycleStageName`. 
+
+<div class="infoBlock">
+<code class="inline-code">lifecycleStageName</code> is a case-sensitive field and throws an error if not used in the intended manner.
+</div>
+
+A sample `track` call for a lifecycle stage event is shown below:
+
+```javascript
+rudderanalytics.track("eventName", {
+  email: "alex@example.com",
+  lifecycleStageId: 71010794467,
+  phone: "+1-202-555-0146",
+  owner_id: "70000090119",
+});
+```
+
+The following table lists the property mappings betweeen RudderStack and Freshmarketer for lifecycle stage events:
+
+| RudderStack property          | Freshmarketer property|
+| :-------------------- | :---------------------- |
+| `email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email` |
+| `lifecycleStageName` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if lifecycleStageId is absent.</span>  | `lifecycleStageName`  |
+| `lifecycleStageId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if lifecycleStageName is absent.</span>   | `lifecycle_stage_id`  |
+
+### Sales activities
+
+[Sales activities](https://developers.freshworks.com/crm/api/#sales-activities) events can be used to track any activity related to a contact/deal/account. Refer to the [Freshsales documentation](https://support.freshsales.io/en/support/solutions/articles/230199-how-to-configure-different-sales-activities-in-freshsales-) to create sales activities  in Freshmarketer.
+
+RudderStack lets you create the status of a contact by using either the `salesActivityTypeId` or `salesActivityName`.
+
+A sample `track` call for a sales activity event is shown below:
+
+```javascript
+rudderanalytics.track("eventName", {
+  salesActivityTypeId: "70000663932",
+  title: "new contact",
+  startDate: "2021-05-04T17:00:00+05:30",
+  endDate: "2022-06-04T17:30:00+05:30",
+  ownerId: "70054866612",
+});
+```
+
+The following table lists the property mappings betweeen RudderStack and Freshmarketer for sales activity events:
 
 | RudderStack property          | Freshmarketer property|
 | :-------------------- | :---------------------- |
@@ -141,30 +188,6 @@ The following table property mappings:
 | `longitude`<br/>`context.address.longitude`<br/>`context.location.longitude`   | `longitude`      | 
 |`properties.checkedinAt`|`checkedin_at`|
 
-
-- **Lifecycle Stage**: This event captures the decision journey of a customer. You can create the lifecycle stage in the Freshmarketer dashboard. For example, the below image shows a lifecycle stage where **Sales Qualified Lead start**, **final Customer**, **Lead**, and **Customer** are the lifecycle stage names. You can also change/edit these in the Freshmarketer dashboard.
-
-<img src="../../assets/event-stream-destinations/freshmarketer-connection-settings.png" alt="Freshmarketer connection settings" />
-
-RudderStack lets you update the status of a user by taking either the `lifecycleStageId` or `lifecycleStageName` (case-sensitive). 
-
-<div class="infoBlock">
-<code class="inline-code">event</code> is a required field for the <code class="inline-code">track</code> call. 
-</div>
-
-A sample `track` call is shown below:
-
-```javascript
-
-```
-
-The following table property mappings:
-
-| RudderStack property          | Freshmarketer property|
-| :-------------------- | :---------------------- |
-| `email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email` |
-| `lifecycleStageName` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if lifecycleStageId is absent.</span>  | `lifecycleStageName`  |
-| `lifecycleStageId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if lifecycleStageName is absent.</span>   | `lifecycle_stage_id`  |
 
 ## Group
 
@@ -207,7 +230,6 @@ rudderanalytics.group(
   }
 );
 ```
-### Supported mappings
 
 The following table lists the mappings between the RudderStack and Freshmarketer properties:
 
@@ -236,15 +258,25 @@ The following table lists the mappings between the RudderStack and Freshmarketer
 
 ### Marketing lists
 
-Marketing lists help you group contacts into lists that you can quickly invoke for marketing campaigns and bulk emailing.
+Marketing lists help you group contacts into lists which you can quickly invoke for marketing campaigns and bulk emailing.
 
-RudderStack lets you add one or more contacts to the specified marketing list. You must provide the contact's `email` and `listId`/`listName` to add them to the marketing list. Also, RudderStack creates a new marketing list if the `listName` (case-sensitive) is not available.
+RudderStack lets you add one or more contacts to the specified marketing list. To do so, you need to provide the contact's `email` and `listId`/`listName`. Also, RudderStack creates a new marketing list if the `listName` (case-sensitive) does not exist already.
 
 <div class="infoBlock">
-<code class="inline code">groupType</code>  is required and it should be <code class="inline code">accounts</code> or <code class="inline code">marketing_lists</code>.
+<code class="inline-code">groupType</code> is a required field and its value can be <code class="inline-code">accounts</code> or <code class="inline-code">marketing_lists</code>.
 </div>
 
-The following table property mappings:
+A sample `group` call to add a contact to a marketing list is shown below:
+
+```javascript
+rudderanalytics.group("group01", {
+  groupType: "marketing_lists",
+  email: "alex@example.com",
+  listName: "listIdX123",
+});
+```
+
+The following table lists the property mappings between RudderStack and Freshmarketer to create marketing lists:
 
 | RudderStack property          | Freshmarketer property|
 | :-------------------- | :---------------------- |
