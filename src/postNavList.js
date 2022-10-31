@@ -446,6 +446,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "refiner",
+    title: "Refiner",
+    link: "/sources/event-streams/cloud-apps/refiner/",
+    content: []
+  },
+  {
     key: "shopify",
     title: "Shopify",
     link: "/sources/event-streams/cloud-apps/shopify/",

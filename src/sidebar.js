@@ -379,6 +379,11 @@ export const jsonData = [
                         content: []
                     },
                     {
+                        title: "Refiner",
+                        link: "/sources/event-streams/cloud-apps/refiner/",
+                        content: []
+                    },
+                    {
                         title: "Segment",
                         link: "/sources/event-streams/cloud-apps/segment/",
                         content: []
