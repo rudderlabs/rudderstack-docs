@@ -82,10 +82,6 @@ rudderanalytics.identify('userid', {
   country: 'US',
   street: 'Blue Gum Street',
   state: 'LA'
-}, {
-  'integrations': {
-    'Salesforce': true
-  }
 });
 ```
 
@@ -96,11 +92,6 @@ When the `identify` method is called, RudderStack checks if the lead already exi
 <div class="infoBlock">
   
   When you make an <code class="inline-code">identify</code> call with a set of user traits, RudderStack will update the appropriate record in Salesforce depending on whether it is a lead or a contact using its lead or contact ID.
-</div>
-
-<div class="warningBlock">
-
-It is mandatory to include <code class="inline-code">'Salesforce':true</code> in every Salesforce integration object. As Salesforce has strict API limits, this is required in order to prevent the users from hitting their limits. By default, RudderStack does not send <code class="inline-code">identify</code> calls to Salesforce. Hence, any <code class="inline-code">identify</code> call that does not include <code class="inline-code">'Salesforce':true</code> in its payload will be ignored.
 </div>
 
 ### Updating custom fields in Salesforce
@@ -224,9 +215,3 @@ You can find your security token under **Setup** > **Personal Setup** > **My Per
 ### How do I check the number of Salesforce API calls left for the day?
 
 To check the number of Salesforce API calls, go to **Setup** > **Administration Setup** > **Company Profile** > **Company Information**. You should then be able to see a field called **API Requests, Last 24 Hours**, which contains the number of API calls left for the day.
-
-### What if I don't include `'Salesforce': true` in my `identify` call?
-
-Salesforce has a very strict API limit. Moreover, RudderStack does not send any `identify` calls to Salesforce by default. If you don't include `'Salesforce':true` in your `identify` call payload, the call will be simply ignored.
-
-
