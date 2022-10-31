@@ -1,0 +1,58 @@
+---
+title: "Airflow Provider"
+description: >-
+ Detailed technical description of the RudderStack Airflow Provider.
+---
+
+RudderStack supports using <Link to="/event-spec/standard-events/track/">`track`</Link> call in Reverse ETL pipeline while importing data from a <Link to="/sources/reverse-etl/common-settings/importing-data-using-tables/">Table</Link> or <Link to="/sources/reverse-etl/common-settings/importing-data-using-models/">Model</Link>.
+
+<div class="warningBlock">
+<code class="inline-code">track</code> calls are only supported while using the JSON builder.
+</div>
+
+
+## Use case
+
+**Make sure your most important events are 100% reliable**
+Some critical events (such as purchases), may unintentionally be blocked by things outside of your control such as adblock. If you already have customers' purchase activity in your database, you can send this data to downstream systems as a guaranteed source of truth.
+
+
+**Simulate historical tracking events (from before you started tracking)**
+If you already have historical data from other data sources, you can replay them to your sales, support, and marketing systems to maintain business continuity as you implement an event tracking system.
+
+
+**Use your warehouse to fix bad data, and replay it to downstream destinations**
+It’s possible for bad data to make it to your destinations if there is a bug in the tracking code. If bad data makes it to your destinations, you may want to clear it and replay a clean version of your data. You can now create a clean dataset with SQL inside your data warehouse, and replay it to a downstream destination.
+
+
+**Test your integrations and transformations**
+You can now simulate events to test your integrations and transformations. With a test dataset that you trust, you can easily test a stream of events for new versions of transformations or when setting up new integration.
+
+Where can you send events to downstream destinations?
+You can simulate events from your warehouse into downstream destinations. Different use cases for this
+Engagement Platforms - You can send track calls to engagement platforms such as Braze, Iterable, Customer IO, or Salesforce Marketing Cloud to trigger behavior or populate user actions.
+Experimentation - Stat Sig, Optimizely, etc. If you have a fact table that is a source of truth for user behavior, you can easily replay these into the downstream tool. 
+System Events - If you have downstream systems like Kafka or Kinesis that have been configured to handle track calls, then this allows you to generate events from the warehouse. 
+
+## How to use track calls?
+1. Have a table with a Primary Key, Event Name, User ID, and optional Timestamp.
+2. Select this table as a source for when creating a Reverse ETL. Follow the rest of the steps to create a Reverse ETL source and destination.
+3. Select “track” for your type of call
+4. Select your event_name column
+5. Sync your data set!
+
+
+## Why do I need a Primary Key?
+Track call uses incremental processing based on the primary key.
+This means you will need a primary key column. There are several ways you can generate this primary key column.
+Creating a view
+Using our models feature
+Generating your table with a primary key
+The primary key is best generated with a combination of timestamp and 
+
+
+
+## steps
+
+1. Create a RETL source on RS dashboard
+2. 
