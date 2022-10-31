@@ -898,11 +898,9 @@ tracker.track(selfDescribing);
 
 ```kotlin
 val payload = mapOf < String, Any > (
-  "action"
-  to "Action-2",
-  "key-2"
-  to "value-2"
-)
+	  "action" to "Action-2",
+	  "key-2" to "value-2"
+	)
 
 // 1
 val selfDescribingJson = SelfDescribingJson("schema", payload)
