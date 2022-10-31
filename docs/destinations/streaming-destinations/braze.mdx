@@ -76,6 +76,7 @@ Depending on your platform of integration, follow the steps below to add Braze t
 <Tabs>
   <TabList>
     <Tab>iOS</Tab>
+    <Tab>iOS v2</Tab>
     <Tab>Android</Tab>
     <Tab>React Native</Tab>
     <Tab>Flutter</Tab>
@@ -101,6 +102,105 @@ RudderConfigBuilder *builder = [[RudderConfigBuilder alloc] init];
 [builder withDataPlaneUrl:<DATA_PLANE_URL>];
 [builder withFactory:[RudderBrazeFactory instance]];
 [RudderClient getInstance:<WRITE_KEY>; config:[builder build]];
+```
+</span>
+</li>
+</ol>
+      </TabPanel>
+      <TabPanel>
+        <div class="warningBlock">
+          This device mode integration is supported for Braze x.0.0 and above.
+        </div>
+        Follow these steps to add Braze to your iOS project:
+<ol>
+<li>Install <code class="inline-code">RudderBraze</code> (available through <a href="https://cocoapods.org/">CocoaPods</a>) by adding the following line to your <code class="inline-code">Podfile</code>:
+<span>
+
+```ruby
+pod 'RudderBraze', '~> 1.0.0'
+```
+</span>
+</li>
+<li>Run the <code class="inline-code">pod install</code> command.</li>
+<li>Then, import the SDK depending on your preferred platform:
+<span>
+
+```swift
+import RudderBraze
+```
+</span>
+<span>
+
+```objectivec
+@import RudderBraze;
+```
+</span>
+</li>
+<li>Next, add the imports to your <code class="inline-code">AppDelegate</code> file under the <code class="inline-code">didFinishLaunchingWithOptions</code> method, as shown:
+<br /><br />
+<span>
+
+```swift
+let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
+            .dataPlaneURL(DATA_PLANE_URL)
+RSClient.sharedInstance().configure(with: config)
+RSClient.sharedInstance().addDestination(RudderBrazeDestination())
+```
+</span>
+<span>
+
+```objectivec
+RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
+[config dataPlaneURL:DATA_PLANE_URL];
+[[RSClient sharedInstance] configureWith:config];
+[[RSClient sharedInstance] addDestination:[[RudderBrazeDestination alloc] init]];
+```
+</span>
+</li>
+<li>For sending push notification events, add the following code to your <code class="inline-code">AppDelegate</code> file under the <code class="inline-code">didFinishLaunchingWithOptions</code> method:
+<br /><br />
+<span>
+
+```swift
+if #available(iOS 10, *) {
+    let center = UNUserNotificationCenter.current()
+    center.delegate = self
+    var options: UNAuthorizationOptions = [.alert, .sound, .badge]
+    if #available(iOS 12.0, *) {
+        options = UNAuthorizationOptions(rawValue: options.rawValue | UNAuthorizationOptions.provisional.rawValue)
+        }
+        center.requestAuthorization(options: options) { (granted, error) in
+            RSClient.sharedInstance().pushAuthorizationFromUserNotificationCenter(granted)
+    }
+    UIApplication.shared.registerForRemoteNotifications()
+} else {
+    let types: UIUserNotificationType = [.alert, .badge, .sound]
+    let setting: UIUserNotificationSettings = UIUserNotificationSettings(types: types, categories: nil)
+    UIApplication.shared.registerUserNotificationSettings(setting)
+    UIApplication.shared.registerForRemoteNotifications()
+}
+```
+</span>
+<span>
+
+```objectivec
+if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_9_x_Max) {
+  UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+  center.delegate = self;
+  UNAuthorizationOptions options = UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge;
+  if (@available(iOS 12.0, *)) {
+  options = options | UNAuthorizationOptionProvisional;
+  }
+  [center requestAuthorizationWithOptions:options
+                        completionHandler:^(BOOL granted, NSError * _Nullable error) {
+      [[RSClient sharedInstance] pushAuthorizationFromUserNotificationCenter:granted];
+  }];
+  [[UIApplication sharedApplication] registerForRemoteNotifications];
+} else {
+  UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIUserNotificationTypeSound) categories:nil];
+  [[UIApplication sharedApplication] registerForRemoteNotifications];
+  [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+}
 ```
 </span>
 </li>
