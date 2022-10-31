@@ -151,6 +151,33 @@ pod 'RudderSnowplowMigrator', '1.0.0.beta.1'
 pod install
 ```
 </li>
+<li>Add the following code in all the <code class="inline-code">.m</code> and <code class="inline-code">.h</code> files (for Objective-C) or <code class="inline-code">.swift</code> files (for Swift) where you want to refer or use RudderStack SDK classes:
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+@import RudderSnowplowMigrator;
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+import RudderSnowplowMigrator
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+</li>
 <li>Update your SDK initialization to any one of the following snippet (method 1, 2, or 3). Also, replace the <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained in the above section.
 <Tabs>
   <TabList>
@@ -770,17 +797,12 @@ tracker.track(structured);
 <span>
 
 ```kotlin
-val properties = mapOf < String, Any > (
-  "key-1"
-  to "value 1",
-  "key-2"
-  to 123,
-  "key-3"
-  to 123.45,
-  "key-4"
-  to true,
-  "key-5"
-  to false
+val properties = mapOf<String, Any>(
+  "key-1" to "value 1",
+  "key-2" to 123,
+  "key-3" to 123.45,
+  "key-4" to true,
+  "key-5" to false
 )
 
 val structured = Structured("Category_example", "Action_example")
@@ -962,17 +984,12 @@ tracker.track(foreground);
 <span>
 
 ```kotlin
-val properties = mapOf < String, Any > (
-  "key-1"
-  to "value 1",
-  "key-2"
-  to 123,
-  "key-3"
-  to 123.45,
-  "key-4"
-  to true,
-  "key-5"
-  to false
+val properties = mapOf<String, Any>(
+  "key-1" to "value 1",
+  "key-2" to 123,
+  "key-3" to 123.45,
+  "key-4" to true,
+  "key-5" to false
 )
 
 Foreground foreground = Foreground(1234)
@@ -1051,17 +1068,12 @@ tracker.track(background);
 <span>
 
 ```kotlin
-val properties = mapOf < String, Any > (
-  "key-1"
-  to "value 1",
-  "key-2"
-  to 123,
-  "key-3"
-  to 123.45,
-  "key-4"
-  to true,
-  "key-5"
-  to false
+val properties = mapOf<String, Any>(
+  "key-1" to "value 1",
+  "key-2" to 123,
+  "key-3" to 123.45,
+  "key-4" to true,
+  "key-5" to false
 )
 
 Background background = Background(1234)
