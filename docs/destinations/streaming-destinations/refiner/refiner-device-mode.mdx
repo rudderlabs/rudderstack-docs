@@ -1,0 +1,102 @@
+---
+title: "Refiner Device Mode"
+description: Detailed technical documentation on sending events to Refiner using the RudderStack web device mode.
+aliases: ["Refiner destination"]
+---
+
+RudderStack lets you send your event data to Refiner via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK.
+
+## Identify
+
+You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a contact in Refiner. RudderStack uses the `identifyUser` method to send this information to Refiner.
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com"
+})
+```
+
+<div class="warningBlock">
+<code class="inline-code">userId</code> is required to make an <code class="inline-code">identify</code> call successfully. 
+</div>
+
+### Supported mappings
+
+The following table lists the RudderStack attributes and their mappings with the Refiner properties:
+
+| RudderStack property   | Refiner property  | 
+| :-------------| :-----------------| 
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `id` |
+| `properties.email` | `email` |
+| `context.traits` | traits |
+
+## Track
+
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events and send them to Refiner as `trackEvent` events.
+
+<div class="warningBlock">
+Refiner does not store any additional properties sent with the <code class="inline-code">track</code> event.
+</div>
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Order Completed", {
+  orderId: "ORD122",
+  price: "5.67",
+  currency: "USD",
+});
+```
+
+The following table lists the RudderStack properties and their mappings with the Refiner properties:
+
+| RudderStack property   | Refiner property  | 
+| :-------------| :-----------------| 
+| event name <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | event |
+
+## Group
+
+The <Link to="/event-spec/standard-events/group">`group`</Link> call lets you link an identified user with a group, such as a company, organization, or an account. Note that Refiner associates all the `group` traits with the `account` object associated with the user.
+
+A sample `group` call is shown below:
+
+```javascript
+rudderanalytics.group("group@123", {
+  name: "Sample Company",
+  employees: 1000,
+  industry: "Software",
+})
+```
+
+The following table lists the RudderStack properties and their mappings with the Refiner properties:
+
+| RudderStack property   | Refiner property  | 
+| :-------------| :-----------------| 
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `id` |
+| `traits.email` | `account.email` | 
+| `context.traits.email` | `email` |
+| `groupId` | `account.id` |
+| `traits` | `account` |
+
+## Page
+
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page and send this information to Refiner.
+
+<div class="infoBlock">
+The behavior of the <code class="inline-code">page</code> call is the same as the <Link to="#track"><code class="inline-code">track</code></Link> call described above.
+</div>
+
+A sample `page` event is shown below:
+
+```javascript
+rudderanalytics.page("Cart", "Cart Viewed", {
+  path: "/cart",
+  referrer: "samplewebsite.com",
+  search: "some item",
+  title: "New Item",
+  url: "http://samplewebsite.in",
+})
+```
