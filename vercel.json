@@ -21,12 +21,12 @@
       "destination": "/docs/sources/extract/hubspot-v2/"
     },
     {
-      "source": "/sources/sdks/*",
-      "destination": "/docs/sources/event-streams/sdks/:splat"
+      "source": "/sources/sdks/:path(.*)",
+      "destination": "/docs/sources/event-streams/sdks/:path"
     },
     {
-      "source": "/sources/cloud-apps/*",
-      "destination": "/docs/sources/event-streams/cloud-apps/:splat"
+      "source": "/sources/cloud-apps/:path(.*)",
+      "destination": "/docs/sources/event-streams/cloud-apps/:path"
     },
     {
       "source": "/sources/event-streams/sdks/rudderstack-javascript-sdk/querystring-api/",
