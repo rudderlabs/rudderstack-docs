@@ -26,21 +26,30 @@ To configure Azure data lake as a destination in RudderStack, follow these steps
 
 ### Connection settings
 
-<img src="../../assets/dw-integrations/azure-datalake-1.png" alt="Azure data lake destination settings in RudderStack" />
+To successfully configure Azure data lake as a destination, you will need to configure the following settings:
+
+<img src="../../assets/dw-integrations/azure-data-lake-connection-settings-1.png" alt="Azure data lake destination settings in RudderStack" />
+<img src="../../assets/dw-integrations/azure-data-lake-connection-settings-2.png" alt="Azure data lake destination settings in RudderStack" />
 
 Enter the following credentials in the **Connection Credentials** page:
 
-- **Azure Blob Storage Container Name**: The name of the Azure container used to store the data before loading it into the data lake.
+- **Azure Blob Storage Container Name**: Enter the name of your Blob Storage container used to store the data before loading it into the data lake.
 - **Prefix**: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder. For example, `https://<account_name>.blob.core.windows.net/<container_name>/<prefix>/`
 - **Namespace**: If specified, all the data for the destination will be pushed to `https://<account_name>.blob.core.windows.net/<bucketName>/<prefix>/rudder-datalake/<namespace>`. If you don't specify a namespace in the settings, RudderStack sets it to the source name, by default.
-- **Azure Blob Storage Account Name**:Your Azure Blob Storage account name.
-- **Azure Blob Storage Account Key**: Your Azure Blob Storage account key.
-- **Sync Frequency**: Specify how often RudderStack should sync the data to your Azure data lake.
-- **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
+- **Azure Blob Storage Account Name**: Enter your Azure Blob Storage account name.
+- **Azure Blob Storage Account Key**: Enter your Blob Storage account key.
+- **Use shared access signature (SAS) Tokens**: Enable this setting to grant limited access to your Azure Storage resources. When enabled, you can use a Shared Access Signatures (SAS) token instead of your storage account access key, as shown:
+
+<img src="../../assets/dw-integrations/azure-sas-token.png" alt="Azure Blob Storage SAS token" />
+
+- **Azure Blob Storage SAS**: Enter the generated SAS token.
 
 <div class="infoBlock">
 For more information on setting up your Azure Blob Storage account, refer to the <Link to="/destinations/streaming-destinations/microsoft-azure-blob-storage#setting-up-azure-blob-storage">Azure Blob Storage</Link> guide.
 </div>
+
+- **Sync Frequency**: Specify how often RudderStack should sync the data to your Azure data lake.
+- **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
 
 ## Finding your data in the Azure data lake
 

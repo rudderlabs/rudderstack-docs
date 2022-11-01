@@ -74,7 +74,7 @@ This option is applicable only if you're sending events to DCM Floodloght via th
 All the settings mentioned in this section are applicable only for the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 </div>
 
-<img src="../../../assets/event-stream-destinations/dcm-floodlight-connection-settings4.png" alt="DCM Floodlight connection settings"/>
+<img src="../../../assets/event-stream-destinations/dcm-floodlight-connection-settings4-new.png" alt="DCM Floodlight connection settings"/>
 
 - **Use device mode to send events**: Enable this setting to send events via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">RudderStack device mode</Link>.
 
@@ -82,10 +82,21 @@ All the settings mentioned in this section are applicable only for the <Link to=
 You can change the setting to enable or disable device mode to send events at any point. However, it takes some time for the new changes to be reflected.
 </div>
 
+- **Tag Format**: Select the tag format from the dropdown. RudderStack supports both the **Global site tag** and the **Iframe** tag. Note that your <Link to="#conversion-events">conversion events</Link> configured in the RudderStack dashboard must be of the same tag format.
+
+<div class="infoBlock">
+It is highly recommended to use the global site tag instead of the iframe tag. For more information, refer to the <a href="https://support.google.com/campaignmanager/answer/7564930#zippy=%2Ci-use-iframe-or-image-tags-directly-on-my-site-for-desktop-and-mobile-web">Campaign Manager 360 Help Center</a>.
+</div>
+
 - **Conversion Linker**: Enabled by default, it sets the first-party cookies on your site’s domain.
 - **Allow ad personalization signals**: Enabled by default, it lets the global site tag to collect remarketing data.
+
+<div class="warningBlock">
+The <strong>Conversion Linker</strong> and <strong>Allow ad personalization signals</strong> settings are only applicable for the global site tag.
+</div>
+
 - **DoubleClick Id**: Enable this setting if you want to use the Google’s cookie matching functionality. Also, provide the below:
-    - **Google Network Id**: Enter the Google Network ID (NID) for the bidder account.
+- **Google Network Id**: Enter the Google Network ID (NID) for the bidder account.
 
 Finally, click on **Next** to enable DCM Floodlight as a destination in Rudderstack.
 

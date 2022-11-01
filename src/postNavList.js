@@ -416,15 +416,21 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "custify",
-    title: "Custify",
-    link: "/sources/cloud-apps/custify/",
+    key: "clickup",
+    title: "ClickUp",
+    link: "/sources/cloud-apps/clickup/",
     content: [],
   },
   {
     key: "looker",
     title: "Looker",
     link: "/sources/event-streams/cloud-apps/looker/",
+    content: [],
+  },
+  {
+    key: "mailjet",
+    title: "Mailjet",
+    link: "/sources/event-streams/cloud-apps/mailjet/",
     content: [],
   },
   {
@@ -438,6 +444,12 @@ export const postNavList = [
     title: "PostHog",
     link: "/sources/event-streams/cloud-apps/posthog/",
     content: [],
+  },
+  {
+    key: "refiner",
+    title: "Refiner",
+    link: "/sources/event-streams/cloud-apps/refiner/",
+    content: []
   },
   {
     key: "shopify",
@@ -497,6 +509,12 @@ export const postNavList = [
     key: "google-analytics",
     title: "Google Analytics",
     link: "/sources/extract/google-analytics/",
+    content: [],
+  },
+  {
+    key: "google-analytics-v2",
+    title: "Google Analytics V2",
+    link: "/sources/extract/google-analytics-v2/",
     content: [],
   },
   {
@@ -621,6 +639,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "zendesk-chat-v2",
+    title: "Zendesk Chat V2",
+    link: "/sources/extract/zendesk-chat-v2/",
+    content: [],
+  },
+  {
     key: "intercom-v2",
     title: "Intercom v2",
     link: "/sources/extract/intercom-v2/",
@@ -631,6 +655,12 @@ export const postNavList = [
     title: "Chargebee",
     link: "/sources/extract/chargebee/",
     content: [],
+  },
+  {
+    key: "customerio",
+    title: "Customer.io",
+    link: "/sources/extract/customerio/",
+    content: []
   },
   {
     key: "common-settings",
@@ -938,6 +968,28 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "june",
+    title: "June",
+    link: "/destinations/streaming-destinations/june/",
+    content: [],
+  },
+  {
+    key: "setting-up-june-in-rudderstack",
+    title: "Setting up June",
+    link: "/destinations/streaming-destinations/june/setting-up-june-in-rudderstack/",
+    content: []
+}, {
+    key: "june-cloud-mode",
+    title: "Cloud Mode",
+    link: "/destinations/streaming-destinations/june/june-cloud-mode/",
+    content: []
+}, {
+    key: "june-device-mode",
+    title: "Device Mode",
+    link: "/destinations/streaming-destinations/june/june-device-mode/",
+    content: []
+},
+  {
     key: "inmoment",
     title: "InMoment (Wootric)",
     link: "/destinations/streaming-destinations/inmoment/",
@@ -1023,16 +1075,28 @@ export const postNavList = [
   },
   {
     key: "hubspot",
-    title: "HubSpot (Legacy API)",
+    title: "HubSpot",
     link: "/destinations/streaming-destinations/hubspot/",
     content: [],
   },
   {
-    key: "hubspot-v2",
-    title: "HubSpot (New API)",
-    link: "/destinations/streaming-destinations/hubspot-v2/",
-    content: [],
-  },
+    key: "setting-up-hubspot-in-rudderstack",
+    title: "Setting up HubSpot",
+    link: "/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/",
+    content: []
+},
+{
+    key: "hubspot-cloud-mode", 
+    title: "Cloud Mode",
+    link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/",
+    content: []
+},
+{
+    key: "hubspot-device-mode", 
+    title: "Device Mode",
+    link: "/destinations/streaming-destinations/hubspot/hubspot-device-mode/",
+    content: []
+},
   {
     key: "variance",
     title: "Variance",
@@ -1050,6 +1114,12 @@ export const postNavList = [
     title: "Zendesk",
     link: "/destinations/streaming-destinations/zendesk/",
     content: [],
+  },
+  {
+  key: "zendesk-support",
+  title: "Zendesk Support",
+  link: "/sources/extract/zendesk-support/",
+  content: []
   },
   {
     key: "delighted",
@@ -1178,6 +1248,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "mailjet",
+    title: "Mailmodo",
+    link: "/destinations/streaming-destinations/mailjet/",
+    content: [],
+  },
+  {
     key: "mailmodo",
     title: "Mailmodo",
     link: "/destinations/streaming-destinations/mailmodo/",
@@ -1220,9 +1296,33 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "refiner",
+    title: "Refiner",
+    link: "/destinations/streaming-destinations/refiner",
+    content: [],
+  },
+  {
+    key: "refiner-cloud-mode",
+    title: "Refiner Cloud Mode ",
+    link: "/destinations/streaming-destinations/refiner/refiner-cloud-mode/",
+    content: [],
+  },
+  {
+    key: "refiner-device-mode",
+    title: "Refiner Device Mode ",
+    link: "/destinations/streaming-destinations/refiner/refiner-device-mode/",
+    content: [],
+  },
+  {
     key: "leanplum",
     title: "Leanplum",
     link: "/destinations/streaming-destinations/leanplum/",
+    content: [],
+  },
+  {
+    key: "yandex-metrica",
+    title: "Yandex.Metrica",
+    link: "/destinations/streaming-destinations/yandex-metrica/",
     content: [],
   },
   {
@@ -1253,6 +1353,12 @@ export const postNavList = [
     key: "user-com",
     title: "User.com",
     link: "/destinations/streaming-destinations/user-com/",
+    content: [],
+  },
+  {
+    key: "engage",
+    title: "Engage",
+    link: "/destinations/streaming-destinations/engage/",
     content: [],
   },
    {
@@ -1418,6 +1524,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "fb-offline-conversions",
+    title: "Facebook Offline Conversions",
+    link: "/destinations/streaming-destinations/fb-offline-conversions/",
+    content: [],
+  },
+  {
     key: "fb-pixel",
     title: "Facebook Pixel",
     link: "/destinations/streaming-destinations/fb-pixel/",
@@ -1463,6 +1575,12 @@ export const postNavList = [
     key: "google-adwords-enhanced-conversions",
     title: "Google Adwords Enhanced Conversions",
     link: "/destinations/streaming-destinations/google-adwords-enhanced-conversions/",
+    content: [],
+  },
+  {
+    key: "google-adwords-offline-conversions",
+    title: "Google Adwords Offline Conversions",
+    link: "/destinations/streaming-destinations/google-adwords-offline-conversions/",
     content: [],
   },
   {
@@ -1935,6 +2053,24 @@ export const postNavList = [
     title: "Transformations",
     link: "/features/transformations/",
     content: [],
+  },
+  {
+    key: "using-libraries",
+    title: "Using Libraries",
+    link: "/features/transformations/using-libraries",
+    content: [],
+  },
+  {
+    key: "cloud-mode-transformations",
+    title: "Cloud Mode Transformations",
+    link: "/features/transformations/cloud-mode-transformations",
+    content: [],
+  },
+  {
+      key: "device-mode-transformations",  
+      title: "Device Mode Transformations",
+      link: "/features/transformations/device-mode-transformations",
+      content: [],
   },
   {
     key: "faq",

@@ -335,7 +335,12 @@ export const jsonData = [
                         link: "/sources/event-streams/cloud-apps/canny/",
                         content: []
                     },
-                     {
+                    {
+                        title: "ClickUp",
+                        link: "/sources/event-streams/cloud-apps/clickup/",
+                        content: []
+                    },
+                    {
                         title: "Customer.io",
                         link: "/sources/event-streams/cloud-apps/customerio/",
                         content: []
@@ -352,6 +357,11 @@ export const jsonData = [
                         title: "Looker",
                         link: "/sources/event-streams/cloud-apps/looker/",
                         content: []
+                    },
+                    {
+                        title: "Mailjet",
+                        link: "/sources/event-streams/cloud-apps/mailjet/",
+                        content: []
                     }, 
                     {
                         title: "Mailmodo",
@@ -366,6 +376,11 @@ export const jsonData = [
                     {
                         title: "PostHog",
                         link: "/sources/event-streams/cloud-apps/posthog/",
+                        content: []
+                    },
+                    {
+                        title: "Refiner",
+                        link: "/sources/event-streams/cloud-apps/refiner/",
                         content: []
                     },
                     {
@@ -418,6 +433,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Customer.io",
+                link: "/sources/extract/customerio/",
+                content: []
+            },
+            {
                 title: "Facebook Ads",
                 link: "/sources/extract/facebook-ads/",
                 content: []
@@ -432,6 +452,10 @@ export const jsonData = [
             }, {
                 title: "Google Analytics",
                 link: "/sources/extract/google-analytics/",
+                content: []
+            }, {
+                title: "Google Analytics V2",
+                link: "/sources/extract/google-analytics-v2/",
                 content: []
             }, {
                 title: "Google Search Console",
@@ -449,11 +473,18 @@ export const jsonData = [
                 title: "Intercom",
                 link: "/sources/extract/intercom/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Intercom V2",
                 link: "/sources/extract/intercom-v2/",
                 content: []
-            }, {
+            },
+            {
+                title: "Klaviyo",
+                link: "/sources/extract/klaviyo/",
+                content: []
+            },  
+            {
                 title: "Mailchimp",
                 link: "/sources/extract/mailchimp/",
                 content: []
@@ -528,11 +559,22 @@ export const jsonData = [
                 title: "Zendesk",
                 link: "/sources/extract/zendesk/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Zendesk Chat",
                 link: "/sources/extract/zendesk-chat/",
                 content: []
             },
+            {
+                title: "Zendesk Chat V2",
+                link: "/sources/extract/zendesk-chat-v2/",
+                content: [],
+            },
+            {
+                title: "Zendesk Support",
+                link: "/sources/extract/zendesk-support/",
+                content: []
+            }
         ]
     }, {
         title: "Reverse ETL",
@@ -721,26 +763,41 @@ export const jsonData = [
                 content: []
             }, 
             {
+                title: "Facebook Offline Conversions",
+                link: "/destinations/streaming-destinations/fb-offline-conversions/",
+                content: []
+            }, 
+            {
                 title: "Facebook Pixel",
                 link: "/destinations/streaming-destinations/fb-pixel/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Google Ads (gtag.js)",
                 link: "/destinations/streaming-destinations/g-ads-gtag/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Google Ads Enhanced Conversions",
                 link: "/destinations/streaming-destinations/google-adwords-enhanced-conversions/",
                 content: []
-            }, {
+            },
+            {
+                title: "Google Ads Offline Conversions",
+                link: "/destinations/streaming-destinations/google-adwords-offline-conversions/",
+                content: []
+            }, 
+            {
                 title: "Google Ads Remarketing Lists (Customer Match)",
                 link: "/destinations/streaming-destinations/google-adwords-remarketing-list/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "LinkedIn Insight Tag",
                 link: "/destinations/streaming-destinations/linkedin-insight-tag/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Lotame",
                 link: "/destinations/streaming-destinations/lotame/",
                 content: []
@@ -893,6 +950,24 @@ export const jsonData = [
                 title: "Indicative",
                 link: "/destinations/streaming-destinations/indicative/",
                 content: []
+            },{
+                title: "June",
+                link: "/destinations/streaming-destinations/june/",
+                content: [
+                    {
+                        title: "Setting up June",
+                        link: "/destinations/streaming-destinations/june/setting-up-june-in-rudderstack/",
+                        content: []
+                    }, {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/june/june-cloud-mode/",
+                        content: []
+                    }, {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/june/june-device-mode/",
+                        content: []
+                    },
+                ]
             }, {
                 title: "Keen.io",
                 link: "/destinations/streaming-destinations/keen/",
@@ -954,7 +1029,11 @@ export const jsonData = [
                 title: "Quantum Metric",
                 link: "/destinations/streaming-destinations/quantummetric/",
                 content: []
-            },
+            }, {
+            title: "Serenytics",
+            link: "/destinations/streaming-destinations/serenytics/",
+            content: []
+        },
             {
                 title: "Shynet",
                 link: "/destinations/streaming-destinations/shynet/",
@@ -963,7 +1042,8 @@ export const jsonData = [
                 title: "SIGNL4",
                 link: "/destinations/streaming-destinations/signl4/",
                 content: []
-            },{
+            },
+            {
                 title: "Singular",
                 link: "/destinations/streaming-destinations/singular/",
                 content: [
@@ -990,6 +1070,11 @@ export const jsonData = [
             {
                 title: "Woopra",
                 link: "/destinations/streaming-destinations/woopra/",
+                content: []
+            },
+            {
+                title: "Yandex.Metrica",
+                link: "/destinations/streaming-destinations/yandex-metrica/",
                 content: []
             },
             {
@@ -1092,14 +1177,40 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "HubSpot (Legacy API)",
+                title: "HubSpot",
                 link: "/destinations/streaming-destinations/hubspot/",
-                content: []
-            },
-            {
-                title: "HubSpot (New API)",
-                link: "/destinations/streaming-destinations/hubspot-v2/",
-                content: []
+                content: [
+                    {
+                        title: "Setting up HubSpot",
+                        link: "/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/",
+                        content: []
+                    },
+                    {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/",
+                        content: [
+                            {
+                                title: "Legacy API",
+                                link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-legacy-api-cloud/",
+                                content: []
+                            },{
+                                title: "New API",
+                                link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-new-api-cloud",
+                                content: []
+                            },
+                        ]
+                    },
+                    {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/hubspot/hubspot-device-mode/",
+                        content: []
+                    },
+                    {
+                        title: "Connecting to Reverse ETL Source",
+                        link: "/destinations/streaming-destinations/hubspot/connect-reverse-etl-source/",
+                        content: []
+                    },
+                ]
             },
             {
                 title: "Salesforce",
@@ -1181,7 +1292,8 @@ export const jsonData = [
                 title: "Customer.io",
                 link: "/destinations/streaming-destinations/customer.io/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Drip",
                 link: "/destinations/streaming-destinations/drip/",
                 content: [
@@ -1201,6 +1313,25 @@ export const jsonData = [
                 ]
             },
             {
+                title: "Engage",
+                link: "/destinations/streaming-destinations/engage/",
+                content: [
+                    {
+                        title: "Setting Up Engage",
+                        link: "/destinations/streaming-destinations/engage/setting-up-engage/",
+                        content: []
+                    }, {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/engage/engage-cloud-mode/",
+                        content: []
+                    }, {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/engage/engage-device-mode/",
+                        content: []
+                    },
+                ]
+            },
+            {
                 title: "Freshmarketer",
                 link: "/destinations/streaming-destinations/freshmarketer/",
                 content: []
@@ -1208,8 +1339,22 @@ export const jsonData = [
             {
                 title: "Iterable",
                 link: "/destinations/streaming-destinations/iterable/",
-                content: []
-            }, 
+                content: [
+                    {
+                        title: "Setting Up Iterable",
+                        link: "/destinations/streaming-destinations/iterable/setting-up-iterable/",
+                        content: []
+                    }, {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/iterable/iterable-cloud-mode/",
+                        content: []
+                    }, {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/iterable/iterable-device-mode/",
+                        content: []
+                    },
+                ]
+            },
             {
                 title: "Klaviyo",
                 link: "/destinations/streaming-destinations/klaviyo/",
@@ -1222,7 +1367,13 @@ export const jsonData = [
                 title: "Mailchimp",
                 link: "/destinations/streaming-destinations/mailchimp/",
                 content: []
-            },{
+            },
+            {
+                title: "Mailjet",
+                link: "/destinations/streaming-destinations/mailjet/",
+                content: []
+            }, 
+            {
                 title: "Mailmodo",
                 link: "/destinations/streaming-destinations/mailmodo/",
                 content: []
@@ -1412,12 +1563,6 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Google Tag Manager",
-                sectionTitle: "Tag Managers",
-                link: "/destinations/streaming-destinations/google-tag-manager/",
-                content: []
-            },
-            {
                 title: "Canny",
                 sectionTitle: "Surveys",
                 link: "/destinations/streaming-destinations/canny/",
@@ -1444,8 +1589,33 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Refiner",
+                link: "/destinations/streaming-destinations/refiner/",
+                content: [
+                    {
+                        title: "Setting Up Refiner",
+                        link: "/destinations/streaming-destinations/refiner/setting-up-refiner/",
+                        content: []
+                    }, {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/refiner/refiner-cloud-mode/",
+                        content: []
+                    }, {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/refiner/refiner-device-mode/",
+                        content: []
+                    },
+                ]
+            },
+            {
                 title: "WebEngage",
                 link: "/destinations/streaming-destinations/webengage/",
+                content: []
+            },
+            {
+                title: "Google Tag Manager",
+                sectionTitle: "Tag Managers",
+                link: "/destinations/streaming-destinations/google-tag-manager/",
                 content: []
             },
         ]
@@ -1536,6 +1706,21 @@ export const jsonData = [
         sectionTitle: "Features",
         link: "/features/transformations/",
         content: [
+            {
+                title: "Using Libraries",
+                link: "/features/transformations/using-libraries",
+                content: [],
+            },
+            {
+                title: "Cloud Mode Transformations",
+                link: "/features/transformations/cloud-mode-transformations",
+                content: [],
+            },
+            {
+                title: "Device Mode Transformations",
+                link: "/features/transformations/device-mode-transformations",
+                content: [],
+            },
             {
                 title: "FAQ",
                 link: "/features/transformations/faq",
@@ -1710,6 +1895,11 @@ export const jsonData = [
             {
                 title: "Migrating from Segment to RudderStack",
                 link: "/user-guides/migration-guides/rudderstack-migration-guide/",
+                content: []
+            }, 
+            {
+                title: "Migrating from Snowplow to RudderStack",
+                link: "/user-guides/migration-guides/snowplow-migration-guide/",
                 content: []
             }, 
             {

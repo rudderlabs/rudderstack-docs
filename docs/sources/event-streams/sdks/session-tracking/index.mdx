@@ -1,6 +1,7 @@
 ---
 title: "Session Tracking"
 description: Detailed technical description of RudderStack's session tracking feature.
+aliases: ["session tracking", "user session"]
 ---
 
 ## What is a session?
@@ -247,7 +248,7 @@ RudderStack supports forwarding the `sessionId` and `sessionStart` fields to the
 </tr>
 <tr>
   <td><Link to="/destinations/streaming-destinations/amplitude/">Amplitude</Link></td>
-  <td><a href="https://www.docs.developers.amplitude.com/analytics/apis/http-v2-api/">Reference</a></td>
+  <td>RudderStack sends the <code class="inline-code">sessionId</code> parameter in the event which is mapped to <code class="inline-code">session_id</code> in Amplitude. For more information, refer to the <a href="https://www.docs.developers.amplitude.com/analytics/apis/http-v2-api/#keys-for-the-event-argument:~:text=to%20occur%20simultaneously.-,session_id,-Optional.%20Long.%20The">Amplitude documentation</a>.</td>
 </tr>
 <tr>
   <td><Link to="/destinations/streaming-destinations/mixpanel/">Mixpanel</Link></td>

@@ -1,0 +1,1254 @@
+---
+title: "Migrating from Snowplow to RudderStack"
+description: Step-by-step guide on migrating from Snowplow to RudderStack.
+---
+
+This document covers the necessary steps to migrate from [Snowplow](https://snowplow.io/) to RudderStack and replace your instrumentation code. You can then start using the RudderStack SDKs to track your events with minimal code changes.
+
+<GhBadge
+  label={'Stability'}
+  message={'Beta'}
+  color={'blueviolet'}
+  logo={'github'}
+/>
+
+## Setting up RudderStack dashboard
+
+1. [Sign up](https://app.rudderstack.com/signup) for RudderStack Cloud.
+2. Set up the source-destination connections in the dashboard to facilitate the event data flow. For more information on setting up the connections, refer to the <Link to="/get-started/quickstart/">Quickstart</Link> guide.
+
+<div class="successBlock">
+Note the <Link to="/resources/glossary/#write-key">source write key</Link> and the <Link to="/dashboard-guides/overview/#data-plane-url">data plane URL</Link> as they will be used in the next section.
+</div>
+
+## Updating the SDK implementation
+
+Depending on the platform, follow these steps to move your existing Snowplow SDK implementation to RudderStack:
+
+<Tabs>
+  <TabList>
+    <Tab>Android</Tab>
+    <Tab>iOS</Tab>
+    <Tab>JavaScript</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+        Follow the below steps to migrate to the RudderStack Android SDK:
+
+<div class="infoBlock">
+        RudderStack distributes the Rudder Snowplow adapter SDK through <a href="https://search.maven.org/">Maven Central</a>. It is recommended to add the SDK to your project through the Android Gradle build system.
+        </div>
+        
+      <ol>
+      <li>Add the following lines of code in your project level <code class="inline-code">app/build.gradle</code> file:
+<span>
+
+```groovy
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+}
+allprojects {
+  repositories {
+    mavenCentral()
+  }
+}
+```
+</span>
+</li>
+<li>Add the following dependency under <code class="inline-code">dependencies</code> section in your <code class="inline-code">app/build.gradle</code> file:
+<span>
+
+```groovy
+implementation 'com.rudderstack.android.snowplow:adapter:1.0.0.beta.1'
+```
+</span>
+</li>
+<li>Update your SDK initialization to any one of the following snippet (method 1, 2, or 3 in the below snippets). Also, replace the <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained in the above section.
+<Tabs>
+  <TabList>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```java
+//Method 1: Default values are considered for all the configuration objects 
+//except networkConfiguration.
+RSTracker tracker = new RSTracker()
+            .createTracker(
+                this, WRITE_KEY, networkConfiguration
+            );
+
+//Method 2: Default values are considered for all the configuration objects.
+RSTracker tracker = new RSTracker()
+            .createTracker(
+                this, WRITE_KEY, DATA_PLANE_URL
+            );
+
+//Method 3: Values for all the configuration objects must be provided.
+RSTracker tracker = new RSTracker()
+            .createTracker(
+                this, WRITE_KEY, networkConfiguration,
+                sessionConfiguration, trackerConfiguration,
+                subjectConfiguration
+            );
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+//Method 1: Default values are considered for all the configuration objects 
+//except networkConfiguration.
+val tracker = RSTracker()
+            .createTracker(
+                this, WRITE_KEY, networkConfiguration
+            )
+
+//Method 2: Default values are considered for all the configuration objects.
+val tracker = RSTracker()
+            .createTracker(
+                this, WRITE_KEY, DATA_PLANE_URL
+            )
+
+//Method 3: Values for all the configuration objects must be provided.
+val tracker = RSTracker()
+            .createTracker(
+                this, WRITE_KEY, networkConfiguration,
+                sessionConfiguration, trackerConfiguration,
+                subjectConfiguration
+            )
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+</li>
+</ol>
+
+<div class="infoBlock">
+Refer to the <Link to="#setting-the-configuration-objects">Setting the configuration objects</Link> section for more information on using these configuration objects.
+</div>
+      </TabPanel>
+      <TabPanel>
+
+   Follow the below steps to migrate to the RudderStack iOS SDK:
+   <ol>
+<li>Add the SDK to your <code class="inline-code">Podfile</code> as shown:
+
+```ruby
+pod 'RudderSnowplowMigrator', '1.0.0.beta.1'
+```
+</li>
+<li>Run the following command:
+
+```ruby
+pod install
+```
+</li>
+<li>Update your SDK initialization to any one of the following snippet (method 1, 2, or 3). Also, replace the <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained in the above section.
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+//Method 1: Default values are considered for all the configuration objects 
+//except networkConfiguration.
+RSTracker *tracker = [RSTracker createTrackerWithWriteKey:WRITE_KEY network:networkConfig];
+
+//Method 2: Default values are considered for all the configuration objects.
+RSTracker *tracker = [RSTracker createTrackerWithWriteKey:WRITE_KEY dataPlaneUrl:DATA_PLANE_URL];
+
+//Method 3: Values for all the configuration objects must be provided.
+RSTracker *tracker = [RSTracker createTrackerWithWriteKey:WRITE_KEY network:networkConfig configurations:@[trackerConfig]];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+//Method 1: Default values are considered for all the configuration objects 
+//except networkConfiguration.
+let tracker = RSTracker.createTracker(
+            writeKey: WRITE_KEY,
+            network: networkConfig
+        )
+
+//Method 2: Default values are considered for all the configuration objects.
+let tracker = RSTracker.createTracker(
+            writeKey: WRITE_KEY,
+            dataPlaneUrl: DATA_PLANE_URL
+        )
+
+//Method 3: Values for all the configuration objects must be provided.
+let tracker = RSTracker.createTracker(
+            writeKey: WRITE_KEY,
+            network: networkConfig,
+            configurations: [trackerConfig, sessionConfig]
+        )
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+</li>
+</ol>
+
+<div class="infoBlock">
+Refer to the the <Link to="#setting-the-configuration-objects">Setting the configuration objects</Link> section for more information on using these configuration objects.
+</div>
+    </TabPanel>
+     <TabPanel>
+     To migrate to the RudderStack JavaScript SDK, add the following code snippet in the <code class="inline-code">&lt;head&gt;</code> section of your website. Also, replace the <code class="inline-code">WRITE_KEY</code> and <code class="inline-code">DATA_PLANE_URL</code> with your source write key and data plane URL obtained in the above section. <br/><br/>
+
+```javascript
+<script>
+  rs=window.rs=[],rs.snoplowAdapter=function(){rs.push(Array.prototype.slice.call(arguments))},rs.snoplowAdapter("newTracker",<WRITE_KEY>,<DATA_PLANE_URL>,{<Configurations>});
+  //Optionally, use RudderStack JavaScript SDK load options
+  rudderanalytics.load();
+</script>
+
+<script src="https://cdn.rudderlabs.com/adapter/sp/beta/v1/rs-sp-analytics.min.js"></script>
+```
+The <code class="inline-code">&lt;Configurations&gt;</code> parameter in the above snippet can be replaced by the following Snowplow properties which are mapped to the RudderStack properties as shown:
+
+| Snowplow property| RudderStack property    | 
+| :---------- | :------------ | 
+| cookieDomain      |        setCookieDomain      |           
+| cookieSameSite      |   sameSiteCookie            |           
+| cookieSecure     |   secureCookie            |              
+
+</TabPanel>
+  </TabPanels>
+</Tabs>
+
+## Setting the configuration objects for mobile SDKs
+
+RudderStack supports setting values for the following Snowplow configuration objects in the mobile SDKs (iOS/Android). If not set, the default values are assigned.
+
+
+<h3>NetworkConfiguration</h3>
+
+The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/configuring-how-events-are-sent/"><code class="inline-code">NetworkConfiguration</code></a> class can be used to specify the collector endpoint, as shown:
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+        <TabPanel>
+<span>
+
+```objectivec
+// 1
+RSNetworkConfiguration *networkConfig = [[RSNetworkConfiguration alloc] initWithDataPlaneUrl:DATA_PLANE_URL];
+// 2
+RSNetworkConfiguration *networkConfig = [[RSNetworkConfiguration alloc] initWithDataPlaneUrl:DATA_PLANE_URL controlPlaneUrl:CONTROL_PLANE_URL];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+// 1
+let networkConfig = NetworkConfiguration(dataPlaneUrl: DATA_PLANE_URL)
+// 2
+let networkConfig = NetworkConfiguration(dataPlaneUrl: DATA_PLANE_URL, controlPlaneUrl: CONTROL_PLANE_URL)
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+// 1
+NetworkConfiguration networkConfiguration = new NetworkConfiguration(DATA_PLANE_URL);
+// 2
+NetworkConfiguration networkConfiguration = new NetworkConfiguration(DATA_PLANE_URL, CONTROL_PLANE_URL);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+// 1
+val networkConfiguration = NetworkConfiguration(DATA_PLANE_URL)
+// 2
+val networkConfiguration = NetworkConfiguration(DATA_PLANE_URL, CONTROL_PLANE_URL)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+<div class="infoBlock">
+If not set, the default values for <code class="inline-code">dataPlaneUrl</code> and <code class="inline-code">controlPlaneUrl</code> are taken as <code class="inline-code">https://hosted.rudderlabs.com</code> and <code class="inline-code">https://api.rudderlabs.com</code> respectively.
+</div>
+
+<h3>SessionConfiguration</h3>
+
+The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#session"><code class="inline-code">SessionConfiguration</code></a> class can be used to capture sessions to track the user activity in the app, as shown:
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+        <TabPanel>
+<span>
+
+```objectivec
+RSSessionConfiguration *sessionConfig = [[RSSessionConfiguration alloc] initWithForegroundTimeout:[[NSMeasurement alloc] initWithDoubleValue:30 unit:NSUnitDuration.minutes] backgroundTimeout:[[NSMeasurement alloc] initWithDoubleValue:30 unit:NSUnitDuration.minutes]];
+
+// 2
+RSSessionConfiguration *sessionConfig = [[RSSessionConfiguration alloc] initWithForegroundTimeoutInSeconds:60 backgroundTimeoutInSeconds:60];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+// 1
+let sessionConfig = SessionConfiguration(
+  foregroundTimeout: Measurement(value: 30, unit: .minutes),
+  backgroundTimeout: Measurement(value: 30, unit: .minutes)
+)
+
+// 2
+let sessionConfig = SessionConfiguration(foregroundTimeoutInSeconds: 60, backgroundTimeoutInSeconds: 60)
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+SessionConfiguration sessionConfiguration = new SessionConfiguration(
+  new TimeMeasure(1, TimeUnit.MINUTES),
+  new TimeMeasure(1, TimeUnit.MINUTES)
+);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val sessionConfiguration = SessionConfiguration(
+  TimeMeasure(1, TimeUnit.MINUTES),
+  TimeMeasure(1, TimeUnit.MINUTES)
+);
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+<div class="warningBlock">
+You need to pass both the arguments for <code class="inline-code">SessionConfiguration</code> class as shown in the above code snippets. However, RudderStack ignores the first argument (as it is a dummy argument) and considers only the second argument (<code class="inline-code">backgroundTimeout</code>).
+</div>
+
+<div class="infoBlock">
+For mobile SDKs, Snowplow's default timeout session is 30 minutes whereas RudderStack's default timeout session is 5 minutes. Refer to the <Link to="/sources/event-streams/sdks/session-tracking/#mobile-sdks">RudderStack Session Tracking</Link> documentation for more information.
+</div>   
+
+<h3>TrackerConfiguration</h3>
+
+The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/"><code class="inline-code">TrackerConfiguration</code></a> class can be used to configure contexts and automatic events of the tracker and the general behavior, as shown in the below snippets:
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+        <TabPanel>
+<span>
+
+```objectivec
+RSTrackerConfiguration * trackerConfig = [
+  [RSTrackerConfiguration alloc] init
+];
+[trackerConfig base64Encoding: YES];
+[trackerConfig logLevel: LogLevelDebug];
+[trackerConfig sessionContext: YES];
+[trackerConfig deepLinkContext: YES];
+[trackerConfig applicationContext: YES];
+[trackerConfig platformContext: YES];
+[trackerConfig geoLocationContext: NO];
+[trackerConfig screenContext: YES];
+[trackerConfig screenViewAutotracking: YES];
+[trackerConfig lifecycleAutotracking: YES];
+[trackerConfig installAutotracking: YES];
+[trackerConfig exceptionAutotracking: YES];
+[trackerConfig diagnosticAutotracking: NO];
+[trackerConfig userAnonymisation: NO];
+[trackerConfig appId: APP_ID];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let trackerConfig = TrackerConfiguration()
+  .base64Encoding(false)
+  .logLevel(.debug)
+  .deepLinkContext(true)
+  .applicationContext(true)
+  .platformContext(true)
+  .geoLocationContext(true)
+  .lifecycleAutotracking(true)
+  .diagnosticAutotracking(true)
+  .screenViewAutotracking(true)
+  .screenContext(true)
+  .applicationContext(true)
+  .exceptionAutotracking(true)
+  .installAutotracking(true)
+  .userAnonymisation(false)
+  .appId(APP_ID)
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+TrackerConfiguration trackerConfiguration = new TrackerConfiguration()
+  .base64Encoding(false)
+  .logLevel(LogLevel.VERBOSE)
+  .deepLinkContext(true)
+  .applicationContext(true)
+  .platformContext(true)
+  .geoLocationContext(true)
+  .lifecycleAutotracking(true)
+  .diagnosticAutotracking(true)
+  .screenViewAutotracking(true)
+  .screenContext(true)
+  .applicationContext(true)
+  .exceptionAutotracking(true)
+  .installAutotracking(true)
+  .userAnonymisation(false)
+  .appId(APP_ID);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val trackerConfiguration = TrackerConfiguration()
+  .base64Encoding(false)
+  .logLevel(LogLevel.VERBOSE)
+  .deepLinkContext(true)
+  .applicationContext(true)
+  .platformContext(true)
+  .geoLocationContext(true)
+  .lifecycleAutotracking(true)
+  .diagnosticAutotracking(true)
+  .screenViewAutotracking(true)
+  .screenContext(true)
+  .applicationContext(true)
+  .exceptionAutotracking(true)
+  .installAutotracking(true)
+  .userAnonymisation(false)
+  .appId(APP_ID)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+Snowplow automatically captures and tracks the following data. Refer to the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#auto-tracked-events-and-entities">Auto-tracked events and entities</a> section for more information.
+
+| Variable name | Default value     | 
+| :---------- | :------------ | 
+| `logLevel`     |        LogLevel.OFF       |           
+| `lifecycleAutotracking`      |   true            |           
+| `screenViewAutotracking`     |   true            |           
+| `sessionContext`      |         true      |   
+
+<div class="warningBlock">
+RudderStack ignores any variable other than the ones mentioned above.
+</div>
+
+<h3>SubjectConfiguration</h3>
+
+The <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/"><code class="inline-code">SubjectConfiguration</code></a> class can be used to capture basic user information which is attached to all the events as the context entity.
+
+<div class="warningBlock">
+Snowplow does not provide any call to identify a user. However, RudderStack sends an <Link to="/event-spec/standard-events/identify/"><code class="inline-code">identify</code></Link> call if you initialize the <code class="inline-code">SubjectConfiguration</code> class while initializing the SDK. <strong>Note that a user is not identified if the SDK is not initialized</strong>. 
+</div>
+
+The <code class="inline-code">userId</code> field is mapped to the RudderStack's <code class="inline-code">userId</code>. All the other properties are mapped to RudderStack's <code class="inline-code">traits</code> object.
+
+<div class="warningBlock">
+<code class="inline-code">userId</code> is a mandatory field. If not provided, the <code class="inline-code">identify</code> call is ignored.
+</div>
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+        <TabPanel>
+<span>
+
+```objectivec
+RSSubjectConfiguration * subjectConfig = [
+  [RSSubjectConfiguration alloc] init
+];
+[subjectConfig userId: @ "user_id"];
+[subjectConfig traits: @ {
+  @ "key_1": @ "value_1", @ "key_2": @20, @ "key_3": @YES
+}];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let subjectConfig = SubjectConfiguration()
+  .userId("user_id")
+  .traits(["key_1": "value_1", "key_2": 20, "key_3": true])
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+Traits.Address address = new Traits.Address()
+  .putCity("city value")
+  .putCountry("country value")
+  .putPostalCode("postalCode value")
+  .putState("state value")
+  .putStreet("street value");
+
+Traits.Company company = new Traits.Company()
+  .putName("name value")
+  .putId("id value")
+  .putIndustry("industry value");
+
+Traits traits = new Traits()
+  .putCompany(company)
+  .putAddress(address)
+  .putAge("age value")
+  .putBirthday("birthday value")
+  .putCreatedAt("createAt value")
+  .putDescription("description value")
+  .putEmail("email value")
+  .putFirstName("fName value")
+  .putGender("gender value")
+  .putId("id value")
+  .putLastName("lName value")
+  .putName("name value")
+  .putPhone("phone value")
+  .putTitle("title value")
+  .putUserName("userName value")
+  .put("Key-1", "value-1")
+  .put("Key-2", 20)
+  .put("Key-3", true);
+
+SubjectConfiguration subjectConfiguration = new SubjectConfiguration()
+  .userId("User-1")
+  .traits(traits);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val address: Traits.Address = Traits.Address()
+  .putCity("city value")
+  .putCountry("country value")
+  .putPostalCode("postalCode value")
+  .putState("state value")
+  .putStreet("street value")
+
+val company: Traits.Company = Traits.Company()
+  .putName("name value")
+  .putId("id value")
+  .putIndustry("industry value")
+
+val traits = Traits()
+  .putCompany(company)
+  .putAddress(address)
+  .putAge("age value")
+  .putBirthday("birthday value")
+  .putCreatedAt("createAt value")
+  .putDescription("description value")
+  .putEmail("email value")
+  .putFirstName("fName value")
+  .putGender("gender value")
+  .putId("id value")
+  .putLastName("lName value")
+  .putName("name value")
+  .putPhone("phone value")
+  .putTitle("title value")
+  .putUserName("userName value")
+  .put("Key-1", "value-1")
+  .put("Key-2", 20)
+  .put("Key-3", true)
+
+val subjectConfiguration = SubjectConfiguration()
+  .userId("User-1")
+  .traits(traits)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+## Updating class names
+
+The below table lists the corresponding class names in Snowplow and RudderStack (mobile SDKs) which need to be updated based on your platform:
+
+| Snowplow    |     |   RudderStack    |  |  |
+| :------------- | :-------------- |:------------- | :-------------- |:-------------- |
+|           | **Java** | **Kotlin** | **Objective-C** | **Swift** |
+| `NetworkConfiguration` | `NetworkConfiguration` | `NetworkConfiguration` | `RSNetworkConfiguration` | `NetworkConfiguration` |
+| `TrackerConfiguration` | `TrackerConfiguration` | `TrackerConfiguration` | `RSTrackerConfiguration` | `TrackerConfiguration` |
+| `SessionConfiguration` | `SessionConfiguration` | `SessionConfiguration` | `RSSessionConfiguration` | `SessionConfiguration` |
+| `SubjectConfiguration` | `SubjectConfiguration` | `SubjectConfiguration` | `RSSubjectConfiguration` | `SubjectConfiguration` |
+| `Structured` | `Structured` | `Structured` | `RSStructured` | `Structured` |
+| `ScreenView` | `ScreenView` | `ScreenView` | `RSScreenView` | `ScreenView` |
+| `Background` | `Background` | `Background` | `RSBackground` | `Background` |
+| `Foreground` | `Foreground` | `Foreground` | `RSForeground` | `Foreground` |
+| `SelfDescribing` | `SelfDescribing` | `SelfDescribing` | `RSSelfDescribing` | `SelfDescribing` |
+| `SelfDescribingJson` | `SelfDescribingJson` | `SelfDescribingJson` | `RSSelfDescribingJson` | `SelfDescribingJson` |
+| `TimeMeasure` | `TimeMeasure` | `TimeMeasure` | `N/A` | `N/A` |
+| `Snowplow` | `RSTracker` | `RSTracker` | `RSTracker` | `RSTracker` |
+| `LogLevel` | `LogLevel` | `LogLevel` | `LogLevel` | `LogLevel` |
+
+## Sending event data
+
+You can migrate your existing events from Snowplow to RudderStack by following the below sections:
+
+### Identifying a user
+
+<Tabs>
+  <TabList>
+    <Tab>iOS/Android</Tab>
+    <Tab>JavaScript</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/"><code class="inline-code">SubjectConfiguration</code></a> class can be used to identify the users. Refer to the <Link to="/user-guides/migration-guides/snowplow-migration-guide/#setting-the-configuration-objects">Setting the configuration objects</Link> section for more information.
+      </TabPanel>
+      <TabPanel>
+
+Snowplow supports identifying a user by passing the <code class="inline-code">setUserId</code> method. A Snowplow event including the <code class="inline-code">setUserId</code> method triggers the <Link to="/event-spec/standard-events/identify"><code class="inline-code">identify</code></Link> call in the RudderStack JavaScript SDK.
+
+<div class="infoBlock">
+RudderStack supports only the <code class="inline-code">setUserId</code> method of the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/javascript-trackers/javascript-tracker/javascript-tracker-v2/">Snowplow v2 JS tracker</a>.
+</div>
+
+In the below sample call, <code class="inline-code">alex@example.com</code> is the <code class="inline-code">userId</code>, while <code class="inline-code">firstName</code>, <code class="inline-code">lastName</code>, and <code class="inline-code">city</code> are the user traits.
+<span>
+
+```javascript
+rs.snowplowAdapter('setUserId', 'alex@example.com', {
+  firstName: 'Alex',
+  lastName: 'Keener',
+  city: 'New Orleans',
+});
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+### Tracking user actions
+
+RudderStack SDKs support the following types of Snowplow events:
+
+<Tabs>
+  <TabList>
+    <Tab>iOS/Android</Tab>
+    <Tab>JavaScript</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<h3>Custom structured events</h3>
+
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call for the Snowplow events containing the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">Structured</code></a> class.
+
+In the below example, RudderStack maps <code class="inline-code">Action_example</code> to the RudderStack event name and the rest of the properties like <code class="inline-code">Category_example</code>, <code class="inline-code">label</code>, <code class="inline-code">value</code>, etc. to the RudderStack properties.
+
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+RSStructured * structured = [
+  [RSStructured alloc] initWithCategory: @ "Category_example"
+  action: @ "Action_example"
+];
+[structured label: @ "my-label"];
+[structured property: @ "my-property"];
+[structured value: @5];
+[structured properties: @ {
+  @ "key_1": @ "value_1", @ "key_2": @ "value_2"
+}];
+
+[tracker track: structured];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let structured = Structured(category: "Category_example", action: "Action_example")
+  .label("my-label")
+  .property("my-property")
+  .value(5)
+  .properties(["key_1": "value_1", "key_2": "value_2"])
+
+tracker.track(structured)
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+HashMap < String, Object > properties = new HashMap < > ();
+properties.put("key-1", "value 1");
+properties.put("key-2", 123);
+properties.put("key-3", 123.45);
+properties.put("key-4", true);
+properties.put("key-5", false);
+
+Structured structured = new Structured("Category_example", "Action_example")
+  .label("my-label")
+  .value(1234.23)
+  .property("my-property")
+  .properties(properties);
+
+tracker.track(structured);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val properties = mapOf < String, Any > (
+  "key-1"
+  to "value 1",
+  "key-2"
+  to 123,
+  "key-3"
+  to 123.45,
+  "key-4"
+  to true,
+  "key-5"
+  to false
+)
+
+val structured = Structured("Category_example", "Action_example")
+  .label("my-label")
+  .value(1234.23)
+  .property("my-property")
+  .properties(properties)
+
+tracker.track(structured)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+<h3>Custom self described events</h3>
+
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call for the Snowplow events containing the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">SelfDescribing</code></a> class.
+
+In the below example, RudderStack maps <code class="inline-code">action</code> to the RudderStack event name.
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+        <TabPanel>
+<span>
+
+```objectivec
+// 1
+RSSelfDescribingJson * selfDescribingJson = [
+  [RSSelfDescribingJson alloc] initWithSchema: @ "schema"
+  andDictionary: @ {
+    @ "action": @ "Action_2", @ "key_2": @ "value_2"
+  }
+];
+RSSelfDescribing * selfDescribing = [
+  [RSSelfDescribing alloc] initWithEventData: selfDescribingJson
+];
+
+// 2
+RSSelfDescribing * selfDescribing = [
+  [RSSelfDescribing alloc] initWithSchema: @ "schema"
+  payload: @ {
+    @ "action": @ "Action_2", @ "key_2": @ "value_2"
+  }
+];
+
+[tracker track: selfDescribing];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+// 1
+let selfDescribingJson = SelfDescribingJson(schema: "schema", andDictionary: ["action": "Action_2"])
+let selfDescribing = SelfDescribing(eventData: selfDescribingJson)
+
+// 2
+let selfDescribing = SelfDescribing(schema: "schema", payload: ["action": "Action_2"])
+
+tracker.track(selfDescribing)
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+HashMap < String, Object > properties = new HashMap < > ();
+properties.put("action", "Action-2");
+properties.put("key-1", "value 1");
+
+// 1
+SelfDescribingJson selfDescribingJson = new SelfDescribingJson("schema", payload)
+SelfDescribing selfDescribing = new SelfDescribing(selfDescribingJson)
+
+// 2
+SelfDescribing selfDescribing = new SelfDescribing("schema", payload)
+
+tracker.track(selfDescribing);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val payload = mapOf < String, Any > (
+  "action"
+  to "Action-2",
+  "key-2"
+  to "value-2"
+)
+
+// 1
+val selfDescribingJson = SelfDescribingJson("schema", payload)
+val selfDescribing = SelfDescribing(selfDescribingJson)
+
+// 2
+val selfDescribing = SelfDescribing("schema", payload)
+
+tracker.track(selfDescribing)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+<div class="infoBlock">
+<code class="inline-code">action</code> is a mandatory field. RudderStack does not send any call if it is absent.
+</div>
+
+<h3>Custom foreground events</h3>
+
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call for the Snowplow events containing the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/previous-versions/objective-c-tracker/objective-c-1-0-0/#foreground-and-background-events"><code class="inline-code">Foreground</code></a> class.
+
+RudderStack sends the event name as <code class="inline-code">Application Opened</code> and maps the rest of the properties like <code class="inline-code">index</code>, <code class="inline-code">properties</code>, etc. to the RudderStack properties.
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+        <TabPanel>
+<span>
+
+```objectivec
+RSForeground * foreground = [
+  [RSForeground alloc] initWithIndex: @1
+];
+[foreground properties: @ {
+  @ "key_1": @ "value_1"
+}];
+
+[tracker track: foreground];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let foreground = Foreground(index: 1)
+  .properties(["key_1": "value_1"])
+
+tracker.track(foreground)
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+HashMap < String, Object > properties = new HashMap < > ();
+properties.put("key-1", "value 1");
+properties.put("key-2", 123);
+properties.put("key-3", 123.45);
+properties.put("key-4", true);
+properties.put("key-5", false);
+
+Foreground foreground = new Foreground(1234);
+foreground.setProperties(properties);
+
+tracker.track(foreground);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val properties = mapOf < String, Any > (
+  "key-1"
+  to "value 1",
+  "key-2"
+  to 123,
+  "key-3"
+  to 123.45,
+  "key-4"
+  to true,
+  "key-5"
+  to false
+)
+
+Foreground foreground = Foreground(1234)
+foreground.properties = properties
+
+tracker.track(background)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+<div class="infoBlock">
+This is not a default <Link to="/event-spec/standard-events/application-lifecycle-events-spec/">application lifecycle event</Link>. Hence, the properties like <code class="inline-code">version</code>, <code class="inline-code">build</code>, etc. are not present under <code class="inline-code">properties</code>.
+</div>
+
+<h3>Custom background events</h3>
+
+RudderStack sends a <Link to="/event-spec/standard-events/track/">track</Link> call for the Snowplow events containing the <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/previous-versions/objective-c-tracker/objective-c-1-0-0/#foreground-and-background-events"><code class="inline-code">Background</code></a> class.
+
+RudderStack sends the event name as <code class="inline-code">Application Backgrounded</code> and maps the rest of the properties, like <code class="inline-code">index</code>, <code class="inline-code">properties</code>, etc. to the RudderStack properties.
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+        <TabPanel>
+<span>
+
+```objectivec
+RSBackground * background = [
+  [RSBackground alloc] initWithIndex: @1
+];
+[background properties: @ {
+  @ "key_1": @ "value_1"
+}];
+
+[tracker track: background];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let background = Background(index: 1)
+  .properties(["key_1": "value_1"])
+
+tracker.track(background)
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+HashMap < String, Object > properties = new HashMap < > ();
+properties.put("key-1", "value 1");
+properties.put("key-2", 123);
+properties.put("key-3", 123.45);
+properties.put("key-4", true);
+properties.put("key-5", false);
+
+Background background = new Background(1234);
+background.setProperties(properties);
+
+tracker.track(background);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val properties = mapOf < String, Any > (
+  "key-1"
+  to "value 1",
+  "key-2"
+  to 123,
+  "key-3"
+  to 123.45,
+  "key-4"
+  to true,
+  "key-5"
+  to false
+)
+
+Background background = Background(1234)
+background.properties = properties
+
+tracker.track(background)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+<div class="infoBlock">
+This is not a default <Link to="/event-spec/standard-events/application-lifecycle-events-spec/">application lifecycle event</Link>. Hence, the properties like <code class="inline-code">version</code>, <code class="inline-code">build</code>, etc. are not present under <code class="inline-code">properties</code>.
+</div>
+  </TabPanel>
+      <TabPanel>
+        The RudderStack JavaScript SDK supports the Snowplow's <code class="inline-code">trackStructEvent</code> and <code class="inline-code">trackSelfDescribingEvent</code> calls. These Snowplow calls capture user events along with their associated properties and trigger the <Link to="/event-spec/standard-events/track/"><code class="inline-code">track</code></Link> call in the RudderStack JavaScript SDK.
+<br/><br/>
+A sample <code class="inline-code">trackSelfDescribingEvent</code> call is shown below:
+<span>
+
+```javascript
+rs.snowplowAdapter('trackSelfDescribingEvent', {
+  event: {
+    data: {
+      action: 'order completed',
+      category: 'FCW',
+      product_id: 'P1100DFG9766',
+      revenue: 30,
+      currency: 'USD',
+      user_actual_id: 12345,
+    },
+  },
+}); 
+```
+</span>
+In the above code snippet, the <code class="inline-code">trackSelfDescribingEvent</code> method tracks the <code class="inline-code">Order Completed</code> event along with other information like <code class="inline-code">revenue</code>, <code class="inline-code">currency</code>, and <code class="inline-code">user_actual_id</code>, etc.
+<br/><br/>
+A sample <code class="inline-code">trackStructEvent</code> call is shown below:
+<span>
+
+```javascript
+rs.snowplowAdapter('trackStructEvent', {
+  action: 'order completed',
+  category: 'FCW',
+  label: 'Sample label',
+  property: 'Some property',
+  value: 40.0,
+});
+```
+</span>
+In the above code snippet, the <code class="inline-code">trackStructEvent</code> method tracks the <code class="inline-code">Order Completed</code> event along with other information like <code class="inline-code">label</code>, <code class="inline-code">property</code>, and <code class="inline-code">value</code>, etc.
+
+<div class="infoBlock">
+The <code class="inline-code">action</code> field is mandatory in both the calls.
+</div>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+
+### Tracking page or screen views
+
+<Tabs>
+  <TabList>
+    <Tab>iOS/Android</Tab>
+    <Tab>JavaScript</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+Snowplow's <a href="https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/mobile-trackers/tracking-events/#creating-a-structured-event"><code class="inline-code">ScreenView</code></a> class captures whenever a new screen is loaded. A Snowplow event including the <code class="inline-code">ScreenView</code> class triggers the <Link to="/event-spec/standard-events/screen/">screen</Link> call in the RudderStack iOS/Android SDK.
+<br/><br/>
+ RudderStack maps the <code class="inline-code">name</code> property to RudderStack event name and the rest of the properties, like <code class="inline-code">screenId</code>, <code class="inline-code">previousName</code>, <code class="inline-code">previousId</code>, etc. to the RudderStack properties.
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+    <Tab>Java</Tab>
+    <Tab>Kotlin</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```objectivec
+RSScreenView * screen = [
+  [RSScreenView alloc] initWithName: @ "DemoScreenName"
+  screenId: [
+    [NSUUID alloc] init
+  ]
+];
+[screen type: @ "type"];
+[screen previousName: @ "previousName"];
+[screen previousId: @ "previousId"];
+[screen previousType: @ "previousType"];
+[screen transitionType: @ "transitionType"];
+[screen viewControllerClassName: @ "viewControllerClassName"];
+[screen topViewControllerClassName: @ "topViewControllerClassName"];
+[screen properties: @ {
+  @ "key_1": @ "value_1",
+    @ "key_2": @ "value_2"
+}];
+
+[tracker track: screen];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```swift
+let screen = ScreenView(name: "DemoScreenName", screenId: UUID())
+  .type("type")
+  .previousName("previousName")
+  .previousId("previousId")
+  .previousType("previousType")
+  .transitionType("transitionType")
+  .viewControllerClassName("viewControllerClassName")
+  .topViewControllerClassName("topViewControllerClassName")
+  .properties: ([
+    "key_1": "value_1",
+    "key_2": "value_2"
+  ])
+
+tracker.track(screen)
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+ScreenView screenView = new ScreenView("MainActivity", UUID.randomUUID())
+  .type("type")
+  .previousName("previousName")
+  .previousId("previousId")
+  .previousType("previousType")
+  .transitionType("transitionType");
+
+tracker.track(screenView);
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```kotlin
+val screenView = ScreenView("MainActivity", UUID.randomUUID())
+  .type("type")
+  .previousName("previousName")
+  .previousId("previousId")
+  .previousType("previousType")
+  .transitionType("transitionType")
+
+tracker.track(screenView)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+  </TabPanel>
+      <TabPanel>
+        Snowplow's <code class="inline-code">trackPageView</code> call lets you record your website's page views with any additional relevant information about the viewed page. A Snowplow event including the <code class="inline-code">trackPageView</code> call triggers the <Link to="/event-spec/standard-events/screen/">screen</Link> call in the RudderStack JavaScript SDK.
+        <br/>
+        <br/>
+        A sample <code class="inline-code">trackPageView</code> call is shown below:
+<span>
+
+```javascript
+rs.snowplowAdapter(
+  'trackPageView',
+  {
+    title: 'Cart Viewed',
+  },
+  {
+    path: '/best-seller/1',
+    referrer: 'https://www.google.com/search?q=estore+bestseller',
+    search: 'estore bestseller',
+    title: 'The best sellers offered by EStore',
+    url: 'https://www.estore.com/best-seller/1',
+  },
+);
+```
+</span>
+In the above code snippet, SDK captures the page title and other <Link to="/event-spec/standard-events/common-fields/#contextual-fields">contextual information</Link>.
+      </TabPanel>
+    </TabPanels>
+</Tabs>

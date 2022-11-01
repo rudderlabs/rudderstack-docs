@@ -55,6 +55,13 @@
   createdAt: '2021-10-08T18:25:50.123Z'
   updatedAt: '2021-10-08T18:25:50.123Z'
 - options:
+  name: ClickUp
+  link: /sources/event-streams/cloud-apps/clickup/
+  displayName: ClickUp
+  category: webhook
+  createdAt: '2021-10-08T18:25:50.123Z'
+  updatedAt: '2021-10-08T18:25:50.123Z'
+- options:
   id: 1cRofQ9LF9HLEKuIyYY4FMteELx
   name: Customer.io
   link: /sources/event-streams/cloud-apps/customerio/
@@ -87,6 +94,13 @@
   createdAt: '2020-06-26T18:39:17.406Z'
   updatedAt: '2020-06-26T18:39:17.406Z'
 - options:
+  name: mailjet
+  link: /sources/event-streams/cloud-apps/mailjet/
+  displayName: Mailjet
+  category: webhook
+  createdAt: '2020-06-26T18:39:17.406Z'
+  updatedAt: '2020-06-26T18:39:17.406Z'
+- options:
   name: mailmodo
   link: /sources/event-streams/cloud-apps/mailmodo/
   displayName: Mailmodo
@@ -105,6 +119,13 @@
   name: POSTHOG
   link: /sources/event-streams/cloud-apps/posthog/
   displayName: PostHog
+  category: webhook
+  createdAt: '2021-03-02T17:19:06.012Z'
+  updatedAt: '2021-03-02T17:19:06.012Z'
+- options:
+  name: Refiner
+  link: /sources/event-streams/cloud-apps/refiner/
+  displayName: Refiner
   category: webhook
   createdAt: '2021-03-02T17:19:06.012Z'
   updatedAt: '2021-03-02T17:19:06.012Z'
@@ -264,6 +285,14 @@
   createdAt: '2020-12-07T14:20:42.362Z'
   updatedAt: '2020-12-07T14:20:42.362Z'
 - options:
+  name: google_analytics
+  link: /sources/extract/google-analytics-v2/
+  displayName: Google Analytics V2
+  category: cloud
+  type: extract
+  createdAt: '2020-12-07T14:20:42.362Z'
+  updatedAt: '2020-12-07T14:20:42.362Z'
+- options:
   id: 1lKfk24evQm5USNDbZBzapoX1Wi
   name: google_ads
   link: /sources/extract/google-adwords/
@@ -322,6 +351,24 @@
   name: zendesk_chat
   link: /sources/extract/zendesk-chat/
   displayName: Zendesk Chat
+  category: cloud
+  type: extract
+  createdAt: '2021-01-21T16:16:19.778Z'
+  updatedAt: '2021-01-21T16:16:19.778Z'
+- options:
+  id: 1nO0MDuAYGKfwdhgCpyLFR1lHti
+  name: zendesk-chat-v2
+  link: /sources/extract/zendesk-chat-v2/
+  displayName: Zendesk Chat V2
+  category: cloud
+  type: extract
+  createdAt: '2021-01-21T16:16:19.778Z'
+  updatedAt: '2021-01-21T16:16:19.778Z'
+- options:
+  id: 1nO0MDuAYGKfwdhgCpyLFR1lHti
+  name: zendesk-support
+  link: /sources/extract/zendesk-support/
+  displayName: Zendesk Support
   category: cloud
   type: extract
   createdAt: '2021-01-21T16:16:19.778Z'
@@ -504,6 +551,14 @@
   createdAt: '2021-12-21T14:33:08.868Z'
   updatedAt: '2021-12-21T14:33:08.868Z'
 - options:
+  name: singer-customer.io
+  link:
+  displayName: Customer.io
+  category: singer-protocol
+  type: extract
+  createdAt: '2021-12-21T14:33:08.868Z'
+  updatedAt: '2021-12-21T14:33:08.868Z'
+- options:
     image: rudderstack/source-intercom:v1
     digest: sha256:0b38c5ecc93d193a9bc474353a25837447fd1269fc31852149ce59afba3edfbb
     isBeta: false
@@ -680,3 +735,12 @@
   type: reverse ETL
   createdAt: '2022-06-10T07:15:24.802Z'
   updatedAt: '2022-06-10T07:15:24.802Z'
+- options:
+  id: 1jEXvN08pLwYAGPMJJOhvIyA3F3
+  name: klaviyo
+  link: /sources/extract/klaviyo/
+  displayName: Klaviyo
+  category: cloud
+  type: extract
+  createdAt: '2020-10-22T12:40:53.132Z'
+  updatedAt: '2020-10-22T12:40:53.132Z'

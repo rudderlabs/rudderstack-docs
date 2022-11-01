@@ -156,6 +156,7 @@ Once you add Amplitude as a destination in the [RudderStack dashboard](https://a
     <Tab>iOS v2</Tab>
     <Tab>Android</Tab>
     <Tab>React Native</Tab>
+    <Tab>Flutter</Tab>
   </TabList>
     <TabPanels>
       <TabPanel>
@@ -390,6 +391,51 @@ rudderClient.setup(WRITE_KEY, config)
 </li>
 </ol>
       </TabPanel>
+<TabPanel>
+Follow the below steps to add Amplitude to your Flutter Project:
+<ol>
+<li>Add the following dependency to the <code class="inline-code">dependencies</code> section of your <code class="inline-code">pubspec.yaml</code> file.
+<span>
+
+```yaml
+rudder_integration_amplitude_flutter: ^1.0.1
+```
+</span>
+</li>
+<li>Run the below command to install the dependency added in the above step:
+<span>
+
+```groovy
+flutter pub get
+```
+</span>
+</li>
+<li>Import the <code class="inline-code">RudderIntegrationAmplitudeFlutter</code> in your application where you are initializing the SDK.
+<span>
+
+```dart
+import 'package:rudder_integration_amplitude_flutter/rudder_integration_amplitude_flutter.dart';
+```
+</span>
+</li>
+
+<li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> as shown:
+<span>
+
+```dart
+final RudderController rudderClient = RudderController.instance;
+RudderConfigBuilder builder = RudderConfigBuilder();
+builder.withFactory(RudderIntegrationAmplitudeFlutter());  
+rudderClient.initialize(<WRITE_KEY>, config: builder.build(), options: null);
+```
+</span>
+</li>
+</ol>
+
+<div class="infoBlock">
+For iOS platform, make sure that the minimum deployment target for your application's target is at least 10.
+</div>
+      </TabPanel>
     </TabPanels>
 </Tabs>
 
@@ -530,6 +576,29 @@ A sample dashboard after making the above `identify`, `page`, and `track` calls 
 <div class="infoBlock">
 <strong>Applicable for mobile only</strong>: If a trait with the name <code class="inline-code">optOutOfSession</code> and value <code class="inline-code">true</code> then this <code class="inline-code">identify</code> call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
 </div>
+
+### Deleting a user
+
+You can delete a user in Amplitude using the <Link to="/api/data-regulation-api/#adding-a-suppression-with-delete-regulation">Suppression with Delete regulation</Link> of the RudderStack <Link to="/api/data-regulation-api/">Data Regulation API</Link>.
+
+<div class="infoBlock">
+To delete a user, you can specify their <code class="inline-code">userId</code> or any custom identifier in the event.
+</div>
+
+A sample regulation request body for deleting a user in Amplitude is shown below:
+
+```json
+{
+  "regulationType": "suppress_with_delete",
+  "destinationIds": [
+    "2FIKkByqn37FhzczP23eZmURciA"
+  ],
+  "users": [{
+    "userId": "1hKOmRA4GRlm",
+    "<customKey>": "<customValue>"
+  }]
+}
+```
 
 ## Group
 

@@ -1,6 +1,7 @@
 ---
 title: "Destination_Name"
-description: Step-by-step guide to send your event data from RudderStack to **Destination_Name**.
+description: Step-by-step guide on sending your event data from RudderStack to **Destination_Name**.
+aliases: ["dest_name","dest_name_2"]  // These alias values are used to optimize the page our search index, making it easier for users to find the integration in the docs.
 ---
 
 > **To contributor: Some helpful tips before you get started**:
@@ -9,49 +10,99 @@ description: Step-by-step guide to send your event data from RudderStack to **De
 > - Do not include any screenshots/images. We will include them after merging the changes.
 > - Include tips and suggestions wherever possible.
 
-# \*\*Destination_Name\*\*
 
-Add some introduction about the destination platform.
+[Destination](Link)- Add some introduction about the destination platform.
 
-E.g.: "Google Analytics is the world's most popular analytics service that lets you track, analyze, and report your website traffic across a variety of sources."
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/<dest_name>">GitHub repository</a>.
+</div>
 
 ## Getting started
 
-First, verify if the source platform is supported by \*\***Destination_Name**\*\* by referring to the following table:
+RudderStack supports sending events to <Destination_Name> via the following <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
 | **Device mode**     |               |               |               |
 | **Cloud mode**      |               |               |               |
 
-\*\***Retain the following information block for the readers' reference. It will be rendered as an information tip on the documentation site**.\*\* 
 
-<div class="infoBlock">
+Once you have confirmed that the source platform supports sending events to <Destination_Name>, follow these steps:
 
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">RudderStack Connection Modes</a> guide.
-</div>
-
-\*\*Retain the following generic steps to set up the destination platform in the RudderStack dashboard:\*\*
-
-Once you have confirmed that the source platform supports sending events to \*\***Destination_Name**\*\*, follow these steps:
-
-- From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Destination_Name**.
-- Assign a name to your destination and click on **Next**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **<Destination_Name>**.
+2. Assign a name to your destination and click **Continue**.
 
 ### Connection settings 
 
-\*\*Add details about the configurable settings to set up your destination in RudderStack and where to get them, if applicable.\*\*
+To successfully set up Mixpanel as a destination, you need to configure the following settings:
 
-\*\*For example:  **<Destination_Name> API Key**: Enter your <Destination_Name> API key here. You can obtain this key by logging into the <Destination_Name> console (provide URL to the console) and navigating to Settings - API key.**\*\*
+- **<Destination_details>**: Enter your <Destination_details> here. <Reference to destination doc/FAQ, if useful/applicable>
 
-## Supported events (Track, Identify, Page, etc.)
+## Identify
 
-\*\*Add details for the events supported by the destination. Include relevant edge-cases, sample snippets, tips, etc. wherever required.\*\*
+<Link to="/event-spec/standard-events/identify/">`identify`</Link> call
+<usage of the call>
+A sample `identify` call is shown below:
 
+```javascript
+```
+  
+### Property mappings
+  
+The following table lists the mappings between the RudderStack and <Destination_Name> properties:
+
+| RudderStack property | <Dest_name> property |
+| :------------------- | :---------------- |
+|      (required)      |                   |
+|                      |                   |
+|                      |                   |
+
+  
+  
+## Track
+  
+<Link to="/event-spec/standard-events/track/">`track`</Link> call
+<usage of the call>
+A sample `track` call is shown below:
+
+```javascript
+```
+  
+## Page
+  
+<Link to="/event-spec/standard-events/page/">`page`</Link> call
+<usage of the call>
+A sample `page` call is shown below:
+
+```javascript
+```
+  
+## Group
+  
+<Link to="/event-spec/standard-events/group/">`group`</Link> call
+<usage of the call>
+A sample `group` call is shown below:
+
+```javascript
+```
+  
+## Screen
+  
+<Link to="/event-spec/standard-events/screen/">`screen`</Link> call
+<usage of the call>
+A sample `screen` call is shown below:
+
+```javascript
+```
+
+## Common mappings (If any) 
+ 
+The following table lists the common property mappings between the RudderStack and <Destination_Name>:
+
+| RudderStack property | <Dest_name> property |
+| :------------------- | :---------------- |
+|      (required)      |                   |
+|                      |                   |
+|                      |                   |
+  
 ## FAQ
-
-\*\*Add relevant FAQs that might help the readers to set up and use the integration, or troubleshoot any issues.\*\*
-
-## Contact us
-
-This integration is built and maintained by \*\***Destination_Name**\*\*. For any queries you can contact their team (\*\***Contact URL**\*\*). You can also [**get in touch**](mailto:%20docs@rudderstack.com) with us.

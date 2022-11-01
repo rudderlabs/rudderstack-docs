@@ -9,11 +9,10 @@ RudderStack's Google Ads integration leverages a global site tag - `gtag.js` - a
 
 ## Getting started
 
-Before configuring Google Ads as a destination in RudderStack, verify if the source platform is supported by Google Ads by referring to the table below. Once the destination is enabled, events from the native web (JavaScript) SDK will start flowing to Google Ads.
+RudderStack supports sending event data to  Google Ads via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 <div class="infoBlock">
-
-You can use the JavaScript SDK to send **Page Load Conversions** as well as **Click Conversions** events to Google Ads.
+You can use the JavaScript SDK to send <strong>Page Load Conversions</strong> as well as <strong>Click Conversions</strong> events to Google Ads.
 </div>
 
 | **Connection Mode** | **Web**       | **Mobile** | **Server** |
@@ -21,73 +20,42 @@ You can use the JavaScript SDK to send **Page Load Conversions** as well as **Cl
 | **Device mode**     | **Supported** | -          | -          |
 | **Cloud mode**      | -             | -          | -          |
 
-<div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
-</div>
+Once you have confirmed that the source supports sending events to Google Ads, follow these steps:
 
-Once you have confirmed that the platform supports sending events to Google Ads, follow these steps:
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. From the list of destinations, select **Google Ads**.
+2. Assign a name to the destination and click **Continue**.
 
-* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Google Ads**.
-* Assign a name to the destination and click on **Next**. You should then see the following screen:
+## Connection settings
 
-<img src="../../assets/event-stream-destinations/gads-connection-settings.png" alt="Google Ads connection settings" />
+To set up Google Ads as a destination, you need to configure the following settings:
 
-### Connection settings
-
-- **Conversion ID**: Enter your Google Ads Conversion ID.
-
-<div class="infoBlock">
- 
- For more information on finding the Conversion ID, refer to this Google Ads <a href="https://support.google.com/tagmanager/answer/6105160?hl=en">support page</a>.
-</div>
-
-- **Configure Page Load Conversions**: For `page` calls, you can configure the page load conversions for multiple instances. 
-  - In **Conversion Label** , provide the conversion label from Google Ads. 
-  - In **Name**, enter the name of the `page` event to be sent.
-
-- **Click Event Conversion**: For `track` calls, you can configure **Click Event Conversion**. 
-  - In **Conversion Label**, enter your Google Ads conversion label. 
-  - Under **Name**, enter the name of the `track` event to be sent.
-
-  - **Send Page View**: Enabling this setting configures Google Ads to automatically send your `page` events.
-
-- **Conversion Linker**: This setting is enabled by default. If you don't want the global site tag (`gtag.js`) to set first-party cookies on your website domain, you should disable this setting.
+- **Conversion ID**: Enter your Google Ads Conversion ID. Refer to the Google Ads <a href="https://support.google.com/tagmanager/answer/6105160?hl=en">support page</a> for more information on obtaining the Conversion ID.
+- **Mapping to trigger the Google Ads events for the respective events set here**: Use this setting to map custom event names to the standard Google Ads events.
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Google Ads. Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide for more information.
+- **Configure Page Load Conversions**: For `page` call, you can configure the page load conversions for multiple instances. 
+  - **Conversion Label**: Enter the conversion label from Google Ads. 
+  - **Name**: Enter the name of the `page` event to be sent.
+- **Click Event Conversion**: For `track` call, you can configure **Click Event Conversion**. 
+  - **Conversion Label**: Enter your Google Ads conversion label. 
+  - **Name**: Enter the name of the `track` event to be sent.
+- **Send Page View**: Enable this setting to automatically send your `page` events to Google Ads.
+- **Conversion Linker**: This setting is enabled by default. If you don't want the global site tag (`gtag.js`) to set first-party cookies on your website domain, disable this setting. Refer to the [Google Ads documentation](https://support.google.com/google-ads/answer/7521212?hl=en) for more information on the Conversion Linker feature.
 
 <div class="warningBlock">
-
-Disabling this setting as it can lead to less accurate conversion measurements.
+Disabling this setting can lead to less accurate conversion measurements.
 </div>
 
-<div class="infoBlock">
- 
-For more information on the Conversion Linker feature in Google Ads, refer to their official <a href="https://support.google.com/google-ads/answer/7521212?hl=en">documentation</a>.
-</div>
-
-- **Disable Ad Personalization**: Toggling this setting on lets you programmatically disable ad personalization. 
-
-<div class="infoBlock">
- 
-For more information on the disabling advertising personalization feature, refer to the official Google <a href="https://developers.google.com/analytics/devguides/collection/gtagjs/display-features#disable_advertising_personalization">documentation</a>.
-</div>
-
-- **Dynamic Remarketing**: Enabling this tracking mode allows RudderStack to leverage Google Ads' Dynamic Remarketing feature for event tracking.
-
-<div class="infoBlock">
- 
-<strong>Dynamic Remarketing</strong> lets you tailor your ads based on your users' previous interactions with your website. For more information on this feature, refer to the official Google Ads <a href="https://support.google.com/google-ads/answer/7305793">documentation</a>.
-</div>
- 
-- As this is a device mode-only integration, the **Use device-mode to send events** option will always be enabled.
-
-- Finally, click on **Next** to finish the configuration. Google Ads will now be added and enabled as a destination in RudderStack.
+- **Disable Ad Personalization**: Enable this setting to programmatically disable ad personalization. Refer to the [Google Ads documentation](https://developers.google.com/analytics/devguides/collection/gtagjs/display-features#disable_advertising_personalization) for more information.
+- **Use device mode to send events**: As this is a web device mode-only destination, this setting is enabled by default and cannot be disabled.
+- **Dynamic Remarketing**: Enable this setting to allow RudderStack to leverage Google Ads' Dynamic Remarketing feature for event tracking. [Dynamic Remarketing](https://support.google.com/google-ads/answer/7305793) lets you tailor your ads based on your users' previous interactions with your website.
+- **OneTrust Cookie Categories**: This setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Google Ads.
 
 ## Track
 
-You can make a `track` call with the conversion name to RudderStack for a **Click Event Conversion** which will, in turn, send this data to Google Ads.
+You can make a <Link to="/event-spec/standard-events/track/">`track`</Link> call with the conversion name to RudderStack for a **Click Event Conversion** which will, in turn, send this data to Google Ads.
 
 <div class="infoBlock">
-
-RudderStack maps `properties.currency`, `properties.order_id`, and `properties.revenue` to Google Ads' `currency`, `transaction_id`, and `value` fields respectively.  Note that this is applicable only when the <strong>Dynamic Remarketing</strong> setting is disabled in the dashboard.
+RudderStack maps <code class="inline-code">properties.currency</code>, <code class="inline-code">properties.order_id</code>, and <code class="inline-code">properties.revenue</code> to Google Ads' <code class="inline-code">currency</code>, <code class="inline-code">transaction_id</code>, and <code class="inline-code">value</code> fields respectively. Note that this is applicable only when the <strong>Dynamic Remarketing</strong> setting is disabled in the dashboard.
 </div>
 
 A sample `track` call is as shown:
@@ -118,7 +86,6 @@ rudderanalytics.track('view_item', {
 ```
 
 <div class="successBlock">
-
 The format for passing the parameters is quite flexible. You can use the standard Google format for tracking specific categories or use a custom format for tracking custom categories.
 </div>
 
@@ -133,7 +100,7 @@ rudderanalytics.track("custom_event", {
 
 ## Page
 
-You can make a `page` call with the conversion name to RudderStack for a **Page Load Conversion** which will, in turn, send this data to Google Ads.
+You can make a <Link to="/event-spec/standard-events/page/">`page`</Link> call with the conversion name to RudderStack for a **Page Load Conversion** which will, in turn, send this data to Google Ads.
 
 A sample `page` call is as shown below:
 
@@ -152,14 +119,12 @@ rudderanalytics.page("custom_event", {
 
 As seen in the above snippet, enabling Dynamic Remarketing allows you to send custom parameters in the `page` call.
 
-## FAQs
+## FAQ
 
-#### How do I get the Conversion ID?
+### How do I get the Conversion ID?
 
-You can get the conversion ID from your global site tag snippet. It should look something like `AW-123456789`.
+You can get the conversion ID from your global site tag snippet. For example, a sample conversion ID would look like `AW-123456789`.
 
-#### How do I get the Conversion Label for Google Ads?
+### How do I get the Conversion Label for Google Ads?
 
-You can find the value of the **Conversion Label** from your event snippet. The provided event snippet should look something like`send_to: 'AW-123456789/bpg3CMiIjLMBELXBp8wC'`. Enter the part after the `'/'`
-
-
+You can find the value of the **Conversion Label** from your event snippet. For example, a event snippet would look like `send_to: 'AW-123456789/bpg3CMiIjLMBELXBp8wC'`. The Conversion Label here is `bpg3CMiIjLMBELXBp8wC`.

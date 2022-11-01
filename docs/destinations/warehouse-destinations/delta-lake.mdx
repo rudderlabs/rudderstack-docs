@@ -68,9 +68,9 @@ This feature is currently in beta.
 * **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the Delta Lake instance.
 * **Exclude Window**: This optional setting lets you specify the time window (in UTC) when RudderStack will **skip** the data sync.
 * **Object Storage Configuration**: RudderStack currently supports the following platforms for storing the staging files:
-    * **Amazon S3**
-    * **Google Cloud Storage**
-    * **Azure Blob Storage**
+  - <Link to="/destinations/streaming-destinations/amazon-s3#setting-up-amazon-s3">Amazon S3 bucket storage settings</Link>
+  - <Link to="/destinations/streaming-destinations/microsoft-azure-blob-storage#setting-up-azure-blob-storage">Azure Blob Storage settings</Link>
+  - <Link to="/destinations/streaming-destinations/google-cloud-storage#setting-up-google-cloud-storage">Google Cloud Storage bucket settings</Link>
 
 <div class="infoBlock">
 If you select S3 as your storage provider, RudderStack gives you the option to specify the AWS access key and secret access key in the dashboard itself, to grant Databricks access to your staging bucket. To do so, enable the <strong>Use STS Tokens to copy staging files</strong> setting in the dashboard. For more information, refer to the <Link to="#case-2-use-sts-token-to-copy-staging-files-is-enabled-in-the-dashboard">Amazon S3 storage bucket settings</Link> section below.

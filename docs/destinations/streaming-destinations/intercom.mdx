@@ -280,6 +280,29 @@ The <code class="inline-code">user_hash</code> is a SHA256 hash of your Intercom
 To obtain your Intercom API secret, go to your Intercom dashboard and navigate to <strong>Settings</strong> > <strong>Apps & Integrations</strong> > <strong>Developer Hub</strong>. Then select your app and go to <strong>Configure</strong> > <strong>Basic information</strong>. You will find the API secret listed here under <strong>Client secret</strong>.
 </div>
 
+### Deleting a user
+
+You can delete a user in Intercom using the <Link to="/api/data-regulation-api/#adding-a-suppression-with-delete-regulation">Suppression with Delete regulation</Link> of the RudderStack <Link to="/api/data-regulation-api/">Data Regulation API</Link>.
+
+<div class="infoBlock">
+To delete a user, you need to specify their <code class="inline-code">userId</code> or any custom identifier in the event.
+</div>
+
+A sample regulation request body for deleting a user in Intercom is shown below:
+
+```json
+{
+  "regulationType": "suppress_with_delete",
+  "destinationIds": [
+    "2FIKkByqn37FhzczP23eZmURciA"
+  ],
+  "users": [{
+    "userId": "1hKOmRA4GRlm",
+    "<customKey>": "<customValue>"
+  }]
+}
+```
+
 ## Track
 
 The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you record the customer events, that is, the actions they perform, along with any properties associated with them.

@@ -1,0 +1,97 @@
+---
+title: "Klaviyo"
+description: Step-by-step guide to ingest data from Klaviyo into RudderStack.
+---
+
+[Klaviyo](https://www.klaviyo.com/) is a powerful e-commerce platform that lets you boost your business revenue. It offers features like trend reports, cohort analysis, and various options for boosting customer engagement.
+
+This document guides you in setting up Klaviyo as a source in RudderStack. Once configured, RudderStack automatically ingests your Klaviyo data and routes it to your specified data warehouse destination.
+
+<div class="warningBlock">
+All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
+</div>
+
+## Getting started
+
+To set up Klaviyo as a source in RudderStack, follow these steps:
+
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **Klaviyo** from the list of sources.
+3. Assign a name to your source and click on **Next**.
+
+### Connection settings
+
+Enter the following connection settings to set up the Klaviyo source:
+
+<img src="../../assets/cloud-extract-sources/klaviyo-connection-settings.png" alt="Klaviyo connection settings" />
+
+The connection settings are described below:
+
+- **API Key** : Enter your Klaviyo Private API key. You can find it in your Klaviyo dashboard by clicking your organization name and going to **Account & billing** > **Settings** > **API Keys**.
+
+<div class="infoBlock">
+For more information on obtaining the Klaviyo private API key, refer to the <a href="https://help.klaviyo.com/hc/en-us/articles/115005062267-How-to-Manage-Your-Account-s-API-Keys#your-private-api-keys3">Klaviyo support guide</a>.
+</div>
+
+- **Start Date**: Select the date from when RudderStack ingests your Klaviyo data.
+
+<div class="warningBlock">
+RudderStack will <strong>not replicate</strong> any data before this date.
+</div>
+
+### Destination settings
+
+The following settings specify how RudderStack sends the data ingested from Klaviyo to the connected warehouse destination:
+
+- **Table prefix**: RudderStack uses this prefix to create a table in your data warehouse and loads all your Klaviyo data into it.
+- **Schedule Settings**: RudderStack gives you three options to ingest the data from Klaviyo:
+    - **Basic**: Runs the syncs at the specified time interval. 
+    - **CRON**: Runs the syncs based on the user-defined CRON expression.
+    - **Manual**: You are required to run the syncs manually.
+
+<div class="infoBlock">
+For more information on the schedule types, refer to the <Link to="/sources/extract/common-settings/">Common Settings</Link> guide.
+</div>
+
+### Selecting the data to import
+
+You can choose the Klaviyo data you want to ingest by selecting the required resources:
+
+<img src="../../assets/cloud-extract-sources/klaviyo-connection-settings-2.png" alt="Selecting the data to import" />
+
+The below table mentions the syncs and API endpoints supported by these resources from Klaviyo to your warehouse destination:
+
+| Resource | Full Refresh sync | Incremental sync | Primary key | Klaviyo API endpoint |
+| :---| :---- | :---- | :---- | :---- |
+| `campaigns` |  Yes | No | `id` | `/campaigns` |
+| `events` | Yes | Yes | `id` | `/metrics/timeline` | 
+| `flows` | Yes | Yes | `id` | `/flows` |
+| `global_exclusions` | Yes | No | `email` | `/people/exclusions` |
+| `lists` | Yes | No | `id` | `/lists` |
+| `metrics` | Yes | No | `id` | `/metrics` |
+
+<div class="infoBlock">
+For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
+</div>
+
+Klaviyo is now configured as a source. RudderStack will start ingesting data from Klaviyo as per your specified schedule and frequency.
+
+You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
+
+<img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
+
+<div class="successBlock">
+Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
+</div>
+
+## FAQ
+
+### Can I connect my Klaviyo source to multiple data warehouse destinations?
+
+You can connect <strong>only one data warehouse destination</strong> per Cloud Extract source. If you wish to send data to multiple warehouses, you can configure multiple Cloud Extract sources with the same settings and connect them to each data warehouse.
+
+### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+
+Yes, it is.
+
+RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
