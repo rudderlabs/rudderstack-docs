@@ -2,6 +2,7 @@
 title: "Snapchat Custom Audience"
 description: >-
   Step-by-step guide on sending your event data from RudderStack to Snapchat Custom Audience.
+aliases: ["Snapchat Custom Audience", "Snapchat custom audience destination"]
 ---
 
 [Snapchat Custom Audience](https://businesshelp.snapchat.com/s/article/create-sam-audience?language=en_US) matches data from your Snapchat customer list (email, phone number, or mobile advertiser ID) with the Snapchat community.
@@ -28,10 +29,16 @@ Once you have confirmed that the source platform supports sending events to Snap
 
 To successfully set up Snapchat Custom Audience as a destination, you need to configure the following settings:
 
+- **Connect with Snapchat Custom Audience**: Click this button to give RudderStack access to your Snapchat account.
 - **Account ID**: Enter your Snapchat account ID. For more information on getting your account ID, refer to the <a href="https://businesshelp.snapchat.com/s/article/biz-acct-id?language=en_US">Snapchat support page</a>.
-- **Audience ID**: 
-- **Schema**: 
-- **Disable hashing**:  This setting is enabled by default and hashes the `email`, `phone`, and `mobileId` in the SHA-256 format. For more information, refer to the <a href="https://marketingapi.snapchat.com/docs/#removing-users">Snapchat Marketing API reference</a>. 
+- **Audience ID**: Enter your Snapchat segment ID. For more information on getting your segment ID, refer to the <Link to="#faq">FAQ</Link> section below.
+- **Schema**: Select the schema (`EMAIL_SHA256`, `MOBILE_AD_ID_SHA256`, or `PHONE_SHA256`) from the dropdown.
+
+<div class="warningBlock">
+The corresponding field (<code class="inline-code">email</code>, <code class="inline-code">mobileAdId</code>/<code class="inline-code">mobile_id</code>, or <code class="inline-code">mobile</code> must be present in your events. Otherwise, RudderStack will not send the events to Snapchat Custom Audience.)
+</div>
+
+- **Disable hashing**:  By default, RudderStack hashes the `email`, `phone`, and `mobileId` in the SHA-256 format. If enabled, RudderStack will **not** perform the hashing.
 
 ## `audienceList` event structure
 
@@ -69,6 +76,23 @@ The following code snippet shows a sample `audienceList` call:
         "lastName": "Keener",
         "firstName": "Alex ",
         "postalCode": "90009"
+      },
+        {
+          "email": "alexis@example.com",
+          "phone": "+1-202-555-0145",
+          "country": "USA",
+          "lastName": "Alexis",
+          "firstName": "Keener",
+          "postalCode": "90009"
+        }
+      ],
+      "remove": [{
+        "email": "jack@hotmail.com",
+        "phone": "+1-202-555-0145",
+        "country": "USA",
+        "lastName": "Jack",
+        "firstName": "Jackson ",
+        "postalCode": "90009"
       }]
     }
   },
@@ -89,10 +113,33 @@ The following table details the mapping of the schema fields (as specified in th
  RudderStack schema field | Snapchat Custom Audience field |
 | :-----| :--------|
 | `properties.listData.add.email` | `users.data.[sha256(email)]` |
-| `properties.listData.add.phone` | `users.data.[sha256(phone)]` |
-| `properties.listData.add.mobileId` | `users.data.[sha256(mobileId)]` |
+| `properties.listData.add.phone` <br/> `properties.listData.add.mobile` | `users.data.[sha256(phone)]` |
+| `properties.listData.add.mobileId` <br/> `properties.listData.add.mobileAdId` <br/> `properties.listData.add.mobile_id` | `users.data.[sha256(mobileId)]` |
+
+<div class="warningBlock">
+<code class="inline-code">email</code>, <code class="inline-code">mobileAdId</code>/<code class="inline-code">mobile_id</code>, or <code class="inline-code">mobile</code> must be present in your events depending on the <strong>Schema</strong> setting configured in the RudderStack dashboard. Otherwise, RudderStack will not send the events to Snapchat Custom Audience.
+</div>
 
 ## FAQ
+
+### Where can I find my Snapchat segment ID?
+
+To get your Snapchat segment ID, follow the steps below:
+
+1. Log into your [Snapchat Ads Manager dashboard](ads.snapchat.com).
+2. Go to **Assets** > **Audiences**.
+3. Under **Audience Library**, select the required audience.
+4. Copy the ID after `/audiences/custom-audience/` in the URL of the resulting page. This is your segment ID. 
+
+<img src="../../assets/event-stream-destinations/snapchat-segment-id.png" alt="Snapchat segment ID"/>
+
+For example, consider the following URL:
+
+```
+https://ads.snapchat.com/cc9c3e81-8a7e-44c0-/audiences/custom-audience/1234567890123456/
+```
+
+In the above case, `1234567890123456` is the segment ID.
 
 ### How do I create a Customer List Audience in Snapchat?
 
