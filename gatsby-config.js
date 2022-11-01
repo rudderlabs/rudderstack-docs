@@ -74,8 +74,7 @@ module.exports = {
               delayLoad: true,
               delayLoadTime: 1000,
               useNewSDK: true,
-              sdkURL:
-                'https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js',
+              sdkURL: 'https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js',
               dataPlaneUrl: `https://rudderstack-dataplane.rudderstack.com`,
             },
           },
@@ -146,7 +145,11 @@ module.exports = {
           }
         `,
         resolvePages: ({ allMdx: { nodes: allMdxPages } }) => {
-          return allMdxPages.map(page => ({ path: `/${page.slug}` }))
+          return allMdxPages.map(page => {
+            let path = `/${page.slug}`
+            if (!path.endsWith('/')) path += '/'
+            return { path }
+          })
         },
         serialize: ({ path }) => ({
           url: path,
