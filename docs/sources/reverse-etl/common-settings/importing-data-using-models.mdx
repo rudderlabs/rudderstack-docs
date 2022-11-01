@@ -6,49 +6,52 @@ description: Detailed technical description on importing data using RudderStackâ
 RudderStack's **Models** feature lets you define and run custom SQL queries on your warehouse data and send the results to your specified destinations.
 
 <div class="infoBlock">
-
 You can create a model in the RudderStack dashboard and use it while connecting a Reverse ETL source to a destination. For detailed steps on how to create a model, refer to the <Link to="/sources/reverse-etl/features/models/">Models</Link> guide.
 </div>
 
 <div class="infoBlock">
-  
-  This guide is applicable for Reverse ETL sources configured using the <strong>Model</strong> option. If you have configured your Reverse ETL source using the <strong>Table</strong> option, refer to the <Link to="/sources/reverse-etl/common-settings/importing-data-using-tables/">Importing Data using Tables</Link> guide.
+This guide is applicable for Reverse ETL sources configured using the <strong>Model</strong> option. If you have configured your Reverse ETL source using the <strong>Table</strong> option, refer to the <Link to="/sources/reverse-etl/common-settings/importing-data-using-tables/">Importing Data using Tables</Link> guide.
 </div>
+
+## Data import settings
 
 The settings to import and sync data from your model are listed below:
 
-1. Select the required model from the dropdown list.
-
 <img src="../../../assets/warehouse-actions-sources/models-name-enter.png" />
+<img src="../../../assets/warehouse-actions-sources/data-import-settings-3.png" alt="Data import settings in RudderStack" />
+
+- **Model**: Select the required model from the dropdown. 
 
 <div class="infoBlock">
-  
 The dropdown will only display the list of models corresponding to the Reverse ETL source you have configured. For example, only the BigQuery models will be listed for a BigQuery warehouse source.
 </div>
 
-2. Select the **Sync mode** that RudderStack will use to sync your data.
+- **Sync mode**: Select the sync mode that RudderStack uses to sync your data.
 
 <div class="infoBlock">
-
 RudderStack supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <Link to="/sources/reverse-etl/common-settings/sync-modes/">Sync Modes</Link> guide.
-</div>   
+</div>
 
-3. Select least one user identifier (**user_id/anonymous_id**) from the dropdown list.
+- **Primary Key**: Select a column from the table specified above to uniquely identify your records in the warehouse.
 
-<img src="../../../assets/warehouse-actions-sources/models-settings-configure.png" />
+<div class="infoBlock">
+RudderStack uses this column for diffing in the case of incremental syncs.
+</div>
+
+- **Event Type**: Choose the type of event you want to send to the downstream destinations. RudderStack supports sending the `identify` or `track` event types. If you choose `track`, you also neeed to enter:
+    - **Event Name**: Enter the event name which must be sent to the downstream destinations. You can also choose to pick the event name through a table column by enabling the **lookup event name by column** setting and specifying the column name in the **Event Name** field.
+
+- **Choose user identifier**: Choose **atleast** one user identifier from `user_id` and `anonymous_id` from the dropdown. 
 
 You can also preview the data snippet which RudderStack will send to the destination. All the resulting columns from running the model's query are selected by default. However, you can choose to retain specific columns by searching and selecting them. You can then preview the resulting JSON on the right, as shown:
 
 <img src="../../../assets/warehouse-actions-sources/models-data-snippet.png" />
 
 <div class="infoBlock">
-  
 Alternatively, you can map the columns using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> feature. However, note that this feature is currently supported only for selective destinations.
-  
 </div>
 
 <div class="infoBlock">
-  
 The JSON payload carries the <code class="inline-code">user_id</code> and <code class="inline-code">anonymous_id</code> from the columns selected in the <strong>Choose user identifier</strong> section. Moreover, the traits are used from the columns selected in the <strong>Column</strong> section.
 </div>
 

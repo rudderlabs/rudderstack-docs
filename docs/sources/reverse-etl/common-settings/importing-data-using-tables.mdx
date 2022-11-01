@@ -20,6 +20,7 @@ This guide lists the JSON mapping settings required to import and sync data from
 The settings to import and sync data from your warehouse table are as shown:
 
 <img src="../../../assets/warehouse-actions-sources/data-import-settings-2.png" alt="Data import settings in RudderStack" />
+<img src="../../../assets/warehouse-actions-sources/data-import-settings-3.png" alt="Data import settings in RudderStack" />
 
 - **Schema**: Specify your warehouse schema.
 - **Table**: Specify the table residing in the above schema from which you want RudderStack to import the data.
@@ -34,6 +35,9 @@ RudderStack supports two modes for syncing your data - <strong>Upsert</strong> a
 <div class="infoBlock">
 RudderStack uses this column for diffing in the case of incremental syncs.
 </div>
+
+- **Event Type**: Choose the type of event you want to send to the downstream destinations. RudderStack supports sending the `identify` or `track` event types. If you choose `track`, you also neeed to enter:
+    - **Event Name**: Enter the event name which must be sent to the downstream destinations. You can also choose to pick the event name through a table column by enabling the **lookup event name by column** setting and specifying the column name in the **Event Name** field.
 
 - **Choose user identifier**: Choose **atleast** one user identifier from `user_id` and `anonymous_id` from the dropdown. 
 
