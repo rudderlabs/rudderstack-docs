@@ -30,15 +30,18 @@ Once you have confirmed that the source platform supports sending events to Snap
 To successfully set up Snapchat Custom Audience as a destination, you need to configure the following settings:
 
 - **Connect with Snapchat Custom Audience**: Click this button to give RudderStack access to your Snapchat account.
-- **Account ID**: Enter your Snapchat account ID. For more information on getting your account ID, refer to the <a href="https://businesshelp.snapchat.com/s/article/biz-acct-id?language=en_US">Snapchat support page</a>.
-- **Audience ID**: Enter your Snapchat segment ID. For more information on getting your segment ID, refer to the <Link to="#faq">FAQ</Link> section below.
-- **Schema**: Select the schema (`EMAIL_SHA256`, `MOBILE_AD_ID_SHA256`, or `PHONE_SHA256`) from the dropdown.
+- **Segment ID**: Enter your Snapchat segment ID. For more information on getting your segment ID, refer to the <Link to="#faq">FAQ</Link> section below.
+- **Schema**: Select the schema (**EMAIL**, **MOBILE AD ID**, or **PHONE**) from the dropdown.
 
 <div class="warningBlock">
-The corresponding field (<code class="inline-code">email</code>, <code class="inline-code">mobileAdId</code>/<code class="inline-code">mobile_id</code>, or <code class="inline-code">mobile</code> must be present in your events. Otherwise, RudderStack will not send the events to Snapchat Custom Audience.)
+The corresponding field (<code class="inline-code">email</code>, <code class="inline-code">phone</code>, or <code class="inline-code">mobileAdId</code>/<code class="inline-code">mobile_id</code>) must be present in your events. Otherwise, RudderStack will not send the events to Snapchat Custom Audience.
 </div>
 
-- **Disable hashing**:  By default, RudderStack hashes the `email`, `phone`, and `mobileId` in the SHA-256 format. If enabled, RudderStack will **not** perform the hashing.
+- **Disable hashing**:  By default, RudderStack hashes the `email`, `phone`, and `mobileAdId` in the SHA-256 format. If enabled, RudderStack will **not** perform the hashing.
+
+<div class="warningBlock">
+If you enable this setting, make sure you <a href="https://marketingapi.snapchat.com/docs/#normalizing-hashing">normalize and SHA-256 hash your identifiers</a> before sending the data to RudderStack.
+</div>
 
 ## `audienceList` event structure
 
@@ -113,18 +116,32 @@ The following table details the mapping of the schema fields (as specified in th
  RudderStack schema field | Snapchat Custom Audience field |
 | :-----| :--------|
 | `properties.listData.add.email` | `users.data.[sha256(email)]` |
-| `properties.listData.add.phone` <br/> `properties.listData.add.mobile` | `users.data.[sha256(phone)]` |
-| `properties.listData.add.mobileId` <br/> `properties.listData.add.mobileAdId` <br/> `properties.listData.add.mobile_id` | `users.data.[sha256(mobileId)]` |
+| `properties.listData.add.phone` <br/> `properties.listData.add.mobile` | `users.data.[sha256(phone | mobile)]` |
+| `properties.listData.add.mobileId` <br/> `properties.listData.add.mobileAdId` <br/> `properties.listData.add.mobile_id` | `users.data.[sha256(mobileId | mobileAdId | mobile_id)]` |
 
 <div class="warningBlock">
 <code class="inline-code">email</code>, <code class="inline-code">mobileAdId</code>/<code class="inline-code">mobile_id</code>, or <code class="inline-code">mobile</code> must be present in your events depending on the <strong>Schema</strong> setting configured in the RudderStack dashboard. Otherwise, RudderStack will not send the events to Snapchat Custom Audience.
 </div>
 
+### Normalizing and hashing identifiers
+
+RudderStack normalizes the raw identifiers before SHA-256 hashing and sending them to Snapchat Custom Audience.
+
+<div class="infoBlock">
+RudderStack groups the identifiers in batches with a maximum of 100000 identifiers per request, as prescribed by Snapchat. For more information, refer to the <a href="https://marketingapi.snapchat.com/docs/#adding-users">Snapchat Marketing API</a>.
+</div>
+
+RudderStack adheres to the following <a href="https://marketingapi.snapchat.com/docs/#normalizing-hashing">normalization rules</a> prescribed by Snapchat:
+
+- Normalizes email by trimming any leading and trailing whitespaces and converting all characters to lowercase before hashing.
+- Normalizes the mobile advertiser ID by converting it into the lower case. RudderStack does not remove any hyphens.
+- Normalizes the phone numbers by including the country code and removing any double 0 in front of the country code. RudderStack also excludes any non-numeric characters like whitespaces, parentheses, `+`, or `-`.
+
 ## FAQ
 
-### Where can I find my Snapchat segment ID?
+### Where can I find my Snapchat Segment ID?
 
-To get your Snapchat segment ID, follow the steps below:
+To get your Snapchat Segment ID, follow the steps below:
 
 1. Log into your [Snapchat Ads Manager dashboard](ads.snapchat.com).
 2. Go to **Assets** > **Audiences**.
