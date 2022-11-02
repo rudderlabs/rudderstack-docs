@@ -1,0 +1,31 @@
+---
+title: "Sending event data"
+description: >-
+ Detailed technical description on sending the identify and track calls from Reverse ETL sources
+---
+
+RudderStack supports sending event data from Reverse ETL sources to the downstream destinations using the <Link to="/event-spec/standard-events/identify/">`identify`</Link> and <Link to="/event-spec/standard-events/track/">`track`</Link> calls. These calls can be used while importing data from a table or model using the JSON builder.
+
+<div class="warningBlock">
+<code class="inline-code">track</code> call is only supported while mapping your warehouse columns using the JSON builder and not the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link>.
+</div>
+
+## Usage of `track` call
+
+You can simulate events from your warehouse into the downstream destinations using the `track` call. Some examples for the same are listed below:
+
+- You can send `track` calls to various engagement platforms such as Braze, Iterable, CustomerIO, or Salesforce Marketing Cloud to trigger behavior or populate user actions.
+- If you have a fact table that is a source of truth for user behavior, you can easily replay it into the downstream tools such as StatSig, Optimizely, etc. 
+- You can generate and send `track` events from the warehouse for the downstream systems (like Kafka or Kinesis) that are configured to handle `track` calls.
+
+## Benefits of using `track` call
+
+- **Ensures that your events are reliable**: It might be possible that some of your critical events (such as purchases) are blocked by things outside your control, such as adblock. In such cases, if you have all your users' activity in your database, you can send this to the downstream systems as a guaranteed source of truth.
+- **Simulate historical tracking of events**: You can replay the historical data from other data sources to your sales, support, and marketing systems to maintain business continuity.
+- **Fix bad data and replay it**: It might be possible that there is bad data in your destinations owing to a bug in the tracking code. In such cases, you can clear the bad data and replay a clean version by using the `track` call.
+- **Test your integrations and transformations**: You can simulate events using `track` calls to test your integrations and transformations. You can test a stream of events for your new versions of transformations or new integrations with a sample dataset.
+
+## Steps to send event data
+
+1. Configure yiour Reverse ETL source using the source specific settings.
+2. Connect the source to the required downstream destination and configure the settings mentioned in the <Link to="/sources/reverse-etl/common-settings/importing-data-using-tables/">Importing Data using Tables</Link> or <Link to="/sources/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</Link> guide based on your choice to import data.
