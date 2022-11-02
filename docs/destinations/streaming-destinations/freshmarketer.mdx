@@ -193,6 +193,12 @@ The following table lists the property mappings betweeen RudderStack and Freshma
 
 The <Link to="/event-spec/standard-events/group/">`group`</Link> call lets you link an identified Freshmarketer contact with a company, organization, or an account. You can also record any custom group traits like the company name, number of employees, etc.
 
+<div class="infoBlock">
+<code class="inline-code">groupType</code> is a required field and its value can be <code class="inline-code">accounts</code> or <code class="inline-code">marketing_lists</code>.
+</div>
+
+### Accounts
+
 RudderStack uses the [Upsert an Account](https://developers.freshworks.com/crm/api/#upsert_an_account) API to create or update a sales account via the following parameters:
 
 | Attribute | Type | Description |
@@ -212,6 +218,7 @@ A sample `group` call is shown below:
 ```javascript
 rudderanalytics.group(
   "group01", {
+    groupType: "accounts",
     name: "Alex Keener",
     phone: "1234567890",
     numberOfEmployees: 51,
@@ -261,10 +268,6 @@ The following table lists the mappings between the RudderStack and Freshmarketer
 Marketing lists help you group contacts into lists which you can quickly invoke for marketing campaigns and bulk emailing.
 
 RudderStack lets you add one or more contacts to the specified marketing list. To do so, you need to provide the contact's `email` and `listId`/`listName`. Also, RudderStack creates a new marketing list if the `listName` (case-sensitive) does not exist already.
-
-<div class="infoBlock">
-<code class="inline-code">groupType</code> is a required field and its value can be <code class="inline-code">accounts</code> or <code class="inline-code">marketing_lists</code>.
-</div>
 
 A sample `group` call to add a contact to a marketing list is shown below:
 
