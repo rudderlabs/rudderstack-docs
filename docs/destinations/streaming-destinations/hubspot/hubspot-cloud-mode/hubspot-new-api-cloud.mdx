@@ -24,19 +24,22 @@ rudderanalytics.identify({
 })
 ```
 
-The lookup field passed in the **HubSpot property name to be used as lookup field** dashboard setting must also be passed in the `traits` object of the `identify` call. For example, if you have passed `sampleField` in the dashboard, you must pass it and its corresponding value in the `identify` call, as shown:
+The lookup field passed in the **Hubspot property name to be used as lookup field *** dashboard setting must also be passed in the `traits` object of the `identify` call containing the lookup value.
+
+A sample snippet is shown below:
 
 ```javascript
 rudderanalytics.identify({
-  firstName: "Alex",
-  sampleField: "phone",
-  phone: "+1-202-555-0146"
+  name: "Alex Keener",
+  phone: "+1-202-555-0146",
+  traits: {
+    "lookupField": "alex@example.com",
+  },
 })
 ```
-If you choose to use the lookup field (`sampleField` in the above example), you can change the lookup value (`phone` in the above example) anytime just by passing the new value in the `identify` call without editing your dashboard setting.
 
 <div class="infoBlock">
-If you pass a lookup field in the dashboard setting but not under the <code class="inline-code">identify</code> call's <code class="inline-code">traits</code>, RudderStack  will take <code class="inline-code">email</code> as the default lookup field.
+If you pass a lookup field in the dashboard setting but not under the <code class="inline-code">identify</code> call's <code class="inline-code">traits</code>, RudderStack will take <code class="inline-code">email</code> as the default lookup field.
 </div>
 
 ## Track
