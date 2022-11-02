@@ -1,0 +1,28 @@
+---
+title: "Notifications"
+description: Detailed description of the notifications options in RudderStack.
+---
+
+- Users will be able to “subscribe” to data delivery alerts for sources, cloud destinations, and warehouse destinations that are relevant to them
+- For a user to be able to subscribe to a resource, an admin will first need to enable notifications for that particular resource
+
+
+
+
+
+| Error Type        | Error description                                     | Customer actions                                                                                                                                  |
+|-------------------|-------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| Datatype Mismatch | Message Type is not present. Aborting message.        | `event.type` is missing from the payload. Please make sure to include the message type.                                                             |
+| Datatype Mismatch | Event name is required                                | `event.event` is missing fromt the payload. Please include a valid event name.                                                                      |
+| Datatype Mismatch | Unable to process without `anonymousId` or `userId`     | Please make sure to include all the required fields in the payload for successful delivery of the event.                                        |
+| Datatype Mismatch | Missing required value from `<source key>`              | Please make sure to include any/all of the required fields from the list for successful delivery of the event.                                    |
+| Datatype Mismatch | event is required for track call                      | `event.event` is missing fromt the payload. Please make sure to include a valid event name.                                                         |
+| Delivery error    | Message format type not supported                     | Destination does not support this message type. Please ensure that only the supported event type is passed.                              |
+| Delivery error    | Invalid payload for the destination                   | The inputted JSON payload does not match the expected request body.                                                                               |
+| Delivery error    | Event is not configured in your RudderStack dashboard | Please make sure to either filter out the event through a user transformation or add a new event in the Ruddertack dashboard.                      |
+| Delivery error    | Inavalid API Key. Aborting message.                   | Please ensure a valid API key has been added to the RudderStack dashboard.                                                                        |
+| Delivery error    | Invalid Account Id. Aborting message.                 | Please ensure a valid Account ID key has been added to the RudderStack dashboard.                                                                 |
+| Delivery error    | `userId` or `email` is mandatory for this request         | Please make sure to include userId/email in the payload for successful delivery of the event.                                                  |
+| Delivery error    | Event timestamp should be within last `<timeline>`      | The event needs to be within the last `<timeline>` for successful delivery of the event. Any event older than `<timeline>` would result in failures.  |
+
+

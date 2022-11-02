@@ -96,6 +96,11 @@ export const jsonData = [
     content: []
 },
 {
+    title: "Notifications",
+    link: "/dashboard-guides/notifications/",
+    content: []
+},
+{
     title: "Audit Logs",
     link: "/dashboard-guides/audit-logs/",
     content: []
