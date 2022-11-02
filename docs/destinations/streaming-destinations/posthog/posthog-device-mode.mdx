@@ -109,7 +109,11 @@ rudderanalytics.group("group01", {
 ```
 
 <div class="infoBlock">
-If you pass the <code class="inline-code">name</code> in the group <code class="inline-code">traits</code>, then the group is created in PostHog with that <code class="inline-code">name</code>. Otherwise, it is created by the <code class="inline-code">groupId</code>.
+If you pass <code class="inline-code">name</code> in the group traits, then the group is created in PostHog with that <code class="inline-code">name</code>. Otherwise, it is created by the <code class="inline-code">groupId</code>.
+</div>
+
+<div class="infoBlock">
+RudderStack removes the <code class="inline-code">groupType</code> field from the traits and passes them to PostHog as the group properties.
 </div>
 
 For the `group` call, RudderStack sends `$groupidentify` as an event to PostHog according to the <a href="https://posthog.com/docs/api/post-only-endpoints#group">PostHog Group API</a>.
