@@ -173,7 +173,7 @@ To avoid exceeding the column count threshold in your warehouse, you can do the 
 - Go to your warehouse and drop the unwanted table columns.
 - If you're passing dynamic properties in the event payload, use the <Link to="/destinations/warehouse-destinations/json-column-support/">JSON Column Support</Link> feature.
 
-## Namespace and warehouse schema
+## Namespace, prefix, and warehouse schema
 
 ### How is the Namespace field populated for a warehouse destination?
 
@@ -214,6 +214,22 @@ Refer to the <Link to ="/destinations/warehouse-destinations/">warehouse-specifi
 <div class="warningBlock">
 If you do not set the <strong>Namespace</strong> field, RudderStack sets the source name as the schema name, with some modifications.
 </div>
+
+### How can I add the table prefixes if there are multiple sources connected to a single destination?
+
+You can use RudderStack's <Link to="/features/transformations/">Transformations</Link> feature to filter the events by the <Link to="/dashboard-guides/sources/#source-details">`sourceID`</Link> and then update the event name to add a prefix. 
+
+A sample transformation logic is shown below:
+
+```javascript
+export function transformEvent(event, metadata) {
+  const meta = metadata(event);
+  if (meta.sourceId === your_source_id) {
+    event.event = '<prefix>' + event.event;
+  }
+  return event;
+}
+```
 
 ### How does RudderStack configure the schema name before loading the data in the warehouse?
 
