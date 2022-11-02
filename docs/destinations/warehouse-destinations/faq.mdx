@@ -205,15 +205,19 @@ Refer to the <Link to ="/destinations/warehouse-destinations/">warehouse-specifi
 If you do not set the <strong>Namespace</strong> field, RudderStack sets the source name as the schema name, with some modifications.
 </div>
 
-### How can I add the table prefixes if there are multiple sources connected to the same destination?
+### How can I add the table prefixes if there are multiple sources connected to a single destination?
 
 You can use RudderStack's <Link to="/features/transformations/">Transformations</Link> feature to filter the events by the <Link to="/dashboard-guides/sources/#source-details">`sourceID`</Link> and then update the event name to add a prefix. 
 
 A sample transformation logic is shown below:
 
 ```javascript
-if (SOURCE_ID == '<your_source_ID>') {
-  event.event = '<some_prefix>' + event.event;
+export function transformEvent(event, metadata) {
+  const meta = metadata(event);
+  if (meta.sourceId === your_source_id) {
+    event.event = '<prefix>' + event.event;
+  }
+  return event;
 }
 ```
 
