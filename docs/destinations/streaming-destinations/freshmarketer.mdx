@@ -44,7 +44,7 @@ For more information on obtaining your Freshmarketer API key, refer to the <Link
 For more information on your organization URL and how to change it, refer to this <a href="https://support.freshworks.com/en/support/solutions/articles/50000002731-what-is-and-how-can-i-change-my-organization-url-">Freshmarketer support guide</a>.
 </div>
 
-- **Map your events with Freshmarketer Standard Events**: Use this setting to map the standard Freshmarketer events with custom event names.
+- **Map your events with Freshmarketer Standard Events**: Use this setting to map the standard Freshmarketer events with the custom event names.
 
 ## Identify
 
@@ -111,7 +111,7 @@ The following table lists the mappings between the RudderStack and Freshmarketer
 
 ## Track
   
-The <Link to="/event-spec/standard-events/track/">`track`</Link> call can be used to track the user activities in Freshmarketer.
+You can use the RudderStack <Link to="/event-spec/standard-events/track/">`track`</Link> call to track the user activities in Freshmarketer.
 
 <div class="infoBlock">
 <code class="inline-code">event</code> is a required field for making a <code class="inline-code">track</code> call.
@@ -211,7 +211,7 @@ RudderStack uses the [Upsert an Account](https://developers.freshworks.com/crm/a
 
 <div class="infoBlock">
 <ul>
-<li>If <code class="inline-code">name</code> already exists, the Freshmarketer account details are updated. Otherwise, a new account is created.</li>
+<li>If <code class="inline-code">name</code> already exists, RudderStack updates the Freshmarketer account details. Otherwise, it creates a new account in Freshmarketer.</li>
 <li>RudderStack also checks if the contact's <code class="inline-code">email</code> is present in the <code class="inline-code">context.traits</code> object. If yes, RudderStack links the contact to the Freshmarketer account.</li>
 </ul>
 </div>
@@ -270,7 +270,7 @@ The following table lists the mappings between the RudderStack and Freshmarketer
 
 [Marketing lists](https://developers.freshworks.com/crm/api/#marketing-lists) help you group contacts into lists which you can quickly invoke for marketing campaigns and bulk emailing.
 
-RudderStack lets you add one or more contacts to the specified marketing list. To do so, you need to provide the contact's `email` and `listId`/`listName`. Also, RudderStack creates a new marketing list if the `listName` (case-sensitive) does not exist already.
+RudderStack lets you add one or more contacts to a specified marketing list. To do so, you need to provide the contact's `email` and `listId`/`listName`. Also, RudderStack creates a new marketing list if the `listName` (case-sensitive) does not exist already.
 
 A sample `group` call to add a contact to a marketing list is shown below:
 
