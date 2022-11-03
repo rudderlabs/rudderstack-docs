@@ -1,22 +1,22 @@
 ---
-title: "Sending event data"
+title: "Syncing Events"
 description: >-
  Detailed technical description on sending the identify and track calls from Reverse ETL sources
 ---
 
-RudderStack supports sending event data from Reverse ETL sources to the downstream destinations using the <Link to="/event-spec/standard-events/identify/">`identify`</Link> and <Link to="/event-spec/standard-events/track/">`track`</Link> calls. These calls can be used while importing data from a table or model using the JSON builder.
+RudderStack supports syncing event data from Reverse ETL sources to the downstream destinations using the <Link to="/event-spec/standard-events/identify/">`identify`</Link> and <Link to="/event-spec/standard-events/track/">`track`</Link> calls.
 
 <div class="warningBlock">
-<code class="inline-code">track</code> call is only supported while mapping your warehouse columns using the JSON builder and not the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link>.
+<code class="inline-code">track</code> call can be used only while mapping your warehouse columns using the JSON builder and not the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link>.
 </div>
 
 ## Usage of `track` call
 
-You can simulate events from your warehouse into the downstream destinations using the `track` call. Some examples for the same are listed below:
+Some examples where you can use the `track` call to simulate events from your warehouse into the downstream destinations are listed below:
 
-- You can send `track` calls to various engagement platforms such as Braze, Iterable, CustomerIO, or Salesforce Marketing Cloud to trigger behavior or populate user actions.
+- Sending event data to various engagement platforms such as Braze, Iterable, CustomerIO, or Salesforce Marketing Cloud to trigger behavior or populate user actions.
 - If you have a fact table that is a source of truth for user behavior, you can easily replay it into the downstream tools such as StatSig, Optimizely, etc. 
-- You can generate and send `track` events from the warehouse for the downstream systems (like Kafka or Kinesis) that are configured to handle `track` calls.
+- Sending event data to the downstream systems that are configured to handle `track` calls like Kafka or Kinesis.
 
 ## Benefits of using `track` call
 
@@ -29,3 +29,10 @@ You can simulate events from your warehouse into the downstream destinations usi
 
 1. Configure yiour Reverse ETL source using the source specific settings.
 2. Connect the source to the required downstream destination and configure the settings mentioned in the <Link to="/sources/reverse-etl/common-settings/importing-data-using-tables/">Importing Data using Tables</Link> or <Link to="/sources/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</Link> guide based on your choice to import data.
+
+
+These calls can be used while importing data from a table or model using the JSON builder.
+
+<img src="../../../assets/warehouse-actions-sources/event-type.png" alt="RudderStack Models" />
+
+
