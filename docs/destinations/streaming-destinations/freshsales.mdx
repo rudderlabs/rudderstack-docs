@@ -170,16 +170,16 @@ The following table lists the property mappings betweeen RudderStack and Freshsa
 
 | RudderStack property          | Freshsales property|
 | :-------------------- | :---------------------- |
-| `properties.salesActivityName` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `sales_activity_name` |
-| `properties.title` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `title`            |
-| `properties.salesActivityTypeId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `sales_activity_type_id`             | 
-| `salesActivityOutcomeId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `sales_activity_outcome_id`              |
+| `properties.title` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `title` |
+| `properties.salesActivityName` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if properties.salesActivityTypeId is absent.</span>| `sales_activity_name` |
+| `properties.salesActivityTypeId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if properties.salesActivityName is absent.</span> |`sales_activity_type_id` | 
 | `properties.startDate` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `start_date`        |
 | `properties.endDate`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `end_date`      | 
+| `context.externalId.type` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `targetable_type` |
+| `properties.ownerId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `owner_id`| 
+| `salesActivityOutcomeId`  | `sales_activity_outcome_id`  |
 | `properties.notes`    | `notes`      |
-| `properties.ownerId` | `owner_id`| 
 | `context.externalId.id`     | `targetable_id`           |
-| `context.externalId.type`       | `targetable_type`             |
 | `properties.createrId`    | `creater_id`              |
 | `originalTimestamp`  | `created_at`                |
 | `timestamp`   | `updated_at`      |
@@ -187,6 +187,10 @@ The following table lists the property mappings betweeen RudderStack and Freshsa
 | `latitude`<br/>`context.address.latitude`<br/> `context.location.latitude`   | `latitude`      |
 | `longitude`<br/>`context.address.longitude`<br/>`context.location.longitude`   | `longitude`      | 
 |`properties.checkedinAt`|`checkedin_at`|
+
+<div class="infoBlock">
+The <code class="inline-code">targetable_type</code> field denotes the entity for which the sales activity has been created and can take <code class="inline-code">Contact</code>/<code class="inline-code">SalesAccount</code>/<code class="inline-code">Deal</code> as its value. However, if its value is set to <code class="inline-code">contact</code>, then either the <code class="inline-code">targetable_id</code> or <code class="inline-code">email</code> is required.
+</div>
 
 ## Group
 
