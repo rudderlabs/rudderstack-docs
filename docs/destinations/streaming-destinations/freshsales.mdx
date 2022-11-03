@@ -76,39 +76,38 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 
 The following table lists the mappings between the RudderStack and Freshsales properties:
 
-| RudderStack property | Freshsales property | Presence |
-| :--------------| :---------| :--------------|
-| `traits.email`, `context.traits.email` | `emails` | Required |
-| `userId` | `id` | Optional |
-| `traits.firstname`, `traits.first_name`, `traits.firstName`,<br />`context.traits.firstname`, `context.traits.first_name`, `context.traits.firstName` | `first_name` | Optional |
-| `traits.lastname`, `traits.last_name`, `traits.lastName`,<br />`context.traits.lastname`, `context.traits.last_name`, `context.traits.lastName` | `last_name` | Optional |
-| `traits.subscriptionStatus`, `context.traits.subscriptionStatus` | `subscription_status` | Optional |
-| `traits.job_title`, `traits.jobTitle`, `context.traits.job_title`, `context.traits.jobTitle` | `job_title` | Optional |
-| `traits.phone`, `context.traits.phone` | `work_number` | Optional |
-| `externalId` | `external_id` | Optional |
-| `traits.mobileNumber`, `context.traits.mobileNumber` | `mobile_number` | Optional |
-| `traits.address`, `context.traits.address` | `address` | Optional |
-| `traits.address.city`, `traits.city`, `context.traits.address.city`, `context.traits.city` | `city` | Optional |
-| `traits.address.state`, `traits.state`, `context.traits.address.state`, `context.traits.state` | `state` | Optional |
-| `traits.address.postalcode`, `traits.zip`, `traits.zipcode`, `context.traits.zip`, `context.traits.zipcode`, `context.traits.address.postalcode` | `zipcode` | Optional |
-| `traits.address.country`, `traits.country`, `context.traits.address.country`, `context.traits.country` | `country` | Optional |
-| `traits.salesAccounts`, `context.traits.salesAccounts` | `sales_accounts` | Optional |
-| `traits.territoryId`, `context.traits.territoryId` | `territory_id` | Optional |
-| `traits.LeadSourceId`, `context.traits.LeadSourceId` | `lead_source_id` | Optional |
-| `traits.ownerId`, `context.traits.ownerId` | `owner_id` | Optional |
-| `traits.subscriptionTypes`, `context.traits.subscriptionTypes` | `subscription_types` | Optional |
-| `traits.medium`, `context.traits.medium` | `medium` | Optional |
-| `traits.campaignId`, `traits.campaign_id`, `context.traits.campaignId`, `context.traits.campaign_id`, `context.campaign.name` | `campaign_id` | Optional |
-| `traits.keyword`, `context.traits.keyword`, `context.campaign.term`  | `keyword` | Optional |
-| `traits.timeZone`, `context.traits.timeZone` | `time_zone` | Optional |
-| `traits.facebookUserName`, `context.traits.facebookUserName` | `facebook` | Optional |
-| `traits.twitterUserName`, `context.traits.twitterUserName` | `twitter` | Optional |
-| `traits.linkedinUserName`, `context.traits.linkedinUserName` | `linkedin` | Optional |
-| `createdAt` | `created_at` | Optional |
-| `timestamp` | `updated_at` | Optional |
-| `traits.contactStatusId`, `context.traits.contactStatusId` | `contact_status_id` | Optional |
-| `traits.salesAccountId`, `context.traits.salesAccountId` | `sales_account_id` | Optional |
-| `traits.lifecycleStageId`, `context.traits.lifecycleStageId` | `lifecycle_stage_id` | Optional |
+| RudderStack property | Freshmarketer property | 
+| :--------------| :---------| 
+| `traits.email`<br/> `context.traits.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `emails` | 
+| `traits.firstname`<br/> `traits.first_name`<br/> `traits.firstName`<br />`context.traits.firstname`<br/> `context.traits.first_name`<br/> `context.traits.firstName` | `first_name` | 
+| `traits.lastname`<br/> `traits.last_name`<br/> `traits.lastName`<br />`context.traits.lastname`<br/> `context.traits.last_name`<br/> `context.traits.lastName` | `last_name` | 
+| `traits.subscriptionStatus`<br/> `context.traits.subscriptionStatus` | `subscription_status` | 
+| `traits.job_title`<br/> `traits.jobTitle`<br/> `context.traits.job_title`<br/> `context.traits.jobTitle` | `job_title` | 
+| `traits.phone`<br/> `context.traits.phone` | `work_number` | 
+| `userId` | `external_id` | 
+| `traits.mobileNumber`<br/> `context.traits.mobileNumber` | `mobile_number` | 
+| `traits.address`<br/> `context.traits.address` | `address` | 
+| `traits.address.city`<br/> `traits.city`<br/> `context.traits.address.city`<br/> `context.traits.city` | `city` | 
+| `traits.address.state`<br/> `traits.state`<br/> `context.traits.address.state`<br/> `context.traits.state` | `state` | 
+| `traits.address.postalCode`<br/> `traits.zip`<br/> `traits.zipcode`<br/> `context.traits.zip`<br/> `context.traits.zipcode`<br/> `context.traits.address.postalCode` | `zipcode` | 
+| `traits.address.country`<br/> `traits.country`<br/> `context.traits.address.country`<br/> `context.traits.country` | `country` | 
+| `traits.salesAccounts`<br/> `context.traits.salesAccounts` | `sales_accounts` | 
+| `traits.territoryId`<br/> `context.traits.territoryId` | `territory_id` | 
+| `traits.leadSourceId`<br/> `context.traits.leadSourceId` | `lead_source_id` | 
+| `traits.ownerId`<br/> `context.traits.ownerId` | `owner_id` | 
+| `traits.subscriptionTypes`<br/> `context.traits.subscriptionTypes` | `subscription_types` | 
+| `traits.medium`<br/> `context.traits.medium` | `medium` | 
+| `traits.campaignId`<br/> `traits.campaign_id`<br/> `context.traits.campaignId`<br/> `context.traits.campaign_id`<br/> `context.campaign.name` | `campaign_id` | 
+| `traits.keyword`<br/> `context.traits.keyword`<br/> `context.campaign.term` | `keyword` | 
+| `traits.timeZone`<br/> `context.traits.timeZone` | `time_zone` | 
+| `traits.facebookUserName`<br/> `context.traits.facebookUserName` | `facebook` | 
+| `traits.twitterUserName`<br/> `context.traits.twitterUserName` | `twitter` | 
+| `traits.linkedinUserName`<br/> `context.traits.linkedinUserName` | `linkedin` | 
+| `createdAt` | `created_at` | 
+| `timestamp` | `updated_at` | 
+| `traits.contactStatusId`<br/> `context.traits.contactStatusId` | `contact_status_id` | 
+| `traits.salesAccountId`<br/> `context.traits.salesAccountId` | `sales_account_id` | 
+| `traits.lifecycleStageId`<br/> `context.traits.lifecycleStageId` | `lifecycle_stage_id` | 
 
 ## Track
   
@@ -180,7 +179,7 @@ The following table lists the property mappings betweeen RudderStack and Freshsa
 | `properties.notes`    | `notes`      |
 | `properties.ownerId` | `owner_id`| 
 | `context.externalId.id`     | `targetable_id`           |
-| `properties.products`       | `targetable_type`             |
+| `context.externalId.type`       | `targetable_type`             |
 | `properties.createrId`    | `creater_id`              |
 | `originalTimestamp`  | `created_at`                |
 | `timestamp`   | `updated_at`      |
@@ -193,7 +192,7 @@ The following table lists the property mappings betweeen RudderStack and Freshsa
 
 The <Link to="/event-spec/standard-events/group/">`group`</Link> call lets you link an identified Freshsales contact with a company, organization, or an account. You can also record any custom group traits like the company name, number of employees, etc.
 
-RudderStack uses the [Upsert an Account](https://developers.freshworks.com/crm/api/#upsert_an_account) API to create or update a sales account via the following parameters:
+RudderStack uses the [Upsert an Account](https://developers.freshworks.com/crm/api/#upsert_an_account) API to create or update a [sales account](https://developers.freshworks.com/crm/api/#accounts) via the following parameters:
 
 | Attribute | Type | Description |
 | :------| :-----| :-----|
@@ -234,28 +233,28 @@ rudderanalytics.group(
 
 The following table lists the mappings between the RudderStack and Freshsales properties:
 
-| RudderStack property | Freshsales property | Presence |
-| :--------------| :---------| :--------------|
-| `name` | `name` | Required |
-| `traits.industryTypeId`, `context.traits.industryTypeId` | `industry_type_id` | Optional |
-| `traits.businessTypeId`, `context.traits.businessTypeId`, `traits.business_type_id`, `context.traits.business_type_id` | `business_type_id` | Optional |
-| `phone` | `phone` | Optional |
-| `traits.numberOfEmployees`, `context.traits.numberOfEmployees` | `number_of_employees` | Optional |
-| `traits.annualRevenue`, `context.traits.annualRevenue` | `annual_revenue` | Optional |
-| `traits.address`, `context.traits.address` | `address` | Optional |
-| `traits.city`, `traits.address.city`, `context.traits.city`, `context.traits.address.city` | `city` | Optional |
-| `traits.state`, `traits.address.state`, `context.traits.state`, `context.traits.address.state` | `state` | Optional |
-| `traits.country`, `traits.address.country`, `context.traits.country`, `context.traits.address.country` | `country` | Optional |
-| `zipcode` | `zipcode` | Optional |
-| `traits.website`, ``context.traits.website` | `website` | Optional |
-| `traits.territoryId`, ``context.traits.territoryId` | `territory_id` | Optional |
-| `traits.parentSalesAccountid`, ``context.traits.parentSalesAccountid` | `parent_sales_account_id` | Optional |
-| `traits.ownerId`, ``context.traits.ownerId` | `ownerId` | Optional |
-| `traits.facebookUserName`, `context.traits.facebookUserName` | `facebook` | Optional |
-| `traits.twitterUserName`, `context.traits.twitterUserName` | `twitter` | Optional |
-| `traits.linkedinUserName`, `context.traits.linkedinUserName` | `linkedin` | Optional |
-| `createdAt` | `created_at` | Optional |
-| `timestamp` | `updated_at` | Optional |
+| RudderStack property | Freshsales property | 
+| :--------------| :---------| 
+| `name` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `name` |
+| `traits.industryTypeId`<br/>`context.traits.industryTypeId` | `industry_type_id` | 
+| `traits.businessTypeId`<br/>`context.traits.businessTypeId`<br/>`traits.business_type_id`<br/>`context.traits.business_type_id` | `business_type_id` | 
+| `phone` | `phone` | 
+| `traits.numberOfEmployees`<br/>`context.traits.numberOfEmployees` | `number_of_employees` | 
+| `traits.annualRevenue`<br/>`context.traits.annualRevenue` | `annual_revenue` | 
+| `traits.address`<br/>`context.traits.address` | `address` | 
+| `traits.city`<br/>`traits.address.city`<br/>`context.traits.city`<br/>`context.traits.address.city` | `city` | 
+| `traits.state`<br/>`traits.address.state`<br/>`context.traits.state`<br/>`context.traits.address.state` | `state` | 
+| `traits.country`<br/>`traits.address.country`<br/>`context.traits.country`<br/>`context.traits.address.country` | `country` | 
+| `zipcode` | `zipcode` | 
+| `traits.website`<br/>`context.traits.website` | `website` | 
+| `traits.territoryId`<br/>`context.traits.territoryId` | `territory_id` | 
+| `traits.parentSalesAccountid`<br/>`context.traits.parentSalesAccountid` | `parent_sales_account_id` | 
+| `traits.ownerId`<br/>`context.traits.ownerId` | `ownerId` | 
+| `traits.facebookUserName`<br/>`context.traits.facebookUserName` | `facebook` | 
+| `traits.twitterUserName`<br/>`context.traits.twitterUserName` | `twitter` | 
+| `traits.linkedinUserName`<br/>`context.traits.linkedinUserName` | `linkedin` | 
+| `createdAt` | `created_at` | 
+| `timestamp` | `updated_at` | 
 
 ## FAQ
 
