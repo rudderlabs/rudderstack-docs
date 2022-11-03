@@ -56,7 +56,9 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 });
 ```
 
-By default, a session is active until **30 minutes of inactivity** have elapsed since the last received event. However, you can adjust this limit using the `timeout` load option, as shown:
+By default, a session is active until **30 minutes of inactivity** have elapsed since the last received event. However, you can adjust this limit using the `timeout` load option. 
+
+The following snippet highlights the use of the `timeout` option to set a custom session timeout of 10 minutes:
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
