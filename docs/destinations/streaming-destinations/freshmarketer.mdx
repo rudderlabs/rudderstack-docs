@@ -179,7 +179,7 @@ The following table lists the property mappings betweeen RudderStack and Freshma
 | `properties.notes`    | `notes`      |
 | `properties.ownerId` | `owner_id`| 
 | `context.externalId.id`     | `targetable_id`           |
-| `properties.products`       | `targetable_type`             |
+| `context.externalId.type`       | `targetable_type`             |
 | `properties.createrId`    | `creater_id`              |
 | `originalTimestamp`  | `created_at`                |
 | `timestamp`   | `updated_at`      |
@@ -194,12 +194,12 @@ The following table lists the property mappings betweeen RudderStack and Freshma
 The <Link to="/event-spec/standard-events/group/">`group`</Link> call lets you link an identified Freshmarketer contact with a company, organization, or an account. You can also record any custom group traits like the company name, number of employees, etc.
 
 <div class="infoBlock">
-<code class="inline-code">groupType</code> is a required field and its value can be <code class="inline-code">accounts</code> or <code class="inline-code">marketing_lists</code>.
+To make a <code class="inline-code">group</code> call successfully, you must pass the <code class="inline-code">groupType</code> field with value as <code class="inline-code">accounts</code> or <code class="inline-code">marketing_lists</code>.
 </div>
 
 ### Accounts
 
-RudderStack uses the [Upsert an Account](https://developers.freshworks.com/crm/api/#upsert_an_account) API to create or update a sales account via the following parameters:
+RudderStack uses the [Upsert an Account](https://developers.freshworks.com/crm/api/#upsert_an_account) API to create or update a [sales account](https://developers.freshworks.com/crm/api/#accounts) via the following parameters:
 
 | Attribute | Type | Description |
 | :------| :-----| :-----|
@@ -208,8 +208,8 @@ RudderStack uses the [Upsert an Account](https://developers.freshworks.com/crm/a
 
 <div class="infoBlock">
 <ul>
-    <li>If <code class="inline-code">name</code> already exists, the Freshmarketer account details are updated. Otherwise, a new account is created.</li>
-    <li>RudderStack also checks if the contact's <code class="inline-code">email</code> is present in the <code class="inline-code">context.traits</code> object. If yes, RudderStack links the contact to the Freshmarketer account.</li>
+<li>If <code class="inline-code">name</code> already exists, the Freshmarketer account details are updated. Otherwise, a new account is created.</li>
+<li>RudderStack also checks if the contact's <code class="inline-code">email</code> is present in the <code class="inline-code">context.traits</code> object. If yes, RudderStack links the contact to the Freshmarketer account.</li>
 </ul>
 </div>
 
@@ -238,34 +238,34 @@ rudderanalytics.group(
 );
 ```
 
-The following table lists the mappings between the RudderStack and Freshmarketer properties:
+The following table lists the mappings between the RudderStack and Freshmarketer properties to create or update an account:
 
-| RudderStack property | Freshmarketer property | Presence |
-| :--------------| :---------| :--------------|
-| `name` | `name` | Required |
-| `traits.industryTypeId`, `context.traits.industryTypeId` | `industry_type_id` | Optional |
-| `traits.businessTypeId`, `context.traits.businessTypeId`, `traits.business_type_id`, `context.traits.business_type_id` | `business_type_id` | Optional |
-| `phone` | `phone` | Optional |
-| `traits.numberOfEmployees`, `context.traits.numberOfEmployees` | `number_of_employees` | Optional |
-| `traits.annualRevenue`, `context.traits.annualRevenue` | `annual_revenue` | Optional |
-| `traits.address`, `context.traits.address` | `address` | Optional |
-| `traits.city`, `traits.address.city`, `context.traits.city`, `context.traits.address.city` | `city` | Optional |
-| `traits.state`, `traits.address.state`, `context.traits.state`, `context.traits.address.state` | `state` | Optional |
-| `traits.country`, `traits.address.country`, `context.traits.country`, `context.traits.address.country` | `country` | Optional |
-| `zipcode` | `zipcode` | Optional |
-| `traits.website`, ``context.traits.website` | `website` | Optional |
-| `traits.territoryId`, ``context.traits.territoryId` | `territory_id` | Optional |
-| `traits.parentSalesAccountid`, ``context.traits.parentSalesAccountid` | `parent_sales_account_id` | Optional |
-| `traits.ownerId`, ``context.traits.ownerId` | `ownerId` | Optional |
-| `traits.facebookUserName`, `context.traits.facebookUserName` | `facebook` | Optional |
-| `traits.twitterUserName`, `context.traits.twitterUserName` | `twitter` | Optional |
-| `traits.linkedinUserName`, `context.traits.linkedinUserName` | `linkedin` | Optional |
-| `createdAt` | `created_at` | Optional |
-| `timestamp` | `updated_at` | Optional |
+| RudderStack property | Freshmarketer property | 
+| :--------------| :---------| 
+| `name` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `name` |
+| `traits.industryTypeId`  <br/> `context.traits.industryTypeId` | `industry_type_id` | 
+| `traits.businessTypeId` <br/> `context.traits.businessTypeId` <br/> `traits.business_type_id` <br/> `context.traits.business_type_id` | `business_type_id` |
+| `phone` | `phone` |
+| `traits.numberOfEmployees` <br/> `context.traits.numberOfEmployees` | `number_of_employees` |
+| `traits.annualRevenue` <br/> `context.traits.annualRevenue` | `annual_revenue` |
+| `traits.address` <br/> `context.traits.address` | `address` |
+| `traits.city`<br/> `traits.address.city`<br/> `context.traits.city`<br/> `context.traits.address.city` | `city` | 
+| `traits.state`<br/> `traits.address.state`<br/> `context.traits.state`<br/> `context.traits.address.state` | `state` |
+| `traits.country`<br/> `traits.address.country`<br/> `context.traits.country`<br/> `context.traits.address.country` | `country` |
+| `zipcode` | `zipcode` | 
+| `traits.website`<br/>`context.traits.website` | `website` | 
+| `traits.territoryId`<br/>`context.traits.territoryId` | `territory_id` | 
+| `traits.parentSalesAccountid`<br/>`context.traits.parentSalesAccountid` | `parent_sales_account_id` | 
+| `traits.ownerId`<br/>`context.traits.ownerId` | `ownerId` | 
+| `traits.facebookUserName`<br/> `context.traits.facebookUserName` | `facebook` | 
+| `traits.twitterUserName`<br/> `context.traits.twitterUserName` | `twitter` | 
+| `traits.linkedinUserName`<br/> `context.traits.linkedinUserName` | `linkedin` | 
+| `createdAt` | `created_at` | 
+| `timestamp` | `updated_at` | 
 
 ### Marketing lists
 
-Marketing lists help you group contacts into lists which you can quickly invoke for marketing campaigns and bulk emailing.
+[Marketing lists](https://developers.freshworks.com/crm/api/#marketing-lists) help you group contacts into lists which you can quickly invoke for marketing campaigns and bulk emailing.
 
 RudderStack lets you add one or more contacts to the specified marketing list. To do so, you need to provide the contact's `email` and `listId`/`listName`. Also, RudderStack creates a new marketing list if the `listName` (case-sensitive) does not exist already.
 
