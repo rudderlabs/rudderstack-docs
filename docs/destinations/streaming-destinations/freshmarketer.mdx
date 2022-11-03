@@ -188,6 +188,9 @@ The following table lists the property mappings betweeen RudderStack and Freshma
 | `longitude`<br/>`context.address.longitude`<br/>`context.location.longitude`   | `longitude`      | 
 |`properties.checkedinAt`|`checkedin_at`|
 
+<div class="infoBlock">
+The <code class="inline-code">targetable_type</code> field denotes the entity for which the sales activity has been created and can take <code class="inline-code">Contact</code>/<code class="inline-code">SalesAccount</code>/<code class="inline-code">Deal</code> as its value. However, if its value is set to <code class="inline-code">contact</code>, then either the <code class="inline-code">targetable_id</code> or <code class="inline-code">email</code> is required.
+</div>
 
 ## Group
 
