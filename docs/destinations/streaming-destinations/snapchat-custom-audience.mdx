@@ -122,8 +122,8 @@ RudderStack groups the identifiers in batches with a maximum of 100000 identifie
 | RudderStack schema field |  Custom Audience field | Notes |
 | :-----| :--------| :----- |
 | `properties.listData.add.email` | `users.data.[sha256(email)]` | RudderStack trims any leading and trailing whitespaces and converts all the characters into the lower case before hashing. |
-| `properties.listData.add.phone` <br/> `properties.listData.add.mobile` | `users.data.[sha256(phone/mobile)]` | RudderStack converts all the characters into the lower case. It does not remove any hyphens. |
-| `properties.listData.add.mobileId` <br/> `properties.listData.add.mobileAdId` <br/> `properties.listData.add.mobile_id` | `users.data.[sha256(mobileId/mobileAdId/mobile_id)]` | RudderStack includes the country code and removes any double 0s in front of it. It also excludes any non-numeric characters like whitespaces, parentheses, `+`, or `-`. |
+| `properties.listData.add.phone` <br/><br/> `properties.listData.add.mobile` | `users.data.[sha256(phone)]` <br/><br/> `users.data.[sha256(mobile)]` | RudderStack converts all the characters into the lower case. It does not remove any hyphens. |
+| `properties.listData.add.mobileId` <br/><br/> `properties.listData.add.mobileAdId` <br/><br/> `properties.listData.add.mobile_id` | `users.data.[sha256(mobileId)]` <br/><br/> `users.data.[sha256(mobileAdId)]` <br/><br/> `users.data.[sha256(mobile_id)]` | RudderStack includes the country code and removes any double 0s in front of it. It also excludes any non-numeric characters like whitespaces, parentheses, `+`, or `-`. |
 
 <div class="warningBlock">
 <code class="inline-code">email</code>, <code class="inline-code">mobileAdId</code>/<code class="inline-code">mobile_id</code>, or <code class="inline-code">mobile</code> must be present in your events depending on the <strong>Schema</strong> setting configured in the RudderStack dashboard. Otherwise, RudderStack will not send the events to Snapchat Custom Audience.
