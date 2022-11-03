@@ -33,15 +33,15 @@ The dropdown will only display the list of models corresponding to the Reverse E
 - **Primary Key**: Select a column from the data returned by the model (specified above) to uniquely identify your records in the warehouse.
 
 <div class="infoBlock">
-RudderStack uses the primary key column for diffing in the case of incremental syncs. You can generate it while creating the model. The best combination for primary key is the <code class="inline-code">timestamp</code> and <code class="inline-code">user_id</code>.
+RudderStack uses the primary key column for diffing in the case of incremental syncs. You can generate it while creating the model. The best combination for a primary key is the <code class="inline-code">timestamp</code> and <code class="inline-code">user_id</code>.
 </div>
 
 - **Event Type**: Select from the `identify` or `track` event type depending on how you want to send the event data to the downstream destinations. If you select `track`, you also need to provide:
-    - **Event Name**: Enter the event name which should be sent for all events sent to the downstream destinations, as shown:
+    - **Event Name**: Enter the event name which should be sent for all the events to the downstream destinations, as shown:
     
     <img src="../../../assets/warehouse-actions-sources/event-name-track.png" alt="Schema tab options in RudderStack" />
     
-     You can also send different event names by enabling the **lookup event name by column** setting and specifying the column name which should be sent as the event name in the **Event Name** field, as shown:
+     You can also send different event names by enabling the **lookup event name by column** setting and specifying the column name which should be used to set the event name in the **Event Name** field, as shown:
 
      <img src="../../../assets/warehouse-actions-sources/event-name-table-track.png" alt="Schema tab options in RudderStack" />
 
