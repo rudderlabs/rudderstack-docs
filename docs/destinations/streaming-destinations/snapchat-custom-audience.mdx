@@ -113,29 +113,21 @@ The following code snippet shows a sample `audienceList` call:
 
 The following table details the mapping of the schema fields (as specified in the RudderStack dashboard) and the <a href="https://marketingapi.snapchat.com/docs/?&_ga=2.64649388.22530882.1663148304-88679508.1663136652#create-an-audience-segment">Snapchat Marketing API</a>.
 
- RudderStack schema field | Snapchat Custom Audience field |
-| :-----| :--------|
-| `properties.listData.add.email` | `users.data.[sha256(email)]` |
-| `properties.listData.add.phone` <br/> `properties.listData.add.mobile` | `users.data.[sha256(phone | mobile)]` |
-| `properties.listData.add.mobileId` <br/> `properties.listData.add.mobileAdId` <br/> `properties.listData.add.mobile_id` | `users.data.[sha256(mobileId | mobileAdId | mobile_id)]` |
+RudderStack normalizes the raw identifiers by following the <a href="https://marketingapi.snapchat.com/docs/#normalizing-hashing">Snapchat-prescribed rules</a> before SHA-256 hashing and sending them to Custom Audience.
+
+<div class="infoBlock">
+RudderStack groups the identifiers in batches with a maximum of 100000 identifiers per request. For more information, refer to the <a href="https://marketingapi.snapchat.com/docs/#adding-users">Snapchat Marketing API</a>.
+</div>
+
+| RudderStack schema field |  Custom Audience field | Notes |
+| :-----| :--------| :----- |
+| `properties.listData.add.email` | `users.data.[sha256(email)]` | RudderStack trims any leading and trailing whitespaces and converts all the characters into the lower case before hashing. |
+| `properties.listData.add.phone` <br/> `properties.listData.add.mobile` | `users.data.[sha256(phone/mobile)]` | RudderStack converts all the characters into the lower case. It does not remove any hyphens. |
+| `properties.listData.add.mobileId` <br/> `properties.listData.add.mobileAdId` <br/> `properties.listData.add.mobile_id` | `users.data.[sha256(mobileId/mobileAdId/mobile_id)]` | RudderStack includes the country code and removes any double 0s in front of it. It also excludes any non-numeric characters like whitespaces, parentheses, `+`, or `-`. |
 
 <div class="warningBlock">
 <code class="inline-code">email</code>, <code class="inline-code">mobileAdId</code>/<code class="inline-code">mobile_id</code>, or <code class="inline-code">mobile</code> must be present in your events depending on the <strong>Schema</strong> setting configured in the RudderStack dashboard. Otherwise, RudderStack will not send the events to Snapchat Custom Audience.
 </div>
-
-### Normalizing and hashing identifiers
-
-RudderStack normalizes the raw identifiers before SHA-256 hashing and sending them to Snapchat Custom Audience.
-
-<div class="infoBlock">
-RudderStack groups the identifiers in batches with a maximum of 100000 identifiers per request, as prescribed by Snapchat. For more information, refer to the <a href="https://marketingapi.snapchat.com/docs/#adding-users">Snapchat Marketing API</a>.
-</div>
-
-RudderStack adheres to the following <a href="https://marketingapi.snapchat.com/docs/#normalizing-hashing">normalization rules</a> prescribed by Snapchat:
-
-- Normalizes email by trimming any leading and trailing whitespaces and converting all characters to lowercase before hashing.
-- Normalizes the mobile advertiser ID by converting it into the lower case. RudderStack does not remove any hyphens.
-- Normalizes the phone numbers by including the country code and removing any double 0 in front of the country code. RudderStack also excludes any non-numeric characters like whitespaces, parentheses, `+`, or `-`.
 
 ## FAQ
 
