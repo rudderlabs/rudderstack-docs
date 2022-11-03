@@ -161,7 +161,7 @@ rudderanalytics.track("eventName", {
   salesActivityTypeId: "70000663932",
   title: "new contact",
   startDate: "2021-05-04T17:00:00+05:30",
-  endDate: "2022-06-04T17:30:00+05:30",
+  endDate: "2022-06-04T17:30:00+05:30",targetable_type
   ownerId: "70054866612",
 });
 ```
@@ -170,16 +170,16 @@ The following table lists the property mappings betweeen RudderStack and Freshma
 
 | RudderStack property          | Freshmarketer property|
 | :-------------------- | :---------------------- |
-| `properties.salesActivityName` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `sales_activity_name` |
-| `properties.title` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `title`            |
-| `properties.salesActivityTypeId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `sales_activity_type_id`             | 
-| `salesActivityOutcomeId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `sales_activity_outcome_id`              |
+| `properties.title` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `title` |
+| `properties.salesActivityName` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if properties.salesActivityTypeId is absent.</span>| `sales_activity_name` |
+| `properties.salesActivityTypeId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if properties.salesActivityName is absent.</span> |`sales_activity_type_id` | 
 | `properties.startDate` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `start_date`        |
 | `properties.endDate`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `end_date`      | 
+| `context.externalId.type` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `targetable_type` |
+| `properties.ownerId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | `owner_id`| 
+| `salesActivityOutcomeId`  | `sales_activity_outcome_id`  |
 | `properties.notes`    | `notes`      |
-| `properties.ownerId` | `owner_id`| 
 | `context.externalId.id`     | `targetable_id`           |
-| `context.externalId.type`       | `targetable_type`             |
 | `properties.createrId`    | `creater_id`              |
 | `originalTimestamp`  | `created_at`                |
 | `timestamp`   | `updated_at`      |
