@@ -116,7 +116,7 @@ If you pass <code class="inline-code">name</code> in the group traits, then the 
 RudderStack removes the <code class="inline-code">groupType</code> field from the traits and passes them to PostHog as the group properties.
 </div>
 
-For the `group` call, RudderStack sends `$groupidentify` as an event to PostHog according to the <a href="https://posthog.com/docs/api/post-only-endpoints#group">PostHog Group API</a>.
+In the device mode, RudderStack calls the <a href="https://posthog.com/docs/integrate/client/js#group-analytics">group analytics</a> function to create a group in PostHog. It also uses the <a href="https://posthog.com/docs/integrate/client/js#super-properties">PostHog Super Properties</a> to assign the group to an identified user.
 
 The traits mapping is summarized in the following table:
 
