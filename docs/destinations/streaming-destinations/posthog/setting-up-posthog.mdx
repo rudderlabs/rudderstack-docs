@@ -22,12 +22,7 @@ To successfully configure PostHog as a destination, you will need to configure t
 
 <img src="../../../assets/event-stream-destinations/posthog-connection-settings.png" alt="PostHog connection settings" />
 
-- **Team API Key**: Enter your PostHog team API key. This is a mandatory field.
-
-<div class="infoBlock">
-For more information on obtaining your PostHog Team API Key, refer to the <Link to="#faq">FAQ</Link> section below.
-</div>
-
+- **Team API Key**: Enter your PostHog team API key. This is a mandatory field. For more information on obtaining your PostHog Team API Key, refer to the <Link to="#faq">FAQ</Link> section below.
 - **Instance URL**: Enter your PostHog instance URL.
 
 <div class="infoBlock">
@@ -51,12 +46,7 @@ This section lists some of the other configurable settings when sending events t
 - **Enable Local Storage for Persistence**: Enable this option to reduce the amount of data stored in the cookies by storing it locally instead.
 - **Enable autocapture with PostHog**: Enable this option to allow PostHog to send [auto-captured](https://posthog.com/docs/integrations/js-integration#usage) events.
 - **Allow PostHog to automatically capture pageview events**: Enable this setting to allow the PostHog web SDK to send a page view event every time it is loaded on a page.
-- **Disable session recording**: Enable this setting to stop PostHog from recording the user sessions. 
-
-<div class="infoBlock">
-For more information on PostHog's session recording feature, refer to the <a href="https://posthog.com/docs/features/session-recording">PostHog documentation</a>.
-</div>
-
+- **Disable session recording**: Enable this setting to stop PostHog from recording the user sessions. For more information on PostHog's session recording feature, refer to the <a href="https://posthog.com/docs/features/session-recording">PostHog documentation</a>.
 - **Additional headers to pass with XHR requests to PostHog API**: Add a list of key-value pairs in this field. The RudderStack web SDK will then forward these headers on the event requests sent to PostHog.
 - **Property denylist** - Add a list of traits or event properties that you want the PostHog SDK to filter.
 
