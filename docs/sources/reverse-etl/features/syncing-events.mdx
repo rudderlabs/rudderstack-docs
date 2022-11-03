@@ -7,12 +7,12 @@ description: >-
 RudderStack supports syncing event data from Reverse ETL sources to the downstream destinations using the <Link to="/event-spec/standard-events/identify/">`identify`</Link> and <Link to="/event-spec/standard-events/track/">`track`</Link> calls.
 
 <div class="warningBlock">
-You can only use the <code class="inline-code">track</code> call while mapping your warehouse columns using the JSON builder and not the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link>.
+You can use the <code class="inline-code">track</code> call only while mapping your warehouse columns using the JSON builder and not the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link>.
 </div>
 
 ## Key features
 
-Some key features of syncing events from Reverse ETL sources are listed below:
+Some key features for syncing the event data from Reverse ETL sources are listed below:
 
 - **Ensure the reliability of your events**: Sometimes, your critical events (such as purchases) may get blocked by things outside your control, such as Adblock. In such cases, if you have all your users' activity in the database, you can send it to the downstream systems as a guaranteed source of truth.
 - **Simulate historical tracking of events**: You can replay the historical data from other data sources to your sales, support, and marketing systems to maintain business continuity.
