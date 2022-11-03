@@ -25,7 +25,7 @@ Follow these steps to set up your Gainsight PX source in the RudderStack dashboa
 
 ## Event transformation
 
-The input payload for the both the <Link to="/event-spec/standard-events/identify/">`identify`</Link> and <Link to="/event-spec/standard-events/track/">`track`</Link> calls sent to Gainsight PX is the same. In case of a signup event (`event.eventType == SIGN_UP`), RudderStack calls `identify`, otherwise it calls `track`.
+In case of a signup event (`event.eventType == SIGN_UP`), RudderStack maps the event to an `identify` call. Otherwise, it maps the ingested event to a `track` event.
 
 <div class="infoBlock">
 The signup event indicates that a new user is created in Gainsight PX, which is typically associated with the <Link to="/event-spec/standard-events/identify/"><code class="inline-code">identify</code></Link> call.
