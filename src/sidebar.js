@@ -994,7 +994,26 @@ export const jsonData = [
             {
                 title: "PostHog",
                 link: "/destinations/streaming-destinations/posthog/",
-                content: []
+                content: [
+                    {
+                        title: "Setting up PostHog",
+                        link:
+                            "/destinations/streaming-destinations/posthog/setting-up-posthog/",
+                        content: [],
+                    },
+                    {
+                        title: "Cloud Mode",
+                        link:
+                            "/destinations/streaming-destinations/posthog/posthog-cloud-mode/",
+                        content: [],
+                    },
+                    {
+                        title: "Device Mode",
+                        link:
+                            "/destinations/streaming-destinations/posthog/posthog-device-mode/",
+                        content: [],
+                    },
+                ]
             },
             {
                 title: "Profitwell",
