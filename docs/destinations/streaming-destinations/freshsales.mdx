@@ -44,6 +44,8 @@ For more information on obtaining your Freshsales API key, refer to the <Link to
 For more information on your organization URL and how to change it, refer to this <a href="https://support.freshworks.com/en/support/solutions/articles/50000002731-what-is-and-how-can-i-change-my-organization-url-">Freshsales support guide</a>.
 </div>
 
+- **Map your events with Freshsales Standard Events**: Use this setting to map the standard Freshsales events with the custom event names.
+
 ## Identify
 
 You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update your Freshsales contact.
@@ -114,7 +116,7 @@ The following table lists the mappings between the RudderStack and Freshsales pr
 The <Link to="/event-spec/standard-events/track/">`track`</Link> call can be used to track the user activities in Freshsales.
 
 <div class="infoBlock">
-You must pass the event name to make a <code class="inline-code">track</code> call successfully.
+To make a <code class="inline-code">track</code> call successfully, you must map the event to be sent in the <code class="inline-code">track</code> call in the <strong>Map your events with Freshsales Standard Events</strong> dashboard setting.
 </div>
 
 Rudderstack supports the following `track` events:
