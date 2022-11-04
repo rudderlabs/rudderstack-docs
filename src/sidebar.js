@@ -793,7 +793,8 @@ export const jsonData = [
                 title: "LinkedIn Insight Tag",
                 link: "/destinations/streaming-destinations/linkedin-insight-tag/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Lotame",
                 link: "/destinations/streaming-destinations/lotame/",
                 content: []
@@ -821,6 +822,11 @@ export const jsonData = [
                         content: [],
                     },
                 ]
+            },
+            {
+                title: "Podsights",
+                link: "/destinations/streaming-destinations/podsights/",
+                content: []
             },
             {
                 title: "Quora Pixel",
