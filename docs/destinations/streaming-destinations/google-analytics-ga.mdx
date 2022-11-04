@@ -21,6 +21,10 @@ RudderStack supports sending event data to Google Analytics via the following <a
 | **Device Mode**     | **Supported** | -             | -             |
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
+<div class="infoBlock">
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Analytics native SDK is loaded from <code class="inline-code">https://www.google-analytics.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Analytics SDK successfully.
+</div>
+
 Once you have confirmed that the source platform supports sending events to Google Analytics, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com), add the source. Then, from the list of destinations, select **Google Analytics**.
