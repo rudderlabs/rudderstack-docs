@@ -349,11 +349,18 @@ export const jsonData = [
                         title: "Customer.io",
                         link: "/sources/event-streams/cloud-apps/customerio/",
                         content: []
-                    }, {
+                    }, 
+                    {
                         title: "Extole",
                         link: "/sources/event-streams/cloud-apps/extole/",
                         content: []
-                    }, {
+                    },
+                    {
+                        title: "Gainsight PX",
+                        link: "/sources/event-streams/cloud-apps/gainsight-px/",
+                        content: []
+                    }, 
+                    {
                         title: "Iterable Webhook",
                         link: "/sources/event-streams/cloud-apps/iterable/",
                         content: []

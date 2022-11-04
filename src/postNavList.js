@@ -410,6 +410,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "gainsight-px",
+    title: "Gainsight PX",
+    link: "/sources/event-streams/cloud-apps/gainsight-px/",
+    content: [],
+  },
+  {
     key: "iterable",
     title: "Iterable",
     link: "/sources/event-streams/cloud-apps/iterable/",
