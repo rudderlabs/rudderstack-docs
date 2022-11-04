@@ -50,9 +50,9 @@ For more information on obtaining your Facebook Pixel ID and Business Access Tok
 
 <img src="../../assets/event-stream-destinations/fbp-connection-settings-2.png" alt="Connection settings" />
 
-- **Map Categories to Facebook Content Types**: This option lets you specify the category fields to specific Facebook content type.
+- **Map Categories to Facebook Content Types**: Enter the category value and the corresponding Facebook [`content_type`](https://developers.facebook.com/docs/meta-pixel/get-started/advantage-catalog-ads#content-type) which should be mapped to each other. This `content_type` is sent to Facebook every time you send the specified category value via Rudderstack. Refer to the <Link to="#sending-custom-content_type">Sending custom `content_type`</Link> section for more information on sending the customized `content_type` to Facebook.
 - **Enable Standard Event (PageView) for all Page and Screen Calls**: If this setting is enabled, RudderStack sets `pageview` as a standard event for all the `page` and `screen` calls.
-- **Map your events with Facebook Standard Events**: This option lets you map your events to the standard events defined by Facebook.
+- **Map your events with Facebook Standard Events**: RudderStack maps some events to the Facebook standard events by default. You can use this option to override the <Link to="#standard-events">default mappings</Link> and map events to the Facebook standard events. 
 - **Standard Events custom properties**: For the standard events, some predefined properties are taken by Facebook. If you want to send more properties for your events, mention those properties in this field.
 - **Value Field Identifier**: You can set this field to `properties.price` or `properties.value`. RudderStack will then assign this to the value field of the Facebook payload.
 - **Enable Advanced Matching**: Enable this setting to update the user information in Facebook Pixel via an `identify` call.
@@ -126,6 +126,12 @@ If you want to send any of the above properties hashed by SHA256, you need to en
   }
 }
 ```
+
+Here, the value of [`fbc`](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/#fbc) parameter can be sent via `context.fbc` as shown in the above payload. If not sent, Rudderstack auto generates it using the following values:
+- Fetches `fbclid` from `context.page.url`
+- Uses `originalTimestamp` as the creation time
+- Sets `subdomainIndex` to `1`
+- Sets `version` to `fb`
 
 - **Use as Test Destination:** Enable this setting if you are using this destination for testing purposes and enter the **Test Event Code**. This code can be found in your Facebook Pixel dashboard. When enabled, you can check your events in the Facebook Pixel dashboard in real time.
 
@@ -256,15 +262,15 @@ String is the only valid data type for the <code class="inline-code">category</c
 
 ## Standard events
 
-In the dashboard, you have the option to **map your events to standard Facebook events**. RudderStack maps the events in the code and sends them to Facebook pixel as the standard event as specified. The properties will be sent according to what the standard event requires.
+RudderStack maps the event name in the payload to the Facebook standard event before sending it to Facebook Pixel. The properties are sent as the standard events require them.
 
 <div class="infoBlock">
 Refer to the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for more information.
 </div>
 
-RudderStack maps the following events to the Facebook standard events:
+RudderStack maps the following events to the Facebook standard events by default:
 
-| RudderStack Event          | Facebook Standard Event |
+| RudderStack Event    | Facebook Standard Event |
 | :-------------------- | :---------------------- |
 | `Product List Viewed` | `ViewContent`           |
 | `Product Viewed`      | `ViewContent`           |
@@ -273,10 +279,27 @@ RudderStack maps the following events to the Facebook standard events:
 | `Products Searched`   | `Search`                |
 | `Checkout Started`    | `InitiateCheckout`      |
 
+<div class="infoBlock">
+You can use the <strong>Map your events with Facebook Standard Events</strong> setting in the RudderStack dashboard to override the default mappings specified in the table above.
+</div>
+
 Note that:
 
 - For the <code class="inline-code">Products Searched</code> event, the <code class="inline-code">query</code> property must be a string.
 - You need to specify `currency` in the `Order Completed` event. If not specified, RudderStack will set the default value to `USD`.
+- If you map an event with the `ViewContent` standard event using the RudderStack dashboard setting and don't send the `products` array in the `message.properties` object, as shown:
+
+  ```javascript
+  "properties": {
+    "phone": 1-202-555-0146,
+    "email": "alex@example.com",
+    "category": "clothing",
+    "list_id": "1234",
+    "testDimension": true,
+    "testMetric": true
+  }
+  ```
+  Then, `content_ids` is mapped to `properties.category` value (`clothing` in this case) and `quantity` is set to `1` inside the `contents` object. 
 
 ### Other standard events
 
@@ -359,6 +382,34 @@ For more information regarding the logic behind the <code class="inline-code">fb
 Facebook Pixel uses ISO 8601 timestamp without the timezone information. It expects the timestamp to be sent in the following format:
 
 `"checkinDate", "checkoutDate", "departingArrivalDate", "departingDepartureDate", "returningArrivalDate", "returningDepartureDate", "travelEnd", "travelStart"`
+
+## Sending custom `content_type`
+
+You can either send the custom [`content_type`](https://developers.facebook.com/docs/meta-pixel/get-started/advantage-catalog-ads#content-type) by specifying it in the **Map Categories to Facebook Content Types** dashboard setting or via the `integrations` object, as shown:
+
+```javascript
+"integrations": {
+  "FacebookOfflineConversions": {
+    "contentType": "sending dedicated content type for this particular payload"
+  }
+}
+```
+
+The priority order of setting the `content_type` value is as follows:
+
+1. `content_type` provided in the `integrations` object is given the highest priority.
+2. `content_type` provided in the RudderStack dashboard is given the second highest priority.
+3. If none of the above is provided, the `content_type` is set to `product` by default, except in the following cases:
+  - If **Product List Viewed** event is sent:
+      - with `products` array, then the `content_type` is set to `product`.
+      - without the `products` array, then the `content_type` is set to `product_group`.
+  - If **Product Viewed** event is mapped in the RudderStack dashboard, then the `content_type` is set to `product`.
+  - If **Product Viewed** event is not mapped in RudderStack dashboard (default mapping is set to **View Content** event) and is sent:
+      - with `products` array, then the `content_type` is set to `product`.
+      - without the `products` array, then the `content_type` is set to `product_group`.
+  - If any other event is mapped to the Facebook standard event **View Content** in the RudderStack dashboard and is sent:
+      - with `products` array, then the `content_type` is set to `product`.
+      - without the `products` array, then the `content_type` is set to `product_group`.
 
 ## FAQ
 
