@@ -15,9 +15,7 @@ Find the open source transformer code for this destination in the <a href="https
 
 ## Getting started
 
-To enable sending data to Google Analytics 360, you will first need to add it as a destination in the RudderStack dashboard. Once the destination is configured and enabled, events from RudderStack will start flowing to Google Analytics 360.
-
-Before configuring Google Analytics 360 as a destination, verify if the source platform supports sending events to RudderStack, by referring to the table below:
+RudderStack supports sending event data to Google Analytics 360 via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -25,7 +23,7 @@ Before configuring Google Analytics 360 as a destination, verify if the source p
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Analytics 360 native SDK is loaded from <code class="inline-code">https://www.google-analytics.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Analytics 360 SDK successfully.
 </div>
 
 Then, perform the steps below:
