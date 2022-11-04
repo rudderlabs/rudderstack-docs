@@ -482,6 +482,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "amplitude",
+    title: "Amplitude",
+    link: "/sources/extract/amplitude/",
+    content: [],
+  },
+  {
     key: "bing-ads",
     title: "Bing Ads",
     link: "/sources/extract/bing-ads/",
