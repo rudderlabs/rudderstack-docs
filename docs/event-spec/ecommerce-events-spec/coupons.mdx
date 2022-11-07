@@ -42,11 +42,11 @@ This event is triggered whenever a coupon is applied to a cart or a transaction 
 An example of the **Coupon Entered** event is as shown:
 
 ```javascript
-rudderanalytics.track('Coupon Applied', {
-      order_id: '1223455',
-      cart_id: '123566'
-      coupon_id: '23321',
-      coupon_name: 'Disc21',
+rudderanalytics.track("Coupon Applied", {
+      order_id: "1223455",
+      cart_id: "123566"
+      coupon_id: "23321",
+      coupon_name: "Disc21",
       discount: 21.00
     });
 ```
@@ -66,11 +66,11 @@ This event is triggered whenever an invalid coupon code is applied to a cart or 
 An example of the **Coupon Denied** event is as shown:
 
 ```javascript
-rudderanalytics.track('Coupon Denied', {
-      order_id: '123',
-      cart_id: '1211'
-      coupon: 'Disc21',
-      reason: 'Coupon expired'
+rudderanalytics.track("Coupon Denied", {
+      order_id: "123",
+      cart_id: "1211"
+      coupon: "Disc21",
+      reason: "Coupon expired"
     });
 ```
 
@@ -89,11 +89,11 @@ This event is triggered whenever a customer removes an already applied coupon fr
 An example of the **Coupon Removed** event is as shown:
 
 ```javascript
-analytics.track('Coupon Removed', {
-  order_id: '1211',
-  cart_id: '124'
-  coupon_id: 'Dis123',
-  coupon_name: 'Disc20',
+analytics.track("Coupon Removed", {
+  order_id: "1211",
+  cart_id: "124"
+  coupon_id: "Dis123",
+  coupon_name: "Disc20",
   discount: 20.00
 });
 ```
