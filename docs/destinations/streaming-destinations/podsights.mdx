@@ -43,6 +43,319 @@ For more information on this setting, refer to the <Link to="/sources/sdks/event
 
 ## Track
 
+You can use the RudderStack <Link to="/event-spec/standard-events/track">`track`</Link> API to track your user activities and send them to Podsights. 
+
+RudderStack supports the following standard Podsights Pixel events:
+
+| Podsights Pixel event | Event name | Description |
+| :-----| :-----------|
+| <a href="https://podsights.com/docs#lead">Lead</a> | `lead` | When a user completes an action like form submission, signup for free trial, button click, etc. |
+| <a href="https://podsights.com/docs#product">Product</a> | `product` | When a user views a product. |
+| <a href="https://podsights.com/docs#add-to-cart">Add to Cart</a> | `addtocart` | When a user adds a product to the cart. |
+| <a href="https://podsights.com/docs#check-out">Check out</a> | `checkout` | When a user initiates a checkout. |
+| <a href="https://podsights.com/docs#purchase">Purchase</a> |  `purchase` | When a user purchases a product. | 
+
+You can map your RudderStack events to the above Podsights events in the RudderStack dashboard using the **Map Rudder events to Podsights Pixel Events** setting, as shown:
+
+<img src="../../assets/event-stream-destinations/rudderstack-podsights-event-mapping.png" alt="RudderStack event mapping with Podsights"/>
+
+In the above example, RudderStack maps the event `Order Completed` with the Podsights `checkout` Pixel event.
+
+By default, RudderStack maps the following events to the Podsights Pixel events:
+
+| RudderStack event | Podsights Pixel event name | 
+| :-----| :-----------|
+| `Signed Up` | `lead` |
+| `Product Viewed` | `product` |
+| `Product Added` | `addtocart` | 
+| `Checkout Started` | `checkout` |
+| `Order Completed` | `purchase` |
+
+<div class="warningBlock">
+RudderStack prioritizes the custom event mappings set in the dashboard over the above standard mappings.
+</div>
+
+### Lead
+
+A sample `track` call mapped to a <a href="https://podsights.com/docs#lead">`lead`</a> event is shown below:
+
+```javascript
+rudderanalytics.track("Signed Up", {
+  value: 500,
+  currency: "USD",
+  type: "paper",
+  category: "Clothes",
+});
+```
+
+The following table lists the mapping between the **optional** RudderStack event properties and the Podsight attributes:
+
+| RudderStack property | Podsights property |
+| :-----| :------| 
+| `properties.value` | `value` | 
+| `properties.currency` | `currency` |
+| `properties.type` | `type` |
+| `properties.category` | `category` |
+
+### Product
+
+A sample `track` call mapped to a <a href="https://podsights.com/docs#product">`product`</a> event is shown below:
+
+```javascript
+rudderanalytics.track("product", {
+  value: 1300,
+  currency: "USD",
+  productId: "1234000",
+  productName: "goldenTest",
+  productType: "Card",
+  productVendor: "testVendor",
+});
+```
+
+The following table lists the mapping between the **optional** RudderStack event properties and the Podsight attributes:
+
+| RudderStack property | Podsights property |
+| :-----| :------| 
+| `properties.value` | `value` | 
+| `properties.currency` | `currency` |
+| `properties.productId` | `product_id` |
+| `properties.productName` | `product_name` |
+| `properties.productType` | `product_type` |
+| `properties.productVendor` | `product_vendor` |
+
+#### Sending multiple product details
+
+If you send the product details as an array in the `track` event, RudderStack fetches the details from each product item and calls the Podsights `product` event for each item. For example, consider the following `track` event:
+
+```javascript
+rudderanalytics.track("Product", {
+  value: 10.0,
+  currency: "INR",
+  quantity: 2,
+  products: [{
+      productId: "S1100",
+      productName: "Product 1",
+      productType: "Card",
+      productVendor: "Some Vendor",
+    },
+    {
+      productId: "S1200",
+      productName: "Product 2",
+      productType: "Card",
+      productVendor: "Some Vendor 2",
+    },
+  ],
+});
+```
+
+In this case, RudderStack makes two `track` calls to Podsights with the individual product details, as shown:
+
+```javascript
+// Call 1
+
+rudderanalytics.track("Product", {
+  value: 10.0,
+  quantity: 2,
+  currency: "INR",
+  productId: "S1100",
+  productName: "Product 1",
+  productType: "Card",
+  productVendor: "Some Vendor",
+});
+
+// Call 2
+
+rudderanalytics.track("Add to Cart", {
+  value: 10.0,
+  quantity: 2,
+  currency: "USD",
+  productId: "S1200",
+  productName: "Product 2",
+  productType: "Card",
+  productVendor: "Some Vendor 2",
+});
+```
+
+### Add to Cart
+
+A sample `track` call mapped to a <a href="https://podsights.com/docs#add-to-cart">`addtocart`</a> event is shown below:
+
+```javascript
+rudderanalytics.track("Add to Cart", {
+  value: 23.2, 
+  currency: "USD",
+  productId: "1234000",
+  productName: "goldenTest",
+  productType: "Card",
+  productVendor: "testVendor",
+});
+```
+
+The following table lists the mapping between the **optional** RudderStack event properties and the Podsight attributes:
+
+| RudderStack property | Podsights property |
+| :-----| :------| 
+| `properties.value` | `value` | 
+| `properties.currency` | `currency` |
+| `properties.productId` | `product_id` |
+| `properties.productName` | `product_name` |
+| `properties.productType` | `product_type` |
+| `properties.productVendor` | `product_vendor` |
+| `properties.quantity` | `quantity` |
+| `properties.variantId` | `variant_id` |
+| `properties.variantName` | `variant_name` |
+
+Similar to <Link to="#sending-multiple-product-details">Product</Link> event, if you send the product details as an array in the `track` event, RudderStack fetches the details from each product item and calls the Podsights `addtocart` event for each item.
+
+### Check out
+
+A sample `track` call mapped to a <a href="https://podsights.com/docs#check-out">`checkout`</a> event is shown below:
+
+```javascript
+rudderanalytics.track("checkout", {
+  value: 30.0,
+  currency: "USD",
+  discountCode: "PODCAST_CODE_TEST",
+  quantity: 3,
+  lineItems: [{
+    value: 21.2,
+    quantity: 1,
+    product_id: "1234000",
+    product_name: "goldenTest",
+    product_type: "Card",
+    product_vendor: "testVendor",
+    variant_id: "11112",
+    variant_name: "Test",
+  }],
+});
+```
+
+The following table lists the mapping between the **optional** RudderStack event properties and the Podsight attributes:
+
+| RudderStack property | Podsights property |
+| :-----| :------| 
+| `properties.value` | `value` | 
+| `properties.currency` | `currency` |
+| `properties.quantity` | `quantity` |
+| `properties.variantId` | `variant_id` |
+| `properties.discountCode` | `discount_code` |
+| `properties.lineItems` | `line_items` |
+
+<div class="infoBlock">
+If you do not pass the <code class="inline-code">lineItems</code> object, then RudderStack fetches the <code class="inline-code">lineItems</code> from the event's properties and maps them to Podsight's <code class="inline-code">line_items</code> field.
+</div>
+
+#### Passing multiple product items
+
+If you pass multiple product items as an array, then RudderStack fetches the individual product details and internally builds the `lineItems` object before passing it on to Podsights via the `checkout` event, as demonstrated in the following example:
+
+Consider the following `track` event:
+
+```javascript
+rudderanalytics.track("Checkout", {
+  value: 10.0,
+  currency: "USD",
+  quantity: 2,
+  discount_code: 'POD_CODE',
+  products: [{
+      value: 21.6,
+      quantity: 12,
+      productId: "SKU123",
+      productName: "Card Game",
+      productType: "Card",
+      productVendor: "Some Vendor",
+      variantId: 'test123',
+      variantName: 'Test 123',
+    },
+    {
+      value: 42.4,
+      quantity: 2,
+      productId: "SKU124",
+      productName: "Floppy Disk",
+      productType: "Card123",
+      productVendor: "Some Vendor",
+      variantId: 'test124',
+      variantName: 'Test 124',
+    },
+  ],
+});
+```
+
+RudderStack internally collates all the product information and builds the `lineItems` array before sending it to Podsights, as shown:
+
+```javascript
+pdst('checkout', {
+  value: 10.0,
+  currency: 'USD',
+  discount_code: 'POD_CODE',
+  quantity: 2,
+  line_items: [{
+      value: 21.6,
+      quantity: 12,
+      product_id: 'SKU123',
+      product_name: 'Card Game',
+      product_type: 'Card',
+      product_vendor: 'Some Vendor',
+      variant_id: 'test123',
+      variant_name: 'Test 123',
+    },
+    {
+      value: 42.4,
+      quantity: 2,
+      product_id: 'SKU124',
+      product_name: 'Floppy Disk',
+      product_type: 'Card123',
+      product_vendor: 'Some Vendor',
+      variant_id: 'test124',
+      variant_name: 'Test 124',
+    },
+  ],
+});
+```
+
+### Purchase
+
+A sample `track` call mapped to a <a href="https://podsights.com/docs#purchase">`purchase`</a> event is shown below:
+
+```javascript
+rudderanalytics.track("purchase", {
+  value: 1000,
+  currency: "rupee",
+  discountCode: "PODCAST_CODE",
+  orderId: "12322323232",
+  isNewCustomer: true,
+  quantity: 3,
+  line_items: [{
+    value: 21.2,
+    quantity: 1,
+    product_id: "1234000",
+    product_name: "goldenTest",
+    product_type: "Card",
+    product_vendor: "testVendor",
+    variant_id: "11112222",
+    variant_name: "testTest",
+  }],
+});
+```
+
+The following table lists the mapping between the **optional** RudderStack event properties and the Podsight attributes:
+
+| RudderStack property | Podsights property |
+| :-----| :------| 
+| `properties.value` | `value` | 
+| `properties.currency` | `currency` |
+| `properties.discountCode` | `discount_code` |
+| `properties.lineItems` | `line_items` |
+| `properties.orderId` | `order_id` |
+| `properties.isNewCustomer` | `is_new_customer` |
+| `properties.quantity` | `quantity` |
+
+Similar to the <Link to="#passing-multiple-product-items">Check out</Link> event, if you pass multiple product items as an array, then RudderStack fetches the individual product details and internally builds the `lineItems` object before passing it on to Podsights via the `purchase` event.
+
+## Alias
+
+
+
 ## Page
 
 You can use the <Link to="/event-spec/standard-events/page">`page`</Link> call to record your website's page views with any additional information about the viewed page.
