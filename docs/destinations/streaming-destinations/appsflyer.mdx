@@ -727,7 +727,7 @@ RudderStack sets `email` from the event traits to AppsFlyer using the native SDK
 You can delete a user in AppsFlyer using the <Link to="/api/data-regulation-api/#adding-a-suppression-with-delete-regulation">Suppression with Delete regulation</Link> of the RudderStack <Link to="/api/data-regulation-api/">Data Regulation API</Link>.
 
 <div class="infoBlock">
-To delete a user, you can specify any one of the following in the event:
+To delete a user, you must specify their <code class="inline-code">userId</code> in the event. Additionally, you can specify any of the following in the event:
 <ul>
 <li>AppsFlyer ID</li>
 <li> <Link to="#advertising-id">iOS advertising ID/Android advertising ID</Link> (depending on your platform)</li>
