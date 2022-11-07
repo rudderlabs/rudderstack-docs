@@ -9,9 +9,7 @@ RudderStack allows you to configure Pendo as a destination to which you can send
 
 ## Getting started
 
-To enable sending data to **Pendo**, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from RudderStack will start flowing to Pendo.
-
-Before configuring your source and destination in RudderStack, please verify if the source platform is supported by Pendo, by referring to the table below:
+RudderStack supports sending event data to Pendo via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile** | **Server** |
 | :------------------ | :------------ | :--------- | :--------- |
@@ -19,7 +17,7 @@ Before configuring your source and destination in RudderStack, please verify if 
 | **Cloud Mode**      | **-**         | **-**      | **-**      |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Pendo native SDK is loaded from <code class="inline-code">https://cdn.pendo.io/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Pendo SDK successfully.
 </div>
 
 Once you have ascertained that the platform is supported by Pendo, please follow these steps:
