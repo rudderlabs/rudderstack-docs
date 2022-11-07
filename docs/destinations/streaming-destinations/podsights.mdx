@@ -352,9 +352,41 @@ The following table lists the mapping between the **optional** RudderStack event
 
 Similar to the <Link to="#passing-multiple-product-items">Check out</Link> event, if you pass multiple product items as an array, then RudderStack fetches the individual product details and internally builds the `lineItems` object before passing it on to Podsights via the `purchase` event.
 
-## Alias
+### Alias
 
+You can use Podsights' <a href="https://podsights.com/docs#alias">alias</a> event to match the Podsights internal cookie ID with your hashed internal user IDs. To do so, follow these steps:
 
+1. Activate **Alias Events** for your Podsights Pixel from your dashboard, as shown:
+
+<img src="../../assets/event-stream-destinations/podsights-alias-event.png" alt="Podsights alias event setting"/>
+
+2. Then, enable the **Pass Internal ID** setting in the RudderStack dashboard.
+
+RudderStack automatically calls the Podsights `alias` event by mapping the following internal RudderStack IDs to Podsights `id` attribute:
+
+| RudderStack attribute | Podsights attribute |
+| :---------| :---------| 
+| `userId` <br /> `context.traits.userId` <br /> `context.traits.id` | `id` |
+
+Once you enable the Alias event setting, RudderStack automatically passes the `alias` event along with every other conversion event.
+
+<div class="infoBlock">
+RudderStack uses SHA-256 encryption for hasing your internal <code clas="inline-code">userId</code>.
+</div>
+
+Suppose you send the following `track` call named `testEvent` mapped to Podsights' `lead` event with the **Pass Internal ID** enabled:
+
+```javascript
+rudderanalytics.track("testEvent", {
+  value: 100,
+  currency: "euro",
+  type: "paper",
+});
+```
+
+RudderStack then makes the following two calls to Podsights:
+
+<img src="../../assets/event-stream-destinations/podsights-alias-calls.png" alt="Alias calls made to Podsights"/>
 
 ## Page
 
