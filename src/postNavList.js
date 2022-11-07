@@ -535,6 +535,12 @@ export const postNavList = [
     link: "/sources/extract/google-search-console/",
     content: [],
   },
+    {
+    key: "google-search-console-v2",
+    title: "Google Search Console V2",
+    link: "/sources/extract/google-search-console-v2/",
+    content: [],
+  },
   {
     key: "google-sheets",
     title: "Google Sheets",
