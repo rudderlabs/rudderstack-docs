@@ -168,7 +168,7 @@ rudderanalytics.track("Product", {
 rudderanalytics.track("Product", {
   value: 10.0,
   quantity: 2,
-  currency: "USD",
+  currency: "INR",
   productId: "S1200",
   productName: "Product 2",
   productType: "Card",
@@ -205,7 +205,7 @@ The following table lists the mapping between the **optional** RudderStack event
 | `properties.variantId` | `variant_id` |
 | `properties.variantName` | `variant_name` |
 
-Similar to <Link to="#sending-multiple-product-details">Product</Link> event, if you send the product details as an array in the `track` event, RudderStack fetches the details from each product item and calls the Podsights `addtocart` event for each item.
+Similar to the <Link to="#sending-multiple-product-details">Product</Link> event, if you send the product details as an array in the `track` event, RudderStack fetches the details from each product item and calls the Podsights `addtocart` event for each item.
 
 ### Check out
 
