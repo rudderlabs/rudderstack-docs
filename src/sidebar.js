@@ -773,39 +773,48 @@ export const jsonData = [
                 title: "Facebook App Events",
                 link: "/destinations/streaming-destinations/facebook-app-events/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Facebook Custom Audience",
                 link: "/destinations/streaming-destinations/fb-custom-audience/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Facebook Offline Conversions",
                 link: "/destinations/streaming-destinations/fb-offline-conversions/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Facebook Pixel",
                 link: "/destinations/streaming-destinations/fb-pixel/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Google Ads (gtag.js)",
                 link: "/destinations/streaming-destinations/g-ads-gtag/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Google Ads Enhanced Conversions",
                 link: "/destinations/streaming-destinations/google-adwords-enhanced-conversions/",
                 content: []
-            },{
+            },
+            {
                 title: "Google Ads Offline Conversions",
                 link: "/destinations/streaming-destinations/google-adwords-offline-conversions/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Google Ads Remarketing Lists (Customer Match)",
                 link: "/destinations/streaming-destinations/google-adwords-remarketing-list/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "LinkedIn Insight Tag",
                 link: "/destinations/streaming-destinations/linkedin-insight-tag/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Lotame",
                 link: "/destinations/streaming-destinations/lotame/",
                 content: []
@@ -843,7 +852,13 @@ export const jsonData = [
                 title: "Reddit Pixel",
                 link: "/destinations/streaming-destinations/reddit-pixel/",
                 content: []
-            }, {
+            }, 
+            {
+                title: "Snapchat Custom Audience",
+                link: "/destinations/streaming-destinations/snapchat-custom-audience/",
+                content: []
+            }, 
+            {
                 title: "Snapchat Conversion",
                 link: "/destinations/streaming-destinations/snapchat-conversion/",
                 content: []
