@@ -2035,17 +2035,8 @@ export const jsonData = [
                 title: "How to Filter Selective Destinations using JavaScript SDK",
                 link: "/user-guides/how-to-guides/how-to-filter-selective-destinations/",
                 content: []
-            }, {
-                title: "How to Create a New Destination Transformation for RudderStack",
-                link: "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/",
-                content: [
-                    {
-                        title: "Best Practices for Coding Transformation Functions in JavaScript",
-                        link: "/user-guides/how-to-guides/create-a-new-destination-transformer-for-rudder/best-practices-for-coding-transformation-functions-in-javascript/",
-                        content: []
-                    },
-                ]
-            }, {
+            }, 
+            {
                 title: "How to Implement a Native JavaScript SDK Integration",
                 link: "/user-guides/how-to-guides/implement-native-js-sdk-integration/",
                 content: [
