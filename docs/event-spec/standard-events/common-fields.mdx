@@ -31,27 +31,9 @@ Upon receving the event, RudderStack also sets <code class="inline-code">receive
 
 ## Contextual fields
 
-The contextual fields give additional context about a particular event. The following table lists all the contextual fields with their detailed description:
+The contextual fields give additional context about a particular event. This section lists all the contextual fields with their detailed description.
 
-| Name | Data type | Description |
-| :--- | :--- | :--- |
-| `app` | Object | Gives detailed information related to your app, like `build`, `name`, `namespace` and `version`. |
-| `device` | Object | Information about the device from which you are capturing the event. It contains `deviceId`, `manufacturer`, `model`, `name` and `type`. |
-| `library` | Object | Details about the RudderStack SDK you are using, like `name` and `version`. |
-| `locale` | String | Captures the language of the device. |
-| `network` | Object | Contains information about the reachability of the device. Also, it gives you the status of the device's `bluetooth`, `wifi`, `cellular` network and `carrier` name. |
-| `os` | Object | Captures the operating system details of the device you are tracking. |
-| `screen` | Object | Gives you the screen dimensions of the device,  i.e. `height`, `width` and the `density`. |
-| `timezone` | String | Captures the timezone of the user you are tracking. |
-| `traits` | Object | Captures any additional relevant information about the user. RudderStack fills in the `anonymousId` for you. You can also associate the   [**traits**](https://rudderstack.com/docs/event-spec/standard-events/identify/#identify-traits) from the previously-made `identify` call from the SDK. |
-| `userAgent` | String | The user agent of the device that you are tracking. |
-| `campaign` | Object | Gives detailed information about campaigns, like `name`, `source`, `medium`, `content` and `term`. |
-
-<div class="warningBlock">
-All of the above contextual fields are <strong>not</strong> automatically collected by the RudderStack SDKs.
-</div>
-
-The following section highlights the contextual fields that are **automatically collected** and populated by each of the RudderStack SDKs:
+The RudderStack SDKs **automatically collect** and populate the following contextual fields:
 
 | Field | JavaScript | Android | iOS | Description | 
 | :--- | :--- |:--- |:--- |:--- |
@@ -100,6 +82,24 @@ The following section highlights the contextual fields that are **automatically 
 For Android SDK V1.6.0 and above, the Bluetooth status is collected in the <code class="inline-code">network.bluetooth</code> field only if the Bluetooth permission is present in the app.
 For iOS SDK V1.6.3 and above, the Bluetooth status is not collected in the <code class="inline-code">network.bluetooth</code> field as it’s a run-time permission.
 </div>
+
+The RudderStack SDKs **do not automatically collect** the following contextual fields:
+
+| Name | Data type | Description |
+| :--- | :--- | :--- |
+| `app` | Object | Gives detailed information related to your app, like `build`, `name`, `namespace` and `version`. |
+| `device` | Object | Information about the device from which you are capturing the event. It contains `deviceId`, `manufacturer`, `model`, `name` and `type`. |
+| `library` | Object | Details about the RudderStack SDK you are using, like `name` and `version`. |
+| `locale` | String | Captures the language of the device. |
+| `network` | Object | Contains information about the reachability of the device. Also, it gives you the status of the device's `bluetooth`, `wifi`, `cellular` network and `carrier` name. |
+| `os` | Object | Captures the operating system details of the device you are tracking. |
+| `screen` | Object | Gives you the screen dimensions of the device,  i.e. `height`, `width` and the `density`. |
+| `timezone` | String | Captures the timezone of the user you are tracking. |
+| `traits` | Object | Captures any additional relevant information about the user. RudderStack fills in the `anonymousId` for you. You can also associate the   [**traits**](https://rudderstack.com/docs/event-spec/standard-events/identify/#identify-traits) from the previously-made `identify` call from the SDK. |
+| `userAgent` | String | The user agent of the device that you are tracking. |
+| `campaign` | Object | Gives detailed information about campaigns, like `name`, `source`, `medium`, `content` and `term`. |
+
+### Sample payload with contextual fields
 
 The following sample payload highlights the usage of the common and contextual fields in web and mobile modes:
 
