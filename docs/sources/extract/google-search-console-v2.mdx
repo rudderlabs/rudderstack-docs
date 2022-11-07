@@ -78,19 +78,20 @@ For more information on the schedule types, refer to the <Link to="/sources/extr
 
 You can choose the Google Search Console data you want to ingest by selecting the required resources:
 
-<img src="../../assets/cloud-extract-sources/Google Search Console-connection-settings-2.png" alt="Selecting the data to import" />
+<img src="../../assets/cloud-extract-sources/gcs-resources.png" alt="Selecting the data to import" />
 
 The below table mentions the syncs and API endpoints supported by these resources from Google Search Console to your warehouse destination:
 
 | Resource | Full Refresh sync | Incremental sync | Google Search Console API endpoint |
 | :---| :---- | :---- | :---- |
-| `revenue` |  Yes | Yes | `/engage` |
-| `funnels` | Yes | Yes |  `/funnels` |
-| `export` | Yes | Yes |  `/export`|
-| `engage` | Yes | No |  `/engage` |
-| `cohorts` | Yes | Yes |  `/cohorts/list`|
-| `cohort_members` | Yes | No | `/engage` |
-| `annotations` | Yes | No |  `/annotations`|
+| `sites` |  Yes | No | `/sites/get` |
+| `sitemaps` | Yes | No |  `/sitemaps/list` |
+| `search_analytics_by_query` | No | Yes |  `/searchAnalytics/query`|
+| `search_analytics_by_page` | No | No |  `/searchAnalytics/query` |
+| `search_analytics_by_device` | No | Yes |  `/searchAnalytics/query`|
+| `search_analytics_by_date` | No | No | `/searchAnalytics/query` |
+| `search_analytics_by_country` | No | No |  `/searchAnalytics/query`|
+| `search_analytics_all_fields` | No | No |  `/searchAnalytics/query`|
 
 <div class="infoBlock">
 For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
