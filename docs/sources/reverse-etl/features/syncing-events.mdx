@@ -2,19 +2,20 @@
 title: "Syncing Events"
 description: >-
  Detailed technical description on syncing event data from Reverse ETL sources to the destinations.
+aliases: ["Reverse ETL syncs"]
 ---
 
 RudderStack supports syncing event data from Reverse ETL sources to the downstream destinations using the <Link to="/event-spec/standard-events/identify/">`identify`</Link> and <Link to="/event-spec/standard-events/track/">`track`</Link> calls.
 
 <div class="warningBlock">
-You can use the <code class="inline-code">track</code> call only while mapping your warehouse columns using the JSON builder and not the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link>.
+You can send your data as <code class="inline-code">track</code> calls only while mapping your warehouse columns to the destination fields using the JSON builder. <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> is not supported currently.
 </div>
 
 ## Key features
 
 Some key features of syncing events from Reverse ETL sources are listed below:
 
-- **Ensure the reliability of your events**: Sometimes, your critical events (such as purchases) may get blocked by things outside your control, such as Adblock. In such cases, if you have all your users' activity in the database, you can send it to the downstream systems as a guaranteed source of truth.
+- **Ensure the reliability of your events**: Sometimes, your critical events(such as purchases) may get blocked by things outside your control, such as adblockers. In such cases, if you have all your users' activity in the database, you can send it to the downstream systems as a guaranteed source of truth.
 - **Simulate historical tracking of events**: You can replay the historical data from other data sources to your sales, support, and marketing systems to maintain business continuity.
 - **Fix bad data and replay it**: There is a possibility that your destination ends up with some bad data due to a bug in the tracking code or any other reason.
 In such cases, you can clear the bad data and replay a clean version by syncing the events.
@@ -24,17 +25,17 @@ In such cases, you can clear the bad data and replay a clean version by syncing 
 
 Some examples where you can use the `track` call to send events from your warehouse into the downstream destinations are listed below:
 
-- Sending event data to engagement platforms such as Braze, Iterable, CustomerIO, or Salesforce Marketing Cloud to trigger behavior or populate user actions.
-- Sending event data to the downstream systems that are configured to handle `track` calls like Kafka or Kinesis.
-- Replaying the fact table that might be the source of truth for user behavior to the downstream tools such as StatSig, Optimizely, etc.
+- Sending event data to engagement platforms such as Braze, Iterable, Customer.io, or Salesforce Marketing Cloud to trigger behavior or populate user actions.
+- Sending event data to the downstream systems that are configured to handle `track` calls, like Apache Kafka or Amazon Kinesis.
+- Replaying the fact table that might be the source of truth for user behavior to the downstream tools such as Statsig, Optimizely, etc.
 
 ## Steps for syncing event data
 
 To sync the event data from a Reverse ETL source to a downstream destination, follow these steps:
 
 1. Configure your Reverse ETL source using the <Link to="/sources/reverse-etl/">source-specific settings</Link>.
-2. Connect the source to the required destination by configuring the destination settings as listed in either of the following guides:
-- <Link to="/sources/reverse-etl/common-settings/importing-data-using-tables/#data-import-settings">Importing Data using Tables</Link>: If you have configured your source using the Table option.
-- <Link to="/sources/reverse-etl/common-settings/importing-data-using-models/#data-import-settings">Importing Data using Models</Link>: If you have configured your source using the Models option.
+2. Connect the source to the required destination by configuring the destination settings listed in either of the following guides:
+- <Link to="/sources/reverse-etl/common-settings/importing-data-using-tables/#data-import-settings">Importing Data using Tables</Link>: If you have configured your source using the <strong>Table</strong> option.
+- <Link to="/sources/reverse-etl/common-settings/importing-data-using-models/#data-import-settings">Importing Data using Models</Link>: If you have configured your source using the <strong>Models</strong> option.
 
 These guides take you through the detailed steps on choosing the event type to sync event data to a downstream destination.
