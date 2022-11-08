@@ -8,7 +8,7 @@ description: >-
 This guide is applicable for the Reverse ETL sources configured using the <strong>Table</strong> option. If you have configured your Reverse ETL source using the <strong>Model</strong> option, refer to the <Link to="/sources/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</Link> guide.
 </div>
 
-RudderStack gives you two options to map your warehouse columns to specific destination fields while importing the data:
+RudderStack provides the following options to map your warehouse columns to specific destination fields while importing the data:
 
 - Map with Visualizer (Refer to the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> guide for the list of the supported destinations.)
 - Map with JSON
@@ -17,27 +17,42 @@ This guide lists the JSON mapping settings required to import and sync data from
 
 ## Data import settings
 
-The settings to import and sync data from your warehouse table are as shown:
+The settings to import and sync data from your warehouse table are listed below:
 
 <img src="../../../assets/warehouse-actions-sources/data-import-settings-2.png" alt="Data import settings in RudderStack" />
+<img src="../../../assets/warehouse-actions-sources/data-import-settings-3.png" alt="Data import settings in RudderStack" />
 
 - **Schema**: Specify your warehouse schema.
 - **Table**: Specify the table residing in the above schema from which you want RudderStack to import the data.
-- **Sync mode**: Select the sync mode that RudderStack uses to sync your data.
-
-<div class="infoBlock">
-RudderStack supports two modes for syncing your data - <strong>Upsert</strong> and <strong>Mirror</strong>. For more information on these modes, refer to the <Link to="/sources/reverse-etl/common-settings/sync-modes/">Sync Modes</Link> guide.
-</div>
-
+- **Sync mode**: Select the sync mode that RudderStack should use to sync your data. For more information on these modes, refer to the <Link to="/sources/reverse-etl/common-settings/sync-modes/">Sync Modes</Link> guide.
 - **Primary Key**: Select a column from the table specified above to uniquely identify your records in the warehouse.
 
 <div class="infoBlock">
-RudderStack uses this column for diffing in the case of incremental syncs.
+RudderStack uses the primary key column for diffing in case of incremental syncs. You can generate it using either of the following ways:
+<ul>
+<li>Generating your table with a primary key</li>
+OR
+<li>Creating a table view</li>
+</ul>
+The best combination for a primary key is the <code class="inline-code">timestamp</code> and <code class="inline-code">user_id</code>.
+</div>
+
+- **Event Type**: Select from the `identify` or `track` event type depending on how you want to send the event data to the downstream destinations. If you select `track`, you also need to provide:
+    - **Event Name**: Enter the event name which should be sent for all the events to the downstream destinations, as shown:
+    
+    <img src="../../../assets/warehouse-actions-sources/event-name-track.png" alt="Schema tab options in RudderStack" />
+    
+     You can also send different event names by enabling the **lookup event name by column** setting and specifying the column name which should be used to set the event name in the **Event Name** field, as shown:
+
+     <img src="../../../assets/warehouse-actions-sources/event-name-table-track.png" alt="Schema tab options in RudderStack" />
+
+<div class="infoBlock">
+Refer to the <Link to="/sources/reverse-etl/features/syncing-events/">Syncing Events</Link> guide for more information on sending the event data using the <code class="inline-code">identify</code> or <code class="inline-code">track</code> call.
 </div>
 
 - **Choose user identifier**: Choose **atleast** one user identifier from `user_id` and `anonymous_id` from the dropdown. 
 
-You will also be able to preview a snippet of your data, as shown:
+You can also preview the data snippet which RudderStack will send to the destination. All the columns from the table are selected by default. However, you can choose to retain specific columns by searching and selecting/deselecting them. Finally, preview the resulting JSON on the right, as shown:
 
 <img src="../../../assets/warehouse-actions-sources/models-data-snippet.png" alt="Schema tab options in RudderStack" />
 
@@ -68,7 +83,7 @@ Once you have finalized the configuration, click **Save**.
 To update an existing configuration, follow these steps:
 
 1. Go to the **Schema** tab of your configured source.
-2. Click on the **Update** button on the top right, as shown:
+2. Click the **Update** button, as shown:
 
 <img src="../../../assets/warehouse-actions-sources/update-table-selection-wh.png" alt="Updating table selection" />
 

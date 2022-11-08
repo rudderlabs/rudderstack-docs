@@ -653,6 +653,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Syncing Events",
+                link: "/sources/reverse-etl/features/syncing-events/",
+                content: []
+            },
+            {
                 title: "Sync Modes",
                 sectionTitle: "Common Settings",
                 link: "/sources/reverse-etl/common-settings/sync-modes/",

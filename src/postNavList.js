@@ -759,6 +759,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "syncing-events",
+    title: "Syncing Events",
+    link: "/sources/reverse-etl/features/syncing-events/",
+    content: [],
+  },
+  {
     key: "common-settings",
     title: "Common Settings",
     link: "/sources/reverse-etl/common-settings/",
