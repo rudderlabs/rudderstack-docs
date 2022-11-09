@@ -33,9 +33,6 @@ For more information on obtaining your Qualaroo customer ID and site token, refe
 
 - **Record Qualaroo Events**: Enable this setting to allow RudderStack to automatically record your Qualaroo callback events as `track` events. You can then view and analyze these events using other tools (connected to the same source in RudderStack). 
   - **List of Events**: Select the list of events from dropdown which RudderStack automatically records as `track` events.
-
-<img src="../../assets/event-stream-destinations/qualaroo-event-list.png" alt="List of Qualaroo events to be recorded automatically"/>
-
 - **Update Event Name in track call**: Enable this setting to update the event name in the `track` call.
   - **Mapping to update the Event Name in track call**: Use this setting to map your events with the standard Qualaroo callback events.
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Qualaroo. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
@@ -44,9 +41,96 @@ For more information on obtaining your Qualaroo customer ID and site token, refe
 
 ## Identify
 
-## track
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to send user-related information to Qualaroo.
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("alex@example.com", {
+  name: "Alex Keener",
+  age: 25
+})
+```
+
+RudderStack uses the Qualaroo `_kiq.push(["identify", ""]);` method to send the user information.
+
+<div class="infoBlock">
+If an empty string is passed as an identifier, Qualaroo considers the user to be an unknown visitor or a user with no account.
+</div>
+
+### Supported mapping
+
+The following table lists the mappings between the RudderStack and Qualaroo properties:
+
+| RudderStack property | Qualaroo property  |
+|:---------------------|:-------------|
+| `userId` <br/> `context.traits.email` <br/> `context.traits.userId` <br /> `context.traits.id` | `identify` | 
+| `context.traits` | `traits` |
+
+## Track
+
+You can use the <Link to="/event-spec/standard-events/track/">`track`</Link> call to track user activities and send this information to Qualaroo.
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Product Viewed")
+```
+
+You can also map your `track` events to the standard Qualaroo callback events using the **Mapping to update the Event Name in track call** dashboard setting, as shown:
+
+<img src="../../assets/event-stream-destinations/qualaroo-update-event-name.png" alt="Map events to standard Qualaroo events"/>
+
+### Supported mappings
+
+The following table lists the mappings between the RudderStack and Qualaroo properties:
+
+| RudderStack property | Qualaroo property |
+|:---------------------|:-------------|
+| `event` <br /><span style="color: #4D4DFF;font-size:12px;">Required</span> | `Triggered event` |
+
+<div class="infoBlock">
+RudderStack calls <code class="inline-code">_kiq.push(['set', ...])</code> with the trait <code class="inline-code">Triggered event: event</code> 
+</div>
+
+### Recording Qualaroo callback events
+
+You can use the **Record Qualaroo Events** dashboard setting to allow RudderStack to automatically record your specified Qualaroo callback events as `track` events. You can then view and analyze these events using other tools (connected to the same source in RudderStack). 
+
+Use the **List of Events** dashboard setting to specify the callback events to be automatically recorded, as shown:
+
+<img src="../../assets/event-stream-destinations/qualaroo-event-list.png" alt="List of Qualaroo events to be recorded automatically"/>
+
+RudderStack supports recording the following [Qualaroo callback events](https://help.qualaroo.com/hc/en-us/articles/201447336-Using-Event-Handler-Callbacks):
+
+| Event name | Description |
+| :-----| :-----| 
+| `show` | When a survey is displayed. |
+| `close` | When a visitor submits the survey. |
+| `submit` | When a visitor replies to a question. |
+| `noTargetMatch` | When no surveys are set to fire. |
 
 ## Page
+
+You can use the <Link to="/event-spec/standard-events/page/">`page`</Link> call to send any page-related information to Qualaroo.
+
+A sample `page` call is shown below:
+
+```javascript
+rudderanalytics.page("Home")
+```
+
+### Supported mappings
+
+The following table lists the mappings between the RudderStack and Qualaroo properties:
+
+| RudderStack property | SnapEngage property | Notes |
+|:---------------------|:-------------| :-----| 
+| `name` <br /> `category` | `Viewed Page` | RudderStack concatenates the page `name` and `category` before mapping. |
+
+<div class="infoBlock">
+RudderStack calls <code class="inline-code">_kiq.push(['set', ...])</code> with the trait <code class="inline-code">Viewed Page: name+category</code>.
+</div>
 
 ## FAQ
 
