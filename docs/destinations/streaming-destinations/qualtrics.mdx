@@ -17,7 +17,7 @@ RudderStack supports sending event data to Qualtrics via the following <a href="
 | **Cloud mode** | - | - | - |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Qualtrics native SDK is loaded from <code class="inline-code">https://$&#123;projectIdFormatted&#125;/assets/$&#123;library&#125;.js</code> domain. Refer to the <a href="https://github.com/rudderlabs/rudder-sdk-js/blob/production/integrations/Rockerbox/browser.js#L20-L21">source code</a> for obtaining the <code class="inline-code">host</code> and <code class="inline-code">library</code> values. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Qualtrics SDK successfully.
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Qualtrics native SDK is loaded from <code class="inline-code">http://qualtrics.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Qualtrics SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Qualtrics, follow these steps:
