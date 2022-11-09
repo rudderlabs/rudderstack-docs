@@ -849,6 +849,11 @@ export const jsonData = [
                 ]
             },
             {
+                title: "Podsights",
+                link: "/destinations/streaming-destinations/podsights/",
+                content: []
+            },
+            {
                 title: "Quora Pixel",
                 link: "/destinations/streaming-destinations/quora-pixel/",
                 content: []

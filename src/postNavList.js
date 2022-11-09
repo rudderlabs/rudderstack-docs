@@ -1068,6 +1068,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "podsights",
+    title: "Podsights",
+    link: "/destinations/streaming-destinations/podsights/",
+    content: [],
+  },
+  {
     key: "setting-up-singular-in-rudderstack",
     title: "Setting up Singular",
     link: "/destinations/streaming-destinations/singular/setting-up-singular-in-rudderstack/",
