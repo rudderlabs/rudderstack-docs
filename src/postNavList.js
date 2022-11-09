@@ -1194,6 +1194,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "qualaroo",
+    title: "Qualaroo",
+    link: "/destinations/streaming-destinations/qualaroo/",
+    content: [],
+  },
+  {
     key: "qualtrics",
     title: "Qualtrics",
     link: "/destinations/streaming-destinations/qualtrics/",

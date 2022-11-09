@@ -1604,9 +1604,15 @@ export const jsonData = [
                 title: "InMoment (Wootric)",
                 link: "/destinations/streaming-destinations/inmoment/",
                 content: []
-            },{
+            },
+            {
                 title: "Pendo",
                 link: "/destinations/streaming-destinations/pendo/",
+                content: []
+            },
+            {
+                title: "Qualaroo",
+                link: "/destinations/streaming-destinations/qualaroo/",
                 content: []
             },
             {
