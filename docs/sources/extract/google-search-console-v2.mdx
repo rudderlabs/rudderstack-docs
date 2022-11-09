@@ -3,7 +3,7 @@ title: "Google Search Console V2"
 description: Step-by-step guide to ingest your Google Search Console data into RudderStack.
 ---
 
-[Google Search Console](https://search.google.com/search-console/about) is Google's web service that allows webmasters to check the indexing status of the websites and optimize their visibility. It offers tools and reports to measure and optimize your website's search traffic, performance, content, and fix issues.
+[Google Search Console](https://search.google.com/search-console/about) is Google's web service that allows webmasters to check the indexing status of websites and optimize their visibility. It offers tools and reports to measure and optimize your website's search traffic, performance, content, and fix issues.
 
 This document guides you in setting up Google Search Console as a source in RudderStack. Once configured, RudderStack automatically ingests your Google Search Console data and routes it to your specified data warehouse destination.
 
@@ -11,7 +11,7 @@ This document guides you in setting up Google Search Console as a source in Rudd
 All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
 </div>
 
-## Getting Started
+## Getting started
 
 To set up Google Search Console as a source in RudderStack, follow these steps:
 
@@ -30,7 +30,7 @@ Next, configure the following dashboard settings:
 
     <img src="../../assets/cloud-extract-sources/gsc-oauth-settings.png" alt="Google Analytics credentials" />
 
-    - **Service Account Key Authentication**: Enter the service account key in JSON format in the **Service Account JSON Key field**. Refer to the [Google documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys) for more information on obtaining the service account key.
+    - **Service Account Key Authentication**: Enter the service account key in JSON format in the **Service Account JSON Key** field. Refer to the [Google documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys) for more information on obtaining the service account key. Also, enter the email associated with your service account in the **Admin Email** field.
 
     <img src="../../assets/cloud-extract-sources/gsc-auth-settings.png" alt="Google Analytics credentials" />
 
@@ -38,22 +38,25 @@ The rest of the settings are as follows:
 
 <img src="../../assets/cloud-extract-sources/gsc-connection-settings.png" alt="SendGrid credentials" />
 
-- **Website URL Property**: Enter the URL of the site you want to fetch data for. Examples: 
-http://www.example.com/ (for a URL-prefix property)
-sc-domain:example.com (for a Domain property)
-- **Start Date**: Enter the date from which RudderStack should import your Google Search Console data.
-- **End Date**: Specify the end date for the replication window.
+- **Website URL Property**: Enter the URL of the website for which you want to fetch data. Make sure you use the **exact URL** of the website as specified in the Google Search Console. Refer to the [Google documentation](https://support.google.com/webmasters/answer/34592?hl=en) for more information on adding the website URL property.
+
+<div class="infoBlock">
+If you are using a domain property in the Google Search Console, you must prefix the site URL with <code class="inline-code">sc-domain:</code>. For example, if the website URL is <code class="inline-code">http://www.example.com/</code>, then <code class="inline-code">http://www.example.com/</code> is a URL-prefix property and <code class="inline-code">sc-domain:example.com</code> is a domain property.
+</div>
+
+- **Start Date**: Specify the date from which RudderStack should import your Google Search Console data.
+- **End Date**: Specify the date till which RudderStack should import your Google Search Console data .
 
 <div class="warningBlock">
-RudderStack will not replicate any data <strong>after</strong> this date. Do not set this field if you want RudderStack to sync the most Google Search Console data.
+RudderStack will not replicate any data <strong>after</strong> this date. Do not set this field if you want RudderStack to sync the most recent Google Search Console data.
 </div>
 
 - **Custom Reports (Optional)**: Use this field to sync your [custom reports](https://support.google.com/analytics/answer/1033013?hl=en) from Google Search Console. You can sync multiple reports.
 
-  To add a custom report, click **Add Report** and enter the **Report Name**, **Metrics**, and **Dimensions** as shown:
+  To add a custom report, click **Add Report** and enter the **Report Name** and **Dimensions** as shown:
 
   <img src="../../assets/cloud-extract-sources/gcs-custom-report.png" alt="Google Analytics credentials" />
-
+<br/>
   You can also edit/delete an existing report, as shown:
 
   <img src="../../assets/cloud-extract-sources/gcs-edit-custom-report.png" alt="Google Analytics credentials" />
@@ -87,11 +90,11 @@ The below table mentions the syncs and API endpoints supported by these resource
 | `sites` |  Yes | No | `/sites/get` |
 | `sitemaps` | Yes | No |  `/sitemaps/list` |
 | `search_analytics_by_query` | No | Yes |  `/searchAnalytics/query`|
-| `search_analytics_by_page` | No | No |  `/searchAnalytics/query` |
+| `search_analytics_by_page` | No | Yes |  `/searchAnalytics/query` |
 | `search_analytics_by_device` | No | Yes |  `/searchAnalytics/query`|
-| `search_analytics_by_date` | No | No | `/searchAnalytics/query` |
-| `search_analytics_by_country` | No | No |  `/searchAnalytics/query`|
-| `search_analytics_all_fields` | No | No |  `/searchAnalytics/query`|
+| `search_analytics_by_date` | No | Yes | `/searchAnalytics/query` |
+| `search_analytics_by_country` | No | Yes |  `/searchAnalytics/query`|
+| `search_analytics_all_fields` | No | Yes |  `/searchAnalytics/query`|
 
 <div class="infoBlock">
 For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
