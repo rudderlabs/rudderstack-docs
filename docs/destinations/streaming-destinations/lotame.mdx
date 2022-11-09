@@ -19,9 +19,7 @@ RudderStack supports syncing Lotame's <strong>BCP Pixel</strong> and <strong>DSP
 
 ## Getting started
 
-To enable sending data to Lotame, you will first need to add it as a destination to the source from which you are sending your event data. Once the destination is enabled, events from our SDK will start flowing to Lotame.
-
-Before configuring your source and destination in RudderStack, please verify if the source platform is supported by Lotame, by referring to the table below:
+RudderStack supports sending event data to Lotame via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server** |
 | :------------------ | :------------ | :------------ | :--------- |
@@ -29,7 +27,7 @@ Before configuring your source and destination in RudderStack, please verify if 
 | **Cloud mode**      | -             | -             | -          |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Lotame native SDK is loaded from the URL you provide in the <strong>DSP URL Settings (Pixel)</strong> section in the RudderStack dashboard. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Lotame SDK successfully.
 </div>
 
 Once you have confirmed that the platform supports sending events to Lotame, perform the steps below:

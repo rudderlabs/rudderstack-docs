@@ -9,9 +9,7 @@ RudderStack allows you to configure Optimizely Web as a destination to which you
 
 ## Getting started
 
-On order to send data to Optimizely Web, you will first need to add it as a destination to the source from which you are sending event data. Once the destination is enabled, events from RudderStack will start to flow to Optimizely Web.
-
-Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by Optimizely Web. Please refer to the table below:
+RudderStack supports sending event data to Optimizely Web via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile** | **Server** |
 | :------------------ | :------------ | :--------- | :--------- |
@@ -19,7 +17,7 @@ Before configuring your source and destination on the RudderStack app, please ch
 | **Cloud mode**      | **-**         | **-**      | **-**      |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist the domain</Link> from where you are loading the Optimizely Web SDK.
 </div>
 
 Once you have confirmed that the platform supports sending events to Optimizely Web, perform the steps below:
