@@ -25,14 +25,14 @@ Once you have confirmed that the source platform supports sending events to Pods
 To successfully configure Podsights as a destination, you will need to configure the following settings:
 
 - **Pixel ID**: Enter your Podsights Pixel ID. For more information on obtaining your Podsights Pixel ID, refer to the <Link to="#faq">FAQ</Link> section below.
-- **Map Rudder events to Podsights Pixel events**: Use this setting to map your RudderStack events with specific Podsights Pixel events selected from the dropdown.
+- **Map Rudder events to Podsights Pixel events**: Use this setting to map your RudderStack events with standard Podsights Pixel events selected from the dropdown.
 
 <div class="infoBlock">
 You can map multiple Podsights Pixel events to a single RudderStack event and vice versa.
 </div>
 
-- **Pass Internal ID**: Enable this setting to pass a hashed internal ID in the case of the `alias` events. For more information on obtaining the internal ID, refer to the <Link to="#faq">FAQ</Link> section below.
-- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Podsights.
+- **Pass Internal ID**: Enable this setting to pass a hashed internal ID in case of `alias` events. For more information on obtaining the internal ID, refer to the <Link to="#faq">FAQ</Link> section below.
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Podsights. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
 
 <div class="infoBlock">
 For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
@@ -48,7 +48,7 @@ You can use the RudderStack <Link to="/event-spec/standard-events/track">`track`
 RudderStack supports the following standard Podsights Pixel events:
 
 | Podsights Pixel event | Event name | Description |
-| :-----| :-----------|
+| :-----| :-----------|:-----------|
 | <a href="https://podsights.com/docs#lead">Lead</a> | `lead` | When a user completes an action like form submission, signup for free trial, button click, etc. |
 | <a href="https://podsights.com/docs#product">Product</a> | `product` | When a user views a product. |
 | <a href="https://podsights.com/docs#add-to-cart">Add to Cart</a> | `addtocart` | When a user adds a product to the cart. |
