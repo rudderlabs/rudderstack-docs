@@ -59,6 +59,10 @@ If you select a standard HubSpot **Object**, the **Destination fields** dropdown
 
 If you select a custom HubSpot **Object**, only the unique fields of the object are displayed in the **Destination fields** dropdown.
 
+<div class="infoBlock">
+The values of unique identifiers are case-sensitive and should be sent exactly as they are present in Hubspot.
+</div>
+
 ## Creating association between object records
 
 <div class="infoBlock">
@@ -81,6 +85,11 @@ You can create association between the HubSpot object records while connecting y
 <img src="../../../assets/event-stream-destinations/unique-identifier-hubspot-1.png" alt="HubSpot connection settings"/>
 
 8. Choose a warehouse column each for **From Record ID** and **To Record ID** fields which will act as Hubspot's unique ID to identify an object.
+
+<div class="infoBlock">
+<strong>From Record ID</strong> and <strong>To Record ID</strong> are the column ID's of the two objects you want to associate. For example, if you want to associate a company and a contact, the <strong>From Record ID</strong> should be a <code class="inline-code">Company Id</code> and <strong>To Record ID</strong> should be a <code class="inline-code">Contact Id</code>.
+</div>
+
 
 <img src="../../../assets/event-stream-destinations/unique-identifier-hubspot.png" alt="HubSpot connection settings"/>
 
