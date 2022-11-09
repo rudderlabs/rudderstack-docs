@@ -52,7 +52,7 @@ rudderanalytics.identify("alex@example.com", {
 })
 ```
 
-RudderStack uses the Qualaroo `_kiq.push(["identify", ""]);` method to send the user information.
+RudderStack uses Qualaroo's [Identity API](https://help.qualaroo.com/hc/en-us/articles/201956628-Using-the-Identity-API-call) method to send the user information.
 
 <div class="infoBlock">
 If an empty string is passed as an identifier, Qualaroo considers the user to be an unknown visitor or a user with no account.
@@ -124,7 +124,7 @@ rudderanalytics.page("Home")
 
 The following table lists the mappings between the RudderStack and Qualaroo properties:
 
-| RudderStack property | SnapEngage property | Notes |
+| RudderStack property | Qualaroo property | Notes |
 |:---------------------|:-------------| :-----| 
 | `name` <br /> `category` | `Viewed Page` | RudderStack concatenates the page `name` and `category` before mapping. |
 
