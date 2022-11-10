@@ -33,8 +33,8 @@ For more information on obtaining your Qualaroo customer ID and site token, refe
 
 - **Record Qualaroo Events**: Enable this setting to allow RudderStack to automatically record your Qualaroo callback events as `track` events. You can then view and analyze these events using other tools (connected to the same source in RudderStack). 
   - **List of Events**: Select the list of events from dropdown which RudderStack automatically records as `track` events.
-- **Update Event Name in track call**: Enable this setting to update the event name in the `track` call.
-  - **Mapping to update the Event Name in track call**: Use this setting to map your events with the standard Qualaroo callback events.
+  - **Update Event Name in track call**: Enable this setting to update the event name in the `track` call.
+    - **Mapping to update the Event Name in track call**: Use this setting to map your events with the standard Qualaroo callback events.
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Qualaroo. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
 - **Use device mode to send events**: As this is a <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
 - **OneTrust Cookie Categories**: This setting lets you associate the <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Qualaroo.
@@ -77,9 +77,9 @@ A sample `track` call is shown below:
 rudderanalytics.track("Product Viewed")
 ```
 
-You can also map your `track` events to the standard Qualaroo callback events using the **Mapping to update the Event Name in track call** dashboard setting, as shown:
-
-<img src="../../assets/event-stream-destinations/qualaroo-update-event-name.png" alt="Map events to standard Qualaroo events"/>
+<div class="warningBlock">
+Qualaroo does not accept any <code class="inline-code">track</code> event properties.
+</div>
 
 ### Supported mappings
 
@@ -101,6 +101,8 @@ Use the **List of Events** dashboard setting to specify the callback events to b
 
 <img src="../../assets/event-stream-destinations/qualaroo-event-list.png" alt="List of Qualaroo events to be recorded automatically"/>
 
+<br/>
+
 RudderStack supports recording the following [Qualaroo callback events](https://help.qualaroo.com/hc/en-us/articles/201447336-Using-Event-Handler-Callbacks):
 
 | Event name | Description |
@@ -109,6 +111,10 @@ RudderStack supports recording the following [Qualaroo callback events](https://
 | `close` | When a visitor submits the survey. |
 | `submit` | When a visitor replies to a question. |
 | `noTargetMatch` | When no surveys are set to fire. |
+
+You can also map your `track` events to the standard Qualaroo callback events using the **Mapping to update the Event Name in track call** dashboard setting, as shown:
+
+<img src="../../assets/event-stream-destinations/qualaroo-update-event-name.png" alt="Map events to standard Qualaroo events"/>
 
 ## Page
 
@@ -119,6 +125,10 @@ A sample `page` call is shown below:
 ```javascript
 rudderanalytics.page("Home")
 ```
+
+<div class="warningBlock">
+Qualaroo does not accept any <code class="inline-code">page</code> event properties.
+</div>
 
 ### Supported mappings
 
