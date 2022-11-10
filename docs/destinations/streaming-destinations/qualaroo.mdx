@@ -24,8 +24,8 @@ Once you have confirmed that the source platform supports sending events to Qual
 
 To successfully configure Qualaroo as a destination, you will need to configure the following settings:
 
-- **Customer ID**: Enter your Qualaroo customer ID which is a part of your Qualaroo JavaScript library URL. For example, if your URL is `https://cl.qualaroo.com/ki.js/92102/j8N.js`, then the customer ID would be `92102`.
-- **Site Token**: Enter your Qualaroo site token which is a part of your Qualaroo JavaScript library URL. For example, if your URL is `https://cl.qualaroo.com/ki.js/92102/j8N.js`, then the site token would be `j8N`.
+- **Customer ID**: Enter your Qualaroo customer ID.
+- **Site Token**: Enter your Qualaroo site token.
 
 <div class="infoBlock">
 For more information on obtaining your Qualaroo customer ID and site token, refer to the <Link to="#faq">FAQ</Link> section below.
@@ -77,20 +77,10 @@ A sample `track` call is shown below:
 rudderanalytics.track("Product Viewed")
 ```
 
+RudderStack maps the event name to Qualaroo's `Triggered event` property. It then calls the `_kiq.push(['set', ...])` method and passes the trait as `Triggered event: event`.
+
 <div class="warningBlock">
 Qualaroo does not accept any <code class="inline-code">track</code> event properties.
-</div>
-
-### Supported mappings
-
-The following table lists the mappings between the RudderStack and Qualaroo properties:
-
-| RudderStack property | Qualaroo property |
-|:---------------------|:-------------|
-| `event` <br /><span style="color: #4D4DFF;font-size:12px;">Required</span> | `Triggered event` |
-
-<div class="infoBlock">
-RudderStack calls <code class="inline-code">_kiq.push(['set', ...])</code> with the trait <code class="inline-code">Triggered event: event</code> 
 </div>
 
 ### Recording Qualaroo callback events
@@ -126,20 +116,10 @@ A sample `page` call is shown below:
 rudderanalytics.page("Home")
 ```
 
+RudderStack concatenates the page's `name` and `category` and maps it to Qualaroo's `Viewed Page` property. It then calls the `_kiq.push(['set', ...])` method and passes the trait as `Viewed Page: name+category`.
+
 <div class="warningBlock">
 Qualaroo does not accept any <code class="inline-code">page</code> event properties.
-</div>
-
-### Supported mappings
-
-The following table lists the mappings between the RudderStack and Qualaroo properties:
-
-| RudderStack property | Qualaroo property | Notes |
-|:---------------------|:-------------| :-----| 
-| `name` <br /> `category` | `Viewed Page` | RudderStack concatenates the page `name` and `category` before mapping. |
-
-<div class="infoBlock">
-RudderStack calls <code class="inline-code">_kiq.push(['set', ...])</code> with the trait <code class="inline-code">Viewed Page: name+category</code>.
 </div>
 
 ## FAQ
