@@ -42,7 +42,7 @@ You can also filter the events sent to your custom webhook by category. For more
 RudderStack supports ingesting the Auth0 events as <Link to="/event-spec/standard-events/track">`track`</Link>, <Link to="/event-spec/standard-events/group">`group`</Link>, and <Link to="/event-spec/standard-events/identify">`identify`</Link> calls.
 
 <div class="infoBlock">
-RudderStack ingests the <a href="https://auth0.com/docs/manage-users/organizations/configure-organizations/assign-members">Add member to an Organisation</a> event as a <code class="inline-code">group</code> call and the <a href="">Signup</a> event as an <code class="inline-code">identify</code> call. All the other Auth0 events are ingested as <code class="inline-code">track</code> calls.
+RudderStack ingests the events related to adding members to an organization as <code class="inline-code">group</code> calls and the signup-related events as <code class="inline-code">identify</code> calls. All the other events are ingested as <code class="inline-code">track</code> calls.
 </div>
 
 The following table lists the properties populated from the Auth0 event payload directly to the RudderStack event:
