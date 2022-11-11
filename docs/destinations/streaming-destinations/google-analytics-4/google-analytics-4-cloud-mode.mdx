@@ -3,14 +3,12 @@ title: "Google Analytics 4 Cloud Mode"
 description:  Detailed technical documentation on sending events to Google Analytics 4 using the RudderStack cloud mode.
 ---
 
-RudderStack lets you send your event data to Google Analytics 4 via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> by leveraging the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a>.
+RudderStack lets you send your event data to Google Analytics 4 via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> by leveraging the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a>.
 
-<div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repository</a>.
-</div>
 
-<div class="infoBlock">
-Google Analytics 4 does not officially support a complete server-to-server integration. RudderStack monitors the GA4 Measurement Protocol API capabilities and accordingly sends a reasonable level of reporting data for the customers to Google Analytics 4.
+<div class="warningBlock">
+
+Note that Google Analytics 4 **does not officially support a complete server-to-server integration**. RudderStack utilizes the [GA4 Measurement Protocol API](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload) for our *cloud mode* integration, which **does not currently allow ingestion of UTM parameters** for attribution reporting. This may significantly limit your ability to use certain GA4 reporting features. Please refer to Google’s documentation for more information on these limitations.
 </div>
 
 <GhBadge
@@ -18,6 +16,10 @@ Google Analytics 4 does not officially support a complete server-to-server integ
   message={'Beta'}
   color={'blueviolet'}
 />
+
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repository</a>.
+</div>
 
 ## Tagging methods
 
