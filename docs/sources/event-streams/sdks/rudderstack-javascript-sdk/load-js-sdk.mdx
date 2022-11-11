@@ -187,6 +187,16 @@ Run the `rudderanalytics` command in the console. If it returns the following co
 
 If it gives an `undefined` error, you need to verify the SDK installation.
 
+## Allowlist destination domain
+
+While using the JavaScript SDK with destinations supporting the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, you might need to allowlist the domain from where the destination SDK will load in your content security policy (CSP).
+
+<div class="infoBlock">
+A content security policy adds an extra layer of protection from any type of cross-site scripting, clickjacking, and data injection attacks.
+</div>
+
+You can refer to the **Getting started** section of the specific <Link to="/destinations/streaming-destinations/">destination's documentation</Link> to obtain the domain that might need to be allowlisted. 
+
 ## Tracking user sessions
 
 By default, the JavaScript SDK automatically tracks the user sessions. This means that RudderStack automatically determines the start and end of a user session depending on the inactivity time configured in the SDK (default time is 30 minutes).

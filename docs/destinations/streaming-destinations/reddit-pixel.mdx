@@ -14,6 +14,10 @@ RudderStack supports sending event data to Reddit Pixel via the following <a hre
 | **Device mode**     | **Supported** | -          | -          |
 | **Cloud mode**      | -             | -          | -          |
 
+<div class="infoBlock">
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Reddit Pixel native SDK is loaded from <code class="inline-code">https://www.redditstatic.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Reddit Pixel SDK successfully.
+</div>
+
 Once you have confirmed that the source platform supports sending events to Reddit Pixel, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Reddit Pixel**.

@@ -16,7 +16,7 @@ RudderStack supports integration with VWO that allows you to send relevant event
 
 ## Getting started
 
-Before configuring your source and destination on the RudderStack app, please check whether the platform you are working on is supported by VWO. Refer the table below:
+RudderStack supports sending event data to VWO via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile** | **Server** |
 | :------------------ | :------------ | :--------- | :--------- |
@@ -24,7 +24,7 @@ Before configuring your source and destination on the RudderStack app, please ch
 | **Cloud mode**      | -             | -          | -          |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the VWO native SDK is loaded from <code class="inline-code">http://visualwebsiteoptimizer.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the VWO SDK successfully.
 </div>
 
 <div class="warningBlock">

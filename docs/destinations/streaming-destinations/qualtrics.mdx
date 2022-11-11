@@ -9,7 +9,7 @@ RudderStack lets you configure Qualtrics as a destination to which you can send 
 
 ## Getting started
 
-Before configuring Qualtrics as a destination in RudderStack, verify if Qualtrics supports the source platform you are sending the events from. Refer to the following table:
+RudderStack supports sending event data to Qualtrics via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web** | **Mobile** | **Server** |
 | :--- | :--- | :--- | :--- |
@@ -17,7 +17,7 @@ Before configuring Qualtrics as a destination in RudderStack, verify if Qualtric
 | **Cloud mode** | - | - | - |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Qualtrics native SDK is loaded from <code class="inline-code">http://qualtrics.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Qualtrics SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Qualtrics, follow these steps:
