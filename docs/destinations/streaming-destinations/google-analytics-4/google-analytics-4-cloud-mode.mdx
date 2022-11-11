@@ -34,12 +34,23 @@ The mappings for the above-mentioned mandatory parameters are listed in the foll
 
 | Parameters    | Mapping value  |
 | :-------------| :-----------------|
-| `client_id`         |  from `externalID` `ga4ClientId` or `anonymousId` or `messageId` |
+| `client_id`         |  Refer to the <Link to="#mapping-client_id">Mapping `client_id`</Link> section. |
 | `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  | 
 
 <div class="infoBlock">
 Refer to the <Link to="#how-do-i-obtain-app_instance_id">FAQ</Link> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
 </div>
+
+### Mapping `client_id` 
+
+RudderStack maps the `client_id` in the following order of precedence:
+
+- If a value is provided in the RudderStack dashboard's **GA4 client_id Field Identifier** setting, it looks up that value in the event payload and maps it to the GA4 `client_id`.
+- If no value is provided in the above dashboard setting or a value is provided in the dashboard but not in the payload, RudderStack maps the `client_id` from the following fields in the same priority order as listed below:
+  - From `externalID` `ga4ClientId`
+  - From `externalID` `anonymousId`
+  - From  `context.device.id`
+  - From `messageId`
 
 ### Supported mappings
 
