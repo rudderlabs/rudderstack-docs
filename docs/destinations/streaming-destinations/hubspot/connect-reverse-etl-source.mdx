@@ -65,21 +65,21 @@ The values of unique identifiers are case-sensitive and should be sent exactly a
 
 ## Creating association between object records
 
-You can create association between the HubSpot object records while connecting your HubSpot destination to a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> feature.
+You can create an association between the HubSpot object records while connecting your HubSpot destination to a <Link to="/sources/reverse-etl/">Reverse ETL</Link> source using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> feature.
 
 ### Prerequisites
 
-The following pre-requisites must be met to create association between the HubSpot object records:
+The following pre-requisites must be met to create an association between the HubSpot object records:
 
 - You must create two separate connections in the RudderStack dashboard using any Reverse ETL source and HubSpot destination as shown:
     <img src="../../../assets/event-stream-destinations/hubspot-connections.png" alt="HubSpot connection settings"/>
 
     - The first connection will push data into the HubSpot object. For example, pushing data into a company object. 
-    - The second connection will create association between the object records. For example, associating the company and contact objects. You must configure the HubSpot destination in the second connection using the <Link to="/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/#new-api">new API</Link> and enable the **Create associations between object record** setting in the RudderStack dashboard. The detailed steps to create this connection are explained in the below section.
+    - The second connection will create an association between the object records. For example, associating the company and contact objects. You must configure the HubSpot destination in the second connection using the <Link to="/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/#new-api">new API</Link> and enable the **Create associations between object record** setting in the RudderStack dashboard. The detailed steps to create this connection are explained in the below section.
 
 ### Steps to create association 
 
-Follow the below steps to create association between the HubSpot object records:
+Follow the below steps to create an association between the HubSpot object records:
 
 1. Add a Reverse ETL source and add the HubSpot destination to it. For detailed steps on adding a source and destination, you can refer to the <Link to="https://www.rudderstack.com/docs/get-started/quickstart/">Quickstart</Link> section.
 2. While configuring the <Link to="/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/#new-api">HubSpot connection settings</Link> in the RudderStack dashboard, enable the **Create associations between object record** setting and click **Continue**.
