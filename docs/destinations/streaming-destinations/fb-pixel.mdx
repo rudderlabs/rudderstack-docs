@@ -127,7 +127,7 @@ If you want to send any of the above properties hashed by SHA256, you need to en
 }
 ```
 
-Here, the value of [`fbc`](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/#fbc) parameter can be sent via `context.fbc` as shown in the above payload. If not sent, Rudderstack auto generates it using the following values:
+Here, you can send the value of [`fbc`](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/#fbc) parameter via `context.fbc` as shown in the above payload. If not sent, Rudderstack auto generates it using the following values:
 - Fetches `fbclid` from `context.page.url`
 - Uses `originalTimestamp` as the creation time
 - Sets `subdomainIndex` to `1`
@@ -395,16 +395,15 @@ You can either send the custom [`content_type`](https://developers.facebook.com/
 }
 ```
 
-The priority order of setting the `content_type` value is as follows:
+RudderStack sets the value of `content_type` in the following priority order:
 
-1. `content_type` provided in the `integrations` object is given the highest priority.
-2. `content_type` provided in the RudderStack dashboard is given the second highest priority.
-3. If none of the above is provided, the `content_type` is set to `product` by default, except in the following cases:
+1. The highest priority is given to the `content_type` provided in the `integrations` object.
+2. The second highest priority is given to the `content_type` provided in the RudderStack dashboard.
+3. If none of the above are present, RudderStack sets the `content_type` to `product` by default, except in the following cases:
   - If **Product List Viewed** event is sent:
       - with `products` array, then the `content_type` is set to `product`.
       - without the `products` array, then the `content_type` is set to `product_group`.
-  - If **Product Viewed** event is mapped in the RudderStack dashboard, then the `content_type` is set to `product`.
-  - If **Product Viewed** event is not mapped in RudderStack dashboard (default mapping is set to **View Content** event) and is sent:
+  - If **Product Viewed** event is not mapped in RudderStack dashboard (default mapping is set to **View Content** event) but is sent:
       - with `products` array, then the `content_type` is set to `product`.
       - without the `products` array, then the `content_type` is set to `product_group`.
   - If any other event is mapped to the Facebook standard event **View Content** in the RudderStack dashboard and is sent:
