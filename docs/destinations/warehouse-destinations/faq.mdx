@@ -294,9 +294,9 @@ RudderStack automatically handles the data type conversion in some common scenar
 
 | Incoming data type | Warehouse column data type | Notes |
 | :----| :------| :------|
-| Integer <br /> Float <br /> JSON | String | RudderStack automatically stringifies the non-string data. |
-| Integer | Float | - | 
-| Float | Integer | - |
+| All data types **except** String, Text, or JSON | String | RudderStack automatically stringifies the incoming data. |
+| Integer <br /> BigInt | Float | - | 
+| Float | Integer <br /> BigInt | - |
 | Int <br /> Float <br /> Boolean | JSON | RudderStack automatically stringifies the incoming data. |
 
 <div class="infoBlock">
