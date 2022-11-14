@@ -69,8 +69,8 @@ The following settings are associated with the <Link to="#track">`track`</Link> 
 <img src="../../assets/event-stream-destinations/marketo-connection-settings-4.png" />
 
 - **Map events to Marketo Activity ID**: Map the event name to your Marketo custom activity ID.
-- **Map event properties to Marketo property name**: Use this setting to map your `track` event properties to the Marketo fields listed in your custom activity.
-- **Map event name to Marketo primary key**: Map the `track` event name to the Marketo primary key associated with the custom activity.
+- **Map event properties to Marketo property name**: Use this setting to map your `track` event properties to the Marketo fields listed in your custom activity. The value passed in this property will be set for the appropriate field present for the custom activity mapped to the event.
+- **Map event name to Marketo primary key**: Map the `track` event name to the Marketo primary key associated with the custom activity. Please note that the primary field for a custom activity is denoted by a
 
 <div class="infoBlock">
 For more information on these settings, refer to the <Link to="#event-mapping-settings">Event mapping settings</Link> section below.
@@ -80,7 +80,7 @@ For more information on these settings, refer to the <Link to="#event-mapping-se
 
 <img src="../../assets/event-stream-destinations/marketo-connection-settings-3.png" />
 
-- **Map your traits to Marketo custom fields**: This setting lets you map your event traits to custom Marketo fields **apart from** the mappings specified in the <Link to="#supported-mappings">Identify trait mappings</Link> section below.
+- **Map your traits to Marketo custom fields**: This setting lets you map your event traits to custom Marketo fields **apart from** the mappings specified in the <Link to="#supported-mappings">Identify trait mappings</Link> section below. Please note that the traits can only be mapped to this list of standard fields (REST API Name column) as well as other supported field name available on your lead records.
 
 ## Identify
 
