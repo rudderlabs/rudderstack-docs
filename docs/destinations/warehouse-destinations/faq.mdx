@@ -288,6 +288,21 @@ The table name truncation logic is as follows:
 - For **Data Lake** destinations (**S3 Data Lake, GCS Data Lake, Azure Data Lake**), there is no set limit.
 - For **other** destinations, the table name is truncated after 127 characters.
 
+### How does RudderStack handle schema data type mismatch when sending events to a warehouse destination?
+
+RudderStack automatically handles the data type conversion for some common scenarios **depending on the warehouse column data type**.
+
+| Incoming data type | Warehouse column data type | Notes |
+| :----| :------| :------|
+| Integer <br /> Float <br /> JSON | String | RudderStack automatically stringifies the non-string data. |
+| Integer | Float | - | 
+| Float | Integer | - |
+| Int <br /> Float <br /> Boolean | JSON | RudderStack automatically stringifies the incoming data. |
+
+<div class="infoBlock">
+For more information and the implementation details, refer to the <a href="https://github.com/rudderlabs/rudder-server/blob/9e06351b921fb9e6d40878002b8b49efbada1e48/warehouse/schema.go#L25">RudderStack GitHub repository</a>. 
+</div>
+
 ### Can I change the name of the table in which my events are synced?
 
 Yes, you can add a <Link to="/features/transformations/">transformation</Link> to change the event name and, consequently, the name of the table in which the events are synced. 
