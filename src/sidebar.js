@@ -466,11 +466,8 @@ export const jsonData = [
                 title: "Google Ads (Adwords)",
                 link: "/sources/extract/google-adwords/",
                 content: []
-            }, {
-                title: "Google Analytics",
-                link: "/sources/extract/google-analytics/",
-                content: []
-            }, {
+            }, 
+            {
                 title: "Google Analytics V2",
                 link: "/sources/extract/google-analytics-v2/",
                 content: []
@@ -486,11 +483,7 @@ export const jsonData = [
                 title: "HubSpot",
                 link: "/sources/extract/hubspot-v2/",
                 content: []
-            }, {
-                title: "Intercom",
-                link: "/sources/extract/intercom/",
-                content: []
-            }, 
+            },
             {
                 title: "Intercom V2",
                 link: "/sources/extract/intercom-v2/",
@@ -504,11 +497,6 @@ export const jsonData = [
             {
                 title: "Mailchimp",
                 link: "/sources/extract/mailchimp/",
-                content: []
-            },
-            {
-                title: "Mixpanel",
-                link: "/sources/extract/mixpanel/",
                 content: []
             },
             {
@@ -540,17 +528,6 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Salesforce",
-                link: "/sources/extract/salesforce/",
-                content: [
-                    {
-                        title: "Schema Comparison: Rudderstack Vs Segment",
-                        link: "/sources/extract/salesforce/schema-comparison-rudderstack-vs-segment/",
-                        content: []
-                    },
-                ]
-            },
-            {
                 title: "Salesforce V2",
                 link: "/sources/extract/salesforce-v2/",
                 content: []
@@ -559,27 +536,15 @@ export const jsonData = [
                 title: "Salesforce Pardot",
                 link: "/sources/extract/salesforce-pardot/",
                 content: []
-            }, {
-                title: "SendGrid",
-                link: "/sources/extract/sendgrid/",
-                content: []
-            },{
+            },
+            {
                 title: "SendGrid V2",
                 link: "/sources/extract/sendgrid-v2/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Stripe",
                 link: "/sources/extract/stripe/",
-                content: []
-            }, 
-            {
-                title: "Zendesk",
-                link: "/sources/extract/zendesk/",
-                content: []
-            }, 
-            {
-                title: "Zendesk Chat",
-                link: "/sources/extract/zendesk-chat/",
                 content: []
             },
             {
