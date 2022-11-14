@@ -476,6 +476,10 @@ export const jsonData = [
                 link: "/sources/extract/google-search-console/",
                 content: []
             }, {
+                title: "Google Search Console V2",
+                link: "/sources/extract/google-search-console-v2/",
+                content: []
+            },{
                 title: "Google Sheets",
                 link: "/sources/extract/google-sheets/",
                 content: []
