@@ -292,12 +292,12 @@ The table name truncation logic is as follows:
 
 RudderStack automatically handles the data type conversion in some common scenarios **depending on the warehouse column data type**.
 
-| Incoming data type | Warehouse column data type | Notes |
-| :----| :------| :------|
-| All data types **except** String, Text, or JSON | String or Text | RudderStack automatically stringifies the incoming data. |
-| Integer <br /> BigInt | Float | - | 
-| Float | Integer <br /> BigInt | - |
-| Int <br /> Float <br /> Boolean | JSON | RudderStack automatically stringifies the incoming data. |
+| Scenario | Incoming data type | Warehouse column data type | Notes |
+| :-----| :----| :------| :------|
+| 1 | All data types **except** String, Text, or JSON | String or Text | RudderStack automatically stringifies the incoming data. |
+| 2 | Integer <br /> BigInt | Float | - | 
+| 3 | Float | Integer <br /> BigInt | - |
+| 4 | Integer <br /> Float <br /> Boolean | JSON | RudderStack automatically stringifies the incoming data. |
 
 <div class="infoBlock">
 For more information and the implementation details, refer to the <a href="https://github.com/rudderlabs/rudder-server/blob/9e06351b921fb9e6d40878002b8b49efbada1e48/warehouse/schema.go#L25">RudderStack GitHub repository</a>. 
