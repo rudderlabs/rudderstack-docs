@@ -33,11 +33,9 @@ Once you have confirmed that the source platform supports sending events to HubS
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Marketo**.
 2. Assign a name to the destination and click **Continue**.
 
-### Connection settings
+## Connection settings
 
 To successfully configure Marketo as a destination in RudderStack, you need to configure the following settings:
-
-<img src="../../assets/event-stream-destinations/marketo-connection-settings-1.png" />
 
 - **Munchkin Account ID**: Enter your Munchkin account ID.
 
@@ -54,8 +52,6 @@ You can find the client ID and client secret by logging into your Marketo instan
 
 ### Custom Activity Settings
 
-<img src="../../assets/event-stream-destinations/marketo-connection-settings-2.png" />
-
 - **Track anonymous events**: Enable this setting to track events that don't contain a `userId`. 
 
 <div class="warningBlock">
@@ -64,23 +60,17 @@ If this setting is disabled, events that don't contain the <code class="inline-c
 
 - **Create lead if it does not exist**: If enabled, RudderStack will create a new Marketo lead if the user is not present.
 
-The following settings are associated with the <Link to="#track">`track`</Link> events and require you to first <a href="https://experienceleague.adobe.com/docs/marketo/using/product-docs/administration/marketo-custom-activities/create-a-custom-activity.html">create a Custom Activity in Marketo</a> before sending the events. You also need to approve the activity in order to get the <strong>Custom Activity ID</strong>.
+The following settings are associated with the <Link to="#track">`track`</Link> events and require you to first <a href="https://experienceleague.adobe.com/docs/marketo/using/product-docs/administration/marketo-custom-activities/create-a-custom-activity.html">create a Custom Activity in Marketo</a> before sending an event. You also need to approve the activity in order to get the <strong>Custom Activity ID</strong>.
 
 <img src="../../assets/event-stream-destinations/marketo-connection-settings-4.png" />
 
-- **Map events to Marketo Activity ID**: Map the event name to your Marketo custom activity ID.
-- **Map event properties to Marketo property name**: Use this setting to map your `track` event properties to the Marketo fields listed in your custom activity. The value passed in this property will be set for the appropriate field present for the custom activity mapped to the event.
-- **Map event name to Marketo primary key**: Map the `track` event name to the Marketo primary key associated with the custom activity. Please note that the primary field for a custom activity is denoted by a
+- **Map events to Marketo Activity ID**: Use this setting to map the event name in `track` call to Marketo's custom activity ID. For example, you can map a **Product Clicked** event to a custom activity ID **100001** associated with the **Product wishlisted** custom activity.
+- **Map your event properties to Marketo custom activity's field**: Use this setting to map your `track` event properties to the Marketo fields listed in your custom activity. For example, you can map **Product Clicked** event's `product_name` property to the Marketo's `productName` field in the **Product wishlisted** custom activity.
+- **Map event name to Marketo primary key**: Map the `track` event name to the Marketo primary key associated with the custom activity. For example, you can map the **Product Clicked** event to Marketo's `product_id` primary field in the **Product wishlisted** custom activity. The primary field for Marketo's custom activity is marked with an asterisk (*).
 
-<div class="infoBlock">
-For more information on these settings, refer to the <Link to="#event-mapping-settings">Event mapping settings</Link> section below.
-</div>
+### Lead Mapping
 
-### Lead Mapping settings
-
-<img src="../../assets/event-stream-destinations/marketo-connection-settings-3.png" />
-
-- **Map your traits to Marketo custom fields**: This setting lets you map your event traits to custom Marketo fields **apart from** the mappings specified in the <Link to="#supported-mappings">Identify trait mappings</Link> section below. Please note that the traits can only be mapped to this list of standard fields (REST API Name column) as well as other supported field name available on your lead records.
+- **Map your traits to Marketo custom fields**: RudderStack maps some of the user traits to the custom Marketo fields by default (listed in the <Link to="#supported-mappings">Supported mappings</Link> section). You can use this setting to override the default mappings or map any other traits to the custom Marketo fields. For custom Marketo fields, you can use the [list of standard Marketo fields](https://developers.marketo.com/rest-api/lead-database/fields/list-of-standard-fields/) (REST API Name column) or any other custom field names existing in your lead records.
 
 ## Identify
 
@@ -103,23 +93,23 @@ By default, RudderStack maps the following `traits` to the Marketo fields:
 
 | RudderStack trait | Marketo field   |
 | :------------------- | :----------------------- |
-| `address.city` | `City`                         |
-| `company.name`           | `Company`           |
-| `address.country` | `Country`                    |
-| `email`  | `Email`                              |
-| `firstName`| `FirstName`                        |
-| `company.industry` | `Industry`                 |
-| `lastName`  | `LastName`                         |
-| `leadSource` | `OriginalSourceInfo`              |
-| `company.employee_count` | `NumberOfEmployees`   |
-| `phone` | `Phone`                               |
-| `address.zip` | `PostalCode`                     |
-| `rating` | `Rating`                              |
-| `address.state` | `State`                       |
-| `address.street`  | `Address`                     |
-| `title`   | `Title`                               |
-| `birthday` | `DateofBirth`                       |
-| `website`  | `Website`                           |
+| `address.city` | `city`                         |
+| `company.name`           | `company`           |
+| `address.country` | `country`                    |
+| `email`  | `email`                              |
+| `firstName`| `firstName`                        |
+| `company.industry` | `industry`                 |
+| `lastName`  | `lastName`                         |
+| `leadSource` | `leadSource`              |
+| `company.employee_count` | `numberOfEmployees`   |
+| `phone` | `phone`                               |
+| `address.zip` | `postalCode`                     |
+| `rating` | `rating`                              |
+| `address.state` | `state`                       |
+| `address.street`  | `address`                     |
+| `title`   | `title`                               |
+| `birthday` | `dateOfBirth`                       |
+| `website`  | `website`                           |
 
 <div class="infoBlock">
 For the rest of the fields that you want to sync with Marketo, you can create a mapping of your traits and custom Marketo fields in the RudderStack dashboard, as specified in the <Link to="#lead-mapping-settings">Lead Mapping settings</Link> section.
@@ -130,7 +120,7 @@ For the rest of the fields that you want to sync with Marketo, you can create a 
 You can use the <Link to="/event-spec/standard-events/track/">`track`</Link> events to register custom activities in Marketo. 
 
 <div class="warningBlock">
-Make sure you have already <a href="https://experienceleague.adobe.com/docs/marketo/using/product-docs/administration/marketo-custom-activities/create-a-custom-activity.html">created the custom activities in Marketo</a> before sending the events. You also need to approve the activity in order to get the <strong>Custom Activity ID</strong>.
+Make sure to <a href="https://experienceleague.adobe.com/docs/marketo/using/product-docs/administration/marketo-custom-activities/create-a-custom-activity.html">create the custom activities in Marketo</a> before sending the events. Also, approve the activity in order to get the <strong>Custom Activity ID</strong>.
 </div>
 
 A sample `track` call is as shown in the snippet below:
@@ -146,24 +136,9 @@ rudderanalytics.track("Order Completed", {
   currency: "INR",
 })
 ```
-
-### Event mapping settings
-
-The following settings are associated with the <Link to="#track">`track`</Link> events and require you to first <a href="https://experienceleague.adobe.com/docs/marketo/using/product-docs/administration/marketo-custom-activities/create-a-custom-activity.html">create a Custom Activity in Marketo</a> before sending the events. You also need to approve the activity in order to get the <strong>Custom Activity ID</strong>.
-
-- **Map events to Marketo Activity ID**: Map the event name to your Marketo custom activity ID. 
-
 <div class="infoBlock">
-You can find the Activity ID under the custom activity in your Marketo dashboard.
+Refer to the <Link to="/destinations/streaming-destinations/marketo/#custom-activity-settings">Custom Activity Settings</Link> section for more information on mapping the <code class="inline-code">track</code> events.
 </div>
-
-- **Map event properties to Marketo property name**: Use this setting to map your `track` event properties to the Marketo fields listed in your custom activity.
-
-<div class="successBlock">
-RudderStack will automatically convert the data type based on the value of the event property.
-</div>
-
-- **Map event name to Marketo primary key**: Map the `track` event name to the Marketo primary key associated with the custom activity.
 
 ## FAQ
 
