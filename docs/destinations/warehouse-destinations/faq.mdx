@@ -300,7 +300,7 @@ RudderStack automatically handles the data type conversion in some common scenar
 | 4 | Integer <br /> Float <br /> Boolean | JSON | RudderStack automatically stringifies the incoming data. |
 
 <div class="warningBlock">
-The incoming data which <strong>cannot</strong> be typecasted into the warehouse column-specific data type is sent to the <code class="inline-code">rudder_discards</code> table.
+In any scenario other than the ones covered above, that is, when the incoming data <strong>cannot</strong> be typecasted into the warehouse column-specific data type, it is sent to the <code class="inline-code">rudder_discards</code> table.
 </div>
 
 <div class="infoBlock">
