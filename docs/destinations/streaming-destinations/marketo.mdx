@@ -64,7 +64,7 @@ The following settings are associated with the <Link to="#track">`track`</Link> 
 
 <img src="../../assets/event-stream-destinations/marketo-connection-settings-4.png" />
 
-- **Map events to Marketo Activity ID**: Use this setting to map the event name in `track` call to Marketo's custom activity ID. For example, you can map a **Product Clicked** event to a custom activity ID **100001** associated with the **Product wishlisted** custom activity.
+- **Map events to Marketo Activity ID**: Use this setting to map the event name in `track` call to Marketo's custom activity ID. For example, you can map a **Product Clicked** event to a custom activity with the ID **100001** and name **Product wishlisted**.
 - **Map your event properties to Marketo custom activity's field**: Use this setting to map your `track` event properties to the Marketo fields listed in your custom activity. For example, you can map **Product Clicked** event's `product_name` property to the Marketo's `productName` field in the **Product wishlisted** custom activity.
 - **Map event name to Marketo primary key**: Map the `track` event name to the Marketo primary key associated with the custom activity. For example, you can map the **Product Clicked** event to Marketo's `product_id` primary field in the **Product wishlisted** custom activity. The primary field for Marketo's custom activity is marked with an asterisk (*).
 
@@ -120,7 +120,7 @@ For the rest of the fields that you want to sync with Marketo, you can create a 
 You can use the <Link to="/event-spec/standard-events/track/">`track`</Link> events to register custom activities in Marketo. 
 
 <div class="warningBlock">
-Make sure to <a href="https://experienceleague.adobe.com/docs/marketo/using/product-docs/administration/marketo-custom-activities/create-a-custom-activity.html">create the custom activities in Marketo</a> before sending the events. Also, approve the activity in order to get the <strong>Custom Activity ID</strong>.
+Make sure to <a href="https://experienceleague.adobe.com/docs/marketo/using/product-docs/administration/marketo-custom-activities/create-a-custom-activity.html">create the custom activities in Marketo</a> before sending the events. Also, approve the activity in Marketo to get the <strong>Custom Activity ID</strong>.
 </div>
 
 A sample `track` call is as shown in the snippet below:
