@@ -397,8 +397,8 @@ You can either send the custom [`content_type`](https://developers.facebook.com/
 
 RudderStack sets the value of `content_type` in the following priority order:
 
-1. The highest priority is given to the `content_type` provided in the `integrations` object.
-2. The second highest priority is given to the `content_type` provided in the RudderStack dashboard.
+1. RudderStack gives the highest priority to the `content_type` provided in the `integrations` object.
+2. It gives the second highest priority to the `content_type` provided in the RudderStack dashboard.
 3. If none of the above are present, RudderStack sets the `content_type` to `product` by default, except in the following cases:
   - If **Product List Viewed** event is sent:
       - with `products` array, then the `content_type` is set to `product`.
