@@ -37,28 +37,18 @@ To successfully configure AWS Lambda as a destination, you need to configure the
 For more information on the AWS regions, refer to the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regions_az/">AWS Regions and Availability Zones</a> guide.
 </div>
 
-- **Role Based Authentication**: Enable this setting to use role-based AWS authentication for this destination. 
+- **Role-based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating an AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
+  - **IAM Role ARN**: Enter the ARN of the IAM role.
 
-  When disabled, you need to configure the following settings:
+<div class="warningBlock">
+It is highly recommended to enable this setting as the access keys-based authentication will be deprecated in the future.
+</div>
 
-    - **Access Key ID**: Enter the AWS access key ID associated with your IAM user account.
-    - **Secret Access Key**: Enter your secret access key.<br/> <br/>
+- If **Role-based Authentication** is disabled, you need to enter the **AWS Access Key ID** and **AWS Secret Access Key** to authorize RudderStack. 
 
-  When enabled, you need to configure the following settings:
-
-  <img src="../../assets/event-stream-destinations/aws-lambda-connection-settings-2.png" alt="AWS Lambda connection settings"/>
-
-  - **IAM Role ARN**: Enter your role ARN. For more information on the IAM ARNs, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns">AWS documentation</a>.
-
-  <div class="infoBlock">
-  For more information on creating an IAM role in AWS, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html">AWS documentation</a>.
-  </div>
-
-  - **External ID**: Enter the external ID used to create the IAM role. For more information on using the external ID, refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html">AWS documentation</a>.
-
-  <div class="infoBlock">
-  It is highly recommended to use the <Link to="/resources/glossary/#workspace-token">workspace token</Link> as the external ID while creating the IAM role, as AWS recommends that the external ID should be domain-specific.
-  </div>
+<div class="infoBlock">
+In both the role-based and access key-based authentication methods, you need to set a policy specifying the required permissions for RudderStack to send data to your Lambda function. Refer to the <Link to="#policy-permissions">Policy permissions</Link> section below for more information. 
+</div>
 
 - **Lambda**: Enter the name of the Lambda function to be invoked. RudderStack supports the following formats:
 
@@ -75,6 +65,34 @@ You can also append a version number or alias to any of the above formats.
 - **Enable Batch Input**: Enable this setting if your lambda function expects a batch input (array of events) in the event object.
   - **Max Batch Size**: If **Enable Batch Input** setting is enabled, use this field to set the maximum size of the event batch.
 - **Client Context**: Use this field to pass up to **3583 bytes** of Base64-encoded data about the invoking client to the function in the context object.
+
+## Policy permissions
+
+To use the Lambda destination with RudderStack correctly, you must have a Lambda function set up in AWS. Refer to the <a href="https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html">AWS documentation</a> for more information on setting up your Lambda function.
+
+You also need to create an IAM role and grant the necessary permissions for RudderStack to send data to your lambda function. For more information, refer to this <a href="https://docs.aws.amazon.com/lambda/latest/dg/access-control-identity-based.html">AWS documentation</a>.
+
+The following permission need to be attached to the role while setting up the policy:
+
+```json
+"Action": ["lambda:InvokeFunction"]
+```
+
+A sample permissions policy that allows a user to send event data into AWS Lambda is shown below:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CloudWatchEventsInvocationAccess",
+      "Effect": "Allow",
+      "Action": ["lambda:InvokeFunction"],
+      "Resource": "*"
+    }
+  ]
+}
+```
 
 ## Supported events
 
