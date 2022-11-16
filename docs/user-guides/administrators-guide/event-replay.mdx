@@ -23,13 +23,13 @@ RudderStack can store the following types of event data and replay it to the spe
 - Raw events captured through various sources. RudderStack stores these events in batches of 100,000 events.
 - Event payloads sent by RudderStack in case of delivery failures along with the errors (stored approximately every 30 seconds).
 
-## Data storage options
+## Data retention options
 
-RudderStack offers the following data storage options for event replay functionality:
+RudderStack offers the following data retention options for event replay functionality:
 
-- **No data storage** (default): RudderStack does not store any event data and hence it cannot be replayed.
-- **Connect your own object storage** (recommended): Event data is stored in your object storage. RudderStack currently supports Amazon S3, Google Cloud Storage, Azure Blob Storage, and MinIO as the object storage options. 
-- **RudderStack cloud storage**: Event data is stored in RudderStack's Amazon S3 bucket on a rolling 30-day basis. That is, RudderStack deletes the event data 30 days after it was stored.
+- **Do not store event data** (default): RudderStack does not store any event data and hence it cannot be replayed.
+- **Store in your own cloud storage** (recommended): Event data is stored in your object storage. RudderStack currently supports Amazon S3, Google Cloud Storage, Azure Blob Storage, and MinIO as the object storage options. 
+- **Store in RudderStack Cloud storage**: Event data is stored in RudderStack's Amazon S3 bucket on a rolling 30-day basis. That is, RudderStack deletes the event data 30 days after it was stored.
 
 To select your data retention option, see <Link to="/dashboard-guides/data-retention/#data-retention-options">Data Retention Options</Link>.
 
@@ -49,27 +49,27 @@ If you choose to set up your own object storage for backing up and replaying the
     <ul>
       <li>Create your <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html">object storage bucket</a>.</li>
       <li>Configure the relevant <Link to="/user-guides/administrators-guide/bucket-configuration-settings/#permissions-for-amazon-s3">permissions</Link> for your bucket.</li>
-      <li>Connect your storage provider in the RudderStack dashboard. See <Link to="/dashboard-guides/data-retention/#store-event-data-in-your-own-cloud-storage">Store event data in your own cloud storage</Link> for details.</li>   
+      <li>Connect your storage provider in the RudderStack dashboard. See <Link to="/dashboard-guides/data-retention/#2-store-event-data-in-your-own-cloud-storage-recommended">Store event data in your own cloud storage</Link> for details.</li>   
       </ul>
     </TabPanel>
     <TabPanel>
     <ul>
       <li>Create your <a href="https://cloud.google.com/storage/docs/creating-buckets">object storage bucket</a>.</li>
       <li>Configure the relevant <Link to="/user-guides/administrators-guide/bucket-configuration-settings/#permissions-for-gcs">permissions</Link> for your bucket.</li>
-      <li>Connect your storage provider in the RudderStack dashboard. See <Link to="/dashboard-guides/data-retention/#store-event-data-in-your-own-cloud-storage">Store event data in your own cloud storage</Link> for details.</li> 
+      <li>Connect your storage provider in the RudderStack dashboard. See <Link to="/dashboard-guides/data-retention/#2-store-event-data-in-your-own-cloud-storage-recommended">Store event data in your own cloud storage</Link> for details.</li> 
     </ul>
     </TabPanel>
     <TabPanel>
     <ul>
       <li>Login to the <a href="https://portal.azure.com/">Azure portal</a> and create a <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal">storage account</a>.</li>
       <li>Click on <strong>Containers</strong> under <strong>Blob service</strong> and create a new container.</li>
-      <li>Connect your storage provider in the RudderStack dashboard. See <Link to="/dashboard-guides/data-retention/#store-event-data-in-your-own-cloud-storage">Store event data in your own cloud storage</Link> for details.</li>     
+      <li>Connect your storage provider in the RudderStack dashboard. See <Link to="/dashboard-guides/data-retention/#2-store-event-data-in-your-own-cloud-storage-recommended">Store event data in your own cloud storage</Link> for details.</li>     
       </ul>
     </TabPanel>
     <TabPanel>
     <ul>
       <li>Login to your MinIO service and <Link to="/destinations/streaming-destinations/minio/#setting-up-minio">set up your bucket</Link>.</li>
-      <li>Connect your storage provider in the RudderStack dashboard. See <Link to="/dashboard-guides/data-retention/#store-event-data-in-your-own-cloud-storage">Store event data in your own cloud storage</Link> for details.</li>
+      <li>Connect your storage provider in the RudderStack dashboard. See <Link to="/dashboard-guides/data-retention/#2-store-event-data-in-your-own-cloud-storage-recommended">Store event data in your own cloud storage</Link> for details.</li>
     </ul>
     </TabPanel>
   </TabPanels>
