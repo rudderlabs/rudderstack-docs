@@ -1,7 +1,7 @@
 ---
 title: "Data Management"
 description: >-
-  Step-by-step guide on configuring your data management and retention.
+  Step-by-step guide on managing your event data by configuring the data retention options.
 aliases: ["Data management", "Data retention"]
 ---
 
@@ -9,23 +9,23 @@ This guide explains RudderStack’s data retention policy and your options for o
 
 RudderStack's default policy is not to store your event data, but there are times when it may be useful for you to access or replay recent event data. Refer to the <Link to="/user-guides/administrators-guide/event-replay/">Event Replay</Link> guide for more details on this feature.
 
-RudderStack provides 3 options for managing your event data:
+RudderStack provides 3 options for retaining your event data:
 
-- Do not store it anywhere
-- Store in your own cloud storage (**Recommended**)
-- Store in RudderStack Cloud on a rolling 30-day basis
+- <Link to="#1-do-not-store-event-data">Do not store event data</Link>
+- <Link to="#2-store-event-data-in-your-own-cloud-storage-recommended">Store in your own cloud storage (**Recommended**)</Link>
+- <Link to="#3-store-event-data-in-rudderstack-cloud-storage">Store in RudderStack Cloud on a rolling 30-day basis</Link>
 
-The following sections below define the different types of RudderStack data and provide steps on opting in to the right setup for your needs.
+The following sections define different types of RudderStack data and provide steps on opting in to the right setup for your needs.
 
 ## Data definitions
 
-RudderStack **does not** permanently store any customer data except in the following instances:
+RudderStack **does not** permanently store any customer data except the following:
 
-1. Aggregate “Count” data on Event Name, Event Type, Source ID, Destination ID
-2. Error codes 
-3. Customer user records (for example, usernames, billing-related details)
+- Aggregate “Count” data on Event Name, Event Type, Source ID, Destination ID.
+- Error codes.
+- Customer user records (for example, usernames, billing-related details).
 
-All other customer data can be classified as either **transient** or **non-transient** and these data may either be stored in your location, for example, AWS, or by RudderStack for up to 30 days. 
+All other customer data can be classified as either **transient** or **non-transient** and it may either be stored in your location, for example, AWS, or by RudderStack for upto 30 days. 
 
 <div class="infoBlock">
 The storage options vary with the nature of the data and your RudderStack plan.
@@ -48,8 +48,8 @@ Transient customer data can be defined as follows:
 Non-transient customer data can be defined as follows:
 
 - Data that can persist for more than 3 hours **only if** configured by the RudderStack user.
-- Data plane: Processing errors, gateway dumps
-- Control plane: Data in the reporting service (sample events, sample responses)
+- Data plane: Processing errors, gateway dumps.
+- Control plane: Data in the reporting service (sample events, sample responses).
 
 ## Data retention options
 
@@ -89,7 +89,7 @@ Choosing this option allows RudderStack to store and delete your event data on a
 
 ## Sample event data
 
-When the **Sample event data** setting is enabled, RudderStack will store and delete sample events and responses on a rolling 30-day basis. This data may be helpful with debugging efforts. 
+When the **Sample event data** setting is enabled, RudderStack stores and deletes sample events and responses on a rolling 30-day basis. This data may be helpful with debugging efforts. 
 
 <div class="infoBlock">
 RudderStack <strong>does not</strong> consider the event name or event type to be Personally Identifiable Information (PII).
