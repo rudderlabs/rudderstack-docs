@@ -69,12 +69,12 @@ This option provides detailed metrics on the events synced to the warehouse dest
 
 <img src="../assets/rs-cloud/syncs-dashboard.png" alt="RudderStack Syncs" />
 
-## Models
+## Tracking Plans
 
-This feature lets you define custom SQL queries which can be executed on your warehouse. You can then use RudderStack to send the resulting data to specific destinations.
+RudderStack's **Tracking Plans** feature lets you you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on the predefined plans. It ensures data quality by validating the live events delivered to RudderStack against the expected events.
 
 <div class="infoBlock">
-Refer to the <Link to="/sources/reverse-etl/features/models/">Models</Link> guide for more details on setting up a new model in RudderStack.
+Refer to the <Link to="/features/data-governance/tracking-plans/">Tracking plans</Link> guide for more information on creating and using tracking plans in RudderStack.
 </div>
 
 ## Transformations
@@ -87,26 +87,12 @@ With this option, you can write your own JavaScript functions to transform your 
 Refer to the <Link to="/features/transformations/">Transformations</Link> guide to learn more about this feature.
 </div>
 
-## Audit Logs
+## Models
 
-Audit logs can be used to track the user activities within your RudderStack workspace.
-
-<div class="infoBlock">
-Audit logs is an <a href="https://www.rudderstack.com/pricing/">enterprise</a> feature.
-</div>
-
-<img src="../assets/rs-cloud/audit-logs-dashboard.png" alt="Audit Logs" />
+This feature lets you define custom SQL queries which can be executed on your warehouse. You can then use RudderStack to send the resulting data to specific destinations.
 
 <div class="infoBlock">
-Refer to the <Link to="/dashboard-guides/audit-logs/">Audit Logs</Link> guide for more information on this feature.
-</div>
-
-## Tracking Plans
-
-RudderStack's **Tracking Plans** feature lets you you proactively monitor and act on non-compliant event data coming into your RudderStack sources based on the predefined plans. It ensures data quality by validating the live events delivered to RudderStack against the expected events.
-
-<div class="infoBlock">
-Refer to the <Link to="/features/data-governance/tracking-plans/">Tracking plans</Link> guide for more information on creating and using tracking plans in RudderStack.
+Refer to the <Link to="/sources/reverse-etl/features/models/">Models</Link> guide for more details on setting up a new model in RudderStack.
 </div>
 
 ## Settings
@@ -167,8 +153,26 @@ For more information on these options, refer to the <Link to="/dashboard-guides/
 
 ### Data Privacy
 
-In this tab, you can control who can view the PII(Personally Identifiable Information) by limiting access to the raw event data.
+With this setting, you can control who can view the PII(Personally Identifiable Information) by limiting access to the raw event data.
+
+<div class="infoBlock">
+This setting is available only in the <a href="https://www.rudderstack.com/pricing/">RudderStack Enterprise</a> plan.
+</div>
 
 <div class="infoBlock">
 Refer to the <Link to="/dashboard-guides/permissions-management/#limiting-access-to-pii-related-features">Permissions Management</Link> guide for more details on this option.
+</div>
+
+### Audit Logs
+
+Audit logs can be used to track the user activities within your RudderStack workspace.
+
+<div class="infoBlock">
+This setting is available only in the <a href="https://www.rudderstack.com/pricing/">RudderStack Enterprise</a> plan.
+</div>
+
+<img src="../assets/rs-cloud/audit-logs-dashboard.png" alt="Audit Logs" />
+
+<div class="infoBlock">
+Refer to the <Link to="/dashboard-guides/audit-logs/">Audit Logs</Link> guide for more information on this feature.
 </div>
