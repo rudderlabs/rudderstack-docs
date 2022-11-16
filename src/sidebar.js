@@ -110,6 +110,11 @@ export const jsonData = [
     link: "/dashboard-guides/personal-access-token/",
     content: []
 },
+{
+    title: "Data Management",
+    link: "/dashboard-guides/data-retention/",
+    content: []
+},
     // Sources section
     {
         title: "Overview",
