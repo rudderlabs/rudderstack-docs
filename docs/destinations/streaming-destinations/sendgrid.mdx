@@ -46,34 +46,26 @@ This option is only useful when there are no properties in the <code class="inli
 - **Reply-To Name**: Enter the user's name associated with the above email address.
 
 <div class="infoBlock">
-You can also send the email ID and name inside <code class="inline-code">replyTo</code> in the <code class="inline-code">track</code> properties. Note that these fields will override the <strong>Reply-To Email</strong> and <strong>Reply-To Name</strong> fields set in the RudderStack dashboard.
+You can also send the email ID and name in the <code class="inline-code">replyTo</code> field in the <code class="inline-code">track</code> call's properties. Note that these fields will override the <strong>Reply-To Email</strong> and <strong>Reply-To Name</strong> fields set in the RudderStack dashboard.
 </div>
 
 <div class="infoBlock">
- 
 For more information on how to send these details via the <code class="inline-code">replyTo</code> object, refer to the refer to the <Link to="#replyto">replyTo</Link> section below.
 </div>
 
-* Next, enter the **IP Pool Name**.
+- **IP Pool Name**: Enter the IP Pool Name. For detailed steps on creating the IP pool name, refer to the <a href="https://docs.sendgrid.com/ui/account-and-settings/ip-pools#create-an-ip-pool">SendGrid documentation</a>.
 
 <div class="infoBlock">
- 
-The length of the IP Pool Name must be between 2 and 64 characters. For detailed steps on creating the IP pool name, refer to the <a href="https://docs.sendgrid.com/ui/account-and-settings/ip-pools#create-an-ip-pool">SendGrid documentation</a>.
+The length of the IP Pool Name must be between 2 and 64 characters. 
 </div>
 
 #### From
 
-* Enter the user's **Email** address through which the email will be sent.
+- **Email ID**: Enter the user's email address through which the email will be sent. For more information on creating a verified sender identity, refer to this <a href="https://docs.sendgrid.com/ui/sending-email/sender-verification">SendGrid documentation</a>.
+
+- **Name**: Enter the name associated with above email ID.
 
 <div class="infoBlock">
-
-For more information on creating a verified sender identity, refer to this <a href="https://docs.sendgrid.com/ui/sending-email/sender-verification">SendGrid documentation</a>.
-</div>
-
-* Enter the **Name** associated with above email ID.
-
-<div class="infoBlock">
-
 You can also include <code class="inline-code">email</code> and <code class="inline-code">name</code> inside the <code class="inline-code">from</code> object in the <code class="inline-code">track</code> call (shown below). Note that this will override the <strong>Email</strong> and <strong>Name</strong> fields specified in the RudderStack dashboard.
 </div>
 
@@ -86,22 +78,18 @@ from:{
 
 #### Event names
 
-* Next, create the list of **events** for which the `track` calls will be made.
+- **Event**: Create the list of events for which the `track` calls will be made.
 
 <div class="warningBlock">
-
 Any <code class="inline-code">track</code> call made with an event name that is not specified in this list will be <strong>discarded</strong>.
 </div>
 
 #### Content
 
-* To specify the **content** of your email, enter the **type** and **value**.
-
-    * The **type** field is the value type to be included in the **value** field.
-    * The **value** field contains the actual value that is to be included in the email.
+- **Type**: Enter the type of value for the **content** of your email.
+- **value**: Enter the actual value to be included in the email.
 
 <div class="infoBlock">
-
 The <code class="inline-code">content</code> array can also be sent via <code class="inline-code">track</code> properties (shown below), which will override the dashboard settings.
 </div>
 
@@ -118,18 +106,13 @@ content: [
 
 Use the **Attachments** settings to specify any attachments you want to include in your email. The individual settings are as follows:
 
-* **content**: This should be a Base64-encoded string.
-
-* **type**: The attachment **type** contains the type of content you are attaching e.g. `"text/plain"`, `"text/html"`, etc.
-
-* **filename**: Use this setting to specify the attachment's file name.
-
-* **disposition**: This option specifies how you would like the attachment to be displayed.
-
-* **content ID**: Use this option when **disposition** is set to `inline` and the attachment is an image.
+- **Content**: This should be a Base64-encoded string.
+- **Type**: The attachment **type** contains the type of content you are attaching e.g. `"text/plain"`, `"text/html"`, etc.
+- **Filename**: Use this setting to specify the attachment's file name.
+- **Disposition**: This option specifies how you would like the attachment to be displayed.
+- **Content ID**: Use this option when **disposition** is set to `inline` and the attachment is an image.
 
 <div class="infoBlock">
-
 SendGrid requires that each attachment element must contain <strong>content</strong> and <strong>filename</strong>. The attachments can also be sent via the <code class="inline-code">track</code> call (shown below), which will override the dashboard settings.
 </div>
 
@@ -148,12 +131,10 @@ attachments:[
 
 The **ASM** settings allow you to handle the user's unsubscribing activity. The configurable options are:
 
-* **Group ID**: This option specifies the unsubscribe group to associate with this email.
- 
-* **Groups**: This option contains the array of unsubscribing groups that would be displayed in the unsusbcribing preferences page.
+- **Group ID**: This option specifies the unsubscribe group to associate with this email.
+- **Groups**: This option contains the array of unsubscribing groups that would be displayed in the unsusbcribing preferences page.
 
 <div class="infoBlock">
-
 SendGrid requires that the <strong>Group ID</strong> should always be present if the <code class="inline-code">asm</code> object is to be sent.
 </div>
 
@@ -217,7 +198,32 @@ Finally, click on **Next** to complete the setup. SendGrid will now be enabled a
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update a user in InMoment.
+You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create a new contact in SendGrid based on the contact's email ID. If the email ID already exists, RudderStack updates the contact details.
+
+<div class="infoBlock">
+<code class="inline-code">email</code> is a required field to make an <code class="inline-code">identify</code> call successfully.
+</div>
+
+### Supported mappings
+
+The following table lists the property mappings betweeen RudderStack and SendGrid:
+
+| RudderStack property | SendGrid property|
+| :-------------------- | :---------------------- |
+| `email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `email` |
+| `city`   | `city` |
+| `country` | `country` |
+| `first_name`   | `first_name` |
+| `last_name` | `last_name` |
+| `postal_code`   | `postal_code` |
+| `state_province_region` | `state` |
+| `address_line_1`   | `address` |
+| `phone_number` | `phone_number` |
+
+### Deleting a user
+
+You can delete a contact in SendGrid.
+
 
 ## Track
 
