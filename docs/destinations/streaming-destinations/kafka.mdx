@@ -1,11 +1,10 @@
 ---
 title: "Apache Kafka"
 description: Step-by-step guide on sending your event data from RudderStack to Apache Kafka.
+aliases: ["Apache Kafka", "Apache Kafka destination"]
 ---
 
 [Apache Kafka](https://kafka.apache.org/) is a popular distributed streaming platform used for building realtime data pipelines and streaming apps.
-
-RudderStack lets you configure Apache Kafka as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/kafka">GitHub repository</a>.
@@ -13,41 +12,31 @@ Find the open source transformer code for this destination in the <a href="https
 
 ## Getting started
 
-Before configuring Kafka as a destination in RudderStack, verify if the source platform is supported by Kafka, by referring to the table below:
+RudderStack supports sending events to Apache Kafka via the following <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link>:
 
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| Connection Mode | Web      | Mobile    | Server    |
 | :------------------ | :------------ | :------------ | :------------ |
 | **Device mode**     | -             | -             | -             |
-| **Cloud** **mode**  | **Supported** | **Supported** | **Supported** |
+| **Cloud mode**  | **Supported** | **Supported** | **Supported** |
 
-<div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
-</div>
-
-Once you have confirmed that the source platform supports sending events to Kafka, follow these steps:
+Once you have confirmed that the source platform supports sending events to Apache Kafka, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Apache Kafka**.
-2. Assign a name to your destination and click on **Continue**.
+2. Assign a name to your destination and click **Continue**.
 
-### Connection settings
+### Connection settings 
 
-To configure Kafka as a destination in RudderStack, you need to configure the following settings:
+To successfully set up Apache Kafka as a destination, you need to configure the following settings:
 
-<img src="../../assets/event-stream-destinations/kafka-connection-settings.png" alt="Kafka connection settings" />
-
-- **Host Name**: Enter your Kafka server broker's host name.
-- **Port**: Enter the port number to connect to the broker.
-- **Topic Name**: Enter the Kafka topic name to which you want to send data.
+- **Host Name(s)**: Enter your Kafka server broker's host name. You can specify multiple host names in a comma-separated format.
+- **Port**: Enter the port number to connect to the Kafka broker.
+- **Topic Name**: Specify the default Kafka topic where you want to send the event data.
 - **SSL Enabled**: Enable this option if you have enabled SSL to connect to your broker.
    - **CA Certificate**: If SSL is enabled, enter the CA certificate.
-- **Enable SASL with SSL**: If you have enabled SSL, you can use SASL for client authentication by enabling this option.
+- **Enable SASL with SSL**: Enable this setting to use SASL for client authentication.
    - **SASL Type**: Choose the SASL authentication type from **Plain**, **SCRAM SHA-512**, and **SCRAM SHA-256**.
    - **Username**: Enter the username configured in Kafka for authenticating clients with SASL.
-   - **Password**: Enter the password configured in Kafka for authenticating clients with SASL.
-
-<div class="warningBlock">
-You need to enable SSL to use SASL authentication.
-</div>
+   - **Password**: Enter the password for the above username.
 
 <div class="infoBlock">
 For more information on the SASL authentication, refer to the <a href="https://kafka.apache.org/documentation/#security_sasl">Apache Kafka documentation</a>.
@@ -56,6 +45,46 @@ For more information on the SASL authentication, refer to the <a href="https://k
 - **Convert Data to AVRO format**: Enable this setting to serialize your data using Avro and send it to the specified Kafka topic.
    - **Schema ID**: Enter the schema ID for the schema list.
    - **Schema**: Enter the schema corresponding to the above-mentioned ID.
+- **Enable multiple topic support for event types and event names**: Enable this setting to deliver your events to multiple Kafka topics.
+  - **Map event type to topic**: You can use this setting to send a particular event type (<Link to="/event-spec/standard-events/identify">`identify`</Link>, <Link to="/event-spec/standard-events/group">`group`</Link>, <Link to="/event-spec/standard-events/page">`page`</Link>, <Link to="/event-spec/standard-events/screen">`screen`</Link>, <Link to="/event-spec/standard-events/alias">`alias`</Link>) to a specific Kafka topic.
+  - **Map Track events to topic**: You can use this setting to map a particular <Link to="/event-spec/standard-events/track">`track`</Link> event to a specific Kafka topic.
+
+<div class="warningBlock">
+If this setting is disabled, RudderStack sends all the events to the Kafka topic specified in the <strong>Topic Name</strong> setting. Also, if you configure only a few event types or specific <code class="inline-code">track</code> events with the above setting, RudderStack sends the rest of the events to the topic defined in the <strong>Topic Name</strong> setting.
+</div>
+
+## Sending events to Kafka topics
+
+You can send your events to a specific Kafka topic by configuring the <Link to="#connection-settings">**Topic Name**</Link> dashboard setting. 
+
+Alternatively, you can send your events to a Kafka topic by specifying the topic name in the `integrations` object, as shown:
+
+```javascript
+rudderanalytics.track(
+  "Feedback Submitted", {
+    feedbackScore: 9,
+    feedbackText: "Great Product!",
+    ip: "127.0.0.0",
+    url: "https://www.google.com/",
+    createdAt: "2022-01-20T13:39:21.032Z"
+  }, {
+    integrations: {
+      "All": true,
+      "Kafka": {
+        "topic": "myTopic",
+      },
+    },
+  }
+);
+```
+
+<div class="warningBlock">
+The mappings specified in the <code class="inline-code">integrations</code> object take precedence over the dashboard settings.
+</div>
+
+RudderStack also supports sending events to multiple Kafka topics. To do so, enable the **Enable multiple topic support for event types and event names** dashboard setting and configure the mappings, as shown:
+
+<img src="../../assets/event-stream-destinations/kafka-event-mapping-settings.png" alt="Kafka connection settings" />
 
 ## Serializing data using Avro
 
@@ -105,7 +134,7 @@ So, if you have a multi-partitioned topic, then the records of the same `userId`
 
 ## FAQ
 
-### Does my Kafka server require Client Authentication?
+### Does my Kafka server require client authentication?
 
 If you have enabled 2-way SSL, that is, your server requires client authentication, then you need to have the CA certificate and put that in the truststore of your server.
 
@@ -113,14 +142,15 @@ If you have enabled 2-way SSL, that is, your server requires client authenticati
 
 Follow the below steps to make use of Java's **keytool** utility to enable two-way SSL in Kafka and connect to RudderStack:
 
-#### Step 1:  Generate the key and certificate
+**Step 1:  Generate the key and certificate**
 
 Run the following command:
 
 ```
 keytool -keystore kafka.server.keystore.jks -alias localhost -keyalg RSA -genkey
 ```
-#### Step 2: Create your own CA
+
+**Step 2: Create your own CA**
 
 Follow these steps to create your own CA:
 
@@ -134,7 +164,8 @@ openssl req -new -x509 -keyout ca-key -out ca-cert -days {validity}
    ```
    keytool -keystore kafka.server.truststore.jks -alias CARoot -importcert -file ca-cert
    ```
-#### Step 3: Sign the certificate
+
+**Step 3: Sign the certificate**
 
 Follow the steps below:
 
@@ -171,7 +202,7 @@ keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert
 keytool -keystore kafka.server.keystore.jks -alias localhost -import -file cert-signed
 ```
 
-#### Step 4: Update `server.properties`
+**Step 4: Update `server.properties`**
 
 Enter the below parameters in your `server.properties`:
 
@@ -187,7 +218,7 @@ ssl.truststore.type=JKS
 ssl.keystore.type=JKS
 ```
 
-#### Step 5: Save the RudderStack certificate
+**Step 5: Save the RudderStack certificate**
 
 Save the below RudderStack certificate as `ca-cert-rudder` (or any other name of your choice) on your system:
 
@@ -218,7 +249,7 @@ vWJxTpadFmHwCTtKNrfnm2PgokxX3pVtkFu7xQhl26+87RQ=
 -----END CERTIFICATE-----
 ```
 
-#### Step 6: Add the RudderStack CA certificate to your truststore
+**Step 6: Add the RudderStack CA certificate to your truststore**
 
 Add the above RudderStack CA certificate to your truststore by using the certificate's location in the following command:
 
@@ -232,10 +263,10 @@ keytool -keystore kafka.server.truststore.jks -alias CARootRudder -import -file 
 You will need to expose one public address to which RudderStack can connect. It is recommended to use SSL for that. 
 
 <div class="warningBlock">
-You should allow <strong>only the authenticated clients</strong> for this exposed address.
+You should allow <strong>only the authenticated clients</strong> to this exposed address.
 </div>
 
-If you use `PLAINTEXT` for your internal services within your cluster, you might have the address. Open this address with SSL. You need to update `advertised.listeners` in your `server.properties`, as shown in the below example:
+If you use `PLAINTEXT` for your internal services within your cluster, you might already have the address. Open this address with SSL. You need to update `advertised.listeners` in your `server.properties`, as shown in the below example:
 
 ```
 # Hostname and port the broker will advertise to producers and consumers.
