@@ -1193,6 +1193,11 @@ export const postNavList = [
     content: [],
   },
   {
+    title: "Marketo Static Lists",
+    link: "/destinations/streaming-destinations/marketo-static-lists/",
+    content: []
+  },
+  {
     key: "drip",
     title: "Drip",
     link: "/destinations/streaming-destinations/drip/",
