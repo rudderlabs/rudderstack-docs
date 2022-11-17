@@ -1657,6 +1657,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "campaign-manager-360",
+    title: "Campaign Manager 360",
+    link: "/destinations/streaming-destinations/campaign-manager-360/",
+    content: []
+  },
+  {
     key: "pinterest-ads",
     title: "Pinterest Tag",
     link: "/destinations/streaming-destinations/pinterest-ads/",
