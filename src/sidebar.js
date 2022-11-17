@@ -725,6 +725,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Campaign Manager 360",
+                link: "/destinations/streaming-destinations/campaign-manager-360/",
+                content: []
+            },
+            {
                 title: "Criteo",
                 link: "/destinations/streaming-destinations/criteo/",
                 content: []
