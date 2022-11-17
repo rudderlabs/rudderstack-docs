@@ -50,7 +50,7 @@ For more information on the SASL authentication, refer to the <a href="https://k
   - **Map Track events to topic**: You can use this setting to map a particular <Link to="/event-spec/standard-events/track">`track`</Link> event to a specific Kafka topic.
 
 <div class="warningBlock">
-If this setting is disabled, RudderStack sends all the events to the Kafka topic specified in the <strong>Topic Name</strong> setting.
+If this setting is disabled, RudderStack sends all the events to the Kafka topic specified in the <strong>Topic Name</strong> setting. Also, if you configure only a few event types or specific <code class="inline-code">track</code> events with the above setting, RudderStack sends the rest of the events to the topic defined in the <strong>Topic Name</strong> setting.
 </div>
 
 ## Sending events to Kafka topics
