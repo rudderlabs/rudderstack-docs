@@ -50,7 +50,7 @@ You can also send the email ID and name in the <code class="inline-code">replyTo
 </div>
 
 <div class="infoBlock">
-For more information on how to send these details via the <code class="inline-code">replyTo</code> object, refer to the refer to the <Link to="#replyto">replyTo</Link> section below.
+For more information on how to send these details via the <code class="inline-code">replyTo</code> object, refer to the <Link to="#replyto">replyTo</Link> section below.
 </div>
 
 - **IP Pool Name**: Enter the IP Pool Name. For detailed steps on creating the IP pool name, refer to the <a href="https://docs.sendgrid.com/ui/account-and-settings/ip-pools#create-an-ip-pool">SendGrid documentation</a>.
@@ -59,7 +59,7 @@ For more information on how to send these details via the <code class="inline-co
 The length of the IP Pool Name must be between 2 and 64 characters. 
 </div>
 
-- **SendGrid Contact List Id**: Enter the SendGrid's contact list ID where you want to create the contact. Refer to the [SendGrid documentation](https://docs.sendgrid.com/api-reference/lists/get-all-lists) to use their API endpoint to retrieve all your lists with IDs.
+- **SendGrid Contact List Id**: Enter the SendGrid's contact list ID where you want to create a contact. Refer to the [SendGrid documentation](https://docs.sendgrid.com/api-reference/lists/get-all-lists) to use their API endpoint to retrieve all your lists with IDs.
 - **Map your traits to SendGrid custom fields**: Use this setting to map the RudderStack properties with SendGrid's custom fields.
 
 
@@ -90,7 +90,7 @@ Any <code class="inline-code">track</code> call made with an event name that is 
 
 #### Content
 
-- **Type**: Enter the type of value for the **content** of your email.
+- **Type**: Enter the type of value for the content of your email.
 - **value**: Enter the actual value to be included in the email.
 
 <div class="infoBlock">
@@ -204,11 +204,7 @@ Finally, click on **Next** to complete the setup. SendGrid will now be enabled a
 
 You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create a new contact in SendGrid based on their email ID. If the email ID already exists, RudderStack updates the contact details. 
 
-Also, RudderStack sends the `identify` events in a batch where the batch limit is 30000.
-
-<div class="infoBlock">
-<code class="inline-code">email</code> is a required field to make an <code class="inline-code">identify</code> call successfully.
-</div>
+Also, RudderStack sends the `identify` events to SendGrid in a batch where the batch limit is 30000.
 
 A sample `identify` call is shown below:
 
@@ -226,17 +222,8 @@ rudderanalytics.identify("1hKOmRA4el9Z", {
 
 You can pass the SendGrid `listId` in any of the following ways:
 
-- In `externalId` object as shown in the above code snippet (takes precendence over the below)
+- In `externalId` object as shown in the above code snippet (takes highest precendence)
 - In **SendGrid Contact List Id** Rudderstack dashboard setting.
-
-<div class="infoBlock">
-If there is any custom fields in the event payload, make sure that it is present in SendGrid and mapped in the <strong>Map your traits to SendGrid custom fields</strong> RudderStack dashboard setting.
-</div>
-
-<div class="infoBlock">
-The maximum number of events that can be batched 
-The event size limit on the requests is 32 KB per message and 4 MB per batch request.
-</div>
 
 ### Supported mappings
 
@@ -253,6 +240,11 @@ The following table lists the property mappings betweeen RudderStack and SendGri
 | `state_province_region` | `state` |
 | `address_line_1`   | `address` |
 | `phone_number` | `phone_number` |
+
+<div class="infoBlock">
+If you send any custom field in the event payload, make sure it is present in SendGrid and mapped in the <strong>Map your traits to SendGrid custom fields</strong> RudderStack dashboard setting.
+</div>
+
 
 ### Deleting a user
 
