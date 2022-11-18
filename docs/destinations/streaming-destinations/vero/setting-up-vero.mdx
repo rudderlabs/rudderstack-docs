@@ -3,7 +3,7 @@ title: "Setting Up Vero in RudderStack"
 description: Step-by-step guide to set up Vero as a destination in RudderStack.
 ---
 
-Before configuring Vero as a destination in RudderStack, verify if the source platform is supported by Vero by referring to the table below:
+RudderStack supports sending event data to Vero via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -11,7 +11,7 @@ Before configuring Vero as a destination in RudderStack, verify if the source pl
 | Cloud mode  | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Vero native SDK is loaded from <code class="inline-code">https://d3qxef4rp70elm.cloudfront.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Vero SDK successfully.
 </div>
 
 Once you have confirmed that the source supports sending events to Vero, follow these steps:

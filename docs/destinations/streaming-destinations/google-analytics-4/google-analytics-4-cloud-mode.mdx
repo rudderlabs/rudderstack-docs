@@ -3,14 +3,12 @@ title: "Google Analytics 4 Cloud Mode"
 description:  Detailed technical documentation on sending events to Google Analytics 4 using the RudderStack cloud mode.
 ---
 
-RudderStack lets you send your event data to Google Analytics 4 via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> by leveraging the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a>.
+RudderStack lets you send your event data to Google Analytics 4 via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> by leveraging the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a>.
 
-<div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repository</a>.
-</div>
 
-<div class="infoBlock">
-Google Analytics 4 does not officially support a complete server-to-server integration. RudderStack monitors the GA4 Measurement Protocol API capabilities and accordingly sends a reasonable level of reporting data for the customers to Google Analytics 4.
+<div class="warningBlock">
+
+Note that Google Analytics 4 **does not officially support a complete server-to-server integration**. RudderStack utilizes the [GA4 Measurement Protocol API](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload) for our **cloud mode** integration, which **does not currently allow ingestion of UTM parameters** for attribution reporting. This may significantly limit your ability to use certain GA4 reporting features. Please refer to [Google’s documentation](https://developers.google.com/analytics/devguides/collection/protocol/ga4) for more information on these limitations.
 </div>
 
 <GhBadge
@@ -18,6 +16,10 @@ Google Analytics 4 does not officially support a complete server-to-server integ
   message={'Beta'}
   color={'blueviolet'}
 />
+
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repository</a>.
+</div>
 
 ## Tagging methods
 
@@ -34,12 +36,22 @@ The mappings for the above-mentioned mandatory parameters are listed in the foll
 
 | Parameters    | Mapping value  |
 | :-------------| :-----------------|
-| `client_id`         |  from `externalID` `ga4ClientId` or `anonymousId` or `messageId` |
+| `client_id`         |  Refer to the <Link to="#mapping-client_id">Mapping `client_id`</Link> section. |
 | `app_instance_id`   |  from `externalID` `ga4AppInstanceId`  | 
 
 <div class="infoBlock">
 Refer to the <Link to="#how-do-i-obtain-app_instance_id">FAQ</Link> section for more information on how to obtain the <code class="inline-code">app_instance_id</code>.
 </div>
+
+### Mapping `client_id` 
+
+RudderStack maps the GA4 `client_id` in the following order of precedence:
+
+- If a value is provided in the RudderStack dashboard's **GA4 client_id Field Identifier** setting, it looks up that value in the event payload and maps it to `client_id`.
+- If no value is provided in the above dashboard setting or a value is provided in the dashboard but not in the event payload, then RudderStack maps `client_id` from the following fields in the exact priority order as listed below:
+  - From `externalID`: `ga4ClientId`
+  - From `anonymousId`
+  - From `messageId`
 
 ### Supported mappings
 

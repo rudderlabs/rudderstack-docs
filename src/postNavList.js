@@ -75,6 +75,11 @@ export const postNavList = [
     content: [],
   },
   {
+    title: "Creating RudderStack IAM Role for AWS-based Destinations",
+    link: "/destinations/aws-iam-role-for-rudderstack/",
+    content: []
+  },
+  {
     key: "rudderstack-connection-modes",
     title: "Connection Modes: Cloud Mode vs Device Mode",
     link: "/destinations/rudderstack-connection-modes/",
@@ -535,6 +540,12 @@ export const postNavList = [
     link: "/sources/extract/google-search-console/",
     content: [],
   },
+    {
+    key: "google-search-console-v2",
+    title: "Google Search Console V2",
+    link: "/sources/extract/google-search-console-v2/",
+    content: [],
+  },
   {
     key: "google-sheets",
     title: "Google Sheets",
@@ -756,6 +767,12 @@ export const postNavList = [
     key: "visual-data-mapper",
     title: "Visual Data Mapper",
     link: "/sources/reverse-etl/features/visual-data-mapper/",
+    content: [],
+  },
+  {
+    key: "syncing-events",
+    title: "Syncing Events",
+    link: "/sources/reverse-etl/features/syncing-events/",
     content: [],
   },
   {
@@ -1062,6 +1079,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "podsights",
+    title: "Podsights",
+    link: "/destinations/streaming-destinations/podsights/",
+    content: [],
+  },
+  {
     key: "setting-up-singular-in-rudderstack",
     title: "Setting up Singular",
     link: "/destinations/streaming-destinations/singular/setting-up-singular-in-rudderstack/",
@@ -1191,6 +1214,12 @@ export const postNavList = [
     key: "device-mode",
     title: "Device Mode",
     link: "/destinations/streaming-destinations/drip/drip-web-device-mode/",
+    content: [],
+  },
+  {
+    key: "qualaroo",
+    title: "Qualaroo",
+    link: "/destinations/streaming-destinations/qualaroo/",
     content: [],
   },
   {
@@ -1626,6 +1655,12 @@ export const postNavList = [
     title: "Bing Ads",
     link: "/destinations/streaming-destinations/bingads/",
     content: [],
+  },
+  {
+    key: "campaign-manager-360",
+    title: "Campaign Manager 360",
+    link: "/destinations/streaming-destinations/campaign-manager-360/",
+    content: []
   },
   {
     key: "pinterest-ads",

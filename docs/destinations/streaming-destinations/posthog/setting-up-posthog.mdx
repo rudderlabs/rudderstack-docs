@@ -11,6 +11,10 @@ RudderStack supports sending events to PostHog via the following <Link to="/dest
 | **Device Mode**     | **Supported** | **-**         | **-**         |
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
+<div class="infoBlock">
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the PostHog native SDK is either loaded from the <code class="inline-code">https://app.posthog.com</code> domain or your instance URL. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist the required domain</Link> to load the PostHog SDK successfully.
+</div>
+
 Once you have confirmed that the source platform supports sending events to PostHog, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **PostHog**.

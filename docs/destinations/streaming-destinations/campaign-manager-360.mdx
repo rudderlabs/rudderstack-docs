@@ -1,0 +1,100 @@
+---
+title: "Campaign Manager 360"
+description: Step-by-step guide on sending your event data from RudderStack to Campaign Manager 360.
+---
+
+[Campaign Manager 360](https://developers.google.com/doubleclick-advertisers/guides/conversions_overview) is an ad management platform which optimizes your digital campaigns across websites and mobile. It provides many useful features for ad serving, targeting, verification, and reporting.
+
+RudderStack supports the Campaign Manager 360's [Conversions API](https://developers.google.com/doubleclick-advertisers/rest/v4/conversions) which lets advertisers provide information about the offline conversions directly to Campaign Manager 360.
+
+<div class="infoBlock">
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/campaign_manager">GitHub repository</a>.
+</div>
+
+## Getting started
+
+RudderStack supports sending event data to Campaign Manager 360 via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     | -             | -             | -             |
+| **Cloud mode**      | **Supported**   | **Supported** | **Supported** |
+
+Once you have confirmed that the source platform supports sending events to Campaign Manager 360, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Campaign Manager 360**.
+2. Assign a name to your destination and click **Continue**.
+
+## Connection settings
+
+To successfully configure Campaign Manager 360 as a destination, click the **Sign in with Google** button under **Create new account** and grant RudderStack the required permissions.
+
+Next, configure the following settings:
+
+- **Profile ID**: Enter the user profile ID associated with the request.
+
+<div class="infoBlock">
+Refer to the <a href="https://developers.google.com/doubleclick-advertisers/rest/v4/conversions/batchinsert">batchinsert</a> and <a href="https://developers.google.com/doubleclick-advertisers/rest/v4/conversions/batchupdate">batchupdate</a> methods of the Campaign Manager 360's Conversions API for more information on the profile ID.
+</div> 
+
+- **Limit ad tracking**: Enable this setting to report a conversion and not target it.
+- **Child directed treatment**: Enable this setting if you want to allow requests from users under the age of 13 **(required for COPPA compliance)**.
+- **Non personalized ad**: Enable this setting if the conversion is for a non-personalized ad.
+- **Treatment for underage**: Enable this setting if you want to allow requests from users under the age of 16 **(required for European Union's GDPR compliance)**.
+
+<div class="infoBlock">
+You can also pass values for all these dashboard settings in the <Link to="#track">track</Link> call which will take precedence over the values passed in the dashboard. Refer to the <a href="https://developers.google.com/doubleclick-advertisers/rest/v3.5/Conversion">Campaign Manager 360 documentation</a> for more information on these settings.
+</div> 
+
+## Track
+
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to capture user events along with the associated properties and send them to Campaign Manager 360.
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Product Reviewed", {
+  "profileId": 437689,
+  "floodlightConfigurationId": "213123123",
+  "ordinal": "3",
+  "floodlightActivityId": "456543345245",
+  "mobileDeviceId": "mobileDeviceId",
+  "value": 7,
+  "encryptedUserId": "encrepyteduserId"
+  "impressionId": "string",
+  "limitAdTracking": false,
+  "childDirectedTreatment": true,
+  "encryptionInfo": {
+    "kind": "dfareporting#encryptionInfo",
+    "encryptionSource": "AD_SERVING",
+    "encryptionEntityId": "3564523",
+    "encryptionEntityType": "DCM_ACCOUNT"
+  },
+  "requestType": "batchinsert"
+})
+```
+
+### Property mappings
+
+The following table lists the event property mappings between RudderStack and Campaign Manager 360:
+
+| RudderStack property          | Campaign Manager 360 property| Data type |
+| :-------------------- | :---------------------- |:---------------------- |
+| `properties.floodlightActivityId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `floodlightActivityId`           | String |
+| `properties.floodlightConfigurationId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `floodlightConfigurationId`            | String |
+| `properties.ordinal`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `ordinal`             | String |
+| `properties.profileId` <br/> `config.profileId`  | `profileId`              | Number |
+| `properties.encryptedUserId`    | `encryptedUserId`      | String |
+| `properties.encryptedUserIdCandidates[]`    | `encryptedUserIdCandidates[]`      | Array |
+|`properties.dclid`|`dclid`| String |
+| `properties.gclid`     | `gclid`           | String |
+| `properties.matchId`       | `matchId`             | String |
+| `properties.mobileDeviceId`     | `mobileDeviceId`              |String|
+
+<div class="warningBlock">
+Note the following important points:
+<ul>
+  <li>Apart from the above-mentioned properties which are marked as required, you must also send <code class="inline-code">properties.requestType</code> in the conversion event with the value as <a href="https://developers.google.com/doubleclick-advertisers/rest/v4/conversions/batchinsert"><code class="inline-code">batchinsert</code></a> or <a href="https://developers.google.com/doubleclick-advertisers/rest/v4/conversions/batchupdate"><code class="inline-code">batchupdate</code></a>.</li>
+  <li>Every conversion event must contain <strong>all the required fields</strong> and <strong>at least one of the optional fields</strong>.</li>
+</ul>
+</div>

@@ -13,7 +13,7 @@ Find the open source transformer code for this destination in the <a href="https
 
 ## Getting started
 
-Before configuring your source and destination in RudderStack, verify if the source platform is supported by MoEngage, by referring to the table below:
+RudderStack supports sending event data to MoEngage via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -21,7 +21,7 @@ Before configuring your source and destination in RudderStack, verify if the sou
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the MoEngage native SDK is loaded from <code class="inline-code">http&#40;s&#41;://cdn.moengage.com/webpush/moe_webSdk.min.latest.js</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the MoEngage SDK successfully.
 </div>
 
 Once you have confirmed that the platform supports sending events to MoEngage, perform the steps below:

@@ -15,7 +15,7 @@ Find the open source transformer code for this destination in the <a href="https
 
 ## Getting started
 
-Before configuring Klaviyo as a destination in RudderStack, verify if the source platform is supported by Klaviyo by referring to the table below:
+RudderStack supports sending event data to Klaviyo via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -23,7 +23,7 @@ Before configuring Klaviyo as a destination in RudderStack, verify if the source
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Klaviyo native SDK is loaded from <code class="inline-code">https://static.klaviyo.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Klaviyo SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Klaviyo, follow these steps:
@@ -43,7 +43,6 @@ To successfully configure Klaviyo as a destination, you will need to configure t
 - **Enforce Email as Primary Identifier**: If this option is enabled, RudderStack will never set `$id` field to your `userId` when you send the events. Instead, RudderStack will only set a custom attribute `_id` and `$email` as the primary identifier with your `traits.email` or `properties.email`. 
 
 <div class="warningBlock">
-
 This setting should be enabled only if you are experiencing any issues with duplicate profiles created in your Klaviyo account.
 </div>
 
@@ -52,7 +51,6 @@ This setting should be enabled only if you are experiencing any issues with dupl
 - **Consent**: If you are a GDPR-compliant business, you will need to include `consent` in your API call. 
 
 <div class="infoBlock">
-
 <code class="inline-code">consent</code> is a Klaviyo-specific property and only accepts these values: <code class="inline-code">email</code>, <code class="inline-code">web</code>, <code class="inline-code">sms</code>, <code class="inline-code">directmail</code>, and <code class="inline-code">mobile</code>. 
 </div>
 
@@ -65,7 +63,6 @@ This setting should be enabled only if you are experiencing any issues with dupl
 - **Use Native SDK to send Events**: Enable this option if you want to send events using the web <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 <div class="infoBlock">
-
 In case <code class="inline-code">userId</code> is absent, RudderStack uses <code class="inline-code">anonymousId</code> for mapping the user with an unique identifier. In case both <code class="inline-code">userId</code> and <code class="inline-code">anonymousId</code> are absent, then <code class="inline-code">email</code> or <code class="inline-code">phone</code> will be considered as the user's primary identifier.
 </div>
 
@@ -88,9 +85,7 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 ```
 
 <div class="infoBlock">
-
 The <code class="inline-code">page</code> calls are only supported in the RudderStack device mode. For more information on the RudderStack device mode, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
-
 </div>
 
 ## Screen
@@ -98,7 +93,6 @@ The <code class="inline-code">page</code> calls are only supported in the Rudder
 The `screen` method lets you record whenever the user views their mobile screen, with any additional relevant information about the screen. 
 
 <div class="successBlock">
-
 The <code class="inline-code">screen</code>call is the mobile equivalent of the <code class="inline-code">page</code> call.
 </div>
 
@@ -111,21 +105,14 @@ A sample `screen` call is shown below:
 In the above snippet, RudderStack captures all the information related to the viewed screen along with any additional information associated with the event. In the destination, the above `screen` call will be shown as `Sample Screen Name: ` along with the properties.
 
 <div class="infoBlock">
-
 The <code class="inline-code">screen</code> calls are only supported in the RudderStack cloud mode. To know more about the RudderStack cloud mode, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 ## Track
 
-The `track` call allows you to capture user actions along with the properties associated with these actions. 
+The `track` call allows you to capture user actions along with the properties associated with these actions. Each user action is considered to be an event. 
 
 <div class="infoBlock">
-
-Each user action is called as an <strong>event</strong>. 
-</div>
-
-<div class="infoBlock">
-
 The user has to be associated with an event either via their <code class="inline-code">userId</code>, <code class="inline-code">email</code>, or <code class="inline-code">phone</code>.
 </div>
 
@@ -169,7 +156,6 @@ client.track({
 In the above snippet, RudderStack captures the information related to the `Item Purchased` event, along with any additional info about that event in `properties` - in this case the `revenue`, along with product information. Moreover since this event is captured using a server-side SDK, RudderStack passes the user information in `context`, along with a unique `userId`.
 
 <div class="infoBlock">
-
 <ul>
 <li>To send <code class="inline-code">track</code> or <code class="inline-code">screen</code> type event using an SDK that does not persist user context information after <code class="inline-code">identify</code>, you need to pass the information in <code class="inline-code">context.traits</code>.</li>
 
@@ -177,36 +163,30 @@ In the above snippet, RudderStack captures the information related to the `Item 
 </ul>
 </div>
 
-### E-Commerce event name mapping
+### E-commerce event name mapping
 
 <div class="successBlock">
-
-E-Commerce event name mapping is supported for both RudderStack cloud mode and web device mode.
+E-commerce event name mapping is supported for both RudderStack cloud mode and web device mode.
 </div>
 
-RudderStack converts the following E-Commerce event names to the corresponding Klaviyo event names, before sending the events to Klaviyo:
+RudderStack converts the following E-commerce event names to the corresponding Klaviyo event names, before sending the events to Klaviyo:
 
 | **RudderStack Event Name** | **Klaviyo Event Name** |
 |:--------------------------------|:--------------------------|
-| `product viewed`/`product clicked` | `Viewed Product` |
-| `product added` | `Added to Cart` |
-| `checkout started` | `Started Checkout` |
-
-In addition, RudderStack also sends the associated customer properties and the token.
+| `Product Viewed` <br /> `Product Clicked` | `Viewed Product` |
+| `Product Added` | `Added to Cart` |
+| `Checkout Started` | `Started Checkout` |
 
 <div class="infoBlock">
- 
- The token refers to the Public API key used to configure Klaviyo as a destination in RudderStack. <strong>This is a mandatory field</strong>.
+In addition, RudderStack also sends the associated customer properties and the token. The token refers to the Public API key used to configure Klaviyo as a destination in RudderStack. <strong>This is a mandatory field</strong>.
 </div>
 
 <div class="infoBlock">
-
 RudderStack extracts the customer properties from <code class="inline-code">traits</code>/<code class="inline-code">context.traits</code>. Refer to the sample <code class="inline-code">track</code> call in the <a href="#track">Track</a> section above for more information on passing the properties within <code class="inline-code">traits</code>/<code class="inline-code">context.traits</code>.
 </div>
 
 <div class="warningBlock">
-
-  The customer properties must contain atleast one of <code class="inline-code">email</code> or <code class="inline-code">phone_number</code>.
+The customer properties must contain atleast one of <code class="inline-code">email</code> or <code class="inline-code">phone_number</code>.
 </div>
 
 In addition to the above-mentioned properties, you can also **optionally** send specific fields for each of the events covered in the following sections.
@@ -244,9 +224,13 @@ As mentioned previously, RudderStack converts the `Product Added` event name to 
 | `categories` | `AddedItemCategories` |
 | `item_names` | `ItemNames` |
 | `checkout_url`| `CheckoutURL` |
-| `items` | `Items` |
+| `items` (deprecating soon) <br/> `products` | `Items` |
 
-Furthermore, `items` can contain the following parameters:
+<div class="warningBlock">
+<code class="inline-code">properties.items</code> will be deprecated soon.
+</div>
+
+Furthermore, `products` / `items` can contain the following parameters:
 
 | **RudderStack Parameters** | **Klaviyo Parameters** |
 |:--------------------------------|:--------------------------|
@@ -270,10 +254,14 @@ As mentioned previously, RudderStack converts the `Checkout Started` event name 
 | `value` | `$value` |
 | `categories` | `Categories` |
 | `item_names` | `ItemNames` |
-| `items` | `Items` |
+| `items` (deprecating soon) <br/> `products` | `Items` |
 | `checkout_url` | `CheckoutURL` |
 
-Furthermore, `items` can contain the following parameters:
+<div class="warningBlock">
+<code class="inline-code">properties.items</code> will be deprecated soon.
+</div>
+
+Furthermore, `products` / `items` can contain the following parameters:
 
 | **RudderStack Parameters** | **Klaviyo Parameters** |
 |:--------------------------------|:--------------------------|
@@ -287,7 +275,7 @@ Furthermore, `items` can contain the following parameters:
 | `image_url` | `ImageURL` |
 | `categories` | `ProductCategories` |
 
-A sample `track` call containing the above e-Commerce event parameters is shown below:
+A sample `track` call containing the above e-commerce event parameters is shown below:
 
 ```javascript
 rudderanalytics.track("checkout started ", {
@@ -296,7 +284,7 @@ rudderanalytics.track("checkout started ", {
   categories: ["category1", "category2"],
   checkout_url: "http://www.testcall.com",
   item_names: ["item1", "item2"],
-  items: [{
+  products: [{
       product_id: "pId1",
       sku: "sku1",
       name: "item1",
@@ -323,7 +311,6 @@ rudderanalytics.track("checkout started ", {
 ```
 
 <div class="warningBlock">
-
 When sending events via the web device mode, specifying <code class="inline-code">order_id</code> is not mandatory, as Klaviyo automatically assigns the timestamp to the event. However, if explicitly specified, it <strong>must be unique</strong>. Klaviyo automatically discards the events with a duplicate <code class="inline-code">order_id</code>.
 </div>
 

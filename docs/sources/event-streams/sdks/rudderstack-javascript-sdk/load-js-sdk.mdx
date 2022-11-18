@@ -30,7 +30,9 @@ You can use **loadOptions** in the above `load` call to define various options w
   useBeacon: boolean, // defaults to false.
   beaconQueueOptions: BeaconQueueOpts,
   cookieConsentManager: cookieConsentManager,
-  anonymousIdOptions: AnonymousIdOptions
+  anonymousIdOptions: AnonymousIdOptions,
+  setCookieDomain: string, // defaults to current domain.
+  sameSiteCookie: "Strict" | "Lax" | "None" // defaults to Lax.
 }
 ```
 
@@ -50,6 +52,8 @@ The detailed description of these parameters is as follows:
 | `beaconQueueOptions`  | <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/javascript-sdk-enhancements/#sending-events-using-beacon">BeaconQueueOpts</Link> | Internal queue to hold the data and send it through the Beacon utility in batches. |
 | `cookieConsentManager` | Object       |  Refer to the <Link to="#cookieconsentmanager">Consent manager integration</Link> section. |
 | `anonymousIdOptions` | Object       |  <Link to="#anonymousidoptions">Automatically captures the anonymous ID</Link> from a source and sets it as RudderStack’s `anonymousId`.  |
+| `setCookieDomain` | String       | Sets the cookie domain. SDK captures and uses the current domain as the default value. Refer to the <Link to="">Data Storage</Link> guide for more information. |
+| `sameSiteCookie` | String       |  Sets the `SameSite` attribute of a cookie. Default value is `Lax`. |
 
 
 The following sections contain the detailed definitions and usage of some of the above parameters:
@@ -186,6 +190,16 @@ Run the `rudderanalytics` command in the console. If it returns the following co
 ```
 
 If it gives an `undefined` error, you need to verify the SDK installation.
+
+## Allowlist destination domain
+
+While using the JavaScript SDK with destinations supporting the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, you might need to allowlist the domain from where the destination SDK will load in your content security policy (CSP).
+
+<div class="infoBlock">
+A content security policy adds an extra layer of protection from any type of cross-site scripting, clickjacking, and data injection attacks.
+</div>
+
+You can refer to the **Getting started** section of the specific <Link to="/destinations/streaming-destinations/">destination's documentation</Link> to obtain the domain that might need to be allowlisted. 
 
 ## Tracking user sessions
 

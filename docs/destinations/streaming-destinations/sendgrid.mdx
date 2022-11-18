@@ -2,106 +2,75 @@
 title: "SendGrid"
 description: >-
  Step-by-step guide on sending your event data from RudderStack to SendGrid.
+aliases: ["SendGrid destination"]
 ---
 
-[**SendGrid**](https://sendgrid.com/) is a cloud-based email marketing platform built for marketers and developers. It helps businesses deliver billions of transactional and marketing emails every month.
+[SendGrid](https://sendgrid.com/) is a cloud-based email marketing platform built for marketers and developers. It helps businesses deliver billions of transactional and marketing emails every month.
 
-RudderStack supports SendGrid as a destination to which you can seamlessly send your customer data.
+<div class="infoBlock">
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/sendgrid">GitHub repository</a>.
+</div>
 
 ## Getting started
 
-Before configuring SendGrid as a destination in RudderStack, verify if the source platform is supported by SendGrid by referring to the table below:
+RudderStack supports sending event data to SendGrid via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | Connection Mode     | Web           | Mobile                 | Server        |
 | :------------------ | :------------ | :--------------------- | :-------------|
 | **Device mode**     | -             | -                      | -             |
 | **Cloud mode**      | **Supported** | **Supported**          | **Supported** |
 
-<div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
-</div>
+Once you have confirmed that the source platform supports sending events to SendGrid, follow these steps:
 
-Once you have confirmed that your source platform supports sending events to SendGrid, follow these steps:
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **SendGrid**.
+2. Assign a name to your destination and click **Continue**.
 
-* From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **SendGrid**.
-* Assign a name to the destination and click on **Next**. You should then see the following screen:
+## Connection settings
 
-<img src="../../assets/event-stream-destinations/sendgrid-connection-settings-1.png" alt="Sendgrid connection settings" />
-<img src="../../assets/event-stream-destinations/sendgrid-connection-settings-2.png" alt="Sendgrid connection settings" />
-<img src="../../assets/event-stream-destinations/sendgrid-connection-settings-3.png" alt="Sendgrid connection settings" />
-<img src="../../assets/event-stream-destinations/sendgrid-connection-settings-4.png" alt="Sendgrid connection settings" />
+To successfully configure SendGrid as a destination, you will need to configure the following settings:
 
-### Connection settings
-
-The connection settings required to configure SendGrid as a destination in RudderStack are listed below:
-
-* Enter your SendGrid **API Key**.
+- **API Key**: Enter your SendGrid API Key. Refer to the [SendGrid documentation](https://docs.sendgrid.com/ui/account-and-settings/api-keys) for more information on obtaining the API Key.
+- **Email Subject**: Enter the subject of the email. You can also send it via the `subject` field in the `track` call's properties. For more information, refer to the <Link to="#track">Track</Link> section below.
+- **Template ID**: Enter the **Template ID** present in your <a href="https://app.sendgrid.com/">SendGrid dashboard</a> > **Email API** > **Dynamic Templates**. You can also set the Template ID via the `templateId` field in the `track` call's properties.
 
 <div class="infoBlock">
- 
- To get the SendGrid API Key, click <a href="https://app.sendgrid.com/settings/api_keys">here</a>.
+<code class="inline-code">templateId</code> in the <code class="inline-code">track</code> call gets higher priority over the <strong>Template ID</strong> specified in the RudderStack dashboard.
 </div>
 
-* Enter the **Subject**.
-
-<div class="infoBlock">
- 
- You can also send the Email subject via the <code class="inline-code">subject</code> field in the <code class="inline-code">track</code> properties. For more information, refer to the <Link to="#track">Track</Link> section below.
-</div>
-
-* Next, enter the **Template ID**. 
-
-<div class="infoBlock">
- 
-To get your template ID or create a new one, go to your <a href="https://app.sendgrid.com/">SendGrid dashboard</a>. Then, click on <strong>Email API</strong> and go to <strong>Dynamic Templates</strong>.
-</div>
-
-<div class="infoBlock">
- 
-You can also set the Template ID via the <code class="inline-code">templateId</code> field in the <code class="inline-code">track</code> properties. Note that the template ID passed in the <code class="inline-code">track</code> properties will override the <strong>Template ID</strong> field specified in the RudderStack dashboard.
-</div>
-
-* Next, you can enable or disable the **Get email ID by traits** option. If enabled, RudderStack searches for the user's `email` inside the user's `traits`. If it is found, then the event can be sent to SendGrid without any `track` call properties.
+- **Get email ID from traits**: Enable this setting to let RudderStack search for the user's `email` inside the user's `traits`. If found, you can send an event to SendGrid without any `track` call properties.
 
 <div class="warningBlock">
- 
-This option is only useful when the properties in the <code class="inline-code">track</code> are empty. SendGrid also requires either the <code class="inline-code">templateId</code> or <code class="inline-code">content</code> to be present for a successful event delivery. 
+This option is only useful when there are no properties in the <code class="inline-code">track</code> call. SendGrid requires either the <code class="inline-code">templateId</code> or <code class="inline-code">content</code> for a successful event delivery. 
 </div>
 
-* Enter the email address in the **Reply-To Email** option, where the email ID replies or bounces will be returned.
-
-* In **Reply-To Name** , enter the user's name associated with the above email address.
+- **Reply-To Email**: Enter the email address where the email reply or bounce should be returned.
+- **Reply-To Name**: Enter the user's name associated with the above email address.
 
 <div class="infoBlock">
- 
-You can also send the email ID and name inside <code class="inline-code">replyTo</code> in the <code class="inline-code">track</code> properties. Note that these fields will override the <strong>Reply-To Email</strong> and <strong>Reply-To Name</strong> fields set in the RudderStack dashboard.
+You can also send the email ID and name in the <code class="inline-code">replyTo</code> field in the <code class="inline-code">track</code> call's properties. Note that these fields will override the <strong>Reply-To Email</strong> and <strong>Reply-To Name</strong> fields set in the RudderStack dashboard.
 </div>
 
 <div class="infoBlock">
- 
-For more information on how to send these details via the <code class="inline-code">replyTo</code> object, refer to the refer to the <Link to="#replyto">replyTo</Link> section below.
+For more information on how to send these details via the <code class="inline-code">replyTo</code> object, refer to the <Link to="#replyto">replyTo</Link> section below.
 </div>
 
-* Next, enter the **IP Pool Name**.
+- **IP Pool Name**: Enter your SendGrid IP Pool name. For detailed steps on creating an IP pool, refer to the <a href="https://docs.sendgrid.com/ui/account-and-settings/ip-pools#create-an-ip-pool">SendGrid documentation</a>.
 
 <div class="infoBlock">
- 
-The length of the IP Pool Name must be between 2 and 64 characters. For detailed steps on creating the IP pool name, refer to the <a href="https://docs.sendgrid.com/ui/account-and-settings/ip-pools#create-an-ip-pool">SendGrid documentation</a>.
+The length of the IP Pool name must be between 2 and 64 characters. 
 </div>
+
+- **SendGrid Contact List Id**: Enter the SendGrid's contact list ID where you want to create a contact. Refer to the [SendGrid documentation](https://docs.sendgrid.com/api-reference/lists/get-all-lists) to use their API endpoint to retrieve all your contact lists with their IDs.
+- **Map your traits to SendGrid custom fields**: Use this setting to map the RudderStack properties with SendGrid's custom fields.
+
 
 #### From
 
-* Enter the user's **Email** address through which the email will be sent.
+- **Email ID**: Enter the user's email address through which the email will be sent. For more information on creating a verified sender identity, refer to this <a href="https://docs.sendgrid.com/ui/sending-email/sender-verification">SendGrid documentation</a>.
+
+- **Name**: Enter the name associated with above email ID.
 
 <div class="infoBlock">
-
-For more information on creating a verified sender identity, refer to this <a href="https://docs.sendgrid.com/ui/sending-email/sender-verification">SendGrid documentation</a>.
-</div>
-
-* Enter the **Name** associated with above email ID.
-
-<div class="infoBlock">
-
 You can also include <code class="inline-code">email</code> and <code class="inline-code">name</code> inside the <code class="inline-code">from</code> object in the <code class="inline-code">track</code> call (shown below). Note that this will override the <strong>Email</strong> and <strong>Name</strong> fields specified in the RudderStack dashboard.
 </div>
 
@@ -114,23 +83,19 @@ from:{
 
 #### Event names
 
-* Next, create the list of **events** for which the `track` calls will be made.
+- **Event**: Create the list of events for which RudderStack makes the `track` calls.
 
 <div class="warningBlock">
-
-Any <code class="inline-code">track</code> call made with an event name that is not specified in this list will be <strong>discarded</strong>.
+RudderStack <strong>discards</strong> any <code class="inline-code">track</code> call made with an event name that is not specified in this list.
 </div>
 
 #### Content
 
-* To specify the **content** of your email, enter the **type** and **value**.
-
-    * The **type** field is the value type to be included in the **value** field.
-    * The **value** field contains the actual value that is to be included in the email.
+- **Type**: Enter the type of value for the content of your email.
+- **value**: Enter the actual value to be included in the email.
 
 <div class="infoBlock">
-
-The <code class="inline-code">content</code> array can also be sent via <code class="inline-code">track</code> properties (shown below), which will override the dashboard settings.
+You can also send the <code class="inline-code">content</code> array via the <code class="inline-code">track</code> properties (shown below) which will override the dashboard settings.
 </div>
 
 ```javascript
@@ -146,18 +111,13 @@ content: [
 
 Use the **Attachments** settings to specify any attachments you want to include in your email. The individual settings are as follows:
 
-* **content**: This should be a Base64-encoded string.
-
-* **type**: The attachment **type** contains the type of content you are attaching e.g. `"text/plain"`, `"text/html"`, etc.
-
-* **filename**: Use this setting to specify the attachment's file name.
-
-* **disposition**: This option specifies how you would like the attachment to be displayed.
-
-* **content ID**: Use this option when **disposition** is set to `inline` and the attachment is an image.
+- **Content**: This should be a Base64-encoded string.
+- **Type**: The attachment **type** contains the type of content you are attaching, for example, `"text/plain"`, `"text/html"`, etc.
+- **Filename**: Use this setting to specify the attachment's file name.
+- **Disposition**: This option specifies how you would like the attachment to be displayed.
+- **Content ID**: Use this option when **disposition** is set to `inline` and the attachment is an image.
 
 <div class="infoBlock">
-
 SendGrid requires that each attachment element must contain <strong>content</strong> and <strong>filename</strong>. The attachments can also be sent via the <code class="inline-code">track</code> call (shown below), which will override the dashboard settings.
 </div>
 
@@ -176,12 +136,10 @@ attachments:[
 
 The **ASM** settings allow you to handle the user's unsubscribing activity. The configurable options are:
 
-* **Group ID**: This option specifies the unsubscribe group to associate with this email.
- 
-* **Groups**: This option contains the array of unsubscribing groups that would be displayed in the unsusbcribing preferences page.
+- **Group ID**: This option specifies the unsubscribe group to associate with this email.
+- **Groups**: This option contains the array of unsubscribing groups that would be displayed in the unsusbcribing preferences page.
 
 <div class="infoBlock">
-
 SendGrid requires that the <strong>Group ID</strong> should always be present if the <code class="inline-code">asm</code> object is to be sent.
 </div>
 
@@ -242,6 +200,77 @@ The <strong>utm source</strong>, <strong>utm medium</strong>, <strong>utm term</
 </div>
 
 Finally, click on **Next** to complete the setup. SendGrid will now be enabled as a destination in RudderStack.
+
+## Identify
+
+You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create a new contact in SendGrid based on their email ID. If the email ID already exists, RudderStack updates the contact details. 
+
+RudderStack sends the `identify` events to SendGrid in a batch where the batch limit is 30000.
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9Z", {
+  name: "Alex Keener",
+  email: "alex@example.com"
+}, {
+  "externalId": [{
+    "type": "listIds",
+    "id": ["037ae8d4-25b4-496e-adff-2fded15fd0c5", "137ae8d4-25b4-496e-adff-2fded15fd0c3"]
+  }],
+});
+```
+
+You can pass the SendGrid `listId` in any of the following ways:
+
+- In the `externalId` object as shown in the above code snippet (takes the highest precedence)
+- In the **SendGrid Contact List Id** RudderStack dashboard setting.
+
+### Supported mappings
+
+The following table lists the property mappings betweeen RudderStack and SendGrid:
+
+| RudderStack property | SendGrid property|
+| :-------------------- | :---------------------- |
+| `email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `email` |
+| `city`   | `city` |
+| `country` | `country` |
+| `first_name`   | `first_name` |
+| `last_name` | `last_name` |
+| `postal_code`   | `postal_code` |
+| `state_province_region` | `state` |
+| `address_line_1`   | `address` |
+| `phone_number` | `phone_number` |
+
+<div class="infoBlock">
+If you send any custom field in the event payload, make sure it is present in SendGrid and mapped in the <strong>Map your traits to SendGrid custom fields</strong> RudderStack dashboard setting.
+</div>
+
+### Deleting a user
+
+You can delete a contact in SendGrid using the <Link to="/api/data-regulation-api/#adding-a-suppression-with-delete-regulation">Suppression with Delete regulation</Link> of the RudderStack <Link to="/api/data-regulation-api/">Data Regulation API</Link>.
+
+<div class="infoBlock">
+To delete a user, you must specify their <code class="inline-code">userId</code> in the event. Additionally, you can specify a custom identifier (optional) in the event.
+</div>
+
+A sample regulation request body for deleting a user in SendGrid is shown below:
+
+```json
+{
+  "regulationType": "suppress_with_delete",
+  "destinationIds": [
+    "2FIKkByqn37FhzczP23eZmURciA"
+  ],
+  "users": [{
+      "userId": "eab57ccf-6322-498e-9338-7761c6dc0656"
+    },
+    {
+      "userId": "47983ca9-7cc6-4942-8ff0-ac443g95658d"
+    }
+  ],
+}
+```
 
 ## Track
 

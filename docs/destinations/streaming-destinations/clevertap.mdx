@@ -13,7 +13,7 @@ Find the open source transformer code for this destination in the <a href="https
 
 ## Getting started
 
-Before configuring your source and destination in RudderStack, please check whether the platform you are sending the events from is supported by CleverTap. Please refer the following table to do so:
+RudderStack supports sending event data to CleverTap via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -21,7 +21,7 @@ Before configuring your source and destination in RudderStack, please check whet
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the CleverTap native SDK is loaded from <code class="inline-code">https://d2r1yp2w7bby2u.cloudfront.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the CleverTap SDK successfully.
 </div>
 
 Once you have confirmed that the platform supports sending events to CleverTap, perform the steps below:
@@ -625,6 +625,10 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 })
 ```
 
+<div class="infoBlock">
+CleverTap does not support nested objects or arrays for custom attributes in the <code class="inline-code">page</code> events. Hence, RudderStack converts the nested objects or arrays into strings before sending them to CleverTap.
+</div>
+
 ## Screen
 
 The `screen` method allows you to record whenever a user sees the mobile screen, along with any associated optional properties. This call is similar to the `page` call, but is exclusive to your mobile device.
@@ -637,6 +641,10 @@ A sample `screen` call looks like the following code snippet:
 ```
 
 In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In CleverTap, the above `screen` call will be shown as - **"Screen Viewed: `Sample Screen Name` "** along with the properties.
+
+<div class="infoBlock">
+CleverTap does not support nested objects or arrays for custom attributes in the <code class="inline-code">screen</code> events. Hence, RudderStack converts the nested objects or arrays into strings before sending them to CleverTap.
+</div>
 
 ## Track
 
@@ -655,15 +663,11 @@ rudderanalytics.track("Checked Out", {
 In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional info about that event - in this case the details of the `Checked out` event.
 
 <div class="infoBlock">
-
 To set a specific value to the <code class="inline-code">screen</code> or <code class="inline-code">track</code> type event, you need to pass the <code class="inline-code">event</code> related property in the <code class="inline-code">properties</code> field.
-
 </div>
 
 <div class="infoBlock">
-
-Note: For <code class="inline-code">track</code>, <code class="inline-code">page</code> and <code class="inline-code">screen</code> events CleverTap does not support arrays or nested objects for custom event properties.
-
+CleverTap does not support nested objects or arrays for custom attributes in the <code class="inline-code">track</code> events. Hence, RudderStack converts the nested objects or arrays into strings before sending them to CleverTap.
 </div>
 
 ### Order Completed
@@ -783,9 +787,7 @@ If a user already exists, the new values will be updated for that user. Rudderst
 </div>
 
 <div class="infoBlock">
-
-Note: For <code class="inline-code">identify</code> events CleverTap does not support nested objects for user's <code class="inline-code">traits</code>.
-
+CleverTap does not support nested objects or arrays for custom attributes in the <code class="inline-code">identify</code> events. Hence, RudderStack converts the nested objects or arrays into strings before sending them to CleverTap.
 </div>
 
 <div class="infoBlock">
@@ -801,7 +803,7 @@ Example: To disable push notifications for a user, set <code class="inline-code"
 You can delete a user in CleverTap using the <Link to="/api/data-regulation-api/#adding-a-suppression-with-delete-regulation">Suppression with Delete regulation</Link> of the RudderStack <Link to="/api/data-regulation-api/">Data Regulation API</Link>.
 
 <div class="infoBlock">
-To delete a user, you need to specify their <code class="inline-code">userId</code> or any custom identifier in the event.
+To delete a user, you must specify their <code class="inline-code">userId</code> in the event. Additionally, you can specify a custom identifier (optional) in the event.
 </div>
 
 A sample regulation request body for deleting a user in CleverTap is shown below:

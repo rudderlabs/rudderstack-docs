@@ -14,7 +14,7 @@ Find the open source transformer code for this destination in the <a href="https
 
 ## Getting started
 
-Before configuring your source and destination in RudderStack, verify if the source platform is supported by Mixpanel by referring to the table below:
+RudderStack supports sending event data to Mixpanel via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -22,8 +22,9 @@ Before configuring your source and destination in RudderStack, verify if the sou
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Mixpanel native SDK is loaded from <code class="inline-code">https://cdn.mxpnl.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Mixpanel SDK successfully.
 </div>
+
 
 Once you have confirmed that the source platform supports sending events to Mixpanel, follow these steps:
 
@@ -168,7 +169,7 @@ Currently, RudderStack supports this feature only for the web device mode.
 You can delete a user in Mixpanel using the <Link to="/api/data-regulation-api/#adding-a-suppression-with-delete-regulation">Suppression with Delete regulation</Link> of the RudderStack <Link to="/api/data-regulation-api/">Data Regulation API</Link>.
 
 <div class="infoBlock">
-To delete a user, you need to specify their <code class="inline-code">userId</code> or any custom identifier in the event.
+To delete a user, you must specify their <code class="inline-code">userId</code> in the event. Additionally, you can specify a custom identifier (optional) in the event.
 </div>
 
 A sample regulation request body for deleting a user in Mixpanel is shown below:

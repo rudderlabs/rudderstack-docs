@@ -12,18 +12,18 @@ Every RudderStack API call shares the same common fields.
 
 The following table lists all the common fields with their detailed description:
 
-| Name                | Data type| Presence | Description                                                                             |
-| :------------------ | :------- | :------- | :-------------------------------------------------------------------------------------- |
-| `anonymousId`       | String   | Required | Unique identification for the user. This is the same as the `deviceId`.                 |
-| `channel`           | String   | Required | Identifies the source of the event. Permitted values are `mobile`, `web`, `server`.     |
-| `context`           | Object   | Required | Contains all the additional user information. The RudderStack SDKs populate this information automatically. |
-| `type`              | String   | Required | Captures the type of event. Values can be either `track`, `screen`, `identify`, `page`. |
-| `originalTimestamp` | DateTime | Required | Records the actual time when the event occurred. Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For e.g., `2022-02-01T19:14:18.381Z`.                                                                              |
-| `sentAt`            | DateTime | Required | Captures the time when the event was sent from the client to RudderStack. Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. For e.g., `2022-02-01T19:14:18.381Z`.                                                         |
-| `event`             | String   | Optional | Captures the user action that you want to record.                                       |
-| `integrations`      | Object   | Optional | You can specify the destinations for which you want to enable/disable sending events.   |
-| `messageId`         | String   | Optional | Unique identification for the event.                                                    |
-| `properties`        | Object   | Optional | Passes all the relevant information associated with the event.                          |
+| <div style="width:100px">Name</div>       | <div style="width:150px">Data type</div> | Description                    |
+| :------------------ | :------- | :-------------------- |
+| `anonymousId`  <br /><span style="color: #4D4DFF;font-size:12px;">Required</span>     | String   | Unique identification for the user. This is the same as the `deviceId`.                 |
+| `channel`  <br /><span style="color: #4D4DFF;font-size:12px;">Required</span>         | String   | Identifies the source of the event. Permitted values are `mobile`, `web`, `server`.     |
+| `context`  <br /><span style="color: #4D4DFF;font-size:12px;">Required</span>         | Object   | Contains all the additional user information. The RudderStack SDKs populate this information automatically. |
+| `type`   <br /><span style="color: #4D4DFF;font-size:12px;">Required</span>           | String   | Captures the type of event. Values can be either `track`, `screen`, `identify`, `page`. |
+| `originalTimestamp` <br /><span style="color: #4D4DFF;font-size:12px;">Required</span> | Timestamp | Records the actual time when the event occurred. Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. <br /><br />  For e.g., `2022-02-01T19:14:18.381Z`.   |
+| `sentAt`  <br /><span style="color: #4D4DFF;font-size:12px;">Required</span>          | Timestamp | Captures the time when the event was sent from the client to RudderStack. Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. <br /><br />  For e.g., `2022-02-01T19:14:18.381Z`.       |
+| `event`             | String   | Captures the user action that you want to record.     |
+| `integrations`      | Object   |  You can specify the destinations for which you want to enable/disable sending events.   |
+| `messageId`         | String   |  Unique identification for the event.          |
+| `properties`        | Object   | Passes all the relevant information associated with the event.     |
 
 <div class="infoBlock">
 Upon receving the event, RudderStack also sets <code class="inline-code">receivedAt</code> - the timestamp when the event is ingested(received). You need not set this field explicitly when sending the events to RudderStack.
@@ -31,11 +31,12 @@ Upon receving the event, RudderStack also sets <code class="inline-code">receive
 
 ## Contextual fields
 
-The contextual fields give additional context about a particular event. The following table lists all the contextual fields with their detailed description:
+The contextual fields give additional context about a particular event. The following table lists all the contextual fields with their detailed description.
 
-| Name | Data type | Description |
+| <div style="width:100px">Name</div>       | <div style="width:150px">Data type</div> | Description |
 | :--- | :--- | :--- |
 | `app` | Object | Gives detailed information related to your app, like `build`, `name`, `namespace` and `version`. |
+| `campaign` | Object | Gives detailed information about campaigns, like `name`, `source`, `medium`, `content` and `term`. |
 | `device` | Object | Information about the device from which you are capturing the event. It contains `deviceId`, `manufacturer`, `model`, `name` and `type`. |
 | `library` | Object | Details about the RudderStack SDK you are using, like `name` and `version`. |
 | `locale` | String | Captures the language of the device. |
@@ -45,13 +46,10 @@ The contextual fields give additional context about a particular event. The foll
 | `timezone` | String | Captures the timezone of the user you are tracking. |
 | `traits` | Object | Captures any additional relevant information about the user. RudderStack fills in the `anonymousId` for you. You can also associate the   [**traits**](https://rudderstack.com/docs/event-spec/standard-events/identify/#identify-traits) from the previously-made `identify` call from the SDK. |
 | `userAgent` | String | The user agent of the device that you are tracking. |
-| `campaign` | Object | Gives detailed information about campaigns, like `name`, `source`, `medium`, `content` and `term`. |
 
-<div class="warningBlock">
-All of the above contextual fields are <strong>not</strong> automatically collected by the RudderStack SDKs.
-</div>
+### Automatically collected contextual fields
 
-The following section highlights the contextual fields that are **automatically collected** and populated by each of the RudderStack SDKs:
+The following table lists the contextual fields that are automatically collected and populated by the RudderStack SDKs:
 
 | Field | JavaScript | Android | iOS | Description | 
 | :--- | :--- |:--- |:--- |:--- |
@@ -73,7 +71,7 @@ The following section highlights the contextual fields that are **automatically 
 | `library.name` | Yes | Yes | Yes | Name of the library. |
 | `library.version` | Yes | Yes | Yes | Version of the library. |
 | `locale` | Yes | Yes | Yes | Locale string of the user. |
-| `network.bluetooth` | - | Yes (if permission is granted) | - | Bluetooth information. |
+| `network.bluetooth` | - | Yes* | - | Bluetooth information. |
 | `network.carrier` | - | Yes | Yes | Carrier information about the network connection. |
 | `network.cellular` | - | Yes | Yes | Cellular information about the network connection. |
 | `network.wifi` | - | Yes | Yes | WiFi information about the network connection. |
@@ -87,7 +85,7 @@ The following section highlights the contextual fields that are **automatically 
 | `page.search` | Yes | - |  - | Search of the current page in the browser.
 | `page.title` | Yes | - |  - | Title of the current page in the browser. |
 | `page.url` | Yes | - |  - | URL of the current page in the browser. |
-| `screen.density` | Yes | Yes | - | Density of the device's screen. |
+| `screen.density` | Yes | Yes | Yes | Density of the device's screen. |
 | `screen.height` | Yes | Yes | Yes | Height of the device's screen. |
 | `screen.width` | Yes | Yes | Yes | Width of the device's screen. |
 | `screen.innerWidth` | Yes |   -   |   -   | Inner width of the device's screen. |
@@ -97,9 +95,13 @@ The following section highlights the contextual fields that are **automatically 
 | `timezone` | - | Yes | Yes | Information about the user's timezone. |
 
 <div class="infoBlock">
-For Android SDK V1.6.0 and above, the Bluetooth status is collected in the <code class="inline-code">network.bluetooth</code> field only if the Bluetooth permission is present in the app.
-For iOS SDK V1.6.3 and above, the Bluetooth status is not collected in the <code class="inline-code">network.bluetooth</code> field as it’s a run-time permission.
+<ul>
+<li>For Android SDK v1.6.0 and above, the Bluetooth status is collected in the <code class="inline-code">network.bluetooth</code> field only if the Bluetooth permission is present in the app.</li>
+<li>For iOS SDK v1.6.3 and above, the Bluetooth status is not collected in the <code class="inline-code">network.bluetooth</code> field as it is a run-time permission.</li>
+</ul>
 </div>
+
+### Sample payload with contextual fields
 
 The following sample payload highlights the usage of the common and contextual fields in web and mobile modes:
 

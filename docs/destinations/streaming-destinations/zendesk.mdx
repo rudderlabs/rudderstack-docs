@@ -111,7 +111,22 @@ rudderanalytics.identify("1hKOmRA4GRlm",{
 
 The above `identify` call updates the user (if they exist) as well as removes them from the organization associated with the ID `900001329943`.
 
-RudderStack assumes a valid Zendesk `organization_id` in the `company.id` field. Then, it finds the organization corresponding to that ID and removes the user. 
+RudderStack assumes a valid Zendesk `organization_id` in the `company.id` field. Then, it finds the organization corresponding to that ID and removes the user.
+
+### Updating user's primary email
+
+To set a new email address as the user's primary email in Zendesk, you can use the `primaryEmail` trait in the `identify` call, as shown:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com",
+  primaryEmail: "test300@email.com",
+  country: "USA",
+});
+```
+
+In the above snippet, `test300@email.com` is set as the user's primary email and `alex@example.com` is set as the secondary email in Zendesk. However, if `primaryEmail` is not specified, then `alex@example.com` is set as the primary email.
 
 ## Track
 

@@ -78,8 +78,7 @@ This section lists the bucket configuration settings needed for RudderStack to i
 <img src="../../assets/warehouse-actions-sources/s3-bucket-settings.png" alt="Bucket configuration settings" />
 
 <div class="warningBlock">
-
-Your S3 bucket(with the prefix, if specified above) should consist of Apache Parquet files only. Currently, Rudderstack can extract only Parquet files.
+Your S3 bucket (with the prefix, if specified above) should only consist of Apache Parquet files as Rudderstack can extract only the Parquet files. Also, the first row of the Parquet file should not have <code class="inline-code">null</code> value (empty strings are allowed) for any column. It helps RudderStack to determine the correct schema of the file.
 </div>
 
 - **Choose user identifier**: Choose atleast one user identifier from `user_id` and `anonymous_id` from the dropdown.
