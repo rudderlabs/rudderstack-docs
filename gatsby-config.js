@@ -90,7 +90,7 @@ module.exports = {
       },
     },
     {
-      resolve: '@rocketseat/gatsby-theme-docs',
+      resolve: 'gatsby-theme-apollo-docs',
       options: {
         withMdx: false,
       },
