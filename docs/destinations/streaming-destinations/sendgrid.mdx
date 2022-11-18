@@ -2,6 +2,7 @@
 title: "SendGrid"
 description: >-
  Step-by-step guide on sending your event data from RudderStack to SendGrid.
+aliases: ["SendGrid destination"]
 ---
 
 [SendGrid](https://sendgrid.com/) is a cloud-based email marketing platform built for marketers and developers. It helps businesses deliver billions of transactional and marketing emails every month.
@@ -28,7 +29,7 @@ Once you have confirmed that the source platform supports sending events to Send
 
 To successfully configure SendGrid as a destination, you will need to configure the following settings:
 
-- **API Key**: Enter your SendGrid API Key. Refer to the [Sendgrid documentation](https://app.sendgrid.com/settings/api_keys) for more information on obtaining the API Key.
+- **API Key**: Enter your SendGrid API Key. Refer to the [SendGrid documentation](https://docs.sendgrid.com/ui/account-and-settings/api-keys) for more information on obtaining the API Key.
 - **Email Subject**: Enter the subject of the email. You can also send it via the `subject` field in the `track` call's properties. For more information, refer to the <Link to="#track">Track</Link> section below.
 - **Template ID**: Enter the **Template ID** present in your <a href="https://app.sendgrid.com/">SendGrid dashboard</a> > **Email API** > **Dynamic Templates**. You can also set the Template ID via the `templateId` field in the `track` call's properties.
 
@@ -53,13 +54,13 @@ You can also send the email ID and name in the <code class="inline-code">replyTo
 For more information on how to send these details via the <code class="inline-code">replyTo</code> object, refer to the <Link to="#replyto">replyTo</Link> section below.
 </div>
 
-- **IP Pool Name**: Enter the IP Pool Name. For detailed steps on creating the IP pool name, refer to the <a href="https://docs.sendgrid.com/ui/account-and-settings/ip-pools#create-an-ip-pool">SendGrid documentation</a>.
+- **IP Pool Name**: Enter your SendGrid IP Pool name. For detailed steps on creating an IP pool, refer to the <a href="https://docs.sendgrid.com/ui/account-and-settings/ip-pools#create-an-ip-pool">SendGrid documentation</a>.
 
 <div class="infoBlock">
-The length of the IP Pool Name must be between 2 and 64 characters. 
+The length of the IP Pool name must be between 2 and 64 characters. 
 </div>
 
-- **SendGrid Contact List Id**: Enter the SendGrid's contact list ID where you want to create a contact. Refer to the [SendGrid documentation](https://docs.sendgrid.com/api-reference/lists/get-all-lists) to use their API endpoint to retrieve all your lists with IDs.
+- **SendGrid Contact List Id**: Enter the SendGrid's contact list ID where you want to create a contact. Refer to the [SendGrid documentation](https://docs.sendgrid.com/api-reference/lists/get-all-lists) to use their API endpoint to retrieve all your contact lists with their IDs.
 - **Map your traits to SendGrid custom fields**: Use this setting to map the RudderStack properties with SendGrid's custom fields.
 
 
@@ -82,10 +83,10 @@ from:{
 
 #### Event names
 
-- **Event**: Create the list of events for which the `track` calls will be made.
+- **Event**: Create the list of events for which RudderStack makes the `track` calls.
 
 <div class="warningBlock">
-Any <code class="inline-code">track</code> call made with an event name that is not specified in this list will be <strong>discarded</strong>.
+RudderStack <strong>discards</strong> any <code class="inline-code">track</code> call made with an event name that is not specified in this list.
 </div>
 
 #### Content
@@ -94,7 +95,7 @@ Any <code class="inline-code">track</code> call made with an event name that is 
 - **value**: Enter the actual value to be included in the email.
 
 <div class="infoBlock">
-The <code class="inline-code">content</code> array can also be sent via <code class="inline-code">track</code> properties (shown below), which will override the dashboard settings.
+You can also send the <code class="inline-code">content</code> array via the <code class="inline-code">track</code> properties (shown below) which will override the dashboard settings.
 </div>
 
 ```javascript
@@ -111,7 +112,7 @@ content: [
 Use the **Attachments** settings to specify any attachments you want to include in your email. The individual settings are as follows:
 
 - **Content**: This should be a Base64-encoded string.
-- **Type**: The attachment **type** contains the type of content you are attaching e.g. `"text/plain"`, `"text/html"`, etc.
+- **Type**: The attachment **type** contains the type of content you are attaching, for example, `"text/plain"`, `"text/html"`, etc.
 - **Filename**: Use this setting to specify the attachment's file name.
 - **Disposition**: This option specifies how you would like the attachment to be displayed.
 - **Content ID**: Use this option when **disposition** is set to `inline` and the attachment is an image.
@@ -204,7 +205,7 @@ Finally, click on **Next** to complete the setup. SendGrid will now be enabled a
 
 You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create a new contact in SendGrid based on their email ID. If the email ID already exists, RudderStack updates the contact details. 
 
-Also, RudderStack sends the `identify` events to SendGrid in a batch where the batch limit is 30000.
+RudderStack sends the `identify` events to SendGrid in a batch where the batch limit is 30000.
 
 A sample `identify` call is shown below:
 
@@ -222,8 +223,8 @@ rudderanalytics.identify("1hKOmRA4el9Z", {
 
 You can pass the SendGrid `listId` in any of the following ways:
 
-- In `externalId` object as shown in the above code snippet (takes highest precendence)
-- In **SendGrid Contact List Id** Rudderstack dashboard setting.
+- In the `externalId` object as shown in the above code snippet (takes the highest precedence)
+- In the **SendGrid Contact List Id** RudderStack dashboard setting.
 
 ### Supported mappings
 
@@ -244,7 +245,6 @@ The following table lists the property mappings betweeen RudderStack and SendGri
 <div class="infoBlock">
 If you send any custom field in the event payload, make sure it is present in SendGrid and mapped in the <strong>Map your traits to SendGrid custom fields</strong> RudderStack dashboard setting.
 </div>
-
 
 ### Deleting a user
 
@@ -271,7 +271,6 @@ A sample regulation request body for deleting a user in SendGrid is shown below:
   ],
 }
 ```
-
 
 ## Track
 
