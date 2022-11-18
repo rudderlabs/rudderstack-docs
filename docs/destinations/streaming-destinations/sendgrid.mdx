@@ -59,6 +59,10 @@ For more information on how to send these details via the <code class="inline-co
 The length of the IP Pool Name must be between 2 and 64 characters. 
 </div>
 
+- **SendGrid Contact List Id**: Enter the SendGrid's contact list ID where you want to create the contact. Refer to the [SendGrid documentation](https://docs.sendgrid.com/api-reference/lists/get-all-lists) to use their API endpoint to retrieve all your lists with IDs.
+- **Map your traits to SendGrid custom fields**: Use this setting to map the RudderStack properties with SendGrid's custom fields.
+
+
 #### From
 
 - **Email ID**: Enter the user's email address through which the email will be sent. For more information on creating a verified sender identity, refer to this <a href="https://docs.sendgrid.com/ui/sending-email/sender-verification">SendGrid documentation</a>.
@@ -198,7 +202,9 @@ Finally, click on **Next** to complete the setup. SendGrid will now be enabled a
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create a new contact in SendGrid based on the contact's email ID. If the email ID already exists, RudderStack updates the contact details.
+You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create a new contact in SendGrid based on their email ID. If the email ID already exists, RudderStack updates the contact details. 
+
+Also, RudderStack sends the `identify` events in a batch where the batch limit is 30000.
 
 <div class="infoBlock">
 <code class="inline-code">email</code> is a required field to make an <code class="inline-code">identify</code> call successfully.
@@ -207,12 +213,30 @@ You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link
 A sample `identify` call is shown below:
 
 ```javascript
-rudderanalytics.identify("user@101", {
-  name: "Chris Miles",
-  email: "chrismiles@gmail.com"
-})
+rudderanalytics.identify("1hKOmRA4el9Z", {
+  name: "Alex Keener",
+  email: "alex@example.com"
+}, {
+  "externalId": [{
+    "type": "listIds",
+    "id": ["037ae8d4-25b4-496e-adff-2fded15fd0c5", "137ae8d4-25b4-496e-adff-2fded15fd0c3"]
+  }],
+});
 ```
 
+You can pass the SendGrid `listId` in any of the following ways:
+
+- In `externalId` object as shown in the above code snippet (takes precendence over the below)
+- In **SendGrid Contact List Id** Rudderstack dashboard setting.
+
+<div class="infoBlock">
+If there is any custom fields in the event payload, make sure that it is present in SendGrid and mapped in the <strong>Map your traits to SendGrid custom fields</strong> RudderStack dashboard setting.
+</div>
+
+<div class="infoBlock">
+The maximum number of events that can be batched 
+The event size limit on the requests is 32 KB per message and 4 MB per batch request.
+</div>
 
 ### Supported mappings
 
