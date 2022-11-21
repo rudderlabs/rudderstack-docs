@@ -669,8 +669,8 @@ export const postNavList = [
   },
   {
     key: "intercom-v2",
-    title: "Intercom v2",
-    link: "/sources/extract/intercom-v2/",
+    title: "Intercom V2",
+    link: "/sources/extract/intercom/",
     content: [],
   },
   {

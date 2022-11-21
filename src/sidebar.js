@@ -495,7 +495,7 @@ export const jsonData = [
             },
             {
                 title: "Intercom V2",
-                link: "/sources/extract/intercom-v2/",
+                link: "/sources/extract/intercom/",
                 content: []
             },
             {
