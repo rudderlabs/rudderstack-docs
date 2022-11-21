@@ -63,19 +63,19 @@ You can choose the Intercom data that you want to ingest by selecting the requir
 
 The below table mentions the sync types supported by the Intercom resources while syncing data to your warehouse destination:
 
-| Resource | Full Refresh sync | Incremental sync | 
-| :---| :---| :----|
-| `admins` | Yes | No |
-| `companies` | Yes | Yes |
-| `company segments` | Yes | Yes |
-| `company attributes` | Yes | No |
-| `conversations` | Yes | Yes |
-| `conversation parts` |  Yes | Yes |
-| `contacts` | Yes | Yes |
-| `contact attributes` |Yes | No |
-| `segments` | Yes | Yes |
-| `tags` | Yes | No |
-| `teams` | Yes | No |
+| Resource | Full Refresh sync | Incremental sync | Endpoint | Primary key |
+| :---| :---| :----| :----| :----|
+| `admins` | Yes | No | `/admins` | `id` |
+| `companies` | Yes | Yes |  `/companies/scroll` | `id` |
+| `company segments` | Yes | Yes | `/companies/<id>/segments` | `id` |
+| `company attributes` | Yes | No | `/data_attributes?model=company` | `name` |
+| `conversations` | Yes | Yes | `/conversations` | `id` |
+| `conversation parts` |  Yes | Yes | `/conversations/<id>` | `id` |
+| `contacts` | Yes | Yes | `/contacts` | `id` |
+| `contact attributes` |Yes | No | `/data_attributes?model=contact` | `name` |
+| `segments` | Yes | Yes | `/segments` | `id` |
+| `tags` | Yes | No | `/tags` | `name` |
+| `teams` | Yes | No | `/teams` | `name` |
 
 <div class="infoBlock">
 For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
