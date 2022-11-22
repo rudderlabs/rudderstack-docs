@@ -46,9 +46,46 @@ For more information on the schedule types, refer to the <Link to="/sources/extr
 
 ### Selecting the data to import
 
-Choose the Freshdesk data that you wish to ingest via RudderStack. You can either select all the data or choose specific Freshdesk data attributes as per your requirement.
+You can choose the Freshdesk data you want to ingest by selecting the required resources:
 
 <img src="../../assets/cloud-extract-sources/freshdesk-resources.png" alt="Selecting the data to import" />
+
+The below table mentions the syncs and API endpoints supported by these resources from Freshdesk to your warehouse destination:
+
+| Resource | Supported sync mode | Primary key | Freshdesk API endpoint |
+| :---| :---- | :---- | :---- | :---- |
+|	`time_entries`	| Full Refresh  | `id` | `/time_entries` |
+|	`tickets`	| Incremental | `id` | `/tickets` |
+|	`ticket_fields`	| Full Refresh  | `id` | `/ticket_fields` |
+|	`surveys`	| Full Refresh  | `id` | `/surveys` |
+|	`solution_folders`	| Full Refresh  | `id` | `/solutions/categories/[id]/folders` |
+|	`solution_categories`	| Full Refresh  | `id` | `/solutions/categories` |
+|	`solution_articles`	| Full Refresh  | `id` | `/solutions/folders/[id]/articles` |
+|	`sla_policies`	| Full Refresh  | `id` | `/sla_policies` |
+|	`skills`	| Full Refresh  | `id` | `/skills` |
+|	`settings`	| Full Refresh  | `primary_language` | `/settings/helpdesk` |
+|	`scenario_automations`	| Full Refresh  | `id` | `/scenario_automations` |
+|	`satisfaction_ratings`	| Incremental  | `id` | `/surveys/satisfaction_ratings` |
+|	`roles`	| Full Refresh  | `id` | `/roles` |
+|	`products`	| Full Refresh  | `id` | `/products` |
+|	`groups`	| Full Refresh  | `id` | `/groups` |
+|	`email_mailboxes`	| Full Refresh  | `id` | `/email/mailboxes` |
+|	`email_configs`	| Full Refresh  | `id` | `/email_configs` |
+|	`discussion_topics`	| Full Refresh  | `id` | `/discussions/forums/[id]/topics` |
+|	`discussion_forums`	| Full Refresh  | `id` | `/discussions/categories/[category_id]/forums` |
+|	`discussion_comments`	| Full Refresh  | `id` | `/discussions/topics/[id]/comments` |
+|	`discussion_categories`	| Full Refresh  | `id` | `/discussions/categories` |
+|	`conversations`	| Semi-Incremental | `id` | `/tickets/{stream_slice['id']}/conversations` |
+|	`contacts`	| Incremental | `id` | `/contacts` |
+|	`companies`	| Full Refresh  | `id` | `/companies` |
+|	`canned_responses`	| Full Refresh  | `id` | `/canned_response_folders/[id]/responses` |
+|	`canned_response_folders`	| Full Refresh  | `id` | `/canned_response_folders` |
+|	`business_hours	`	| Full Refresh  | `id` | `/business_hours` |
+|	`agents	`	| Full Refresh  | `id` | `/agents` |
+
+<div class="infoBlock">
+The above-mentioned resources supporting the <strong>Incremental</strong> sync mode also support the <strong>Full Refresh</strong> sync mode by default but RudderStack syncs the data using the <strong>Incremental</strong> mode for such resources. If you want to use the <strong>Full Refresh</strong> sync mode for such resources, <a href="mailto:%20support@rudderstack.com">contact the RudderStack team</a>. For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide. 
+</div>
 
 Freshdesk is now configured as a source. RudderStack will start ingesting data from Freshdesk as per your specified schedule and frequency.
 
