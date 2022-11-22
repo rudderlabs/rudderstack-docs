@@ -1,15 +1,11 @@
 ---
-title: "Freshdesk"
+title: "Freshdesk V2"
 description: Step-by-step guide on ingesting data from Freshdesk into RudderStack.
 ---
 
 [Freshdesk](https://freshdesk.com/) is a popular customer support software which provides cutting-edge, cross-channel customer support features including bots and various other self-service solutions.
 
 This document guides you in setting up Freshdesk as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Freshdesk data, which can then be routed to your RudderStack-supported data warehouse destination.
-
-<div class="dangerBlock">
-This source will be deprecated soon. Refer to the <Link to="/sources/extract/freshdesk-v2/">Freshdesk V2</Link> guide for the latest documentation.
-</div>
 
 <div class="warningBlock">
 All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
@@ -20,23 +16,19 @@ All the Cloud Extract sources support sending data only to a <Link to="/destinat
 To set up Freshdesk as a source in RudderStack, follow these steps:
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
-2. Go to **Sources** > **New source** > **Cloud Extract** and select **Freshdesk** from the list of sources.
-3. Assign a name to your source and click on **Continue**.
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **Freshdesk V2** from the list of sources.
+3. Assign a name to your source and click **Continue**.
 
 ### Connection settings
 
-1. Click on **Create Credentials from Scratch**. You will then see the following screen:
+To set up Freshdesk as a Cloud Extract source, you need to configure the following settings:
 
 <img src="../../assets/cloud-extract-sources/freshdesk-connection-settings.png" alt="Freshdesk credentials" />
 
-2. Enter the following connection credentials to authenticate your Freshdesk account with RudderStack:
-  - **Account Name**: Enter your Freshdesk account name. This should be the email you used to sign up for Freshdesk.
-  - **Subdomain**: Enter your Freshdesk subdomain (portion of the URL before `.freshdesk.com/`)
-  - **API Key**: Enter your Freshdesk API key which can be obtained by logging into your Freshdesk account, clicking on your profile and navigating to the **Profile Settings**.
-
-<div class="successBlock">
-Refer to the <a href="#faq">FAQ</a> section for more information on obtaining the Freshdesk API key.
-</div>
+- **Domain**: Enter your Freshdesk domain from the URL (for example, `test.freshdesk.com`).
+- **API Key**: Enter your Freshdesk API key. Refer to the <Link to="#faq">FAQ</Link> section for more information on obtaining the API key.
+- **Requests per minute**: Enter the number of requests that Freshdesk can use per minute. The rate limit **does not allow** more than 50 requests per minute per app per Freshdesk account.
+- **Start Date**: Enter the date from which RudderStack should import your historical Freshdesk data.
 
 ### Destination settings
 
@@ -56,7 +48,7 @@ For more information on the schedule types, refer to the <Link to="/sources/extr
 
 Choose the Freshdesk data that you wish to ingest via RudderStack. You can either select all the data or choose specific Freshdesk data attributes as per your requirement.
 
-<img src="../../assets/cloud-extract-sources/freshdesk-connection-settings-1.png" alt="Selecting the data to import" />
+<img src="../../assets/cloud-extract-sources/freshdesk-resources.png" alt="Selecting the data to import" />
 
 Freshdesk is now configured as a source. RudderStack will start ingesting data from Freshdesk as per your specified schedule and frequency.
 
@@ -70,7 +62,7 @@ Use the <strong>Use Existing Destination</strong> option if you have an already-
 
 ## FAQ
 
-### Where do I find the Freshdesk API Key?
+### Where can I find the Freshdesk API Key?
 
 To get your Freshdesk API key, follow these steps:
 
@@ -84,6 +76,4 @@ To get your Freshdesk API key, follow these steps:
 
 Yes, it is.
 
-We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
-
-
+RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
