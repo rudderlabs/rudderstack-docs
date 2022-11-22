@@ -515,6 +515,12 @@ export const postNavList = [
     title: "Freshdesk",
     link: "/sources/extract/freshdesk/",
     content: [],
+  }, 
+  {
+    key: "freshdesk-v2",
+    title: "Freshdesk V2",
+    link: "/sources/extract/freshdesk-v2/",
+    content: [],
   },
   {
     key: "google-adwords",
