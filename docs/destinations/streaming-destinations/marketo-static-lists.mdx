@@ -39,7 +39,7 @@ For more information on obtaining your Marketo client ID and secret, refer to th
 - **Static List ID**: Enter your Marketo static list ID. RudderStack uses this ID to add or remove leads from the specific list. For more information on obtaining your static list ID, refer to the <Link to="#faq">FAQ</Link> section below.
 
 <div class="infoBlock">
-RudderStack prioritizes the <code class="inline-code">marketoStaticListId</code> provided in the event's <code class="inline-code">externalId</code> over the <strong>Static List ID</strong> dashboard setting. If <code class="inline-code">marketoStaticListId</code> is absent in <code class="inline-code">externalId</code>, RudderStack looks for the static list ID specified in this setting.
+RudderStack prioritizes the <code class="inline-code">marketoStaticListId</code> provided in the event's <code class="inline-code">externalId</code> over the <strong>Static List ID</strong> dashboard setting. If <code class="inline-code">marketoStaticListId</code> is absent in <code class="inline-code">externalId</code>, RudderStack looks for the static list ID in this setting, as it is mandatory to send event data successfully to Marketo.
 </div>
 
 ## `audienceList` structure
@@ -88,7 +88,7 @@ RudderStack transforms this data and sends it to Market Static Lists in the requ
 
 ### Supported mappings
 
-The following table details the mapping of the RudderStack `audienceList` properties and Markerto Static Lists properties:
+The following table details the mapping of the RudderStack `audienceList` properties and Marketo Static Lists properties:
 
 | RudderStack property | Static Lists property | Notes |
 | :----| :------|  :---|
@@ -133,7 +133,7 @@ To set up the Marketo API service and obtain the client ID and secret associated
 <img src="../../assets/event-stream-destinations/marketo-services.png" />
 
 <div class="warningBlock">
-Make sure the <strong>API Only User</strong> associated with the API service has the necessary permissions to create or update contacts as wellas the custom activities.
+Make sure the <strong>API Only User</strong> associated with the API service has the necessary permissions to create or update contacts as well as the custom activities.
 </div>
 
 Once the setup is complete, you should have the client ID and client secret for the API service. Use this to configure the Marketo destination in RudderStack.
