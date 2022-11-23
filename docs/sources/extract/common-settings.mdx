@@ -92,14 +92,22 @@ In this mode, RudderStack replaces all the existing data with the new data.
 
 ### Incremental
 
-In this mode, RudderStack syncs or replicates only the **new** or **modified** data. It does not replicate the data that has been already synced before.
+In this mode, RudderStack syncs or replicates only the **new** or **modified** data starting from the date you specify in the **Start Date** RudderStack dashboard setting. It does not replicate the data that has been already synced before.
 
 <div class="infoBlock">
 During the incremental syncs, RudderStack only updates the the existing rows that have been modified as opposed to adding a new version of the row with the updated data.
 </div>
 
+<div class="warningBlock">
+Any resource that supports the <strong>Incremental</strong> sync mode also supports <strong>Full Refresh</strong>, by default. To sync your data using the <strong>Full Refresh</strong> mode in such cases, you need to <a href="mailto:support@rudderstack.com">contact the RudderStack team</a>.
+</div>
+
+### Semi-Incremental
+
+This sync mode is a combination of **Full Refresh** and **Incremental** sync modes. RudderStack reads all the data from the source and filters it to sync only the new or modified data starting from the date you specify in the **Start Date** RudderStack dashboard setting.
+
 <div class="infoBlock">
-If a resource supports the <strong>Incremental</strong> sync mode, it supports the <strong>Full Refresh</strong> sync mode by default. However, RudderStack syncs the data using the <strong>Incremental</strong> mode for such resources. If you want to use the <strong>Full Refresh</strong> sync mode, <a href="mailto:%20support@rudderstack.com">contact the RudderStack team</a>.
+Data synced in the Semi-Incremental mode is exactly the same as in the Incremental mode. The only difference is that RudderStack internally filters the data to be synced instead of the source API in the Semi-Incremental mode.
 </div>
 
 ## FAQ
