@@ -175,6 +175,12 @@ To avoid exceeding the column count threshold in your warehouse, you can do the 
 
 ## Namespace, prefix, and warehouse schema
 
+### Can I modify the warehouse schema once it is created? Will RudderStack overwrite or discard the changes when updating the schema?
+
+You can modify the warehouse schema once it is created by adding or altering the columns, or changing the column data type. **RudderStack honors the updated warehouse schema** and send the incoming data to the warehouse accordingly.
+
+For example, if you update a column's data type in the schema, RudderStack will consider the latest, updated column data type and typecast all the incoming data accordingly, before sending it to that column.
+
 ### How is the Namespace field populated for a warehouse destination?
 
 RudderStack sets the **Namespace** field depending on the following conditions:

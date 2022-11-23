@@ -13,10 +13,14 @@ This guide details the structure of this warehouse schema and the columns create
 
 RudderStack uses the source name (written in snake case, for example, `source_name`) to create a schema in your data warehouse.
 
+<div class="successBlock">
+RudderStack treats the warehouse schema as the source of truth. If you manually make any changes to the schema, for example, add or modify a column, or update a column's data type, RudderStack honours the modified schema and and sends the data to the warehouse accordingly.
+</div>
+
 The following tables are created in your data warehouse for each RudderStack source connected to it:
 
-| Name                                | Description                                                                                                           |
-| :-----------------------------------| :---------------------------------------------------------------------------------------------------------------------|
+| Name                | Description              |
+| :----------------------| :--------------------------|
 | `<source_name>.identifies`          | Every `identify` call sent from the source is stored in this table, including the properties passed as `traits`.      |
 | `<source_name>.users`               | RudderStack stores all the unique users in this table. Only the latest properties used to identify a user are stored, including the latest `anonymousId`.    |
 | `<source_name>.tracks`              | Every `track` call sent from the source is stored in this table. It **does not include** the custom properties present in the event's `properties` but has some standard properties (listed in the <Link to="#standard-rudderstack-properties">Standard properties</Link> section below such as `received_at`, `anonymous_id`, `context_device_info`, etc.                                                                                                    |
