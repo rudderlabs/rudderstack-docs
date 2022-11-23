@@ -4,6 +4,22 @@ description: >-
   Detailed technical description of RudderStack's identity resolution feature to create comprehensive and unified user profiles.
 ---
 
+<div class="warningBlock">
+
+**Important: `merge` call entering maintenance mode soon.**
+
+In the first half of 2003 we will begin the deprecation process for our `merge` API, which allows you to merge different user identities into a single customer profile in the warehouse. The `merge` call is only used in 
+**warehouse operations**. 
+
+If you are using the merge call **for warehouse operations**, not to worry: it will continue to work for the forseeable future. We would encourage you to consider joining our [RS360 beta]() when it is available in 2023. Contact your RudderStack Account Manager for details. RS360 will perform identity resolution automatically, without the need for a separate call.
+
+**[INTERNAL/REVIEW NOTES]**:
+
+How much more/less do we want to say about RS360?
+
+I didn't get much into explaining how the merge call works, especially as it relates to the streams/identify/alias. If we think we should go into more detail clarification on that, it might be better to weave that into the doc itself, rather than in a top-of-page callout.
+</div>
+
 Across a user's product journey, multiple identifiers get associated with them. These include their email ID, phone number, device IDs, anonymous ID, account usernames, etc. **Identity resolution** is the process of matching these different identifiers across multiple devices and digital touchpoints to build a cohesive and omnichannel customer profile. A unified customer view enables businesses to deliver relevant messaging and enhance the user's customer journey.
 
 With RudderStack's warehouse-first architecture, you can send all your cross-platform data to your warehouse and perform identity resolution on it.
