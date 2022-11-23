@@ -499,6 +499,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Iterable",
+                link: "/sources/extract/iterable/",
+                content: []
+            },
+            {
                 title: "Klaviyo",
                 link: "/sources/extract/klaviyo/",
                 content: []
