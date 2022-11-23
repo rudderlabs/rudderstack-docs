@@ -4,6 +4,16 @@ description: >-
   Detailed technical description of RudderStack's identity resolution feature to create comprehensive and unified user profiles.
 ---
 
+<div class="warningBlock">
+
+**Important: `merge` call entering maintenance mode soon.**
+
+In the first half of 2023 we will begin the deprecation process for our `merge` API, which allows you to merge different user identities into a single customer profile in the warehouse. The `merge` call is only used in 
+**warehouse operations**. 
+
+If you are using the merge call **for warehouse operations**, not to worry: it will continue to work for the foreseeable future. We would encourage you to consider joining our upcoming beta program for user profiles when available in 2023. Contact your RudderStack Account Manager or our [account team](https://www.rudderstack.com/request-demo/) for details.
+</div>
+
 Across a user's product journey, multiple identifiers get associated with them. These include their email ID, phone number, device IDs, anonymous ID, account usernames, etc. **Identity resolution** is the process of matching these different identifiers across multiple devices and digital touchpoints to build a cohesive and omnichannel customer profile. A unified customer view enables businesses to deliver relevant messaging and enhance the user's customer journey.
 
 With RudderStack's warehouse-first architecture, you can send all your cross-platform data to your warehouse and perform identity resolution on it.
