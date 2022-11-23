@@ -38,6 +38,10 @@ For more information on obtaining your Marketo client ID and secret, refer to th
 
 - **Static List ID**: Enter your Marketo static list ID. RudderStack uses this ID to add or remove leads from the specific list. For more information on obtaining your static list ID, refer to the <Link to="#faq">FAQ</Link> section below.
 
+<div class="infoBlock">
+RudderStack prioritizes the <code class="inline-code">marketoStaticListId</code> provided in the event's <code class="inline-code">externalId</code> over the <strong>Static List ID</strong> dashboard setting. If <code class="inline-code">marketoStaticListId</code> is absent in the payload, RudderStack looks for the static list ID specified in this setting.
+</div>
+
 ## `audienceList` structure
 
 You can [add](https://developers.marketo.com/rest-api/assets/static-lists/#add_to_list) or [remove](https://developers.marketo.com/rest-api/assets/static-lists/#remove_from_list) users to a Marketo static list via the `audienceList` calls.
