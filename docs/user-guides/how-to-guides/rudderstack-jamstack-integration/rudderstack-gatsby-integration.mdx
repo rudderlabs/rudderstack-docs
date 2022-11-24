@@ -60,7 +60,7 @@ plugins: [
       // Rudderstack docs:
       //   - https://rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/#311-self-hosted-control-plane
       controlPlaneUrl: `https://override-control-plane-url`,
-      // boolean (defaults to false); whether to delay load Rudderstack
+      // boolean (defaults to false); whether to delay loading(Download SDK and call load API) of RudderStack JS SDK.
       // ADVANCED FEATURE: only use if you leverage client-side routing (ie, Gatsby <Link>)
       // This feature will force Rudderstack to load _after_ either a page routing change
       // or user scroll, whichever comes first. This delay time is controlled by
@@ -88,6 +88,7 @@ plugins: [
       // Can be used to override the location of the JavaScript library. This is useful
       // if you want to add a proxy between the location and the RudderStack source so ad-blockers won't block  
       // fetching the JavaScript sdk.
+      // By default plugin will use the latest JS SDK: https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js
       sdkURL: `https://subdomain.yourdomain.com/v1.1/rudder-analytics.min.js`,
       // string ('async' or 'defer'); whether to load the RudderStack SDK async or defer. Anything else
       // will load normally.
@@ -96,6 +97,8 @@ plugins: [
       loadType: 'default',
       // Options to the `load` API
       // Note: The above `controlPlaneUrl` overrides the `configUrl` field in this object
+      // Here you can find all the loadOptions available for JS SDK - 
+      // https://www.rudderstack.com/docs/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#loading-options
       loadOptions: {
         ...
       }
