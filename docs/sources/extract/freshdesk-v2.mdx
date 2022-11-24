@@ -75,7 +75,7 @@ The below table mentions the syncs and API endpoints supported by these resource
 |	`discussion_forums`	| Full Refresh  | `id` | `/discussions/categories/[category_id]/forums` |
 |	`discussion_comments`	| Full Refresh  | `id` | `/discussions/topics/[id]/comments` |
 |	`discussion_categories`	| Full Refresh  | `id` | `/discussions/categories` |
-|	`conversations`	| Semi-Incremental | `id` | `/tickets/{stream_slice['id']}/conversations` |
+|	`conversations`	| Semi-Incremental | `id` | `/tickets/[id]/conversations` |
 |	`contacts`	| Incremental | `id` | `/contacts` |
 |	`companies`	| Full Refresh  | `id` | `/companies` |
 |	`canned_responses`	| Full Refresh  | `id` | `/canned_response_folders/[id]/responses` |
