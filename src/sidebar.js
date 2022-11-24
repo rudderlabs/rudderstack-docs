@@ -468,6 +468,10 @@ export const jsonData = [
                 link: "/sources/extract/freshdesk/",
                 content: []
             }, {
+                title: "Freshdesk V2",
+                link: "/sources/extract/freshdesk-v2/",
+                content: []
+            }, {
                 title: "Google Ads (Adwords)",
                 link: "/sources/extract/google-adwords/",
                 content: []
