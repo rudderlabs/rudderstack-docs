@@ -77,14 +77,28 @@ plugins: [
       delayLoad: false,
       // number (default to 1000); time to wait after scroll or route change
       // To be used when `delayLoad` is set to `true`
-      delayLoadTime: 1000
+      delayLoadTime: 1000,
       // Whether to completely skip calling `analytics.load()`.
       // ADVANCED FEATURE: only use if you are calling `analytics.load()` manually
       // elsewhere in your code or are using a library
       // that will call it for you.
       // Useful for only loading the tracking script once a user has opted in to being tracked, for example.
       // *Another use case is if you want to add callbacks to the methods at load time.
-      manualLoad: false
+      manualLoad: false,
+      // Can be used to override the location of the JavaScript library. This is useful
+      // if you want to add a proxy between the location and the RudderStack source so ad-blockers won't block  
+      // fetching the JavaScript sdk.
+      sdkURL: `https://subdomain.yourdomain.com/v1.1/rudder-analytics.min.js`,
+      // string ('async' or 'defer'); whether to load the RudderStack SDK async or defer. Anything else
+      // will load normally.
+      // 'async' will load the SDK as <script async></script>
+      // 'defer' will load the SDK as <script defer></script>
+      loadType: 'default',
+      // Options to the `load` API
+      // Note: The above `controlPlaneUrl` overrides the `configUrl` field in this object
+      loadOptions: {
+        ...
+      }
     }
   }
 ];
