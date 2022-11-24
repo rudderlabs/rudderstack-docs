@@ -68,7 +68,7 @@ The following settings are applicable if you are using this destination via the 
 - **Cross Subdomain Cookie**: If enabled, this option lets the Mixpanel cookie to persist between different pages of your application.
 - **Persistence Type**: This option lets you choose the persistence type for your Mixpanel cookies.
 - **Secure Cookie**: Enabling this option will mark the Mixpanel cookie as secure, i.e., it will only transmit over HTTPS.
-- **Group Key Settings**: RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified here. For more information, refer to the <Link to="#group"> Group</Link> section below.
+- **Group Key Settings**: RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified here. These group keys act as the group identifiers in Mixpanel. For more information, refer to the <Link to="#group-key">Group Key</Link> section below.
 - **Client-side Events Filtering**: Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 
 The following event mapping setting is applicable only if you are sending events to Mixpanel via the cloud mode:
@@ -264,12 +264,7 @@ analytics.alias('userId', `previousId`);
 
 ## Group
 
-The `group` call lets you link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits associated with that group like the name of the company, the number of employees, etc.
-
-<div class="infoBlock">
-
-For more information on how the <code class="inline-code">group</code> call works in Mixpanel, refer to Mixpanel's <a href="https://help.mixpanel.com/hc/en-us/articles/360025333632-Group-Analytics">Group Analytics documentation</a>.
-</div>
+The <Link to="/event-spec/standard-events/group">`group`</Link> call lets you link an identified user with a group such as a company, organization, or an account, and record any traits associated with that group, for example, company name, number of employees, etc. For more information on how the <code class="inline-code">group</code> call works in Mixpanel, refer to Mixpanel's [Group Analytics](https://help.mixpanel.com/hc/en-us/articles/360025333632-Group-Analytics) documentation.
 
 RudderStack lets you record the custom traits associated with a user group and send this information to Mixpanel.
 
@@ -285,14 +280,22 @@ rudderanalytics.group(
 );
 ```
 
-RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified during the destination configuration in RudderStack, as shown:
+### Group Key
+
+You can create group keys in the [Mixpanel project settings](https://help.mixpanel.com/hc/en-us/articles/360025333632-Group-Analytics#implementation), which act as the group identifiers in Mixpanel. To successfully send a `group` call to Mixpanel, you must specify **at least** one group key in the **Group Key** RudderStack dashboard setting, as shown:
 
 <img src="../../assets/event-stream-destinations/mixpanel-group-key-settings.png" alt="Mixpanel group key settings" />
 
 <div class="warningBlock">
-
-You must create the group key(s) of the same name in your Mixpanel <a href="https://help.mixpanel.com/hc/en-us/articles/360025333632-Group-Analytics#implementation">project settings</a>. To administer the group keys, navigate to your project settings and click on <strong>Add Group Key</strong> under <strong>Group Keys</strong>.
-
+  Note the following points:
+  <ul>
+    <li>If you map the <code class="inline-code">groupId</code> as a group key, RudderStack looks up its value in the following priority order:</li>
+ <ul>
+      <li>In <code class="inline-code">message.groupId</code></li>
+      <li>In <code class="inline-code">message.traits.groupId</code></li>
+      </ul>
+    <li>If you map any other field as a group key, RudderStack looks up its value in <code class="inline-code">message.traits.groupKey</code>.</li>
+     </ul>
 </div>
 
 ## Sending historic events
