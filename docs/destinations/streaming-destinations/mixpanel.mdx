@@ -68,7 +68,7 @@ The following settings are applicable if you are using this destination via the 
 - **Cross Subdomain Cookie**: If enabled, this option lets the Mixpanel cookie to persist between different pages of your application.
 - **Persistence Type**: This option lets you choose the persistence type for your Mixpanel cookies.
 - **Secure Cookie**: Enabling this option will mark the Mixpanel cookie as secure, i.e., it will only transmit over HTTPS.
-- **Group Key Settings**: RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified here. These group keys act as group identifiers in Mixpanel. For more information, refer to the <Link to="#group-key">Group Key</Link> section below.
+- **Group Key Settings**: RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified here. These group keys act as the group identifiers in Mixpanel. For more information, refer to the <Link to="#group-key">Group Key</Link> section below.
 - **Client-side Events Filtering**: Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 
 The following event mapping setting is applicable only if you are sending events to Mixpanel via the cloud mode:
@@ -282,7 +282,7 @@ rudderanalytics.group(
 
 ### Group Key
 
-You can create group keys in [Mixpanel project settings](https://help.mixpanel.com/hc/en-us/articles/360025333632-Group-Analytics#implementation), which act as group identifiers in Mixpanel. To send a `group` call to Mixpanel successfully, you must specify **at least** one group key (must be present in Mixpanel) in the **Group Key** RudderStack dashboard setting, as shown:
+You can create group keys in the [Mixpanel project settings](https://help.mixpanel.com/hc/en-us/articles/360025333632-Group-Analytics#implementation), which act as the group identifiers in Mixpanel. To successfully send a `group` call to Mixpanel, you must specify **at least** one group key in the **Group Key** RudderStack dashboard setting, as shown:
 
 <img src="../../assets/event-stream-destinations/mixpanel-group-key-settings.png" alt="Mixpanel group key settings" />
 
