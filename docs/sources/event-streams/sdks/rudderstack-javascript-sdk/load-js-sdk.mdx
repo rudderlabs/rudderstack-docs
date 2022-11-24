@@ -63,12 +63,14 @@ The following sections contain the detailed definitions and usage of some of the
 You can use this parameter to send the event data only to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/filtering/#filtering-destinations">selective destinations</Link>. Its structure is defined as follows:
 
 ```javascript
-{
-  All: boolean, // default true
-  <Destination1>: boolean,
-  <Destination2>: boolean,
-  ...
-}
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+  integrations: {
+    All: boolean, // default true
+    <Destination1>: boolean,
+    <Destination2>: boolean,
+    ...
+  }
+});
 ```
 
 The following table describes the above (optional) parameters in detail:
@@ -121,11 +123,11 @@ Once a user provides the consent, you can load the JavaScript SDK and enable the
 
 ```javascript
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
-    cookieConsentManager: {
-        oneTrust: {
-            enabled: true
-        }
+  cookieConsentManager: {
+    oneTrust: {
+      enabled: true
     }
+  }
 });
 ```
 
@@ -138,12 +140,14 @@ For example, if you are migrating from a particular source and want to retain it
 The structure of `anonymousIdOptions` is defined as follows:
 
 ```javascript
-{
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+  anonymousIdOptions: {
     autoCapture: {
-        enabled: true,
-        source: "segment",
+      enabled: true,
+      source: "segment"
     }
-}
+  }
+});
 ```
 The following table describes the above (required) parameters in detail:
 
