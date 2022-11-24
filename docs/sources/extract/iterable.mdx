@@ -53,24 +53,24 @@ The below table mentions the sync types supported by the Iterable resources whil
 
 | Resource | Sync type | Endpoint | Primary key |
 | :---| :--- | :----| :----|
-| `campaigns` | Full Refresh |  |  |
-| `campaigns_metrics` | Full Refresh |  |  |
-| `channels` | Full Refresh |  |  |
-| `email_bounce` | Incremental |  |  |
-| `email_click` | Incremental |  |  |
-| `email_complaint` |  Incremental |  |  |
-| `email_open` | Incremental |  |  |
-| `email_send` | Incremental |  |  |
-| `email_send_skip` | Incremental |  |  |
-| `email_subscribe` | Incremental |  |  |
-| `email_unsubscribe` | Incremental |  |  |
-| `events` | Full Refresh |  |  |
-| `lists` | Full Refresh |  |  |
-| `list_users` | Full Refresh |  |  |
-| `message_types` | Full Refresh |  |  |
-| `metadata` | Full Refresh |  |  |
-| `templates` | Incremental |  |  | 
-| `users` | Incremental |  |  |
+| `campaigns` | Full Refresh | `/campaigns` | `id` |
+| `campaigns_metrics` | Full Refresh | `/campaigns/metrics` | -  |
+| `channels` | Full Refresh | `/channels`  | `id` |
+| `email_bounce` | Incremental | [`/export/data.json`](https://api.iterable.com/api/docs#export_exportDataJson) | - |
+| `email_click` | Incremental | [`/export/data.json`](https://api.iterable.com/api/docs#export_exportDataJson) | -  |
+| `email_complaint` |  Incremental | [`/export/data.json`](https://api.iterable.com/api/docs#export_exportDataJson) | -  |
+| `email_open` | Incremental | [`/export/data.json`](https://api.iterable.com/api/docs#export_exportDataJson) | -  |
+| `email_send` | Incremental | [`/export/data.json`](https://api.iterable.com/api/docs#export_exportDataJson) | -  |
+| `email_send_skip` | Incremental | [`/export/data.json`](https://api.iterable.com/api/docs#export_exportDataJson) |  - |
+| `email_subscribe` | Incremental | [`/export/data.json`](https://api.iterable.com/api/docs#export_exportDataJson) | -  |
+| `email_unsubscribe` | Incremental | [`/export/data.json`](https://api.iterable.com/api/docs#export_exportDataJson) | -  |
+| `events` | Full Refresh | `/export/userEvents` | -  |
+| `lists` | Full Refresh | `/lists` | `id` |
+| `list_users` | Full Refresh |  `/lists/getUsers` | `listId` |
+| `message_types` | Full Refresh | `/messageTypes` | `id` |
+| `metadata` | Full Refresh | `/metadata` | -  |
+| `templates` | Incremental | [`/export/data.json`](https://api.iterable.com/api/docs#export_exportDataJson) | -  | 
+| `users` | Incremental |[`/export/data.json`](https://api.iterable.com/api/docs#export_exportDataJson)  | -  |
 
 <div class="infoBlock">
 For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
