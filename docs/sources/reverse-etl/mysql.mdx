@@ -3,9 +3,7 @@ title: "MySQL"
 description: Step-by-step guide to ingest your data from MySQL into RudderStack.
 ---
 
-[MySQL](https://www.mysql.com/) is a popular open source relational DBMS.
-
-RudderStack supports MySQL as a source from which you can ingest data and route it to your desired downstream destinations.
+[MySQL](https://www.mysql.com/) is a popular open source relational DBMS. You can build fast, powerful, and secure data storage systems using MySQL instantaneously.
 
 ## Granting permissions
 
@@ -51,13 +49,11 @@ To set up MySQL as a source in RudderStack, follow these steps:
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
 2. From the left navigation bar, go to **Source** > **New Source** > **Reverse ETL**.  Then, select **MySQL**.
-3. Assign a name to your source and click on **Continue**.
+3. Assign a name to your source and click **Continue**.
 
 ### Configuring the connection credentials
 
-1. Enter the relevant connection details in the **Connection Credentials**, as shown:
-
-<img src="../../assets/warehouse-actions-sources/mysql-connection-settings.png" />
+1. Enter the relevant connection details in the **Connection Credentials** section:
 
 * **Host**: Enter the host name of your MySQL service.
 * **Port**: Enter the port number of your MySQL service.
@@ -69,42 +65,38 @@ To set up MySQL as a source in RudderStack, follow these steps:
 If you've configured a MySQL source before, you can select the existing credentials under the <strong>Use existing credentials</strong> option.
 </div>
 
-2. Click on **Continue**. RudderStack will then verify and validate your credentials. 
-
-<div class="infoBlock">
-For more information on these validation steps, refer to the <a href="#faq">FAQ</a> section. 
-</div>
-
-3. Once verified, click on **Continue** to proceed.
+2. Click **Continue**. RudderStack will then verify and validate your credentials. For more information on these validation steps, refer to the <a href="#faq">FAQ</a> section.
+3. Once verified, click **Continue** to proceed.
 
 ### Schedule settings
 
-1. Specify the **Schedule Settings** to schedule the data syncs from your MySQL instance.
+1. Specify the **Schedule Settings** to schedule the data syncs from your MySQL instance. For more information on the schedule types, refer to the <Link to="/sources/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule</Link> guide.
 
-<div class="infoBlock">
+2. After specifying the schedule type and run settings, click **Continue** to finish the setup.
 
-RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
-</div>
-
-2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
-
-MySQL is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destination** button, as shown:
+MySQL is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking **Add Destination** button, as shown:
 
 <img src="../../assets/warehouse-actions-sources/add-destination.png" alt="Add destination in RudderStack" />
 
 <div class="infoBlock">
-<ul>
-    <li>If you have already configured a destination in RudderStack, select the <strong>Use Existing Destinations</strong> option which will take you to the <strong>Schema</strong> tab in the source settings.</li>
-    <li>To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the destination configuration page.</li>
+<ul><li>If you have already configured the destination in RudderStack dashboard, select the <strong>Use Existing Destinations</strong> option which will take you to the <strong>Schema</strong> tab in the source settings.</li>
+<li>To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the destination configuration page.</li>
 </ul>
 </div>
 
-## Specifying the data to import
+## Mapping warehouse data to destination
 
-While connecting your MySQL source to a destination, you can configure the data to be imported using any one of the following methods:
+After selecting the destination and configuring its connection settings, you can choose how to map the data from your Reverse ETL source to the destination using one of the following methods:
 
-- <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link>
-- <Link to="/sources/reverse-etl/common-settings/importing-data-using-tables/">JSON mapping</Link>
+- <Link to="/sources/reverse-etl/common-settings/importing-data-using-tables/">JSON mapping</Link>: You can use JSON mapping (default method) to map data for all the destinations. The below image shows the destination settings for JSON mapping:
+
+<img src="../../assets/warehouse-actions-sources/json-mapping.png" alt="JSON Mapping" />
+
+- <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper (VDM)</Link>: You can use VDM to map data <strong>only</strong> for the <Link to="/sources/reverse-etl/features/visual-data-mapper/#supported-destinations">VDM-supported destinations</Link>. It offers an intuitive UI to map your warehouse columns to specific destination fields. The below image shows the destination settings for VDM:
+
+<img src="../../assets/warehouse-actions-sources/vdm-mapping.png" alt="VDM Mapping" />
+
+Based on the chosen method, you can refer to the <Link to="">JSON mapping</Link> or <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> guide for further steps on specifying the data to be imported and establishing a Reverse ETL connection successfully.
 
 ## FAQ
 
