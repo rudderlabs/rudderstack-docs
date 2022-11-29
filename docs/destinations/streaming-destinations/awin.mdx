@@ -3,24 +3,20 @@ title: "Awin"
 description: Step-by-step guide on sending your event data from RudderStack to Awin.
 ---
 
-[Awin](https://www.Awin.com/) is an interactive email marketing tool. It provides several useful features like sending transactional campaigns, email automation, and drip emails with customer journeys, WYSIWYG email editor, and many other tool integrations.
+[Awin](https://www.Awin.com/) is an affiliate marketing program which helps connecting advertisers and affiliates of all sizes. It provides a network of affiliate partners, click tracing and tracking, advertiser directory, reports and analytics, and more.
 
 <div class="infoBlock">
-Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/mailjet">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/awin">GitHub repository</a>.
 </div>
 
 ## Getting started
 
-Before configuring Awin as a destination in RudderStack, verify if the source platform is supported by Awin by referring to the table below:
+RudderStack supports sending event data to Awin via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | Connection Mode | Web | Mobile | Server |
 | :--- | :--- | :--- | :--- |
 | Device mode | - | - | - |
 | Cloud mode | Supported  | Supported | Supported |
-
-<div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
-</div>
 
 Once you have confirmed that the source platform supports sending events to Awin, follow these steps:
 
@@ -31,19 +27,13 @@ Once you have confirmed that the source platform supports sending events to Awin
 
 To successfully configure Awin as a destination, you will need to configure the following settings:
 
-<img src="../../assets/event-stream-destinations/Awin-connection-settings.png" alt="Awin connection settings" />
+- **Advertiser ID**: Enter your Awin Advertiser ID. For more information on obtaining your advertiser ID, refer to the <Link to="#FAQ">FAQ</Link> section below.
 
-- **Advertiser ID**: Enter your Awin API key.
-
-<div class="infoBlock">
-For more information on obtaining your Awin API key, refer to the <Link to="#FAQ">FAQ</Link> section below.
-</div>
-
-- **Client-side Events Filtering**: This field is **only applicable** for the `identify` call. Enter the name of the Awin list where the contacts should be added. If not provided, `Rudderstack` is taken as the default list name. 
+- **Client-side Events Filtering**: 
 
 ## Track
 
-You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to [add custom events for a contact](https://www.Awin.com/developers/93cba3fa7f1ea-add-event/).
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to [send conversion data directly from your server to Awin's servers](https://wiki.awin.com/index.php/Advertiser_Tracking_Guide/Conversion_Pixel_Only_Tracking#Server_To_Server_.28S2S.29).
 
 A sample `track` call is shown below:
 
