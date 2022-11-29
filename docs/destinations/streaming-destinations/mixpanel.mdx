@@ -214,13 +214,11 @@ For device mode, RudderStack offers the following three options for `page` calls
 - **Track Named Pages to Mixpanel**: RudderStack also tracks the named pages to Mixpanel. If you enable this setting in the dashboard, RudderStack will send a `Viewed [page_name] Page` event. Note that this option has the least precedence and comes to effect only if the above two options are disabled in the RudderStack dashboard.
 
 <div class="infoBlock">
-
 RudderStack gives the highest precedence to the <strong>Track All Pages with a Consolidated Event Name</strong> option even if <strong>Track Categorized Pages to Mixpanel</strong> and 
 <strong>Track Named Pages to Mixpanel</strong> are enabled in the dashboard.
 </div>
 
 <div class="warningBlock">
-
 RudderStack expects atleast one of the three options listed above to be enabled for sending the <code class="inline-code">page</code> events to Mixpanel using device mode.
 </div>
 
@@ -361,8 +359,7 @@ RudderStack will send all the Mixpanel <a href="#mixpanel-special-traits">specia
 </div>
 
 <div class="warningBlock">
-
-This feature is available in the web device mode only.
+This feature is available in web device mode only.
 </div>
 
 ## Mixpanel special traits
@@ -384,18 +381,15 @@ The following table lists all the properties that RudderStack sends to Mixpanel 
 | `country`/`address.country`| `$country_code`      |
 
 ## Incrementing events in Mixpanel People
-
 To increment event counts in Mixpanel People, you can add the events in the **Events to increment in People** field.
 
 <div class="warningBlock">
-
-This feature is available in the web device mode only.
+This feature is available in web device mode only.
 </div>
 
 For each event name added, RudderStack automatically calls Mixpanel and sets a user trait as `Last + <event_name>`. For example, if you add `Logged In` to the list of increment events, RudderStack will increment a user trait called `Logged In` and set a trait called `Last Logged In` with the current date and time.
 
 <div class="warningBlock">
-
 Increment works for known users only. If you make a <code class="inline-code">track</code> call, you must identify your user first.
 </div>
 
@@ -404,8 +398,7 @@ Increment works for known users only. If you make a <code class="inline-code">tr
 To increment properties in Mixpanel People, you can add them in the **Properties to Increment in People** field. RudderStack will call Mixpanel’s increment when you attach a number to the specified property. For example, `'items purchased': 5`.
 
 <div class="warningBlock">
-
-This feature is available in the web device mode only.
+This feature is available in web device mode only.
 </div>
 
 ## Cross subdomain cookies
