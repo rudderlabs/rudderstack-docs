@@ -127,7 +127,7 @@ Choosing this option allows RudderStack to store and delete your event data on a
 
 ## Sample event data
 
-When the **Sample event data** setting is enabled, RudderStack stores and deletes sample events and responses on a rolling 30-day basis. This data may be helpful with debugging efforts. 
+When the **Sample event data** setting is enabled, RudderStack stores and deletes sample events and responses on a rolling 30-day basis. This data may be helpful for debugging your events. 
 
 <div class="infoBlock">
 RudderStack <strong>does not</strong> consider the event name or event type to be Personally Identifiable Information (PII).
@@ -137,13 +137,13 @@ RudderStack <strong>does not</strong> consider the event name or event type to b
 
 ## Plan-based options
 
-Based on your plan, RudderStack provides different options for event storage, giving you the ability to toggle on or off the following kinds of data:
+Based on your plan, RudderStack provides different options for event storage, giving you the ability to enable or disable retention for the following kinds of data:
 
-- Sample events and responses
-- Processing errors
-- Gateway dumps
+- **Sample events and responses**: As mentioned above, RudderStack will store and delete sample events and responses on a rolling 30-day basis.
+- **Processing errors**: These correspond to the events that are rejected at various stages of the data pipeline, including errors from user transformation, destination transformation (internal to RudderStack), and events rejected by the destination after **three hours** of retry attempts.
+- **Gateway dumps**: These correspond to the raw data for every successfully-ingested event.
 
-See the table below for storage items based on different [RudderStack pricing plans](https://www.rudderstack.com/pricing/):
+Refer to the below table for the storage items supported by different [RudderStack pricing plans](https://www.rudderstack.com/pricing/):
 
 | Storage options | Free tier | Starter/Growth | Enterprise |
 | :----| :------| :-----| :-----|
