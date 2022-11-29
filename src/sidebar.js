@@ -416,6 +416,11 @@ export const jsonData = [
                         content: []
                     },
                     {
+                        title: "StatisMeter",
+                        link: "/sources/event-streams/cloud-apps/statismeter/",
+                        content: []
+                    },
+                    {
                         title: "Webhook Source",
                         link: "/sources/event-streams/cloud-apps/webhook-source/",
                         content: []
