@@ -1002,6 +1002,12 @@ export const jsonData = [
                 content: [],
             },
             {
+                key: "microsoft-clarity",
+                title: "Microsoft Clarity",
+                link: "/destinations/streaming-destinations/microsoft-clarity/",
+                content: [],
+            },
+            {
                 title: "Mixpanel",
                 link: "/destinations/streaming-destinations/mixpanel/",
                 content: []
