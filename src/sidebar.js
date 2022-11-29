@@ -62,66 +62,66 @@ export const jsonData = [
         content: []
     },
 
-    // Dashboard guides section
+// Dashboard guides section
 
-    {
-        title: "Overview",
-        sectionTitle: "Dashboard Guides",
-        link: "/dashboard-guides/overview/",
-        content: []
-    },
-    {
-        title: "Sources",
-        link: "/dashboard-guides/sources/",
-        content: []
-    },
-    {
-        title: "Destinations",
-        link: "/dashboard-guides/destinations/",
-        content: []
-    },
-    {
-        title: "Live Events",
-        link: "/dashboard-guides/live-events/",
-        content: []
-    },
-    {
-        title: "User Management",
-        link: "/dashboard-guides/user-management/",
-        content: []
-    },
-    {
-        title: "Permissions Management",
-        link: "/dashboard-guides/permissions-management/",
-        content: []
-    },
-    {
-        title: "Notifications",
-        link: "/dashboard-guides/notifications/",
-        content: []
-    },
-    {
-        title: "Audit Logs",
-        link: "/dashboard-guides/audit-logs/",
-        content: []
-    },
-    {
-        title: "Personal Access Token",
-        link: "/dashboard-guides/personal-access-token/",
-        content: []
-    },
-    {
-        title: "Data Management",
-        link: "/dashboard-guides/data-retention/",
-        content: []
-    },
+{
+    title: "Overview",
+    sectionTitle: "Dashboard Guides",
+    link: "/dashboard-guides/overview/",
+    content: []
+},
+{
+    title: "Sources",
+    link: "/dashboard-guides/sources/",
+    content: []
+},
+{
+    title: "Destinations",
+    link: "/dashboard-guides/destinations/",
+    content: []
+},
+{
+    title: "Live Events",
+    link: "/dashboard-guides/live-events/",
+    content: []
+},
+{
+    title: "User Management",
+    link: "/dashboard-guides/user-management/",
+    content: []
+},
+{
+    title: "Permissions Management",
+    link: "/dashboard-guides/permissions-management/",
+    content: []
+},
+{
+    title: "Notifications",
+    link: "/dashboard-guides/notifications/",
+    content: []
+},
+{
+    title: "Audit Logs",
+    link: "/dashboard-guides/audit-logs/",
+    content: []
+},
+{
+    title: "Personal Access Token",
+    link: "/dashboard-guides/personal-access-token/",
+    content: []
+},
+{
+    title: "Data Management",
+    link: "/dashboard-guides/data-retention/",
+    content: []
+},
     // Sources section
     {
         title: "Overview",
         sectionTitle: "Sources",
         link: "/sources/",
         content: []
-    },
+    }, 
     {
         title: "Event Streams",
         link: "/sources/event-streams",
@@ -305,7 +305,7 @@ export const jsonData = [
                                 title: "FAQ",
                                 link: "/sources/event-streams/sdks/session-tracking/faq/",
                                 content: [],
-                            },
+                              },
                         ]
                     },
                     {
@@ -354,7 +354,7 @@ export const jsonData = [
                         title: "Customer.io",
                         link: "/sources/event-streams/cloud-apps/customerio/",
                         content: []
-                    },
+                    }, 
                     {
                         title: "Extole",
                         link: "/sources/event-streams/cloud-apps/extole/",
@@ -364,12 +364,12 @@ export const jsonData = [
                         title: "Gainsight PX",
                         link: "/sources/event-streams/cloud-apps/gainsight-px/",
                         content: []
-                    },
+                    }, 
                     {
                         title: "Iterable Webhook",
                         link: "/sources/event-streams/cloud-apps/iterable/",
                         content: []
-                    },
+                    }, 
                     {
                         title: "Looker",
                         link: "/sources/event-streams/cloud-apps/looker/",
@@ -379,7 +379,7 @@ export const jsonData = [
                         title: "Mailjet",
                         link: "/sources/event-streams/cloud-apps/mailjet/",
                         content: []
-                    },
+                    }, 
                     {
                         title: "Mailmodo",
                         link: "/sources/event-streams/cloud-apps/mailmodo/",
@@ -423,7 +423,7 @@ export const jsonData = [
                 ]
             }
         ]
-    },
+    }, 
     {
         title: "Cloud Extract",
         link: "/sources/extract/",
@@ -475,7 +475,7 @@ export const jsonData = [
                 title: "Google Ads (Adwords)",
                 link: "/sources/extract/google-adwords/",
                 content: []
-            },
+            }, 
             {
                 title: "Google Analytics V2",
                 link: "/sources/extract/google-analytics-v2/",
@@ -488,7 +488,7 @@ export const jsonData = [
                 title: "Google Search Console V2",
                 link: "/sources/extract/google-search-console-v2/",
                 content: []
-            }, {
+            },{
                 title: "Google Sheets",
                 link: "/sources/extract/google-sheets/",
                 content: []
@@ -506,7 +506,7 @@ export const jsonData = [
                 title: "Klaviyo",
                 link: "/sources/extract/klaviyo/",
                 content: []
-            },
+            },  
             {
                 title: "Mailchimp",
                 link: "/sources/extract/mailchimp/",
@@ -516,7 +516,7 @@ export const jsonData = [
                 title: "Mixpanel V2",
                 link: "/sources/extract/mixpanel-v2/",
                 content: []
-            },
+            }, 
             {
                 title: "Marketo",
                 link: "/sources/extract/marketo/",
@@ -529,12 +529,12 @@ export const jsonData = [
                 title: "Pipedrive",
                 link: "/sources/extract/pipedrive/",
                 content: []
-            },
+            }, 
             {
                 title: "QuickBooks",
                 link: "/sources/extract/quickbooks/",
                 content: []
-            },
+            }, 
             {
                 title: "Recurly",
                 link: "/sources/extract/recurly/",
@@ -554,7 +554,7 @@ export const jsonData = [
                 title: "SendGrid V2",
                 link: "/sources/extract/sendgrid-v2/",
                 content: []
-            },
+            }, 
             {
                 title: "Stripe",
                 link: "/sources/extract/stripe/",
@@ -761,27 +761,27 @@ export const jsonData = [
                 title: "Facebook App Events",
                 link: "/destinations/streaming-destinations/facebook-app-events/",
                 content: []
-            },
+            }, 
             {
                 title: "Facebook Custom Audience",
                 link: "/destinations/streaming-destinations/fb-custom-audience/",
                 content: []
-            },
+            }, 
             {
                 title: "Facebook Offline Conversions",
                 link: "/destinations/streaming-destinations/fb-offline-conversions/",
                 content: []
-            },
+            }, 
             {
                 title: "Facebook Pixel",
                 link: "/destinations/streaming-destinations/fb-pixel/",
                 content: []
-            },
+            }, 
             {
                 title: "Google Ads (gtag.js)",
                 link: "/destinations/streaming-destinations/g-ads-gtag/",
                 content: []
-            },
+            }, 
             {
                 title: "Google Ads Enhanced Conversions",
                 link: "/destinations/streaming-destinations/google-adwords-enhanced-conversions/",
@@ -791,17 +791,17 @@ export const jsonData = [
                 title: "Google Ads Offline Conversions",
                 link: "/destinations/streaming-destinations/google-adwords-offline-conversions/",
                 content: []
-            },
+            }, 
             {
                 title: "Google Ads Remarketing Lists (Customer Match)",
                 link: "/destinations/streaming-destinations/google-adwords-remarketing-list/",
                 content: []
-            },
+            }, 
             {
                 title: "LinkedIn Insight Tag",
                 link: "/destinations/streaming-destinations/linkedin-insight-tag/",
                 content: []
-            },
+            }, 
             {
                 title: "Lotame",
                 link: "/destinations/streaming-destinations/lotame/",
@@ -845,12 +845,12 @@ export const jsonData = [
                 title: "Reddit Pixel",
                 link: "/destinations/streaming-destinations/reddit-pixel/",
                 content: []
-            },
+            }, 
             {
                 title: "Snapchat Custom Audience",
                 link: "/destinations/streaming-destinations/snapchat-custom-audience/",
                 content: []
-            },
+            }, 
             {
                 title: "Snapchat Conversion",
                 link: "/destinations/streaming-destinations/snapchat-conversion/",
@@ -960,7 +960,7 @@ export const jsonData = [
                 title: "Indicative",
                 link: "/destinations/streaming-destinations/indicative/",
                 content: []
-            }, {
+            },{
                 title: "June",
                 link: "/destinations/streaming-destinations/june/",
                 content: [
@@ -1059,15 +1059,15 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/quantummetric/",
                 content: []
             }, {
-                title: "Serenytics",
-                link: "/destinations/streaming-destinations/serenytics/",
-                content: []
-            },
+            title: "Serenytics",
+            link: "/destinations/streaming-destinations/serenytics/",
+            content: []
+        },
             {
                 title: "Shynet",
                 link: "/destinations/streaming-destinations/shynet/",
                 content: []
-            }, {
+            },{
                 title: "SIGNL4",
                 link: "/destinations/streaming-destinations/signl4/",
                 content: []
@@ -1130,7 +1130,7 @@ export const jsonData = [
                 title: "Kochava",
                 link: "/destinations/streaming-destinations/kochava/",
                 content: []
-            }, {
+            },{
                 title: "Rockerbox",
                 link: "/destinations/streaming-destinations/rockerbox/",
                 content: [
@@ -1172,7 +1172,7 @@ export const jsonData = [
                 title: "LiveChat",
                 link: "/destinations/streaming-destinations/livechat/",
                 content: []
-            },
+            }, 
             {
                 title: "Slack",
                 link: "/destinations/streaming-destinations/slack/",
@@ -1222,7 +1222,7 @@ export const jsonData = [
                                 title: "Legacy API",
                                 link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-legacy-api-cloud/",
                                 content: []
-                            }, {
+                            },{
                                 title: "New API",
                                 link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/hubspot-new-api-cloud",
                                 content: []
@@ -1306,10 +1306,6 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/autopilot/",
                 content: []
             }, {
-                title: "Awin",
-                link: "/destinations/streaming-destinations/awin/",
-                content: []
-            }, {
                 title: "Blueshift",
                 link: "/destinations/streaming-destinations/blueshift/",
                 content: []
@@ -1325,7 +1321,7 @@ export const jsonData = [
                 title: "Customer.io",
                 link: "/destinations/streaming-destinations/customer.io/",
                 content: []
-            },
+            }, 
             {
                 title: "Drip",
                 link: "/destinations/streaming-destinations/drip/",
@@ -1368,7 +1364,7 @@ export const jsonData = [
                 title: "Freshmarketer",
                 link: "/destinations/streaming-destinations/freshmarketer/",
                 content: []
-            },
+            },  
             {
                 title: "Iterable",
                 link: "/destinations/streaming-destinations/iterable/",
@@ -1405,12 +1401,12 @@ export const jsonData = [
                 title: "Mailjet",
                 link: "/destinations/streaming-destinations/mailjet/",
                 content: []
-            },
+            }, 
             {
                 title: "Mailmodo",
                 link: "/destinations/streaming-destinations/mailmodo/",
                 content: []
-            }, {
+            },  {
                 title: "Marketo",
                 link: "/destinations/streaming-destinations/marketo/",
                 content: []
@@ -1418,7 +1414,7 @@ export const jsonData = [
                 title: "Marketo Lead Import",
                 link: "/destinations/streaming-destinations/marketo-lead-import/",
                 content: []
-            },
+            }, 
             {
                 title: "MoEngage",
                 link: "/destinations/streaming-destinations/moengage/",
@@ -1428,7 +1424,7 @@ export const jsonData = [
                 title: "Mautic",
                 link: "/destinations/streaming-destinations/mautic/",
                 content: []
-            },
+            },  
             {
                 title: "Ometria",
                 link: "/destinations/streaming-destinations/ometria/",
@@ -1437,7 +1433,7 @@ export const jsonData = [
                 title: "OneSignal",
                 link: "/destinations/streaming-destinations/onesignal/",
                 content: []
-            }, {
+            },{
                 title: "Post Affiliate Pro",
                 link: "/destinations/streaming-destinations/post-affiliate-pro/",
                 content: []
@@ -1458,12 +1454,12 @@ export const jsonData = [
                 title: "Salesforce Pardot",
                 link: "/destinations/streaming-destinations/pardot/",
                 content: []
-            },
+            }, 
             {
                 title: "SendGrid",
                 link: "/destinations/streaming-destinations/sendgrid/",
                 content: []
-            },
+            }, 
             {
                 title: "Userlist",
                 link: "/destinations/streaming-destinations/userlist/",
@@ -1581,7 +1577,7 @@ export const jsonData = [
                 title: "Azure Event Hubs",
                 link: "/destinations/streaming-destinations/azure-event-hubs/",
                 content: []
-            },
+            }, 
             {
                 title: "BigQuery Stream",
                 link: "/destinations/streaming-destinations/bigquery-stream/",
@@ -1600,11 +1596,11 @@ export const jsonData = [
                 sectionTitle: "Surveys",
                 link: "/destinations/streaming-destinations/canny/",
                 content: []
-            }, {
+            },{
                 title: "Delighted",
                 link: "/destinations/streaming-destinations/delighted/",
                 content: []
-            }, {
+            },{
                 title: "Gainsight",
                 link: "/destinations/streaming-destinations/gainsight/",
                 content: []
@@ -1612,7 +1608,7 @@ export const jsonData = [
                 title: "Gainsight PX",
                 link: "/destinations/streaming-destinations/gainsight-px/",
                 content: []
-            }, {
+            },{
                 title: "InMoment (Wootric)",
                 link: "/destinations/streaming-destinations/inmoment/",
                 content: []
@@ -1935,12 +1931,12 @@ export const jsonData = [
                 title: "Migrating from Segment to RudderStack",
                 link: "/user-guides/migration-guides/rudderstack-migration-guide/",
                 content: []
-            },
+            }, 
             {
                 title: "Migrating from Snowplow to RudderStack",
                 link: "/user-guides/migration-guides/snowplow-migration-guide/",
                 content: []
-            },
+            }, 
             {
                 title: "Migrating Your Warehouse Destination from Segment to RudderStack",
                 link: "/user-guides/migration-guides/how-to-migrate-warehouse-destination-from-segment-to-rudderstack/",
@@ -2040,11 +2036,11 @@ export const jsonData = [
                 title: "How to Debug Live Destination Events",
                 link: "/user-guides/how-to-guides/live-destination-event-debugger/",
                 content: []
-            }, {
+            },{
                 title: "How to Host RudderStack JavaScript SDK on your CDN/Storage",
                 link: "/user-guides/how-to-guides/self-hosting-js-sdk/",
                 content: []
-            },
+            }, 
             {
                 title: "How to Filter Events using Different Methods",
                 link: "/user-guides/how-to-guides/filter-events/",
@@ -2053,7 +2049,7 @@ export const jsonData = [
                 title: "How to Filter Selective Destinations using JavaScript SDK",
                 link: "/user-guides/how-to-guides/how-to-filter-selective-destinations/",
                 content: []
-            },
+            }, 
             {
                 title: "How to Implement a Native JavaScript SDK Integration",
                 link: "/user-guides/how-to-guides/implement-native-js-sdk-integration/",
