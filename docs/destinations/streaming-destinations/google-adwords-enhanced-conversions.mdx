@@ -112,12 +112,10 @@ rudderanalytics.track("Order Completed", {
 ```
 
 <div class="infoBlock">
-
-RudderStack uses the <code class="inline-code"><a href="https://developers.google.com/google-ads/api/rest/reference/rest/v9/customers/uploadConversionAdjustments" target="_blank">ConversionAdjustment</a></code> method to send these events to Google Ads.
+RudderStack uses the <code class="inline-code"><a href="https://developers.google.com/google-ads/api/reference/rpc/v12/ConversionAdjustment">ConversionAdjustment</a></code> method to send these events to Google Ads.
 </div>
 
 <div class="warningBlock">
-
 RudderStack will discard any <code class="inline-code">track</code> call where <code class="inline-code">orderId</code> is not present. This is because <code class="inline-code">orderId</code> is a required field for enhancement.
 </div>
 
