@@ -6,7 +6,6 @@ aliases: ["Microsoft Clarity destination"]
 
 [Microsoft Clarity](https://clarity.microsoft.com/) is a heatmaps and session recording tool. It helps you better understand how users are interacting with your website through session replays and heatmaps.
 
-RudderStack supports Microsoft Clarity as a destination where you can seamlessly send your event data.
 
 ## Getting started
 
@@ -30,7 +29,7 @@ To successfully configure Microsoft Clarity as a destination, you will need to c
 - **Microsoft Clarity Cookie Consent**: Enable this setting to allow RudderStack to call the Microsoft Clarity API to track the users using a cookie.
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Microsoft Clarity. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
 - **Use device mode to send events**: As this is a <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
-- - **OneTrust Cookie Categories**: This setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Microsoft Clarity.
+- **OneTrust Cookie Categories**: This setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Microsoft Clarity.
 
 ## Identify
 
@@ -45,13 +44,13 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 });
 ```
 
-By default, Clarity uses cookies to track your users and gather the session data. You can configure your Clarity project to require <a href="https://learn.microsoft.com/en-us/clarity/cookie-consent">cookie consent</a>, that is, Clarity **will not** place a cookie until the user's consent is obtained.
+By default, Clarity uses cookies to track your users and gather the session data. You can configure your Clarity project to require <a href="https://learn.microsoft.com/en-us/clarity/cookie-consent">cookie consent</a>, that is, Clarity **will not** place a cookie until a user provides consent.
 
 <img src="../../assets/event-stream-destinations/clarity-cookie-consent.png" alt="Microsoft Clarity cookie consent enabled" />
 
 <br />
 
-In this case, to track the user sessions via the cookie, make sure you enable the **Microsoft Clarity Cookie Consent** setting in the RudderStack dashboard. This setting indicates that RudderStack can call the Clarity API to track the users via a cookie once the consent is obtained.
+In this case, to track the user sessions via the cookie, make sure you enable the **Microsoft Clarity Cookie Consent** setting in the RudderStack dashboard. This setting indicates that RudderStack can call the Clarity API to track the users via a cookie once a user provides consent.
 
 <div class="infoBlock">
 If the <strong>Cookies</strong> setting is enabled in the Clarity project settings, then you need not enable the <strong>Microsoft Clarity Cookie Consent</strong> dashboard setting.
