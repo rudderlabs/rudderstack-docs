@@ -98,7 +98,7 @@ sh -c '/wait-for db:5432 -- /rudder-server'
 
 This message indicates that the RudderStack server is waiting on the PostgreSQL database dependency to be up and running. Verify if your PostgreSQL container is up.
 
-## RudderStack Back End (server)
+## RudderStack backend (server)
 
 #### How do I check the status of the RudderStack data plane?
 
@@ -204,7 +204,7 @@ RudderStack lets you implement your own custom transformations that leverage the
 
 #### Can I apply a transformation to a source configured in RudderStack?
 
-Currently, transformations can only be configured and used for destinations. If you want to write custom logic specific to the source, you can get the **Source ID** in the transformation function and use it to include the logic. Refer to the <Link to="/transformations#accessing-metadata">Accessing metadata</Link> section for more information.
+Currently, transformations can only be configured and used for destinations. If you want to write custom logic specific to the source, you can get the **Source ID** in the transformation function and use it to include the logic. Refer to the <Link to="/features/transformations/#accessing-event-metadata">Accessing metadata</Link> section for more information.
 
 ## RudderStack Cloud
 
@@ -293,6 +293,10 @@ For example, Salesforce only supports `identify` events. Therefore, if a `track`
 
 ### Warehouse destinations
 
+<div class="successBlock">
+For a comprehensive list of warehouse destinations-specific FAQ, refer to the <Link to="/destinations/warehouse-destinations/faq/">Warehouse FAQ</Link> guide.
+</div>
+
 #### How can I force RudderStack to push all the data to a data warehouse in real-time with no delay? During the implementation, it would be better to see how the data is collected in real-time, rather than 30 minutes later.
 
 You can override the UI-set sync frequency by setting `warehouseSyncFreqIgnore` to true in [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) \(or `config.toml`, in case you have an older RudderStack deployment\). You can set your desired frequency by changing the `uploadFreqInS` parameter.
@@ -370,7 +374,7 @@ When a new node is added, the users need to be rebalanced across nodes to keep e
 
 Additionally, the SDKs have a built-in local caching and retrying capability. So even if there is a failure, no events are lost.
 
-## Allowlisting
+## IP allowlisting
 
 #### What are the IPs to be allowlisted?
 
