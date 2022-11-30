@@ -118,6 +118,8 @@ In case you have authenticated multiple accounts, you can click <strong>Edit Cre
 
 <img src="../../assets/event-stream-destinations/edit-account-creds.png" alt="User deletion" />
 
+RudderStack will <strong>throw an error</strong> if you try to delete an account which is being used by any other connection set up for the same destination.
+
 </div>
 
 After authenticating your account in the RudderStack dashboard, you can delete a user in Google Analytics using the <Link to="/api/data-regulation-api/#adding-a-suppression-with-delete-regulation">Suppression with Delete regulation</Link> of the RudderStack <Link to="/api/data-regulation-api/">Data Regulation API</Link>.
