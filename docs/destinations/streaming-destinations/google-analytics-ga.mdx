@@ -66,6 +66,7 @@ If you specify the container ID and Optimize plugin is linked to your Google Ana
 
 - **Use Google AMP Client ID**: Enable this setting to uniquely identify users who engage with your content on AMP and non-AMP pages. Refer to the [Google Analytics session unification for AMP](https://support.google.com/analytics/answer/7486764?hl=en&ref_topic=7378717#zippy=%2Cin-this-article) guide for more information. 
 - **OneTrust Cookie Categories**: If **Use device-mode to send events** is enabled, this setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Google Analytics.
+- **User deletion**: Use this setting to add and authenticate an account which will be used to delete users in Google Analytics. Refer to the <Link to="/destinations/streaming-destinations/google-analytics-ga/#deleting-a-user">Deleting a user</Link> section for more information.
 
 ## Identify
 
@@ -87,6 +88,62 @@ In the above snippet, the `userid` will be set to `user123` for Google Analytics
 For server-side, Google Analytics needs a customer identifier for each call to be made. RudderStack passes an internally generated ID as the `cid` parameter for Google Analytics to understand every unique user. Traits are not mapped to custom dimensions, metrics and content grouping yet from our side in server-side.
 
 You can call `identify` once in order to set the `userId` and `user traits`for all subsequent calls that you make from our SDK for a particular user. If `userId` is not set, RudderStack sends a generated ID \(called `anonymousId`\) from its SDKs with every call made to the RudderStack servers. This `id` is used as the `cid` in Google Analytics. And if **Send User ID to GA** setting is enabled, the user ID property will be set as `uid` and will be sent as well.
+
+### Deleting a user
+
+<div class="warningBlock">
+This feature is available only for the RudderStack <a href="https://rudderstack.com/enterprise-quote">Enterprise plan</a> users.
+</div>
+
+To [delete a user in Google Analytics](https://developers.google.com/analytics/devguides/config/userdeletion/v3), first [authenticate your Google account](https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization) in the RudderStack dashboard by following the below steps:
+
+1. Click **Create Account** in the **User Deletion** section, as shown:
+
+<img src="../../assets/event-stream-destinations/user-deletion.png" alt="User deletion" />
+
+2. Select **Sign in with Google** from the modal.
+3. Choose the required account and grant RudderStack the required permissions. 
+
+<div class="infoBlock">
+If your account authentication fails, you can refer to these steps for <a href="https://developers.google.com/analytics/devguides/config/userdeletion/v3/authorization#troubleshooting">Troubleshooting</a> the root cause.
+</div>
+
+4. Click **Save** to connect the specified account to delete users in Google Analytics, as shown:
+
+<img src="../../assets/event-stream-destinations/account-connect.png" alt="User deletion" />
+
+<div class="infoBlock">
+In case you have authenticated multiple accounts, you can click <strong>Edit Credentials</strong> to select/delete any other authenticated account, as shown:
+<br/><br/>
+
+<img src="../../assets/event-stream-destinations/edit-account-creds.png" alt="User deletion" />
+
+</div>
+
+After authenticating your account in the RudderStack dashboard, you can delete a user in Google Analytics using the <Link to="/api/data-regulation-api/#adding-a-suppression-with-delete-regulation">Suppression with Delete regulation</Link> of the RudderStack <Link to="/api/data-regulation-api/">Data Regulation API</Link>.
+
+<div class="infoBlock">
+To delete a user, you must specify their <code class="inline-code">userId</code> in the event. Additionally, you can specify a custom identifier (optional) in the event.
+</div>
+
+A sample regulation request body for deleting a user in Google Analytics is shown below:
+
+```json
+{
+  "regulationType": "suppress_with_delete",
+  "destinationIds": [
+    "2FIKkByqn37FhzczP23eZmURciA"
+  ],
+  "users": [{
+    "userId": "1hKOmRA4GRlm",
+    "<customKey>": "<customValue>"
+  }]
+}
+```
+
+<div class="infoBlock">
+Refer to the <a href="https://developers.google.com/analytics/devguides/config/userdeletion/v3/limits-quotas#user_deletion_api">Limits and quotas</a> documentation for more information about the specified quotas for user deletion API requests.
+</div>
 
 ## Track
 
@@ -629,5 +686,3 @@ There could be 2 reasons for this:
 - For the cloud mode, RudderStack is not blocked by ad blockers presently. If the events are sent to Google Analytics via the cloud mode, the actual number of events intended to be sent to Google Analytics are forwarded by the RudderStack server. So, the number of requests from the native mode or device mode is expected to be lower than cloud mode.
 
 The RudderStack JavaScript SDK provides a way of detecting how many page view requests are potentially being blocked by the ad blockers throughout your site pages. Please check the section on <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/">Detecting Ad-blocked Pages</Link> for more information.
-
-
