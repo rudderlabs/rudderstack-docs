@@ -1643,7 +1643,7 @@ export const jsonData = [
                 ]
             },
             {
-                title: "Satismeter",
+                title: "SatisMeter",
                 link: "/destinations/streaming-destinations/satismeter/",
                 content: []
             },

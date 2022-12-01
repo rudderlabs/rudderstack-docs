@@ -1,49 +1,49 @@
 ---
-title: "Satismeter"
-description: Step-by-step guide on sending your event data from RudderStack to Satismeter.
-aliases: ["Satismeter destination"]
+title: "SatisMeter"
+description: Step-by-step guide on sending your event data from RudderStack to SatisMeter.
+aliases: ["SatisMeter destination"]
 ---
 
-[Satismeter](https://clarity.microsoft.com/) is a customer feedback collection tool. It helps you derive real-time insights on customer satisfaction and monitor your products' performance.
+[SatisMeter](https://clarity.microsoft.com/) is a customer feedback collection tool. It helps you derive real-time insights on customer satisfaction and monitor your products' performance.
 
-RudderStack supports Satismeter as a destination where you can seamlessly send your event data.
+RudderStack supports SatisMeter as a destination where you can seamlessly send your event data.
 
 ## Getting started
 
-RudderStack supports sending event data to Satismeter via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
+RudderStack supports sending event data to SatisMeter via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | Connection Mode | Web | Mobile | Server |
 | :--- | :--- | :--- | :--- |
 | Device mode | Supported | - | - |
 | Cloud mode | -  | - | - |
 
-Once you have confirmed that the source platform supports sending events to Satismeter, follow these steps:
+Once you have confirmed that the source platform supports sending events to SatisMeter, follow these steps:
 
-1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Satismeter**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **SatisMeter**.
 2. Assign a name to the destination and click **Continue**.
 
 ## Connection settings
 
-To successfully configure Satismeter as a destination, you will need to configure the following settings:
+To successfully configure SatisMeter as a destination, you will need to configure the following settings:
 
-- **Write Key**: Enter your Satismeter write key for authentication. For more information on obtaining the write key, refer to the <Link to="#faq">FAQ</Link> section below.
+- **Write Key**: Enter your SatisMeter write key for authentication. For more information on obtaining the write key, refer to the <Link to="#faq">FAQ</Link> section below.
 - **Identify Anonymous Users**: Enable this setting to allow RudderStack to identify anonymous users using `anonymousId`.
-- **Record Satismeter Events**: Enable this setting to allow RudderStack to automatically record your Satismeter events as <Link to="/event-spec/standard-events/track/">`track`</Link> events events. 
+- **Record SatisMeter Events**: Enable this setting to allow RudderStack to automatically record your SatisMeter events as <Link to="/event-spec/standard-events/track/">`track`</Link> events events. 
   - **List of Events**: Specify the list of events to be automatically tracked.
   - **Update Event Name in track call**: Enable this setting to update your `track` event names before sending them to other destinations.
-    - **Mapping to update the event name in the track call**: Use this setting to map the standard Satismeter events automatically recorded by RudderStack to custom `track` event names.
+    - **Mapping to update the event name in the track call**: Use this setting to map the standard SatisMeter events automatically recorded by RudderStack to custom `track` event names.
 
 <div class="infoBlock">
-For more information on these settings, refer to the <Link to="#automatically-recording-satismeter-events">Automatically recording Satismeter events</Link> section below.
+For more information on these settings, refer to the <Link to="#automatically-recording-satismeter-events">Automatically recording SatisMeter events</Link> section below.
 </div>
 
-- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Satismeter. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to SatisMeter. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
 - **Use device mode to send events**: As this is a <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
-- **OneTrust Cookie Categories**: This setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Satismeter.
+- **OneTrust Cookie Categories**: This setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to SatisMeter.
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to identify a user interacting with the Satismeter survey.
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to identify a user interacting with the SatisMeter survey.
 
 <div class="infoBlock">
 It is highly recommended to send the <code class="inline-code">createdAt</code> trait in your <code class="inline-code">identify</code> calls to keep a record of how long the user has interacted with the survey.
@@ -61,9 +61,9 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 
 ### Supported mappings
 
-RudderStack maps the following `identify` traits to the corresponding Satismeter properties:
+RudderStack maps the following `identify` traits to the corresponding SatisMeter properties:
 
-| RudderStack property | Satismeter property | 
+| RudderStack property | SatisMeter property | 
 | :-----| :------| 
 | `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if **Identify Anonymous User** setting is disabled in the dashboard.</span> | `userId` |
 | `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">If **Identify Anonymous User** setting is enabled in the dashboard.</span> | `userId` |
@@ -81,44 +81,44 @@ rudderanalytics.track("Response Submitted")
 ```
 
 <div class="warningBlock">
-You must send an <code class="inline-code">identify</code> call to identify a user before making a <code class="inline-code">track</code> call that records their survey interaction. Otherwise, Satismeter maps this interaction to an anonymous user.
+You must send an <code class="inline-code">identify</code> call to identify a user before making a <code class="inline-code">track</code> call that records their survey interaction. Otherwise, SatisMeter maps this interaction to an anonymous user.
 </div>
 
 ### Supporting mappings
 
-RudderStack maps the following event properties to the corresponding Satismeter properties:
+RudderStack maps the following event properties to the corresponding SatisMeter properties:
 
-| RudderStack event/property | Satismeter event/property | Data type |
+| RudderStack event/property | SatisMeter event/property | Data type |
 | :-----| :------|  :--- |
 | `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
 
 <div class="warningBlock">
-Satismeter does not accept any <code class="inline-code">track</code> event properties except the event name.
+SatisMeter does not accept any <code class="inline-code">track</code> event properties except the event name.
 </div>
 
-### Automatically recording Satismeter events
+### Automatically recording SatisMeter events
 
-If you enable the **Record Satismeter Events** setting in the dashboard, RudderStack automatically tracks and records the events listed in the **List of Events** fields as `track` events. You can then view and analyze these events using other tools (connected to the same source in RudderStack).
+If you enable the **Record SatisMeter Events** setting in the dashboard, RudderStack automatically tracks and records the events listed in the **List of Events** fields as `track` events. You can then view and analyze these events using other tools (connected to the same source in RudderStack).
 
-<img src="../../assets/event-stream-destinations/record-satismeter-events.png" alt="Satismeter write key" />
+<img src="../../assets/event-stream-destinations/record-satismeter-events.png" alt="SatisMeter write key" />
 
-In the above image, RudderStack automatically records the standard Satismeter events `Display`, `Complete`, `Progress`, and `Dismiss` as `track` events.
+In the above image, RudderStack automatically records the standard SatisMeter events `Display`, `Complete`, `Progress`, and `Dismiss` as `track` events.
 
-You can also update the standard Satismeter event names by enabling the **Update Event Name in track call** dashboard setting and specifying the mapping, as shown:
+You can also update the standard SatisMeter event names by enabling the **Update Event Name in track call** dashboard setting and specifying the mapping, as shown:
 
-<img src="../../assets/event-stream-destinations/satismeter-update-track-event-name.png" alt="Satismeter write key" />
+<img src="../../assets/event-stream-destinations/satismeter-update-track-event-name.png" alt="SatisMeter write key" />
 
-In the above example, RudderStack renames the standard Satismeter event `Complete` to `Survey Completed` before sending it to the other destinations.
+In the above example, RudderStack renames the standard SatisMeter event `Complete` to `Survey Completed` before sending it to the other destinations.
 
 ## FAQ
 
-### Where can I find the Satismeter write key?
+### Where can I find the SatisMeter write key?
 
-To get your Satismeter write key ID, follow these steps:
+To get your SatisMeter write key ID, follow these steps:
 
-1. Log into your <a href="https://app.satismeter.com/">Satismeter dashboard</a>.
-2. Select your project and go to **Settings** > **Installation** to find your Satismeter write key, as shown:
+1. Log into your <a href="https://app.satismeter.com/">SatisMeter dashboard</a>.
+2. Select your project and go to **Settings** > **Installation** to find your SatisMeter write key, as shown:
 
-<img src="../../assets/event-stream-destinations/satismeter-write-key.png" alt="Satismeter write key" />
+<img src="../../assets/event-stream-destinations/satismeter-write-key.png" alt="SatisMeter write key" />
 
 <br />
