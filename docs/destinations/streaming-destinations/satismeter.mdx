@@ -79,6 +79,18 @@ You must send an <code class="inline-code">identify</code> call to identify a us
 
 If you enable the **Record Satismeter Events** setting in the dashboard, RudderStack automatically tracks and records the events listed in the **List of Events** fields as `track` events. You can then view and analyze these events using other tools (connected to the same source in RudderStack).
 
+### Supporting mappings
+
+RudderStack maps the following event properties to the corresponding Satismeter properties:
+
+| RudderStack event/property | Satismeter event/property | Data type |
+| :-----| :------|  :--- |
+| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
+
+<div class="warningBlock">
+Satismeter does not accept any <code class="inline-code">track</code> event properties except the event name.
+</div>
+
 ## FAQ
 
 ### Where can I find the Satismeter write key?
