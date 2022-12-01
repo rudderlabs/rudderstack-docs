@@ -416,8 +416,8 @@ export const jsonData = [
                         content: []
                     },
                     {
-                        title: "StatisMeter",
-                        link: "/sources/event-streams/cloud-apps/statismeter/",
+                        title: "SatisMeter",
+                        link: "/sources/event-streams/cloud-apps/satismeter/",
                         content: []
                     },
                     {

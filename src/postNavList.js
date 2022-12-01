@@ -475,9 +475,9 @@ export const postNavList = [
     content: []
   },
   {
-    key: "statismeter",
-    title: "StatisMeter",
-    link: "/sources/event-streams/cloud-apps/statismeter/",
+    key: "satismeter",
+    title: "SatisMeter",
+    link: "/sources/event-streams/cloud-apps/satismeter/",
     content: []
   },
   {
