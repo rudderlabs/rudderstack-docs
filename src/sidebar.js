@@ -2039,7 +2039,7 @@ export const jsonData = [
                 content: []
             }, 
             {
-                title: "How to Debug Live Destination Events",
+                title: "How to Debug Destination Live Events",
                 link: "/user-guides/how-to-guides/debugging-destination-live-events/",
                 content: []
             },
