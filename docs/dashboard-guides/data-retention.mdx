@@ -73,13 +73,51 @@ If you choose this option, RudderStack will not store any of your event data. Th
 
 This is the recommended event storage option, and available in the <a href="https://www.rudderstack.com/pricing/">Starter, Growth, and Enterprise</a> plans. Selecting this option will bring up a modal allowing you to connect a storage bucket with your RudderStack data.
 
+<img src="../assets/dashboard-guides/connect-cloud-storage.png"  alt="Store your data with your cloud provider."/>
+
 <div class="infoBlock">
 RudderStack supports storage via AWS, GCS, Azure, and MinIO if you select this option.
 </div>
 
-When connecting your cloud storage provider to RudderStack, you will first need to create a storage bucket and configure the credentials for RudderStack to access the datastore. Refer to <Link to="/user-guides/administrators-guide/event-replay/">Object storage setup</Link> for more details.
+When connecting your cloud storage provider to RudderStack, you will first need to create a storage bucket and configure the credentials for RudderStack to access the datastore. Follow the steps listed below depending on your cloud provider:
 
-<img src="../assets/dashboard-guides/connect-cloud-storage.png"  alt="Store your data with your cloud provider."/>
+<Tabs>
+  <TabList>
+   <Tab>Amazon S3</Tab>
+    <Tab>Google Cloud Storage</Tab>
+    <Tab>Azure Blob Storage</Tab>
+    <Tab>MinIO</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+    <ol>
+      <li>Create your <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html">object storage bucket</a>.</li>
+      <li>Configure the relevant <Link to="/user-guides/administrators-guide/bucket-configuration-settings/#permissions-for-amazon-s3">permissions</Link> for your bucket.</li>
+      <li>Connect your storage provider in the RudderStack dashboard.</li>   
+      </ol>
+    </TabPanel>
+    <TabPanel>
+    <ol>
+      <li>Create your <a href="https://cloud.google.com/storage/docs/creating-buckets">object storage bucket</a>.</li>
+      <li>Configure the relevant <Link to="/user-guides/administrators-guide/bucket-configuration-settings/#permissions-for-gcs">permissions</Link> for your bucket.</li>
+      <li>Connect your storage provider in the RudderStack dashboard.</li> 
+    </ol>
+    </TabPanel>
+    <TabPanel>
+    <ol>
+      <li>Login to the <a href="https://portal.azure.com/">Azure portal</a> and create a <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal">storage account</a>.</li>
+      <li>Click on <strong>Containers</strong> under <strong>Blob service</strong> and create a new container.</li>
+      <li>Connect your storage provider in the RudderStack dashboard.</li>     
+      </ol>
+    </TabPanel>
+    <TabPanel>
+    <ol>
+      <li>Login to your MinIO service and <Link to="/destinations/streaming-destinations/minio/#setting-up-minio">set up your bucket</Link>.</li>
+      <li>Connect your storage provider in the RudderStack dashboard.</li>
+    </ol>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
 
 ### 3. Store event data in RudderStack cloud storage
 
@@ -89,7 +127,7 @@ Choosing this option allows RudderStack to store and delete your event data on a
 
 ## Sample event data
 
-When the **Sample event data** setting is enabled, RudderStack stores and deletes sample events and responses on a rolling 30-day basis. This data may be helpful with debugging efforts. 
+When the **Sample event data** setting is enabled, RudderStack stores and deletes sample events and responses on a rolling 30-day basis. This data may be helpful for debugging your events. 
 
 <div class="infoBlock">
 RudderStack <strong>does not</strong> consider the event name or event type to be Personally Identifiable Information (PII).
@@ -99,13 +137,13 @@ RudderStack <strong>does not</strong> consider the event name or event type to b
 
 ## Plan-based options
 
-Based on your plan, RudderStack provides different options for event storage, giving you the ability to toggle on or off the following kinds of data:
+Based on your plan, RudderStack provides different options for event storage, giving you the ability to enable or disable retention for the following kinds of data:
 
-- Sample events and responses
-- Processing errors
-- Gateway dumps
+- **Sample events and responses**: As mentioned above, RudderStack will store and delete sample events and responses on a rolling 30-day basis.
+- **Processing errors**: These correspond to the events that are rejected at various stages of the data pipeline, including errors from user transformation, destination transformation (internal to RudderStack), and events rejected by the destination after **three hours** of retry attempts.
+- **Gateway dumps**: These correspond to the raw data for every successfully-ingested event.
 
-See the table below for storage items based on different [RudderStack pricing plans](https://www.rudderstack.com/pricing/):
+Refer to the below table for the storage items supported by different [RudderStack pricing plans](https://www.rudderstack.com/pricing/):
 
 | Storage options | Free tier | Starter/Growth | Enterprise |
 | :----| :------| :-----| :-----|
