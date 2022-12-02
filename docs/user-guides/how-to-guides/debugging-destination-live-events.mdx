@@ -22,7 +22,7 @@ Routing events to a destination via RudderStack can fail for various reasons. So
 - Rate limiting enforced by the destination.
 - Destination downtime.
 
-You can use RudderStack's **Destination live events** feature to view the events sent to your destination in real-time, and debug any delivery failure.
+You can use RudderStack's **Live Events** feature to view the events sent to your destination in real-time, and debug any delivery failure.
 
 ## Viewing destination live events
 
@@ -60,6 +60,6 @@ On clicking the **See full error** option, you can see the following error respo
 
 <img src="../../assets/rs-cloud/custom-audience-full-error.png" alt="Custom Audience full destination error" />
 
-From the error response, it is clear that an <Link to="/event-spec/standard-events/identify/">`identify`</Link> event was sent to the destination. According to the <Link to="/destinations/streaming-destinations/fb-custom-audience/">Facebook Custom Audience documentation</Link>, only <Link to="/event-spec/standard-events/track/">`track`</Link> events are supported. As a result, when RudderStack tries sending the `identify` event, the destination throws an error. RudderStack retries sending this event several times before marking it as aborted.
+From the error response, it is clear that an <Link to="/event-spec/standard-events/identify/">`identify`</Link> event was sent to the destination. According to the <Link to="/destinations/streaming-destinations/fb-custom-audience/">Facebook Custom Audience documentation</Link>, only <Link to="/event-spec/standard-events/track/">`track`</Link> events are supported. As a result, when RudderStack tries sending the `identify` event, the destination gives an error. RudderStack retries sending this event several times before marking it as aborted.
 
 This way, you can use the **Live Events** feature to better understand the responses received from the destination in case of any delivery failures and resolve them faster.
