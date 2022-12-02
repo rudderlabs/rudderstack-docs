@@ -28,7 +28,7 @@ To successfully configure SatisMeter as a destination, you will need to configur
 
 - **Write Key**: Enter your SatisMeter write key for authentication. For more information on obtaining the write key, refer to the <Link to="#faq">FAQ</Link> section below.
 - **Identify Anonymous Users**: Enable this setting to allow RudderStack to identify anonymous users using `anonymousId`.
-- **Record SatisMeter Events**: Enable this setting to allow RudderStack to automatically record your SatisMeter events as <Link to="/event-spec/standard-events/track/">`track`</Link> events events. 
+- **Record SatisMeter Events**: Enable this setting to allow RudderStack to automatically record your SatisMeter events as <Link to="/event-spec/standard-events/track/">`track`</Link> events. 
   - **List of Events**: Specify the list of events to be automatically tracked.
   - **Update Event Name in track call**: Enable this setting to update your `track` event names before sending them to other destinations.
     - **Mapping to update the event name in the track call**: Use this setting to map the standard SatisMeter events automatically recorded by RudderStack to custom `track` event names.
@@ -72,7 +72,7 @@ RudderStack maps the following `identify` traits to the corresponding SatisMeter
 
 ## Track
 
-You can use the <Link to="/event-spec/standard-events/track/">`track`</Link> call to the track the user's interactions with the survey like responses and feedback.
+You can use the <Link to="/event-spec/standard-events/track/">`track`</Link> call to <a href="https://support.satismeter.com/hc/en-us/articles/6980449391891-User-events">trigger a SatisMeter survey</a>.
 
 A sample `track` call is shown below:
 
