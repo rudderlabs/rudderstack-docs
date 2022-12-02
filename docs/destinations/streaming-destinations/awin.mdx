@@ -29,7 +29,7 @@ To successfully configure Awin as a destination, you will need to configure the 
 
 - **Advertiser ID**: Enter your Awin Advertiser ID. For more information on obtaining your advertiser ID, refer to the <Link to="#FAQ">FAQ</Link> section below.
 
-- **Client-side Events Filtering**: 
+- **Events to Track**: Enter the events for which you want to track conversions. A track call will be made only for the events passed here.
 
 ## Track
 
@@ -65,11 +65,13 @@ The following table lists the mappings between the RudderStack and Awin properti
 
 | RudderStack property | Awin property | Notes |
 | :--------------| :---------| :--------------|
-| `properties.revenue` <br/> `properties.totalAmount` | `totalAmount` |  |
-| `properties.commissionGroup` | `commissionGroup` |  |
-| `properties.voucherCode` | `ts` | `voucher_code` | |
-| `properties.currency` <br/> `properties.currencyCode` | `currencyCode` | |
-| `order_id` | `orderReference` | |
+| `properties.revenue` <br/> `properties.totalAmount` <br/> `properties.amount` <br/> `properties.total_amount`| `totalAmount` |  |
+| `properties.commissionGroup`<br/> `properties.commission_group` | `commissionGroup` |  |
+| `properties.voucherCode`<br/> `properties.voucher_code`  | `voucher_code` | |
+| `properties.currency` <br/> `properties.currencyCode` <br/> `properties.currency_code` | `currencyCode` | |
+| `properties.order_id`<br/>`properties.orderId` <br/> `properties.orderReference` <br/> `properties.order_reference` | `orderReference` | |
+| `properties.cks`<br/> `properties.awc`  | `awc` | |
+| `properties.testMode` <br/> `properties.test_mode` <br/> `properties.isTest`<br/> `properties.is_test` | `orderReference` | `isTest`|
 
 ## FAQ
 
