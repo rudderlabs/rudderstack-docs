@@ -27,9 +27,13 @@ Once you have confirmed that the source platform supports sending events to Awin
 
 To successfully configure Awin as a destination, you will need to configure the following settings:
 
-- **Advertiser ID**: Enter your Awin Advertiser ID. For more information on obtaining your advertiser ID, refer to the <Link to="#FAQ">FAQ</Link> section below.
+- **Advertiser ID**: Enter your Awin advertiser ID. For more information on obtaining your advertiser ID, refer to the <Link to="#faq">FAQ</Link> section below.
 
-- **Events to Track**: Enter the events for which you want to track conversions. A track call will be made only for the events passed here.
+- **Events to Track**: Enter the event names for which you want to track conversions. 
+
+<div class="warningBlock">
+You must enter all the event names for which you want to make a <code class="inline-code">track</code> call.
+</div>
 
 ## Track
 
@@ -65,21 +69,18 @@ The following table lists the mappings between the RudderStack and Awin properti
 
 | RudderStack property | Awin property | Notes |
 | :--------------| :---------| :--------------|
-| `properties.revenue` <br/> `properties.totalAmount` <br/> `properties.amount` <br/> `properties.total_amount`| `totalAmount` |  |
-| `properties.commissionGroup`<br/> `properties.commission_group` | `commissionGroup` |  |
-| `properties.voucherCode`<br/> `properties.voucher_code`  | `voucher_code` | |
-| `properties.currency` <br/> `properties.currencyCode` <br/> `properties.currency_code` | `currencyCode` | |
-| `properties.order_id`<br/>`properties.orderId` <br/> `properties.orderReference` <br/> `properties.order_reference` | `orderReference` | |
-| `properties.cks`<br/> `properties.awc`  | `awc` | |
-| `properties.testMode` <br/> `properties.test_mode` <br/> `properties.isTest`<br/> `properties.is_test` | `orderReference` | `isTest`|
+| `properties.revenue` <br/> `properties.totalAmount` <br/> `properties.amount` <br/> `properties.total_amount`| `totalAmount` | - |
+| `properties.commissionGroup`<br/> `properties.commission_group` | `commissionGroup` | Default value is `DEFAULT` |
+| `properties.voucherCode`<br/> `properties.voucher_code`  | `voucher_code` |- |
+| `properties.currency` <br/> `properties.currencyCode` <br/> `properties.currency_code` | `currencyCode` | -|
+| `properties.order_id`<br/>`properties.orderId` <br/> `properties.orderReference` <br/> `properties.order_reference` | `orderReference` |- |
+| `properties.cks`<br/> `properties.awc`  | `awc` | Default value is `awc` |
+| `properties.testMode` <br/> `properties.test_mode` <br/> `properties.isTest`<br/> `properties.is_test` | `isTest` | Default value is `0` |
 
 ## FAQ
 
 ### Where can I find the Awin advertiser ID?
 
-To obtain your Awin advertiser ID, follow these steps:
+To obtain your Awin advertiser ID, login to your [Awin dashboard](https://ui.awin.com/idp/en/awin/login) to see the advertiser ID in the top right corner as well as in the URL, as shown:
 
-1. Log into your [Awin dashboard](https://manage.Awin.com/auth/login).
-2. Go to **Settings** > **API Keys** as shown:
-
-<img src="../../assets/event-stream-destinations/Awin-api-key.png" alt="Awin API key" />
+<img src="../../assets/event-stream-destinations/advertisers-id-awin.png" alt="Awin advertiser ID" />
