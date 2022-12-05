@@ -1,14 +1,12 @@
 ---
 title: "Snowflake"
-description: Step-by-step guide on setting up Snowflake as a destination in RudderStack.
+description: Setting up Snowflake as a destination in RudderStack.
 ---
 
-[Snowflake](https://www.snowflake.com/) is a cloud-based data warehouse provided as Software-as-a-Service \(SaaS\). It offers all the modern data warehouse features like scalability, ease of use, secure access to your data, advanced analytics capabilities, and more.
-
-RudderStack lets you configure Snowflake as a destination to seamlessly store your event data.
+RudderStack supports Snowflake as a destination. [Snowflake](https://www.snowflake.com/) is a cloud-based data warehouse.
 
 <div class="infoBlock">
-Refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for information on how the events are mapped to the Snowflake tables.
+Refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for how events are mapped to Snowflake tables.
 </div>
 
 <div class="successBlock">
@@ -100,7 +98,7 @@ GRANT ROLE "RUDDER" TO USER "RUDDER_USER";
 
 ## Configuring Snowflake destination in RudderStack
 
-To start sending data to Snowflake, you will first need to add it as a destination in RudderStack and connect it to a data source. Once the destination is enabled, the events will automatically start flowing to your Snowflake instance.
+To start sending data to Snowflake, you will first need to add it as a destination in RudderStack and connect it to a data source. 
 
 Follow these steps to configure your Azure data lake as a destination in RudderStack:
 
@@ -149,7 +147,7 @@ With the JSON columns feature, you can now ingest semi-structured event data not
 
 ### Configuring the object storage
 
-RudderStack lets you configure the following object storage configuration settings while setting up your Snowflake destination:
+RudderStack lets you configure the following object storage settings during set up:
 
 - **Use RudderStack-managed Object Storage**: Enable this setting to use RudderStack-managed buckets for object storage.
 
@@ -200,11 +198,11 @@ Refer to the following settings depending on your cloud provider:
 
 ## Configuring cloud storage integration with Snowflake
 
-This section lists the steps required to configure the **Storage Integration** setting specified in the <Link to="#configuring-the-object-storage">Configuring the object storage</Link> section above, depending on your cloud provider.
+This section lists the steps to configure the **Storage Integration** setting specified in the <Link to="#configuring-the-object-storage">Configuring the object storage</Link> section above.
 
 ### AWS
 
-If you have Amazon Web Services (AWS) as your cloud provider and want to use S3 as your object storage, you will need to follow a few more steps to configure your cloud storage integration with Snowflake. You can find the detailed instructions in this [Snowflake documentation](https://docs.snowflake.com/en/user-guide/data-load-s3-config.html#option-1-configuring-a-snowflake-storage-integration).
+If you have Amazon Web Services (AWS) as your cloud provider and want to use S3 as your object storage, follow the steps below. You can find the detailed instructions in this [Snowflake documentation](https://docs.snowflake.com/en/user-guide/data-load-s3-config.html#option-1-configuring-a-snowflake-storage-integration).
 
 1. **Create a policy in AWS**: In the following JSON, replace `<bucket_name>` and `<prefix>` with the name of your S3 bucket and the prefix set in the <Link to="#configuring-the-object-storage">Configuring the object storage</Link> section above, and create the policy with a name of your choice.
 
@@ -309,7 +307,7 @@ GRANT CREATE STAGE ON SCHEMA PUBLIC public to role myrole;
 
 ### Azure
 
-If you have Microsoft Azure as your cloud provider and want to leverage Azure Blob Storage as your object storage, you will need to follow a few more steps to configure your storage integration with Snowflake. You can find the detailed instructions in this [Snowflake documentation](https://docs.snowflake.com/en/user-guide/data-load-azure-config.html#option-1-configuring-a-snowflake-storage-integration).
+If you want to leverage Azure Blob Storage as your object storage, follow the instructions below. You can find the detailed instructions in this [Snowflake documentation](https://docs.snowflake.com/en/user-guide/data-load-azure-config.html#option-1-configuring-a-snowflake-storage-integration).
 
 1. **Create a storage account and container in Azure**:  First, create a storage account in Azure. Then, navigate to **Storage Explorer** > **Blob Containers** > **Create a Blob Container**.
 2. Run the following commands to create a cloud storage integration in Snowflake:
@@ -348,7 +346,7 @@ Here, `<integration_name>` is the integration you created in Step 2.
 
 ### GCP
 
-If you have Google Cloud Platform as your cloud provider and want to leverage Google Cloud Storage as your object storage, you will need to follow a few more steps to configure your storage integration with Snowflake. You can find the detailed instructions in this [Snowflake documentation](https://docs.snowflake.com/en/user-guide/data-load-gcs-config.html#configuring-an-integration-for-google-cloud-storage).
+If you want to leverage Google Cloud Storage as your object storage, follow the instructions below. You can find the detailed instructions in this [Snowflake documentation](https://docs.snowflake.com/en/user-guide/data-load-gcs-config.html#configuring-an-integration-for-google-cloud-storage).
 
 1. **Create a Cloud Storage integration in Snowflake**: Run the following command:
 
@@ -429,7 +427,7 @@ The following examples illustrate the slight differences in the Snowflake accoun
 <div class="warningBlock">
 In case of AWS, <code class="inline-code">.aws</code> is present in the account locator of some region's accounts and must be included in the <strong>Account</strong> field above. 
 
-For more information on the different account locator formats depending on your region or cloud provider, refer to the <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region">Snowflake documentation</a>.
+For more information on account locator formats depending on your region or cloud provider, refer to the <a href="https://docs.snowflake.com/en/user-guide/admin-account-identifier.html#non-vps-account-locator-formats-by-cloud-platform-and-region">Snowflake documentation</a>.
 </div>
 
 <div class="infoBlock">
