@@ -57,7 +57,7 @@ The following table details the mappings between RudderStack and Bing Ads proper
 | `properties.total` <br/>  `properties.revenue` <br/>  `properties.value` | `revenue` | 
 
 <div class="infoBlock">
-<code class="inline-code">properties.total</code> is given the highest priority followed by <code class="inline-code">properties.revenue</code> > <code class="inline-code">properties.value</code>.
+RudderStack prioritizes <code class="inline-code">properties.total</code> over <code class="inline-code">properties.revenue</code> followed by <code class="inline-code">properties.value</code>, before mapping it to the Bing Ads' revenue property.
 </div>
 
 A sample `track` call looks like the following:
