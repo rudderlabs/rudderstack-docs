@@ -911,6 +911,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Amplitude V2 TEST",
+                link: "/destinations/streaming-destinations/amplitude-v2/",
+                content: []
+            },
+            {
                 title: "AWS Personalize",
                 link: "/destinations/streaming-destinations/aws-personalize/",
                 content: []
