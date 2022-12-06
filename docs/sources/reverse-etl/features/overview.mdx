@@ -1,14 +1,14 @@
 ---
 title: "Overview"
 description: >-
-  Detailed guide on features you can use in the RudderStack's Reverse ETL pipeline.
+  Detailed guide on the features you can use in RudderStack's Reverse ETL pipeline.
 ---
 
-RudderStack provides some useful features which you can use while configuring your Reverse ETL pipelines to add customizations and automate the seamless event flow from your data warehouse to various analytics, sales, and marketing tools.
+RudderStack provides some useful features which you can use while configuring your Reverse ETL pipelines to customize, automate, and ensure seamless event flow from your data warehouse to various analytics, sales, and marketing tools.
 
 ## Models
 
-RudderStack supports using **Models** in the Reverse ETL pipeline  by defining custom SQL queries. You can create and run these queries on your warehouse and send the resulting data to specific destinations. You can create as many models and reuse them with their corresponding Reverse ETL sources.
+RudderStack provides the **Models** feature using which you can define custom SQL queries. You can create and run these queries on your warehouse and send the resulting data to specific destinations. You can create as many models and reuse them with their corresponding Reverse ETL sources.
 
 With this feature, you can:
 
@@ -16,16 +16,7 @@ With this feature, you can:
 * Manage the views of all the models synced to different destinations in one place.
 * Reuse the existing models in multiple connections.
 
-<div class="infoBlock">
-RudderStack supports this feature for the following Reverse ETL sources:
-<ul>
-<li><Link to="/sources/reverse-etl/amazon-redshift/">Amazon Redshift</Link></li> 
-<li><Link to="/sources/reverse-etl/google-bigquery/">Google BigQuery</Link></li>
-<li><Link to="/sources/reverse-etl/postgresql/">PostgreSQL</Link></li>
-<li><Link to="/sources/reverse-etl/snowflake/">Snowflake</Link></li>
-</ul>
 For more information on creating and using the models, refer to the <Link to="/sources/reverse-etl/common-settings/models/">Models</Link> guide.
-</div>
 
 ## Syncing events
 
@@ -57,29 +48,11 @@ Refer to the <Link to="">JSON mapping</Link> guide for detailed steps on choosin
 
 The **Visual Data Mapper** (VDM) offers an intuitive UI to map your warehouse columns to specific destination fields. This is useful especially when mapping your warehouse data to custom fields defined in your destination.
 
-<div class="infoBlock">
-Visual Data Mapper is currently supported for the following destinations:
-<ul>
- <li><a href="https://rudderstack.com/docs/destinations/streaming-destinations/amplitude/">Amplitude</a></li>
- <li><a href="https://rudderstack.com/docs/destinations/streaming-destinations/braze/">Braze</a></li>
- <li><a href="https://rudderstack.com/docs/destinations/streaming-destinations/customer.io/">Customer.io</a></li>
- <li><a href="https://rudderstack.com/docs/destinations/streaming-destinations/google-analytics-ga/">Google Analytics</a></li>
- <li><a href="https://www.rudderstack.com/docs/destinations/streaming-destinations/google-adwords-remarketing-list/">Google Adwords Remarketing Lists (Customer Match)</a></li>
- <li><a href="https://rudderstack.com/docs/destinations/streaming-destinations/hubspot/">HubSpot</a></li>
- <li><a href="https://rudderstack.com/docs/destinations/streaming-destinations/intercom/">Intercom</a></li>
- <li><a href="https://rudderstack.com/docs/destinations/streaming-destinations/iterable/">Iterable</a></li>
- <li><a href="https://rudderstack.com/docs/destinations/streaming-destinations/klaviyo/">Klaviyo</a></li>
- <li><a href="https://rudderstack.com/docs/destinations/streaming-destinations/mailchimp/">Mailchimp</a></li>
- <li><a href="https://www.rudderstack.com/docs/destinations/streaming-destinations/marketo/">Marketo</a></li>
- <li><a href="https://rudderstack.com/docs/destinations/streaming-destinations/salesforce/">Salesforce</a></li>
-</ul>
-</div>
-
 <div class="successBlock">
-To use this feature, you can add a <a href="https://rudderstack.com/docs/sources/reverse-etl/">Reverse ETL source</a> and then connect it to a VDM-supported destination. For more information, refer to the <Link to="/sources/reverse-etl/common-settings/visual-data-mapper/">Visual Data Mapper</Link> guide.
+To use this feature, you can add a <a href="https://rudderstack.com/docs/sources/reverse-etl/">Reverse ETL source</a> and then connect it to a <Link to="">VDM-supported destination</Link>. For more information, refer to the <Link to="/sources/reverse-etl/common-settings/visual-data-mapper/">Visual Data Mapper</Link> guide.
 </div>
 
 
 ## Airflow Provider
 
-RudderStack's Airflow Provider lets you programmatically schedule and trigger your Reverse etl syncs from outside RudderStack and integrate them with your existing Airflow workflows. Refer to the <Link to="/sources/reverse-etl/features/airflow-provider/">Airflow Provider</Link> guide for more information on this feature. 
+RudderStack's Airflow Provider lets you programmatically schedule and trigger Reverse ETL syncs from outside RudderStack and integrate them with your existing Airflow workflows. Refer to the <Link to="/sources/reverse-etl/features/airflow-provider/">Airflow Provider</Link> guide for more information. 
