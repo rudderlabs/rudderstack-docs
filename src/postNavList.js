@@ -1318,6 +1318,12 @@ export const postNavList = [
     link: "/destinations/streaming-destinations/autopilot/",
     content: [],
   },
+   {
+    key: "awin",
+    title: "Awin",
+    link: "/destinations/streaming-destinations/awin/",
+    content: [],
+  },
   {
     key: "sendgrid",
     title: "SendGrid",

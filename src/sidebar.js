@@ -1310,6 +1310,10 @@ export const jsonData = [
                 title: "Autopilot",
                 link: "/destinations/streaming-destinations/autopilot/",
                 content: []
+            },  {
+                title: "Awin",
+                link: "/destinations/streaming-destinations/awin/",
+                content: []
             }, {
                 title: "Blueshift",
                 link: "/destinations/streaming-destinations/blueshift/",
