@@ -168,10 +168,19 @@ If you exceed the permissible table column limit in your warehouse, RudderStack 
 
 ### How can I handle the column count threshold in my warehouse?
 
-To avoid exceeding the column count threshold in your warehouse, you can do the following:
+To avoid exceeding the column count threshold in your warehouse, you can use any one of the following approaches:
 
-- Go to your warehouse and drop the unwanted table columns.
-- If you're passing dynamic properties in your events, or if you're syncing semi-structured event data that is not defined by a fixed schema, you can leverage RudderStack's <Link to="/destinations/warehouse-destinations/json-column-support/">JSON Column Support</Link> feature to send your data.
+- Go to your warehouse and drop the unwanted table columns. Refer to the following links for managing your warehouse column count:
+  - [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/dg/r_ALTER_TABLE_COL_ex-add-drop.html)
+  - [Google BigQuery](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_table_drop_column_statement)
+  - [Snowflake](https://docs.snowflake.com/en/sql-reference/sql/alter-table.html)
+  - [Databricks](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-ddl-alter-table.html)
+  - [PostgreSQL](https://www.postgresql.org/docs/current/ddl-alter.html#DDL-ALTER-REMOVING-A-COLUMN)
+  - [MySQL](https://dev.mysql.com/doc/refman/8.0/en/alter-table.html)
+
+For other warehouses, refer to their respective documentation.
+ 
+- If you're syncing semi-structured event data that is not defined by a fixed schema, you can leverage RudderStack's <Link to="/destinations/warehouse-destinations/json-column-support/">JSON Column Support</Link> feature to send the data to your warehouse without worrying about the column count limit.
 
 ## Namespace, prefix, and warehouse schema
 
