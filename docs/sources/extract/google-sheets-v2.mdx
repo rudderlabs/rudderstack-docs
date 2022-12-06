@@ -44,8 +44,6 @@ Next, configure the following dashboard settings:
 </ul>
 </div>
 
-- **Row Batch Size**: Enter the number of rows to be fetched from the spreadsheet while syncing the data. If not specified, RudderStack sets this value to **200** by default.
-
 ### Destination settings
 
 The following settings specify how RudderStack sends the data ingested from Google Sheets to the connected warehouse destination:
@@ -70,10 +68,6 @@ You can specify the Google Sheets data that you want to sync by selecting the re
 RudderStack considers the first row of each sheet as the header. Empty sheets or sheets with an empty header will <strong>not</strong> be reflected in the <strong>Select data to import</strong> window.
 </div>
 
-<div class="warningBlock">
-While syncing data to the warehouse destination, RudderStack creates columns for only those headers (first rows in the sheet) which also have data present in the second row. The mere presence of a header <strong>does not</strong> create a column in the destination.
-</div>
-
 Google Sheets is now configured as a source. RudderStack will start ingesting data from Google Sheets as per your specified schedule and frequency.
 
 You can further connect this source to your data warehouse by clicking the **Add Destination** button, as shown:
@@ -82,6 +76,20 @@ You can further connect this source to your data warehouse by clicking the **Add
 
 <div class="infoBlock">
 Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
+</div>
+
+## How RudderStack syncs data to the warehouse
+
+If you select multiple sheets in the **Select data to import** window, RudderStack creates multiple tables (corresponding to each sheet) in the warehouse.
+
+<img src="../../assets/cloud-extract-sources/googlesheets-beta-sheet.png" alt="Selecting the data to import" />
+
+In the above example, RudderStack creates a table corresponding to each sheet (`List of Tracking Plans`, `Import Template`, and so on) in the warehouse.
+
+While syncing data to the warehouse, RudderStack creates columns for only those headers (first rows in the sheet) which also have data present in the second row and beyond.
+
+<div class="warningBlock">
+The mere presence of a header <strong>does not</strong> create a column in the destination.
 </div>
 
 ## FAQ
