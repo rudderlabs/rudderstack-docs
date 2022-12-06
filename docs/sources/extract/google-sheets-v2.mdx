@@ -35,8 +35,16 @@ Next, configure the following dashboard settings:
 - **Authentication**: From the dropdown, select the authentication mechanism for RudderStack to connect to the Google Sheets API.
     - **Authenticate via Google (OAuth)**: To authenticate via OAuth, click the **Sign in with Google** button, select your Google account, and give RudderStack the required permissions.
     - **Service Account Key Authentication**: Enter your <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating">service account</a> JSON credentials in the **Service Account Information** field.
-- **Spreadsheet Link**: From the dropdown, select the spread from which RudderStack ingests and syncs the data.
-- **Row Batch Size**: Enter the number of rows to be fetched from the spreadsheet while syncing the data. If not specified, RudderStack sets this value to **200**.
+- **Spreadsheet Link**: From the dropdown, select the spreadsheet from which RudderStack ingests and syncs the data.
+
+<div class="infoBlock">
+<ul>
+  <li>For the <strong>Authenticate via Google (OAuth)</strong> authentication option, RudderStack will automatically populate all the spreadsheets associated with the account.</li>
+  <li>For the <strong>Service Account Key Authentication</strong> option, you need to first provide access to the required spreadsheet. <strong>Only the sheets for which you provide the access will be listed in the dropdown</strong>. For more information, refer to the <Link to="#faq">FAQ</Link> section below.</li>
+</ul>
+</div>
+
+- **Row Batch Size**: Enter the number of rows to be fetched from the spreadsheet while syncing the data. If not specified, RudderStack sets this value to **200** by default.
 
 ### Destination settings
 
@@ -58,6 +66,14 @@ You can specify the Google Sheets data that you want to sync by selecting the re
 
 <img src="../../assets/cloud-extract-sources/googlesheets-beta-sheet.png" alt="Selecting the data to import" />
 
+<div class="warningBlock">
+RudderStack considers the first row of each sheet as the header. Empty sheets or sheets with an empty header will <strong>not</strong> be reflected in the <strong>Select data to import</strong> window.
+</div>
+
+<div class="warningBlock">
+While syncing data to the warehouse destination, RudderStack creates columns for only those headers (first rows in the sheet) which also have data present in the second row. The mere presence of a header <strong>does not</strong> create a column in the destination.
+</div>
+
 Google Sheets is now configured as a source. RudderStack will start ingesting data from Google Sheets as per your specified schedule and frequency.
 
 You can further connect this source to your data warehouse by clicking the **Add Destination** button, as shown:
@@ -69,6 +85,27 @@ Use the <strong>Use Existing Destination</strong> option if you have an already-
 </div>
 
 ## FAQ
+
+### How do I provide service account access to a Google sheet?
+
+If you're using a <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating">service account</a> to authenticate RudderStack to sync your Google Sheets data, you must also give it the required access to the required spreadsheet. Follow these steps to provide the required sheet access:
+
+1. In your [Google Cloud console](https://console.cloud.google.com/), go to **APIs & Services** > **Credentials**.
+2. Under **Service Accounts**, copy the email address listed under **Email**.
+
+<img src="../../assets/cloud-extract-sources/googlesheets-beta-service-account-email.png" alt="Service account email" />
+
+3. Go to the spreadsheet, click the **Share** button and paste the email copied above. Specify the permission you want to assign to this email. 
+
+<img src="../../assets/cloud-extract-sources/googlesheets-beta-service-account-permissions.png" alt="Service account permissions" />
+
+4. Finally, click the **Send** button.
+
+<div class="warningBlock">
+If you get the <strong>Share outside of organization</strong> popup, click <strong>Share anyway</strong>.
+</div>
+
+The Google sheet will now be accessible in the dropdown. RudderStack can now access the sheet and sync the data from it.
 
 ### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
