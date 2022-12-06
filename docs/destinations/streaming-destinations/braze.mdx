@@ -379,6 +379,10 @@ rudderanalytics.track("Order Completed", {
 });
 ```
 
+<div class="infoBlock">
+You can also send nested objects inside track events to send nested JSON data as properties.
+</div>
+
 ## Page
 
 The <Link to="/event-spec/standard-events/page/">`page`</Link> call allows you to record your website's page views, with the additional relevant information about the viewed page.
@@ -410,7 +414,7 @@ rudderanalytics.group("12345", {
 
 Once you send a `group` event, RudderStack sends a custom attribute to Braze with the name as `ab_rudder_group_<groupId>` and the value as `true`. For example, if the `groupId` is `123456`, then RudderStack creates a custom attribute with the name `ab_rudder_group_123456` and sends it to Braze with its value to `true`.
 
-While using Braze destination in <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, you can also send [subscription groups](https://www.braze.com/docs/api/endpoints/subscription_groups) in the `group` call, as shown:
+While using the Braze destination in <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, you can also update the subscription group information. To do so, enable the **Enable subscription groups in group call** setting in the RudderStack dashboard and send the [subscription group](https://www.braze.com/docs/api/endpoints/subscription_groups) in the `group` call, as shown:
 
 ```javascript
 rudderanalytics.group("12345", {
@@ -422,8 +426,6 @@ rudderanalytics.group("12345", {
 <div class="infoBlock">
 Either the <code class="inline-code">email</code> or <code class="inline-code">phone</code> is <strong>mandatory</strong> to send the subscription group in a <code class="inline-code">group</code> call.
 </div>
-
-
 
 ## Sending push notification events
 
