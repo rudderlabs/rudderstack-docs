@@ -1885,10 +1885,10 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "vwo-beta-visual-website-optimizer",
+    key: "vwo",
     title: "VWO (Visual Website Optimizer)",
     link:
-      "/destinations/streaming-destinations/vwo-beta-visual-website-optimizer/",
+      "/destinations/streaming-destinations/vwo/",
     content: [],
   },
   {

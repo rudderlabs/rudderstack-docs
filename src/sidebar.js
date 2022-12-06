@@ -724,7 +724,7 @@ export const jsonData = [
                 content: []
             }, {
                 title: "VWO (Visual Website Optimizer)",
-                link: "/destinations/streaming-destinations/vwo-beta-visual-website-optimizer/",
+                link: "/destinations/streaming-destinations/vwo/",
                 content: []
             },
             {
