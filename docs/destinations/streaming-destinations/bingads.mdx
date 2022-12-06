@@ -42,11 +42,23 @@ rudderanalytics.page()
 
 ## Track
 
-The `track` call allows you to capture any action that the user might perform, and the properties associated with that action. Each action is considered to be an event.
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to capture user events and their associated properties.
 
-RudderStack maps the `properties.category` and `properties.currency` fields to the corresponding category and currency fields of Bing Ads, respectively. RudderStack also maps `properties.total` and `properties.revenue` or `properties.value` to the variable `revenue`.
+### Supported mappings
 
-To use this call, only the event name is required - all other properties are optional.
+The following table details the mappings between RudderStack and Bing Ads properties:
+
+| RudderStack property | Bing Ads property |
+| :-----| :--------| 
+| `message.event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event_label` | 
+| `properties.category` | `category` | 
+| `properties.currency`  | `currency` |
+| `properties.eventValue` | `event_value` | 
+| `properties.total` <br/>  `properties.revenue` <br/>  `properties.value` | `revenue` | 
+
+<div class="infoBlock">
+RudderStack prioritizes <code class="inline-code">properties.total</code> over <code class="inline-code">properties.revenue</code> followed by <code class="inline-code">properties.value</code>, before mapping it to the Bing Ads' revenue property.
+</div>
 
 A sample `track` call looks like the following:
 
@@ -60,11 +72,6 @@ rudderanalytics.track("Item Purchased", {
 })
 ```
 
-<div class="infoBlock">
-
-Priority of properties.total is higher followed by properties.revenue followed by properties.value.
-
-</div>
 
 ## Configuring the UET tag
 
