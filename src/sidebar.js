@@ -2037,11 +2037,13 @@ export const jsonData = [
                 title: "How to Use AWS Lambda Functions with RudderStack",
                 link: "/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack/",
                 content: []
-            }, {
-                title: "How to Debug Live Destination Events",
-                link: "/user-guides/how-to-guides/live-destination-event-debugger/",
+            }, 
+            {
+                title: "How to Debug Destination Live Events",
+                link: "/user-guides/how-to-guides/debugging-destination-live-events/",
                 content: []
-            },{
+            },
+            {
                 title: "How to Host RudderStack JavaScript SDK on your CDN/Storage",
                 link: "/user-guides/how-to-guides/self-hosting-js-sdk/",
                 content: []
