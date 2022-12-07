@@ -1419,11 +1419,17 @@ export const jsonData = [
                 title: "Marketo",
                 link: "/destinations/streaming-destinations/marketo/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Marketo Lead Import",
                 link: "/destinations/streaming-destinations/marketo-lead-import/",
                 content: []
-            }, 
+            },
+            {
+                title: "Marketo Static Lists",
+                link: "/destinations/streaming-destinations/marketo-static-lists/",
+                content: []
+            },
             {
                 title: "MoEngage",
                 link: "/destinations/streaming-destinations/moengage/",
