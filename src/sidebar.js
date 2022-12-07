@@ -416,6 +416,11 @@ export const jsonData = [
                         content: []
                     },
                     {
+                        title: "SatisMeter",
+                        link: "/sources/event-streams/cloud-apps/satismeter/",
+                        content: []
+                    },
+                    {
                         title: "Webhook Source",
                         link: "/sources/event-streams/cloud-apps/webhook-source/",
                         content: []
@@ -729,7 +734,7 @@ export const jsonData = [
                 content: []
             }, {
                 title: "VWO (Visual Website Optimizer)",
-                link: "/destinations/streaming-destinations/vwo-beta-visual-website-optimizer/",
+                link: "/destinations/streaming-destinations/vwo/",
                 content: []
             },
             {
@@ -1009,6 +1014,12 @@ export const jsonData = [
                 key: "matomo",
                 title: "Matomo",
                 link: "/destinations/streaming-destinations/matomo/",
+                content: [],
+            },
+            {
+                key: "microsoft-clarity",
+                title: "Microsoft Clarity",
+                link: "/destinations/streaming-destinations/microsoft-clarity/",
                 content: [],
             },
             {
@@ -1315,6 +1326,10 @@ export const jsonData = [
                 title: "Autopilot",
                 link: "/destinations/streaming-destinations/autopilot/",
                 content: []
+            },  {
+                title: "Awin",
+                link: "/destinations/streaming-destinations/awin/",
+                content: []
             }, {
                 title: "Blueshift",
                 link: "/destinations/streaming-destinations/blueshift/",
@@ -1420,11 +1435,17 @@ export const jsonData = [
                 title: "Marketo",
                 link: "/destinations/streaming-destinations/marketo/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Marketo Lead Import",
                 link: "/destinations/streaming-destinations/marketo-lead-import/",
                 content: []
-            }, 
+            },
+            {
+                title: "Marketo Static Lists",
+                link: "/destinations/streaming-destinations/marketo-static-lists/",
+                content: []
+            },
             {
                 title: "MoEngage",
                 link: "/destinations/streaming-destinations/moengage/",
@@ -1651,6 +1672,11 @@ export const jsonData = [
                         content: []
                     },
                 ]
+            },
+            {
+                title: "SatisMeter",
+                link: "/destinations/streaming-destinations/satismeter/",
+                content: []
             },
             {
                 title: "WebEngage",
@@ -2042,11 +2068,13 @@ export const jsonData = [
                 title: "How to Use AWS Lambda Functions with RudderStack",
                 link: "/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack/",
                 content: []
-            }, {
-                title: "How to Debug Live Destination Events",
-                link: "/user-guides/how-to-guides/live-destination-event-debugger/",
+            }, 
+            {
+                title: "How to Debug Destination Live Events",
+                link: "/user-guides/how-to-guides/debugging-destination-live-events/",
                 content: []
-            },{
+            },
+            {
                 title: "How to Host RudderStack JavaScript SDK on your CDN/Storage",
                 link: "/user-guides/how-to-guides/self-hosting-js-sdk/",
                 content: []

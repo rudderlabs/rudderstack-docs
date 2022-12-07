@@ -475,6 +475,12 @@ export const postNavList = [
     content: []
   },
   {
+    key: "satismeter",
+    title: "SatisMeter",
+    link: "/sources/event-streams/cloud-apps/satismeter/",
+    content: []
+  },
+  {
     key: "segment",
     title: "Segment",
     link: "/sources/event-streams/cloud-apps/segment/",
@@ -1199,6 +1205,11 @@ export const postNavList = [
     content: [],
   },
   {
+    title: "Marketo Static Lists",
+    link: "/destinations/streaming-destinations/marketo-static-lists/",
+    content: []
+  },
+  {
     key: "drip",
     title: "Drip",
     link: "/destinations/streaming-destinations/drip/",
@@ -1316,6 +1327,12 @@ export const postNavList = [
     key: "autopilot",
     title: "Autopilot",
     link: "/destinations/streaming-destinations/autopilot/",
+    content: [],
+  },
+   {
+    key: "awin",
+    title: "Awin",
+    link: "/destinations/streaming-destinations/awin/",
     content: [],
   },
   {
@@ -1879,10 +1896,10 @@ export const postNavList = [
     content: [],
   },
   {
-    key: "vwo-beta-visual-website-optimizer",
+    key: "vwo",
     title: "VWO (Visual Website Optimizer)",
     link:
-      "/destinations/streaming-destinations/vwo-beta-visual-website-optimizer/",
+      "/destinations/streaming-destinations/vwo/",
     content: [],
   },
   {

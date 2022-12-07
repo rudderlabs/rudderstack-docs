@@ -28,7 +28,7 @@ In the web device mode integration, that is, using <Link to="/sources/event-stre
 Once you have confirmed that the source platform supports sending events to Braze, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Braze**.
-2. Assign a name to the destination and click on **Continue**.
+2. Assign a name to the destination and click **Continue**.
 
 ### Connection settings
 
@@ -60,6 +60,7 @@ For more information on getting your data center instance, refer to the <a href=
 </div>
 
 - **Track events for anonymous users**: Enable this setting to track anonymous users.
+- **Enable subscription groups in group call**: Enable this setting to send the subscription group status in your <code class="inline-code">group</code> events. For more information, refer to the <Link to="#group">Group</Link> section below.
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Braze.
 
 <div class="infoBlock">
@@ -378,6 +379,10 @@ rudderanalytics.track("Order Completed", {
 });
 ```
 
+<div class="infoBlock">
+You can also send nested objects inside track events to send nested JSON data as properties.
+</div>
+
 ## Page
 
 The <Link to="/event-spec/standard-events/page/">`page`</Link> call allows you to record your website's page views, with the additional relevant information about the viewed page.
@@ -408,6 +413,19 @@ rudderanalytics.group("12345", {
 ```
 
 Once you send a `group` event, RudderStack sends a custom attribute to Braze with the name as `ab_rudder_group_<groupId>` and the value as `true`. For example, if the `groupId` is `123456`, then RudderStack creates a custom attribute with the name `ab_rudder_group_123456` and sends it to Braze with its value to `true`.
+
+While using the Braze destination in <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, you can also update the subscription group status. To do so, enable the **Enable subscription groups in group call** setting in the RudderStack dashboard and send the [subscription group](https://www.braze.com/docs/api/endpoints/subscription_groups) status in the `group` call, as shown:
+
+```javascript
+rudderanalytics.group("12345", {
+  subscriptionState: "subscribed",
+  email: "alex@example.com"
+})
+```
+
+<div class="infoBlock">
+Either the <code class="inline-code">email</code> or <code class="inline-code">phone</code> is <strong>mandatory</strong> to send the subscription group in a <code class="inline-code">group</code> call.
+</div>
 
 ## Sending push notification events
 
