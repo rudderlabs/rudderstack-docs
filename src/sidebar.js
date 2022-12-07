@@ -392,7 +392,7 @@ export const jsonData = [
                     },
                     {
                         title: "Olark",
-                        link: "/sources/event-streams/cloud-apps/olark/“,
+                        link: "/sources/event-streams/cloud-apps/olark/",
                         content: []
                     },
                     {
