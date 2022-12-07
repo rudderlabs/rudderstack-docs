@@ -1453,11 +1453,18 @@ export const jsonData = [
                 title: "OneSignal",
                 link: "/destinations/streaming-destinations/onesignal/",
                 content: []
-            },{
+            },
+            {
+                title: "PersistIQ",
+                link: "/destinations/streaming-destinations/persistiq/",
+                content: []
+            }, 
+            {
                 title: "Post Affiliate Pro",
                 link: "/destinations/streaming-destinations/post-affiliate-pro/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Qualtrics",
                 link: "/destinations/streaming-destinations/qualtrics/",
                 content: []
