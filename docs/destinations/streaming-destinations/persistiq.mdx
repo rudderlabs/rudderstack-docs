@@ -50,19 +50,17 @@ The following table list the mappings between the RudderStack properties and Per
 
 | RudderStack property | PersistIQ property | Data type |
 | :--- | :--- | :--- |
-| `externalId.persistIqLeadId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `leadId` | String |
 | `traits.dup` | `dup` | String | 
 | `traits.creator_id` | `creator_id` | String | 
-| `traits.status` <br /> `context.traits.status`  |  `status` | String  |
 | `context.traits.email` <br /> `traits.email`  | ` lead[0].email` | String  |
 | `context.traits.country` <br /> `traits.country`  | ` lead[0].country` | String |
-| `context.traits.city` `traits.city` | `lead[0].city` | String |
-| `context.traits.gender` `traits.gender` | `lead[0].gender` | String |
-| `context.traits.company` `traits.company` | `lead[0].company_name` | String |
-| `context.traits.phone` `traits.phone` | `lead[0].phone` | Phone number |
-| `context.traits.facebookUrl` `traits.facebookUrl` | `lead[0].facebookUrl` | URL |
-| `context.traits.twitterUrl` `traits.twitterUrl` | `lead[0].twitterUrl` | URL |
-| `context.traits.linkedinUrl` `traits.linkedinUrl` | `lead[0].linkedinUrl` | URL |
+| `context.traits.city` <br />`traits.city` | `lead[0].city` | String |
+| `context.traits.gender` <br />`traits.gender` | `lead[0].gender` | String |
+| `context.traits.company` <br />`traits.company` | `lead[0].company_name` | String |
+| `context.traits.phone` <br />`traits.phone` | `lead[0].phone` | Phone number |
+| `context.traits.facebookUrl` <br />`traits.facebookUrl` | `lead[0].facebookUrl` | URL |
+| `context.traits.twitterUrl` <br />`traits.twitterUrl` | `lead[0].twitterUrl` | URL |
+| `context.traits.linkedinUrl` <br />`traits.linkedinUrl` | `lead[0].linkedinUrl` | URL |
 | `traits.firstName` <br /> `traits.firstname` <br />`traits.first_name` <br /> `context.traits.firstName` <br />`context.traits.firstname` <br /> `context.traits.first_name` |  `lead[0].first_name` | String  |
 | `traits.lastName` <br /> `traits.lastname` <br />`traits.last_name` <br /> `context.traits.lastName` <br />`context.traits.lastname` <br /> `context.traits.last_name` |  `lead[0].last_name` | String  |
 | `traits.{x}` <br /> `context.traits.{x}`  |  `lead[0].{x}` | -  |
