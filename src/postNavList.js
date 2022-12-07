@@ -475,6 +475,12 @@ export const postNavList = [
     content: []
   },
   {
+    key: "satismeter",
+    title: "SatisMeter",
+    link: "/sources/event-streams/cloud-apps/satismeter/",
+    content: []
+  },
+  {
     key: "segment",
     title: "Segment",
     link: "/sources/event-streams/cloud-apps/segment/",
