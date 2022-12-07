@@ -27,17 +27,26 @@ Once you have confirmed that the source platform supports sending events to VWO,
 
 To successfully configure VWO as a destination, you will need to configure the following settings:
 
-<img src="../../assets/image (43).png" alt="VWO connection settings" />
+- **Account ID**: Enter your VWO account ID. For more information on obtaining your VWO account ID, refer to the <Link to="#faq">FAQ</Link> section below.
+- **Single Page Application(SPA)?**: Enable this setting if you're loading the native VWO SDK on a single page application. 
+- **Send experiment viewed as track**: Enable this setting to record your VWO experiment as a `track` event. RudderStack will then automatically collect the `Experiment Viewed` event as a `track` call. For more information on this setting, refer to the <Link to="#sending-experiment-viewed-from-vwo">Sending experiment viewed from VWO</Link> section below.
+- **Send experiment viewed as identify traits**: Enable this setting to send your experiment data within the <Link to="/event-spec/standard-events/identify/#identify-traits">traits</Link> of your `identify` event.
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to VWO. For more information, refer to the <Link to="https://www.rudderstack.com/docs/sources/event-streams/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+- **Library Tolerance**: Specify the maximum time (in ms) RudderStack should wait for the VWO library to load before displaying your web page.
+- **Setting Tolerance**: Specify the maximum time (in ms) RudderStack should wait for the test settings before VWO displays your original web page.
+- **Use Existing jQuery**: Enable this setting if your page already includes jQuery. Otherwise, VWO will include jQuery on the page for you.
 
-You can configure the settings such as enabling **Single Page Application**, setting **Library Tolerance** and **Settings Tolerance**, and **Use Existing jQuery** while initializing the VWO SDK. Send experiment viewed as track or identify traits can also be configured. 
+<div class="warningBlock">
+To function correctly, VWO requires jQuery to be present in the web page.
+</div>
 
-To complete the configuration, click **Next**.
+- **Use device mode to send events**: As this is a <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
 
 ## Sending experiment viewed from VWO
 
-When one of the variations from an experiment is loaded for a user, RudderStack sends a <Link to="/event-spec/standard-events/track">`track`</Link> call with `Experiment Viewed` as the event name, along with the experiment and variation details as the associated properties.
+When an experiment variation is loaded for a user, RudderStack automatically sends a <Link to="/event-spec/standard-events/track">`track`</Link> call with `Experiment Viewed` as the event name, along with the experiment and variation details as the associated properties.
 
-A sample code snippet for this activity is shown below:
+A sample code snippet for this activity is as shown:
 
 ```javascript
 rudderanalytics.track("Experiment Viewed", {
@@ -46,11 +55,15 @@ rudderanalytics.track("Experiment Viewed", {
 });
 ```
 
-You can then send this `track` event to the other destinations like Google Analytics, Mixpanel, etc. for analyzing the experimentation results. You can also set the experiment-related data such as user traits, etc. so that the other destinations have the knowledge of the variations your users have seen.
+You can then send this `track` event to the other destinations (connected to the same source in RudderStack) to analyze the experimentation results. You can also set experiment-related data such as the user's traits so that the other destinations have the necessary user-related context of these variations.
 
 ## Tracking revenue goals
 
 RudderStack also lets you forward the revenue amount to VWO when the <Link to="/event-spec/ecommerce-events-spec/ordering/#order-completed">`Order Completed`</Link> event is called.
+
+<div class="infoBlock">
+RudderStack uses the <code class="inline-code">revenue</code> or <code class="inline-code">amount</code> property for tracking the revenue goals.
+</div>
 
 A sample code snippet for this activity is shown below:
 
@@ -62,10 +75,23 @@ rudderanalytics.track("Order Completed", {
 
 ## FAQ
 
+### How do I add the VWO JavaScript snippet to my website?
+
+To configure the VWO SmartCode(JavaScript snippet) on all the web pages where you plan to run your A/B tests, you can refer to this <a href="https://help.vwo.com/hc/en-us/articles/360019422834">VWO Knowledge Base</a> article.
+
+<div class="warningBlock">
+Make sure you add the VWO snippet inside the <code class="inline-code">HEAD</code> tag of your web page, <strong>above</strong> the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/#step-1-install-rudderstack-javascript-sdk">RudderStack JavaScript SDK</Link> snippet.
+</div>
+
 ### Where can I find my VWO Account ID?
 
-To get your VWO account ID, log in to your VWO dashboard. Then, click the settings icon and go to **Account**. Your account ID will be listed here.
+You can obtain the VWO Account ID by following these steps:
 
-For detailed step-by-step instructions, refer to this [VWO help guide](https://help.vwo.com/hc/en-us/articles/360008469173-How-to-find-your-account-ID).
+1. Log into your [VWO dashboard](https://app.vwo.com/#/login).
+2. Click the settings icon on the top right and go to **Account**. 
 
-<br />
+You will find your account ID listed under **Account Details**.
+
+<div class="infoBlock">
+For more information, refer to the <a href="https://help.vwo.com/hc/en-us/articles/360008469173-How-to-find-your-account-ID">VWO Knowledge Base</a>.
+</div>
