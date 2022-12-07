@@ -1663,6 +1663,11 @@ export const jsonData = [
                 ]
             },
             {
+                title: "SatisMeter",
+                link: "/destinations/streaming-destinations/satismeter/",
+                content: []
+            },
+            {
                 title: "WebEngage",
                 link: "/destinations/streaming-destinations/webengage/",
                 content: []
