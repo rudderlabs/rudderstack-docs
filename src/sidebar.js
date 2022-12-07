@@ -689,6 +689,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Axeptio",
+                link: "/destinations/streaming-destinations/axeptio/",
+                content: []
+            },
+            {
                 title: "Candu",
                 link: "/destinations/streaming-destinations/candu/",
                 content: []
