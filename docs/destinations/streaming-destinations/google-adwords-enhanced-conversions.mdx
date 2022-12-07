@@ -40,10 +40,25 @@ To avoid this, ensure that the authorizing user has at mininum, *Standard* permi
 
 ### Connection settings
 
-To successfully configure Google AdWords Enhanced Conversions as a destination, follow the steps below:
+To successfully configure Google AdWords Enhanced Conversions as a destination, first authenticate your account by following the below steps:
 
-1. Give RudderStack access to your Google Ads account by clicking on the **Sign in with Google** button under **Create new account**.
-2. Then, you will need to configure the following settings:
+1. Click **Create Account** in the **Account Settings** section.
+2. From the modal, click the **Sign in with Google** button.
+3. Choose the required account and grant RudderStack the required permissions.
+4. Click **Save** to use the specified account, as shown:
+
+<img src="../../assets/event-stream-destinations/account-connect-normal.png" alt="Google Account authentication" />
+
+<div class="infoBlock">
+In case you have authenticated multiple accounts, you can click <strong>Edit Credentials</strong> to select or delete any other authenticated account, as shown:
+<br/><br/>
+
+<img src="../../assets/event-stream-destinations/edit-account-creds.png" alt="Google Account authentication" />
+
+RudderStack <strong>gives an error</strong> if you try to delete an account used by any other connection set up for the same destination.
+</div>
+
+Next, configure the following settings:
 
 <img src="../../assets/event-stream-destinations/enhanced-conversions-connection-settings.png" alt="Google AdWords Enhanced Conversions connection settings" />
 
