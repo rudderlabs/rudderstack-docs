@@ -3,62 +3,42 @@ title: "Amplitude NEW"
 description: Step-by-step guide on sending your event data from RudderStack to Amplitude.
 ---
 
+[Amplitude](https://amplitude.com) is a comprehensive product analytics service for web and mobile platforms. 12,000+ companies use Amplitude to get marketing insights that drive product strategy, conversion, and customer retention.
 
-Docs notes:
-"head's up" »» "heads up" in UI
+RudderStack provides native libraries for Amplitude integrations for the following languages:
 
-[Amplitude](https://amplitude.com) is a comprehensive product analytics service for web and mobile platforms. 12,000+ companies use Amplitude to get marketing insights that drive product strategy, conversion, and retention of their customers.
-
-RudderStack provides native integration code for the following languages
-
-- [Android](https://github.com/rudderlabs/rudder-integration-amplitude-android)
-- [iOS: Obj-C](https://github.com/rudderlabs/rudder-integration-amplitude-ios)
-- [iOS: Swift](https://github.com/rudderlabs/rudder-integration-amplitude-swift)
-
-## Destination Info
-
-
-Supported Calls:
-- Page
-- Screen
-- Track
-- Identify
-- Group
-- Alias
+  - [Android](https://github.com/rudderlabs/rudder-integration-amplitude-android)
+  - [iOS: Obj-C](https://github.com/rudderlabs/rudder-integration-amplitude-ios)
+  - [iOS: Swift](https://github.com/rudderlabs/rudder-integration-amplitude-swift)
 
 
 
-RudderStack supports sending event data to Amplitude via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
+## Getting started
+
+Before configuring Amplitude as a destination in RudderStack, confirm that your source is supported by Amplitude by referring to the table below. See <Link to="/rudderstack-cloud/rudderstack-connection-modes/">connection modes</Link> for details.
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
 | **Device mode**     | **Supported** | **Supported** | -             |
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
+## Connection Settings
 
+1. If you haven’t already, first create a source in your [RudderStack dashboard](https://app.rudderstack.com/). Your source will be where you intend on sending data from. See <Link to="/dashboard-guides/sources">Sources</Link> to learn more.
+2. Connect your source to Amplitude. You can do this directly from your source by navigating to **Overview** > **Add Destination** > **Create a New Destination**. Or, you can create the Amplitude destination first by navigating to **Destinations** > **New Destination** in your dashboard.
+3. Verify that your desired source is supported by Amplitude by referencing the **Connection Modes** table above.
+4. In the **Connection Settings** modal, provide the following information:
 
+  - **Name**: Choose a name for your destination that will be easily identifiable later. Often, users like to include suffixes such as `-prod`, `-dev`, `-testing` to differentiate connection environments.
+  - **API key**:  To find your API key, go to your project in Amplitude and look in the general tab. 
+  - **Residency server**: Choose whether you want to connect to Amplitude’s Standard Server (US) or EU-based residency server.
 
+<div class="infoBlock"> Save your <em>Secret Key</em> in a safe place if you plan on deleting users. You may want to consider this option for GDPR purposes. </div>
 
-## Getting started: Creating your Connection
-
-1. If you haven’t already, first create a source in your RudderStack dashboard.  Your source will be where you intend on sending data from.  Learn more about sources here.
-2. Connect a source to Amplitude.  You can do this directly from your source by navigating to Overview > Add Destination > Create a New Destination.  Or, you can create the Amplitude destination first by navigating to Add Destination on your dashboard.
-3. Verify that your desired  source is supported by Amplitude by referencing the ‘Modes supported’ table above.
-4. Set up your connection by inputting some required information:
-- Destination name: Choose a name for your destination that will be easily identifiable later.  Often, users like to include suffixes such as ‘-prod’, ‘-dev’, ‘-testing’ to differentiate connection environments.
-- API key:  To find your API key, go to your project in Amplitude and look in the general tab.  See below
-
-    [[AMPLITUDE SCREENS]]
-
-
-<div class="infoBlock">
-You should also note down your Secret Key if you intend on deleting users.  You may want to consider this option for GDPR purposes.</div>
-
-- Residency server: Choose whether you want to connect to Amplitude’s Standard Server (US) or EU-based residency server
-5. Choose the Connection Mode for each of your sources.  This determines how your data will be routed from your source to your destination.  Learn more about cloud mode vs. device mode here.  We typically recommend using cloud mode as you will have access to Transformations and more reliable performance (compared to device mode).
-6. Press ‘Continue’ to create your connection.
+5. Choose the Connection Mode for each of your sources.  This determines how your data will be routed from your source to your destination. Learn more about Cloud Mode vs. Device Mode <Link to="/rudderstack-cloud/rudderstack-connection-modes/">here</Link>. We recommend using cloud mode as you will have access to Transformations and more reliable performance (compared to device mode).
+6. Press **Continue** to create your connection.
 7. Review the Configuration Settings to ensure that you are OK with all of the default settings and/or to customize your settings further.
-8. Once you are happy with your settings, Enable your connection at the top of your Configurations page to start sending events to Amplitude.
+8. Once you are happy with your settings, toggle the **Enable** switch at the top of your Configurations page to begin sending events to Amplitude.
 
 ## Device-mode Setup
 
