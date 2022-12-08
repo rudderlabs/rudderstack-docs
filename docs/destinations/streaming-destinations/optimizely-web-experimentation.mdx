@@ -1,0 +1,143 @@
+---
+title: "Optimizely Web Experimentation"
+description: Step-by-step guide on sending your event data from RudderStack to Optimizely Web.
+---
+
+[Optimizely Web Experimentation](https://www.optimizely.com/platform/experimentation/) (formerly Optimizely Web) lets you you test and experiment new features on your website. It is typically used by marketing teams and product managers to learn more about the customers' product journey, and test new features to boost conversion rates and overall customer engagement.
+
+## Getting started
+
+RudderStack supports sending event data to Optimizely Web via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
+
+| **Connection Mode** | **Web**       | **Mobile** | **Server** |
+| :------------------ | :------------ | :--------- | :--------- |
+| **Device mode**     | **Supported** | **-**      | **-**      |
+| **Cloud mode**      | **-**         | **-**      | **-**      |
+
+<div class="infoBlock">
+Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist the domain</Link> from where you are loading the Optimizely Web SDK.
+</div>
+
+Once you have confirmed that the source platform supports sending events to Optimizely Web Experimentation, follow these steps:
+
+1. Define [custom events in the Optimizely Dashboard](https://help.optimizely.com/Build_Campaigns_and_Experiments/Custom_events_in_Optimizely_X) and add those events as metrics in the corresponding experiments.
+2. Add the Optimizely Web Experimentation snippet to your web page immediately after the opening `<head>` tag. Then, include the RudderStack JavaScript snippet.
+3. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Optimizely Web**.
+4. Assign a name to your destination and click **Continue**.
+
+## Connection settings
+
+To successfully configure Optimizely Web Experimentation as a destination, you will need to configure the following settings:
+
+- **Send experiment data to other tools:** By enabling this setting, you can send your experiment or campaign data to other destinations connected to the same source.
+    - **As a track call**: When this setting is enabled, an `Experiment Viewed` `track` event will be sent to RudderStack along with other configured destinations for each active experiments per page load. The `properties` of this event will be Optimizely's experiment metadata.
+    - **As identify call:** When this setting is enabled, an `identify` call will be sent to RudderStack and other configured destinations, with the traits as `experiment name` and `variation name` .
+- **Send experiment viewed event as non-interaction event**: In case you want to send the `Experiment Viewed` track event to Google Analytics, enable this setting. The `track`event will then be sent to Google Analytics as a non-interaction event, i.e. an additional property `nonInteraction` with value `1` will be appended to the properties of that event.
+- **Revenue on Order Completed event:** Enabling this setting will send `revenue` as a property of the `track`only for the events with event name `Order Completed`.
+- **Track categorized pages:** Enabling this setting will send `page` calls to Optimizely Web having `category` as `track` events.
+- **Track named pages:** Enabling this will send `page` calls having `name` as `track` events to Optimizely Web.
+- **Custom campaign properties:** In this section, provide the mapping of the campaign metadata to the RudderStack `track` event properties for the `Experiment Viewed` event. Please note that the `event property` should be the `track` event property and the `campaign property` should be the corresponding metadata of the campaign.
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Optimizely Web Experimentation. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+- **Use device mode to send events**: As this is a <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
+- **OneTrust Cookie Categories**: This setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Optimizely.
+
+## Page
+
+If you have enabled the **Track Categorized Pages** or **Track Named Pages** dashboarding setting, then RudderStack sends a `page` call having a name or category as a `track` event with the event name as `Viewed ${category} page` or `Viewed ${name} page` to Optimizely.
+
+A sample `page` call is shown below:
+
+```javascript
+// "home" is the name of the page.
+rudderanalytics.page("home");
+```
+
+## Track
+
+RudderStack sends a `track` call to Optimizely with a valid event name associated with an active experiment.
+
+If you have enabled the **Revenue on Order Completed event** dashboard setting, then RudderStack sends the `revenue` property only for the `Order Completed` event and not for any other event.
+
+RudderStack converts the value of `revenue` to cents before passing it to Optimizely. Thus, $5 will be converted to 500 cents.
+
+If **Revenue on Order Completed event** is disabled in the dashboard, then the property is passed as is, without any conversion.
+
+A sample `track` call is as shown below:
+
+```javascript
+rudderanalytics.track("Order Completed", {
+  revenue: 30,
+  value: 30.0,
+})
+```
+
+## Sending experiment data
+
+If the **Send experiment data as track call** dashboard setting is enabled while configuring the destination, RudderStack automatically records and sends a web experiment as a `track` event with `Experiment Viewed` as the event name and the experiment metadata as the event properties. 
+
+You can then send this `track` event to the other destinations (connected to the same source in RudderStack) to analyze the experimentation results.
+
+This `track` event call consists of the following properties:
+
+- `campaignName`
+- `campaignId`
+- `experimentId`
+- `experimentName`
+- `variationName`
+- `variationId`
+- `audienceId`
+- `audienceName`
+- `nonInteraction`
+
+<div class="infoBlock">
+If you provide the <strong>custom campaign properties</strong> in the destination settings, then the campaign metadata key will be overridden by the corresponding event properties.
+</div>
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Experiment Viewed", {
+  campaignName: "test campaign",
+  campaignId: "1234567890",
+  experimentId: "0123456789",
+  experimentName: "test experiment",
+  variationId: "1122334455",
+  variationName: "test variation",
+  audienceId: "1212121212",
+  audienceName: "sample audience",
+  nonInteraction: 1,
+})
+```
+
+If the **Send experiment data as identify call** dashboard setting is enabled, RudderStack sends an `identify` event with the following traits for each active experiment:
+
+- `experimentName`
+- `variationName`
+
+You can then send this `identify` event to the other destinations (connected to the same source in RudderStack) to analyze the experimentation results.
+
+Note that: 
+- In case multiple experiments are active, then multiple `identify` events are triggered.
+- RudderStack persists the `identify` traits for the subsequent `identify` calls, that is, the `identify` calls contain the previous `identify` traits as well.
+
+A sample `identify` call is as shown:
+
+```javascript
+rudderanalytics.identify({
+    `Experiment: ${experimentName}` : variationName
+});
+```
+
+## FAQ
+
+### Do I need to add Optimizely Web's JavaScript snippet to my website? 
+
+Yes. You need to add the Optimizely Web snippet immediately after the opening `<head>` tag of your web page. Then, include the JavaScript snippet of RudderStack.
+
+### Why I am not able to see the events in my experiments?  
+
+Define the `custom events` in Optimizely Web's dashboard and add those events as `metrics` in corresponding Optimizely 's `experiment`.
+
+While defining the custom event, you need to provide an `API Name` and while using RudderStack's `track` API, use this `API name` as the `event name`.
+
+<br />
