@@ -35,17 +35,20 @@ This video gives a quick overview of the Data Governance API:
 </div>
 
 
-Step 1: Get all event models from your data plane using RudderStack’s Data Governance API call: <Link to= "https://www.rudderstack.com/blog/rudderstacks-data-governance-api">`schemas/event-models`</Link>.
+**Step 1**: Get all event models from your data plane using RudderStack’s Data Governance API call: <Link to= "https://www.rudderstack.com/blog/rudderstacks-data-governance-api">`schemas/event-models`</Link>.
+
 Event models are the distinct events that you send through RudderStack. By pulling in all the event models, you can inspect these for inconsistencies. For example, you can check that distinct event models do not refer to the same event.
 
+**Step 2**. Identify the source of the offending event model(s)
 
-Step 2. Identify the source of the offending event model(s)
 Inspect the WriteKey for each offending event to understand its source. This will allow you to address the root of the inconsistency.
 
-Step 3: Count your event models
+**Step 3**: Count your event models.
+
 If you notice multiple event models for the same event, it’s helpful to know each event’s relative quantity to determine if one is more prevalent than the other. This might influence how you reconcile the differences.
 
-Step 4:  Identify differences in schema versions for a single event model using RudderStack's Data Governance API call: <Link to="/api/data-governance-api/#schemasevent-versions">`schemas/event-versions`</Link>.
+**Step 4**: Identify differences in schema versions for a single event model using RudderStack's Data Governance API call: <Link to="/api/data-governance-api/#schemasevent-versions">`schemas/event-versions`</Link>.
+
 Investigate variances in the schemas of individual events and determine how to resolve these differences.
 
 ## Tracking Plans
