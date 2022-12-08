@@ -1,8 +1,7 @@
 ---
 title: "Salesforce Marketing Cloud"
 description: >-
-  Step-by-step guide on sending your event data from RudderStack to Salesforce Marketing Cloud. as a destination in
-  RudderStack
+  Step-by-step guide on sending your event data from RudderStack to Salesforce Marketing Cloud.
 ---
 
 [Salesforce Marketing Cloud](https://www.salesforce.com/in/products/marketing-cloud/overview/) is a digital marketing automation and analytics tool. It allows you to understand your customers better, and design personalized digital marketing campaigns to engage them throughout their product journey.
@@ -62,22 +61,17 @@ You can find the external key in the SFMC interface by going to **Data & Analyti
 
 </div>
 
-<img src="../../assets/sfmc-2.png" />
-<span class="imageTitle">Salesforce Connection Settings for Track</span>
-
-
+<img src="../../assets/sfmc-2.png" alt="Salesforce Connection Settings for Track" />
 
 - **Map events to External Key:** This setting is for mapping `track` events to a certain Data Extension in Salesforce Marketing Cloud. For the "Event Name" field, enter the name of the event that you want to send to Salesforce Marketing Cloud. Then, for the "External Key" field, enter the Data Extension's External Key that you would like to route the event data to. Click "Add More" and repeat for all `track` events you would like to send to SFMC.
 
 <div class="warningBlock">
-
 If you do not map an event to an External Key and it gets sent to SFMC, you may receive a message saying <code class="inline-code">"Event not mapped for this track call"</code>
-
 </div>
 
 <div class="infoBlock">
 
-You can find the external key in the SFMC interface by going to **Data & Analytics**, and navigating to **Contact Builder** - **Data Extensions**. The extension's name can be found in the **External Key** column.
+You can find the external key in the SFMC interface by going to **Data & Analytics** and navigating to **Contact Builder** - **Data Extensions**. The extension's name can be found in the **External Key** column.
 
 </div>
 
@@ -91,9 +85,7 @@ We recommend creating a **Data Extension** in SFMC to store the `identify` and `
 In SFMC, keys that are not present in the selected data extension are ignored, so those attributes must be created before you send them to SFMC. If you send a trait/property `"phone": "99999"` with your data, but there's no matching phone column in SFMC's table, that trait or property will be ignored. All of the traits/properties in an `identify` or `track` call are not needed to be created as attributes in data extensions only the required ones should be created.
 
 <div class="warningBlock">
-
 All attributes in the Data Extension should be created in title case, regardless of the casing used in your RudderStack <code class="inline-code">identify</code> or <code class="inline-code">track</code> calls. When RudderStack sends these calls to SFMC, they are first transformed into title case.
-
 </div>
 
 <div class="infoBlock">
@@ -137,9 +129,7 @@ Identify events will create or update the contacts in Salesforce marketing cloud
 </div>
 
 <div class="warningBlock">
-
 <code class="inline-code">UserId</code> or <code class="inline-code">email</code> trait is required in every <code class="inline-code">identify</code> call, otherwise the event will not be triggered.
-
 </div>
 
 <div class="warningBlock">
@@ -149,9 +139,7 @@ Salesforce marketing cloud does not allow colon characters (":") in the **Contac
 </div>
 
 <div class="warningBlock">
-
 SFMC only accepts ISO-8601 type dates and rejects any other types if the attribute is of DateTime. For example, refer to the <code class="inline-code">createdAt</code> trait in the above snippet.
-
 </div>
 
 ## Track
@@ -167,9 +155,7 @@ rudderanalytics.track("Event Name", {
 Enter your external key and the primary key against each event. If no primary key is set, the default value of the **Contact Key** is taken. Multiple primary keys can be set by separating them with commas.
 
 <div class="infoBlock">
-
 You can also turn on UUID for particular events. If it is on, you can set UUID as a primary key in your data extensions. The <code class="inline-code">messageId</code> is then set as the UUID.
-
 </div>
 
 ## Data Formatting and Mapping
@@ -179,9 +165,7 @@ The RudderStack SDKs and libraries will automatically collect context properties
 The table below lists the RudderStack context properties available for SFMC and the Data Extension attribute names that they map to.
 
 <div class="infoBlock">
-
 Note that camel cases and snake cases will be formatted to title cases.
-
 </div>
 
 | **RudderStack Context Properties** | **SFMC Attribute name** |
@@ -210,4 +194,4 @@ Note that camel cases and snake cases will be formatted to title cases.
 | `screen.height`                    | `Screen Height`         |
 | `screen.width`                     | `Screen Width`          |
 
-
+<br />
