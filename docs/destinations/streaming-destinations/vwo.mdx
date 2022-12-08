@@ -44,7 +44,9 @@ To function correctly, VWO requires jQuery to be present in the web page.
 
 ## Sending experiment viewed from VWO
 
-When an experiment variation is loaded for a user, RudderStack automatically sends a <Link to="/event-spec/standard-events/track">`track`</Link> call with `Experiment Viewed` as the event name, along with the experiment and variation details as the associated properties.
+When you enable the **Send experiment viewed as track** dashboard setting, RudderStack automatically sends a <Link to="/event-spec/standard-events/track">`track`</Link> event whenever an experiment variation is loaded for a user. It sets `Experiment Viewed` as the event name along with the experiment and variation details as the event properties.
+
+You can then send this `track` event to the other destinations (connected to the same source in RudderStack) to analyze the experimentation results.
 
 A sample code snippet for this activity is as shown:
 
@@ -55,7 +57,7 @@ rudderanalytics.track("Experiment Viewed", {
 });
 ```
 
-You can then send this `track` event to the other destinations (connected to the same source in RudderStack) to analyze the experimentation results. You can also set experiment-related data such as the user's traits so that the other destinations have the necessary user-related context of these variations.
+RudderStack also lets you send the experiment-related data such as the user's traits so that the other destinations have the necessary user-related context of these variations. To do so, enable the **Send experiment viewed as identify traits** dashboard setting and include the relevant user traits in the <Link to="/event-spec/standard-events/identify">`identify`</Link> event.
 
 ## Tracking revenue goals
 
