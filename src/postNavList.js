@@ -547,6 +547,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "google-analytics-4",
+    title: "Google Analytics 4",
+    link: "/sources/extract/google-analytics-4/",
+    content: [],
+  },
+  {
     key: "google-search-console",
     title: "Google Search Console",
     link: "/sources/extract/google-search-console/",
