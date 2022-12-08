@@ -58,7 +58,6 @@ Once you have confirmed that the platform supports sending events to Salesforce 
 <div class="infoBlock">
 
 You can find the external key in the SFMC interface by going to **Data & Analytics**, and navigating to **Contact Builder** - **Data Extensions**. The extension's name can be found in the **External Key** column.
-
 </div>
 
 <img src="../../assets/sfmc-2.png" alt="Salesforce Connection Settings for Track" />
@@ -72,7 +71,6 @@ If you do not map an event to an External Key and it gets sent to SFMC, you may 
 <div class="infoBlock">
 
 You can find the external key in the SFMC interface by going to **Data & Analytics** and navigating to **Contact Builder** - **Data Extensions**. The extension's name can be found in the **External Key** column.
-
 </div>
 
 - **Map events to Primary Key:** For all events going to a Data Extension, there needs to be a `Primary Key`. By default, if you do not use this setting, RudderStack will create a `Primary Key` called `Contact Key` and assign it to the `userId` of the event. If no `userId` is present, then it will be assigned to the `email`. Use this setting if you would like to map your own `Primary Key`. In the "Event Name" field, indicate the name of the event you would like to choose your own `Primary Key` for. Then choose what key from the event payload you would like to act as the `Primary Key`. The key should be present in your `event.properties` and ensure that it is set as a `Primary Key` in your SFMC Data Extension. You can add multiple primary keys by separating them with commas. 
@@ -91,7 +89,6 @@ All attributes in the Data Extension should be created in title case, regardless
 <div class="infoBlock">
 
 A Primary Key for the Identify Data Extension called **Contact Key** is required to be created. RudderStack will use this to link the users to SFMC's built-in **Contact Key** key. This field will be populated with <code class="inline-code">userId</code> or <code class="inline-code">email</code> by default during the <code class="inline-code">identify</code> calls.
-
 </div>
 
 For setting up Primary Keys in Track calls, you can set up different primary keys for various events. If no primary key is set, the default primary key will be **Contact Key**. You can specify multiple, comma-separated primary keys if you have multiple primary keys in your data extension.
@@ -125,7 +122,6 @@ rudderanalytics.identify("userid", {
 <div class="infoBlock">
 
 Identify events will create or update the contacts in Salesforce marketing cloud if **Do Not Create or Update Contacts** is turned off. Otherwise, no creation or updating of contacts will occur.
-
 </div>
 
 <div class="warningBlock">
@@ -135,7 +131,6 @@ Identify events will create or update the contacts in Salesforce marketing cloud
 <div class="warningBlock">
 
 Salesforce marketing cloud does not allow colon characters (":") in the **Contact Key** field, so they must be removed from any <code class="inline-code">userId</code> fields. SFMC doesn't handle nested objects.
-
 </div>
 
 <div class="warningBlock">
