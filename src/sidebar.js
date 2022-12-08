@@ -482,11 +482,6 @@ export const jsonData = [
                 content: []
             }, 
             {
-                title: "Google Analytics 4",
-                link: "/sources/extract/google-analytics-4/",
-                content: []
-            },
-            {
                 title: "Google Analytics V2",
                 link: "/sources/extract/google-analytics-v2/",
                 content: []
