@@ -52,7 +52,7 @@ If you have already configured a destination in RudderStack, choose the <strong>
 
 ## Specifying the data to import
 
-This section lists the bucket configuration settings needed for RudderStack to import the data and sync it to the connected destination. 
+While configuring the destination, specify the following bucket configuration settings needed for RudderStack to import the data and sync it to the connected destination:
 
 - **S3 Bucket Name**:  Enter the name of the S3 bucket.
 - **Prefix**:  Prefix refers to the path within your S3 bucket from where RudderStack will import the data. For example, if **Prefix** is set to `RUDDER`, then RudderStack will import the data stored in the location `<your_s3_bucket>/RUDDER`.
@@ -64,7 +64,8 @@ Your S3 bucket (with the prefix, if specified above) should only consist of Apac
 </div>
 
 - **Choose user identifier**: Choose atleast one user identifier from `user_id` and `anonymous_id` from the dropdown.
-- Once you specify the above settings, you will be able to preview a snippet of your data, as shown below:
+
+Once you specify the above settings, you will be able to preview a snippet of your data, as shown below:
 
 <img src="../../assets/warehouse-actions-sources/models-data-snippet.png" alt="Data snippet preview" />
 
