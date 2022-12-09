@@ -106,7 +106,7 @@ The following table list the mappings between the RudderStack properties and Per
 | `context.traits.city` <br/>`traits.city` | `data.city` | String |
 | `context.traits.gender` <br/> `traits.gender` | `data.gender` | String |
 | `context.traits.company` <br/> `traits.company` | `data.company_name` | String |
-| `context.traits.phone` `traits.phone` | `data.phone` | Phone number |
+| `context.traits.phone` <br/> `traits.phone` | `data.phone` | String |
 | `context.traits.facebookUrl` <br /> `traits.facebookUrl` | `data.facebookUrl` | URL |
 | `context.traits.twitterUrl` <br /> `traits.twitterUrl` | `data.twitterUrl` | URL |
 | `context.traits.linkedinUrl` <br /> `traits.linkedinUrl` | `data.linkedinUrl` | URL |
@@ -126,12 +126,12 @@ A sample `group` call is shown below:
 
 ```javascript
 rudderanalytics.group("group01", {
-  mailbox_id: "mbid123"
+  mailbox_id: "mbid123",
+  operation: "add" // set to remove to remove user from a group
 }, {
   "externalId": [{
     "type": "persistIqLeadId",
     "id": "abc12345"
-    "operation": "add"
   }]
 })
 ```
