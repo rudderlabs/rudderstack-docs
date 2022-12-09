@@ -1,21 +1,17 @@
 ---
 title: "Amazon S3"
-description: Step-by-step guide to ingest your data from Amazon S3 bucket into RudderStack.
+description: Sync data from Amazon S3 to your preferred destination via RudderStack.
 ---
 
 [Amazon S3](https://aws.amazon.com/s3/) is a cloud-based object storage service that lets businesses securely store their data at scale.
 
-RudderStack supports S3 as a source from which you can ingest data and route it to the desired downstream destinations.
-
-## Setting up the S3 source in RudderStack
-
-To set up an S3 source in RudderStack, follow these steps:
+## Setting up the S3 source
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com).
 2. From the left panel, go to **Directory** > **Sources** > **Reverse ETL**. Then, select **Amazon S3**.
-3. Assign a name to your source and click **Continue**.
+3. Assign a name and click **Continue**.
 
-### Configuring the connection credentials
+### Connection credentials
 
 Configure the following settings to authenticate RudderStack to access your S3 account: 
 
@@ -32,12 +28,23 @@ It is highly recommended to use the <strong>Cross-Account Role</strong> method f
 - **AWS Access Key ID**: If you select the **Access Key** connection mode for authenticating RudderStack, specify your AWS access key ID. For more information on obtaining your access key ID and secret access key, refer to the <Link to="#faq">FAQ</Link> section below.
 - **AWS Secret Access Key**: Enter the corresponding secret access key.
 
+### S3 permissions
+
+The **minimum** S3 permissions that need to be attached to IAM role or the access keys (depending on your connection method) are listed below:
+
+```json
+"Action": [
+  "s3:GetObject",
+  "s3:ListBucket"
+],
+```
+
 ### Schedule settings
 
 Specify the **Schedule Settings** to schedule the data syncs from your S3 source.
 
 <div class="infoBlock">
-RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule</a> guide.
 </div>
 
 ### Connecting to a destination
@@ -45,10 +52,6 @@ RudderStack lets you schedule data syncs for your Reverse ETL sources and specif
 Once you successfully set up your S3 source, you can connect it to your preferred destination by clicking the **Add Destination** button, as shown:
 
 <img src="../../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
-
-<div class="infoBlock">
-If you have already configured a destination in RudderStack, choose the <strong>Use Existing Destination</strong> option which will take you to the <strong>Schema</strong> tab in the source settings. To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the destination configuration page.
-</div>
 
 ## Specifying the data to import
 
@@ -63,38 +66,31 @@ While configuring the destination, specify the following bucket configuration se
 Your S3 bucket (with the prefix, if specified above) should only consist of Apache Parquet files as Rudderstack can extract only the Parquet files. Also, the first row of the Parquet file should not have a <code class="inline-code">null</code> value (empty strings are allowed) for any column. It helps RudderStack to determine the correct schema of the file.
 </div>
 
-- **Choose user identifier**: Choose atleast one user identifier from `user_id` and `anonymous_id` from the dropdown.
+- **Choose user identifier**: Choose a user identifier for `user_id` and/or `anonymous_id` from the dropdown.
 
 Once you specify the above settings, you will be able to preview a snippet of your data, as shown below:
 
 <img src="../../assets/warehouse-actions-sources/models-data-snippet.png" alt="Data snippet preview" />
 
 - Here, you can select all or only specific columns of your choice, search the columns by a keyword, and also edit the **JSON Trait Key**. You can also preview the resulting JSON on the right.
-- **Add Constant**: You can use this option to add a constant key-value pair which is always sent in the JSON payload, as shown:
+- **Add Constant**: You can use this option to <a href="https://rudderstack.com/docs/sources/reverse-etl/common-settings/importing-data-using-tables#add-constant">add a constant key-value pair</a> which is always sent in the JSON payload, as shown:
 
 <img src="../../assets/warehouse-actions-sources/add-constant.png" alt="Add constant option in RudderStack dashboard" />
 
 <div class="infoBlock">
-For more information on this option, refer to the <a href="https://rudderstack.com/docs/sources/reverse-etl/common-settings/importing-data-using-tables#add-constant">Add Constant</a> section.
-</div>
-
-<div class="infoBlock">
-As an alternative to JSON mapping, you can map the columns using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> feature. However, this feature is currently supported only for selective destinations.
+As an alternative to JSON mapping, you can send the data to the destination using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> feature. However, this feature is currently supported only for selective destinations.
 </div>
 
 ## Updating an existing configuration
 
-To update an existing configuration, follow these steps:
-
-1. Go to the **Schema** tab of your configured source.
-2. Click the **Update** button on the top right.
-3. Then, update your column selection.
+1. Go to the **Schema** tab of your configured source and click **Update**.
+2. Update your column selection.
 
 <div class="warningBlock">
 When updating the configuration, you can only change the existing mappings. The <strong>S3 Bucket Name</strong>, <strong>Prefix</strong>, and <strong>User Identifier</strong> fields are not editable.
 </div>
 
-4. Finally, click the **Save** button.
+3. Finally, click the **Save** button.
 
 <div class="infoBlock">
 After updating the configuration, the next sync will be a full sync.
@@ -151,7 +147,7 @@ After creating the managed policy, follow these steps to create the IAM role for
 5. Review all the settings carefully and click **Next** to proceed.
 6. In the **Permissions** window, select the check box next to the policy you created in the <Link to="#creating-the-policy">Creating the policy</Link> section above.
 7. Review all the settings carefully and click **Next** to proceed.
-8. Enter a unique name for your role. Note that this name **cannot** be distinguished by case. For example, you cannot create a role named `RUDDERSTACK` if `rudderstack` already exists.
+8. Enter a unique name for your role. Note that this name is **case-insensitive**. For example, you cannot create a role named `RUDDERSTACK` if `rudderstack` already exists.
 
 <div class="warningBlock">
 You cannot edit the name of the role after it has been created.
@@ -165,25 +161,14 @@ You cannot edit the name of the role after it has been created.
 Refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">AWS IAM tutorial</a> for more information on delegating access across AWS account using IAM roles.
 </div>
 
-## S3 permissions
-
-The **minimum** S3 permissions that need to be attached to IAM role or the access keys (depending on your connection method) are listed below:
-
-```json
-"Action": [
-  "s3:GetObject",
-  "s3:ListBucket"
-],
-```
-
 ## FAQ
 
 ### Where can I obtain the AWS Access Key ID and the AWS Secret Access Key?
 
-To get the **AWS Access Key ID** and the **Secret Access Key**, follow these steps:
-
 1. Sign into your <a href="http://console.aws.amazon.com/">AWS Management Console</a> as the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/console.html#root-user-sign-in-page">root user</a>. 
-2. From the upper right corner, click your account and go to <strong>Security Credentials</strong>.
+2. From the upper right corner, click your account and go to <strong>Security Credentials</strong>. You can find your access key ID listed here. You can also create a new access key by clicking the **Create access key** button, as shown:
+
+<img src="../../assets/warehouse-actions-sources/aws-security-credentials.png" alt="AWS security " />
 
 <div class="infoBlock">
 For more information on these AWS credentials, refer to the <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html">AWS documentation</a>.
