@@ -24,7 +24,7 @@ To set up Google Sheets as a source in RudderStack, follow these steps:
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
 2. Go to **Sources** > **New source** > **Cloud Extract** and select **Google Sheets V2** from the list of sources.
-3. Assign a name to your source and click **Next**.
+3. Assign a name to your source and click **Continue**.
 
 ### Connection settings
 
@@ -35,7 +35,7 @@ Next, configure the following dashboard settings:
 - **Authentication**: From the dropdown, select the authentication mechanism for RudderStack to connect to the Google Sheets API.
     - **Authenticate via Google (OAuth)**: To authenticate via OAuth, click the **Sign in with Google** button, select your Google account, and give RudderStack the required permissions.
     - **Service Account Key Authentication**: Enter your <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating">service account</a> JSON credentials in the **Service Account Information** field.
-- **Spreadsheet Link**: From the dropdown, select the spreadsheet from which RudderStack ingests and syncs the data.
+- **Spreadsheet Link**: From the dropdown, select the spreadsheet from which RudderStack should ingest and sync the data.
 
 <div class="infoBlock">
 <ul>
@@ -86,7 +86,7 @@ If you select multiple sheets in the **Select data to import** window, RudderSta
 
 In the above example, RudderStack creates a table corresponding to each sheet (`List of Tracking Plans`, `Import Template`, and so on) in the warehouse.
 
-While syncing data to the warehouse, RudderStack creates columns for only those headers (first rows in the sheet) which also have data present in the second row and beyond.
+While syncing data to the warehouse, RudderStack creates columns only for the headers (first rows in the sheet) which also have data present in the second row (mandatory) and beyond (optional).
 
 <div class="warningBlock">
 The mere presence of a header <strong>does not</strong> create a column in the destination.
@@ -96,7 +96,7 @@ The mere presence of a header <strong>does not</strong> create a column in the d
 
 ### How do I provide service account access to a Google sheet?
 
-If you're using a <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating">service account</a> to authenticate RudderStack to sync your Google Sheets data, you must also give it the required access to the required spreadsheet. Follow these steps to provide the required sheet access:
+If you're using a <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating">service account</a> to authenticate RudderStack to sync your Google Sheets data, you must also give the required access to the service account to access the required spreadsheet. Follow these steps to provide access to the required spreadsheet:
 
 1. In your [Google Cloud console](https://console.cloud.google.com/), go to **APIs & Services** > **Credentials**.
 2. Under **Service Accounts**, copy the email address listed under **Email**.
