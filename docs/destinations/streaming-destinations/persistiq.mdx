@@ -46,7 +46,7 @@ RudderStack automatically maps all the common attributes like name, email, city,
 
 #### Supported mappings
 
-The following table list the mappings between the RudderStack properties and PersistIQ attributes:
+The following table lists the mappings between the RudderStack properties and PersistIQ attributes:
 
 | RudderStack property | PersistIQ property | Data type |
 | :--- | :--- | :--- |
@@ -69,9 +69,6 @@ The following table list the mappings between the RudderStack properties and Per
 RudderStack does not batch events before sending them to PersistIQ. Hence, the index inside the <code class="inline-code">lead</code> array is always <code class="inline-code">0</code>.
 </div>
 
-<div class="infoBlock">
-The lead status passed in the <code class="inline-code">traits.status</code>/<code class="inline-code">context.traits.status</code> must already be configured in your PersistIQ dashboard.
-</div>
 
 ### Updating an existing lead
 
@@ -106,13 +103,13 @@ The following table list the mappings between the RudderStack properties and Per
 | `traits.status` <br /> `context.traits.status`  |  `status` | String  |
 | `context.traits.email` <br /> `traits.email`  | `data.email` | String  |
 | `context.traits.country` <br /> `traits.country`  | `data.country` | String |
-| `context.traits.city` `traits.city` | `data.city` | String |
-| `context.traits.gender` `traits.gender` | `data.gender` | String |
-| `context.traits.company` `traits.company` | `data.company_name` | String |
+| `context.traits.city` <br/>`traits.city` | `data.city` | String |
+| `context.traits.gender` <br/> `traits.gender` | `data.gender` | String |
+| `context.traits.company` <br/> `traits.company` | `data.company_name` | String |
 | `context.traits.phone` `traits.phone` | `data.phone` | Phone number |
-| `context.traits.facebookUrl` `traits.facebookUrl` | `data.facebookUrl` | URL |
-| `context.traits.twitterUrl` `traits.twitterUrl` | `data.twitterUrl` | URL |
-| `context.traits.linkedinUrl` `traits.linkedinUrl` | `data.linkedinUrl` | URL |
+| `context.traits.facebookUrl` <br /> `traits.facebookUrl` | `data.facebookUrl` | URL |
+| `context.traits.twitterUrl` <br /> `traits.twitterUrl` | `data.twitterUrl` | URL |
+| `context.traits.linkedinUrl` <br /> `traits.linkedinUrl` | `data.linkedinUrl` | URL |
 | `traits.firstName` <br /> `traits.firstname` <br />`traits.first_name` <br /> `context.traits.firstName` <br />`context.traits.firstname` <br /> `context.traits.first_name` |  `data.first_name` | String  |
 | `traits.lastName` <br /> `traits.lastname` <br />`traits.last_name` <br /> `context.traits.lastName` <br />`context.traits.lastname` <br /> `context.traits.last_name` |  `data.last_name` | String  |
 | `traits.{x}` <br /> `context.traits.{x}`  |  `data.{x}` | -  |
@@ -166,7 +163,7 @@ To get your PersistIQ API key, follow these steps:
 
 ### How do I get the PersistIQ lead ID and campaign ID?
 
-To get a prospect's lead ID in the [PersistIQ dashboard](https://persistiq.com/app/), click on it. You can find the ID in the resulting URL, as shown:
+To get a prospect's lead ID in the [PersistIQ dashboard](https://persistiq.com/app/), click on the specific prospect. You can find the ID in the resulting URL, as shown:
 
 <img src="../../assets/event-stream-destinations/persistiq-lead-id.png" alt="PersistIQ lead ID"/>
 
