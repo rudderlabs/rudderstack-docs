@@ -1902,6 +1902,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "persistiq",
+    title: "PersistIQ",
+    link: "/destinations/streaming-destinations/persistiq/",
+    content: [],
+  },
+  {
     key: "vwo",
     title: "VWO (Visual Website Optimizer)",
     link:
