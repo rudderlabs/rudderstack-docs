@@ -502,9 +502,34 @@ rudderanalytics.screen({
 
 In the above snippet, we capture information related to the screen being viewed, such as screen's name and category.
 
+## Tracking Named, Categorized, or All Pages
+
+
+If you are connecting in **web or device mode**, the settings you choose in your web app configurations will determine how the `page` or `screen` call is sent to RudderStack.
+
+We highly recommend checking your RudderStack event volume setup prior to configuring this section.
+
+
+| Field          | When events are sent to RudderStack  | RudderStack event name                    | Example for `{ "name": "settings", "category": "merchant" }` |
+|-------------------------|------------------------------------|---------------------------------------------|-----------------------------------------------------------|
+| Track Named Pages       | A page/screen name is provided     | Loaded/Viewed (Category) (Name) Page/Screen | “Loaded Merchant Settings Page”                           |
+| Track Categorized Pages | A page/screen category is provided | Loaded/Viewed (Category) Page/Screen        | “Loaded Merchant Page”                                    |
+| Track All Pages         | Always                             | Loaded/Viewed a Page/Screen                 | “Loaded a Page”                                           |
+
+
+When you enable Track Named Pages or Track Categorized Pages, RudderStack will send a Page or Screen call when ‘Name’ or ‘Category’ are provided. These will also be passed as a top-level event type, and will count towards a unique event type count in Amplitude.  If ‘Name’ or ‘Category’ are absent, then the event will be sent as Loaded a Page or Loaded a Screen.
+
+When you enable Track All Pages, RudderStack will send a Loaded a Page call to Amplitude, with the ‘name’ or ‘category’ included as an attribute or event property.  Loaded a Page will be sent as one event type.
+
 ## Track
 
-The `track` call allows you to capture any action that the user might perform, and the properties associated with that action. Each action is considered to be an event.
+The `track` call allows you to capture any action that the user might perform, and the properties associated with that action. Each action is considered to be an event. The following settings
+
+| Field                   | Description                                                                                                                                | Note                                                                             |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| Track all pages         | Toggling this on will send all pageview events to Amplitude with either  Loaded a page or Viewed a screen event names                      |                                                                                  |
+| Track categorized pages | With this on, any page call with a category will be sent to Amplitude as either a Loaded {Category} Page or Viewed {Category} Screen event |                                                                                  |
+| Track named pages       | With this on, any page call with a name will be sent to Amplitude as either a Loaded {Name} Page or Viewed {Name} Screen event             | If name is absent, then the event is sent as Loaded a page or Viewed a screen.   |
 
 A sample `track` call looks like the following:
 
