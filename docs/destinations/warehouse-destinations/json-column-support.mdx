@@ -5,7 +5,7 @@ description: >-
   Detailed technical description of the JSON column feature supported by the warehouse destinations.
 ---
 
-With JSON column support, you can now ingest semi-structured event data not defined by a fixed schema. Also, you can directly store a nested event payload without worrying about the length limit in your warehouse columns.
+With RudderStack's JSON column support feature, you can ingest semi-structured event data that is not defined by a fixed schema. Also, you can directly store a nested event payload without worrying about the length limit in your warehouse columns.
 
 <div class="infoBlock">
 The JSON column feature is supported by the following warehouse destinations:
@@ -45,7 +45,12 @@ Here, `nestedMap` is declared as a JSON column and is in the following format:
 {
   "testMap": {
     "nestedMap": {
-      ...
+      "sample": {
+        "dynamic_property_1": "value_1",
+        "dynamic_property_2": "value_2",
+        ...
+        "dynamic_property_n": "value_n"
+      }
     }
   }
 }

@@ -1,0 +1,104 @@
+---
+title: "VWO (Visual Website Optimizer)"
+description: Send data from RudderStack to VWO.
+---
+
+[VWO](https://vwo.com/) (Visual Website Optimizer) is an A/B testing and product optimization platform. It provides an intuitive visual editor where you can run A/B tests without the need to write any HTML code.
+
+<div class="infoBlock">
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production-staging/src/integrations/VWO">GitHub repository</a>.
+</div>
+
+## Getting started
+
+RudderStack supports sending event data to VWO via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
+
+| **Connection Mode** | **Web**       | **Mobile** | **Server** |
+| :------------------ | :------------ | :--------- | :--------- |
+| **Device mode**     | **Supported** | -          | -          |
+| **Cloud mode**      | -             | -          | -          |
+
+<div class="infoBlock">
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the VWO native SDK is loaded from <code class="inline-code">http://visualwebsiteoptimizer.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the VWO SDK successfully.
+</div>
+
+Once you have confirmed that the source platform supports sending events to VWO, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **VWO**.
+2. Assign a name to the destination and click **Continue**.
+
+## Connection settings
+
+- **Account ID**: Enter your VWO account ID. For more information on obtaining your VWO account ID, refer to the <Link to="#faq">FAQ</Link> section below.
+- **Single Page Application(SPA)?**: Enable this setting if you're loading the native VWO SDK on a single page application. 
+- **Send experiment viewed as track**: Enable this setting to record your VWO experiment as a `track` event. RudderStack will then automatically collect the `Experiment Viewed` event as a `track` call. For more information on this setting, refer to the <Link to="#sending-experiment-viewed-from-vwo">Sending experiment viewed from VWO</Link> section below.
+- **Send experiment viewed as identify traits**: Enable this setting to send your experiment data within the <Link to="/event-spec/standard-events/identify/#identify-traits">traits</Link> of your `identify` event.
+
+<div class="infoBlock">
+If you enable both the <strong>Send experiment viewed as track</strong> and <strong>Send experiment viewed as identify traits</strong> settings, then RudderStack independently captures the experiment details and sends them as <code class="inline-code">track</code> and <code class="inline-code">identify</code> events, respectively.
+</div>
+
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to VWO. For more information, refer to the <Link to="https://www.rudderstack.com/docs/sources/event-streams/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+- **Library Tolerance**: Specify the maximum time (in ms) RudderStack should wait for the VWO library to load before displaying your web page.
+- **Setting Tolerance**: Specify the maximum time (in ms) RudderStack should wait for the test settings before VWO displays your original web page.
+- **Use Existing jQuery**: Enable this setting if your page already includes jQuery. Otherwise, VWO will include jQuery on the page for you.
+
+<div class="warningBlock">
+To function correctly, VWO requires jQuery to be present in the web page.
+</div>
+
+- **Use device mode to send events**: As this is a <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>-only destination, this setting is enabled by default and cannot be disabled.
+
+## Sending experiment viewed from VWO
+
+When you enable the **Send experiment viewed as track** dashboard setting, RudderStack automatically sends a <Link to="/event-spec/standard-events/track">`track`</Link> event whenever an experiment variation is loaded for a user. It sets `Experiment Viewed` as the event name along with the experiment and variation details as the event properties.
+
+You can then send this `track` event to the other destinations (connected to the same source in RudderStack) to analyze the experimentation results.
+
+A sample code snippet for this activity is as shown:
+
+```javascript
+rudderanalytics.track("Experiment Viewed", {
+  experiment_id: "Signup",
+  variation_name: "Signup as a default landing"
+});
+```
+
+RudderStack also lets you send the experiment-related data such as the user's traits so that the other destinations have the necessary user-related context of these variations. To do so, enable the **Send experiment viewed as identify traits** dashboard setting and include the relevant user traits in the <Link to="/event-spec/standard-events/identify">`identify`</Link> event.
+
+## Tracking revenue goals
+
+RudderStack also lets you forward the revenue amount to VWO when the <Link to="/event-spec/ecommerce-events-spec/ordering/#order-completed">`Order Completed`</Link> event is called.
+
+<div class="infoBlock">
+RudderStack uses the <code class="inline-code">revenue</code> or <code class="inline-code">amount</code> property for tracking the revenue goals.
+</div>
+
+A sample code snippet for this activity is shown below:
+
+```javascript
+rudderanalytics.track("Order Completed", {
+  revenue: 125
+});
+```
+
+## FAQ
+
+### How do I add the VWO JavaScript snippet to my website?
+
+To configure VWO SmartCode(JavaScript snippet) on all the web pages where you plan to run your A/B tests, you can refer to this <a href="https://help.vwo.com/hc/en-us/articles/360019422834">VWO Knowledge Base</a> article.
+
+<div class="warningBlock">
+Make sure you add the VWO snippet inside the <code class="inline-code">HEAD</code> tag of your web page, <strong>above</strong> the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/#step-1-install-rudderstack-javascript-sdk">RudderStack JavaScript SDK</Link> snippet.
+</div>
+
+### Where can I find my VWO Account ID?
+
+You can obtain the VWO Account ID by following these steps:
+
+1. Log into your [VWO dashboard](https://app.vwo.com/#/login).
+2. Click the settings icon on the top right and go to **Account**. 
+
+You will find your account ID listed under **Account Details**.
+
+For more information, refer to the <a href="https://help.vwo.com/hc/en-us/articles/360008469173-How-to-find-your-account-ID">VWO Knowledge Base</a>.

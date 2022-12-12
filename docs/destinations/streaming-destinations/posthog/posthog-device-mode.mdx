@@ -184,3 +184,20 @@ RudderStack also maps the following properties to the PostHog standard contextua
 <div class="warningBlock">
 The PostHog SDK autogenerates the property <code class="inline-code">$insert_id</code> when you send event via the RudderStack device mode.
 </div>
+
+## FAQ
+
+### How can I prevent RudderStack from loading the PostHog SDK on my website?
+
+To prevent RudderStack from loading the PostHog SDK on your website, you can <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/">load the JavaScript SDK</Link> as shown:
+
+```javascript
+rudderanalytics.load("WRITE_KEY", "DATA_PLANE_URL", {
+  integrations: {
+    All: true,
+    POSTHOG: {
+      loadIntegration: false,
+    },
+  },
+});
+```
