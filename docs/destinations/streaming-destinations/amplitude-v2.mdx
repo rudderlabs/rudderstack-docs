@@ -350,9 +350,9 @@ These settings are only applicable when you’ve connected a source in web or mo
 
 | Field                   | Description                                                                                                                                | Note                                                                             |   |   |
 |-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|---|---|
-| Track all pages         | Toggling this on will send all pageview events to Amplitude with either `Loaded a page` or `Viewed a screen` event names                      |                                                                                  |   |   |
-| Track categorized pages | With this on, any page call with a category will be sent to Amplitude as either a `Loaded {Category} Page` or `Viewed {Category} Screen` event |                                                                                  |   |   |
-| Track named pages       | With this on, any page call with a name will be sent to Amplitude as either a `Loaded {Name} Page` or `Viewed {Name} Screen` event             | If `name` is absent, then the event is sent as `Loaded a page` or `Viewed a screen`   |   |   |
+| Track all pages         | Toggling this on will send all pageview events to Amplitude with either `Loaded a page` or `Viewed a screen` event names.                      |                                                                                  |   |   |
+| Track categorized pages | With this on, any page call with a category will be sent to Amplitude as either a `Loaded {Category} Page` or `Viewed {Category} Screen` event. |                                                                                  |   |   |
+| Track named pages       | With this on, any page call with a name will be sent to Amplitude as either a `Loaded {Name} Page` or `Viewed {Name} Screen` event.            | If `name` is absent, then the event is sent as `Loaded a page` or `Viewed a screen`.   |   |   |
 
 We suggest checking your event volume setup with Amplitude prior to configuring this section.
 
@@ -375,15 +375,15 @@ This section allows you to set how you want your Group or Identify call user pro
 
 ## Other settings: 
 
-### Amplitude IT
+#### Amplitude IT
 
 | Field            | Description                                                                                                                                                                    | Note                               |   |   |
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------|---|---|
-| Version name     | Assign a version name for your page, and we'll send it to Amplitude for more detailed events                                                                                   | Only supported for web device mode |   |   |
-| Map device brand | Capture brand, manufacturer, and model information for mobile devices. Amplitude computes `device_family` as `device_family: {device_brand} {device_manufacturer} {device_model}` |                                    |   |   |
+| Version name     | Assign a version name for your page, and we'll send it to Amplitude for more detailed events.                                                                                   | Only supported for web device mode |   |   |
+| Map device brand | Capture brand, manufacturer, and model information for mobile devices. Amplitude computes `device_family` as `device_family: {device_brand} {device_manufacturer} {device_model}`. |                                    |   |   |
 
 
-### Client-side events filtering
+#### Client-side events filtering
 
 RudderStack's <Link to="/sources/event-streams/sdks/event-filtering">client-side event filtering</Link> feature lets you specify which events should be discarded or allowed to flow through by allowlisting or denylisting them. 
 
@@ -398,7 +398,7 @@ This is only applicable for destinations that are connecting in device mode and 
 2. Input event names to **Allowlist** (only possible if Allowlist was selected above): provide the event name(s) you would like to allow to flow through to the destination. Input one event name per line, and click **add more** for each additional event name you would like to add to the list. Note that any event names that you do not add to this list will be blocked.
 3. Input event names to **Denylist** (only possible if Denylist was selected above): provide the event name(s) you would like to block from flowing to the destination. Input one event name per line, and click **add more** for each additional event name you would like to add to the list. Note that any event names that you do not add to this list will be allowed to flow through to the destination.
 
-### OneTrust cookie categories
+#### OneTrust cookie categories
 
 OneTrust is a popular consent management platform that provides data governance, privacy management, and security solutions to thousands of businesses worldwide. 
 
@@ -408,18 +408,18 @@ To use this feature, please ensure that you have activated the integration by fo
 
 | Field         | Description                                                                                    | Note                              |
 |---------------|------------------------------------------------------------------------------------------------|-----------------------------------|
-| Category name | Input the consent category name(s) defined when you set up OneTrust for your JavaScript source | Insert one category name per line |
+| Category name | Input the consent category name(s) defined when you set up OneTrust for your JavaScript source. | Insert one category name per line. |
 
 See <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager">OneTrust Consent Manager</Link> in our JavaScript SDK docs to learn more.
 
-### Ecommerce settings
+#### Ecommerce settings
 
 These settings allow you to define how you want your `Order Completed` events to be passed to Amplitude.
 
 | Field                          | Description                                                                                                                                                                                                                                    | Note                                           |   |   |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|---|---|
 | Track products as single event | Turn this on to track an array of products as a single event. The event will be passed as the original event name, and all the products as properties. Otherwise, each product is tracked as a separate event with the name `Product purchased`. | This feature is only supported for cloud mode. |   |   |
-| Track revenue per product      | Turn this on to track the revenue of each product in an event individually. Otherwise, the event will be sent as an aggregate revenue of all products                                                                                         | This feature is only supported for cloud mode. |   |   |
+| Track revenue per product      | Turn this on to track the revenue of each product in an event individually. Otherwise, the event will be sent as an aggregate revenue of all products.                                                                                         | This feature is only supported for cloud mode. |   |   |
 
 ## SDK settings
 
@@ -433,14 +433,14 @@ If you are connecting to Amplitude in web device mode, these settings allow you 
 |--------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---|---|
 | Set device ID from URL parameter                       | Turning this on will set the device ID by parsing the URL parameter from `amp_device_ID`.                                                                                                                                                                   |  Web device mode only                                 |   |   |
 | Force HTTPS                                            | Turning this on will upload events to the HTTPS endpoint. Otherwise, it will use the embedding site’s protocol.                                                                                                                                         |  Web device mode only                                 |   |   |
-| Track GCLID                                            | When on, this captures the GCLID URL parameters along with the user's initial_gclid parameters                                                                                                                                                                |  Web device mode only                                 |   |   |
-| Track referrer information                             | When on, this captures the user's referrer, initial referrer, and referring domain as user properties                                                                                                                                                         |  Web device mode only                                 |   |   |
-| Track UTM properties                                   | When on, this captures the UTM parameters as user properties by either parsing the query string or from the _utmz cookie                                                                                                                                      |  Web device mode only                                 |   |   |
-| Save referrer, UTM params, GCLID only once per session | When on, this tracks referrer, UTM parameters, and GCLID only once per session, ignoring any new values which may enter a user’s session                                                                                                                      |  Web device mode only                                 |   |   |
-| Reset referrer or UTM params for new sessions          | Turning this on will set referrer and utm_parameter properties to null upon instantiating a new session; otherwise, existing referrer and utm_parameter values will be passed to each new session                                                             |  Web device mode only                                 |   |   |
-| Batch events prior to upload                           | Turning this on will batch events to upload only after the number of queued events is greater than or equal to eventUploadThreshold, or after events to upload after eventUploadPeriodMillis milliseconds have passed since the first unsent event was logged |  Web device mode only                                 |   |   |
-| Batch event upload period (ms)                         | Set the time limit (in ms) between batch uploads                                                                                                                                                                                                              | This can only be set if you turned on "batch events prior to upload" |   |   |
-| Batch event upload threshold                           | Set the minimum number of events to be sent in a batch                                                                                                                                                                                                        | This can only be set if you turned on "batch events prior to upload" |   |   |
+| Track GCLID                                            | When on, this captures the GCLID URL parameters along with the user's initial_gclid parameters.                                                                                                                                                                |  Web device mode only                                 |   |   |
+| Track referrer information                             | When on, this captures the user's referrer, initial referrer, and referring domain as user properties.                                                                                                                                                         |  Web device mode only                                 |   |   |
+| Track UTM properties                                   | When on, this captures the UTM parameters as user properties by either parsing the query string or from the _utmz cookie.                                                                                                                                      |  Web device mode only                                 |   |   |
+| Save referrer, UTM params, GCLID only once per session | When on, this tracks referrer, UTM parameters, and GCLID only once per session, ignoring any new values which may enter a user’s session.                                                                                                                      |  Web device mode only                                 |   |   |
+| Reset referrer or UTM params for new sessions          | Turning this on will set referrer and utm_parameter properties to null upon instantiating a new session; otherwise, existing referrer and utm_parameter values will be passed to each new session.                                                             |  Web device mode only                                 |   |   |
+| Batch events prior to upload                           | Turning this on will batch events to upload only after the number of queued events is greater than or equal to eventUploadThreshold, or after events to upload after eventUploadPeriodMillis milliseconds have passed since the first unsent event was logged. |  Web device mode only                                 |   |   |
+| Batch event upload period (ms)                         | Set the time limit (in ms) between batch uploads.                                                                                                                                                                                                              | This can only be set if you turned on "batch events prior to upload" |   |   |
+| Batch event upload threshold                           | Set the minimum number of events to be sent in a batch.                                                                                                                                                                                                        | This can only be set if you turned on "batch events prior to upload" |   |   |
 
 
 
@@ -451,10 +451,10 @@ If you are connecting to Amplitude in mobile device mode, these settings allow y
 
 | Field                          | Description                                                          | Note                    |
 |--------------------------------|----------------------------------------------------------------------|-------------------------|
-| Track session events           | Turning this on will send start and end session events               |  Mobile device mode only|
-| Use IDFA for device ID         | Turning this on will send the IDFA instead of device ID to Amplitude |  Mobile device mode only|
-| Batch event upload period (ms) | Set the time limit (in ms) between batch uploads                     |  Mobile device mode only|
-| Batch event upload threshold   | Set the minimum number of events to be sent in a batch               |  Mobile device mode only|
+| Track session events           | Turning this on will send start and end session events.               |  Mobile device mode only|
+| Use IDFA for device ID         | Turning this on will send the IDFA instead of device ID to Amplitude. |  Mobile device mode only|
+| Batch event upload period (ms) | Set the time limit (in ms) between batch uploads.                     |  Mobile device mode only|
+| Batch event upload threshold   | Set the minimum number of events to be sent in a batch.               |  Mobile device mode only|
 
 #### Android
 
@@ -462,11 +462,11 @@ If you are connecting to Amplitude in mobile device mode, these settings allow y
 
 | Field                            | Description                                                                                   | Note                                   |   |   |
 |----------------------------------|-----------------------------------------------------------------------------------------------|----------------------------------------|---|---|
-| Enable location listening        | When on, capture user location information for anyone who has granted app location permission |  Mobile device mode only|   |   |
-| Track session events             | Turning this on will send start and end session events                                        |  Mobile device mode only|   |   |
-| Use advertising ID for device ID | Turning this on will send Advertising ID instead of Device ID to Amplitude                    |  Mobile device mode only|   |   |
-| Batch event upload period (ms)   | Set the time limit (in ms) between batch uploads                                              |  Mobile device mode only|   |   |
-| Batch event upload threshold     | Set the minimum number of events to be sent in a batch                                        |  Mobile device mode only|   |   |
+| Enable location listening        | When on, capture user location information for anyone who has granted app location permission. |  Mobile device mode only|   |   |
+| Track session events             | Turning this on will send start and end session events.                                        |  Mobile device mode only|   |   |
+| Use advertising ID for device ID | Turning this on will send Advertising ID instead of Device ID to Amplitude.                    |  Mobile device mode only|   |   |
+| Batch event upload period (ms)   | Set the time limit (in ms) between batch uploads.                                              |  Mobile device mode only|   |   |
+| Batch event upload threshold     | Set the minimum number of events to be sent in a batch.                                        |  Mobile device mode only|   |   |
 
 
 ## Page
@@ -501,7 +501,7 @@ rudderanalytics.screen({
 
 In the above snippet, we capture information related to the screen being viewed, such as screen's name and category.
 
-#### , Categorized, or All Pages
+#### Tracking Named, Categorized, or All Pages
 
 
 If you are connecting in **web or device mode**, the settings you choose in your web app configurations will determine how the `page` or `screen` call is sent to RudderStack.
@@ -656,7 +656,12 @@ A sample dashboard after making the above `identify`, `page`, and `track` calls 
 <img src="../../assets/screenshot-2020-02-17-at-5.49.05-pm.png" />
 
 <div class="infoBlock">
-<strong>Applicable for mobile only</strong>: If a trait with the name <code class="inline-code">optOutOfSession</code> and value <code class="inline-code">true</code> then this <code class="inline-code">identify</code> call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
+<strong>Applicable for mobile only</strong>: If a trait has a name <code class="inline-code">optOutOfSession</code> with a value of <code class="inline-code">true</code>, then this <code class="inline-code">identify</code> call will be opted out of the current session if it exists or won't start a new session if there isn't any active session.<br/><br/>
+
+<strong>Opting out of sessions</strong> 
+
+
+You can opt an identify call out of a current session by passing a trait with the name `optOutOfSession` and value `true`.  In situations where there is not an active session, passing `optOutOfSession` will not start a new session.
 </div>
 
 ## Advanced Features
@@ -768,7 +773,7 @@ For the unmapping call, it is not necessary to provide <code class="inline-code"
 For more information on how the `alias` call works for Amplitude, refer to this [Amplitude support page](https://help.amplitude.com/hc/en-us/articles/360002750712-Portfolio-Cross-Project-Analysis#h_76557c8b-54cd-4e28-8c82-2f6778f65cd4).
 
 
-### FAQ
+## FAQ
 
 #### Why are all my session IDs `-1` in Amplitude?
 
