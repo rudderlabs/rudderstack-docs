@@ -33,6 +33,11 @@ Once you have confirmed that the source platform supports sending events to VWO,
 - **Single Page Application(SPA)?**: Enable this setting if you're loading the native VWO SDK on a single page application. 
 - **Send experiment viewed as track**: Enable this setting to record your VWO experiment as a `track` event. RudderStack will then automatically collect the `Experiment Viewed` event as a `track` call. For more information on this setting, refer to the <Link to="#sending-experiment-viewed-from-vwo">Sending experiment viewed from VWO</Link> section below.
 - **Send experiment viewed as identify traits**: Enable this setting to send your experiment data within the <Link to="/event-spec/standard-events/identify/#identify-traits">traits</Link> of your `identify` event.
+
+<div class="infoBlock">
+If you enable both the <strong>Send experiment viewed as track</strong> and <strong>Send experiment viewed as identify traits</strong> settings, then RudderStack independently captures the experiment details and sends them as <code class="inline-code">track</code> and <code class="inline-code">identify</code> events, respectively.
+</div>
+
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to VWO. For more information, refer to the <Link to="https://www.rudderstack.com/docs/sources/event-streams/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
 - **Library Tolerance**: Specify the maximum time (in ms) RudderStack should wait for the VWO library to load before displaying your web page.
 - **Setting Tolerance**: Specify the maximum time (in ms) RudderStack should wait for the test settings before VWO displays your original web page.
@@ -60,10 +65,6 @@ rudderanalytics.track("Experiment Viewed", {
 ```
 
 RudderStack also lets you send the experiment-related data such as the user's traits so that the other destinations have the necessary user-related context of these variations. To do so, enable the **Send experiment viewed as identify traits** dashboard setting and include the relevant user traits in the <Link to="/event-spec/standard-events/identify">`identify`</Link> event.
-
-<div class="infoBlock">
-If you enable both the <strong>Send experiment viewed as track</strong> and <strong>Send experiment viewed as identify traits</strong> dashboard settings, then RudderStack independently captures the experiment details as <code class="inline-code">track</code> and <code class="inline-code">identify</code> events.
-</div>
 
 ## Tracking revenue goals
 
