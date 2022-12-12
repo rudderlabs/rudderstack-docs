@@ -112,7 +112,7 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 });
 ```
 
-When you send the above event, Zendesk sets `alex@example.com` as the user's primary email. Any previously set primary email is then set as the secondary email.
+When you send the above event, Zendesk sets `alex@example.com` as the user's primary email.
 
 If the **Update user's primary email** dashboard setting is disabled, RudderStack sets the `email` present in the `identify` traits as the user's secondary email in Zendesk, **if** any primary mail already exists.
 
