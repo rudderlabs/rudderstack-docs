@@ -630,6 +630,36 @@ This feature is currently only available when sending events through the JavaScr
 </div>
 
 Refer to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#alias">JavaScript SDK documentation</Link> for information and examples on how to call the `alias` event.
+
+#### Mapping
+
+Amplitude's `alias` call simply creates a mapping or link between the `user_id` specified in the `from` parameter to the `global_user_id` specified in the `to` parameter of the `alias` call.
+
+```javascript
+rudderanalytics.alias("user_id", "global_user_id", options, callback)
+```
+
+#### Unmapping
+
+With Amplitude, it is possible to **unmap** an already established link, or `alias`. In order to trigger Amplitude to unmap a connection, follow the code snippet template below.
+
+```javascript
+rudderanalytics.alias("user_id_to_unmapped", {
+  integrations: {
+    Amplitude: {
+      unmap: true,
+    },
+  },
+})
+```
+
+In the snippet above, `user_to_be_unmapped`, will be unmapped or unlinked from the `global_user_id` it is currently linked to.
+
+<div class="infoBlock">
+For the unmapping call, it is not necessary to provide <code class="inline-code">global_user_id</code> in the <code class="inline-code">to</code> parameter of the <code class="inline-code">alias</code> call. If it is included, RudderStack will dismiss this field.
+</div>
+
+For more information on how the `alias` call works for Amplitude, refer to this [Amplitude support page](https://help.amplitude.com/hc/en-us/articles/360002750712-Portfolio-Cross-Project-Analysis#h_76557c8b-54cd-4e28-8c82-2f6778f65cd4).
 ## Identify
 
 The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userId` as well as any optional information such as name, email address, etc.
@@ -742,37 +772,6 @@ A sample regulation request body for deleting a user in Amplitude is shown below
 }
 ```
   
-#### Mapping
-
-Amplitude's `alias` call simply creates a mapping or link between the `user_id` specified in the `from` parameter to the `global_user_id` specified in the `to` parameter of the `alias` call.
-
-```javascript
-rudderanalytics.alias("user_id", "global_user_id", options, callback)
-```
-
-#### Unmapping
-
-With Amplitude, it is possible to **unmap** an already established link, or `alias`. In order to trigger Amplitude to unmap a connection, follow the code snippet template below.
-
-```javascript
-rudderanalytics.alias("user_id_to_unmapped", {
-  integrations: {
-    Amplitude: {
-      unmap: true,
-    },
-  },
-})
-```
-
-In the snippet above, `user_to_be_unmapped`, will be unmapped or unlinked from the `global_user_id` it is currently linked to.
-
-<div class="infoBlock">
-For the unmapping call, it is not necessary to provide <code class="inline-code">global_user_id</code> in the <code class="inline-code">to</code> parameter of the <code class="inline-code">alias</code> call. If it is included, RudderStack will dismiss this field.
-</div>
-
-For more information on how the `alias` call works for Amplitude, refer to this [Amplitude support page](https://help.amplitude.com/hc/en-us/articles/360002750712-Portfolio-Cross-Project-Analysis#h_76557c8b-54cd-4e28-8c82-2f6778f65cd4).
-
-
 ## FAQ
 
 #### Why are all my session IDs `-1` in Amplitude?
