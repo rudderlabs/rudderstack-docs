@@ -61,6 +61,10 @@ rudderanalytics.track("Experiment Viewed", {
 
 RudderStack also lets you send the experiment-related data such as the user's traits so that the other destinations have the necessary user-related context of these variations. To do so, enable the **Send experiment viewed as identify traits** dashboard setting and include the relevant user traits in the <Link to="/event-spec/standard-events/identify">`identify`</Link> event.
 
+<div class="infoBlock">
+If you enable both the <strong>Send experiment viewed as track</strong> and <strong>Send experiment viewed as identify traits</strong> dashboard settings, then RudderStack independently captures the experiment details as <code class="inline-code">track</code> and <code class="inline-code">identify</code> events.
+</div>
+
 ## Tracking revenue goals
 
 RudderStack also lets you forward the revenue amount to VWO when the <Link to="/event-spec/ecommerce-events-spec/ordering/#order-completed">`Order Completed`</Link> event is called.
