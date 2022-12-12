@@ -72,7 +72,8 @@ Once you specify the above settings, you will be able to preview a snippet of yo
 
 <img src="../../assets/warehouse-actions-sources/models-data-snippet.png" alt="Data snippet preview" />
 
-- Here, you can select all or only specific columns of your choice, search the columns by a keyword, and also edit the **JSON Trait Key**. You can also preview the resulting JSON on the right.
+Here, you can select all or only specific columns of your choice, search the columns by a keyword, and also edit the **JSON Trait Key**. You can also preview the resulting JSON on the right.
+
 - **Add Constant**: You can use this option to <a href="https://rudderstack.com/docs/sources/reverse-etl/common-settings/importing-data-using-tables#add-constant">add a constant key-value pair</a> which is always sent in the JSON payload, as shown:
 
 <img src="../../assets/warehouse-actions-sources/add-constant.png" alt="Add constant option in RudderStack dashboard" />
@@ -132,8 +133,6 @@ To create a managed policy defining the permissions for the RudderStack IAM role
 
 ### Creating the IAM role
 
-After creating the managed policy, follow these steps to create the IAM role for RudderStack.
-
 1. In the left navigation pane, click **Roles** and go to **Create role**.
 2. Under **Trusted entity type**, select **AWS account**, as shown:
 
@@ -170,12 +169,10 @@ Refer to the <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_
 
 <img src="../../assets/warehouse-actions-sources/aws-security-credentials.png" alt="AWS security " />
 
-<div class="infoBlock">
 For more information on these AWS credentials, refer to the <a href="https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html">AWS documentation</a>.
-</div>
 
 <div class="warningBlock">
-For setting up the S3 source, some S3 actions must be attached to your access keys. Refer to the <Link to="#s3-permissions">S3 permissions</Link> section above for more information on these actions.
+For setting up the S3 source, some S3 actions must be attached to your access keys. For more information on these actions, refer to the <Link to="#s3-permissions">S3 permissions</Link> section above.
 </div>
 
 <br />
