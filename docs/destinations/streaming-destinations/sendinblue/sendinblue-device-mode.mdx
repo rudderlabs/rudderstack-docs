@@ -1,9 +1,9 @@
 ---
 title: "Sendinblue Device Mode"
-description: Detailed technical documentation on sending events to Sendinblue using the RudderStack device mode.
+description: Send events to Sendinblue using the RudderStack device mode.
 ---
 
-RudderStack lets you send your event data to Sendinblue destination via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK.
+RudderStack lets you send your event data to Sendinblue via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK.
 
 <div class="infoBlock">
 Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/src/integrations/">GitHub repository</a>.
@@ -11,26 +11,37 @@ Find the open source code for this destination in the <a href="https://github.co
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to identify a user in Sendinblue in any of the following cases:
-
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to identify the users who visited your website. You can also use it to trigger a workflow in Sendinblue, for example, adding all the identified contacts to a list.
 
 A sample `identify` call is shown below:
 
 ```javascript
-rudderanalytics.identify("zwo3wpz6uu", {
-  email: "rapheal_morrow@example.com",
-  firstName: "Raphael",
-  lastName: "Morrow",
-  phone: "+919407339881",
+rudderanalytics.identify("1hKOmRA4el9", {
+  email: "alex@example.com",
+  firstName: "Alex",
+  lastName: "Keener",
+  phone: "+1-202-555-0146",
   payment: 2,
   age: 21,
-  location: "Mumbai",
+  location: "USA",
 });
 ```
 
+### Supported mappings
+
+The following table details the property mappings between RudderStack and Sendinblue:
+
+| RudderStack property | Sendinblue property | Data type |
+| :-----| :--------| :------|
+| `context.traits.email` <br/>`context.traits.Email`<br/> `context.traits.E-mail` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `email` | String |
+| `context.traits`  | `properties` | Object |
+| `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name`  | `properties.FIRSTNAME` | String | 
+| `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name`  | `properties.LASTNAME` | String |  
+| `context.traits.phone` <br/> `context.traits.Phone` | `properties.SMS`  |  String (valid mobile number <br/> with country code) |
+
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to capture user events along with their associated properties.
 
 A sample `track` call is as shown below:
 
@@ -54,9 +65,9 @@ rudderanalytics.track("Card Created", {
 ```
 ### Supported mappings
 
-The following table details the mapping between RudderStack and Sendinblue fields:
+The following table details the property mappings between RudderStack and Sendinblue:
 
-| RudderStack field | Sendinblue field | Data type |
+| RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
 | `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
 | `context.traits`  | `properties` | Object |
@@ -66,6 +77,23 @@ The following table details the mapping between RudderStack and Sendinblue field
 | `context.traits.email` <br/>`context.traits.Email`<br/> `context.traits.E-mail`| `properties.EMAIL`  | String |
 | `properties`| `event.data` | Object |
 | `messageId` <br/> use  `IntegrationObj` to fetch the key and then use that key to fetch the value from `properties` object| `event.id` | String |
+
+<div class="infoBlock">
+You can also send the user traits to Sendinblue via the <code class="inline-code">track</code> call by enabling the <strong>Send Traits In Track</strong> setting in the RudderStack dashboard.
+</div>
+
+## Contact attributes
+
+<div class="infoBlock">
+This section is applicable for the <code class="inline-code">identify</code> and <code class="inline-code">track</code> calls.
+</div>
+
+Sendinblue provides various [contact attributes](https://help.sendinblue.com/hc/en-us/articles/209499605-What-are-the-different-types-of-contact-attributes-) which you can use to personalize your communication with your contacts. You can find them [here](https://my.sendinblue.com/lists/add-attributes) in the Sendinblue dashboard. Sendinblue provides `FIRSTNAME`, `LASTNAME`, and `SMS` as the default contact attributes.
+
+- The Contacts attributes that correspond to **Properties** will be updated each time the rudderstack**.**identify() method is called.
+- `properties` that don't correspond to existing Contacts attributes can be used only in the [Automation app](https://automation.sendinblue.com/) unless you [add them as attributes from your Contacts section](https://my.sendinblue.com/lists/add-attributes) .
+
+You can define which traits in the RudderStack payload should be mapped to the Sendinblue's contact attributes by specifying them in the **Rudder to Sendinblue Contacts Attributes Mapping** dashboard setting.
 
 
 ## Page
@@ -80,9 +108,9 @@ rudderanalytics.page("Home")
 
 ### Supported mappings
 
-The following table details the mapping between RudderStack and Sendinblue fields:
+The following table details the property mappings between RudderStack and Sendinblue:
 
-| RudderStack field | Sendinblue field | Data type |
+| RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
 | `name` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `page_name` | String |
 | `properties`  | `properties` | Object |
