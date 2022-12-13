@@ -102,7 +102,7 @@ RudderStack assumes a valid Zendesk `organization_id` in the `company.id` field.
 
 ### Updating user's primary email in Zendesk
 
-To set a user's email address as the primary email in Zendesk, enable the **Update user's primary email** dashboard setting and pass the `email` trait in the `identify` call, as shown:
+To set the email present in the event as the user's primary email in Zendesk, enable the **Update user's primary email** dashboard setting and pass the `email` trait in the `identify` call, as shown:
 
 ```javascript
 rudderanalytics.identify("1hKOmRA4GRlm", {
