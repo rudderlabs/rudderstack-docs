@@ -41,6 +41,8 @@ rudderanalytics.identify(
 
 ### Supported mappings
 
+This section explains the property mappings for `identify` call made to perform different operations on contacts such as their creation, deletion, updation, etc.
+
 #### Create contact
 
 The following table details the property mappings between RudderStack and Sendinblue to [create a contact](https://developers.sendinblue.com/reference/createcontact):
@@ -51,7 +53,6 @@ The following table details the property mappings between RudderStack and Sendin
 | `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required, if email is not passed.</span>| `attributes.SMS`  |  String |
 | `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
 | `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
-| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
 | `context.traits` <br/> `traits` (excluding `firstname`, `lastname`, and `phone`) | `attributes` | Object |
 | `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | boolean |
 | `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | boolean |
@@ -59,76 +60,60 @@ The following table details the property mappings between RudderStack and Sendin
 
 #### Create contact via DOI (Double-opt-in) flow 
 
-The following table details the property mappings between RudderStack and Sendinblue to [create a contact](https://developers.sendinblue.com/reference/createcontact):
+The following table details the property mappings between RudderStack and Sendinblue to [create a contact via DOI flow](https://developers.sendinblue.com/reference/createdoicontact):
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <span style="color: #4D4DFF;font-size:12px;">Required, if phone number is not passed.</span>| `email`  | String |
-| `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required, if email is not passed.</span>| `attributes.SMS`  |  String |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email`  | String |
+| `context.externalId.id` (when `context.externalId.type` = `includeListIds`) <span style="color: #4D4DFF;font-size:12px;">Required</span> | `includeListIds` | int64 Array (Id of the list to add the contact) |
+| `context.externalId.id` (when `context.externalId.type` = `templateId`) <br/> `templatedId` (defined in RudderStack dashboard) <span style="color: #4D4DFF;font-size:12px;">Required</span> | `templateId` | Int64 (DOI template's ID) |
+| redirection URL (defined in RudderStack dashboard) <span style="color: #4D4DFF;font-size:12px;">Required</span>| `redirectionUrl` | URL |
+| `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` | `attributes.SMS`  |  String |
 | `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
 | `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
-| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
-| `context.traits` <br/> `traits` (excluding `firstname`, `lastname`, and `phone`) | `attributes` | Object |
-| `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | boolean |
-| `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | boolean |
-| `context.externalId.id` (when `context.externalId.type` = `includeListIds`) | `listIds` | int64 Array |
+| `context.traits` <br/> `traits` <br/>(excluding `firstname`, `lastname`, and `phone`) | `attributes` | Object |
 
 #### Update contact
 
-The following table details the property mappings between RudderStack and Sendinblue to [create a contact](https://developers.sendinblue.com/reference/createcontact):
+The following table details the property mappings between RudderStack and Sendinblue to [update a contact](https://developers.sendinblue.com/reference/updatecontact):
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <span style="color: #4D4DFF;font-size:12px;">Required, if phone number is not passed.</span>| `email`  | String |
-| `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required, if email is not passed.</span>| `attributes.SMS`  |  String |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/> `context.externalId.id` (when `context.externalId.type` = `contactId`) <span style="color: #4D4DFF;font-size:12px;">Required</span>| `identifier`  | String |
+| `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` | `attributes.SMS`  |  String |
 | `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
 | `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
-| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
 | `context.traits` <br/> `traits` (excluding `firstname`, `lastname`, and `phone`) | `attributes` | Object |
 | `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | boolean |
 | `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | boolean |
-| `context.externalId.id` (when `context.externalId.type` = `includeListIds`) | `listIds` | int64 Array |
+| `context.externalId.id` (when `context.externalId.type` = `includeListIds`) | `listIds` | Int64 array |
+| `context.externalId.id` (when `context.externalId.type` = `unlinkListIds`) | `unlinkListIds` | Int64 array |
 
 #### Get contact details
 
-The following table details the property mappings between RudderStack and Sendinblue to [create a contact](https://developers.sendinblue.com/reference/createcontact):
+The following table details the property mappings between RudderStack and Sendinblue to [get contact details](https://developers.sendinblue.com/reference/getcontactinfo-1):
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <span style="color: #4D4DFF;font-size:12px;">Required, if phone number is not passed.</span>| `email`  | String |
-| `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required, if email is not passed.</span>| `attributes.SMS`  |  String |
-| `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
-| `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
-| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
-| `context.traits` <br/> `traits` (excluding `firstname`, `lastname`, and `phone`) | `attributes` | Object |
-| `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | boolean |
-| `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | boolean |
-| `context.externalId.id` (when `context.externalId.type` = `includeListIds`) | `listIds` | int64 Array |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/> `context.externalId.id` (when `context.externalId.type` = `contactId`) <span style="color: #4D4DFF;font-size:12px;">Required</span>| `identifier`  | String |
 
 #### Delete contact from list
 
-The following table details the property mappings between RudderStack and Sendinblue to [create a contact](https://developers.sendinblue.com/reference/createcontact):
+The following table details the property mappings between RudderStack and Sendinblue to [delete a contact from list](https://developers.sendinblue.com/reference/removecontactfromlist):
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <span style="color: #4D4DFF;font-size:12px;">Required, if phone number is not passed.</span>| `email`  | String |
-| `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required, if email is not passed.</span>| `attributes.SMS`  |  String |
-| `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
-| `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
-| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
-| `context.traits` <br/> `traits` (excluding `firstname`, `lastname`, and `phone`) | `attributes` | Object |
-| `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | boolean |
-| `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | boolean |
-| `context.externalId.id` (when `context.externalId.type` = `includeListIds`) | `listIds` | int64 Array |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required, if contactID is not present.</span>| `emails`  | String |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/> `context.externalId.id` (when `context.externalId.type` = `contactId`) <span style="color: #4D4DFF;font-size:12px;">Required, if email/phone is not present.</span>| `ids`  | String |
 
 ## Track
 
-You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to:
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call in Sendinblue to:
 
-- **[Track event](https://tracker-doc.sendinblue.com/reference/trackevent-3)**: Lets you capture events on your website, along with optional extra information about the event.
-- **[Track Link](https://tracker-doc.sendinblue.com/reference/tracklink-3)**: Lets you capture clicks on your website, along with optional extra information about the click.
+- **[Track event](https://tracker-doc.sendinblue.com/reference/trackevent-3)**: Lets you capture events on your website along with (optional) extra information about the event.
+- **[Track Link](https://tracker-doc.sendinblue.com/reference/tracklink-3)**: Lets you capture clicks on your website along with (optional) extra information about the click.
 
-A sample `track` call is as shown below:
+A sample `track` call is shown below:
 
 ```javascript
 // track events
@@ -156,40 +141,35 @@ rudderanalytics.track("trackLink", {
 });
 ```
 
+<div class="infoBlock">
+RudderStack sends the track call to <strong>Track Link</strong> endpoint if the event name is <code class="inline-code">trackLink</code> in the event payload. For any other event name, it sends the event to <strong>Track event</strong> endpoint.
+</div>
+
 ### Supported mappings
+
+This section explains the property mappings for `track` call to capture events and links on your website.
 
 #### Track event
 
-The following table details the property mappings between RudderStack and Sendinblue to [create a contact](https://developers.sendinblue.com/reference/createcontact):
+The following table details the property mappings between RudderStack and Sendinblue for **Track event** endpoint:
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <span style="color: #4D4DFF;font-size:12px;">Required, if phone number is not passed.</span>| `email`  | String |
-| `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required, if email is not passed.</span>| `attributes.SMS`  |  String |
-| `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
-| `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
+| `context.traits.email` <br/> `properties.email` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email`  | String |
 | `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
-| `context.traits` <br/> `traits` (excluding `firstname`, `lastname`, and `phone`) | `attributes` | Object |
-| `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | boolean |
-| `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | boolean |
-| `context.externalId.id` (when `context.externalId.type` = `includeListIds`) | `listIds` | int64 Array |
+| `context.traits` | `properties` | Object |
+| `properties`| `eventdata.data` | Object |
+| use  `IntegrationObj` to fetch the key and then we will use that key to fetch the value from `properties` object | `eventdata.id` | String |
 
 #### Track Link
 
-The following table details the property mappings between RudderStack and Sendinblue to [create a contact](https://developers.sendinblue.com/reference/createcontact):
+The following table details the property mappings between RudderStack and Sendinblue for **Track Link** endpoint:
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <span style="color: #4D4DFF;font-size:12px;">Required, if phone number is not passed.</span>| `email`  | String |
-| `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required, if email is not passed.</span>| `attributes.SMS`  |  String |
-| `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
-| `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
-| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
-| `context.traits` <br/> `traits` (excluding `firstname`, `lastname`, and `phone`) | `attributes` | Object |
-| `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | boolean |
-| `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | boolean |
-| `context.externalId.id` (when `context.externalId.type` = `includeListIds`) | `listIds` | int64 Array |
-
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email`  | String |
+| `properties.link` <span style="color: #4D4DFF;font-size:12px;">Required</span> | `link` | String |
+| `properties` | `properties` | Object |
 
 ## Page
 
