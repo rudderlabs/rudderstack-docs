@@ -108,10 +108,10 @@ The following table details the property mappings between RudderStack and Sendin
 
 ## Track
 
-You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call in Sendinblue to:
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to:
 
-- **[Track event](https://tracker-doc.sendinblue.com/reference/trackevent-3)**: Lets you capture events on your website along with (optional) extra information about the event.
-- **[Track Link](https://tracker-doc.sendinblue.com/reference/tracklink-3)**: Lets you capture clicks on your website along with (optional) extra information about the click.
+- **[Track event](https://tracker-doc.sendinblue.com/reference/trackevent-3)**: Capture events on your website along with (optional) extra information about the event.
+- **[Track Link](https://tracker-doc.sendinblue.com/reference/tracklink-3)**: Capture clicks on your website along with (optional) extra information about the click.
 
 A sample `track` call is shown below:
 
@@ -142,7 +142,7 @@ rudderanalytics.track("trackLink", {
 ```
 
 <div class="infoBlock">
-RudderStack sends the track call to <strong>Track Link</strong> endpoint if the event name is <code class="inline-code">trackLink</code> in the event payload. For any other event name, it sends the event to <strong>Track event</strong> endpoint.
+RudderStack sends the track call to the <strong>Track Link</strong> endpoint if the event name is <code class="inline-code">trackLink</code> in the event payload. For any other event name, it sends the event to the <strong>Track event</strong> endpoint.
 </div>
 
 ### Supported mappings
