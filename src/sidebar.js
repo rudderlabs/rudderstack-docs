@@ -721,17 +721,19 @@ export const jsonData = [
                 title: "Monetate",
                 link: "/destinations/streaming-destinations/monetate/",
                 content: []
-            }, {
-                title: "Optimizely Full Stack",
-                link: "/destinations/streaming-destinations/optimizely-full-stack/",
+            }, 
+            {
+                title: "Optimizely Feature Experimentation",
+                link: "/destinations/streaming-destinations/optimizely-feature-experimentation/",
+                content: []
+            }, 
+            {
+                title: "Optimizely Web Experimentation",
+                link: "/destinations/streaming-destinations/optimizely-web-experimentation/",
                 content: []
             }, {
-                title: "Optimizely Web",
-                link: "/destinations/streaming-destinations/optimizely-web/",
-                content: []
-            }, {
-                title: "Split.io",
-                link: "/destinations/streaming-destinations/splitio/",
+                title: "Split",
+                link: "/destinations/streaming-destinations/split/",
                 content: []
             }, {
                 title: "Statsig",
