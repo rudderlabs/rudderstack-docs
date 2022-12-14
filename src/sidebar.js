@@ -1783,6 +1783,11 @@ export const jsonData = [
         link: "/destinations/rudderstack-connection-modes/",
         content: []
     },
+    {
+        title: "Creating RudderStack IAM Role for AWS Destinations",
+        link: "/destinations/aws-iam-role-for-rudderstack/",
+        content: []
+    },
     // Features section
     {
         title: "Transformations",
