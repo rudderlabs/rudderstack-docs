@@ -89,6 +89,8 @@ The below table mentions the sync types supported by the Google Analytics 4 reso
 | `website_overview` | Incremental | `uuid` |
 | `weekly_active_users` | Incremental | `uuid` |
 
+For syncing all the reports, RudderStack uses the `analyticsdata.googleapis.com/v1beta/{property_id}/runReport` API.
+
 <div class="warningBlock">
 This source only supports <strong>Incremental</strong> reports with <strong>date</strong> as dimensions.
 </div>
