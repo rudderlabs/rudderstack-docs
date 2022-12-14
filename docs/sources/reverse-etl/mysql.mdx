@@ -1,6 +1,6 @@
 ---
 title: "MySQL"
-description: Step-by-step guide to ingest your data from MySQL into RudderStack.
+description: Sync data from MySQL to your preferred destination via RudderStack.
 ---
 
 [MySQL](https://www.mysql.com/) is a popular open source relational DBMS. You can build fast, powerful, and secure data storage systems using MySQL instantaneously.
@@ -70,19 +70,17 @@ If you've configured a MySQL source before, you can select the existing credenti
 
 ### Schedule settings
 
-1. Specify the **Schedule Settings** to schedule the data syncs from your MySQL instance. For more information on the schedule types, refer to the <Link to="/sources/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule</Link> guide.
-
-2. After specifying the schedule type and run settings, click **Continue** to finish the setup.
-
-MySQL is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking **Add Destination** button, as shown:
-
-<img src="../../assets/warehouse-actions-sources/add-destination.png" alt="Add destination in RudderStack" />
+Specify the **Schedule Settings** to schedule the data syncs from your MySQL source.
 
 <div class="infoBlock">
-<ul><li>If you have already configured the destination in RudderStack dashboard, select the <strong>Use Existing Destinations</strong> option which will take you to the <strong>Schema</strong> tab in the source settings.</li>
-<li>To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the destination configuration page.</li>
-</ul>
+RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule</a> guide.
 </div>
+
+### Connecting to a destination
+
+Once you successfully set up your MySQL source, you can connect it to your preferred destination by clicking the **Add Destination** button, as shown:
+
+<img src="../../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
 
 ## Mapping warehouse data to destination
 

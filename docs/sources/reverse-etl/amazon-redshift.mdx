@@ -1,11 +1,9 @@
 ---
 title: "Amazon Redshift"
-description: Step-by-step guide to ingest your data from Amazon Redshift into RudderStack.
+description: Sync data from Amazon Redshift to your preferred destination via RudderStack.
 ---
 
 [Amazon Redshift](https://aws.amazon.com/redshift/) is one of the fastest cloud data warehouse services. It allows you to handle large analytical workloads with best-in-class performance, speed, and efficiency.
-
-RudderStack supports Amazon Redshift as a source from which you can ingest data and route it to your desired downstream destinations.
 
 ## Granting permissions
 
@@ -101,20 +99,13 @@ Run the above command only if you're okay with RudderStack being able to access 
 
 **Replace `<YOUR_SCHEMA>` with the exact name of your Redshift schema.**
 
-## Setting up the Redshift source in RudderStack
+## Setting up the Redshift source
 
-To set up Redshift as a source in RudderStack, follow these steps:
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com).
+2. From the left panel, go to **Directory** > **Sources** > **Reverse ETL**. Then, select **Redshift**.
+3. Assign a name and click **Continue**.
 
-### Naming the source
-
-1. Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-2. From the left navigation bar, go to **Source** > **New Source** > **Reverse ETL**. Then, select **Redshift**, as shown:
-
-<img src="../../assets/warehouse-actions-sources/select-source.png" alt="Select Reverse ETL source in RudderStack" />
-
-3. Assign a name to the source.
-
-### Configuring the connection credentials
+### Connection credentials
 
 1. Choose the relevant option from **Table** or **Model** to use the source to sync data from either a warehouse table or a model.
 
@@ -128,8 +119,6 @@ If you have chosen the <strong>Model</strong> option, skip the next steps and re
 
 2. Enter the relevant settings in the **Connection Credentials** section as listed below:
 
-<img src="../../assets/warehouse-actions-sources/redshift-connection-settings.png" />
-
 - **Host** - Host name of your Redshift service.
 - **Port** - Port number of your Redshift service.
 - **Database -** Database name in your Redshift instance where the data is loaded.
@@ -141,32 +130,23 @@ If you have chosen the <strong>Model</strong> option, skip the next steps and re
 If you've configured Redshift as a source before, you can select the existing credentials under the <strong>Use existing credentials</strong> option.
 </div>
 
-3. Click on **Continue** to verify your credentials. RudderStack will then verify and validate your credentials. 
+3. Click **Continue** to verify your credentials. RudderStack will then verify and validate your credentials. For more information on these validation steps, refer to the <a href="#faq">FAQ</a> section.
 
-<div class="infoBlock">
-For more information on these validation steps, refer to the <a href="#faq">FAQ</a> section. 
-</div>
-
-4. Once verified, click on **Continue** to proceed.
+4. Once verified, click **Continue** to proceed.
 
 ### Schedule settings
 
-1. Specify the **Schedule Settings** to schedule the data syncs from your Redshift instance.
+Specify the **Schedule Settings** to schedule the data syncs from your Redshift source.
 
 <div class="infoBlock">
-
-RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule Settings</a> guide.
+RudderStack lets you schedule data syncs for your Reverse ETL sources and specify how and when the syncs will run. For more information on the <strong>Basic</strong>, <strong>CRON</strong>, and <strong>Manual</strong> schedule types, refer to the <a href="https://www.rudderstack.com/docs/sources/reverse-etl/common-settings/sync-schedule-settings/">Sync Schedule</a> guide.
 </div>
 
-2. After specifying the schedule type and run settings, click on **Continue** to finish the setup.
+### Connecting to a destination
 
-Redshift is now successfully configured as a source in your RudderStack dashboard. You can further connect this source to your preferred destination by clicking on **Add Destination** button, as shown:
+Once you successfully set up your Redshift source, you can connect it to your preferred destination by clicking the **Add Destination** button, as shown:
 
 <img src="../../assets/warehouse-actions-sources/destination.png" alt="Add destination in RudderStack" />
-
-<div class="infoBlock">
-If you have already configured a destination in RudderStack, choose the <strong>Use Existing Destination</strong> option which will take you to the <strong>Schema</strong> tab in the source settings. To add a new destination from scratch, select the <strong>Create New Destination</strong> option which will take you to the destination configuration page.
-</div>
 
 ## Mapping warehouse data to destination
 
