@@ -25,13 +25,6 @@ To configure Azure data lake as a destination in RudderStack, follow these steps
 
 ### Connection settings
 
-To successfully configure Azure data lake as a destination, you will need to configure the following settings:
-
-<img src="../../assets/dw-integrations/azure-data-lake-connection-settings-1.png" alt="Azure data lake destination settings in RudderStack" />
-<img src="../../assets/dw-integrations/azure-data-lake-connection-settings-2.png" alt="Azure data lake destination settings in RudderStack" />
-
-Enter the following credentials in the **Connection Credentials** page:
-
 - **Azure Blob Storage Container Name**: Enter the name of your Blob Storage container used to store the data before loading it into the data lake.
 - **Prefix**: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder. For example, `https://<account_name>.blob.core.windows.net/<container_name>/<prefix>/`
 - **Namespace**: If specified, all the data for the destination will be pushed to `https://<account_name>.blob.core.windows.net/<bucketName>/<prefix>/rudder-datalake/<namespace>`. If you don't specify a namespace in the settings, RudderStack sets it to the source name, by default.
