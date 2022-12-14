@@ -5,16 +5,23 @@ description: >-
 aliases: ["AWS IAM Role", "IAM Role", "IAM authentication"]
 ---
 
-This guide walks you through the steps for creating a RudderStack IAM role. You can use this role for authenticating RudderStack in the following AWS-based destinations:
+This guide walks you through the steps for creating a IAM role for authenticating RudderStack while setting up the following destinations:
 
-- <Link to="/destinations/streaming-destinations/amazon-eventbridge/">EventBridge</Link>
-- <Link to="/destinations/streaming-destinations/amazon-kinesis/">Kinesis</Link>
-- <Link to="/destinations/streaming-destinations/amazon-kinesis-firehose/">Kinesis Firehose</Link>
-- <Link to="/destinations/streaming-destinations/aws-lambda/">Lambda</Link>
-- <Link to="/destinations/streaming-destinations/aws-personalize/">Personalize</Link>
-- <Link to="/destinations/streaming-destinations/amazon-s3/">S3</Link>
+#### Cloud destinations
 
-<div class="infoBlock">
+<Ftrdestinations
+  ftrsupport={'yes'}
+  type={'streaming'}
+/>
+
+#### Warehouse destinations
+
+<Ftrdestinations
+  ftrsupport={'yes'}
+  type={'warehouse'}
+/>
+
+<div class="warningBlock">
 Access keys-based authentication method will be deprecated in the future. Hence, setting up a RudderStack IAM role is strongly recommended.
 </div>
 

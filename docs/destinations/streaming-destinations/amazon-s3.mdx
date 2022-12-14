@@ -121,7 +121,7 @@ RUDDER_AWS_S3_COPY_USER_ACCESS_KEY_ID=<access_key_id>
 RUDDER_AWS_S3_COPY_USER_ACCESS_KEY=<secret_access_key>
 ```
 
-### S3 permissions for warehouse destinations
+## S3 permissions for warehouse destinations
 
 If you're using your S3 bucket as an **intermediary object storage** for a <Link to="/destinations/warehouse-destinations/">warehouse destination</Link>, then you will need to set the following bucket permissions:
 
@@ -145,15 +145,19 @@ Follow these steps to set up S3 as a destination in RudderStack:
 
 In the **Connection Settings** page, enter the following settings to configure the S3 destination: 
 
-<img src="../../assets/event-stream-destinations/s3-connection-settings.png" alt="S3 connection settings" />
-
 - **S3 Bucket Name**: Enter your S3 bucket name.
-- **Prefix**: If specified, RudderStack creates a folder in the bucket with this name and pushes all the data within that folder. For example, `s3://<bucket_name>/<prefix>/`
-- **AWS Access Key ID**: Enter the AWS access key ID associated with the IAM user with the programmatic access.
-- **AWS Secret Access Key**: Enter the AWS secret key.
+- **Prefix**: If specified, RudderStack creates a folder in the bucket with this name and pushes all the data within that folder. For example, `s3://<bucket_name>/<prefix>/`.
+- **Role-based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating an AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
+  - **IAM Role ARN**: Enter the ARN of the IAM role.
+
+<div class="warningBlock">
+It is highly recommended to enable this setting as the access keys-based authentication will be deprecated in the future.
+</div>
+
+If **Role-based Authentication** is disabled, you need to enter the **AWS Access Key ID** and **AWS Secret Access Key** to authorize RudderStack to write to your S3 bucket.
 
 <div class="infoBlock">
-Refer to the <Link to="#permissions">Permissions</Link> section above for more information on obtaining the access key ID and secret access key.
+In both the role-based and access key-based authentication methods, you need to set a policy specifying the required permissions for RudderStack to write to your S3 bucket. Refer to the <Link to="#permissions">Permissions</Link> section for more information. If you're using your S3 bucket as an intermediary object storage for a <Link to="/destinations/warehouse-destinations/">warehouse destination</Link>, then refer to the <Link to="#s3-permissions-for-warehouse-destinations">S3 permissions for warehouse destinations</Link> section.
 </div>
 
 - **Enable Server Side Encryption**: When this setting is enabled, RudderStack adds a header `x-amz-server-side-encryption` with the value `AES256` to the `PutObject` request when sending the data to the S3 bucket.

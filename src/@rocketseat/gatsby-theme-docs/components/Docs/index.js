@@ -24,6 +24,7 @@ import YouTube from 'react-youtube'
 import Sources from '../../../../components/sources'
 import Destinations from '../../../../components/destinations'
 import Iplist from '../../../../components/iplist'
+import Ftrdestinations from '../../../../components/ftrdestinations'
 
 export default function Docs({mdx, pageContext}) {
   const {repositoryEditUrl, repositoryProvider} = pageContext
@@ -61,6 +62,7 @@ export default function Docs({mdx, pageContext}) {
     Iplist,
     Sources,
     Destinations,
+    Ftrdestinations,
     TabList,
     Tab,
     TabPanels,

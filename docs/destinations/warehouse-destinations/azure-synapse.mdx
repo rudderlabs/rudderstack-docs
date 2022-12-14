@@ -1,18 +1,17 @@
 ---
 title: "Azure Synapse"
-description: Step-by-step guide on setting up Azure Synapse as a destination in RudderStack.
+description: Sync data from RudderStack to Azure Synapse.
+aliases: ['Synapse warehouse destination']
 ---
 
-[Azure Synapse Analytics](https://azure.microsoft.com/en-in/services/synapse-analytics/) is an analytics service that combines data warehousing capabilities with Big Data analytics. If offers a unified data engineering platform to ingest, explore, manage, and serve your data for analytics and Business Intelligence. You can query data on your own terms, using either serverless or dedicated computing resources based on your requirements.
-
-RudderStack lets you configure Azure Synapse as a destination to which you can send your event data seamlessly.
+[Azure Synapse Analytics](https://azure.microsoft.com/en-in/services/synapse-analytics/) is an analytics service that combines data warehousing capabilities with Big Data analytics. If offers a unified data engineering platform to ingest, explore, manage, and serve your data for analytics and Business Intelligence.
 
 <div class="infoBlock">
 Refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more information on how the events are mapped to the tables in Azure Synapse.
 </div>
 
 <div class="successBlock">
-Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/azure_synapse">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/azure_synapse">GitHub repository</a>.
 </div>
 
 ## Prerequisites
@@ -37,11 +36,6 @@ To configure Azure Synapse as a destination in RudderStack, follow these steps:
 2. Assign a name to your destination and then click on **Next**.
 
 ### Connection settings
-
-To successfully configure Azure Synapse as a destination, you will need to configure the following settings:
-
-<img src="../../assets/dw-integrations/synapse-connection-settings-1.png" alt="Azure Synapse connection settings" />
-<img src="../../assets/dw-integrations/synapse-connection-settings-2.png" alt="Azure Synapse connection settings" />
 
 - **Host**: The host name of your Azure Synapse service.
 - **Database**: The database name in your Azure Synapse instance where the data will be sent.
@@ -71,7 +65,7 @@ This option is applicable only for RudderStack-hosted data planes. For self-host
 
 - **Choose your storage provider**: If **Use RudderStack-managed object storage** is **disabled** in the dashboard, select the cloud provider for your object storage and enter the relevant settings:
 
-   - <Link to="/destinations/streaming-destinations/amazon-s3#setting-up-amazon-s3">Amazon S3 bucket storage settings</Link>
+   - <Link to="/destinations/streaming-destinations/amazon-s3/#connection-settings">Amazon S3 bucket storage settings</Link>
    - <Link to="/destinations/streaming-destinations/microsoft-azure-blob-storage#setting-up-azure-blob-storage">Azure Blob Storage settings</Link>
    - <Link to="/destinations/streaming-destinations/google-cloud-storage#setting-up-google-cloud-storage">Google Cloud Storage bucket settings</Link>
    - <Link to="/destinations/streaming-destinations/minio#setting-up-minio">MinIO bucket storage settings</Link>

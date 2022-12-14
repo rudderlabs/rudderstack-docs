@@ -1,18 +1,17 @@
 ---
 title: "Amazon Redshift"
-description: Step-by-step guide on setting up Amazon Redshift as a destination in RudderStack.
+description: Sync data from RudderStack to Amazon Redshift.
+aliases: ['Redshift destination']
 ---
 
 [Amazon Redshift](https://aws.amazon.com/redshift/) is the world's fastest cloud data warehouse. It allows you to handle large analytical workloads with best-in-class performance, speed, and efficiency. With Redshift, you don't have to worry about the scale of your data or the cost of running queries on them.
-
-RudderStack lets you configure Redshift as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
 Refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more information on how the events are mapped to the tables in Redshift.
 </div>
 
 <div class="successBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/rs">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/rs">GitHub repository</a>.
 </div>
 
 ## Setting up a Redshift cluster
@@ -150,11 +149,7 @@ To configure Redshift as a destination in RudderStack, follow these steps:
 1. In your [RudderStack dashboard](https://app.rudderstack.com), set up the data source. Then, select **Redshift** from the list of destinations.
 2. Assign a name to your destination and then click on **Next**.
 
-### Connection Settings
-
-<img src="../../assets/dw-integrations/redshift-connection-settings.png" alt="Redshift connection settings" />
-
-Enter the following credentials in the **Connection Credentials** page:
+### Connection settings
 
 - **Host**: The host name of your Redshift service.
 - **Port**: The port number associated with the Redshift database instance.
@@ -181,7 +176,7 @@ RudderStack lets you configure the following object storage configuration settin
 This option is applicable only for RudderStack-hosted data planes. For <Link to="/get-started/rudderstack-open-source/data-plane-setup/">self-hosted data planes</Link>, you will have to specify your own object storage configuration settings.
 </div>
 
-- **Choose your storage provider**: If **Use RudderStack-managed object storage** is disabled in the dashboard, you can enter the relevant <Link to="/destinations/streaming-destinations/amazon-s3#setting-up-amazon-s3">Amazon S3 bucket storage settings</Link>.
+- **Staging S3 Storage Bucket Name**: If **Use RudderStack-managed object storage** is disabled in the dashboard, enter the relevant <Link to="/destinations/streaming-destinations/amazon-s3#connection-settings">Amazon S3 bucket storage settings</Link>.
 
 ## S3 Permissions
 

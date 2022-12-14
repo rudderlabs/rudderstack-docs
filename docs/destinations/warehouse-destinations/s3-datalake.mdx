@@ -1,18 +1,17 @@
 ---
 title: "Amazon S3 Data Lake"
-description: Step-by-step guide on setting up S3 Data Lake as a destination in RudderStack.
+description: Sync data from RudderStack to Amazon S3 Data Lake.
+aliases: ['S3 data lake destination']
 ---
 
 Amazon S3 is a popular object storage service used to store both structured and unstructured data. With an S3-powered data lake, you can easily use the native AWS services for data processing, analytics, machine learning, and more.
-
-RudderStack lets you configure S3 data lake as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
 For more information on how the events are mapped to the tables in S3 data lake tables, refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide .
 </div>
 
 <div class="successBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/s3_datalake">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/s3_datalake">GitHub repository</a>.
 </div>
 
 ## S3 permissions for data lake destination
@@ -40,10 +39,6 @@ To set up S3 data lake as a destination in RudderStack, follow these steps:
 2. Assign a name to your destination and then click **Continue**.
 
 ### Connection settings
-
-Enter the following settings in the **Connection Credentials** page:
-
-<img src="../../assets/dw-integrations/s3-datalake-connection-settings.png" alt="S3 data lake destination settings in RudderStack" />
 
 * **S3 Storage Bucket Name**: Enter the name of the S3 bucket used to store the data before loading it into the S3 data lake.
 * **Register schema on AWS Glue**: Enable this option to register the schema of your incoming data on AWS Glue's data catalog.
@@ -79,16 +74,21 @@ If AWS Glue is enabled, all the table definitions are created in a database with
 If you don't specify a namespace in the settings, it is set to the source name, by default.
 </div>
 
-* **AWS Access Key ID**: Enter your AWS access key ID. 
-* **AWS Secret Access Key**: Enter AWS secret access key.
-
-<div class="infoBlock">
-For more information on obtaining the AWS access key ID and secret access key, refer to the <Link to="/destinations/streaming-destinations/amazon-s3/#permissions">S3 Permissions</Link> section.
-</div>
+* **Role Based Authentication**: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating an AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
+  - **IAM Role ARN**: Enter the ARN of the IAM role.
 
 <div class="warningBlock">
-Make sure the credentials (<strong>Access Key ID</strong> and <strong>Secret Access Key</strong>) have the permissions to read and write into the configured S3 bucket.
+It is highly recommended to enable this setting as the access keys-based authentication will be deprecated in the future.
 </div>
+
+If **Role-based Authentication** is disabled, you need to enter the **AWS Access Key ID** and **AWS Secret Access Key** to authorize RudderStack to write to your S3 bucket.
+
+<div class="infoBlock">
+In both the role-based and access key-based authentication methods, you need to set a policy specifying the required permissions for RudderStack to write to your S3 bucket. Refer to the <Link to="#s3-permissions-for-data-lake-destination">S3 permissions for data lake destination</Link> section for more information.
+</div>
+
+- **Sync Frequency**: Specify how often RudderStack should sync the data to your S3 data lake.
+- **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data.
 
 ## Finding your data in S3 data lake
 
