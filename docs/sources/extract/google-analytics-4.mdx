@@ -24,7 +24,7 @@ To set up Google Analytics 4 as a source in RudderStack, follow these steps:
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
 2. Go to **Sources** > **New source** > **Cloud Extract** and select **Google Analytics 4** from the list of sources.
-3. Assign a name to your source and click **Next**.
+3. Assign a name to your source and click **Continue**.
 
 ### Connection settings
 
@@ -42,9 +42,13 @@ The other settings are as follows:
 
 - **Property ID**: Specify the <a href="https://developers.google.com/analytics/devguides/reporting/data/v1/property-id">Google Analytics 4 property identifier</a> whose events are tracked.
 - **Date Range Start Date**: Choose the start date from which you want RudderStack to ingest the Google Analytics 4 data. RudderStack will not replicate any data before this date.
-- **Custom Reports**: Use this setting to sync your custom <a href="https://support.google.com/analytics/answer/10445879?hl=en">Google Analytics 4 reports</a>. You can sync multiple reports. To add a custom report, click **Add Report** and specify the **Report Name**, **Metrics**, and **Dimensions**, as shown:
+- **Custom Reports**: Use this setting to sync your custom <a href="https://support.google.com/analytics/answer/10445879?hl=en">Google Analytics 4 reports</a>. To add a custom report, click **Add Report** and specify the **Report Name**, **Metrics**, and **Dimensions**, as shown:
 
 <img src="../../assets/cloud-extract-sources/google-analytics-4-custom-report.png" alt="Google Analytics 4 custom reports" />
+
+<div class="infoBlock">
+You can sync multiple reports, and edit or delete a custom report.
+</div>
 
 - **Data request time increment in days**: Enter the number of days after which RudderStack requests data from the Google Analytics 4 API. The minimum and maximum allowed values for this field are 1 and 364 respectively.
 
@@ -92,7 +96,7 @@ The below table mentions the sync types supported by the Google Analytics 4 reso
 For syncing all the reports, RudderStack uses the `analyticsdata.googleapis.com/v1beta/{property_id}/runReport` API.
 
 <div class="warningBlock">
-This source only supports <strong>Incremental</strong> reports with <strong>date</strong> as dimensions.
+This source only supports <strong>Incremental</strong> reports with <strong>date</strong> as a required dimension.
 </div>
 
 <div class="infoBlock">
