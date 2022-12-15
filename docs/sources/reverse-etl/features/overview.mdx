@@ -1,24 +1,12 @@
 ---
 title: "Overview"
-description: >-
-Quick overview of RudderStack's Reverse ETL features.
+description: >- 
+ Quick overview of RudderStack's Reverse ETL features.
 ---
 
 RudderStack provides some useful features which you can use while configuring your Reverse ETL pipelines to customize, automate, and ensure seamless event flow from your data warehouse to various analytics, sales, and marketing tools.
 
-## Models
-
-RudderStack's **Models** feature lets you define custom SQL queries, run them on your warehouse source, and send the resulting data to the specified destinations. You can create as many models and reuse them with their corresponding Reverse ETL sources.
-
-With this feature, you can:
-
-* Build models with complex SQL queries via an intuitive UI.
-* Manage the views of all the models synced to different destinations in one place.
-* Reuse the existing models in multiple connections.
-
-For more information on creating and using the models, refer to the <Link to="/sources/reverse-etl/common-settings/models/">Models</Link> guide.
-
-## Syncing events
+## Syncing data as `identify` and `track` events
 
 RudderStack supports syncing data from the Reverse ETL sources to the downstream destinations as <Link to="/event-spec/standard-events/identify/">`identify`</Link> and <Link to="/event-spec/standard-events/track/">`track`</Link> calls.
 
@@ -43,6 +31,18 @@ Some examples where you can use the `track` call to send events from your wareho
 - Replaying the fact table that might be the source of truth for user behavior to the downstream tools such as Statsig, Optimizely, etc.
 
 Refer to the <Link to="">JSON mapping</Link> guide for detailed steps on choosing the event type to sync event data to a downstream destination.
+
+## Models
+
+RudderStack's **Models** feature lets you define custom SQL queries, run them on your warehouse source, and send the resulting data to the specified destinations. You can create as many models and reuse them with their corresponding Reverse ETL sources.
+
+With this feature, you can:
+
+* Build models with complex SQL queries via an intuitive UI.
+* Manage the views of all the models synced to different destinations in one place.
+* Reuse the existing models in multiple connections.
+
+For more information on creating and using the models, refer to the <Link to="/sources/reverse-etl/common-settings/models/">Models</Link> guide.
 
 ## Visual Data Mapper
 
