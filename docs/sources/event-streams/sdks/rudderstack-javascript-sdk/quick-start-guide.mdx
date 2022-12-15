@@ -167,7 +167,7 @@ The installation code snippets discussed above perform the following actions:
 | `getGroupTraits`  | Fetches the current group traits.       |
 | `startSession`    | Starts a new session.       |
 | `endSession`  | Clears the `sessionId` and ends the current session.     |
-| `getSessionId`  | Fetches the current session ID. If sessionId is not available, it returns `null`.     |
+| `getSessionId`  | Fetches the session ID of the current session. Returns `null` if the session ID is not available.     |
 
 - Loads the analytics object with the specified write key.
 - Makes a `page()`call to track the page views. It captures the whole URL including the UTM parameters as part of the `page` call payload, such as `path`, `referrer`, `search`, `title`, and `URL`. Refer to the <Link to="/event-spec/standard-events/page/#properties">`page`</Link> method to override these properties.
