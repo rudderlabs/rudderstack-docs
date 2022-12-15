@@ -212,6 +212,16 @@ RudderStack also supports manual session tracking using the following methods th
 Manual session tracking overrides automatic session tracking. If <Link to="#automatic-session-tracking">automatic session tracking</Link> is enabled and you call the <code class="inline-code">startSession()</code> API, then RudderStack will disable automatic session tracking <strong>until the app is closed completely</strong>. For more information, refer to the <Link to="/sources/event-streams/sdks/session-tracking/faq/#manual-session-tracking-persistence">FAQ</Link> section.
 </div>
 
+## Getting session ID for JavaScript SDK
+
+JavaScript SDK provides `getSessionId` method to fetch the current session ID. If the session ID is unavailable, it returns null.
+
+A sample snippet to fetch the current session ID is as shown:
+
+```javascript
+rudderanalytics.getSessionId();
+```
+
 ## Session tracking flow
 
 The following sections describe how the session tracking works in the RudderStack SDKs.
