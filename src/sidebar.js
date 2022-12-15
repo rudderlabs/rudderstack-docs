@@ -306,6 +306,11 @@ export const jsonData = [
                                 link: "/sources/event-streams/sdks/session-tracking/faq/",
                                 content: [],
                               },
+                              {
+                                title: "Manual Session Tracking",
+                                link: "/sources/event-streams/sdks/session-tracking/manual-session-tracking/",
+                                content: [],
+                              },
                         ]
                     },
                     {

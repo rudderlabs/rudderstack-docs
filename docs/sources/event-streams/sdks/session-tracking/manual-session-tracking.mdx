@@ -1,0 +1,36 @@
+---
+title: "Manual Session Tracking"
+description: Manually tracking user sessions using the RudderStack SDKs.
+---
+
+<div class="infoBlock">
+This guide is applicable for all the RudderStack SDKs (<Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>) that support the session tracking feature.
+</div>
+
+RudderStack supports manual session tracking using the following methods that indicate the start and end of a user session:
+
+<table>
+  <tr>
+    <th width="180px">Method</th>
+    <th width="180px">Parameters</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td rowspan="2"><code class="inline-code">startSession()</code></td>
+    <td>-</td>
+    <td>If no parameter is passed, RudderStack creates a new session and passes the current <code class="inline-code">timestamp</code> as the <Link to="/sources/event-streams/sdks/session-tracking/faq/#how-does-rudderstack-determine-the-sessionid"><code class="inline-code">sessionId</code></Link>.</td>
+  </tr>
+  <tr>
+    <td><code class="inline-code">sessionId</code><br /> <span style="color: #4D4DFF;font-size:12px;">Long integer with minimum length of 10 characters.</span></td>
+    <td> You can pass a custom <code class="inline-code">sessionId</code> and trigger a new user session. <br/><br/> It is <strong>not recommended</strong> to use a decimal number as the <code class="inline-code">sessionId</code>. </td>
+  </tr>
+  <tr>
+    <td><code class="inline-code">endSession()</code></td>
+    <td>-</td>
+    <td>RudderStack clears the <code class="inline-code">sessionId</code> and ends the session.</td>
+  </tr>
+</table>
+
+<div class="warningBlock">
+Manual session tracking overrides automatic session tracking. If <Link to="/sources/event-streams/sdks/session-tracking/#automatic-session-tracking">automatic session tracking</Link> is enabled and you call the <code class="inline-code">startSession()</code> API, then RudderStack will disable automatic session tracking <strong>until the app is closed completely</strong>. For more information, refer to the <Link to="/sources/event-streams/sdks/session-tracking/faq/">FAQ</Link> guide.
+</div>
