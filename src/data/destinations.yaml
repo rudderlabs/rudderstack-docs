@@ -1,19 +1,23 @@
 ---
 # Streaming
+
 - category: null
   displayName: AWS EventBridge
   link: /destinations/streaming-destinations/amazon-eventbridge/
   options: null
+  ftrsupport: yes
   type: streaming
 - category: null
   displayName: AWS Lambda
   link: /destinations/streaming-destinations/aws-lambda/
   options: null
+  ftrsupport: yes
   type: streaming
 - category: null
   displayName: AWS Personalize
   link: /destinations/streaming-destinations/aws-personalize/
   options: null
+  ftrsupport: yes
   type: streaming
 - category: null
   displayName: ActiveCampaign
@@ -49,16 +53,19 @@
   displayName: Amazon Kinesis
   link: /destinations/streaming-destinations/amazon-kinesis/
   options: null
+  ftrsupport: yes
   type: streaming
 - category: null
   displayName: Amazon Kinesis Firehose
   link: /destinations/streaming-destinations/amazon-kinesis-firehose/
   options: null
+  ftrsupport: yes
   type: streaming
 - category: null
   displayName: Amazon S3
   link: /destinations/streaming-destinations/amazon-s3/
   options: null
+  ftrsupport: yes
   type: streaming
 - category: null
   displayName: Amplitude
@@ -103,11 +110,6 @@
 - category: null
   displayName: Awin
   link: /destinations/streaming-destinations/awin/
-  options: null
-  type: streaming
-- category: null
-  displayName: Axeptio
-  link: /destinations/streaming-destinations/axeptio/
   options: null
   type: streaming
 - category: null
@@ -220,11 +222,6 @@
   link: /destinations/streaming-destinations/digitalocean-spaces/
   options: null
   type: streaming
-# - category: null
-#   displayName: Drift
-#   link: /destinations/streaming-destinations/drift/
-#   options: null
-#   type: streaming
 - category: null
   displayName: Drip
   link: /destinations/streaming-destinations/drip/
@@ -486,11 +483,6 @@
   options: null
   type: streaming
 - category: null
-  displayName: Microsoft Clarity
-  link: /destinations/streaming-destinations/microsoft-clarity/
-  options: null
-  type: streaming
-- category: null
   displayName: MinIO
   link: /destinations/streaming-destinations/minio/
   options: null
@@ -536,13 +528,13 @@
   options: null
   type: streaming
 - category: null
-  displayName: Optimizely Fullstack
-  link: /destinations/streaming-destinations/optimizely-full-stack/
+  displayName: Optimizely Feature Experimentation
+  link: /destinations/streaming-destinations/optimizely-feature-experimentation/
   options: null
   type: streaming
 - category: null
-  displayName: Optimizely Web
-  link: /destinations/streaming-destinations/optimizely-web/
+  displayName: Optimizely Web Experimentation
+  link: /destinations/streaming-destinations/optimizely-web-experimentation/
   options: null
   type: streaming
 - category: null
@@ -553,6 +545,11 @@
 - category: null
   displayName: Pendo
   link: /destinations/streaming-destinations/pendo/
+  options: null
+  type: streaming
+- category: null
+  displayName: PersistIQ
+  link: /destinations/streaming-destinations/persistiq/
   options: null
   type: streaming
 - category: null
@@ -641,11 +638,6 @@
   options: null
   type: streaming
 - category: null
-  displayName: SatisMeter
-  link: /destinations/streaming-destinations/satismeter/
-  options: null
-  type: streaming
-- category: null
   displayName: Segment
   link: /destinations/streaming-destinations/segment/
   options: null
@@ -706,8 +698,8 @@
   options: null
   type: streaming
 - category: null
-  displayName: Split.io
-  link: /destinations/streaming-destinations/splitio/
+  displayName: Split
+  link: /destinations/streaming-destinations/split/
   options: null
   type: streaming
 - category: null
@@ -720,11 +712,6 @@
   link: /destinations/streaming-destinations/tvsquared/
   options: null
   type: streaming
-# - category: null
-#   displayName: Taplytics
-#   link: /destinations/streaming-destinations/taplytics/
-#   options: null
-#   type: streaming
 - category: null
   displayName: TikTok Ads
   link: /destinations/streaming-destinations/tiktok-ads/
@@ -735,11 +722,6 @@
   link: /destinations/streaming-destinations/trengo/
   options: null
   type: streaming
-# - category: null
-#   displayName: Twitter Ads
-#   link: /destinations/streaming-destinations/twitter-ads/
-#   options: null
-#   type: streaming
 - category: null
   displayName: Userlist
   link: /destinations/streaming-destinations/userlist/
@@ -797,20 +779,24 @@
   type: streaming
 
 # Warehouse
+
 - category: null
   displayName: Amazon Redshift
   link: /destinations/warehouse-destinations/redshift/
   options: null
+  ftrsupport: yes
   type: warehouse
 - category: data-lake
   displayName: Amazon S3 Data Lake
   link: /destinations/warehouse-destinations/s3-datalake/
   options: null
+  ftrsupport: yes
   type: warehouse
 - category: null
   displayName: Azure Synapse
   link: /destinations/warehouse-destinations/azure-synapse/
   options: null
+  ftrsupport: yes
   type: warehouse
 - category: data-lake
   displayName: Azure Data Lake
@@ -821,11 +807,13 @@
   displayName: ClickHouse
   link: /destinations/warehouse-destinations/clickhouse/
   options: null
+  ftrsupport: yes
   type: warehouse
 - category: data-lake
   displayName: Databricks Delta Lake
   link: /destinations/warehouse-destinations/delta-lake/
   options: null
+  ftrsupport: yes
   type: warehouse
 - category: null
   displayName: Google BigQuery
@@ -841,18 +829,23 @@
   displayName: Microsoft SQL Server
   link: /destinations/warehouse-destinations/sql-server/
   options: null
+  ftrsupport: yes
   type: warehouse
 - category: null
   displayName: PostgreSQL
   link: /destinations/warehouse-destinations/postgresql/
   options: null
+  ftrsupport: yes
   type: warehouse
 - category: null
   displayName: Snowflake
   link: /destinations/warehouse-destinations/snowflake/
   options: null
+  ftrsupport: yes
   type: warehouse
+
 # Webhooks
+
 - category: null
   displayName: Webhook
   link: /destinations/streaming-destinations/webhooks/

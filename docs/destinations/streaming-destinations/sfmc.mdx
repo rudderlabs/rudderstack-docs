@@ -1,8 +1,7 @@
 ---
 title: "Salesforce Marketing Cloud"
 description: >-
-  Step-by-step guide on sending your event data from RudderStack to Salesforce Marketing Cloud. as a destination in
-  RudderStack
+  Step-by-step guide on sending your event data from RudderStack to Salesforce Marketing Cloud.
 ---
 
 [Salesforce Marketing Cloud](https://www.salesforce.com/in/products/marketing-cloud/overview/) is a digital marketing automation and analytics tool. It allows you to understand your customers better, and design personalized digital marketing campaigns to engage them throughout their product journey.
@@ -10,7 +9,7 @@ description: >-
 RudderStack allows you to integrate your source to Salesforce Marketing Cloud and send data to Salesforce Marketing Data Extensions.
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/sfmc">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/sfmc">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -53,32 +52,25 @@ Once you have confirmed that the platform supports sending events to Salesforce 
     - `Webhooks`: Read, Write
   - Click **Save**.
 - **Subdomain:** From the URL received, such as `https://mxxxxxxxxxxxxxxxxxxxx.rest.marketingcloudapis.com/`, `mxxxxxxxxxxxxxxxxxxxx` is the subdomain.
-- **Do not create or update contacts:** To disable creating or updating contacts during an `identify` call, set this option to `true`.
+- **Do not create or update contacts**: This setting is disabled by default. Toggle it on to disable creating or updating contacts via an `identify` call.
 - **Identify Data External Key:** Use this setting if you would like RudderStack to send `identify` events for creating or updating data extensions in Salesforce Marketing. The External Key of the data extension is needed for mapping the data.
 
 <div class="infoBlock">
 
 You can find the external key in the SFMC interface by going to **Data & Analytics**, and navigating to **Contact Builder** - **Data Extensions**. The extension's name can be found in the **External Key** column.
-
 </div>
 
-<img src="../../assets/sfmc-2.png" />
-<span class="imageTitle">Salesforce Connection Settings for Track</span>
-
-
+<img src="../../assets/sfmc-2.png" alt="Salesforce Connection Settings for Track" />
 
 - **Map events to External Key:** This setting is for mapping `track` events to a certain Data Extension in Salesforce Marketing Cloud. For the "Event Name" field, enter the name of the event that you want to send to Salesforce Marketing Cloud. Then, for the "External Key" field, enter the Data Extension's External Key that you would like to route the event data to. Click "Add More" and repeat for all `track` events you would like to send to SFMC.
 
 <div class="warningBlock">
-
 If you do not map an event to an External Key and it gets sent to SFMC, you may receive a message saying <code class="inline-code">"Event not mapped for this track call"</code>
-
 </div>
 
 <div class="infoBlock">
 
-You can find the external key in the SFMC interface by going to **Data & Analytics**, and navigating to **Contact Builder** - **Data Extensions**. The extension's name can be found in the **External Key** column.
-
+You can find the external key in the SFMC interface by going to **Data & Analytics** and navigating to **Contact Builder** - **Data Extensions**. The extension's name can be found in the **External Key** column.
 </div>
 
 - **Map events to Primary Key:** For all events going to a Data Extension, there needs to be a `Primary Key`. By default, if you do not use this setting, RudderStack will create a `Primary Key` called `Contact Key` and assign it to the `userId` of the event. If no `userId` is present, then it will be assigned to the `email`. Use this setting if you would like to map your own `Primary Key`. In the "Event Name" field, indicate the name of the event you would like to choose your own `Primary Key` for. Then choose what key from the event payload you would like to act as the `Primary Key`. The key should be present in your `event.properties` and ensure that it is set as a `Primary Key` in your SFMC Data Extension. You can add multiple primary keys by separating them with commas. 
@@ -91,15 +83,12 @@ We recommend creating a **Data Extension** in SFMC to store the `identify` and `
 In SFMC, keys that are not present in the selected data extension are ignored, so those attributes must be created before you send them to SFMC. If you send a trait/property `"phone": "99999"` with your data, but there's no matching phone column in SFMC's table, that trait or property will be ignored. All of the traits/properties in an `identify` or `track` call are not needed to be created as attributes in data extensions only the required ones should be created.
 
 <div class="warningBlock">
-
 All attributes in the Data Extension should be created in title case, regardless of the casing used in your RudderStack <code class="inline-code">identify</code> or <code class="inline-code">track</code> calls. When RudderStack sends these calls to SFMC, they are first transformed into title case.
-
 </div>
 
 <div class="infoBlock">
 
 A Primary Key for the Identify Data Extension called **Contact Key** is required to be created. RudderStack will use this to link the users to SFMC's built-in **Contact Key** key. This field will be populated with <code class="inline-code">userId</code> or <code class="inline-code">email</code> by default during the <code class="inline-code">identify</code> calls.
-
 </div>
 
 For setting up Primary Keys in Track calls, you can set up different primary keys for various events. If no primary key is set, the default primary key will be **Contact Key**. You can specify multiple, comma-separated primary keys if you have multiple primary keys in your data extension.
@@ -133,25 +122,19 @@ rudderanalytics.identify("userid", {
 <div class="infoBlock">
 
 Identify events will create or update the contacts in Salesforce marketing cloud if **Do Not Create or Update Contacts** is turned off. Otherwise, no creation or updating of contacts will occur.
-
 </div>
 
 <div class="warningBlock">
-
 <code class="inline-code">UserId</code> or <code class="inline-code">email</code> trait is required in every <code class="inline-code">identify</code> call, otherwise the event will not be triggered.
-
 </div>
 
 <div class="warningBlock">
 
 Salesforce marketing cloud does not allow colon characters (":") in the **Contact Key** field, so they must be removed from any <code class="inline-code">userId</code> fields. SFMC doesn't handle nested objects.
-
 </div>
 
 <div class="warningBlock">
-
 SFMC only accepts ISO-8601 type dates and rejects any other types if the attribute is of DateTime. For example, refer to the <code class="inline-code">createdAt</code> trait in the above snippet.
-
 </div>
 
 ## Track
@@ -167,9 +150,7 @@ rudderanalytics.track("Event Name", {
 Enter your external key and the primary key against each event. If no primary key is set, the default value of the **Contact Key** is taken. Multiple primary keys can be set by separating them with commas.
 
 <div class="infoBlock">
-
 You can also turn on UUID for particular events. If it is on, you can set UUID as a primary key in your data extensions. The <code class="inline-code">messageId</code> is then set as the UUID.
-
 </div>
 
 ## Data Formatting and Mapping
@@ -179,9 +160,7 @@ The RudderStack SDKs and libraries will automatically collect context properties
 The table below lists the RudderStack context properties available for SFMC and the Data Extension attribute names that they map to.
 
 <div class="infoBlock">
-
 Note that camel cases and snake cases will be formatted to title cases.
-
 </div>
 
 | **RudderStack Context Properties** | **SFMC Attribute name** |
@@ -210,4 +189,4 @@ Note that camel cases and snake cases will be formatted to title cases.
 | `screen.height`                    | `Screen Height`         |
 | `screen.width`                     | `Screen Width`          |
 
-
+<br />

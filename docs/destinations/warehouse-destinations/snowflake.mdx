@@ -1,16 +1,17 @@
 ---
 title: "Snowflake"
-description: Setting up Snowflake as a destination in RudderStack.
+description: Sync data from RudderStack to Snowflake.
+aliases: ['Snowflake destination']
 ---
 
-RudderStack supports Snowflake as a destination. [Snowflake](https://www.snowflake.com/) is a cloud-based data warehouse.
+[Snowflake](https://www.snowflake.com/) is a popular cloud-based data warehouse known for its speed, scalability, and reliability.
 
 <div class="infoBlock">
 Refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for how events are mapped to Snowflake tables.
 </div>
 
 <div class="successBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/snowflake">GitHub</a> repository.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/snowflake">GitHub</a> repository.
 </div>
 
 ## Setting user permissions in Snowflake
@@ -107,11 +108,6 @@ Follow these steps to configure your Azure data lake as a destination in RudderS
 
 ### Connection settings
 
-<img src="../../assets/dw-integrations/snowflake-connection-settings-1.png" alt="Snowflake destination settings in RudderStack" />
-<img src="../../assets/dw-integrations/snowflake-connection-settings-2.png" alt="Snowflake destination settings in RudderStack" />
-
-Enter the following credentials in the **Connection Credentials** page:
-
 - **Account**: Enter the account ID of your Snowflake warehouse. This account ID is part of the Snowflake URL. 
   
 The following examples illustrate the slight differences in the account ID for various cloud providers:
@@ -171,8 +167,15 @@ Refer to the following settings depending on your cloud provider:
       <li><strong>Staging S3 Storage Bucket Name</strong>: Specify the name of your S3 bucket where RudderStack will store the data before loading it into Snowflake.</li>
       <li><strong>Prefix</strong>: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder.</li>
       <li><strong>Storage Integration</strong>: Refer to the <Link to="#configuring-cloud-storage-integration-with-snowflake">Configuring cloud storage integration with Snowflake</Link> section for details.</li>
-      <li><strong>AWS Access Key ID</strong>: Enter your AWS access key ID obtained from the AWS console.</li>
-      <li><strong>AWS Secret Access Key</strong>:  Enter the AWS secret access key.  Refer to this <Link to="/destinations/streaming-destinations/amazon-s3#permissions">Permissions</Link> section for more information. </li>
+      <li><strong>Role Based Authentication</strong>: Enable this setting to use the RudderStack IAM role for authentication. For more information on creating an AWS IAM role for RudderStack, refer to <Link to="/destinations/aws-iam-role-for-rudderstack/#creating-a-rudderstack-iam-role">this guide</Link>.
+      <ul>
+      <li><strong>IAM Role ARN</strong>: Enter the ARN of the IAM role.</li>
+      </ul>
+      </li>
+      <div class="warningBlock">
+It is highly recommended to enable this setting as the access keys-based authentication will be deprecated in the future.
+</div>
+    <li>If <strong>Role-based Authentication</strong> is disabled, you need to enter the <strong>AWS Access Key ID</strong> and <strong>AWS Secret Access Key</strong> to authorize RudderStack to write to your S3 bucket. Refer to this <Link to="/destinations/streaming-destinations/amazon-s3#permissions">Permissions</Link> section for more information.</li>
       <li><strong>Enable Server-side Encryption for S3</strong>: Toggle on this setting to enable server-side encryption for your S3 bucket.</li>
     </ul>
     </TabPanel>

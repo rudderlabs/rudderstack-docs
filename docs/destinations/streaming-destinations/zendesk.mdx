@@ -1,50 +1,41 @@
 ---
 title: "Zendesk"
-description: Step-by-step guide on sending your event data from RudderStack to Zendesk.
+description: Send data from RudderStack to Zendesk.
 ---
 
-[Zendesk](https://www.zendesk.com/) is a popular CRM and customer support service suite that enables you to resolve all your customers' queries and concerns with features like live chat, call center software capabilities, and a smart knowledge base for your executives.
-
-RudderStack supports Zendesk as a destination to which you can seamlessly send your customer data.
+[Zendesk](https://www.zendesk.com/) is a popular CRM and customer support service suite. It offers features like live chat, call center software capabilities, and a smart knowledge base for your executives to help them resolve customers' queries and concerns.
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/zendesk">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/zendesk">GitHub repository</a>.
 </div>
 
 ## Getting started
 
-Before configuring Zendesk as a destination in RudderStack, verify if the source platform is supported by Zendesk by referring to the table below:
+RudderStack supports sending events to Zendesk via the following <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link>:
 
-| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| Connection Mode  | Web               | Mobile            | Server    |
 | :------------------ | :------------ | :------------ | :------------ |
 | **Device mode**     | -             | -             | -             |
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
-<div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, read the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
-</div>
-
-Once you have verified that the source platform supports sending events to Zendesk, perform the steps below:
+Once you have confirmed that the source platform supports sending events to Zendesk, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Zendesk**.
-2. Assign a name to the destination and click **Continue**.
+2. Assign a name to your destination and click **Continue**.
 
 ### Connection settings
 
-To successfully configure Zendesk as a destination, you will need to configure the following settings:
+To successfully configure Zendesk as a destination, you need to configure the following settings:
 
 <img src="../../assets/event-stream-destinations/zendesk-connection-settings.png" alt="Zendesk connection settings"/>
 
-* **Email**: Enter the email address used to log into your Zendesk account.
+* **Email**: Enter the email address used to log in to your Zendesk account.
 * **API Token**: Enter the Zendesk API token used to authenticate the integration. To generate a new API token, refer to this <a href="https://support.zendesk.com/hc/en-us/articles/226022787-Generating-a-new-API-token-">Zendesk support article</a>.
-* **Zendesk Subdomain**: Enter your Zendesk subdomain excluding `.zendesk.com`.
-* **Create users as verified**: Enable this setting to create verified users in Zendesk. When enabled, RudderStack sends `verified` as `true` in the event payload and Zendesk skips the email verification for these users.
-* **Send Group calls without a User ID**: Enable this setting if you do not want to associate a particular user with a group. When enabled, RudderStack creates or updates a group only if `userId` is **not** present in the event.
-* **Enable Removing Users from Organizations**: Enable this setting to remove users from an organization via the `identify` call.
-
-<div class="infoBlock">
-For more information on this setting, refer to the <Link to="#removing-users-from-an-organization">Removing users from an organization</Link> section below.
-</div>
+* **Zendesk Subdomain**: Enter your Zendesk subdomain **excluding** `.zendesk.com`.
+* **Create users as verified**: Enable this setting to create verified users in Zendesk. When enabled, RudderStack sends `verified` as `true` in the event and Zendesk skips the email verification for these users.
+* **Send Group calls without User ID**: Enable this setting if you do not want to associate a particular user with a group. When enabled, RudderStack creates or updates a group only if `userId` is **not** present in the event.
+* **Enable Removing Users from Organizations**: Enable this setting to remove users from an organization via the `identify` call. For more information on this setting, refer to the <Link to="#removing-users-from-an-organization">Removing users from an organization</Link> section below.
+* **Update user's primary email**: Enable this setting to set the email present in the event as the user's primary email in Zendesk, replacing the previously-set primary email. For more information on this setting, refer to the <Link to="#updating-users-primary-email-in-zendesk">Updating user's primary email in Zendesk</Link> section below.
 
 ## Identify
 
@@ -68,22 +59,18 @@ RudderStack persists the user details from the `identify` call for all the subse
 
 RudderStack maps the following event properties to the standard Zendesk user attributes:
 
-| **RudderStack property**  | **Zendesk attribute**       | **Presence** | 
-| :--------------- | :---------------- | :------ |
-| `name`           | `name`            | Required |
-| `email`          | `email`           | Optional, but recommended | 
-| `organizationId` / `company.id` | `organization_id` | Optional |
-| `timezone`       | `time_zone`       |  Optional |
-| `phone`          | `phone`           | Optional |
-| `userId`         | `user_id`         | Optional |
-| `userId`         | `external_id`     | Optional |
+| **RudderStack property**  | **Zendesk attribute**       | 
+| :--------------- | :---------------- | 
+| `name`    <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>       | `name`            | 
+| `email`     <br/> <span style="color: #4D4DFF;font-size:12px;">Optional, but recommended</span>     | `email`           | 
+| `organizationId` / `company.id` | `organization_id` | 
+| `timezone`       | `time_zone`       |  
+| `phone`          | `phone`           | 
+| `userId`         | `user_id`         | 
+| `userId`         | `external_id`     | 
 
 <div class="infoBlock">
 RudderStack creates a new custom field in Zendesk for any other unmapped attributes.
-</div>
-
-<div class="infoBlock">
-The <code class="inline-code">organization_id</code> corresponds to the organization ID assigned by Zendesk.
 </div>
 
 ### Removing users from an organization
@@ -113,20 +100,21 @@ The above `identify` call updates the user (if they exist) as well as removes th
 
 RudderStack assumes a valid Zendesk `organization_id` in the `company.id` field. Then, it finds the organization corresponding to that ID and removes the user.
 
-### Updating user's primary email
+### Updating user's primary email in Zendesk
 
-To set a new email address as the user's primary email in Zendesk, you can use the `primaryEmail` trait in the `identify` call, as shown:
+To set the email present in the event as the user's primary email in Zendesk, enable the **Update user's primary email** dashboard setting and pass the `email` trait in the `identify` call, as shown:
 
 ```javascript
 rudderanalytics.identify("1hKOmRA4GRlm", {
   name: "Alex Keener",
   email: "alex@example.com",
-  primaryEmail: "test300@email.com",
   country: "USA",
 });
 ```
 
-In the above snippet, `test300@email.com` is set as the user's primary email and `alex@example.com` is set as the secondary email in Zendesk. However, if `primaryEmail` is not specified, then `alex@example.com` is set as the primary email.
+When you send the above event, Zendesk sets `alex@example.com` as the user's primary email.
+
+If the **Update user's primary email** dashboard setting is disabled, RudderStack sets the `email` present in the `identify` traits as the user's secondary email in Zendesk, **if** any primary mail already exists.
 
 ## Track
 

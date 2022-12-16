@@ -451,6 +451,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "olark",
+    title: "Olark",
+    link: "/sources/event-streams/cloud-apps/olark/",
+    content: [],
+  },
+  {
     key: "posthog",
     title: "PostHog",
     link: "/sources/event-streams/cloud-apps/posthog/",
@@ -1899,6 +1905,12 @@ export const postNavList = [
     key: "mouseflow",
     title: "Mouseflow",
     link: "/destinations/streaming-destinations/mouseflow/",
+    content: [],
+  },
+  {
+    key: "persistiq",
+    title: "PersistIQ",
+    link: "/destinations/streaming-destinations/persistiq/",
     content: [],
   },
   {
