@@ -1,0 +1,58 @@
+---
+title: "Overview"
+description: >- 
+ Quick overview of RudderStack's Reverse ETL features.
+---
+
+RudderStack provides some useful features which you can use while configuring your Reverse ETL pipelines to customize, automate, and ensure seamless event flow from your data warehouse to various analytics, sales, and marketing tools.
+
+## Syncing data as `identify` and `track` events
+
+RudderStack supports syncing data from the Reverse ETL sources to the downstream destinations as <Link to="/event-spec/standard-events/identify/">`identify`</Link> and <Link to="/event-spec/standard-events/track/">`track`</Link> calls.
+
+<div class="warningBlock">
+You can send your data as <code class="inline-code">track</code> calls only while mapping your warehouse columns to the destination fields using the <Link to="">JSON mapping</Link>. <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapper</Link> is not supported currently.
+</div>
+
+Some key features of syncing events from Reverse ETL sources are listed below:
+
+- **Ensure the reliability of your events**: Sometimes, your critical events(such as purchases) may get blocked by things outside your control, such as adblockers. In such cases, if you have all your users' activity in the database, you can send it to the downstream systems as a guaranteed source of truth.
+- **Simulate historical tracking of events**: You can replay the historical data from other data sources to your sales, support, and marketing systems to maintain business continuity.
+- **Fix bad data and replay it**: There is a possibility that your destination ends up with some bad data due to a bug in the tracking code or any other reason.
+In such cases, you can clear the bad data and replay a clean version by syncing the events.
+- **Test your transformations and integrations**: You can use a sample dataset to test an event stream for a new version of your transformation or a new integration using the `track` call. 
+
+### Use cases for sending `track` events
+
+Some examples where you can use the `track` call to send events from your warehouse into the downstream destinations are listed below:
+
+- Sending event data to engagement platforms such as Braze, Iterable, Customer.io, or Salesforce Marketing Cloud to trigger behavior or populate user actions.
+- Sending event data to the downstream systems that are configured to handle `track` calls, like Apache Kafka or Amazon Kinesis.
+- Replaying the fact table that might be the source of truth for user behavior to the downstream tools such as Statsig, Optimizely, etc.
+
+Refer to the <Link to="">JSON mapping</Link> guide for detailed steps on choosing the event type to sync event data to a downstream destination.
+
+## Models
+
+RudderStack's **Models** feature lets you define custom SQL queries, run them on your warehouse source, and send the resulting data to the specified destinations. You can create as many models and reuse them with their corresponding Reverse ETL sources.
+
+With this feature, you can:
+
+* Build models with complex SQL queries via an intuitive UI.
+* Manage the views of all the models synced to different destinations in one place.
+* Reuse the existing models in multiple connections.
+
+For more information on creating and using the models, refer to the <Link to="/sources/reverse-etl/common-settings/models/">Models</Link> guide.
+
+## Visual Data Mapper
+
+The **Visual Data Mapper** (VDM) offers an intuitive UI to map your warehouse columns to specific destination fields. This is useful especially when mapping your warehouse data to custom fields defined in your destination.
+
+<div class="successBlock">
+To use this feature, you can add a <a href="https://rudderstack.com/docs/sources/reverse-etl/">Reverse ETL source</a> and then connect it to a <Link to="">VDM-supported destination</Link>. For more information, refer to the <Link to="/sources/reverse-etl/common-settings/visual-data-mapper/">Visual Data Mapper</Link> guide.
+</div>
+
+
+## Airflow Provider
+
+RudderStack's Airflow Provider lets you programmatically schedule and trigger Reverse ETL syncs from outside RudderStack and integrate them with your existing Airflow workflows. Refer to the <Link to="/sources/reverse-etl/features/airflow-provider/">Airflow Provider</Link> guide for more information. 

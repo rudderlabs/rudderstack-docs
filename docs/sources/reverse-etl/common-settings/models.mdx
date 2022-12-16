@@ -4,22 +4,10 @@ description: >-
   Detailed guide on custom SQL models and how to create, update, and fetch their details in the RudderStack dashboard.
 ---
 
-RudderStack's **Models** feature lets you create models by defining custom SQL queries. You can then run these queries on your warehouse and send the resulting data to specific destinations. You can create as many models and reuse them with their corresponding Reverse ETL sources.
-
-With this feature, you can:
-
-* Build models with complex SQL queries via an intuitive UI.
-* Manage the views of all the models synced to different destinations in one place.
-* Reuse the existing models in multiple connections.
-
-<div class="successBlock">
-  
-Models is a <a href="https://www.rudderstack.com/docs/sources/reverse-etl/">Reverse ETL</a> feature. For more information on setting up your Reverse ETL sources using models, refer to the <Link to="/sources/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</Link> guide.
-</div>
+RudderStack's **Models** feature lets you create models by defining custom SQL queries. You can then run these queries on your warehouse and send the resulting data to specific destinations. 
 
 <div class="infoBlock">
-
-Currently, RudderStack supports this feature for the following Reverse ETL sources:
+RudderStack supports this feature for the following Reverse ETL sources:
 <ul>
 <li><Link to="/sources/reverse-etl/amazon-redshift/">Amazon Redshift</Link></li> 
 <li><Link to="/sources/reverse-etl/google-bigquery/">Google BigQuery</Link></li>
@@ -28,17 +16,12 @@ Currently, RudderStack supports this feature for the following Reverse ETL sourc
 </ul>
 </div>
 
-You can find the **Models** option in the left navigation bar of the RudderStack dashboard that lets you view all the existing models, as shown:
-
-<img src="../../../assets/warehouse-actions-sources/models-view-dashboard.png" alt="RudderStack Models" />
-
-## Creating a new model
+## Creating a model
 
 Follow these steps to create a model:
 
-1. Log in to the **RudderStack dashboard**.
-
-2. Click on **Models** in the left navigation bar and select **New model**.
+1. Log in to the <a href="https://app.rudderstack.com/">RudderStack dashboard</a>.
+2. From the left navigation bar, go to **Enhance** > **Models** and click **New model**.
 
 <img src="../../../assets/warehouse-actions-sources/models-dashboard.png" alt="RudderStack Models"/>
 
@@ -50,7 +33,6 @@ Follow these steps to create a model:
 5. Select your existing warehouse credentials or click on **Create Credentials from Scratch** and enter the warehouse-specific details.
  
 <div class="warningBlock">
-
 Your warehouse account must have the necessary user permissions for RudderStack to access it. For more information on these user permissions, refer to the <strong>Granting Permissions</strong> section of the relevant <Link to="/sources/reverse-etl/">Reverse ETL</Link> source.
 </div>
 
@@ -66,7 +48,6 @@ Once you select or add your warehouse credentials and click on <strong>Next</str
 <img src="../../../assets/warehouse-actions-sources/sample-sql-query.png" alt="Sample SQL query" />
 
 <div class="infoBlock">
-
 The <strong>Preview</strong> section displays the preview of the 50 resultant rows in a paginated format.
 </div>
 
