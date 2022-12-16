@@ -55,8 +55,8 @@ Rudder::init(WRITE_KEY, array(
   "data_plane_url" => DATA_PLANE_URL,
   "consumer"       => "lib_curl", // fork_curl
   "debug"          => true,
-  "max_queue_size" => 10000,
-  "batch_size"     => 100,
+  "max_queue_size" => 10000, // Temporary queue to store the in-memory events, defaults to 1000
+  "batch_size"     => 100, // Number of events sent in a batch request, defaults to 100
   "ssl"            => true // defaults to true
 ));
 ```
