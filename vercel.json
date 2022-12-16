@@ -2,7 +2,11 @@
   "redirects": [
     {
       "source": "/cloud-extract-sources/hubspot-v2/",
-      "destination": "/docs/sources/extract/hubspot-v2/"
+      "destination": "/docs/sources/extract/hubspot/"
+    },
+    {
+      "source": "/sources/extract/hubspot-v2/",
+      "destination": "/docs/sources/extract/hubspot/"
     },
     {
       "source": "/user-guides/how-to-guides/live-destination-event-debugger/",
@@ -15,14 +19,6 @@
     {
       "source": "/cloud-extract-sources/hubspot/hubspot-data-model-and-schema-information/",
       "destination": "/docs/sources/extract/hubspot/hubspot-data-model-and-schema-information/"
-    },
-    {
-      "source": "/cloud-extract-sources/hubspot/",
-      "destination": "/docs/sources/extract/hubspot-v2/"
-    },
-    {
-      "source": "/sources/extract/hubspot/",
-      "destination": "/docs/sources/extract/hubspot-v2/"
     },
     {
       "source": "/sources/sdks/:path(.*)",
@@ -1233,7 +1229,11 @@
       "destination": "/docs/sources/extract/google-analytics/"
     },
     {
-      "source": "/cloud-extract-sources/google-search-console/",
+      "source": "/sources/extract/google-analytics-v2/",
+      "destination": "/docs/sources/extract/google-analytics/"
+    },
+    {
+      "source": "/sources/extract/google-search-console-v2/",
       "destination": "/docs/sources/extract/google-search-console/"
     },
     {
@@ -1246,7 +1246,11 @@
     },
     {
       "source": "/cloud-extract-sources/intercom-v2/",
-      "destination": "/docs/sources/extract/intercom-v2/"
+      "destination": "/docs/sources/extract/intercom/"
+    },
+    {
+      "source": "/sources/extract/intercom-v2/",
+      "destination": "/docs/sources/extract/intercom/"
     },
     {
       "source": "/cloud-extract-sources/intercom/",
@@ -1258,6 +1262,10 @@
     },
     {
       "source": "/cloud-extract-sources/mixpanel/",
+      "destination": "/docs/sources/extract/mixpanel/"
+    },
+    {
+      "source": "/sources/extract/mixpanel-v2/",
       "destination": "/docs/sources/extract/mixpanel/"
     },
     {
@@ -1285,11 +1293,15 @@
       "destination": "/docs/sources/extract/salesforce/"
     },
     {
-      "source": "/cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment/",
-      "destination": "/docs/sources/extract/salesforce/schema-comparison-rudderstack-vs-segment/"
+      "source": "/sources/extract/salesforce-v2/",
+      "destination": "/docs/sources/extract/salesforce/"
     },
     {
       "source": "/cloud-extract-sources/sendgrid/",
+      "destination": "/docs/sources/extract/sendgrid/"
+    },
+    {
+      "source": "/sources/extract/sendgrid-v2/",
       "destination": "/docs/sources/extract/sendgrid/"
     },
     {
@@ -1305,8 +1317,12 @@
       "destination": "/docs/sources/extract/zendesk-chat/"
     },
     {
-      "source": "/cloud-extract-sources/zendesk/",
-      "destination": "/docs/sources/extract/zendesk/"
+      "source": "/sources/extract/zendesk-chat-v2/",
+      "destination": "/docs/sources/extract/zendesk-chat/"
+    },
+    {
+      "source": "/cloud-extract-sources/zendesk-support/",
+      "destination": "/docs/sources/extract/zendesk-support/"
     },
     {
       "source": "/reverse-etl/databricks/",

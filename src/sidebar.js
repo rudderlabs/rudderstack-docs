@@ -473,43 +473,45 @@ export const jsonData = [
                 title: "Facebook Ads",
                 link: "/sources/extract/facebook-ads/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Freshdesk",
                 link: "/sources/extract/freshdesk/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Freshdesk V2",
                 link: "/sources/extract/freshdesk-v2/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Google Ads (Adwords)",
                 link: "/sources/extract/google-adwords/",
                 content: []
+            },
+            {
+                title: "Google Analytics",
+                link: "/sources/extract/google-analytics/",
+                content: []
             }, 
             {
-                title: "Google Analytics V2",
-                link: "/sources/extract/google-analytics-v2/",
-                content: []
-            }, {
                 title: "Google Search Console",
                 link: "/sources/extract/google-search-console/",
                 content: []
-            }, {
-                title: "Google Search Console V2",
-                link: "/sources/extract/google-search-console-v2/",
-                content: []
-            },{
+            },
+            {
                 title: "Google Sheets",
                 link: "/sources/extract/google-sheets/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "HubSpot",
-                link: "/sources/extract/hubspot-v2/",
+                link: "/sources/extract/hubspot/",
                 content: []
             },
             {
-                title: "Intercom V2",
-                link: "/sources/extract/intercom-v2/",
+                title: "Intercom",
+                link: "/sources/extract/intercom/",
                 content: []
             },
             {
@@ -528,19 +530,26 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Mixpanel V2",
-                link: "/sources/extract/mixpanel-v2/",
-                content: []
-            }, 
-            {
                 title: "Marketo",
                 link: "/sources/extract/marketo/",
                 content: []
-            }, {
+            }, 
+            {
+                title: "Mixpanel",
+                link: "/sources/extract/mixpanel/",
+                content: []
+            }, 
+            {
                 title: "NetSuite",
                 link: "/sources/extract/netsuite/",
                 content: []
-            }, {
+            },
+            {
+                title: "Pardot",
+                link: "/sources/extract/salesforce-pardot/",
+                content: []
+            },
+            {
                 title: "Pipedrive",
                 link: "/sources/extract/pipedrive/",
                 content: []
@@ -556,18 +565,13 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Salesforce V2",
-                link: "/sources/extract/salesforce-v2/",
+                title: "Salesforce",
+                link: "/sources/extract/salesforce/",
                 content: []
             },
             {
-                title: "Salesforce Pardot",
-                link: "/sources/extract/salesforce-pardot/",
-                content: []
-            },
-            {
-                title: "SendGrid V2",
-                link: "/sources/extract/sendgrid-v2/",
+                title: "SendGrid",
+                link: "/sources/extract/sendgrid/",
                 content: []
             }, 
             {
@@ -576,8 +580,8 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Zendesk Chat V2",
-                link: "/sources/extract/zendesk-chat-v2/",
+                title: "Zendesk Chat",
+                link: "/sources/extract/zendesk-chat/",
                 content: [],
             },
             {
