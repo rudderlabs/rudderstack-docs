@@ -1,18 +1,17 @@
 ---
 title: "ClickHouse"
-description: Step-by-step guide on setting up ClickHouse as a destination in RudderStack.
+description: Sync data from RudderStack to ClickHouse.
+aliases: ['ClickHouse destination']
 ---
 
 [ClickHouse](https://clickhouse.tech/) is an open-source, column-oriented database management system mainly used for online analytical processing (OLAP). It is fast, and allows for real-time analysis of your data.
-
-RudderStack lets you configure ClickHouse as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
 Refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more information on how the events are mapped to the tables in ClickHouse.
 </div>
 
 <div class="successBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/clickhouse">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/clickhouse">GitHub repository</a>.
 </div>
 
 ## Setting user permissions in ClickHouse
@@ -44,11 +43,6 @@ To configure ClickHouse as a destination in RudderStack, follow these steps:
 
 ### Connection Settings
 
-<img src="../../assets/dw-integrations/clickhouse-connection-settings.png" alt="ClickHouse connection settings" />
-<img src="../../assets/dw-integrations/clickhouse-connection-settings2.png" alt="ClickHouse connection settings" />
-
-Enter the following credentials in the **Connection Credentials** page:
-
 - **Host**: The host name of your ClickHouse database.
 - **Port**: The TCP port of your ClickHouse host. If you want the connection to be secure, use the secure TCP port `9440`. Refer to the [ClickHouse guide](https://clickhouse.tech/docs/en/operations/server-configuration-parameters/settings/#server_configuration_parameters-tcp_port) for more information.
 - **Database**: The database name in your ClickHouse instance where the data gets loaded.
@@ -72,7 +66,7 @@ This option is applicable only for RudderStack-hosted data planes. For <Link to=
 
 - **Choose your storage provider**: If **Use RudderStack-managed object storage** is **disabled** in the dashboard, select the cloud provider for your object storage and enter the relevant settings:
 
-   - <Link to="/destinations/streaming-destinations/amazon-s3#setting-up-amazon-s3">Amazon S3 bucket storage settings</Link>
+   - <Link to="/destinations/streaming-destinations/amazon-s3/#connection-settings">Amazon S3 bucket storage settings</Link>
    - <Link to="/destinations/streaming-destinations/microsoft-azure-blob-storage#setting-up-azure-blob-storage">Azure Blob Storage settings</Link>
    - <Link to="/destinations/streaming-destinations/google-cloud-storage#setting-up-google-cloud-storage">Google Cloud Storage bucket settings</Link>
    - <Link to="/destinations/streaming-destinations/minio#setting-up-minio">MinIO bucket storage settings</Link>

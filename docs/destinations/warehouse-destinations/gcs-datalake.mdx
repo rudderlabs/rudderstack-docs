@@ -1,11 +1,10 @@
 ---
 title: "Google Cloud Storage Data Lake"
-description: Step-by-step guide on setting up GCS Data Lake as a destination in RudderStack.
+description: Sync data from RudderStack to GCS Data Lake.
+aliases: ['GCS data lake destination']
 ---
 
 The [Google Cloud Storage (GCS) data lake](https://cloud.google.com/architecture/build-a-data-lake-on-gcp) leverages [Google Cloud Storage](https://cloud.google.com/storage) for storing and accessing your data in the GCP infrastructure. It offers state-of-the-art performance and scalability, along with ensuring the security and privacy of your data.
-
-RudderStack lets you configure GCS data lake as a destination to which you can send your event data seamlessly.
 
 ## Setting user permissions in GCS data lake
 
@@ -72,11 +71,6 @@ To configure GCS data lake as a destination in RudderStack, follow these steps:
 2. Assign a name to your destination and then click on **Next**.
 
 ### Connection settings
-
-<img src="../../assets/dw-integrations/gcs-datalake-connection-settings-1.png" alt="GCS data lake destination settings in RudderStack" />
-<img src="../../assets/dw-integrations/gcs-datalake-connection-settings-2.png" alt="GCS data lake destination settings in RudderStack" />
-
-Enter the following credentials in the **Connection Credentials** page:
 
 - **GCS Storage Bucket Name**: The name of the GCS bucket used to store data before loading it into the GCS data lake.
 - **Prefix**: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder. For example, `https://storage.googleapis.com/<bucketName>/<prefix>/`.

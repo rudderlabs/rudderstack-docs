@@ -1,18 +1,17 @@
 ---
 title: "Microsoft SQL Server"
-description: Step-by-step guide on setting up SQL Server as a destination in RudderStack.
+description: Sync data from RudderStack to Microsoft SQL Server.
+aliases: ['SQL Server destination']
 ---
 
 [Microsoft SQL Server](https://www.microsoft.com/en-in/sql-server/sql-server-downloads) is a popular relational database management system (RDBMS). ideal for a variety of data workloads - from small-scale, single-machine data applications to large data applications with thousands of concurrent users.
-
-RudderStack lets you configure Microsoft SQL Server as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
 Refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more information on how the events are mapped to the tables in SQL Server.
 </div>
 
 <div class="successBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/mssql">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/mssql">GitHub repository</a>.
 </div>
 
 ## Setting user permissions in SQL Server
@@ -60,11 +59,6 @@ To configure SQL Server as a destination in RudderStack, follow these steps:
 
 ### Connection settings
 
-<img src="../../assets/dw-integrations/mssqlconnection.png" />
-<img src="../../assets/dw-integrations/mssqlconnection2.png" />
-
-Enter the following credentials in the **Connection Credentials** page:
-
 - **Host**: The host name of your SQL Server service.
 - **Database**: The database name in your SQL Server instance where the data will be sent.
 - **User**: The name of the user with the required read/write access to the above database.
@@ -87,7 +81,7 @@ This option is applicable only for RudderStack-hosted data planes. For self-host
 
 - **Choose your storage provider**: If **Use RudderStack-managed object storage** is **disabled** in the dashboard, select the cloud provider for your object storage and enter the relevant settings:
 
-   - <Link to="/destinations/streaming-destinations/amazon-s3#setting-up-amazon-s3">Amazon S3 bucket storage settings</Link>
+   - <Link to="/destinations/streaming-destinations/amazon-s3/#connection-settings">Amazon S3 bucket storage settings</Link>
    - <Link to="/destinations/streaming-destinations/microsoft-azure-blob-storage#setting-up-azure-blob-storage">Azure Blob Storage settings</Link>
    - <Link to="/destinations/streaming-destinations/google-cloud-storage#setting-up-google-cloud-storage">Google Cloud Storage bucket settings</Link>
    - <Link to="/destinations/streaming-destinations/minio#setting-up-minio">MinIO bucket storage settings</Link>
