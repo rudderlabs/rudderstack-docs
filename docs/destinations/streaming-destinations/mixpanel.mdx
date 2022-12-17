@@ -1,6 +1,6 @@
 ---
 title: "Mixpanel"
-description: Step-by-step guide on sending your event data from RudderStack to Mixpanel.
+description: Send your event data from RudderStack to Mixpanel.
 aliases: ["Mixpanel destination"]
 ---
 
@@ -75,7 +75,7 @@ The following settings are applicable if you are using this destination via the 
 - **Group Key Settings**: RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified here. These group keys act as the group identifiers in Mixpanel. For more information, refer to the <Link to="#group-key">Group Key</Link> section below.
 - **Client-side Events Filtering**: Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 
-The following event mapping setting is applicable only if you are sending events to Mixpanel via the cloud mode:
+The following event mapping setting is applicable only if you are sending events to Mixpanel via cloud mode:
 
 - **Use New Mapping**: This option is disabled by default and sends the first name and last name as:
 
@@ -110,7 +110,7 @@ rudderanalytics.identify("12345", {
 })
 ```
 
-When sending events via the cloud mode, you can prevent the `$last_seen` attribute getting updated with incorrect times by setting `active` to `false` in the `context` object, as shown in the following snippet:
+When sending events via cloud mode, you can prevent the `$last_seen` attribute getting updated with incorrect times by setting `active` to `false` in the `context` object, as shown in the following snippet:
 
 ```javascript
 rudderanalytics.identify("12345", {

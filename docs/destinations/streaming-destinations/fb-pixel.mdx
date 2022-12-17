@@ -1,6 +1,6 @@
 ---
 title: "Facebook Pixel"
-description: Step-by-step guide on sending your event data from RudderStack to Facebook Pixel.
+description: Send your event data from RudderStack to Facebook Pixel.
 ---
 
 [Facebook Pixel](https://developers.facebook.com/docs/facebook-pixel/) is a simple JavaScript snippet that you can add to your website and track visitor activity as well as other important metrics required to build effective marketing and advertising campaigns.
@@ -40,7 +40,7 @@ To successfully configure Facebook Pixel as a destination, you will need to conf
 The following sections explain these settings in more detail.
 
 - **Facebook Pixel ID**: Enter your Facebook Pixel ID. This is required for sending events via both cloud and device modes. 
-- **Business Access Token**: Enter your Facebook business access token required to send the events via the cloud mode.
+- **Business Access Token**: Enter your Facebook business access token required to send the events via cloud mode.
 
 <div class="infoBlock">
 For more information on obtaining your Facebook Pixel ID and Business Access Token, refer to the <a href="#faq">FAQ</a> section below.
@@ -142,7 +142,7 @@ The <code class="inline-code">context.dataProcessingOptions</code> will be mappe
 ### Client-side event filtering
 
 <div class="infoBlock">
-RudderStack supports specifying which events should be discarded or allowed to flow through, when sending events via the device mode. For more information, refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> documentation.
+RudderStack supports specifying which events should be discarded or allowed to flow through, when sending events via device mode. For more information, refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> documentation.
 </div>
 
 ### Web device mode settings
@@ -185,7 +185,7 @@ RudderStack then changes the traits as shown below, before sending them to Faceb
 }
 ```
 
-- **Legacy Conversion Pixel IDs**: With this setting, you can send specific events to a legacy conversion Pixel by specifying the event-Pixel ID mapping. Note that this option is available only when sending events via the device mode.
+- **Legacy Conversion Pixel IDs**: With this setting, you can send specific events to a legacy conversion Pixel by specifying the event-Pixel ID mapping. Note that this option is available only when sending events via device mode.
 - **Use device-mode to send events**: Enable this setting to send events from the JavaScript SDK to Facebook Pixel via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 - Finally, click on **Next** to complete the configuration.

@@ -1,6 +1,6 @@
 ---
 title: "CleverTap"
-description: Step-by-step guide on sending your event data from RudderStack to CleverTap.
+description: Send your event data from RudderStack to CleverTap.
 ---
 
 [CleverTap](https://clevertap.com/) is a popular customer engagement and retention platform. Its in-app analytics and marketing capabilities allow you to get real-time insights into your customers and build valuable, long-term relationships with them. With CleverTap, you can easily your users' actions and understand how they are using your product. You can also segment users based on their behavior and run targeted campaigns to boost your user engagement and retention metrics.
@@ -597,7 +597,7 @@ One way to solve this problem is to track users only in cases where a `userId` i
 ## Device token upload using cloud mode
 
 <div class="infoBlock">
-This section is applicable for the Android and iOS sources when sending events via the Cloud Mode.
+This section is applicable for the Android and iOS sources when sending events via cloud mode.
 </div>
 
 When the device token is present in `context.device.token` in `identify` calls, RudderStack will use the [CleverTap Device Token Upload API](https://developer.clevertap.com/docs/upload-device-tokens-api) to upload the device token for the identified user. For Android, RudderStack sets the token type as `fcm`. For iOS, it is set as `apns`.
