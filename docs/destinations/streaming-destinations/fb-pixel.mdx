@@ -50,7 +50,7 @@ For more information on obtaining your Facebook Pixel ID and Business Access Tok
 
 <img src="../../assets/event-stream-destinations/fbp-connection-settings-2.png" alt="Connection settings" />
 
-- **Map Categories to Facebook Content Types**: Enter the category value and the corresponding Facebook [`content_type`](https://developers.facebook.com/docs/meta-pixel/get-started/advantage-catalog-ads#content-type) which should be mapped to each other. This `content_type` is sent to Facebook every time you send the specified category value via Rudderstack. Refer to the <Link to="#sending-custom-content_type">Sending custom `content_type`</Link> section for more information on sending the customized `content_type` to Facebook.
+- **Map Categories to Facebook Content Types**: Enter the category value and the corresponding Facebook [`content_type`](https://developers.facebook.com/docs/meta-pixel/get-started/advantage-catalog-ads#content-type) which should be mapped to each other. This `content_type` is sent to Facebook every time you send the specified category value via RudderStack. Refer to the <Link to="#sending-custom-content_type">Sending custom `content_type`</Link> section for more information on sending the customized `content_type` to Facebook.
 - **Enable Standard Event (PageView) for all Page and Screen Calls**: If this setting is enabled, RudderStack sets `pageview` as a standard event for all the `page` and `screen` calls.
 - **Map your events with Facebook Standard Events**: RudderStack maps some events to the Facebook standard events by default. You can use this option to override the <Link to="#standard-events">default mappings</Link> and map events to the Facebook standard events. 
 - **Standard Events custom properties**: For the standard events, some predefined properties are taken by Facebook. If you want to send more properties for your events, mention those properties in this field.
@@ -127,7 +127,7 @@ If you want to send any of the above properties hashed by SHA256, you need to en
 }
 ```
 
-Here, you can send the value of [`fbc`](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/#fbc) parameter via `context.fbc` as shown in the above payload. If not sent, Rudderstack auto generates it using the following values:
+Here, you can send the value of [`fbc`](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/#fbc) parameter via `context.fbc` as shown in the above payload. If not sent, RudderStack auto generates it using the following values:
 - Fetches `fbclid` from `context.page.url`
 - Uses `originalTimestamp` as the creation time
 - Sets `subdomainIndex` to `1`

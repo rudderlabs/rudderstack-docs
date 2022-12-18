@@ -36,8 +36,8 @@ To successfully configure Kustomer as a destination, you will need to configure 
 
 - **API Key:** Your API Key is an unique key generated for your Kustomer account. You can find it under **Settings** by navigating to **Security** - **API Keys**.
 - **Enable advanced Kustomer transformations:** RudderStack handles the payload nuances for Kustomer if this option is enabled. Check the **Advanced Kustomer Transformations** section below for more information on this setting.
-- **Add email as Tracking identity:** If this setting is enabled, Rudderstack adds the email as an identifier when making `track`/`page`/`screen` calls to Kustomer.
-- **Disable email as a Tracking property:** If this option is enabled, Rudderstack will not add the email as a tracking property for the `track`/`page`/`screen` calls made to Kustomer.
+- **Add email as Tracking identity:** If this setting is enabled, RudderStack adds the email as an identifier when making `track`/`page`/`screen` calls to Kustomer.
+- **Disable email as a Tracking property:** If this option is enabled, RudderStack will not add the email as a tracking property for the `track`/`page`/`screen` calls made to Kustomer.
 - **Enable generic title for Page events:** Enable this option to track all the `page` events with a generic name `Web-Page-Viewed`.
 - **Enable generic title for Screen events:** Enable this option to track all the `screen` events with a generic name `Screen-Viewed`.
 
@@ -258,9 +258,9 @@ For `track`, `page` and `screen` events, Kustomer supports only `number, string,
 
 The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userid` as well as any optional information such as `name`, `email`, etc.
 
-A number of Rudderstack's special traits map to Kustomer’s standard user profile fields, as shown in the table below.
+A number of RudderStack's special traits map to Kustomer’s standard user profile fields, as shown in the table below.
 
-| **Kustomer**             | **Rudderstack**                      | **Supported Type**   |
+| **Kustomer**             | **RudderStack**                      | **Supported Type**   |
 | :----------------------- | :----------------------------------- | :------------------- |
 | `name`                   | `name` or `firstName` and `lastName` | `string`             |
 | `externalId`             | `userId` or `anonymousId`            | `string`             |

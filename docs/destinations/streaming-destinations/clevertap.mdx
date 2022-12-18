@@ -672,11 +672,11 @@ CleverTap does not support nested objects or arrays for custom attributes in the
 
 ### Order Completed
 
-When you track an event with the name `Order Completed` using the using the Rudderstack <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events</Link> tracking, Rudderstack maps that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/concepts-events#recording-customer-purchases) event.
+When you track an event with the name `Order Completed` using the using the RudderStack <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events</Link> tracking, RudderStack maps that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/concepts-events#recording-customer-purchases) event.
 
-A number of Rudderstack's specific fields map to CleverTap’s standard `Charged` event fields
+A number of RudderStack's specific fields map to CleverTap’s standard `Charged` event fields
 
-| **Rudderstack** | **CleverTap** |
+| **RudderStack** | **CleverTap** |
 | :-------------- | :------------ |
 | `checkout_id`   | `Charged ID`  |
 | `revenue`       | `Amount`      |
@@ -739,9 +739,9 @@ The <code class="inline-code">Order Completed</code> E-Commerce event is free fl
 
 The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userid` as well as any optional information such as `name`, `email`, etc.
 
-A number of Rudderstack's special traits map to CleverTap’s standard user profile fields, as shown in the table below. You will be required to pass the key on the left into Rudderstack and RudderStack will transform it to the key on the right before sending to CleverTap.
+A number of RudderStack's special traits map to CleverTap’s standard user profile fields, as shown in the table below. You will be required to pass the key on the left into RudderStack and RudderStack will transform it to the key on the right before sending to CleverTap.
 
-| **Rudderstack** | **Clevertap**   |
+| **RudderStack** | **Clevertap**   |
 | :-------------- | :-------------- |
 | `name`          | `Name`          |
 | `birthday`      | `DOB`           |
@@ -782,7 +782,7 @@ In the above snippet, RudderStack captures relevant information about the user s
 
 <div class="infoBlock">
 
-If a user already exists, the new values will be updated for that user. Rudderstack automatically maps the <code class="inline-code">userId</code> (or <code class="inline-code">anoymousId</code>) to CleverTap user's <code class="inline-code">identity</code>.
+If a user already exists, the new values will be updated for that user. RudderStack automatically maps the <code class="inline-code">userId</code> (or <code class="inline-code">anoymousId</code>) to CleverTap user's <code class="inline-code">identity</code>.
 
 </div>
 

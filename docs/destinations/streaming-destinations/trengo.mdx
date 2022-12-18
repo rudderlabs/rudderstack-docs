@@ -38,7 +38,7 @@ In the **Connection Settings**, you will see the following options:
 - **API Token:** This is an unique token generated for your Trengo account. To generate this API token, you need to select **REST API** from **Apps and Integrations** under the **Settings** option in your Trengo account.
 - **Channel ID:** This corresponds to the unique ID for the channel to which you want to send your data via RudderStack.
 - **Channel Identifier:** Select this option depending on the type of channel you want to send your data.
-- **Enable deduplication for Contacts:** By default, Rudderstack will _Deduplicate_ contacts generated from your `identify` events. You can disable this option if you want to create duplicate contacts with same identifier.
+- **Enable deduplication for Contacts:** By default, RudderStack will _Deduplicate_ contacts generated from your `identify` events. You can disable this option if you want to create duplicate contacts with same identifier.
 - **Map events with template:** To send `track` events to Trengo, you need to add the `event` to the _Event Name_ field. If you wish to customize the subject for the event, you can do so by adding a _template_.
 
 <div class="infoBlock">
@@ -49,7 +49,7 @@ For a particular event the **Channel ID** can be overriden using `externalId`, F
 
 <div class="warningBlock">
 
-When using an `externalId` to override _channelId_ , make sure that the **Channel Identifier** of that specific channel matches with the **Channel Identifier** you have selected in Rudderstack dashboard.
+When using an `externalId` to override _channelId_ , make sure that the **Channel Identifier** of that specific channel matches with the **Channel Identifier** you have selected in RudderStack dashboard.
 
 </div>
 
@@ -57,10 +57,10 @@ When using an `externalId` to override _channelId_ , make sure that the **Channe
 
 Disabling the option **Enable deduplication for Contacts** will have the following consequences on the `identify` events:
 
-- Rudderstack will not update exising contacts with the same `identifier`.
+- RudderStack will not update exising contacts with the same `identifier`.
 - For the channel identifier **phone**:
   - If a contact is present with the same `phone`number as an identifier, it will be duplicated.
-  - If you want to store multiple contacts for a particular `phone` number as an identifier for different channels \(where the `channel identifiers` are **phone** too\), you will need to disable the `deduplication` option from Rudderstack dashboard.
+  - If you want to store multiple contacts for a particular `phone` number as an identifier for different channels \(where the `channel identifiers` are **phone** too\), you will need to disable the `deduplication` option from RudderStack dashboard.
 - For the channel identifier **email**:
   - If a contact is present with the same `email` address as an identifier, it will not be duplicated. This is a known destination behavior.
   - For creating multiple contacts with `email` address as an identifer, you need a unique email address.
@@ -69,9 +69,9 @@ Disabling the option **Enable deduplication for Contacts** will have the followi
 
 The `identify` call lets you associate a user with their actions and capture all the relevant traits about them.
 
-For each `identify` call, Rudderstack creates a `contact` using `email` or `phone` as an identifier \(depending on the `channel identifier`\) using the [Trengo Contact API](https://developers.trengo.com/reference#create-update-a-user).
+For each `identify` call, RudderStack creates a `contact` using `email` or `phone` as an identifier \(depending on the `channel identifier`\) using the [Trengo Contact API](https://developers.trengo.com/reference#create-update-a-user).
 
-If a contact is already present with same `identifier` \(`email`/`phone`\), Rudderstack will update the contact using the [Trengo Contact API](https://developers.trengo.com/reference#update-a-user-1).
+If a contact is already present with same `identifier` \(`email`/`phone`\), RudderStack will update the contact using the [Trengo Contact API](https://developers.trengo.com/reference#update-a-user-1).
 
 A sample `identify` call looks like the following:
 
@@ -91,7 +91,7 @@ rudderanalytics.identify("userid", {
 
 ## Track
 
-The `track` call allows you to capture any action that the user might perform along with the properties associated with that action. Each action is considered to be an event. For every `track` event, Rudderstack creates a `ticket` in Trengo using the [Trengo Ticket API](https://developers.trengo.com/reference#create-a-ticket).
+The `track` call allows you to capture any action that the user might perform along with the properties associated with that action. Each action is considered to be an event. For every `track` event, RudderStack creates a `ticket` in Trengo using the [Trengo Ticket API](https://developers.trengo.com/reference#create-a-ticket).
 
 A sample `track` call looks like the following:
 
