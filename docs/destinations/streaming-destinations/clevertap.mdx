@@ -1,6 +1,6 @@
 ---
 title: "CleverTap"
-description: Step-by-step guide on sending your event data from RudderStack to CleverTap.
+description: Send your event data from RudderStack to CleverTap.
 ---
 
 [CleverTap](https://clevertap.com/) is a popular customer engagement and retention platform. Its in-app analytics and marketing capabilities allow you to get real-time insights into your customers and build valuable, long-term relationships with them. With CleverTap, you can easily your users' actions and understand how they are using your product. You can also segment users based on their behavior and run targeted campaigns to boost your user engagement and retention metrics.
@@ -357,7 +357,7 @@ CleverTapAPI.createNotificationChannel(
 
 For the Push Notification and In-App messages function correctly, CleverTap needs to know the <code class="inline-code">Application</code> status as early as possible. You can either set the <code class="inline-code">android:name</code> in your <code class="inline-code">AndroidManifest.xml</code> tag to <code class="inline-code">com.clevertap.android.sdk.Application</code>. Or, if you have a custom Application class, call <code class="inline-code">ActivityLifecycleCallback.register(this);</code> before <code class="inline-code">super.onCreate()</code> in your Application class.
 
-To know more on this you can check the <a href="https://github.com/CleverTap/clevertap-android-sdk#setup-the-lifecycle-callback---important">CleverTap documentation on push notifications</a>.
+to learn more on this you can check the <a href="https://github.com/CleverTap/clevertap-android-sdk#setup-the-lifecycle-callback---important">CleverTap documentation on push notifications</a>.
 
 </div>
 
@@ -493,7 +493,7 @@ CleverTapAPI.createNotificationChannel(
 
 For the Push Notification and In-App messages function correctly, CleverTap needs to know the <code class="inline-code">Application</code> status as early as possible. You can either set the <code class="inline-code">android:name</code> in your <code class="inline-code">AndroidManifest.xml</code> tag to <code class="inline-code">com.clevertap.android.sdk.Application</code>. Or, if you have a custom Application class, call <code class="inline-code">ActivityLifecycleCallback.register(this);</code> before <code class="inline-code">super.onCreate()</code> in your Application class.
 
-To know more on this you can check the <a href="https://github.com/CleverTap/clevertap-android-sdk#setup-the-lifecycle-callback---important">CleverTap documentation on push notifications</a>.
+to learn more on this you can check the <a href="https://github.com/CleverTap/clevertap-android-sdk#setup-the-lifecycle-callback---important">CleverTap documentation on push notifications</a>.
 
 </div>
       </TabPanel>
@@ -597,7 +597,7 @@ One way to solve this problem is to track users only in cases where a `userId` i
 ## Device token upload using cloud mode
 
 <div class="infoBlock">
-This section is applicable for the Android and iOS sources when sending events via the Cloud Mode.
+This section is applicable for the Android and iOS sources when sending events via cloud mode.
 </div>
 
 When the device token is present in `context.device.token` in `identify` calls, RudderStack will use the [CleverTap Device Token Upload API](https://developer.clevertap.com/docs/upload-device-tokens-api) to upload the device token for the identified user. For Android, RudderStack sets the token type as `fcm`. For iOS, it is set as `apns`.
@@ -672,11 +672,11 @@ CleverTap does not support nested objects or arrays for custom attributes in the
 
 ### Order Completed
 
-When you track an event with the name `Order Completed` using the using the Rudderstack <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events</Link> tracking, Rudderstack maps that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/concepts-events#recording-customer-purchases) event.
+When you track an event with the name `Order Completed` using the using the RudderStack <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events</Link> tracking, RudderStack maps that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/concepts-events#recording-customer-purchases) event.
 
-A number of Rudderstack's specific fields map to CleverTap’s standard `Charged` event fields
+A number of RudderStack's specific fields map to CleverTap’s standard `Charged` event fields
 
-| **Rudderstack** | **CleverTap** |
+| **RudderStack** | **CleverTap** |
 | :-------------- | :------------ |
 | `checkout_id`   | `Charged ID`  |
 | `revenue`       | `Amount`      |
@@ -739,9 +739,9 @@ The <code class="inline-code">Order Completed</code> E-Commerce event is free fl
 
 The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userid` as well as any optional information such as `name`, `email`, etc.
 
-A number of Rudderstack's special traits map to CleverTap’s standard user profile fields, as shown in the table below. You will be required to pass the key on the left into Rudderstack and RudderStack will transform it to the key on the right before sending to CleverTap.
+A number of RudderStack's special traits map to CleverTap’s standard user profile fields, as shown in the table below. You will be required to pass the key on the left into RudderStack and RudderStack will transform it to the key on the right before sending to CleverTap.
 
-| **Rudderstack** | **Clevertap**   |
+| **RudderStack** | **Clevertap**   |
 | :-------------- | :-------------- |
 | `name`          | `Name`          |
 | `birthday`      | `DOB`           |
@@ -782,7 +782,7 @@ In the above snippet, RudderStack captures relevant information about the user s
 
 <div class="infoBlock">
 
-If a user already exists, the new values will be updated for that user. Rudderstack automatically maps the <code class="inline-code">userId</code> (or <code class="inline-code">anoymousId</code>) to CleverTap user's <code class="inline-code">identity</code>.
+If a user already exists, the new values will be updated for that user. RudderStack automatically maps the <code class="inline-code">userId</code> (or <code class="inline-code">anoymousId</code>) to CleverTap user's <code class="inline-code">identity</code>.
 
 </div>
 

@@ -1,6 +1,6 @@
 ---
 title: "Pinterest Tag Cloud Mode"
-description: Detailed technical documentation on sending events to Pinterest Tag using the cloud mode.
+description: Send events to Pinterest Tag using the cloud mode.
 ---
 
 RudderStack lets you send your event data to [Pinterest Conversions API](https://s.pinimg.com/ct/docs/conversions_api/dist/v3.html) via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>. It sends the event calls in a <Link to="/api/http-api/#12-batch">batch</Link> where each batch can contain upto 1000 events.
@@ -57,7 +57,7 @@ rudderanalytics.track("Order Completed", {
 
 RudderStack supports e-commerce conversion tracking for Pinterest. You can use the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for sending the events while instrumenting your site with the RudderStack SDK.
 
-The following table mentions how the specific Rudderstack `track` Ecommerce events are mapped to standard Pinterest Conversion Events:
+The following table mentions how the specific RudderStack `track` Ecommerce events are mapped to standard Pinterest Conversion Events:
 
 | RudderStack event | Pinterest event  |
 | :--------------------- | :------------------- |

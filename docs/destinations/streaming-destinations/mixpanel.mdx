@@ -1,6 +1,6 @@
 ---
 title: "Mixpanel"
-description: Step-by-step guide on sending your event data from RudderStack to Mixpanel.
+description: Send your event data from RudderStack to Mixpanel.
 aliases: ["Mixpanel destination"]
 ---
 
@@ -75,7 +75,7 @@ The following settings are applicable if you are using this destination via the 
 - **Group Key Settings**: RudderStack sends the `group` calls to Mixpanel only if one or more group keys are specified here. These group keys act as the group identifiers in Mixpanel. For more information, refer to the <Link to="#group-key">Group Key</Link> section below.
 - **Client-side Events Filtering**: Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 
-The following event mapping setting is applicable only if you are sending events to Mixpanel via the cloud mode:
+The following event mapping setting is applicable only if you are sending events to Mixpanel via cloud mode:
 
 - **Use New Mapping**: This option is disabled by default and sends the first name and last name as:
 
@@ -89,7 +89,7 @@ The following event mapping setting is applicable only if you are sending events
    
 <div class="infoBlock">
  
- Rudderstack lets you pass empty and <code class="inline-code">null</code> values for the properties sent to Mixpanel.
+ RudderStack lets you pass empty and <code class="inline-code">null</code> values for the properties sent to Mixpanel.
 </div>
 
 ## Identify
@@ -110,7 +110,7 @@ rudderanalytics.identify("12345", {
 })
 ```
 
-When sending events via the cloud mode, you can prevent the `$last_seen` attribute getting updated with incorrect times by setting `active` to `false` in the `context` object, as shown in the following snippet:
+When sending events via cloud mode, you can prevent the `$last_seen` attribute getting updated with incorrect times by setting `active` to `false` in the `context` object, as shown in the following snippet:
 
 ```javascript
 rudderanalytics.identify("12345", {
@@ -152,7 +152,7 @@ You should not create custom properties that begin with a <code class="inline-co
 
 ### Mixpanel People
 
-Rudderstack does not send data to Mixpanel People by default, as it usually requires you to upgrade your Mixpanel account. If you want to use this feature, you can enable the **Use Mixpanel People** option in the Rudderstack dashboard.
+RudderStack does not send data to Mixpanel People by default, as it usually requires you to upgrade your Mixpanel account. If you want to use this feature, you can enable the **Use Mixpanel People** option in the RudderStack dashboard.
 
 You can identify the user traits without the `userId` if you wish to add the people properties in Mixpanel before knowing the `userId`. To do so, refer to the following snippet:
 
@@ -202,7 +202,7 @@ rudderanalytics.page();
 
 ### Page web device mode settings
 
-Rudderstack will send 1 event to Mixpanel per `page` call.
+RudderStack will send 1 event to Mixpanel per `page` call.
 
 For device mode, RudderStack offers the following three options for `page` calls:
 
@@ -345,7 +345,7 @@ RudderStack maps these fields only in the <code class="inline-code">identify</co
 
 ## Explicitly setting People Properties and Super Properties
 
-You can set all of your traits as both **Super Properties** and **People Properties** \(If you have **Use Mixpanel People** option enabled\) by enabling the **Automatically set all Traits as Super Properties and People Properties** option in the Rudderstack dashboard.
+You can set all of your traits as both **Super Properties** and **People Properties** \(If you have **Use Mixpanel People** option enabled\) by enabling the **Automatically set all Traits as Super Properties and People Properties** option in the RudderStack dashboard.
 
 You can also choose to filter your reports by both People Properties and Super Properties. This gives you better control over what traits you can set as a Super Property or People Property. To do this, disable the **Automatically set all Traits as Super Properties and People Properties** option in the dashboard and add the traits that you want to send to Mixpanel as Super Properties or People Properties in the **Properties to send as Super Properties** and **Traits to set as People Properties** fields respectively, as shown below:
 

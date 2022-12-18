@@ -31,7 +31,7 @@ All the outbound traffic is routed through these RudderStack IPs.
 
 ## Data syncs and retries
 
-### When does Rudderstack load data into the warehouse destination?
+### When does RudderStack load data into the warehouse destination?
 
 RudderStack lets you choose how frequently it should sync the data into the data warehouse. The default time is 30 minutes. However, you can choose to extend this value up to 24 hours. You can also configure the time of the day when RudderStack loads the data.
 
@@ -113,7 +113,7 @@ For more information on the shared access signatures (SAS) and setting the requi
 
 You can use either of the following approaches to avoid data sync lags in your warehouse:
 
-- **Approach 1**: In the warehouse destination connection settings, set an **exclusion window** which lets you set a start and end time when Rudderstack will not sync data to your warehouse. You can run heavy loads during this time interval.
+- **Approach 1**: In the warehouse destination connection settings, set an **exclusion window** which lets you set a start and end time when RudderStack will not sync data to your warehouse. You can run heavy loads during this time interval.
 
 <img src="../../assets/warehouse-destinations/exclusion-window.png" />
 
@@ -276,7 +276,7 @@ RudderStack configures the schema name based on the values mentioned in the belo
 </ul>
 </div>
 
-### How does Rudderstack configure the table names?
+### How does RudderStack configure the table names?
 
 RudderStack sets the table names by picking up the event names and modifying them to follow the snake case convention (for example, `source name` -> `source_name`). 
 
@@ -347,7 +347,7 @@ Note that this change is applicable to the subsequent events sent to the warehou
 You can also migrate the previously created table data in the warehouse to the new table.
 </div>
 
-### How does Rudderstack configure the column names? / How does RudderStack normalize arrays and complex event properties in the warehouse schema?
+### How does RudderStack configure the column names? / How does RudderStack normalize arrays and complex event properties in the warehouse schema?
 
 RudderStack flattens the event properties and converts them into snake case (for example, `source name` -> `source_name`). Further, each of these event properties acts as a warehouse column.
 
