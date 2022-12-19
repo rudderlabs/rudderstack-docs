@@ -49,14 +49,14 @@ The following table details the property mappings between RudderStack and Sendin
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <span style="color: #4D4DFF;font-size:12px;">Required, if phone number is not passed.</span>| `email`  | String |
-| `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required, if email is not passed.</span>| `attributes.SMS`  |  String |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if phone number is not passed.</span>| `email`  | String |
+| `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/>  <span style="color: #4D4DFF;font-size:12px;">Required, if email is not passed.</span>| `attributes.SMS`  |  String |
 | `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
 | `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
 | `context.traits` <br/> `traits` (excluding `firstname`, `lastname`, and `phone`) | `attributes` | Object |
-| `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | boolean |
-| `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | boolean |
-| `context.externalId.id` (when `context.externalId.type` = `includeListIds`) | `listIds` | int64 Array |
+| `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | Boolean |
+| `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | Boolean |
+| `context.externalId.id` (when `context.externalId.type` = `includeListIds`) | `listIds` | Int64 Array |
 
 #### Create contact via DOI (Double-opt-in) flow 
 
@@ -64,14 +64,14 @@ The following table details the property mappings between RudderStack and Sendin
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email`  | String |
-| `context.externalId.id` (when `context.externalId.type` = `includeListIds`) <span style="color: #4D4DFF;font-size:12px;">Required</span> | `includeListIds` | int64 Array (Id of the list to add the contact) |
-| `context.externalId.id` (when `context.externalId.type` = `templateId`) <br/> `templatedId` (defined in RudderStack dashboard) <span style="color: #4D4DFF;font-size:12px;">Required</span> | `templateId` | Int64 (DOI template's ID) |
-| redirection URL (defined in RudderStack dashboard) <span style="color: #4D4DFF;font-size:12px;">Required</span>| `redirectionUrl` | URL |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email`  | String |
+| `context.externalId.id` *(when `context.externalId.type` = `includeListIds`)* <span style="color: #4D4DFF;font-size:12px;">Required</span> | `includeListIds` | int64 Array (Id of the list to add the contact) |
+| `context.externalId.id` *(when `context.externalId.type` = `templateId`)* <br/> `templatedId` *(defined in RudderStack dashboard)* <span style="color: #4D4DFF;font-size:12px;">Required</span> | `templateId` | Int64 (DOI template's ID) |
+| Redirection URL *(defined in RudderStack dashboard)* <span style="color: #4D4DFF;font-size:12px;">Required</span>| `redirectionUrl` | URL |
 | `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` | `attributes.SMS`  |  String |
 | `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
 | `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
-| `context.traits` <br/> `traits` <br/>(excluding `firstname`, `lastname`, and `phone`) | `attributes` | Object |
+| `context.traits` <br/> `traits` <br/> *(excluding `firstname`, `lastname`, and `phone`)* | `attributes` | Object |
 
 #### Update contact
 
@@ -84,8 +84,8 @@ The following table details the property mappings between RudderStack and Sendin
 | `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
 | `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
 | `context.traits` <br/> `traits` (excluding `firstname`, `lastname`, and `phone`) | `attributes` | Object |
-| `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | boolean |
-| `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | boolean |
+| `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | Boolean |
+| `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | Boolean |
 | `context.externalId.id` (when `context.externalId.type` = `includeListIds`) | `listIds` | Int64 array |
 | `context.externalId.id` (when `context.externalId.type` = `unlinkListIds`) | `unlinkListIds` | Int64 array |
 

@@ -46,22 +46,32 @@ You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call
 A sample `track` call is as shown below:
 
 ```javascript
-rudderanalytics.track("Card Created", {
-  id: "a4123c72-c6f7-4d8e-b8cd-4abb8a807891",
-  products: [{
-      product_id: 1234,
-      product_name: "Track Pants",
-      amount: 1,
-      price: 220,
+rudderanalytics.track(
+  "Order Delivered", {
+    orderId: "123",
+    products: [{
+        product_id: 1234,
+        product_name: "Track Pants",
+        amount: 1,
+        price: 220,
+      },
+      {
+        product_id: 5768,
+        product_name: "T-Shirt",
+        amount: 5,
+        price: 1058,
+      },
+    ],
+  }, {
+    integrations: {
+      All: true,
+      sendinblue: {
+        propertiesIdKey: "orderId",
+      },
     },
-    {
-      product_id: 5768,
-      product_name: "T-Shirt",
-      amount: 5,
-      price: 1058,
-    },
-  ],
-});
+  }
+);
+}
 ```
 ### Supported mappings
 
@@ -76,10 +86,10 @@ The following table details the property mappings between RudderStack and Sendin
 | `context.traits.phone` <br/> `context.traits.Phone` | `properties.SMS`  |  String |
 | `context.traits.email` <br/>`context.traits.Email`<br/> `context.traits.E-mail`| `properties.EMAIL`  | String |
 | `properties`| `event.data` | Object |
-| `messageId` <br/> use  `IntegrationObj` to fetch the key and then use that key to fetch the value from `properties` object| `event.id` | String |
+| Value of `integrations.sendinblue.propertiesIdKey` in `properties` <br/> OR <br/> `messageId` | `event.id` | String |
 
 <div class="infoBlock">
-You can also send the user traits to Sendinblue via the <code class="inline-code">track</code> call by enabling the <strong>Send Traits In Track</strong> setting in the RudderStack dashboard.
+You can also send the user traits to Sendinblue via the <code class="inline-code">track</code> call by enabling the <strong>Send user traits in track call</strong> setting in the RudderStack dashboard.
 </div>
 
 ## Contact attributes
@@ -88,13 +98,30 @@ You can also send the user traits to Sendinblue via the <code class="inline-code
 This section is applicable for the <code class="inline-code">identify</code> and <code class="inline-code">track</code> calls.
 </div>
 
-Sendinblue provides various [contact attributes](https://help.sendinblue.com/hc/en-us/articles/209499605-What-are-the-different-types-of-contact-attributes-) which you can use to personalize your communication with your contacts. You can find them [here](https://my.sendinblue.com/lists/add-attributes) in the Sendinblue dashboard. Sendinblue provides `FIRSTNAME`, `LASTNAME`, and `SMS` as the default contact attributes.
+Sendinblue provides various [contact attributes](https://help.sendinblue.com/hc/en-us/articles/209499605-What-are-the-different-types-of-contact-attributes-) which you can use to personalize your communication with your contacts. You can find them in the [Contact Attributes](https://my.sendinblue.com/lists/add-attributes) section in the Sendinblue dashboard where `FIRSTNAME`, `LASTNAME`, and `SMS` are the default contact attributes. 
 
-- The Contacts attributes that correspond to **Properties** will be updated each time the rudderstack**.**identify() method is called.
-- `properties` that don't correspond to existing Contacts attributes can be used only in the [Automation app](https://automation.sendinblue.com/) unless you [add them as attributes from your Contacts section](https://my.sendinblue.com/lists/add-attributes) .
+You can also map the traits in RudderStack's payload to Sendinblue's contact attributes using the **Map your traits to Sendinblue contact attributes** setting in the RudderStack dashboard.
 
-You can define which traits in the RudderStack payload should be mapped to the Sendinblue's contact attributes by specifying them in the **Rudder to Sendinblue Contacts Attributes Mapping** dashboard setting.
+- The contact attributes present in Sendinblue and sent in the `identify` call's traits are updated each time you make an `identify` call. 
+- The contact attributes **not** present in Sendinblue but sent in the `identify` call's traits can be used only in the [Automation app](https://automation.sendinblue.com/) unless you [add them as contact attributes](https://my.sendinblue.com/lists/add-attributes).
 
+For example, the following sample code will create (or update) the user `alex@example.com` with firstname `Alex` and lastname `Keener`, and create three properties (`payment`, `age`, and `location`) that can be used only in the Marketing Automation workflows unless you also add them as your contact attributes.
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9", {
+  email: "alex@example.com",
+  firstName: "Alex",
+  lastName: "Keener",
+  payment: 2,
+  age: 21,
+  location: "USA",
+});
+```
+
+<div class="infoBlock">
+The Sendinblue tracker writes the <code class="inline-code">sib_cuid</code> cookie on your domain to track the user activity. As a result, you can create only one contact per session in Sendinblue using the <code class="inline-code">identify</code> call and update the same contact in that session.
+To create a new contact, you must clear the <code class="inline-code">sib_cuid</code> cookie first.
+</div>
 
 ## Page
 
