@@ -8,9 +8,6 @@ export default function SEO({ description, title, slug, image, children }) {
   const { site } = useStaticQuery(
     graphql`
       query {
-        sanitySiteSettings {
-          
-        }
         site {
           siteMetadata {
             defaultTitle
