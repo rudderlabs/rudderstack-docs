@@ -2,7 +2,15 @@
   "redirects": [
     {
       "source": "/cloud-extract-sources/hubspot-v2/",
-      "destination": "/docs/sources/extract/hubspot-v2/"
+      "destination": "/docs/sources/extract/hubspot/"
+    },
+    {
+      "source": "/sources/extract/hubspot-v2/",
+      "destination": "/docs/sources/extract/hubspot/"
+    },
+    {
+      "source": "/user-guides/how-to-guides/live-destination-event-debugger/",
+      "destination": "/docs/user-guides/how-to-guides/debugging-destination-live-events/"
     },
     {
       "source": "/destinations/crm/hubspot/",
@@ -11,14 +19,6 @@
     {
       "source": "/cloud-extract-sources/hubspot/hubspot-data-model-and-schema-information/",
       "destination": "/docs/sources/extract/hubspot/hubspot-data-model-and-schema-information/"
-    },
-    {
-      "source": "/cloud-extract-sources/hubspot/",
-      "destination": "/docs/sources/extract/hubspot-v2/"
-    },
-    {
-      "source": "/sources/extract/hubspot/",
-      "destination": "/docs/sources/extract/hubspot-v2/"
     },
     {
       "source": "/sources/sdks/:path(.*)",
@@ -370,7 +370,7 @@
     },
     {
       "source": "/destinations/",
-      "destination": "/docs/destinations/"
+      "destination": "/docs/destinations/overview/"
     },
     {
       "source": "/destinations/testing-and-personalization/",
@@ -386,7 +386,11 @@
     },
     {
       "source": "/destinations/testing-and-personalization/optimizely-web/",
-      "destination": "/docs/destinations/streaming-destinations/optimizely-web/"
+      "destination": "/docs/destinations/streaming-destinations/optimizely-web-experimentation/"
+    },
+    {
+      "source": "/destinations/streaming-destinations/optimizely-web/",
+      "destination": "/docs/destinations/streaming-destinations/optimizely-web-experimentation/"
     },
     {
       "source": "/destinations/testing-and-personalization/statsig/",
@@ -402,11 +406,19 @@
     },
     {
       "source": "/destinations/testing-and-personalization/vwo-beta-visual-website-optimizer/",
-      "destination": "/docs/destinations/streaming-destinations/vwo-beta-visual-website-optimizer/"
+      "destination": "/docs/destinations/streaming-destinations/vwo/"
+    },
+    {
+      "source": "/destinations/streaming-destinations/vwo-beta-visual-website-optimizer/",
+      "destination": "/docs/destinations/streaming-destinations/vwo/"
     },
     {
       "source": "/destinations/testing-and-personalization/optimizely-full-stack/",
-      "destination": "/docs/destinations/streaming-destinations/optimizely-full-stack/"
+      "destination": "/docs/destinations/streaming-destinations/optimizely-feature-experimentation/"
+    },
+    {
+      "source": "/destinations/streaming-destinations/optimizely-full-stack/",
+      "destination": "/docs/destinations/streaming-destinations/optimizely-feature-experimentation/"
     },
     {
       "source": "/destinations/streaming-platforms/amazon-eventbridge/",
@@ -418,7 +430,11 @@
     },
     {
       "source": "/destinations/testing-and-personalization/splitio/",
-      "destination": "/docs/destinations/streaming-destinations/splitio/"
+      "destination": "/docs/destinations/streaming-destinations/split/"
+    },
+    {
+      "source": "/destinations/streaming-destinations/splitio/",
+      "destination": "/docs/destinations/streaming-destinations/split/"
     },
     {
       "source": "/destinations/streaming-platforms/amazon-kinesis-firehose/",
@@ -1213,7 +1229,11 @@
       "destination": "/docs/sources/extract/google-analytics/"
     },
     {
-      "source": "/cloud-extract-sources/google-search-console/",
+      "source": "/sources/extract/google-analytics-v2/",
+      "destination": "/docs/sources/extract/google-analytics/"
+    },
+    {
+      "source": "/sources/extract/google-search-console-v2/",
       "destination": "/docs/sources/extract/google-search-console/"
     },
     {
@@ -1226,7 +1246,11 @@
     },
     {
       "source": "/cloud-extract-sources/intercom-v2/",
-      "destination": "/docs/sources/extract/intercom-v2/"
+      "destination": "/docs/sources/extract/intercom/"
+    },
+    {
+      "source": "/sources/extract/intercom-v2/",
+      "destination": "/docs/sources/extract/intercom/"
     },
     {
       "source": "/cloud-extract-sources/intercom/",
@@ -1238,6 +1262,10 @@
     },
     {
       "source": "/cloud-extract-sources/mixpanel/",
+      "destination": "/docs/sources/extract/mixpanel/"
+    },
+    {
+      "source": "/sources/extract/mixpanel-v2/",
       "destination": "/docs/sources/extract/mixpanel/"
     },
     {
@@ -1265,11 +1293,15 @@
       "destination": "/docs/sources/extract/salesforce/"
     },
     {
-      "source": "/cloud-extract-sources/salesforce/schema-comparison-rudderstack-vs-segment/",
-      "destination": "/docs/sources/extract/salesforce/schema-comparison-rudderstack-vs-segment/"
+      "source": "/sources/extract/salesforce-v2/",
+      "destination": "/docs/sources/extract/salesforce/"
     },
     {
       "source": "/cloud-extract-sources/sendgrid/",
+      "destination": "/docs/sources/extract/sendgrid/"
+    },
+    {
+      "source": "/sources/extract/sendgrid-v2/",
       "destination": "/docs/sources/extract/sendgrid/"
     },
     {
@@ -1285,8 +1317,12 @@
       "destination": "/docs/sources/extract/zendesk-chat/"
     },
     {
-      "source": "/cloud-extract-sources/zendesk/",
-      "destination": "/docs/sources/extract/zendesk/"
+      "source": "/sources/extract/zendesk-chat-v2/",
+      "destination": "/docs/sources/extract/zendesk-chat/"
+    },
+    {
+      "source": "/cloud-extract-sources/zendesk-support/",
+      "destination": "/docs/sources/extract/zendesk-support/"
     },
     {
       "source": "/reverse-etl/databricks/",

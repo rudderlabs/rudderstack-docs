@@ -1,18 +1,17 @@
 ---
 title: "Azure Data Lake"
-description: Step-by-step guide on setting up Azure Data Lake as a destination in RudderStack.
+description: Sync data from RudderStack to Azure Data Lake.
+aliases: ['Azure data lake destination']
 ---
 
 [Azure Data Lake](https://azure.microsoft.com/en-in/solutions/data-lake/) is Microsoft's secure and scalable data lake functionality that lets you store data of varying sizes and complexity and facilitates fast, cross-platform data processing and analytics.
-
-RudderStack lets you configure Azure data lake as a destination to which you can send your event data seamlessly.
 
 <div class="infoBlock">
 Refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more information on how the events are mapped to the tables in the Azure data lake.
 </div>
 
 <div class="successBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/azure_datalake">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/azure_datalake">GitHub repository</a>.
 </div>
 
 ## Configuring Azure data lake destination in RudderStack
@@ -25,13 +24,6 @@ To configure Azure data lake as a destination in RudderStack, follow these steps
 2. Assign a name to your destination and then click on **Next**.
 
 ### Connection settings
-
-To successfully configure Azure data lake as a destination, you will need to configure the following settings:
-
-<img src="../../assets/dw-integrations/azure-data-lake-connection-settings-1.png" alt="Azure data lake destination settings in RudderStack" />
-<img src="../../assets/dw-integrations/azure-data-lake-connection-settings-2.png" alt="Azure data lake destination settings in RudderStack" />
-
-Enter the following credentials in the **Connection Credentials** page:
 
 - **Azure Blob Storage Container Name**: Enter the name of your Blob Storage container used to store the data before loading it into the data lake.
 - **Prefix**: If specified, RudderStack will create a folder in the bucket with this prefix and push all the data within that folder. For example, `https://<account_name>.blob.core.windows.net/<container_name>/<prefix>/`

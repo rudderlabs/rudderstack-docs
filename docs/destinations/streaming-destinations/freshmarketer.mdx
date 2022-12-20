@@ -1,6 +1,6 @@
 ---
 title: "Freshmarketer"
-description: Step-by-step guide on sending your event data from RudderStack to Freshmarketer.
+description: Send your event data from RudderStack to Freshmarketer.
 aliases: ["Freshmarketer destination"]
 ---
 
@@ -18,7 +18,7 @@ Before configuring Freshmarketer as a destination in RudderStack, verify if the 
 | Cloud mode | Supported  | Supported | Supported |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To learn more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Freshmarketer, follow these steps:
@@ -117,7 +117,7 @@ You can use the RudderStack <Link to="/event-spec/standard-events/track/">`track
 To make a <code class="inline-code">track</code> call successfully, you must map the event to be sent in the <code class="inline-code">track</code> call in the <strong>Map your events with Freshmarketer Standard Events</strong> dashboard setting.
 </div>
 
-Rudderstack supports the following `track` events:
+RudderStack supports the following `track` events:
 
 ### Lifecycle stage
 
@@ -306,7 +306,7 @@ The following event properties accept only the number data type:
 - `numberOfEmployees`
 - `parentSalesAccountid`
 
-If any of the above properties are present in any `identify` or `group` call in a different format, Rudderstack will try to convert them into the number data type. If the type conversion is unsuccessful, RudderStack will give an "invalid format" error.
+If any of the above properties are present in any `identify` or `group` call in a different format, RudderStack will try to convert them into the number data type. If the type conversion is unsuccessful, RudderStack will give an "invalid format" error.
 
 ## FAQ
 

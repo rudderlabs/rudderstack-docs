@@ -1,6 +1,6 @@
 ---
 title: "AWS Lambda"
-description: Step-by-step guide on sending your event data from RudderStack to AWS Lambda.
+description: Send your event data from RudderStack to AWS Lambda.
 ---
 
 [AWS Lambda](https://aws.amazon.com/lambda/) is a serverless compute service that lets you seamlessly run any application code or service without managing or provisioning servers.
@@ -17,7 +17,7 @@ Before configuring AWS Lambda as a destination in RudderStack, verify if the sou
 | **Cloud mode**      |  **Supported** | **Supported** |  **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To learn more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to AWS Lambda, follow these steps:
@@ -41,7 +41,7 @@ For more information on the AWS regions, refer to the <a href="https://aws.amazo
   - **IAM Role ARN**: Enter the ARN of the IAM role.
 
 <div class="warningBlock">
-It is highly recommended to enable this setting as the access keys-based authentication will be deprecated in the future.
+It is highly recommended to enable this setting as the access keys-based authentication method is now deprecated.
 </div>
 
 - If **Role-based Authentication** is disabled, you need to enter the **AWS Access Key ID** and **AWS Secret Access Key** to authorize RudderStack. 

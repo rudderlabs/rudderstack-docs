@@ -1,6 +1,6 @@
 ---
 title: "Campaign Manager 360"
-description: Step-by-step guide on sending your event data from RudderStack to Campaign Manager 360.
+description: Send your event data from RudderStack to Campaign Manager 360.
 ---
 
 [Campaign Manager 360](https://developers.google.com/doubleclick-advertisers/guides/conversions_overview) is an ad management platform which optimizes your digital campaigns across websites and mobile. It provides many useful features for ad serving, targeting, verification, and reporting.
@@ -8,7 +8,7 @@ description: Step-by-step guide on sending your event data from RudderStack to C
 RudderStack supports the Campaign Manager 360's [Conversions API](https://developers.google.com/doubleclick-advertisers/rest/v4/conversions) which lets advertisers provide information about the offline conversions directly to Campaign Manager 360.
 
 <div class="infoBlock">
-Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/campaign_manager">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/campaign_manager">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -27,7 +27,23 @@ Once you have confirmed that the source platform supports sending events to Camp
 
 ## Connection settings
 
-To successfully configure Campaign Manager 360 as a destination, click the **Sign in with Google** button under **Create new account** and grant RudderStack the required permissions.
+To successfully configure Campaign Manager 360 as a destination, first authenticate your account by following the below steps:
+
+1. Click **Create Account** in the **Account Settings** section.
+2. From the modal, click the **Sign in with Google** button.
+3. Choose the required account and grant RudderStack the required permissions.
+4. Click **Save** to use the specified account, as shown:
+
+<img src="../../assets/event-stream-destinations/account-connect-normal.png" alt="Google Account authentication" />
+
+<div class="infoBlock">
+In case you have authenticated multiple accounts, you can click <strong>Edit Credentials</strong> to select or delete any other authenticated account, as shown:
+<br/><br/>
+
+<img src="../../assets/event-stream-destinations/edit-account-creds.png" alt="Google Account authentication" />
+
+RudderStack <strong>gives an error</strong> if you try to delete an account used by any other connection set up for the same destination.
+</div>
 
 Next, configure the following settings:
 
@@ -83,6 +99,7 @@ The following table lists the event property mappings between RudderStack and Ca
 | `properties.floodlightActivityId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `floodlightActivityId`           | String |
 | `properties.floodlightConfigurationId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `floodlightConfigurationId`            | String |
 | `properties.ordinal`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `ordinal`             | String |
+| `properties.quantity`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `quantity`             | String |
 | `properties.profileId` <br/> `config.profileId`  | `profileId`              | Number |
 | `properties.encryptedUserId`    | `encryptedUserId`      | String |
 | `properties.encryptedUserIdCandidates[]`    | `encryptedUserIdCandidates[]`      | Array |

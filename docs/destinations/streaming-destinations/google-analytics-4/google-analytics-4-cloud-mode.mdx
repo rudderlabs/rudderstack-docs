@@ -1,6 +1,6 @@
 ---
 title: "Google Analytics 4 Cloud Mode"
-description:  Detailed technical documentation on sending events to Google Analytics 4 using the RudderStack cloud mode.
+description:  Detailed technical documentation on sending events to Google Analytics 4 using RudderStack cloud mode.
 ---
 
 RudderStack lets you send your event data to Google Analytics 4 via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> by leveraging the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">Google Analytics 4 Measurement Protocol</a>.
@@ -18,7 +18,7 @@ Note that Google Analytics 4 **does not officially support a complete server-to-
 />
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/ga4">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/ga4">GitHub repository</a>.
 </div>
 
 ## Tagging methods
@@ -585,7 +585,7 @@ You must follow the below rules while choosing a name for the custom events:
 
 - Event names are case sensitive. For example, `my_event` and `My_Event` are two distinct events.
 - Event names must start with a letter. Only letters, numbers, and underscores are permitted. **DO NOT** use spaces.
-- Do not use reserved prefixes and event names. Refer to the <a href="#faq">FAQ</a> section to know more about the reserved event names and prefixes.
+- Do not use reserved prefixes and event names. Refer to the <a href="#faq">FAQ</a> section to learn more about the reserved event names and prefixes.
 
 ## Tracking active users and sessions
 
@@ -610,7 +610,7 @@ RudderStack maps the following properties to GA4's `session_id` property:
 | `traits.sessionId`<br />`context.traits.sessionId`<br />`traits.session_id`<br />`context.traits.session_id` | `session_id` |
 
 <div class="warningBlock">
-RudderStack automatically collects <code class="inline-code">engagement_time_msec</code> and <code class="inline-code">session_id</code> when sending events via the <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-device-mode/">device mode</Link>. However, they must be manually passed while sending events via the cloud mode.
+RudderStack automatically collects <code class="inline-code">engagement_time_msec</code> and <code class="inline-code">session_id</code> when sending events via the <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-device-mode/">device mode</Link>. However, they must be manually passed while sending events via cloud mode.
 </div>
 
 <div class="infoBlock">

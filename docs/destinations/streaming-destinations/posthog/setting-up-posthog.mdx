@@ -1,6 +1,6 @@
 ---
 title: "Setting up PostHog"
-description: Step-by-step guide on setting up PostHog as a destination in RudderStack.
+description: Set up PostHog as a destination in RudderStack.
 aliases: ["PostHog", "PostHog destination"]
 ---
 
@@ -37,7 +37,7 @@ If you are hosting your own PostHog instance, add the URL of your instance witho
 - **Use updated mapping for Group calls**: Enable this setting to send the `group` traits as event properties to PostHog. It is strongly recommended to enable this setting to send all your `group` events to PostHog correctly.
 
 <div class="warningBlock">
-<strong>This setting is applicable only when sending events via the cloud mode</strong>. RudderStack uses the updated group mappings in the device mode by default. For more information on this setting, refer to the <Link to="/destinations/streaming-destinations/posthog/posthog-cloud-mode/#updated-group-mapping">Updated group mapping</Link> section.
+<strong>This setting is applicable only when sending events via cloud mode</strong>. RudderStack uses the updated group mappings in the device mode by default. For more information on this setting, refer to the <Link to="/destinations/streaming-destinations/posthog/posthog-cloud-mode/#updated-group-mapping">Updated group mapping</Link> section.
 </div>
 
 ### Web device mode settings
@@ -50,7 +50,7 @@ This section lists some of the other configurable settings when sending events t
 - **Enable Local Storage for Persistence**: Enable this option to reduce the amount of data stored in the cookies by storing it locally instead.
 - **Enable autocapture with PostHog**: Enable this option to allow PostHog to send [auto-captured](https://posthog.com/docs/integrations/js-integration#usage) events.
 - **Allow PostHog to automatically capture pageview events**: Enable this setting to allow the PostHog web SDK to send a page view event every time it is loaded on a page.
-- **Disable session recording**: Enable this setting to stop PostHog from recording the user sessions. For more information on PostHog's session recording feature, refer to the <a href="https://posthog.com/docs/features/session-recording">PostHog documentation</a>.
+- **Disable session recording**: Enable this setting to stop PostHog from recording the user sessions. For more information on PostHog's session recording feature, refer to the <a href="https://posthog.com/manual/recordings/">PostHog documentation</a>.
 - **Additional headers to pass with XHR requests to PostHog API**: Add a list of key-value pairs in this field. The RudderStack web SDK will then forward these headers on the event requests sent to PostHog.
 - **Property denylist** - Add a list of traits or event properties that you want the PostHog SDK to filter.
 

@@ -11,7 +11,7 @@ The [LinkedIn Insight Tag](https://business.linkedin.com/marketing-solutions/ins
 RudderStack supports integration with the LinkedIn Insight Tag where you can seamlessly send your event data to LinkedIn.
 
 <div class="infoBlock">
-Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production-staging/src/integrations/LinkedInInsightTag">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -131,7 +131,7 @@ RudderStack discards any <code class="inline-code">track</code> event that is no
 
 The RudderStack-LinkedIn Insight Tag integration workflow is explained below:
 
-1. Configure **LinkedIn Insight Tag** as a destination in the [RudderStack dashboard](https://www.app.rudderstack.com/).
+1. Configure **LinkedIn Insight Tag** as a destination in the [RudderStack dashboard](https://app.rudderstack.com/).
 2. Install the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/#step-1-install-javascript-sdk">RudderStack JavaScript SDK</Link> on your website.
 3. The JavaScript SDK automatically loads the Insight Tag tracking code.
 4. The Insight Tag starts tracking the user activities on your website.
@@ -154,7 +154,7 @@ Each LinkedIn Insight Tag has a unique Partner ID. If the Partner ID of the tag
 
 ### How can I verify if the event-specific conversions are tracked successfully?
 
-Once you configure the **Event Conversion IDs** setting in the RudderStack dashboard, the LinkedIn Insight Tag automatically loads the code snippet and tracks the conversions for the specified events. 
+Once you configure the **Event Conversion IDs** setting in the RudderStack dashboard, the LinkedIn Insight Tag automatically loads the code snippet and tracks the conversions for the specified events.
 
 If the script has loaded correctly, it shows the label **Conversion status: Active** against the events in your dashboard, as shown:
 

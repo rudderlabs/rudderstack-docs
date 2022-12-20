@@ -1,13 +1,13 @@
 ---
 title: "Iterable Cloud Mode"
-description:  Detailed technical documentation on sending events to Iterable using the RudderStack cloud mode.
+description:  Detailed technical documentation on sending events to Iterable using RudderStack cloud mode.
 aliases: ["Iterable destination"]
 ---
 
 RudderStack lets you send your event data to Iterable via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/iterable">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/iterable">GitHub repository</a>.
 </div>
 
 <div class="infoBlock">
@@ -51,7 +51,7 @@ Similarly, RudderStack uses Iterable's [browser token registration API](https://
 If the `deviceToken` associated with the push notification is present in `context` of the event payload, then RudderStack will map the user with the device to register for push. This will add the data if it doesn't exist yet. It will also update data fields on the device.
 
 <div class="infoBlock">
-To know more about Iterable's push notification registration feature for mobile devices, refer to their <a href="https://support.iterable.com/hc/en-us/articles/115000331943#_2-create-a-mobile-app-in-iterable">Android</a> and <a href="https://support.iterable.com/hc/en-us/articles/115000315806#_4-create-a-mobile-app-in-iterable">iOS</a> documentation.
+To learn more about Iterable's push notification registration feature for mobile devices, refer to their <a href="https://support.iterable.com/hc/en-us/articles/115000331943#_2-create-a-mobile-app-in-iterable">Android</a> and <a href="https://support.iterable.com/hc/en-us/articles/115000315806#_4-create-a-mobile-app-in-iterable">iOS</a> documentation.
 </div>
 
 ## Page

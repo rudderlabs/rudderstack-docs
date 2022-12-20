@@ -1,6 +1,6 @@
 ---
 title: "ClickUp"
-description: Step-by-step guide on sending your event data from RudderStack to ClickUp.
+description: Send your event data from RudderStack to ClickUp.
 aliases: ["ClickUp destination"]
 ---
 
@@ -9,7 +9,7 @@ aliases: ["ClickUp destination"]
 RudderStack supports ClickUp as a destination where you can seamlessly send your event data.
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/clickup">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/clickup">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -22,7 +22,7 @@ Before configuring ClickUp as a destination in RudderStack, verify if the source
 | Cloud mode | Supported  | Supported | Supported |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To learn more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source platform supports sending events to ClickUp, follow these steps:
@@ -103,7 +103,7 @@ rudderanalytics.track(
 );
 ```
 
-RudderStack uses the ClickUp [`task`](https://api.clickup.com/api/v2/list/list_id/task) endpoint to create a task within a list. 
+RudderStack uses the ClickUp [`task`](https://clickup.com/api/clickupreference/operation/CreateTask/) endpoint to create a task within a list. 
 
 To successfully create a task, you need to specify the <Link to="#where-can-i-find-the-clickup-list-id">**List ID**</Link> in the dashboard settings. You can also pass the list ID through `externalId`, as seen in the above sample snippet.
 
@@ -139,7 +139,7 @@ You can pass the custom fields to ClickUp by specifying the mapping in the **Map
 
 You can specify the **ClickUp Custom Field Name** corresponding to the <Link to="#how-can-i-create-custom-fields-in-clickup">custom field you created in the ClickUp dashboard</Link> and the **RudderStack Payload Property** corresponding to the event property present in the payload.
 
-RudderStack uses the custom field name to retrieve the `id` using the [`field`](https://api.clickup.com/api/v2/list/list_id/field) endpoint.
+RudderStack uses the custom field name to retrieve the `id` using the [`field`](https://clickup.com/api/clickupreference/operation/GetAccessibleCustomFields/) endpoint.
 
 ### Supported custom fields
 
@@ -157,11 +157,11 @@ RudderStack supports specifying the following ClickUp custom fields in the dashb
 | Currency | Must be a number. |
 | Emoji (integer) | Used for rating. The value must be in a range defined in the ClickUp dashboard. |
 | Location | Latitude/longitude and the formatted address must be passed as the [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/overview?hl=en). |
-| Dropdown | RudderStack uses the dropdown option name to find the UUID using the [`field`](https://api.clickup.com/api/v2/list/list_id/field) endpoint. |
-| Label | RudderStack will use the label name to find the UUID using the [`field`](https://api.clickup.com/api/v2/list/list_id/field) endpoint. |
+| Dropdown | RudderStack uses the dropdown option name to find the UUID using the `field` endpoint. |
+| Label | RudderStack will use the label name to find the UUID using the `field` endpoint. |
 
 <div class="infoBlock">
-For more information on the above-mentioned fields, refer to the the <a href="https://jsapi.apiary.io/apis/clickup20/reference/0/custom-fields.html">ClickUp Custom Fields API reference</a>.
+For more information on the above-mentioned fields, refer to the the <a href="https://clickup.com/api/clickupreference/operation/GetAccessibleCustomFields/">ClickUp Custom Fields API reference</a>.
 </div>
 
 RudderStack currently **does not support** specifying the following custom fields:

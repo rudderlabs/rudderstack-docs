@@ -1,150 +1,45 @@
 ---
 title: "Amplitude"
-description: Step-by-step guide on sending your event data from RudderStack to Amplitude.
+description: Send data from RudderStack to Amplitude.
 ---
 
-[Amplitude](https://amplitude.com/) is a comprehensive product analytics platform for the web as well as mobile platforms. Over 12,000 companies use Amplitude to get useful marketing insights that drive product strategy and conversion and retention of their customers.
+[Amplitude](https://amplitude.com) is a comprehensive product analytics service for web and mobile platforms. 12,000+ companies use Amplitude to get marketing insights that drive product strategy, conversion, and customer retention.
 
-RudderStack supports sending events from the RudderStack SDKs to Amplitude through our data plane and Web connection mode.
+RudderStack provides native libraries for Amplitude integrations for the following languages:
 
-<div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/am">GitHub repository</a>.
-</div>
+  - [Android](https://github.com/rudderlabs/rudder-integration-amplitude-android)
+  - [iOS: Obj-C](https://github.com/rudderlabs/rudder-integration-amplitude-ios)
+  - [iOS: Swift](https://github.com/rudderlabs/rudder-integration-amplitude-swift)
+
 
 ## Getting started
 
-RudderStack supports sending event data to Amplitude via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
+The Amplitude destination supports `alias`, `group`, `identify`, `page`, `screen`, and `track` calls.
+
+Before configuring Amplitude as a destination in RudderStack, confirm that your source is supported by Amplitude by referring to the table below. See <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link> for details.
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
 | **Device mode**     | **Supported** | **Supported** | -             |
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
-<div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Amplitude native SDK is loaded from <code class="inline-code">https://cdn.amplitude.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Amplitude SDK successfully.
-</div>
+## Connection Settings
 
-Once you have confirmed that the source platform supports sending events to Amplitude, follow these steps:
+1. If you haven’t already, first create a source in your [RudderStack dashboard](https://app.rudderstack.com/). Your source will be where you intend on sending data from. See <Link to="/dashboard-guides/sources">Sources</Link> to learn more.
+2. Connect your source to Amplitude. You can do this directly from your source by navigating to **Overview** > **Add Destination** > **Create a New Destination**. Or, you can create the Amplitude destination first by navigating to **Destinations** > **New Destination** in your dashboard.
+3. Verify that your desired source is supported by Amplitude by referencing the **Connection Modes** table above.
+4. In the **Connection Settings** modal, provide the following information:
 
-1.  From your [RudderStack dashboard](https://app.rudderstack.com), add the source. Then, from the list of destinations, select Amplitude.
-2. Assign a name to the destination and click on **Next**.
+  - **Name**: Choose a name for your destination that will be easily identifiable later. Often, users like to include suffixes such as `-prod`, `-dev`, `-testing` to differentiate connection environments.
+  - **API key**:  To find your API key, go to your project in Amplitude and look in the general tab. 
+  - **Residency server**: Choose whether you want to connect to Amplitude’s Standard Server (US) or EU-based residency server.
 
-## Connection settings
+<div class="infoBlock"> Save your <em>Secret Key</em> in a safe place if you plan on deleting users. You may want to consider this option for GDPR purposes. </div>
 
-To successfully configure Amplitude as a destination, you will need to configure the following settings:
-
-- **API Key**: You can find the Amplitude API key in your [Amplitude dashboard](https://analytics.amplitude.com/login/).
-
-<div class="infoBlock">
-To get the API key, you need to create an organization and a project in Amplitude. For more information, refer to this <a href="https://help.amplitude.com/hc/en-us/articles/207108137-Quick-start-guide-Create-your-organization-and-first-project">Amplitude support page</a>. 
-</div>
-
-- **API Secret Key required for deletion of users**: Enter your API Secret Key required for user deletion.
-- **Residency Server**: Based on the Amplitude data center you have configured, select the residency server from the below options:
-  - **Standard Server**
-  - **EU Residency Server** 
-
-### Group settings
-
-  - **Group name trait**: The trait that we will use as `groupType` in the `group` call.
-  - **Group value trait**: The trait that we will use as `groupValue` in the `group` call.
-
-### Track pages
-
-<div class="infoBlock">
-
-These settings can be used for tracking via web and mobile device mode only.
-</div>
-
-  - **Track all pages**: If this setting is enabled, an event named `Loaded a page` / `Loaded a Screen` will be sent to Amplitude.
-  - **Track Categorized pages**: If this setting is enabled and if `category` is present in a `page` / `screen` call, then an event named `Viewed {category} page` / `Viewed {category} Screen` will be sent to Amplitude.
-  - **Track Named pages**: If this setting is enabled and the `name` is present in a `page` call, then an event named `Viewed {name} page` will be sent to Amplitude.
-
-<div class="infoBlock">
-
-If <code class="inline-code">name</code> is present in a <code class="inline-code">screen</code> call, then RudderStack sends the event name as <code class="inline-code">Viewed {name} Screen</code> to Amplitude. However, if <code class="inline-code">name</code> is absent, then the event is sent as <code class="inline-code">Loaded a Screen</code>.
-</div>
-
-<div class="warningBlock">
-
-If multiple settings are enabled, then multiple events may be sent for a single <code class="inline-code">page/screen</code> call. For example, if both <strong>Track categorized page</strong> and <strong>Track named page</strong> settings are enabled, one <strong>Viewed {name} page</strong> / <strong>Viewed {name} Screen</strong> and one <strong>Viewed {category} page</strong> / <strong>Viewed {category} Screen</strong> events will be generated for a single <code class="inline-code">page/screen</code> call.
-</div>
-
-### Trait settings
-
-This setting is for configuring the traits sent to Amplitude via RudderStack's `identify` call.
-
-  - **Traits to increment**: If this setting is enabled, the value of the corresponding trait will be incremented at Amplitude, with the value provided against the trait in an `identify` call.
-  - **Traits to set once**: If this setting is enabled, the value of the corresponding trait will be set once at Amplitude with the value provided against the trait in an `identify` call.
-  - **Traits to Append**: If this setting is enabled, the value of the corresponding trait will be appended to the corresponding trait array at Amplitude. **If the corresponding trait does not have a value set yet, it will be initialized to an empty list before the new values are appended. If the corresponding trait has an existing value and it is not a list, it will be converted into a list with the new value appended.**
-
-<div class="infoBlock">
-
-This feature is not applicable for the web device mode integration.
-</div>
-
-- **Traits to Prepend**: If this setting is enabled, the value of the corresponding trait will be prepended to the corresponding trait array at Amplitude. If the corresponding trait does not have a value set yet, it will be initialized to an empty list before the new values are prepended. If the corresponding trait has an existing value and it is not a list, it will be converted into a list with the new value prepended.
-
-<div class="infoBlock">
-
-This feature is not applicable for the web device mode integration.
-</div>
-
-### Other settings
-
-- **Track Products once**: If this setting is enabled and if the event payload contains an array of products, then the event is tracked with the original event name and all the products as its property. Otherwise, each product is tracked with event as `Product purchased`.
-- **Track Revenue per product**: If this setting is enabled and if the event payload contains multiple products, each product's revenue is tracked individually.
-- **Version Name**: The value of this field is set as the `versionName` of the Amplitude SDK.
-
-<div class="infoBlock">
-
-This feature is applicable only for the web device mode integration.
-</div>
-
-- **Map device brand**: Enable this setting for RudderStack to send the device brand information (`context.device.brand`) to Amplitude.
-
-<div class="infoBlock">
-
-Amplitude computes <code class="inline-code">device_family</code> as <code class="inline-code">device_family: {device_brand} {device_manufacturer} {device_model}</code>.
-</div>
-
-### Client-side events filtering
-
-<div class="infoBlock">
-Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this setting.
-</div>
-
-### Web device mode settings
-
-- **Batch events**: If this setting is enabled, the events are batched together and uploaded by the Amplitude SDK only when the number of queued events is greater than or equal to `eventUploadThreshold` or `eventUploadPeriodMillis` (in ms), since the first unsent event is queued.
-- **Event upload period millis**: If the `batch events` settings is enabled, this is the amount of time that the SDK waits to upload the events.
-- **Event upload threshold**: If the `batch events` settings is enabled, this is the minimum number of events to batch together by the Amplitude SDK.
-- **Use device mode to send events**: Enable this flag to send the events through Amplitude web SDK. The other settings related to the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>will also work if you enable this option.
-- **Prefer Anonymous ID for Device ID**: If this setting is enabled, the Device ID will be set as the `anonymousId` generated by RudderStack SDK or by the value you explicitly set as the `anonymousId` via RudderStack's`setAnonymousId()` method. 
-
-<div class="infoBlock">
-
-For more information on explicitly setting the <code class="inline-code">anonymousId</code>, refer to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#overriding-anonymous-id">RudderStack's JavaScript SDK</Link> documentation.
-</div>
-
-- **Set Device ID from the URL parameter**: If this setting is enabled, the Amplitude SDK will parse the URL parameter and set the Device ID from `amp_device_id`.
-- **Force HTTPS:** If this setting is enabled, the events will always be uploaded by the Amplitude SDK to the `HTTPS` endpoint, otherwise it will use the embedding site's protocol.
-- **Track GCLID:** If this setting is enabled, the Amplitude SDK will capture the `gclid` URL parameters along with the user's `initial_gclid` parameters.
-- **Track Referrer:** If this setting is enabled, the Amplitude SDK will capture the `referrer` and `referring_domain` for each session along with the user's `initial_referrer` and `initial_referring_domain`.
-- **Track UTM properties:** If this setting is enabled, the Amplitude SDK parses the UTM parameters in the query string or `_utmz` cookie and includes them as user properties in all uploaded events.
-- **Save Referrer, URL Params, GCLID once per session:** If this setting is enabled, the corresponding tracking of `gclid`, referrer, UTM parameters will be done once per session. 
-
-<div class="infoBlock">
-
-Disable this option if you always want to capture new values through the session.
-</div>
-
-- **Unset param referrer on new session:** If this setting is disabled, the existing `referrer` and `utm_parameter` values will be passed to each new session. If enabled, `referrer` and `utm_parameter` properties will be set to `null` upon instantiating a new session. 
-
-<div class="infoBlock">
-
-This feature works only if the <strong>Track Referrer</strong> and <strong>Track UTM properties</strong> settings are enabled in the dashboard.
-</div>
+5. Choose the Connection Mode for each of your sources. This determines how your data will be routed from your source to your destination. Learn more about Cloud Mode vs. Device Mode <Link to="/destinations/rudderstack-connection-modes/">here</Link>. We recommend using cloud mode as you will have access to Transformations and more reliable performance (compared to device mode).
+6. Press **Continue** to create your connection.
+7. Review the Configuration Settings to ensure that you are OK with all of the default settings and/or to customize your settings further.
+8. Once you are happy with your settings, toggle the **Enable** switch at the top of your Configurations page to begin sending events to Amplitude.
 
 ## Adding device mode integration
 
@@ -439,6 +334,141 @@ For iOS platform, make sure that the minimum deployment target for your applicat
     </TabPanels>
 </Tabs>
 
+## Configuration Settings
+
+Configure how you want your events to be sent to Amplitude directly in your RudderStack dashboard without touching any code.
+
+#### Page settings
+
+This section allows you to set how you want your page calls to be sent to Amplitude. 
+
+
+<div class="infoBlock">
+These settings are only applicable when you’ve connected a source in web or mobile device mode. 
+</div>
+
+
+| Field                   | Description                                                                                                                                | Note                                                                             |   |   |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|---|---|
+| Track all pages         | Toggling this on will send all pageview events to Amplitude with either `Loaded a page` or `Viewed a screen` event names.                      |                                                                                  |   |   |
+| Track categorized pages | With this on, any page call with a category will be sent to Amplitude as either a `Loaded {Category} Page` or `Viewed {Category} Screen` event. |                                                                                  |   |   |
+| Track named pages       | With this on, any page call with a name will be sent to Amplitude as either a `Loaded {Name} Page` or `Viewed {Name} Screen` event.            | If `name` is absent, then the event is sent as `Loaded a page` or `Viewed a screen`.   |   |   |
+
+We suggest checking your event volume setup with Amplitude prior to configuring this section.
+
+If multiple settings are enabled, then multiple events may be sent for a single `page`/`screen` call. For example, if both `Track categorized page` and `Track named page` settings are enabled, one `Viewed {name} page` / `Viewed {name} Screen` and one `Viewed {category} page` / `Viewed {category} Screen` event will be generated for a single page/screen call.
+
+
+#### Identify & Group settings
+
+This section allows you to set how you want your Group or Identify call user properties to be sent to Amplitude
+
+
+| Field                         | Description                                                                                                                                                                                                                                                                                                                               | Note                                                          |   |   |
+|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------|---|---|
+| Group type trait              | Specify the group type to send as `groupType` in your group calls to Amplitude. Examples of a group type could be: Org ID, Org Name, or Industry.                                                                                                                                                                                     |                                                               |   |   |
+| Group value trait             | Specify the group value to send as `groupValue` in your group calls to Amplitude. This would be a specific value of the group type. For example, if you set group_type: "industry", group_value might be "retail".                                                                                                                    |                                                               |   |   |
+| Identify: traits to increment | Set the traits to increment on an `identify` call. These traits will then be incremented by the numerical value associated with the trait in your `identify` call.                                                                                                                                                                        |                                                               |   |   |
+| Identify: traits to set once  | Specify the traits where you want to set values only once, which prevents overriding the property value.                                                                                                                                                                                                                              |                                                               |   |   |
+| Identify: traits to append    | Append a value or multiple values to a user property array. If the corresponding trait does not have a value set yet, it will be initialized to an empty list before the new values are appended. If the corresponding trait has an existing value and it is not a list, it will be converted into a list with the new value appended. | Supported for all connection modes except for web device mode |   |   |
+| Identify: traits to prepend   | Prepend a value or multiple values to a user property array. If the corresponding trait does not have a value set yet, it will be initialized to an empty list before the new values are prepended. If the corresponding trait has an existing value and it is not a list, it will be converted into a list with the new value prepended. | Supported for all connection modes except for web device mode |   |   |
+
+## Other settings
+
+#### Amplitude IT
+
+| Field            | Description                                                                                                                                                                    | Note                               |   |   |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------|---|---|
+| Version name     | Assign a version name for your page, and we'll send it to Amplitude for more detailed events.                                                                                   | Only supported for web device mode |   |   |
+| Map device brand | Capture brand, manufacturer, and model information for mobile devices. Amplitude computes `device_family` as `device_family: {device_brand} {device_manufacturer} {device_model}`. |                                    |   |   |
+
+
+#### Client-side events filtering
+
+RudderStack's <Link to="/sources/event-streams/sdks/event-filtering">client-side event filtering</Link> feature lets you specify which events should be discarded or allowed to flow through by allowlisting or denylisting them. 
+
+<div class="infoBlock">
+This is only applicable for destinations that are connecting in device mode and implementing track calls. For mobile SDKs, it also applies to the following application lifecycle events: installed, opened, backgrounded, updated.
+</div>
+
+1. Select whether you would like to turn on events filtering.
+    - The default setting is **No events filtering**, meaning that no filters are applied and RudderStack will allow all events to flow through.
+    - Select **Allowlist** if you would like to be able to specify the names of the events that you want RudderStack to allow to flow through to the destination. Any events you do not list in the subsequent modals will be blocked.
+    - Select **Denylist** if you would like to be able to specify the names of the events that you want RudderStack to block from flowing to the destination. Any events you do not list in the subsequent modals will be allowed to flow through to the destination.
+2. Input event names to **Allowlist** (only possible if Allowlist was selected above): provide the event name(s) you would like to allow to flow through to the destination. Input one event name per line, and click **add more** for each additional event name you would like to add to the list. Note that any event names that you do not add to this list will be blocked.
+3. Input event names to **Denylist** (only possible if Denylist was selected above): provide the event name(s) you would like to block from flowing to the destination. Input one event name per line, and click **add more** for each additional event name you would like to add to the list. Note that any event names that you do not add to this list will be allowed to flow through to the destination.
+
+#### OneTrust cookie categories
+
+OneTrust is a popular consent management platform that provides data governance, privacy management, and security solutions to thousands of businesses worldwide. 
+
+RudderStack’s JavaScript SDK integrates seamlessly with the OneTrust SDK. It lets you map the OneTrust cookie/consent groups to RudderStack's consent purposes. RudderStack, in turn, uses this consent information to enable/disable tracking and sending the data.
+
+To use this feature, please ensure that you have activated the integration by following the steps outlined here.
+
+| Field         | Description                                                                                    | Note                              |
+|---------------|------------------------------------------------------------------------------------------------|-----------------------------------|
+| Category name | Input the consent category name(s) defined when you set up OneTrust for your JavaScript source. | Insert one category name per line. |
+
+See <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager">OneTrust Consent Manager</Link> in our JavaScript SDK docs to learn more.
+
+#### Ecommerce settings
+
+These settings allow you to define how you want your `Order Completed` events to be passed to Amplitude.
+
+| Field                          | Description                                                                                                                                                                                                                                    | Note                                           |   |   |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------|---|---|
+| Track products as single event | Turn this on to track an array of products as a single event. The event will be passed as the original event name, and all the products as properties. Otherwise, each product is tracked as a separate event with the name `Product purchased`. | This feature is only supported for cloud mode. |   |   |
+| Track revenue per product      | Turn this on to track the revenue of each product in an event individually. Otherwise, the event will be sent as an aggregate revenue of all products.                                                                                         | This feature is only supported for cloud mode. |   |   |
+
+## SDK settings
+
+These settings allow you to customize the Amplitude SDK. Remember to also follow these steps to add the Amplitude SDK to your project.
+
+#### Web
+
+If you are connecting to Amplitude in web device mode, these settings allow you to configure Amplitude’s native web SDK.
+
+| Field                                                  | Description                                                                                                                                                                                                                                                   | Note                                                                 |   |   |
+|--------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---|---|
+| Set device ID from URL parameter                       | Turning this on will set the device ID by parsing the URL parameter from `amp_device_ID`.                                                                                                                                                                   |  Web device mode only                                 |   |   |
+| Force HTTPS                                            | Turning this on will upload events to the HTTPS endpoint. Otherwise, it will use the embedding site’s protocol.                                                                                                                                         |  Web device mode only                                 |   |   |
+| Track GCLID                                            | When on, this captures the GCLID URL parameters along with the user's initial_gclid parameters.                                                                                                                                                                |  Web device mode only                                 |   |   |
+| Track referrer information                             | When on, this captures the user's referrer, initial referrer, and referring domain as user properties.                                                                                                                                                         |  Web device mode only                                 |   |   |
+| Track UTM properties                                   | When on, this captures the UTM parameters as user properties by either parsing the query string or from the _utmz cookie.                                                                                                                                      |  Web device mode only                                 |   |   |
+| Save referrer, UTM params, GCLID only once per session | When on, this tracks referrer, UTM parameters, and GCLID only once per session, ignoring any new values which may enter a user’s session.                                                                                                                      |  Web device mode only                                 |   |   |
+| Reset referrer or UTM params for new sessions          | Turning this on will set referrer and utm_parameter properties to null upon instantiating a new session; otherwise, existing referrer and utm_parameter values will be passed to each new session.                                                             |  Web device mode only                                 |   |   |
+| Batch events prior to upload                           | Turning this on will batch events to upload only after the number of queued events is greater than or equal to eventUploadThreshold, or after events to upload after eventUploadPeriodMillis milliseconds have passed since the first unsent event was logged. |  Web device mode only                                 |   |   |
+| Batch event upload period (ms)                         | Set the time limit (in ms) between batch uploads.                                                                                                                                                                                                              | This can only be set if you turned on "batch events prior to upload" |   |   |
+| Batch event upload threshold                           | Set the minimum number of events to be sent in a batch.                                                                                                                                                                                                        | This can only be set if you turned on "batch events prior to upload" |   |   |
+
+
+
+
+#### iOS
+
+If you are connecting to Amplitude in mobile device mode, these settings allow you to configure Amplitude’s native iOS SDK.
+
+| Field                          | Description                                                          | Note                    |
+|--------------------------------|----------------------------------------------------------------------|-------------------------|
+| Track session events           | Turning this on will send start and end session events.               |  Mobile device mode only|
+| Use IDFA for device ID         | Turning this on will send the IDFA instead of device ID to Amplitude. |  Mobile device mode only|
+| Batch event upload period (ms) | Set the time limit (in ms) between batch uploads.                     |  Mobile device mode only|
+| Batch event upload threshold   | Set the minimum number of events to be sent in a batch.               |  Mobile device mode only|
+
+#### Android
+
+If you are connecting to Amplitude in mobile device mode, these settings allow you to configure Amplitude’s native Android SDK.
+
+| Field                            | Description                                                                                   | Note                                   |   |   |
+|----------------------------------|-----------------------------------------------------------------------------------------------|----------------------------------------|---|---|
+| Enable location listening        | When on, capture user location information for anyone who has granted app location permission. |  Mobile device mode only|   |   |
+| Track session events             | Turning this on will send start and end session events.                                        |  Mobile device mode only|   |   |
+| Use advertising ID for device ID | Turning this on will send Advertising ID instead of Device ID to Amplitude.                    |  Mobile device mode only|   |   |
+| Batch event upload period (ms)   | Set the time limit (in ms) between batch uploads.                                              |  Mobile device mode only|   |   |
+| Batch event upload threshold     | Set the minimum number of events to be sent in a batch.                                        |  Mobile device mode only|   |   |
+
+
 ## Page
 
 The `page` call allows you to record information whenever a user sees a web page, along with the associated optional properties of that page. This method must be called at least once per page load.
@@ -471,9 +501,90 @@ rudderanalytics.screen({
 
 In the above snippet, we capture information related to the screen being viewed, such as screen's name and category.
 
+#### Tracking Named, Categorized, or All Pages
+
+
+If you are connecting in **web or device mode**, the settings you choose in your web app configurations will determine how the `page` or `screen` call is sent to RudderStack.
+
+We highly recommend checking your RudderStack event volume setup prior to configuring this section.
+
+
+| Field          | When events are sent to RudderStack  | RudderStack event name                    | Example for `{ "name": "settings", "category": "merchant" }` |
+|-------------------------|------------------------------------|---------------------------------------------|-----------------------------------------------------------|
+| Track Named Pages       | A page/screen name is provided     | Loaded/Viewed (Category) (Name) Page/Screen | “Loaded Merchant Settings Page”                           |
+| Track Categorized Pages | A page/screen category is provided | Loaded/Viewed (Category) Page/Screen        | “Loaded Merchant Page”                                    |
+| Track All Pages         | Always                             | Loaded/Viewed a Page/Screen                 | “Loaded a Page”                                           |
+
+
+When you enable Track Named Pages or Track Categorized Pages, RudderStack will send a Page or Screen call when ‘Name’ or ‘Category’ are provided. These will also be passed as a top-level event type, and will count towards a unique event type count in Amplitude.  If ‘Name’ or ‘Category’ are absent, then the event will be sent as Loaded a Page or Loaded a Screen.
+
+When you enable Track All Pages, RudderStack will send a Loaded a Page call to Amplitude, with the ‘name’ or ‘category’ included as an attribute or event property.  Loaded a Page will be sent as one event type.
+
+## Identify
+
+The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userId` as well as any optional information such as name, email address, etc.
+
+<div class="infoBlock">
+When sending events from your <Link to="/sources/reverse-etl/">Reverse ETL</Link> sources using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapping</Link> feature, you can also pass a custom user ID in your <code class="inline-code">identify</code> calls. RudderStack adds this ID under <a href="https://github.com/rudderlabs/rudder-transformer/blob/5d716c2df82fca2e76c3bb17de17b1cabe72126d/v0/destinations/am/transform.js#L270"><code class="inline-code">context.externalId.0.identifierType</code></a> before sending it to Amplitude.
+</div>
+
+A sample `identify` call looks like the following:
+
+```javascript
+rudderanalytics.identify(
+  "userId", {
+    email: "name@surname.com",
+    name: "John Doe",
+    profession: "Student",
+  })
+```
+
+A sample dashboard after making the above `identify`, `page`, and `track` calls is as follows:
+
+<img src="../../assets/screenshot-2020-02-17-at-5.41.41-pm.png" />
+
+<img src="../../assets/screenshot-2020-02-17-at-5.49.05-pm.png" />
+
+<div class="infoBlock">
+<strong>Applicable for mobile only</strong>: If a trait has a name <code class="inline-code">optOutOfSession</code> with a value of <code class="inline-code">true</code>, then this <code class="inline-code">identify</code> call will be opted out of the current session if it exists or won't start a new session if there isn't any active session.<br/><br/>
+
+<strong>Opting out of sessions</strong> 
+
+
+You can opt an identify call out of a current session by passing a trait with the name `optOutOfSession` and value `true`.  In situations where there is not an active session, passing `optOutOfSession` will not start a new session.
+</div>
+
+## Group
+
+The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account.
+
+RudderStack supports sending `group` calls in cloud mode. When sending events via device mode, `group` is supported only by the web (JavaScript) SDK.
+
+<div class="warningBlock">
+<a href="https://developers.amplitude.com/docs/group-identify-api">Groups</a> are an enterprise-only feature in Amplitude and you need to purchase the <strong><a href="https://help.amplitude.com/hc/en-us/articles/115001765532">Accounts</a></strong> add-on to use them.
+</div>
+
+<div class="infoBlock">
+This feature is only available for cloud and web (JavaScript) device mode.
+</div>
+
+To use the Amplitude Groups feature with RudderStack, you need to define the `Group name trait` and `Group value trait` in the dashboard settings and pass them as traits while making a `group` call.
+
+Even if you don't have an enterprise account or the Groups add-on, RudderStack adds `groups` as a user property in the user's profile with <strong>Group Name Trait</strong> as its type and <strong>Group Value Trait</strong> as its value.
+
+Suppose you have defined the **Group Name Trait** as `RS` and **Group Value Trait** as `RudderStack` and made the `group` call. The user would then be associated with the Group name: `RS` and the Group Value: `RudderStack`.
+
+RudderStack does not support associating a user to more than one group per `group` call sent to Amplitude. To send more than one group per user, you must call the `group` API multiple times with the relevant group information specified in the <Link to="#identify--group-settings">group settings</Link>.
+
 ## Track
 
-The `track` call allows you to capture any action that the user might perform, and the properties associated with that action. Each action is considered to be an event.
+The `track` call allows you to capture any action that the user might perform, and the properties associated with that action. Each action is considered to be an event. The following settings
+
+| Field                   | Description                                                                                                                                | Note                                                                             |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| Track all pages         | Toggling this on will send all pageview events to Amplitude with either  Loaded a page or Viewed a screen event names                      |                                                                                  |
+| Track categorized pages | With this on, any page call with a category will be sent to Amplitude as either a Loaded {Category} Page or Viewed {Category} Screen event |                                                                                  |
+| Track named pages       | With this on, any page call with a name will be sent to Amplitude as either a Loaded {Name} Page or Viewed {Name} Screen event             | If name is absent, then the event is sent as Loaded a page or Viewed a screen.   |
 
 A sample `track` call looks like the following:
 
@@ -481,21 +592,15 @@ A sample `track` call looks like the following:
 rudderanalytics.track("Track me")
 ```
 
-### Revenue events
-
-Amplitude allows for tracking of revenue events.
-
-<div class="warningBlock">
-
-To track a revenue event, you must include a <code class="inline-code">revenue</code> key in the event. This key is required to have the event counted as a revenue event to send data through the RudderStack cloud mode.
-
+<div class="infoBlock">
+<strong>Applicable for mobile only</strong>: If you set a property with the name <code class="inline-code">optOutOfSession</code> and value <code class="inline-code">true</code> then this <code class="inline-code">track</code> call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
 </div>
 
-Additionally, if you send `price` and `quantity` with the revenue key, the revenue will be calculated in Amplitude as `price * quantity`
+#### Revenue events
 
-You can also set a `product_id`, but only if `revenue` has been set as well.
+Revenue events are available in **web device mode only**. To track revenue events, we use Amplitude's `logRevenueV2()` API which expects `revenue` as a top level attribute.
 
-A sample revenue track call looks like the following:
+To track a revenue event, you must include a <code class="inline-code">revenue</code> key in the event, like so:
 
 ```javascript
 rudderanalytics.track("Item Purchased", {
@@ -504,13 +609,18 @@ rudderanalytics.track("Item Purchased", {
 })
 ```
 
-<div class="warningBlock">
+If you send a `price` and `quantity` with the revenue key, the revenue will be calculated in Amplitude as `price * quantity`
 
-To track revenue event in web device mode, we use Amplitude's <code class="inline-code">logRevenueV2()</code> api and also for an eCommerce event, we expect <code class="inline-code">revenue</code> as a top level attribute in properties. If <code class="inline-code">products</code> array is present in event payload, then to track product individually, at each product level <code class="inline-code">price</code> or <code class="inline-code">revenue</code>must be present, or else we will not track the revenue. As <code class="inline-code">logRevenueV2</code> uses both <code class="inline-code">price</code> and <code class="inline-code">quantity</code> to calculate the <code class="inline-code">revenue</code>, if no <code class="inline-code">quantity</code> is present, we will take default as <code class="inline-code">1</code>.
+You may also set a `product_id`, but only if `revenue` has been set.
 
-</div>
+If a `products` array is present in the event payload, then to track products individually at each product level, `price` or `revenue` must be present or revenue will not be tracked, as `logRevenueV2` uses both `price` and `quantity` to calculate `revenue`. 
 
-A sample eCommerce event \(`Order Completed`\) is as following:
+If no `quantity` is present, we will assume a quantity of `1` as default as `1`.
+
+
+#### Order Completed
+
+A sample `Order Completed` ecommerce event looks like this:
 
 ```javascript
 rudderanalytics.track("Order Completed", {
@@ -540,107 +650,13 @@ rudderanalytics.track("Order Completed", {
 
 The above call will generate one `Order Completed` event, 2 individual `Product purchased` events and 2 revenue events \(one with `$price` as `15` and `$quantity` as `2` and the other one with `$price` as `20` and `$quantity` as `1` \) at Amplitude, provided that in the destination settings dashboard: `Track revenue per product settings` is enabled. The two separate revenue events are generated for device mode. For cloud mode, revenue will be tracked along with the 2 `Product purchased` events.
 
-<div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
-</div>
+#### Multi-product purchases
 
-<div class="infoBlock">
-<strong>Applicable for mobile only</strong>: If you set a property with the name <code class="inline-code">optOutOfSession</code> and value <code class="inline-code">true</code> then this <code class="inline-code">track</code> call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
-</div>
+Amplitude allows you to define how you want to track multi-product purchases. This feature is available in **web device mode only**.
 
-## Identify
+If you enable "Track revenue per product" in your ecommerce settings, you will then be able to track each product's revenue as a separate event. Otherwise, the event will be sent as an aggregate revenue of all products.
 
-The `identify` call lets you associate a user with their actions and capture all the relevant traits about them. This information includes unique `userId` as well as any optional information such as name, email address, etc.
-
-<div class="infoBlock">
-When sending events from your <Link to="/sources/reverse-etl/">Reverse ETL</Link> sources using the <Link to="/sources/reverse-etl/features/visual-data-mapper/">Visual Data Mapping</Link> feature, you can also pass a custom user ID in your <code class="inline-code">identify</code> calls. RudderStack adds this ID under <a href="https://github.com/rudderlabs/rudder-transformer/blob/5d716c2df82fca2e76c3bb17de17b1cabe72126d/v0/destinations/am/transform.js#L270"><code class="inline-code">context.externalId.0.identifierType</code></a> before sending it to Amplitude.
-</div>
-
-A sample `identify` call looks like the following:
-
-```javascript
-rudderanalytics.identify(
-  "userId", {
-    email: "name@surname.com",
-    name: "John Doe",
-    profession: "Student",
-  })
-```
-
-A sample dashboard after making the above `identify`, `page`, and `track` calls is as follows:
-
-<img src="../../assets/screenshot-2020-02-17-at-5.41.41-pm.png" />
-
-<img src="../../assets/screenshot-2020-02-17-at-5.49.05-pm.png" />
-
-<div class="infoBlock">
-<strong>Applicable for mobile only</strong>: If a trait with the name <code class="inline-code">optOutOfSession</code> and value <code class="inline-code">true</code> then this <code class="inline-code">identify</code> call will be opted out of the current session if it exists or does not start a new session if there isn't any active session.
-</div>
-
-### Deleting a user
-
-You can delete a user in Amplitude using the <Link to="/api/data-regulation-api/#adding-a-suppression-with-delete-regulation">Suppression with Delete regulation</Link> of the RudderStack <Link to="/api/data-regulation-api/">Data Regulation API</Link>.
-
-<div class="infoBlock">
-To delete a user, you must specify their <code class="inline-code">userId</code> in the event. Additionally, you can specify a custom identifier (optional) in the event.
-</div>
-
-A sample regulation request body for deleting a user in Amplitude is shown below:
-
-```json
-{
-  "regulationType": "suppress_with_delete",
-  "destinationIds": [
-    "2FIKkByqn37FhzczP23eZmURciA"
-  ],
-  "users": [{
-    "userId": "1hKOmRA4GRlm",
-    "<customKey>": "<customValue>"
-  }]
-}
-```
-
-## Group
-
-<div class="warningBlock">
-<a href="https://developers.amplitude.com/docs/group-identify-api">Groups</a> are an enterprise-only feature in Amplitude and you need to purchase the <strong><a href="https://help.amplitude.com/hc/en-us/articles/115001765532">Accounts</a></strong> add-on to use them.
-</div>
-
-The `group` call lets you associate a particular identified user with a group, such as a company, organization, or an account.
-
-<div class="infoBlock">
-RudderStack supports sending the <code class="inline-code">group</code> calls in the cloud mode. However, when sending events via the device mode, <code class="inline-code">group</code> is currently supported only by the web (JavaScript) SDK.
-</div>
-
-<div class="infoBlock">
-RudderStack does not support associating a user to more than one group per <code class="inline-code">group</code> API call sent to Amplitude. To send more than one group per user, you need to call the <code class="inline-code">group</code> API multiple times with the relevant group information specified in the <Link to="#group-settings">group settings</Link>.
-</div>
-
-To use the Amplitude Groups feature with RudderStack, you need to define the `Group name trait` and `Group value trait` in the dashboard settings and pass them as traits while making a `group` call.
-
-Even if you don't have an enterprise account or the Groups add-on, RudderStack adds `groups` as a user property in the user's profile with <strong>Group Name Trait</strong> as its type and <strong>Group Value Trait</strong> as its value.
-
-Suppose you have defined the <strong>Group Name Trait</strong> as `RS` and <strong>Group Value Trait</strong> as `RudderStack` and made the `group` call, then the user would be associated with the Group name: `RS` and the Group Value: `RudderStack`.
-  
-## Send `event_id` in device mode
-
-RudderStack supports sending `event_id` to Amplitude in the device mode. You can include it under the `integrations` object and it is supported for all the above-mentioned API calls, namely, `identify`, `track`, `page`, `screen`, and `group`.
-  
-A sample `identify` call with `event_id` is as follows:
-
-```javascript
-rudderanalytics.identify(
-  "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
-    name: "Alex Keener"
-  }, {
-    integrations: {
-      Amplitude: {
-        event_id: 1234
-      }
-    }
-  }
-);
-```
+If you enable "Track products once", then an array of products will be tracked as a single event. The event would be passed as the original event name, with all the products as properties.
 
 ## Alias
 
@@ -648,9 +664,15 @@ rudderanalytics.identify(
 This feature is currently only available when sending events through the JavaScript SDK in the cloud mode.
 </div>
 
+<div class="warningBlock">
+To use Alias, you must enable the Amplitude Portfolio add-on.
+</div>
+
+
+
 Refer to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/#alias">JavaScript SDK documentation</Link> for information and examples on how to call the `alias` event.
 
-### Mapping
+#### Mapping
 
 Amplitude's `alias` call simply creates a mapping or link between the `user_id` specified in the `from` parameter to the `global_user_id` specified in the `to` parameter of the `alias` call.
 
@@ -658,7 +680,7 @@ Amplitude's `alias` call simply creates a mapping or link between the `user_id` 
 rudderanalytics.alias("user_id", "global_user_id", options, callback)
 ```
 
-### Unmapping
+#### Unmapping
 
 With Amplitude, it is possible to **unmap** an already established link, or `alias`. In order to trigger Amplitude to unmap a connection, follow the code snippet template below.
 
@@ -679,8 +701,9 @@ For the unmapping call, it is not necessary to provide <code class="inline-code"
 </div>
 
 For more information on how the `alias` call works for Amplitude, refer to this [Amplitude support page](https://help.amplitude.com/hc/en-us/articles/360002750712-Portfolio-Cross-Project-Analysis#h_76557c8b-54cd-4e28-8c82-2f6778f65cd4).
+## Advanced Features
 
-## Reset
+#### Reset
 
 <div class="infoBlock">
 This feature is currently available as a part of RudderStack Mobile SDKs only.
@@ -713,13 +736,57 @@ rudderClient.reset();
     </TabPanels>
 </Tabs>
 
+#### Sending `event_id`
+
+RudderStack supports sending `event_id` to Amplitude in device mode. You can include it under the `integrations` object and it is supported for all the above-mentioned API calls, namely, `identify`, `track`, `page`, `screen`, and `group`.
+  
+A sample `identify` call with `event_id` is as follows:
+
+```javascript
+rudderanalytics.identify(
+  "1hKOmRA4el9Zt1WSfVJIVo4GRlm", {
+    name: "Alex Keener"
+  }, {
+    integrations: {
+      Amplitude: {
+        event_id: 1234
+      }
+    }
+  }
+);
+```
+
+## GDPR and Data Regulation
+#### Deleting a user
+
+You can delete a user in Amplitude using <Link to="/api/data-regulation-api/#adding-a-suppression-with-delete-regulation">Suppression with Delete regulation</Link> in the RudderStack <Link to="/api/data-regulation-api/">Data Regulation API</Link>.
+
+
+To delete a user, you must specify their `userId` in the event. Optionally, you can specify a custom identifier.
+
+A sample regulation request body for deleting a user in Amplitude is shown below:
+
+```json
+{
+  "regulationType": "suppress_with_delete",
+  "destinationIds": [
+    "2FIKkByqn37FhzczP23eZmURciA"
+  ],
+  "users": [{
+    "userId": "1hKOmRA4GRlm",
+    "<customKey>": "<customValue>"
+  }]
+}
+```
+  
 ## FAQ
 
-### Why are all my session IDs `-1` in Amplitude?
+#### Why are all my session IDs `-1` in Amplitude?
 
 Session tracking is only supported for the RudderStack <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> because the integration loads Amplitude's SDK. 
 Events sent via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> connections will have session IDs as `-1`.
 
-### Can I send more than one group per user to Amplitude?
+#### Can I send more than one group per user to Amplitude?
 
-RudderStack does not support associating a user to more than one group per `group` API call sent to Amplitude. To send more than one group per user, you need to call the `group` API multiple times with the relevant group information specified in the <Link to="#group-settings">group settings</Link>.
+RudderStack does not support associating a user to more than one group per `group` API call sent to Amplitude. To send more than one group per user, you need to call the `group` API multiple times with the relevant group information specified in the <Link to="#identify--group-settings">group settings</Link>.
+

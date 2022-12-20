@@ -1,6 +1,6 @@
 ---
 title: "Notifications"
-description: Detailed description of the notifications options in RudderStack.
+description: Enable data delivery alerts for RudderStack sources and destinations.
 aliases: ["Notifications", "RudderStack notifications"]
 ---
 
@@ -33,11 +33,13 @@ From the **Notifications** tab, click the **Manage Subscription** button to togg
 <img src="../assets/rs-cloud/manage-subscriptions.png" alt="Manage subscriptions" />
 
 From this view you can toggle your own notifications on or off. Clicking the arrow will take you to the Settings page for that connection.
-## Error types
 
-RudderStack will send email alerts for two types of errors: Datatype mismatch and delivery errors.
+## Alert types
 
-Refer to the following tables for the error descriptions and the necessary actions to resolve them.
+RudderStack will send email alerts for two types of errors: datatype mismatch and delivery errors. In addition, it also sends some delivery warning alerts.
+
+Refer to the following tables for the error descriptions/warnings and the necessary actions to resolve them.
+
 ### Datatype mismatch errors
 
 | Error description                                     | Customer actions                                                                                                                                  |
@@ -59,3 +61,9 @@ Refer to the following tables for the error descriptions and the necessary actio
 | Invalid Account Id. Aborting message.                 | Ensure that a valid Account ID key has been added to the RudderStack dashboard.                                                                 |
 | `userId` or `email` is mandatory for this request.         | Make sure to include `userId`/`email` in the payload for successful event delivery.                                                  |
 | Event timestamp should be within last `<timeline>`.      | The event needs to be within the last `<timeline>` for successful delivery of the event. Any event older than `<timeline>` would result in failures.  |
+
+### Delivery warnings
+
+| Warning          | Customer actions                    |
+| :--------------| :-----------------------------|
+| You're reaching the column limit in your `<table_name>` table. | Use any of the following approaches: <br /> <ul><li>Go to your warehouse and delete (drop) the unwanted table columns. </li> <li>If you're syncing semi-structured event data that is not defined by a fixed schema, you can leverage RudderStack's <Link to="/destinations/warehouse-destinations/json-column-support/">JSON Column Support</Link> feature to send your data.</li></ul> <br />For more information, refer to the <Link to="/destinations/warehouse-destinations/faq/#how-can-i-handle-the-column-count-threshold-in-my-warehouse">Warehouse FAQ</Link> guide. |

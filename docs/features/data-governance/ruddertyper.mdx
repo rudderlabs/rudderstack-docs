@@ -9,12 +9,6 @@ description: >-
 
 Simply put, it uses an event from your specified tracking plan and generates an analytics call in the supported languages.
 
-<GhBadge
-  url={'https://rudderstack.com/pricing/'}
-  label={'Plan'}
-  message={'Pro/Enterprise'}
-  color={'blueviolet'}
-/>
 
 <div class="successBlock">
 RudderTyper currently generates native clients for the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-node-sdk/">Node.js</Link>, <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link> SDKs.
@@ -29,17 +23,6 @@ Some key features of RudderTyper are:
 - Allows you to contextualize your analytics instrumentation and validate it with your event spec, before deploying to production.
 - You can access and validate your event names, properties, types, etc.
 - It provides compile-time errors and warns you about any missing required properties, data mismatch, and any issues in the JSON schema configured in your tracking plan.
-
-<div class="infoBlock">
-This feature is currently in a closed beta. If you're interested, contact your account representative for more information.
-</div>
-
-<GhBadge
-  label={'Stability'}
-  message={'Beta'}
-  color={'blueviolet'}
-  logo={'github'}
-/>
 
 ## Get started
 
@@ -136,7 +119,7 @@ client:
   # The target language for your RudderTyper client.
   # Valid values: javascript, java, objective-c, swift.
   language: javascript
-  # Javascript Transpilation Settings
+  # JavaScript Transpilation Settings
   # Valid values: 'ES3','ES5','ES2015','ES2016','ES2017','ES2018','ES2019','ESNext','Latest'
   scriptTarget: 'ES6'
   # Valid values: 'CommonJS','AMD','UMD','System','ES2015','ESNext'

@@ -1,6 +1,6 @@
 ---
 title: "Adjust"
-description: Step-by-step guide on sending your event data from RudderStack to Adjust
+description: Send your event data from RudderStack to Adjust.
 ---
 
 [Adjust](https://adjust.com) is an industry-leading mobile attribution provider that allows you to bring all your business data together to get powerful insights from it.
@@ -8,7 +8,7 @@ description: Step-by-step guide on sending your event data from RudderStack to A
 RudderStack supports Adjust as a destination to which you can seamlessly send your event data.
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/adj">GitHub repository</a>. You can also refer to the specific repositories for the <a href="https://github.com/rudderlabs/rudder-integration-adjust-android">Android</a> and <a href="https://github.com/rudderlabs/rudder-integration-adjust-ios">iOS</a> implementations.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/adj">GitHub repository</a>. You can also refer to the specific repositories for the <a href="https://github.com/rudderlabs/rudder-integration-adjust-android">Android</a> and <a href="https://github.com/rudderlabs/rudder-integration-adjust-ios">iOS</a> implementations.
 </div>
 
 ## Getting started
@@ -21,7 +21,7 @@ Before configuring Adjust as a destination in RudderStack, verify if the source 
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To learn more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to Adjust, follow these steps:
@@ -55,7 +55,7 @@ This setting is applicable only when sending events to Adjust via the <Link to="
 For more information on creating an event token in Adjust, refer to the <Link to="#how-can-i-create-a-new-event-token-in-adjust">FAQ</Link> section below.
 </div>
 
-- **Rudderstack Parameters to Partner Parameters**: This setting lets you map your event properties to specific Adjust [partner parameters](https://help.adjust.com/en/article/event-tracking-ios-sdk?src=search_page#partner-parameters).
+- **RudderStack Parameters to Partner Parameters**: This setting lets you map your event properties to specific Adjust [partner parameters](https://help.adjust.com/en/article/event-tracking-ios-sdk?src=search_page#partner-parameters).
 - **Delay Time before SDK initialization**: This setting is applicable only for sending events via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>. You can use it to initiate a delay in loading the SDK for the first time.
 
 <div class="infoBlock">

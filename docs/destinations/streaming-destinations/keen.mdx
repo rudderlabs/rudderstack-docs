@@ -1,6 +1,6 @@
 ---
 title: "Keen"
-description: Step-by-step guide on sending your event data from RudderStack to Keen.
+description: Send your event data from RudderStack to Keen.
 ---
 
 [Keen](https://keen.io/) is a customer analytics platform that allows you to collect, analyze and get invaluable marketing insights from your customer event data.
@@ -8,7 +8,7 @@ description: Step-by-step guide on sending your event data from RudderStack to K
 RudderStack supports S2S \(Server to Server\) cloud mode and Web Native SDK for integration with Keen. You can thus send event data attached to Keen collections using RudderStack APIs.
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/keen">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/keen">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -89,7 +89,7 @@ user: {
 
 ## Page
 
-Calling `rudderanalytics.page()` will pass the `page` properties to the Keen collection `Viewed <category> <name> page`. To know more about the `page`call, please refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
+Calling `rudderanalytics.page()` will pass the `page` properties to the Keen collection `Viewed <category> <name> page`. To learn more about the `page`call, please refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
 
 A sample `page` call is as shown in the snippet below:
 
@@ -116,7 +116,7 @@ This will send the following properties to the Keen `Viewed Home Page` collectio
 
 ## Track
 
-Calling `rudderanalytics.track()` will pass the event properties to Keen on the collection `event-name`. To know more about the `track`call, please refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
+Calling `rudderanalytics.track()` will pass the event properties to Keen on the collection `event-name`. To learn more about the `track`call, please refer to our <Link to="/event-spec/standard-events/">RudderStack Events Specification</Link> documentation.
 
 An example `track` call is as shown:
 

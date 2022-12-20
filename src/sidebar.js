@@ -391,6 +391,11 @@ export const jsonData = [
                         content: []
                     },
                     {
+                        title: "Olark",
+                        link: "/sources/event-streams/cloud-apps/olark/",
+                        content: []
+                    },
+                    {
                         title: "PostHog",
                         link: "/sources/event-streams/cloud-apps/posthog/",
                         content: []
@@ -413,6 +418,11 @@ export const jsonData = [
                     {
                         title: "Signl4",
                         link: "/sources/event-streams/cloud-apps/signl4/",
+                        content: []
+                    },
+                    {
+                        title: "SatisMeter",
+                        link: "/sources/event-streams/cloud-apps/satismeter/",
                         content: []
                     },
                     {
@@ -463,39 +473,55 @@ export const jsonData = [
                 title: "Facebook Ads",
                 link: "/sources/extract/facebook-ads/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Freshdesk",
                 link: "/sources/extract/freshdesk/",
                 content: []
-            }, {
-                title: "Google Ads (Adwords)",
-                link: "/sources/extract/google-adwords/",
+            }, 
+            {
+                title: "Freshdesk V2",
+                link: "/sources/extract/freshdesk-v2/",
                 content: []
             }, 
             {
-                title: "Google Analytics V2",
-                link: "/sources/extract/google-analytics-v2/",
-                content: []
-            }, {
-                title: "Google Search Console",
-                link: "/sources/extract/google-search-console/",
-                content: []
-            }, {
-                title: "Google Search Console V2",
-                link: "/sources/extract/google-search-console-v2/",
-                content: []
-            },{
-                title: "Google Sheets",
-                link: "/sources/extract/google-sheets/",
-                content: []
-            }, {
-                title: "HubSpot",
-                link: "/sources/extract/hubspot-v2/",
+                title: "Google Ads (Adwords)",
+                link: "/sources/extract/google-adwords/",
                 content: []
             },
             {
-                title: "Intercom V2",
-                link: "/sources/extract/intercom-v2/",
+                title: "Google Analytics",
+                link: "/sources/extract/google-analytics/",
+                content: []
+            },
+            {
+                title: "Google Analytics 4",
+                link: "/sources/extract/google-analytics-4/",
+                content: []
+            },  
+            {
+                title: "Google Search Console",
+                link: "/sources/extract/google-search-console/",
+                content: []
+            },
+            {
+                title: "Google Sheets",
+                link: "/sources/extract/google-sheets/",
+                content: []
+            }, 
+            {
+                title: "HubSpot",
+                link: "/sources/extract/hubspot/",
+                content: []
+            },
+            {
+                title: "Intercom",
+                link: "/sources/extract/intercom/",
+                content: []
+            },
+            {
+                title: "Iterable",
+                link: "/sources/extract/iterable/",
                 content: []
             },
             {
@@ -509,19 +535,26 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Mixpanel V2",
-                link: "/sources/extract/mixpanel-v2/",
-                content: []
-            }, 
-            {
                 title: "Marketo",
                 link: "/sources/extract/marketo/",
                 content: []
-            }, {
+            }, 
+            {
+                title: "Mixpanel",
+                link: "/sources/extract/mixpanel/",
+                content: []
+            }, 
+            {
                 title: "NetSuite",
                 link: "/sources/extract/netsuite/",
                 content: []
-            }, {
+            },
+            {
+                title: "Pardot",
+                link: "/sources/extract/salesforce-pardot/",
+                content: []
+            },
+            {
                 title: "Pipedrive",
                 link: "/sources/extract/pipedrive/",
                 content: []
@@ -537,18 +570,13 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Salesforce V2",
-                link: "/sources/extract/salesforce-v2/",
+                title: "Salesforce",
+                link: "/sources/extract/salesforce/",
                 content: []
             },
             {
-                title: "Salesforce Pardot",
-                link: "/sources/extract/salesforce-pardot/",
-                content: []
-            },
-            {
-                title: "SendGrid V2",
-                link: "/sources/extract/sendgrid-v2/",
+                title: "SendGrid",
+                link: "/sources/extract/sendgrid/",
                 content: []
             }, 
             {
@@ -557,8 +585,8 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Zendesk Chat V2",
-                link: "/sources/extract/zendesk-chat-v2/",
+                title: "Zendesk Chat",
+                link: "/sources/extract/zendesk-chat/",
                 content: [],
             },
             {
@@ -697,17 +725,19 @@ export const jsonData = [
                 title: "Monetate",
                 link: "/destinations/streaming-destinations/monetate/",
                 content: []
-            }, {
-                title: "Optimizely Full Stack",
-                link: "/destinations/streaming-destinations/optimizely-full-stack/",
+            }, 
+            {
+                title: "Optimizely Feature Experimentation",
+                link: "/destinations/streaming-destinations/optimizely-feature-experimentation/",
+                content: []
+            }, 
+            {
+                title: "Optimizely Web Experimentation",
+                link: "/destinations/streaming-destinations/optimizely-web-experimentation/",
                 content: []
             }, {
-                title: "Optimizely Web",
-                link: "/destinations/streaming-destinations/optimizely-web/",
-                content: []
-            }, {
-                title: "Split.io",
-                link: "/destinations/streaming-destinations/splitio/",
+                title: "Split",
+                link: "/destinations/streaming-destinations/split/",
                 content: []
             }, {
                 title: "Statsig",
@@ -715,7 +745,7 @@ export const jsonData = [
                 content: []
             }, {
                 title: "VWO (Visual Website Optimizer)",
-                link: "/destinations/streaming-destinations/vwo-beta-visual-website-optimizer/",
+                link: "/destinations/streaming-destinations/vwo/",
                 content: []
             },
             {
@@ -1301,6 +1331,10 @@ export const jsonData = [
                 title: "Autopilot",
                 link: "/destinations/streaming-destinations/autopilot/",
                 content: []
+            },  {
+                title: "Awin",
+                link: "/destinations/streaming-destinations/awin/",
+                content: []
             }, {
                 title: "Blueshift",
                 link: "/destinations/streaming-destinations/blueshift/",
@@ -1406,11 +1440,17 @@ export const jsonData = [
                 title: "Marketo",
                 link: "/destinations/streaming-destinations/marketo/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Marketo Lead Import",
                 link: "/destinations/streaming-destinations/marketo-lead-import/",
                 content: []
-            }, 
+            },
+            {
+                title: "Marketo Static Lists",
+                link: "/destinations/streaming-destinations/marketo-static-lists/",
+                content: []
+            },
             {
                 title: "MoEngage",
                 link: "/destinations/streaming-destinations/moengage/",
@@ -1429,11 +1469,18 @@ export const jsonData = [
                 title: "OneSignal",
                 link: "/destinations/streaming-destinations/onesignal/",
                 content: []
-            },{
+            },
+            {
+                title: "PersistIQ",
+                link: "/destinations/streaming-destinations/persistiq/",
+                content: []
+            }, 
+            {
                 title: "Post Affiliate Pro",
                 link: "/destinations/streaming-destinations/post-affiliate-pro/",
                 content: []
-            }, {
+            }, 
+            {
                 title: "Qualtrics",
                 link: "/destinations/streaming-destinations/qualtrics/",
                 content: []
@@ -1729,6 +1776,11 @@ export const jsonData = [
     {
         title: "Connection Modes: Cloud Mode vs. Device Mode",
         link: "/destinations/rudderstack-connection-modes/",
+        content: []
+    },
+    {
+        title: "Creating RudderStack IAM Role for AWS Destinations",
+        link: "/destinations/aws-iam-role-for-rudderstack/",
         content: []
     },
     // Features section
@@ -2028,11 +2080,13 @@ export const jsonData = [
                 title: "How to Use AWS Lambda Functions with RudderStack",
                 link: "/user-guides/how-to-guides/using-aws-lambda-functions-with-rudderstack/",
                 content: []
-            }, {
-                title: "How to Debug Live Destination Events",
-                link: "/user-guides/how-to-guides/live-destination-event-debugger/",
+            }, 
+            {
+                title: "How to Debug Destination Live Events",
+                link: "/user-guides/how-to-guides/debugging-destination-live-events/",
                 content: []
-            },{
+            },
+            {
                 title: "How to Host RudderStack JavaScript SDK on your CDN/Storage",
                 link: "/user-guides/how-to-guides/self-hosting-js-sdk/",
                 content: []

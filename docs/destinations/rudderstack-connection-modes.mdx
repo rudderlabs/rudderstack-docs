@@ -20,7 +20,7 @@ There are two connection modes through which you can send your event data from y
 In this mode, the SDK sends the event data directly to the RudderStack server. RudderStack then transforms this data and routes it to the desired destination. This transformation is done in the RudderStack backend, using RudderStack's [Transformer](https://github.com/rudderlabs/rudder-transformer) module.
 
 <div class="successBlock">
-When you send events via the cloud mode, you also get the flexibility to use <Link to="/features/transformations/">RudderStack Transformations</Link> to implement custom logic on the events before forwarding them to the destinations.
+When you send events via cloud mode, you also get the flexibility to use <Link to="/features/transformations/">RudderStack Transformations</Link> to implement custom logic on the events before forwarding them to the destinations.
 </div>
 
 ### How cloud mode works
@@ -53,7 +53,7 @@ In the device mode, RudderStack sends the event data to the destinations directl
 The RudderStack SDKs first load the native client libraries on your website or mobile app. These libraries allow RudderStack to use the data you collect on your device to call the destination APIs - without sending it to the RudderStack servers first.
 
 <div class="warningBlock">
-You will not be able to use RudderStack's <Link to="/features/transformations/">Transformations</Link> feature when sending events via the device mode.
+You will not be able to use RudderStack's <Link to="/features/transformations/">Transformations</Link> feature when sending events via device mode.
 </div>
 
 ### How device mode works
@@ -64,7 +64,7 @@ The RudderStack SDK will first download the Firebase SDK, transform the events n
 
 <img src="../assets/rs-cloud/rudderstack-device-mode.png" alt="RudderStack device mode" />
 
-For some destinations, you can use the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> to send the events via the device mode. To do so, enable the **Use native SDK to send events** option under the destination-specific connection settings in the RudderStack dashboard, as shown:
+For some destinations, you can use the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript SDK</Link> to send the events via device mode. To do so, enable the **Use native SDK to send events** option under the destination-specific connection settings in the RudderStack dashboard, as shown:
 
 <img src="../assets/rs-cloud/web-device-mode-settings.png" alt="RudderStack web SDK settings" />
 
@@ -73,7 +73,7 @@ For some destinations, you can use the <Link to="/sources/event-streams/sdks/rud
 ### Which connection mode should I choose?
 
 - Use the cloud mode if you wish to use the <Link to="/features/transformations/">Transformations</Link> feature to transform your events before sending them to the destination.
-- If you are planning to work with the destinations that record information directly on your users' devices, you should send the events via the device mode. There is a possibility that these destinations might not function correctly if they are not loaded directly on the device.
+- If you are planning to work with the destinations that record information directly on your users' devices, you should send the events via device mode. There is a possibility that these destinations might not function correctly if they are not loaded directly on the device.
 
 ### How to check which connection mode is supported by the destination?
 
