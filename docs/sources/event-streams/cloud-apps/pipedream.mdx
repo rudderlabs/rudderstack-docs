@@ -23,7 +23,11 @@ Follow these steps to set up your Pipedream source in the RudderStack dashboard:
 
 <img src="../../../assets/event-stream-sources/pipedream-http-webhook.png" alt="Pipedream add a step" />
 
-6. In the **HTTP Request Configuration** section, choose **POST** and enter the RudderStack webhook URL obtained in Step 3 above. Also, configure the other request configuration settings as required.
+6. In the **HTTP Request Configuration** section, choose **POST** as the request type and enter the RudderStack webhook URL obtained in Step 3 above. Also, configure the other request configuration settings as required.
+
+<div class="warningBlock">
+For this source, RudderStack only accepts the incoming HTTP requests of type <strong>POST</strong>.
+</div>
 
 <img src="../../../assets/event-stream-sources/pipedream-custom-http-request.png" alt="Pipedream custom HTTP request" />
 
@@ -68,10 +72,10 @@ RudderStack transforms the above payload into the following `track` payload:
 
 ### Event transformation
 
-RudderStack ingests the Pipedream events after converting them into the RudderStack event format. It also maps the following properties from the Pipedream event payload to the RudderStack properties:
+RudderStack ingests the Pipedream events and checks for the `userId`/`anonymousId` field and the event type (`identify`, `track`, etc.). If both are present, it considers the event to be in a RudderStack payload format. Otherwise, it converts it into a RudderStack payload according to the below property-value mapping:
 
-| Pipedream property  | RudderStack property| 
+| RudderStack property  | Value | 
 | :------------------ | :------------- |
-| `pipedream_source_event`  | `message.event`    | 
-| `track`    | `message.type`        | 
-| input payload       | `message.properties`|
+| `message.event`  | `pipedream_source_event`    | 
+|  `message.type`   |  `track`       | 
+| `message.properties`     | Pipedream input payload |
