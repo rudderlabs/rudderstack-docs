@@ -45,7 +45,7 @@ export default function SEO({ description, title, slug, image, children }) {
       ? `Read detailed technical documentation on ${title} in RudderStack Docs.`
       : "Check out our technical documentation and learn how to use RudderStack features, SDKs, and destination and source integrations.";
   const metaUrl = urljoin(`${siteUrl}/docs/`, slug);
-  const metaImage = urljoin(`${siteUrl}/docs/`, image || siteImage);
+  const metaImage = 'https://www.rudderstack.com/images/rudderstack_thumbnail.png'
 
   const schemaOrgJSONLD = [
     {
