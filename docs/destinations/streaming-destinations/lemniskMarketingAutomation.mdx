@@ -1,0 +1,105 @@
+
+---
+title: "Lemnisk"
+description: Step-by-step guide on sending events from RudderStack to Lemnisk.
+aliases: ["Lemnisk Marketing Automation","Lemnisk CDP"]
+---
+
+[Lemnisk](https://lemnisk.co) Customer Data Platform-led personalization and real-time marketing automation solution delivers superior customer experiences that result in increased conversions, retention, and growth for enterprises. The key capabilities include:
+* No code connectors to bring together silo-ed marketing data sources and create a real-time one view of every customer
+* Orchestrate individual customer journeys across the marketing tool ecosystem on the right channels at the right time using a proprietary machine learning engine
+* Create 1:1 personalized experiences for each user across multiple marketing channels
+
+<div class="infoBlock">
+In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Lemnisk native JS SDK is loaded from <code class="inline-code">https://cdn25.lemnisk.co/ssp/st/[client_id].js</code> domain. For Lemnisk SDK to work properly, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> according to your website's content security policy.
+</div>
+
+## Getting started
+
+RudderStack supports sending events to Lemnisk via the following <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link>:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     | **Supported** | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+
+
+Once you have confirmed that the source platform supports sending events to Lemnisk, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Lemnisk** as a destination.
+2. Assign a name to your destination and click on **Continue**.
+
+### Connection settings
+
+To successfully set up Lemnisk as a destination, you need to configure the following settings:
+
+#### Web Device Mode Settings
+* **Client ID**: Your client ID is an unique ID generated for your account.
+* **Use Native SDK to send Events:** Enable this option if you want to send events using device mode.
+
+#### Web Cloud Mode Settings
+* **Write Key**: Each data source at Lemnisk has a unique write key. It can be found on the Source page.
+* **Region URL**: Enter the region URL provided by Lemnisk team.
+
+#### Server-side Settings
+* **X-API-Key**: Enter the X-API-Key by Lemnisk team.
+* **X-API-PassKey**: Enter the X-API-PassKey provided by Lemnisk team.
+* **Source ID**: Enter the Source ID provided by Lemnisk team.
+
+## Identify
+The `identify` call helps you to assocaite a user to their activities and capture relevant traits about them. These traits could be a user ID, email, name etc. Once you call the `identify` event via Rudderstack, Lemnisk [`identify`](https://lemnisk.gitbook.io/lemnisk-platform-documentation/events/identify) event will be triggered. Lemnisk needs a unique user ID to associate an event with a user. By default, we will use our cookie to identify the user. Optionally, a unique user ID can be passed in the first parameter.
+<Link to="/event-spec/standard-events/identify/">`identify`</Link> call
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("", {
+  name: "Name Surname",
+  first_name: "Name",
+  last_name: "Surname",
+  email: "name@surname.com",
+  phone: "+919xxxxxxxxx"
+})
+```
+> **_NOTE:_**  `identify` call is not supported in server-side integration.
+
+## Track
+The `track` API call records the actions that the users perform, along with the properties of the action. Each action is called an event. Each event has a name and some properties associated with it along with an optional callback function. For example, the event name could be `productViewed`, while the properties can be `sort`, `currencyCode` etc. Once you call the `track` event via Rudderstack, Lemnisk [`track`](https://lemnisk.gitbook.io/lemnisk-platform-documentation/events/track) event will be triggered.
+<Link to="/event-spec/standard-events/track/">`track`</Link> call
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Product Viewed", {
+    currencyCode: "INR",
+    filters: "Price < 5000",
+    sort: "Price (Low to High)",
+    product: {
+        name: "Earbuds",
+        category: "Mobile Phone & Accessories",
+        position: 1
+    }
+})
+```
+
+## Page
+The page call lets you record when a user views a page of your website, along with any optional properties about the page. Once you call the `page` event via Rudderstack, Lemnisk [`page`](https://lemnisk.gitbook.io/lemnisk-platform-documentation/events/page) event will be triggered.
+<Link to="/event-spec/standard-events/page/">`page`</Link> call
+A sample `page` call is shown below:
+
+```javascript
+lmSMTObj.page("home", {
+	"path": "/academy/",
+	"title": "Analytics Academy",
+	"url": "https://lemnisk.co"
+})
+```
+> **_NOTE:_** `page` call is not supported in server-side integration.
+
+## FAQ
+**Q. Where can I find my Lemnisk client ID, Write Key and Region URL?**
+A. You may contact your Lemnisk customer success manager to get them.
+
+**Q. Do I need X-API-Key and X-API-PassKey?**
+A. X-API-Key and X-API-PassKey is only required
+
+**Q. How do I verify if the events are passing to Lemnisk correctly?**
+A. You can verify the events coming via Rudderstack in the "Live Events" section. On the Lemnisk platform, go to Sources and click on a particular source. If the integration is successful, you will see the events under the "Live Events" section. Check the event payload to make sure it's correct.
