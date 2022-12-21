@@ -41,13 +41,13 @@ The following connection settings are required to configure AppsFlyer as a desti
   - **Apple App ID**: This is the iTunes Application ID and it is mandatory for the iOS applications.
 
 <div class="infoBlock">
-If you are connecting a source other than Android or Apple (iOS, watchOS, iPadOS, tvOS), you need to add a user transformation that adds the OS information required in the events. Refer to the <a href="#connecting-appsflyer-to-non-androidios-sources">Connecting AppsFlyer to non-Android/iOS sources</a> section below for more information.
+To connect a source other than Android or Apple (iOS, watchOS, iPadOS, tvOS), you need to add a user transformation that adds the OS information required in the events. Refer to the <a href="#connecting-appsflyer-to-non-androidios-sources">Connecting AppsFlyer to non-Android/iOS sources</a> section below for more information.
 </div>
 
 - **Use Rich Event Names**: Enable this setting to include your app's screen or page name in the <Link to="/event-spec/standard-events/screen">`screen`</Link> or <Link to="/event-spec/standard-events/page">`page`</Link> event names.
-- **Sharing Filter**: By default, the value for this setting is set to `all`. You can use this setting to meet any regulatory requirements like GDPR and CCPA, complying with user opt-out mechanisms, and for any other business use-case. For more information on this setting, refer to the <a href="https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#sharing_filter-16">AppsFlyer Help Center</a>.
+- **Sharing Filter**: By default, the value for this setting is set to `all`. You can use this setting to meet any regulatory requirements like GDPR and CCPA, complying with user opt-out mechanisms, and for any other business use-case. For more information, refer to the <a href="https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#sharing_filter-16">AppsFlyer Help Center</a>.
 
-- **Client-side Event Filtering**: This setting is applicable only if you are sending events to AppsFlyer via device mode. It lets you specify which events should be blocked or allowed to flow through to AppsFlyer. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this setting.
+- **Client-side Event Filtering**: This setting is applicable **only if** you are sending events to AppsFlyer via device mode. It lets you specify which events should be blocked or allowed to flow through to AppsFlyer. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this setting.
 
 - **Status Callback URLs**: Specify the callback URLs to be used for user deletion requests. You can provide multiple callback URLs by separating them by a comma.
 
