@@ -3,17 +3,15 @@ title: "AppsFlyer"
 description: Send your event data from RudderStack to AppsFlyer.
 ---
 
-[AppsFlyer](https://www.appsflyer.com/) is an industry-leading mobile attribution and marketing analytics platform, provided as a Software-as-a-Service \(SaaS\). It offers intuitive dashboards, real-time data reports, and a unique deep linking technology to understand your customers better. 
-
-RudderStack supports AppsFlyer as a destination to which you can seamlessly send your customer data.
+[AppsFlyer](https://www.appsflyer.com/) is an industry-leading mobile attribution and marketing analytics platform, provided as a Software-as-a-Service \(SaaS\). It offers intuitive dashboards, real-time data reports, and a unique deep linking technology to understand your customers better.
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/af">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/af">GitHub repository</a>.
 </div>
 
 ## Getting started
 
-Before configuring AppsFlyer as a destination in RudderStack, verify if the source platform is supported by AppsFlyer by referring to the table below:
+RudderStack supports sending events to SIGNL4 via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
@@ -21,76 +19,47 @@ Before configuring AppsFlyer as a destination in RudderStack, verify if the sour
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To learn more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
-</div>
-
-<div class="successBlock">
-
-It is recommended to use the the cloud mode to send events to AppsFlyer in the following scenarios:
+It is highly recommended to use the cloud mode to send events to AppsFlyer in the following scenarios:
 <ul>
-<li>If you want to use RudderStack's <Link to="/features/transformations/">Transformations</Link> feature</li> 
-<li>If you want to send server-side events</li>
+<li>If you want to use RudderStack's <Link to="/features/transformations/">Transformations</Link> feature.</li> 
+<li>If you want to send server-side events.</li>
 </ul>
 </div>
 
-Once you have confirmed that the platform supports sending events to AppsFlyer, perform the steps below:
+Once you have confirmed that the source platform supports sending events to AppsFlyer, follow these steps:
 
-1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. From the list of destinations, select **AppsFlyer**.
-2. Assign a name to the destination and click on **Next**. You should then see the following screen:
-
-<img src="../../assets/event-stream-destinations/appsflyer-connection-settings-final.png" alt="AppsFlyer connection settings in RudderStack" />
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **AppsFlyer**.
+2. Assign a name to the destination and click **Continue**.
 
 ### Connection settings
 
 The following connection settings are required to configure AppsFlyer as a destination in RudderStack:
 
-- **AppsFlyer Dev Key**: Enter your AppsFlyer Dev key here.
-
-<div class="infoBlock">
-
-Refer to the <a href="#faqs">FAQs</a> section below for more information on obtaining the AppsFlyer dev key.
-</div>
-
+- **AppsFlyer Dev Key**: Refer to the <a href="#faq">FAQ</a> section below for more information on obtaining your AppsFlyer dev key.
 - **App ID**: Enter your Apple or Android app ID.
-
   - **Android App ID**: This the application ID used in your `app/build.gradle` file.
-
   - **Apple App ID**: This is the iTunes Application ID and it is mandatory for the iOS applications.
 
 <div class="infoBlock">
-
-If you are connecting a source other than <strong>Android</strong> or the <strong>Apple</strong> (iOS, watchOS, iPadOS, tvOS), you need to add a user transformation that adds the OS information required in the events.
-
-Refer to the <a href="#connecting-appsflyer-to-non-androidios-sources">Connecting AppsFlyer to non-Android/iOS sources</a> section below for more information.
+If you are connecting a source other than Android or Apple (iOS, watchOS, iPadOS, tvOS), you need to add a user transformation that adds the OS information required in the events. Refer to the <a href="#connecting-appsflyer-to-non-androidios-sources">Connecting AppsFlyer to non-Android/iOS sources</a> section below for more information.
 </div>
 
+- **Use Rich Event Names**: Enable this setting to include your app's screen or page name in the <Link to="/event-spec/standard-events/screen">`screen`</Link> or <Link to="/event-spec/standard-events/page">`page`</Link> event names.
+- **Sharing Filter**: By default, the value for this setting is set to `all`. You can use this setting to meet any regulatory requirements like GDPR and CCPA, complying with user opt-out mechanisms, and for any other business use-case. For more information on this setting, refer to the <a href="https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#sharing_filter-16">AppsFlyer Help Center</a>.
 
-- **Sharing Filter**: By default, the value for this setting is set to `all`. You can use this setting to meet any regulatory requirements like GDPR and CCPA, complying with user opt-out mechanisms, and for any other business use-case.
+- **Client-side Event Filtering**: This setting is applicable only if you are sending events to AppsFlyer via device mode. It lets you specify which events should be blocked or allowed to flow through to AppsFlyer. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this setting.
 
-<div class="infoBlock">
+- **Status Callback URLs**: Specify the callback URLs to be used for user deletion requests. You can provide multiple callback URLs by separating them by a comma.
 
-For more information on this field, refer to the <a href="https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#sharing_filter-16">AppsFlyer Help Center</a> page.
-</div>
-
-- **Client-side Event Filtering**: This setting is applicable only if you are sending events to AppsFlyer via device mode. 
-
-<div class="infoBlock">
-  
-Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this setting.
-</div>
-
-- **Use native SDK to send events**: By default, this setting is enabled. To send events via cloud mode or device mode, you can toggle this setting on or off.
+- **API Token**: Enter your AppsFlyer API token. For more information on obtaining your API token, refer to this <a href="https://support.appsflyer.com/hc/en-us/articles/360004562377-Managing-API-tokens">AppsFlyer guide</a>.
 
 <div class="warningBlock">
-  
-This setting is not applicable for the JavaScript (web) source as RudderStack does not support sending events to AppsFlyer via the web device mode. Refer to the connection modes table in the <a href="#getting-started">Getting started</a> section above for more information.
+For user deletion, you must specify both <strong>Status Callback URLs</strong> and <strong>API Token</strong>.
 </div>
-
-- Finally, click on **Next** to complete the configuration. AppsFlyer will be added and enabled as a destination in RudderStack.
 
 ## Adding device mode integration
 
-Once you add AppsFlyer as a destination in the [RudderStack dashboard](https://app.rudderstack.com/), follow these steps to add it to your project, depending on your integration platform:
+Once you add AppsFlyer as a destination in the [RudderStack dashboard](https://app.rudderstack.com/), follow these steps to add it to your project depending on your integration platform:
 
 <Tabs>
   <TabList>
@@ -113,7 +82,7 @@ pod 'Rudder-Appsflyer'
 ```
 </span>
 </li>
-<li>After adding the dependency, you need to register the <code class="inline-code">RudderAppsflyerFactory</code> with your <code class="inline-code">RudderClient</code> initialization as a <code class="inline-code">factory</code> of <code class="inline-code">RudderConfig</code>. To do this, run the following command to import the <code class="inline-code">RudderAppsflyerFactory.h</code> file in your <code class="inline-code">AppDelegate.m</code> file:
+<li>After adding the dependency, you need to register <code class="inline-code">RudderAppsflyerFactory</code> with your <code class="inline-code">RudderClient</code> initialization as a <code class="inline-code">factory</code> of <code class="inline-code">RudderConfig</code>. To do so, import the <code class="inline-code">RudderAppsflyerFactory.h</code> file in your <code class="inline-code">AppDelegate.m</code> file:
 
 <span>
 
@@ -544,7 +513,7 @@ const Home = (props) => {
 </ol>
       </TabPanel>
       <TabPanel>
-        To add AppsFlyer to your Cordova project, follow these steps:
+        To add AppsFlyer to your Cordova project:
 <ol>
 <li>Navigate to the root folder of your application and run the following command:
 <span>
@@ -583,7 +552,6 @@ RudderClient.initialize(WRITE_KEY , {
 </span>
 
 <div class="infoBlock">
-
 Make sure to use the <code class="inline-code">await</code> keyword with the <code class="inline-code">initialize</code> call.
 </div>
 </li>
@@ -594,15 +562,7 @@ Make sure to use the <code class="inline-code">await</code> keyword with the <co
 
 ## Connecting AppsFlyer to non-Android/iOS sources
 
-AppsFlyer supports all the RudderStack sources in addition to Android and iOS. However, you will need to add a transformation to the destination by following these steps:
-
-- Go to your [**RudderStack dashboard**](https://app.rudderstack.com/).
-
-- In the left navigation bar, select **Transformations** followed by **New transformation**. 
-
-- In the **Transformation Settings** window, assign a **Name** and **Description** for the transformation.
-
-- Then, add the following function:
+AppsFlyer supports all the RudderStack sources in addition to Android and iOS. However, you need to <Link to="https://www.rudderstack.com/docs/features/transformations/#adding-a-transformation">add a transformation</Link> to the destination as shown:
 
 ```javascript
 export function transformEvent(event, metadata) {
@@ -614,33 +574,21 @@ export function transformEvent(event, metadata) {
 }
 ```
 
-- Click on **Save** to save the transformation.
-
-- Finally, configure your AppsFlyer destination and connect it to the transformation in the **Choose an existing transformation** window, as shown:
-
-<img src="../../assets/event-stream-destinations/appsflyer-2.png" alt="AppsFlyer transformation settings in RudderStack" />
-
-- If you have already configured your AppsFlyer destination, navigate to the **Transformation** option, as shown:
-
-<img src="../../assets/event-stream-destinations/appsflyer-3.png" alt="Transformation settings after adding destination" />
-
-- Click on **Add a transformation** and select the transformation you created above.
+Save the transformation and <Link to="https://www.rudderstack.com/docs/features/transformations/#connecting-transformation-to-a-destination">connect it to your AppsFlyer destination</Link> in the RudderStack dashboard.
 
 ## Sending events via the RudderStack cloud mode
 
 <div class="warningBlock">
-
-We recommend sending events to AppsFlyer via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> only in the following two scenarios:
+It is highly recommended to send events to AppsFlyer via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> only in the following scenarios:
 <ul>
 <li>To use RudderStack's <Link to="/features/transformations/">Transformations</Link> feature to transform your events</li> 
 <li>To send server-side events</li>
 </ul>
 </div>
 
-To send events to AppsFlyer, you need the AppsFlyer ID generated by the Appsflyer SDK that is integrated with your app.
+To send events to AppsFlyer via the cloud mode, you need the AppsFlyer ID generated by the Appsflyer SDK that is integrated with your app.
 
 <div class="warningBlock">
-
 Refer to the <a href="#obtaining-the-appsflyer-id">Obtaining the AppsFlyer ID</a> section below for more information.
 </div>
 
@@ -667,7 +615,6 @@ The following table lists the `externalId` fields:
 As mentioned above, the AppsFlyer ID is generated by the Appsflyer SDK integrated with your app.
 
 - If the AppsFlyer SDK is directly loaded on your app, refer to this [**AppsFlyer documentation**](https://support.appsflyer.com/hc/en-us/articles/207034486-Server-to-server-events-API-for-mobile-S2S-mobile-#fetching-the-appsflyer-id) to obtain the AppsFlyer ID.
-
 - If your AppsFlyer SDK is loaded through RudderStack (device mode integration), then you can obtain the AppsFlyer ID by including the code snippet in your app, depending on your platform of integration:
 
 <Tabs>
@@ -904,7 +851,7 @@ RudderStack sets the `logLevel` in AppsFlyer based on the `logLevel` set for the
 
 For anything below that, RudderStack sets the `logLevel` to `NONE` for AppsFlyer.
 
-## FAQs
+## FAQ
 
 ### Where do I get the AppsFlyer dev key?
 
