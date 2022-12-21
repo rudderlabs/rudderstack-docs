@@ -12,7 +12,7 @@ A single session can contain multiple page views or screen views, events, social
 
 With the help of RudderStack's **session tracking** feature, you can gather the event tracking metrics and combine it with the session metadata to better understand the user's product journey and analyze their behavior. You can also use the resulting insights to identify problems and optimization opportunities in your product workflow.
 
-## Session tracking in RudderStack
+## Session tracking in RudderStack SDKs
 
 The following RudderStack SDKs support the session tracking feature:
 
@@ -23,7 +23,7 @@ The following RudderStack SDKs support the session tracking feature:
 | <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link> | <strong>v1.7.0</strong> |
 
 <div class="infoBlock">
-If the session tracking feature is enabled, you can expect the following properties in your event's <code class="inline-code">context</code> object:
+You can expect the following properties in your event's <code class="inline-code">context</code> object when session tracking is enabled:
 <ul>
 <li><code class="inline-code">sessionId</code> (Number): The unique session ID.</li>
 <li><code class="inline-code">sessionStart</code> (Boolean): Present in the first event, indicating the start of the session.</li>
