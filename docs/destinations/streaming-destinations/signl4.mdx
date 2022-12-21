@@ -1,6 +1,6 @@
 ---
 title: "SIGNL4"
-description: Step-by-step guide on sending your event data from RudderStack to SIGNL4.
+description: Send your event data from RudderStack to SIGNL4.
 aliases: ["SIGNL4 destination"]
 ---
 
@@ -11,7 +11,7 @@ RudderStack also supports SIGNL4 as a source. Refer to the <Link to="/sources/ev
 </div>
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/signl4">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/signl4">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -33,7 +33,7 @@ Once you have confirmed that the source platform supports sending events to SIGN
 To successfully configure SIGNL4 as a destination, you will need to configure the following settings:
 
 - **API Key**: Enter the team secret of your SIGNL4 team. Refer to the <a href="#faq">FAQ</a> section for more information on obtaining the team secret.
-- **X-S4-Service**: Enter a category for the alert, for example, `IT`. Refer to the <Link to="#signl-categories">Signl categories</Link> section to know more about these categories.
+- **X-S4-Service**: Enter a category for the alert, for example, `IT`. Refer to the <Link to="#signl-categories">Signl categories</Link> section to learn more about these categories.
 <img src="../../assets/event-stream-destinations/signl4-connection-settings-2.png" alt="SIGNL4 connection setting"/>
 - **X-S4-Location**: Enter the location in the `latitude, longitude` format to display the correct location on the map in your mobile app.
 <img src="../../assets/event-stream-destinations/signl4-connection-settings.png" alt="SIGNL4 connection setting"/>
@@ -58,18 +58,18 @@ Although these fields are optional, RudderStack prioritizes **RudderStack proper
 
 - If you provide values in both the fields, the final output payload sent to SIGNL4 will contain `X-S4-Status: resolved`, as the **RudderStack property name** is given higher priority over **Default Field**.
 
-- **X-S4-Filtering**: Enable this setting in the RudderStack dashboard and **Filter events/Signls** setting in the SIGNL4 dashboard to send an alert notification only if the input payload contains any keyword for a category. Refer to the <Link to="#signl-categories">Signl categories</Link> section to know more about keywords and category categories.
+- **X-S4-Filtering**: Enable this setting in the RudderStack dashboard and **Filter events/Signls** setting in the SIGNL4 dashboard to send an alert notification only if the input payload contains any keyword for a category. Refer to the <Link to="#signl-categories">Signl categories</Link> section to learn more about keywords and category categories.
 <img src="../../assets/event-stream-destinations/signl4-conn-settings-4.png" alt="SIGNL4 connection setting"/>
 
 <div class="infoBlock">
-Refer to the <a href="https://connect.signl4.com/webhook/docs/index.html">SIGNL4 documentation</a> to know more about these connection settings.
+Refer to the <a href="https://connect.signl4.com/webhook/docs/index.html">SIGNL4 documentation</a> to learn more about these connection settings.
 </div>
 
 - **Event to title mapping**: This setting lets you map the RudderStack event name to a specific alert title. If you do not provide any value, RudderStack sets the alert title as the event name.
 
 ## Signl categories
 
-In SIGNL4, you can use the categories to mark and tag Signls based on severity, type, or relating to IT systems, machines, sensors, and services. Refer to the [SIGNL4 documentation](https://account.signl4.com/manage/Category) to know more about the different categories.
+In SIGNL4, you can use the categories to mark and tag Signls based on severity, type, or relating to IT systems, machines, sensors, and services. Refer to the [SIGNL4 documentation](https://account.signl4.com/manage/Category) to learn more about the different categories.
 
 You can use the **X-S4-Service** setting in the RudderStack dashboard to specify the Signl category. If not provided, the keywords present in the payload decide the category of the alert. For example, an event payload containing keywords like `ambulance`, `doctor`, `hospital`, `nurse`, `surgery`, etc., is automatically categorized as **Healthcare**.
 

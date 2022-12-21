@@ -1,6 +1,6 @@
 ---
 title: "Load JavaScript SDK"
-description: Detailed technical documentation on loading the JavaScript SDK with various options.
+description: Load the JavaScript SDK.
 ---
 
 You can load the JavaScript SDK using the `load` API method to track and send events from your website to RudderStack. It can be defined as:
@@ -66,8 +66,8 @@ You can use this parameter to send the event data only to the <Link to="/sources
 rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
   integrations: {
     All: boolean, // default true
-    <Destination1>: boolean,
-    <Destination2>: boolean,
+    <Destination1>: boolean, // specify destination like Google Analytics, Amplitude etc.
+    <Destination2>: boolean, // specify destination like Google Analytics, Amplitude etc.
     ...
   }
 });
@@ -79,6 +79,18 @@ The following table describes the above (optional) parameters in detail:
 | :------------------ | :------ | :----------------------- |
 | `All`               | Boolean |  All destinations to which the event data must be sent. The default value is `true`. If set to `false`, RudderStack will not send the event data to any destination. |
 | `<Destination>`     | Boolean |  Specific destination to which the event data must be sent/not, depending on its Boolean value. |
+
+You **must** specify the actual destination name (as listed in the [RudderStack dashboard](https://app.rudderstack.com/directory)) in the `<Destination>` parameter  and **not** the name you have assigned to the destination. For example, the below sample snippet sends the event data only to **Google Analytics** and **Intercom** destinations:
+
+```javascript
+rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
+    integrations: {
+        All: false,
+        "Google Analytics": true,
+        "Intercom": true
+    }
+});
+```
 
 #### `QueueOpts`
 
@@ -133,7 +145,7 @@ rudderanalytics.load(WRITE_KEY, DATA_PLANE_URL, {
 
 #### `anonymousIdOptions`
 
-You can use the `anonymousIdOptions` object to automatically capture the anonymous ID from a source and set it as Rudderstack's `anonymousId`. 
+You can use the `anonymousIdOptions` object to automatically capture the anonymous ID from a source and set it as RudderStack's `anonymousId`. 
 
 For example, if you are migrating from a particular source and want to retain its anonymous ID, you can enable the `anonymousIdOptions` to set the source's anonymous ID as the `anonymousId` in RudderStack.
 

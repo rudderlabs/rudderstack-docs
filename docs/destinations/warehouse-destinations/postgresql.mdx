@@ -1,18 +1,17 @@
 ---
 title: "PostgreSQL"
-description: Step-by-step guide on setting up PostgreSQL as a destination in RudderStack.
+description: Sync data from RudderStack to PostgreSQL.
+aliases: ['PostgreSQL destination']
 ---
 
 [PostgreSQL](https://www.postgresql.org/) is an enterprise-grade, open source database management system. It supports both SQL and JSON for relational and non-relational queries respectively. Many companies in the market use PostgreSQL as their low-cost data warehousing solution in order to deliver efficient analytics and user insights.
-
-RudderStack lets you configure PostgreSQL as a destination to which you can seamlessly send your event data.
 
 <div class="infoBlock">
 Refer to the <Link to="/destinations/warehouse-destinations/warehouse-schema/">Warehouse Schema</Link> guide for more information on how the events are mapped to the PostgreSQL tables.
 </div>
 
 <div class="successBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/postgres">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/postgres">GitHub repository</a>.
 </div>
 
 ## Setting user permissions in PostgreSQL
@@ -46,11 +45,6 @@ To configure PostgreSQL as a destination in RudderStack, follow these steps:
 
 ### Connection settings
 
-<img src="../../assets/dw-integrations/postgresql-connection-settings-1.png" alt="PostgreSQL connection settings" />
-<img src="../../assets/dw-integrations/postgresql-connection-settings-2.png" alt="PostgreSQL connection settings" />
-
-Enter the following credentials in the **Connection Credentials** page:
-
 - **Host**: Enter the host name of your PostgreSQL service.
 - **Database**: Enter your PostgreSQL database name where RudderStack will load the data.
 - **User**: Enter the name of the user created in the <Link to="#setting-user-permissions-in-postgresql">Setting user permissions in PostgreSQL</Link> section above.
@@ -79,7 +73,7 @@ This option is applicable only for RudderStack-hosted data planes. For self-host
 
 - **Choose your storage provider**: If **Use RudderStack-managed object storage** is **disabled** in the dashboard, select the cloud provider for your object storage and enter the relevant settings:
 
-   - <Link to="/destinations/streaming-destinations/amazon-s3#setting-up-amazon-s3">Amazon S3 bucket storage settings</Link>
+   - <Link to="/destinations/streaming-destinations/amazon-s3/#connection-settings">Amazon S3 bucket storage settings</Link>
    - <Link to="/destinations/streaming-destinations/microsoft-azure-blob-storage#setting-up-azure-blob-storage">Azure Blob Storage settings</Link>
    - <Link to="/destinations/streaming-destinations/google-cloud-storage#setting-up-google-cloud-storage">Google Cloud Storage bucket settings</Link>
    - <Link to="/destinations/streaming-destinations/minio#setting-up-minio">MinIO bucket storage settings</Link>

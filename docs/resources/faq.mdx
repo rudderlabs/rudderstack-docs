@@ -252,7 +252,7 @@ For more information on generating a personal access token, refer to the <Link t
 
 You should use the `track` method instead. For the JavaScript SDK's `track` method parameters specific to e-commerce, you can refer to the <Link to="/event-spec/ecommerce-events-spec/">Ecommerce Events Spec</Link>.
 
-#### Is Shopify compatible as a data source for Rudderstack?
+#### Is Shopify compatible as a data source for RudderStack?
 
 Yes, Shopify is compatible as an event stream data source. For more information, refer to <Link to="/sources/event-streams/cloud-apps/shopify/">Shopify</Link>. We also have users that integrate the JavaScript SDK into their Shopify sites. In some cases, they even do it through Google Tag Manager.
 However, we strongly recommend using the Shopify source integration for better tracking.
@@ -301,7 +301,7 @@ For a comprehensive list of warehouse destinations-specific FAQ, refer to the <L
 
 You can override the UI-set sync frequency by setting `warehouseSyncFreqIgnore` to true in [`config.yaml`](https://github.com/rudderlabs/rudder-server/blob/master/config/config.yaml) \(or `config.toml`, in case you have an older RudderStack deployment\). You can set your desired frequency by changing the `uploadFreqInS` parameter.
 
-#### I am using Rudderstack to mirror my source tables to PostgreSQL. I have all of the data in the S3 staging folders. But RudderStack doesn't create the corresponding PostgreSQL tables when I click 'sync'. What do I do?
+#### I am using RudderStack to mirror my source tables to PostgreSQL. I have all of the data in the S3 staging folders. But RudderStack doesn't create the corresponding PostgreSQL tables when I click 'sync'. What do I do?
 
 1. Firstly, make sure you have set up the required <Link to="/destinations/warehouse-destinations/postgresql/#setting-user-permissions-in-postgresql">user permissions</Link> for PostgreSQL.
 2. Then, check the status of the sync in the [RudderStack dashboard](https://app.rudderstack.com/syncs).
@@ -336,7 +336,7 @@ source: US, destination: us-central1""; Reason: “invalid”}"
 
 Make sure that both your BigQuery dataset and the bucket have the same region. For more information, refer to the [BigQuery documentation](https://cloud.google.com/bigquery/docs/locations#data-locations).
 
-#### When sending data to BigQuery, I can set the bucket but not a folder within the bucket. Is there a way to put Rudderstack data in a specific bucket folder?
+#### When sending data to BigQuery, I can set the bucket but not a folder within the bucket. Is there a way to put RudderStack data in a specific bucket folder?
 
 Yes, you can set the desired folder name in the **Prefix** input field while configuring your BigQuery destination. For more information, refer to the <Link to="/destinations/warehouse-destinations/bigquery/#configuring-google-bigquery-destination-in-rudderstack">BigQuery setup guide</Link>.
 

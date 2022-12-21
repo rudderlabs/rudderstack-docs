@@ -15,7 +15,7 @@ The user information in your events may include email, phone number, gender, etc
 </div>
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/fb_custom_audience">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/fb_custom_audience">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -30,7 +30,7 @@ Before configuring Facebook Custom Audience as a destination, verify if the sour
 | **Cloud mode**      | -       | -          | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To learn more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the platform supports sending events to Custom Audience, perform the steps below:
@@ -72,9 +72,9 @@ Some other important settings include:
 
 - **Enable Hashing**: Facebook expects the user data to be hash encoded using `SHA256`. if this option is enabled, RudderStack will hash encode the user data irrespective of the schema type chosen in the RudderStack dashboard.
 - **Is The Data Raw**: As RudderStack does not support combinational schema fields, this field will be ignored if not enabled.
-- **Audience Batch Size**: Specify the size of data you want RudderStack to send to Facebook in a single event. For example, if you want to send a total 1000 user records to Facebook and set the batch size to 50, then Rudderstack will send 20 events to Facebook with 50 user records in each event.
+- **Audience Batch Size**: Specify the size of data you want RudderStack to send to Facebook in a single event. For example, if you want to send a total 1000 user records to Facebook and set the batch size to 50, then RudderStack will send 20 events to Facebook with 50 user records in each event.
 - **Disable Formatting**: Facebook has fixed data formats for all the allowed schema fields. If this option is enabled, RudderStack will not format the user data before sending it to Custom Audience.
-- **Skip Verify**: This option lets Rudderstack handle all the null/undefined user properties before uploading them to Facebook Custom Audience.
+- **Skip Verify**: This option lets RudderStack handle all the null/undefined user properties before uploading them to Facebook Custom Audience.
     - When disabled, RudderStack discards the entire batch of events if any of the user attributes are `null`, according to the schema fields.
     - When this option is enabled along with the **Enable Hashing** setting, the null values are replaced by an empty string `“”` , hashed, and then sent to Custom Audience.
     - When this option is enabled and the **Enable Hashing** setting is disabled, Facebook throws an error as it does not take null values.
@@ -102,7 +102,7 @@ The `add` and `remove` arrays containing the user data objects are expected insi
 
 The following table details the mapping of the schema fields specified in the [**RudderStack dashboard**](https://app.rudderlabs.com/) and the Facebook Marketing API.
 
-| **Dashboard Field Name** | **Marketing API Schema Field \(Rudderstack Supported Field Name\)** | **Field Guidelines**                                                                                                                                                         |
+| **Dashboard Field Name** | **Marketing API Schema Field \(RudderStack Supported Field Name\)** | **Field Guidelines**                                                                                                                                                         |
 | :----------------------- | :------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `EMAIL`                  | `EMAIL`                                                             | Trim any leading or trailing whitespaces and convert all the characters to lower case.                                                                                       |
 | `PHONE`                  | `PHONE`                                                             | Remove symbols, letters, and any leading zeroes. The country code is needed as a prefix, if the `COUNTRY` field is not specified in the dashboard.                           |

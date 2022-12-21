@@ -1,6 +1,6 @@
 ---
 title: "Delighted"
-description: Step-by-step guide on sending your event data from RudderStack to Delighted.
+description: Send your event data from RudderStack to Delighted.
 ---
 
 [**Delighted**](https://delighted.com/) is a popular customer feedback platform. It allows your teams to gather instant, invaluable, and actionable customer feedback to improve your processes and product.
@@ -8,7 +8,7 @@ description: Step-by-step guide on sending your event data from RudderStack to D
 RudderStack supports Delighted as a destination to which you can seamlessly send your customer data.
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/delighted">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/delighted">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -21,7 +21,7 @@ Before configuring your source and destination in RudderStack, verify if the sou
 | **Cloud** **mode**  | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-To know more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
+To learn more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
 Once you have confirmed that the source supports sending events to Delighted, follow these steps:
@@ -49,13 +49,13 @@ If the RudderStack dashboard does not contain the **Event** for which the <code 
 
 </div>
 
-- Finally, click on **Next**. Delighted will now be enabled as a destination in Rudderstack.
+- Finally, click on **Next**. Delighted will now be enabled as a destination in RudderStack.
 
 ## Identify
 
 The `identify` call lets you to add a user to your **People** [**List**](https://app.delighted.com/people). If the user already exists, RudderStack will update the user with the latest information. This includes `userId` as well as other additional properties related to user like name,phone number/email, channel, and the 'Last sent at' timestamp.
 
-- The `userId` provided during the call must match the **Channel** type. The channel type can be either set from Rudderstack dashboard or you can send it via the `identify` call with the parameter `DelightedChannelType`.
+- The `userId` provided during the call must match the **Channel** type. The channel type can be either set from RudderStack dashboard or you can send it via the `identify` call with the parameter `DelightedChannelType`.
 
 <div class="infoBlock">
 

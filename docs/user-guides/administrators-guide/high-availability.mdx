@@ -1,6 +1,6 @@
 ---
 title: "High Availability"
-description: Detailed technical description of RudderStack's High Availability feature
+description: Learn about RudderStack's high-availability methodologies.
 ---
 
 Any service can go down because of a hardware failure or a software bug. This document explains the engineering design and the deployment model that makes RudderStack highly available despite any failures or bugs.
@@ -68,7 +68,7 @@ If RudderStack crashes in degraded mode, we request you to send us the crash rep
 
 RudderStack has an in-built alerting service that will raise an alert when the server enters `degraded` mode. The alerting service supports integrations with PagerDuty and VictorOps. You can configure this to be alerted when an unexpected issue occurs with the RudderStack server.
 
-Please refer to our <Link to="/user-guides/administrators-guide/alerting/">alerting guide</Link> to know more about the various configuring alerts in RudderStack.
+Please refer to our <Link to="/user-guides/administrators-guide/alerting/">alerting guide</Link> to learn more about the various configuring alerts in RudderStack.
 
 ## Client SDK Caching
 

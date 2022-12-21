@@ -1,6 +1,6 @@
 ---
 title: "Facebook Pixel"
-description: Step-by-step guide on sending your event data from RudderStack to Facebook Pixel.
+description: Send your event data from RudderStack to Facebook Pixel.
 ---
 
 [Facebook Pixel](https://developers.facebook.com/docs/facebook-pixel/) is a simple JavaScript snippet that you can add to your website and track visitor activity as well as other important metrics required to build effective marketing and advertising campaigns.
@@ -10,7 +10,7 @@ RudderStack leverages the <a href="https://developers.facebook.com/docs/marketin
 </div>
 
 <div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/facebook_pixel">GitHub repository</a>.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/facebook_pixel">GitHub repository</a>.
 </div>
 
 ## Getting started
@@ -40,7 +40,7 @@ To successfully configure Facebook Pixel as a destination, you will need to conf
 The following sections explain these settings in more detail.
 
 - **Facebook Pixel ID**: Enter your Facebook Pixel ID. This is required for sending events via both cloud and device modes. 
-- **Business Access Token**: Enter your Facebook business access token required to send the events via the cloud mode.
+- **Business Access Token**: Enter your Facebook business access token required to send the events via cloud mode.
 
 <div class="infoBlock">
 For more information on obtaining your Facebook Pixel ID and Business Access Token, refer to the <a href="#faq">FAQ</a> section below.
@@ -50,7 +50,7 @@ For more information on obtaining your Facebook Pixel ID and Business Access Tok
 
 <img src="../../assets/event-stream-destinations/fbp-connection-settings-2.png" alt="Connection settings" />
 
-- **Map Categories to Facebook Content Types**: Enter the category value and the corresponding Facebook [`content_type`](https://developers.facebook.com/docs/meta-pixel/get-started/advantage-catalog-ads#content-type) which should be mapped to each other. This `content_type` is sent to Facebook every time you send the specified category value via Rudderstack. Refer to the <Link to="#sending-custom-content_type">Sending custom `content_type`</Link> section for more information on sending the customized `content_type` to Facebook.
+- **Map Categories to Facebook Content Types**: Enter the category value and the corresponding Facebook [`content_type`](https://developers.facebook.com/docs/meta-pixel/get-started/advantage-catalog-ads#content-type) which should be mapped to each other. This `content_type` is sent to Facebook every time you send the specified category value via RudderStack. Refer to the <Link to="#sending-custom-content_type">Sending custom `content_type`</Link> section for more information on sending the customized `content_type` to Facebook.
 - **Enable Standard Event (PageView) for all Page and Screen Calls**: If this setting is enabled, RudderStack sets `pageview` as a standard event for all the `page` and `screen` calls.
 - **Map your events with Facebook Standard Events**: RudderStack maps some events to the Facebook standard events by default. You can use this option to override the <Link to="#standard-events">default mappings</Link> and map events to the Facebook standard events. 
 - **Standard Events custom properties**: For the standard events, some predefined properties are taken by Facebook. If you want to send more properties for your events, mention those properties in this field.
@@ -127,7 +127,7 @@ If you want to send any of the above properties hashed by SHA256, you need to en
 }
 ```
 
-Here, you can send the value of [`fbc`](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/#fbc) parameter via `context.fbc` as shown in the above payload. If not sent, Rudderstack auto generates it using the following values:
+Here, you can send the value of [`fbc`](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/#fbc) parameter via `context.fbc` as shown in the above payload. If not sent, RudderStack auto generates it using the following values:
 - Fetches `fbclid` from `context.page.url`
 - Uses `originalTimestamp` as the creation time
 - Sets `subdomainIndex` to `1`
@@ -142,7 +142,7 @@ The <code class="inline-code">context.dataProcessingOptions</code> will be mappe
 ### Client-side event filtering
 
 <div class="infoBlock">
-RudderStack supports specifying which events should be discarded or allowed to flow through, when sending events via the device mode. For more information, refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> documentation.
+RudderStack supports specifying which events should be discarded or allowed to flow through, when sending events via device mode. For more information, refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> documentation.
 </div>
 
 ### Web device mode settings
@@ -185,7 +185,7 @@ RudderStack then changes the traits as shown below, before sending them to Faceb
 }
 ```
 
-- **Legacy Conversion Pixel IDs**: With this setting, you can send specific events to a legacy conversion Pixel by specifying the event-Pixel ID mapping. Note that this option is available only when sending events via the device mode.
+- **Legacy Conversion Pixel IDs**: With this setting, you can send specific events to a legacy conversion Pixel by specifying the event-Pixel ID mapping. Note that this option is available only when sending events via device mode.
 - **Use device-mode to send events**: Enable this setting to send events from the JavaScript SDK to Facebook Pixel via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 - Finally, click on **Next** to complete the configuration.

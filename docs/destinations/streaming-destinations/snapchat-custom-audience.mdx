@@ -8,8 +8,12 @@ aliases: ["Snapchat Custom Audience", "Snapchat custom audience destination"]
 [Snapchat Custom Audience](https://businesshelp.snapchat.com/s/article/create-sam-audience?language=en_US) matches data from your Snapchat customer list (email, phone number, or mobile advertiser ID) with the Snapchat community.
 
 <div class="infoBlock">
-Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/v0/destinations/snapchat_custom_audience">GitHub repository</a>.
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/snapchat_custom_audience">GitHub repository</a>.
 </div>
+
+<YouTube
+  videoId={'sORmgyvVvl0'}
+/>
 
 ## Getting started
 
@@ -27,9 +31,26 @@ Once you have confirmed that the source platform supports sending events to Snap
 
 ### Connection settings 
 
-To successfully set up Snapchat Custom Audience as a destination, you need to configure the following settings:
+To successfully configure Snapchat Custom Audience as a destination, first authenticate your account by following the below steps:
 
-- **Connect with Snapchat Custom Audience**: Click this button to give RudderStack access to your Snapchat account.
+1. Click **Create Account** in the **Account Settings** section.
+2. From the modal, click the **Sign in with Google** button.
+3. Choose the required account and grant RudderStack the required permissions.
+4. Click **Save** to use the specified account, as shown:
+
+<img src="../../assets/event-stream-destinations/account-connect-normal.png" alt="Google Account authentication" />
+
+<div class="infoBlock">
+In case you have authenticated multiple accounts, you can click <strong>Edit Credentials</strong> to select/delete any other authenticated account, as shown:
+<br/><br/>
+
+<img src="../../assets/event-stream-destinations/edit-account-creds.png" alt="Google Account authentication" />
+
+RudderStack <strong>gives an error</strong> if you try to delete an account used by any other connection set up for the same destination.
+</div>
+
+Next, configure the following settings:
+
 - **Segment ID**: Enter your Snapchat segment ID. For more information on getting your segment ID, refer to the <Link to="#faq">FAQ</Link> section below.
 - **Schema**: Select the schema (**EMAIL**, **MOBILE AD ID**, or **PHONE**) from the dropdown.
 
