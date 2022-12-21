@@ -396,6 +396,11 @@ export const jsonData = [
                         content: []
                     },
                     {
+                        title: "Pipedream",
+                        link: "/sources/event-streams/cloud-apps/pipedream/",
+                        content: []
+                    },
+                    {
                         title: "PostHog",
                         link: "/sources/event-streams/cloud-apps/posthog/",
                         content: []
