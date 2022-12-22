@@ -2011,6 +2011,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "lemniskMarketingAutomation",
+    title: "Lemnisk Marketing Automation",
+    link: "/destinations/streaming-destinations/lemniskMarketingAutomation/",
+    content: [],
+  },
+  {
     key: "warehouse-destinations",
     title: "Warehouse Destinations",
     link: "/destinations/warehouse-destinations/",
