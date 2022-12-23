@@ -79,7 +79,7 @@ The following table details the property mappings between RudderStack and Sendin
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/> `context.externalId.id` *(when `context.externalId.type` = `contactId`)* <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `identifier`  | String |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `context.externalId.id` *(when `context.externalId.type` = `contactId`)* <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `identifier`  | String |
 | `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` | `attributes.SMS`  |  String |
 | `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
 | `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
@@ -104,7 +104,7 @@ The following table details the property mappings between RudderStack and Sendin
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
 | `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required, if contactID is not present.</span>| `emails`  | String |
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/> `context.externalId.id` (when `context.externalId.type` = `contactId`) <span style="color: #4D4DFF;font-size:12px;">Required, if email/phone is not present.</span>| `ids`  | String |
+| `context.externalId.id` *(when `context.externalId.type` = `contactId`)* | `ids`  | String |
 
 ## Track
 
