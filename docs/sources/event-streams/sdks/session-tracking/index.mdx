@@ -23,7 +23,7 @@ The following RudderStack SDKs support the session tracking feature:
 | <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link> | <strong>v1.7.0</strong> |
 
 <div class="infoBlock">
-You can expect the following properties in your event's <code class="inline-code">context</code> object when session tracking is enabled:
+You can expect the following properties in your event's <Link to="/event-spec/standard-events/common-fields/#contextual-fields"><code class="inline-code">context</code></Link> object when session tracking is enabled:
 <ul>
 <li><code class="inline-code">sessionId</code> (Number): The unique session ID.</li>
 <li><code class="inline-code">sessionStart</code> (Boolean): Present in the first event, indicating the start of the session.</li>
@@ -31,7 +31,7 @@ You can expect the following properties in your event's <code class="inline-code
 </div>
 
 <div class="warningBlock">
-The session tracking feature overrides any <code class="inline-code">sessionId</code> set in the event's <code class="inline-code">context</code> object. Hence, it is strongly recommended to send any session-related information in the event's traits or properties.
+It is strongly recommended to send any other session-related information in the event's traits or properties. When session tracking is enabled, RudderStack overrides any <code class="inline-code">sessionId</code> set in the event's <code class="inline-code">context</code> object.
 </div>
 
 ## Automatic session tracking
