@@ -18,13 +18,13 @@ A sample `identify` call is shown below:
 
 ```javascript
 rudderanalytics.identify(
-  "rapheal_morrow@example.com", {
-    firstName: "Raphael",
-    lastName: "Morrow",
-    phone: "+919407339881",
+  "alex@example.com", {
+    firstName: "Alex",
+    lastName: "Keener",
+    phone: "+1-202-555-0146",
     payment: 2,
     age: 21,
-    location: "Mumbai",
+    location: "USA",
   }, {
     externalId: [{
         type: "includeListIds",
@@ -49,8 +49,8 @@ The following table details the property mappings between RudderStack and Sendin
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if phone number is not passed.</span>| `email`  | String |
-| `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/>  <span style="color: #4D4DFF;font-size:12px;">Required, if email is not passed.</span>| `attributes.SMS`  |  String |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if phone number is not present.</span>| `email`  | String |
+| `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/>  <span style="color: #4D4DFF;font-size:12px;">Required, if email is not present.</span>| `attributes.SMS`  |  String |
 | `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
 | `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
 | `context.traits` <br/> `traits` *(excluding `firstname`, `lastname`, and `phone`)* | `attributes` | Object |
@@ -65,13 +65,14 @@ The following table details the property mappings between RudderStack and Sendin
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
 | `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email`  | String |
+| `context.externalId.id` *(when `context.externalId.type` = `includeListIds`)* <span style="color: #4D4DFF;font-size:12px;">Required</span> | `includeListIds` | Int64 Array (ID of the list to add the contact) |
+| `context.externalId.id` *(when `context.externalId.type` = `templateId`)* <br/> OR <br/> `templatedId` *(defined in RudderStack dashboard)* <span style="color: #4D4DFF;font-size:12px;">Required</span> | `templateId` | Int64 (DOI template's ID) |
+| Redirection URL *(defined in RudderStack dashboard)* <span style="color: #4D4DFF;font-size:12px;">Required</span>| `redirectionUrl` | URL |
 | `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` | `attributes.SMS`  |  String |
 | `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
 | `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
 | `context.traits` <br/> `traits` <br/> *(excluding `firstname`, `lastname`, and `phone`)* | `attributes` | Object |
-| `context.externalId.id` *(when `context.externalId.type` = `includeListIds`)* <span style="color: #4D4DFF;font-size:12px;">Required</span> | `includeListIds` | Int64 Array (ID of the list to add the contact) |
-| `context.externalId.id` *(when `context.externalId.type` = `templateId`)* <br/> `templatedId` *(defined in RudderStack dashboard)* <span style="color: #4D4DFF;font-size:12px;">Required</span> | `templateId` | Int64 (DOI template's ID) |
-| Redirection URL *(defined in RudderStack dashboard)* <span style="color: #4D4DFF;font-size:12px;">Required</span>| `redirectionUrl` | URL |
+
 
 #### Update a DOI contact
 
@@ -103,7 +104,7 @@ The following table details the property mappings between RudderStack and Sendin
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required, if contactID is not present.</span>| `emails`  | String |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/>  <span style="color: #4D4DFF;font-size:12px;">Required, if contactID is not present.</span>| `emails`  | String |
 | `context.externalId.id` *(when `context.externalId.type` = `contactId`)* | `ids`  | String |
 
 ## Track
@@ -155,11 +156,11 @@ The following table details the property mappings between RudderStack and Sendin
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `context.traits.email` <br/> `properties.email` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email`  | String |
+| `context.traits.email` <br/> `properties.email` <br/> `context.traits.phone` <br/> `properties.phone` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email`  | String |
 | `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
 | `context.traits` | `properties` | Object |
 | `properties`| `eventdata.data` | Object |
-| use  `IntegrationObj` to fetch the key and then we will use that key to fetch the value from `properties` object | `eventdata.id` | String |
+| Value of `integrations.sendinblue.propertiesIdKey` in `properties` | `eventdata.id` | String |
 
 #### Track Link
 
@@ -167,8 +168,8 @@ The following table details the property mappings between RudderStack and Sendin
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email`  | String |
-| `properties.link` <span style="color: #4D4DFF;font-size:12px;">Required</span> | `link` | String |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email`  | String |
+| `properties.link` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `link` | String |
 | `properties` | `properties` | Object |
 
 ## Page
@@ -187,10 +188,10 @@ The following table details the property mappings between RudderStack and Sendin
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `context.traits.email` <br/> `properties.email`<br/> `context.traits.phone` <br/> `properties.phone` <span style="color: #4D4DFF;font-size:12px;">Required</span> | `email` | String |
+| `context.traits.email` <br/> `properties.email`<br/> `context.traits.phone` <br/> `properties.phone` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `email` | String |
 | `properties.title` <br/> `context.page.title`| `properties.ma_title`  | String |
 | `properties.url` <br/> `context.page.url` | `page` | String |  
 | `properties.path` <br/> `context.page.path`| `properties.ma_path`  |  String |
 | `properties.referrer` <br/> `context.page.referrer`| `properties.ma_referrer` | String |
-| `properties.name` <br/> **Page Viewed** | `properties.sib_name` | String |
-| `properties` (excluding `title`, `url`, `path`, `referrer`, and `name`) | `properties` | Object |
+| `properties.name` <br/> `Page Viewed` | `properties.sib_name` | String |
+| `properties` *(excluding `title`, `url`, `path`, `referrer`, and `name`)* | `properties` | Object |
