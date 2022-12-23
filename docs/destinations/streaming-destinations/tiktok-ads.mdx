@@ -49,23 +49,38 @@ The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you c
 A sample `track` call is shown below:
 
 ```javascript
-rudderanalytics.track(
-  "Checkout Started", {
-    eventId: "1616318632825_357",
-    context: {
-      ad: {
-        callback: "123ATXSfe"
-      }
+rudderanalytics.track("Order Completed", {
+  checkout_id: "12345",
+  order_id: "1234",
+  affiliation: "Apple Store",
+  total: 20,
+  revenue: 15.0,
+  shipping: 22,
+  tax: 1,
+  discount: 1.5,
+  coupon: "ImagePro",
+  currency: "USD",
+  contentType: "product",
+  products: [{
+      product_id: "123",
+      sku: "G-32",
+      name: "Monopoly",
+      price: 14,
+      quantity: 1,
+      category: "Games",
+      url: "https://www.website.com/product/path",
+      image_url: "https://www.website.com/product/path.jpg",
     },
-    currency: "USD",
-    value: 46.0
-  }, {
-    externalId: [{
-      type: "tiktokExternalId",
-      id: "1234"
-    }]
-  }
-);
+    {
+      product_id: "345",
+      sku: "F-32",
+      name: "UNO",
+      price: 3.45,
+      quantity: 2,
+      category: "Games",
+    },
+  ],
+})
 ```
 
 ### Event mapping
