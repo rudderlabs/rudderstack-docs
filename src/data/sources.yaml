@@ -257,6 +257,14 @@
   updatedAt: '2020-06-26T18:39:17.406Z'
 - options:
   id: 1pD6vnvEtSbRDlkcQy551N1beKh
+  name: pipedream
+  link: /sources/event-streams/cloud-apps/pipedream/
+  displayName: Pipedream
+  category: webhook
+  createdAt: '2021-03-02T17:19:06.012Z'
+  updatedAt: '2021-03-02T17:19:06.012Z'
+- options:
+  id: 1pD6vnvEtSbRDlkcQy551N1beKh
   name: POSTHOG
   link: /sources/event-streams/cloud-apps/posthog/
   displayName: PostHog
@@ -423,6 +431,15 @@
   name: google_sheets
   link: /sources/extract/google-sheets/
   displayName: Google Sheets
+  category: cloud
+  type: extract
+  createdAt: '2020-10-22T12:40:53.132Z'
+  updatedAt: '2020-10-22T12:40:53.132Z'
+- options:
+  id: 1jEXvN08pLwYAGPMJJOhvIyA3F3
+  name: google-sheets-v2
+  link: /sources/extract/google-sheets-v2/
+  displayName: Google Sheets V2
   category: cloud
   type: extract
   createdAt: '2020-10-22T12:40:53.132Z'

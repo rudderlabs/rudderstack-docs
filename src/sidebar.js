@@ -396,6 +396,11 @@ export const jsonData = [
                         content: []
                     },
                     {
+                        title: "Pipedream",
+                        link: "/sources/event-streams/cloud-apps/pipedream/",
+                        content: []
+                    },
+                    {
                         title: "PostHog",
                         link: "/sources/event-streams/cloud-apps/posthog/",
                         content: []
@@ -508,7 +513,12 @@ export const jsonData = [
                 title: "Google Sheets",
                 link: "/sources/extract/google-sheets/",
                 content: []
-            }, 
+            },
+            {
+                title: "Google Sheets V2",
+                link: "/sources/extract/google-sheets-v2/",
+                content: []
+            },
             {
                 title: "HubSpot",
                 link: "/sources/extract/hubspot/",
