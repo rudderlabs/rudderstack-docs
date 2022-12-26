@@ -70,11 +70,11 @@ If the time between closing the tab and reopening it is less than the session ti
 
 When an application is closed completely and launched from scratch, RudderStack checks if the inactivity timeout of the previous automatically tracked session has elapsed. If yes, RudderStack creates a new session, otherwise it continues the previous session.
 
-<h3 id="#manual-session-tracking-persistence">What is the scope of persistence in case of manual session tracking?</h3>
+### What is the scope of persistence in case of manual session tracking?
 
 The scope of manual session tracking depends on whether the automatic session tracking feature is enabled.
 
-- If automatic session tracking is **enabled**: On the next app launch (from scratch), RudderStack clears the manual session even if <Link to="/sources/event-streams/sdks/session-tracking/#manual-session-tracking">`endSession()`</Link> is not called and generates a new **automatic** session.
+- If automatic session tracking is **enabled**: On the next app launch (from scratch), RudderStack clears the manual session even if <Link to="/sources/event-streams/sdks/session-tracking/manual-session-tracking/">`endSession()`</Link> is not called and generates a new **automatic** session.
 - If automatic session tracking is **disabled**: On the next app launch, the manual session will still be active and cleared only when the user ends the session using `endSession()`.
 
 ### Where does RudderStack store the `sessionId`, last event time, and automatic session tracking status?

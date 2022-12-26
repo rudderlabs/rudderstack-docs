@@ -1,0 +1,125 @@
+---
+title: "Manual Session Tracking"
+description: Manually tracking user sessions using the RudderStack SDKs.
+---
+
+RudderStack supports manual session tracking that lets you define the start and end of a user session.
+
+## Manual session tracking methods
+
+The RudderStack SDKs (<Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>) support the following manual session tracking methods:
+
+<table>
+  <tr>
+    <th width="180px">Method</th>
+    <th width="180px">Parameters</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td rowspan="2"><code class="inline-code">startSession()</code></td>
+    <td>-</td>
+    <td>If you don't pass any parameter, RudderStack creates a new session and passes the current <code class="inline-code">timestamp</code> as the <Link to="/sources/event-streams/sdks/session-tracking/faq/#how-does-rudderstack-determine-the-sessionid"><code class="inline-code">sessionId</code></Link>.</td>
+  </tr>
+  <tr>
+    <td><code class="inline-code">sessionId</code><br /> <span style="color: #4D4DFF;font-size:12px;">Long integer with minimum length of 10 characters.</span></td>
+    <td>If you pass a custom <code class="inline-code">sessionId</code> parameter, RudderStack triggers a new user session. <br/><br/> It is <strong>not recommended</strong> to use a decimal number as the <code class="inline-code">sessionId</code>. </td>
+  </tr>
+  <tr>
+    <td><code class="inline-code">endSession()</code></td>
+    <td>-</td>
+    <td>RudderStack clears the <code class="inline-code">sessionId</code> and ends the session.</td>
+  </tr>
+</table>
+
+<div class="warningBlock">
+<strong>Manual session tracking overrides <Link to="/sources/event-streams/sdks/session-tracking/#automatic-session-tracking">automatic session tracking</Link></strong>. 
+</div>
+
+Note that if automatic session tracking is enabled and you call the <code class="inline-code">startSession()</code> method, then RudderStack disables automatic session tracking **until the app is closed completely**. Upon restarting the app, the RudderStack SDKs resume automatic session tracking.
+
+For more information on the persistence scope of manual session tracking, refer to the <Link to="/sources/event-streams/sdks/session-tracking/faq/#what-is-the-scope-of-persistence-in-case-of-manual-session-tracking">FAQ</Link> guide.
+
+## Sample snippets
+
+The following snippets highlight the use of the manual session tracking methods:
+
+### JavaScript
+
+```javascript
+rudderanalytics.startSession() // Starts a new user session and automatically assigns a session ID.
+
+rudderanalytics.startSession(sessionId) // Passes a custom session ID while creating a new session.
+
+rudderanalytics.endSession() // Ends the user session and clears the session ID.
+```
+
+### Android
+
+<Tabs>
+  <TabList>
+    <Tab>Kotlin</Tab>
+    <Tab>Java</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```kotlin
+rudderClient.startSession() // Starts a new user session and automatically assigns a session ID.
+
+rudderClient.startSession(sessionId) // Passes a custom session ID while creating a new session.
+
+rudderClient.endSession() // Ends the user session and clears the session ID.
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```java
+rudderClient.startSession(); // Starts a new user session and automatically assigns a session ID.
+
+rudderClient.startSession(sessionId); // Passes a custom session ID while creating a new session.
+
+rudderClient.endSession(); // Ends the user session and clears the session ID.
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+
+### iOS
+
+<Tabs>
+  <TabList>
+    <Tab>Swift</Tab>
+    <Tab>Objective C</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+```swift
+RSClient.sharedInstance()?.startSession() // Starts a new user session and automatically assigns a session ID.
+
+RSClient.sharedInstance()?.startSession(sessionId) // Passes a custom session ID while creating a new session.
+
+RSClient.sharedInstance()?.endSession() // Ends the user session and clears the session ID.
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```objectivec
+[[RSClient sharedInstance] startSession]; // Starts a new user session and automatically assigns a session ID.
+
+[[RSClient sharedInstance] startSession:sessionId]; // Passes a custom session ID while creating a new session.
+
+[[RSClient sharedInstance] endSession]; // Ends the user session and clears the session ID.
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
