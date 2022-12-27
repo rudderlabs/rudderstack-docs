@@ -270,10 +270,10 @@ rudderClient.setup(WRITE_KEY, config)
 
 ```typescript
 import rc from '@rudderstack/rudder-sdk-react-native';
-import appsflyer from 'rudder-integration-appsflyer-react-native'
+import appsflyer from '@rudderstack/rudder-integration-appsflyer-react-native';
 import {
     setOptions
-} from 'rudder-integration-appsflyer-react-native/src/appsflyer';
+} from '@rudderstack/rudder-integration-appsflyer-react-native/src/appsflyer';
 
 // Setting options for initializing the appsflyer sdk
 setOptions({
@@ -286,7 +286,9 @@ setOptions({
     // ID assigned by the Apple app store for any app which is either published or in the process of getting published
     "appleAppId": "<apple_app_id>",
     // whether we want to register for the listeners which would return the deeplink data
-    "onDeepLinkListener": true
+    "onDeepLinkListener": true,
+    // the number of seconds for which the appsflyer iOS SDK should wait to allow the app to retrieve the user consent.
+    "timeToWaitForATTUserAuthorization": 60
 })
 
 // Configuration object to be passed while initializing the Rudder React Native // SDK
@@ -314,7 +316,7 @@ import {
     onDeepLink,
     onInstallConversionData,
     onInstallConversionFailure
-} from 'rudder-integration-appsflyer-react-native/src/appsflyer';
+} from '@rudderstack/rudder-integration-appsflyer-react-native/src/appsflyer';
 
 var onInstallConversionDataCanceller = onInstallConversionData((data) => {
     console.log("On Install Conversion Success data is ", data);
