@@ -21,18 +21,14 @@ rudderanalytics.identify(
   "alex@example.com", {
     firstName: "Alex",
     lastName: "Keener",
-    phone: "+1-202-555-0146",
+    phone: "+12025550146",
     payment: 2,
     age: 21,
     location: "USA",
   }, {
     externalId: [{
-        type: "includeListIds",
-        id: 1,
-      },
-      {
-        type: "includeListIds",
-        id: 2,
+        type: "sendinblueIncludeListIds",
+        id: [1,2],
       },
     ],
   }
@@ -43,20 +39,21 @@ rudderanalytics.identify(
 
 This section explains the property mappings for `identify` call made to perform different operations on contacts such as their creation, deletion, updation, etc.
 
-#### Create contact
+#### Create or update a contact
 
-The following table details the property mappings between RudderStack and Sendinblue to [create a contact](https://developers.sendinblue.com/reference/createcontact):
+The following table details the property mappings between RudderStack and Sendinblue to [create or update a contact](https://developers.sendinblue.com/reference/createcontact):
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
 | `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if phone number is not present.</span>| `email`  | String |
 | `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/>  <span style="color: #4D4DFF;font-size:12px;">Required, if email is not present.</span>| `attributes.SMS`  |  String |
+| `traits.newEmail` <br/> `context.traits.newEmail` | `attributes.EMAIL`  | String |
 | `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
-| `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
-| `context.traits` <br/> `traits` *(excluding `firstname`, `lastname`, and `phone`)* | `attributes` | Object |
+| `traits.lastname` <br/> `traits.last_name` <br />`context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName`   | `attributes.LASTNAME` | String | 
+| `traits` <br/> `context.traits` | `attributes` | Object |
 | `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | Boolean |
 | `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | Boolean |
-| `context.externalId.id` *(when `context.externalId.type` = `includeListIds`)* | `listIds` | Int64 Array |
+| `context.externalId.id` *(when `context.externalId.type` = `sendinblueIncludeListIds`)* | `listIds` | Int64 Array |
 
 #### Create contact via DOI (Double-opt-in) flow 
 
@@ -65,13 +62,13 @@ The following table details the property mappings between RudderStack and Sendin
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
 | `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email`  | String |
-| `context.externalId.id` *(when `context.externalId.type` = `includeListIds`)* <span style="color: #4D4DFF;font-size:12px;">Required</span> | `includeListIds` | Int64 Array (ID of the list to add the contact) |
+| `context.externalId.id` *(when `context.externalId.type` = `sendinblueIncludeListIds`)* <span style="color: #4D4DFF;font-size:12px;">Required</span> | `includeListIds` | Int64 Array  |
 | `context.externalId.id` *(when `context.externalId.type` = `templateId`)* <br/> OR <br/> `templatedId` *(defined in RudderStack dashboard)* <span style="color: #4D4DFF;font-size:12px;">Required</span> | `templateId` | Int64 (DOI template's ID) |
 | Redirection URL *(defined in RudderStack dashboard)* <span style="color: #4D4DFF;font-size:12px;">Required</span>| `redirectionUrl` | URL |
 | `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` | `attributes.SMS`  |  String |
-| `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
-| `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
-| `context.traits` <br/> `traits` <br/> *(excluding `firstname`, `lastname`, and `phone`)* | `attributes` | Object |
+| `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name` <br /> `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name`   | `attributes.FIRSTNAME` | String | 
+| `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name` <br/>  `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name`   | `attributes.LASTNAME` | String | 
+| `traits` <br/> `context.traits` | `attributes` | Object |
 
 
 #### Update a DOI contact
@@ -80,32 +77,32 @@ The following table details the property mappings between RudderStack and Sendin
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `context.externalId.id` *(when `context.externalId.type` = `contactId`)* <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `identifier`  | String |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `context.externalId.id` *(when `context.externalId.type` = `sendinblueContactId`)* <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `identifier`  | String |
 | `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` | `attributes.SMS`  |  String |
-| `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name` <br/> `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name`  | `attributes.FIRSTNAME` | String | 
-| `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name` <br/> `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name`  | `attributes.LASTNAME` | String | 
-| `context.traits` <br/> `traits` *(excluding `firstname`, `lastname`, and `phone`)* | `attributes` | Object |
+| `traits.newEmail` <br/> `context.traits.newEmail` | `attributes.EMAIL`  | String |
+| `traits.firstName` <br/> `traits.firstname` <br/> `traits.first_name` <br/> `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name`    | `attributes.FIRSTNAME` | String | 
+| `traits.lastName` <br/> `traits.lastname` <br/> `traits.last_name` <br/> `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name`    | `attributes.LASTNAME` | String | 
+| `traits` <br/> `context.traits` | `attributes` | Object |
 | `integrations.sendinblue.emailBlacklisted`| `emailBlacklisted` | Boolean |
 | `integrations.sendinblue.smsBlacklisted`| `smsBlacklisted` | Boolean |
-| `context.externalId.id` *(when `context.externalId.type` = `includeListIds`)* | `listIds` | Int64 array |
-| `context.externalId.id` *(when `context.externalId.type` = `unlinkListIds`)*| `unlinkListIds` | Int64 array |
+| `context.externalId.id` *(when `context.externalId.type` = `sendinblueIncludeListIds`)* | `listIds` | Int64 array |
+| `context.externalId.id` *(when `context.externalId.type` = `sendinblueUnlinkListIds`)*| `unlinkListIds` | Int64 array |
 
-#### Get contact details
 
-The following table details the property mappings between RudderStack and Sendinblue to [get contact details](https://developers.sendinblue.com/reference/getcontactinfo-1):
 
-| RudderStack property | Sendinblue property | Data type |
-| :-----| :--------| :------|
-| `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/> `context.externalId.id` *(when `context.externalId.type` = `contactId`)* <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `identifier`  | String |
 
 #### Delete contact from list
+
+<div class="warningBlock">
+RudderStack uses this API to delete a contact from a given list <strong>if</strong> the <strong>Create contact via Double-opt-in</strong> setting is disabled in the dashboard and <code class="inline-code">sendinblueUnlinkListIds</code> is provided in the event's <code class="inline-code">externalId</code> field.
+</div>
 
 The following table details the property mappings between RudderStack and Sendinblue to [delete a contact from list](https://developers.sendinblue.com/reference/removecontactfromlist):
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
 | `traits.email` <br/> `context.traits.email` <br/> `properties.email` <br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/>  <span style="color: #4D4DFF;font-size:12px;">Required, if contactID is not present.</span>| `emails`  | String |
-| `context.externalId.id` *(when `context.externalId.type` = `contactId`)* | `ids`  | String |
+| `context.externalId.id` *(when `context.externalId.type` = `sendinblueContactId`)* | `ids`  | String |
 
 ## Track
 
@@ -156,9 +153,9 @@ The following table details the property mappings between RudderStack and Sendin
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `context.traits.email` <br/> `properties.email` <br/> `context.traits.phone` <br/> `properties.phone` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `email`  | String |
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email`<br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `email` | String |
 | `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
-| `context.traits` | `properties` | Object |
+| `traits` <br/> `context.traits` | `properties` | Object |
 | `properties`| `eventdata.data` | Object |
 | Value of `integrations.sendinblue.propertiesIdKey` in `properties` | `eventdata.id` | String |
 
@@ -188,10 +185,10 @@ The following table details the property mappings between RudderStack and Sendin
 
 | RudderStack property | Sendinblue property | Data type |
 | :-----| :--------| :------|
-| `context.traits.email` <br/> `properties.email`<br/> `context.traits.phone` <br/> `properties.phone` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `email` | String |
-| `properties.title` <br/> `context.page.title`| `properties.ma_title`  | String |
-| `properties.url` <br/> `context.page.url` | `page` | String |  
+| `traits.email` <br/> `context.traits.email` <br/> `properties.email`<br/> `traits.phone` <br/> `context.traits.phone` <br/> `properties.phone` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `email` | String |
+| `properties.url` <br/> `context.page.url` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `page` | String | 
+| `properties.title` <br/> `context.page.title`| `properties.ma_title` | String |
 | `properties.path` <br/> `context.page.path`| `properties.ma_path`  |  String |
 | `properties.referrer` <br/> `context.page.referrer`| `properties.ma_referrer` | String |
 | `properties.name` <br/> `Page Viewed` | `properties.sib_name` | String |
-| `properties` *(excluding `title`, `url`, `path`, `referrer`, and `name`)* | `properties` | Object |
+| `properties`  | `properties` | Object |
