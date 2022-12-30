@@ -928,7 +928,7 @@ export const postNavList = [
   {
     key: "factors-ai",
     title: "FactorsAI",
-    link: "/destinations/streaming-destinations/factors-ai/",
+    link: "/destinations/streaming-destinations/factorsai/",
     content: []
 }, 
   {
