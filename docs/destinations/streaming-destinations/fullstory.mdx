@@ -17,7 +17,7 @@ RudderStack supports sending event data to FullStory via the following <a href="
 | **Cloud mode**      | -             | -             | -          |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the FullStory native SDK is loaded from <code class="inline-code">https://edge.fullstory.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the FullStory SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the FullStory native SDK is loaded from <code class="inline-code">https://edge.fullstory.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the FullStory SDK successfully.
 </div>
 
 Once you have confirmed that the platform supports sending events to FullStory, perform the steps below:
@@ -203,7 +203,7 @@ The above call is translated to a FullStory `identify` call as follows:
 
 <div class="infoBlock">
 
-In the web device mode, if the <code class="inline-code">userId</code> is not explicitly provided, then the <code class="inline-code">anonymousId</code> of the user is sent as the <code class="inline-code">uid</code> instead.
+In web device mode, if the <code class="inline-code">userId</code> is not explicitly provided, then the <code class="inline-code">anonymousId</code> of the user is sent as the <code class="inline-code">uid</code> instead.
 </div>
 
 ### `displayName` and `email`

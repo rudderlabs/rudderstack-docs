@@ -11,7 +11,7 @@ RudderStack supports sending event data to Google Analytics 4 via the following 
 | **Cloud Mode**      | **Supported** | **Supported**  | **Supported**  |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Analytics 4 native SDK is loaded from <code class="inline-code">https://www.googletagmanager.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Analytics 4 SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Analytics 4 native SDK is loaded from <code class="inline-code">https://www.googletagmanager.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Analytics 4 SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Google Analytics 4, follow these steps:
@@ -23,19 +23,19 @@ Once you have confirmed that the source platform supports sending events to Goog
 
 To successfully configure Google Analytics 4 as a destination, configure the following settings:
 
-- **API Secret**: This field is required only for the cloud mode setup where you can enter the API Secret generated through the Google Analytics dashboard. It can be created in the Google Analytics dashboard under **Admin** > **Data Streams** > **Choose your stream** > **Measurement Protocol** > **Create**.
+- **API Secret**: This field is required only for cloud mode setup where you can enter the API Secret generated through the Google Analytics dashboard. It can be created in the Google Analytics dashboard under **Admin** > **Data Streams** > **Choose your stream** > **Measurement Protocol** > **Create**.
 
 - **Client Type**: Select the client type as `gtag` or `Firebase` from the dropdown:
   - **`gtag`** - Supported for the cloud and device mode both. If you select `gtag`, enter the below:
     - **Measurement Id**: Enter the Measurement Id which is the identifier for a data stream. It can be found in the Google Analytics dashboard under **Admin** > **Data Streams** > **Choose your stream** > **Measurement ID**.
-  - **`Firebase`** - Supported only for the cloud mode. If you select `Firebase`, enter the below settings:
+  - **`Firebase`** - Supported only for cloud mode. If you select `Firebase`, enter the below settings:
     - **Firebase App Id**: Enter the Firebase App ID which is the identifier for Firebase app. It can be found in the Firebase dashboard under **Project Settings** > **General**.
     
 <div class="infoBlock">
 Refer to the <Link to="#faq">FAQ</Link> section for more information on how to obtain the API Secret, Measurement Id and Firebase App ID.
 </div>
 
-- **GA4 client_id Field Identifier**: This field is **only required** while <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/">sending events to GA4 in the cloud mode</Link>. Enter the identifier which RudderStack should look for in the payload and map to the GA4 `client_id`. For more information on `client_id`, refer to the <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/#mapping-client_id">Mapping `client_id`</Link> section.
+- **GA4 client_id Field Identifier**: This field is **only required** while <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/">sending events to GA4 in cloud mode</Link>. Enter the identifier which RudderStack should look for in the payload and map to the GA4 `client_id`. For more information on `client_id`, refer to the <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/#mapping-client_id">Mapping `client_id`</Link> section.
 - **Enable debug mode**: Enable this setting to monitor events in the debug view.
 
 <div class="infoBlock">
@@ -96,7 +96,7 @@ Google Analytics 4 has a limit on the number of unique properties per event name
 
 ### Client-side events filtering
 
-This option is applicable only if you're sending events to Google Analytics 4 via the web device mode. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
+This option is applicable only if you're sending events to Google Analytics 4 via web device mode. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
 
 ### Web device mode settings
 

@@ -41,7 +41,7 @@ When you <Link to="#adding-a-transformation">add a transformation</Link> and con
 
 ## SDK setup
 
-After <Link to="#adding-a-transformation">adding a transformation</Link> and <Link to="/features/transformations/#connecting-transformation-to-a-destination">connecting it to a destination</Link> supporting the device mode, you can connect your SDK source to it.
+After <Link to="#adding-a-transformation">adding a transformation</Link> and <Link to="/features/transformations/#connecting-transformation-to-a-destination">connecting it to a destination</Link> supporting device mode, you can connect your SDK source to it.
 
 Further, follow the below steps for setting up the required SDK:
 
@@ -103,7 +103,7 @@ pod 'Rudder', '1.8.0.beta.1'
 
 ## Limitations
 
-The following limitations are applicable when invoking a transformation in the device mode:
+The following limitations are applicable when invoking a transformation in device mode:
 
 - The network unavailability can lead to higher latency than expected while sending the events to the destinations. RudderStack doesn't lose data due to the network loss and stores the events in the client device until those are successfully delivered to the destination.
 

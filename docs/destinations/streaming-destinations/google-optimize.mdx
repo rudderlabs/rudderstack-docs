@@ -23,7 +23,7 @@ RudderStack supports sending event data to Google Optimize via the following <a 
 | **Cloud mode**      | -                   | -                           | - |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Optimize native SDK is loaded from <code class="inline-code">https://www.googleoptimize.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Optimize SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Optimize native SDK is loaded from <code class="inline-code">https://www.googleoptimize.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Optimize SDK successfully.
 </div>
 
 Once you have confirmed that your source platform supports sending events to Google Optimize, follow these steps:
@@ -77,7 +77,7 @@ Refer to this <a href="https://support.google.com/optimize/answer/7513085?hl=en&
 Enabling this setting can impact page performance. Refer to this <a href="https://support.google.com/optimize/answer/7100284">support page</a> for more information on the anti-flicker snippet.
 </div>
 
-* As this destination supports sending events only via the web device mode, the **Use device mode to send events** option will be always enabled.
+* As this destination supports sending events only via web device mode, the **Use device mode to send events** option will be always enabled.
 
 Finally, click **Next** to complete the setup. Google Optimize will now be enabled as a destination in RudderStack.
 

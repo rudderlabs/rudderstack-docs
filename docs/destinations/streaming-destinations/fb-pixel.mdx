@@ -23,7 +23,7 @@ RudderStack supports sending event data to Facebook Pixel via the following <a h
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Facebook Pixel native SDK is loaded from <code class="inline-code">https://connect.facebook.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Facebook Pixel SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Facebook Pixel native SDK is loaded from <code class="inline-code">https://connect.facebook.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Facebook Pixel SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Facebook Pixel, follow these steps:
@@ -200,10 +200,10 @@ The following snippet highlights the use of the `identify` call:
 rudderanalytics.identify("userId", userVars) // userVars is a JSON object
 ```
 
-To send `external_id` via the web device mode, you need to include and send it via an `identify` call before making any other call.
+To send `external_id` via web device mode, you need to include and send it via an `identify` call before making any other call.
 
 <div class="infoBlock">
-For more information on implementing Advanced Matching in the web device mode, refer to the <a href="https://developers.facebook.com/docs/meta-pixel/advanced/advanced-matching">Facebook documentation</a>.
+For more information on implementing Advanced Matching in web device mode, refer to the <a href="https://developers.facebook.com/docs/meta-pixel/advanced/advanced-matching">Facebook documentation</a>.
 </div>
 
 ## Page

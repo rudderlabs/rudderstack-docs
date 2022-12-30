@@ -21,7 +21,7 @@ RudderStack supports sending event data to Google Analytics via the following <a
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Analytics native SDK is loaded from <code class="inline-code">https://www.google-analytics.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Analytics SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Analytics native SDK is loaded from <code class="inline-code">https://www.google-analytics.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Analytics SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Google Analytics, follow these steps:
@@ -60,7 +60,7 @@ To successfully set up Google Analytics as a destination, configure the followin
 - **Optimize Container ID**: Enter your Optimize container ID to integrate with the Google Analytics [Optimize plugin](https://support.google.com/optimize/answer/6262084#optimize-ga-plugin).
 
 <div class="infoBlock">
-If you specify the container ID and Optimize plugin is linked to your Google Analytics property, it will be enabled automatically the next time <code class="inline-code">analytics.js</code> is loaded. <strong>Note that this is applicable only if you are using Google Analytics in the web device mode</strong>.
+If you specify the container ID and Optimize plugin is linked to your Google Analytics property, it will be enabled automatically the next time <code class="inline-code">analytics.js</code> is loaded. <strong>Note that this is applicable only if you are using Google Analytics in web device mode</strong>.
 </div>
 
 - **Use Google AMP Client ID**: Enable this setting to uniquely identify users who engage with your content on AMP and non-AMP pages. Refer to the [Google Analytics session unification for AMP](https://support.google.com/analytics/answer/7486764?hl=en&ref_topic=7378717#zippy=%2Cin-this-article) guide for more information. 
@@ -235,7 +235,7 @@ If the <strong>Include the Querystring in Page Views</strong> setting is enabled
 
 #### Page title in device mode
 
-Depending on the presence of `message.properties.category` and `message.name` properties, the page title is set as one of the following in the device mode: 
+Depending on the presence of `message.properties.category` and `message.name` properties, the page title is set as one of the following in device mode: 
 
 | `message.properties.category`  | `message.name`        | Page title|
 | :--------- | :------------ | :------------ |
@@ -246,7 +246,7 @@ Depending on the presence of `message.properties.category` and `message.name` pr
 
 #### Page title in cloud mode
 
-The page title is set as the `properties.title` or ` context.page.title` in the cloud mode.
+The page title is set as the `properties.title` or ` context.page.title` in cloud mode.
 
 ## E-Commerce
 
@@ -679,11 +679,11 @@ Please adjust the Google Analytics' default reporting time frame from a month ag
 
 <img src="../../assets/faq1.png" />
 
-#### Why are my page views in Google Analytics different when sent from device mode as against the cloud mode?
+#### Why are my page views in Google Analytics different when sent from device mode as against cloud mode?
 
 There could be 2 reasons for this:
 
 - There can be ad blockers enabled in the user's browser while visiting your site. This blocks the Google Analytics requests from being sent directly from the browser.
-- For the cloud mode, RudderStack is not blocked by ad blockers presently. If the events are sent to Google Analytics via cloud mode, the actual number of events intended to be sent to Google Analytics are forwarded by the RudderStack server. So, the number of requests from the native mode or device mode is expected to be lower than cloud mode.
+- For cloud mode, RudderStack is not blocked by ad blockers presently. If the events are sent to Google Analytics via cloud mode, the actual number of events intended to be sent to Google Analytics are forwarded by the RudderStack server. So, the number of requests from the native mode or device mode is expected to be lower than cloud mode.
 
 The RudderStack JavaScript SDK provides a way of detecting how many page view requests are potentially being blocked by the ad blockers throughout your site pages. Please check the section on <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/">Detecting Ad-blocked Pages</Link> for more information.
