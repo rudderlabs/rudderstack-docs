@@ -890,7 +890,7 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/chartbeat/",
                 content: []
             }, {
-                title: "Factors",
+                title: "FactorsAI",
                 link: "/destinations/streaming-destinations/factors/",
                 content: []
             }, {
