@@ -240,9 +240,9 @@ rudderanalytics.group("1hKOmRA4", {
 });
 ```
 
-## E-commerce event tracking
+## Ecommerce event tracking
 
-RudderStack supports e-commerce tracking for Google Analytics 4. You can refer to the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for sending events while instrumenting your site with the RudderStack SDK.
+RudderStack supports ecommerce tracking for Google Analytics 4. You can refer to the <Link to="/event-spec/ecommerce-events-spec/">Ecommerce Events Specification</Link> guide for sending events while instrumenting your site with the RudderStack SDK.
 
 The following table lists the mappings between the RudderStack and Google Analytics 4 events:
 
@@ -472,7 +472,7 @@ The below table details out the common mappings for the `products` array:
 | properties.products.$.variant           | `item_variant`  |
 | properties.products.$.quantity           | `quantity`  |
 
-The below mentioned e-commerce events include the `products` parameter which accepts a `products` array. 
+The below mentioned ecommerce events include the `products` parameter which accepts a `products` array. 
 
 | RudderStack    | Presence of `products` parameter |
 | :-------------| :-----------------|
@@ -504,7 +504,7 @@ The following table details the parameter mappings present in the `products` arr
 | properties.products.$.item_list_name           | `item_list_name`  |
 | properties.products.$.location_id           | `location_id`  |
 
-The below mentioned e-commerce events include the `products` parameter (mapped to the [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter) which accepts a `products` array.
+The below mentioned ecommerce events include the `products` parameter (mapped to the [`items`](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference/events#view_item_list) parameter) which accepts a `products` array.
 
 | RudderStack    | Presence of `products` parameter |
 | :-------------| :-----------------|
@@ -530,9 +530,9 @@ The following table details the parameter mappings present in the `products` arr
 | properties.products.$.promotion_id           | `promotion_id`  |
 | properties.products.$.promotion_name           | `promotion_name`  |
 
-## Non e-commerce events tracking
+## Non ecommerce events tracking
 
-The below table lists the mappings of the non e-commerce `track` events and properties that are passed to Google Analytics 4 events and properties:
+The below table lists the mappings of the non ecommerce `track` events and properties that are passed to Google Analytics 4 events and properties:
 
 <table>
   <tr>

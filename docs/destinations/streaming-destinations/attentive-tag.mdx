@@ -203,7 +203,7 @@ The event type is case sensitive. For example, `Order shipped` and `Order Shippe
 
 ### E-Commerce events
 
-RudderStack converts the following e-commerce events to the corresponding Attentive Tag events:
+RudderStack converts the following ecommerce events to the corresponding Attentive Tag events:
 
 | RudderStack event | Attentive Tag event |
 |:--------------------------------|:--------------------------|
@@ -258,7 +258,7 @@ The `Order Completed` event properties are mapped to the following Attentive Tag
 | `properties.products.$.url` | `productUrl` | Optional |
 | `properties.products.$.image_url` | `productImage` | Optional |
 
-A sample `track` call for the above e-commerce event parameters is shown below:
+A sample `track` call for the above ecommerce event parameters is shown below:
 
 ```javascript
 rudderanalytics.track("Order Completed", {

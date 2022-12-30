@@ -3,7 +3,7 @@ title: "Shopify"
 description: Ingest your event data from Shopify into RudderStack.
 ---
 
-[Shopify](https://www.shopify.in/) is a popular e-commerce platform that gives you all the tools to start, run, and grow your business effectively. It offers online retailers a variety of services around digital payments, marketing, product shipping, customer engagement and retention, and more.
+[Shopify](https://www.shopify.in/) is a popular ecommerce platform that gives you all the tools to start, run, and grow your business effectively. It offers online retailers a variety of services around digital payments, marketing, product shipping, customer engagement and retention, and more.
 
 This guide will help you set up Shopify as a source in RudderStack.
 
@@ -108,15 +108,15 @@ The following table details the supported Shopify events and their corresponding
 | `orders_paid`                 | Order was paid.             | `orders/paid`                 | 
 | `orders_partially_fullfilled` | Order was partly fulfilled. | `orders/partially_fulfilled`  |
 
-RudderStack also supports the following [E-commerce events](https://rudderstack.com/docs/event-spec/ecommerce-events-spec/):
+RudderStack also supports the following [ecommerce events](https://rudderstack.com/docs/event-spec/ecommerce-events-spec/):
 
-| E-commerce event name          | Description                 | Subscribed Shopify topic      |
+| Ecommerce event name          | Description                 | Subscribed Shopify topic      |
 | :----------------------------- | :---------------------------| :-----------------------------|
 | `Checkout Started`             | A new checkout was created. | `checkouts/create`            |
 | `Order Updated`                | Order was updated.          | `orders/updated`              |
 
 <div class="warningBlock">
-Any other events flowing through RudderStack except the <code class="inline-code">track</code>, <code class="inline-code">identify</code>, and the e-commerce events mentioned above will be <strong>discarded</strong>.
+Any other events flowing through RudderStack except the <code class="inline-code">track</code>, <code class="inline-code">identify</code>, and the ecommerce events mentioned above will be <strong>discarded</strong>.
 </div>
 
 <div class="infoBlock">
@@ -229,7 +229,7 @@ For tracking the client-side events, RudderStack inserts a JavaScript tracking c
 
 - RudderStack supports the [`page`](https://www.rudderstack.com/docs/event-spec/standard-events/page/) event for every page visited on the Shopify store.
 - It also supports the `Registration Viewed` as a generic [`track`](https://www.rudderstack.com/docs/event-spec/standard-events/track/) event whenever the user views their account or registration page.
-- The following [E-commerce events](https://www.rudderstack.com/docs/event-spec/ecommerce-events-spec/) are also supported on client-side:
+- The following [ecommerce events](https://www.rudderstack.com/docs/event-spec/ecommerce-events-spec/) are also supported on client-side:
 
 | Event name             | Description                                |
 | :----------------------| :------------------------------------------|
@@ -317,7 +317,7 @@ Shopify provides the store owners the capability to either make user login compu
 
 It is highly recommended **not** to make any drastic changes to your store structure to preserve data integrity. If you do so, RudderStack may track incorrect calls or miss them entirely, owing to the disparity between URL and triggered event. 
 
-Note the following additional details for e-commerce events tracked by RudderStack:
+Note the following additional details for ecommerce events tracked by RudderStack:
 
 - **Cart Viewed**: It is recommended to keep the URL in `[store-url]/cart` format.
 - **Checkout Started**: This event can be triggered in any of the following ways:
