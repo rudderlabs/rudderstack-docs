@@ -979,6 +979,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "factors",
+    title: "FactorsAI",
+    link: "/destinations/streaming-destinations/factors/",
+    content: []
+}, 
+  {
     key: "firebase",
     title: "Firebase",
     link: "/destinations/streaming-destinations/firebase/",
