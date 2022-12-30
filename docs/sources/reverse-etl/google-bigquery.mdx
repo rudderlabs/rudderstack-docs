@@ -24,7 +24,7 @@ Perform the following steps in the **exact** order to grant these permissions:
 
 <img src="../../assets/warehouse-actions-sources/gcp-role-details.png" alt="GCP role details" />
 
-3. Click on **ADD PERMISSIONS** and add the following permissions:
+3. Click **ADD PERMISSIONS** and add the following permissions:
 
 ```
 bigquery.datasets.get
@@ -43,7 +43,7 @@ bigquery.tables.updateData
 ### Step 2: Creating a service account and attaching the role to it
 
 1. Go to [Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts) and select the project which has the dataset or the table that you want to use.
-2. Click on **CREATE SERVICE ACCOUNT**.
+2. Click **CREATE SERVICE ACCOUNT**.
 
 <img src="../../assets/warehouse-actions-sources/gcp-create-service-account.png" alt="Create service account in GCP" />
 
@@ -60,15 +60,15 @@ Note down the <strong>Service account ID</strong>. This ID is required while cre
 
 <img src="../../assets/warehouse-actions-sources/gcp-service-account-role-details.png" alt="Service account role details" />
 
-5. Click on **DONE** to move to the list of service accounts.
+5. Click **DONE** to move to the list of service accounts.
 
 ### Step 3: Creating and downloading the JSON key
 
-1. Click on the three dots icon under **Actions** in the service account that you just created and select **Manage keys**, as shown:
+1. Click the three dots icon under **Actions** in the service account that you just created and select **Manage keys**, as shown:
 
 <img src="../../assets/warehouse-actions-sources/manage-keys.png" alt="Managing keys in GCP" />
 
-2. Click on **ADD KEY**, followed by **Create new key**, as shown:
+2. Click **ADD KEY**, followed by **Create new key**, as shown:
 
 <img src="../../assets/warehouse-actions-sources/gcp-add-key.png" alt="GCP Adding a new key" />
 
@@ -137,7 +137,7 @@ If you have chosen the <strong>Model</strong> option, skip the next steps and re
 If you've configured BigQuery as a source before, you can select the existing credentials under the <strong>Use existing credentials</strong> option.
 </div>
 
-3. Click on **Continue** to verify your credentials. RudderStack will then verify and validate your credentials. 
+3. Click **Continue** to verify your credentials. RudderStack will then verify and validate your credentials. 
 
 <div class="infoBlock">
 
