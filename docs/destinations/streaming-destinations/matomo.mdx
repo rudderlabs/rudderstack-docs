@@ -17,14 +17,14 @@ RudderStack supports sending event data to Matomo via the following <a href="htt
 | Cloud mode | -  | - | - |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Matomo native SDK is loaded from <code class="inline-code">https://cdn.matomo.cloud/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Matomo SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Matomo native SDK is loaded from <code class="inline-code">https://cdn.matomo.cloud/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Matomo SDK successfully.
 </div>
 
 
 Once you have confirmed that the source platform supports sending events to Matomo, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Matomo**.
-2. Assign a name to the destination and click on **Continue**.
+2. Assign a name to the destination and click **Continue**.
 
 ## Connection settings
 
@@ -110,7 +110,7 @@ rudderanalytics.track("Order Completed",{
 
 ### Generic events
 
-RudderStack sends a generic `track` call which is a not a <Link to="#standard-event">standard event</Link> or an <Link to="#e-commerce-events">e-commerce event</Link> as a Matomo [`trackEvent`](https://developer.matomo.org/guides/tracking-javascript-guide#manually-trigger-events) event.
+RudderStack sends a generic `track` call which is a not a <Link to="#standard-event">standard event</Link> or an <Link to="#ecommerce-events">ecommerce event</Link> as a Matomo [`trackEvent`](https://developer.matomo.org/guides/tracking-javascript-guide#manually-trigger-events) event.
 
 The following table lists the property mappings between RudderStack and Matomo for `trackEvent`:
 
@@ -220,9 +220,9 @@ RudderStack maps the following event properties to the Matomo standard event pro
 | `properties.category` | `category` |
 | `properties.resultsCount` | `resultsCount` |
 
-### E-commerce events
+### Ecommerce events
 
-RudderStack supports and maps the following <Link to="/event-spec/ecommerce-events-spec/">e-commerce events</Link> to the corresponding Matomo [e-commerce events](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=most%20recent%20referrer.-,Ecommerce,-Matomo%20provides%20ecommerce):
+RudderStack supports and maps the following <Link to="/event-spec/ecommerce-events-spec/">ecommerce events</Link> to the corresponding Matomo [ecommerce events](https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=most%20recent%20referrer.-,Ecommerce,-Matomo%20provides%20ecommerce):
 
 | RudderStack Event | Matomo Event |
 |:--------------------------------|:--------------------------|
@@ -305,7 +305,7 @@ Similarly, <code class="inline-code">subtotal</code> is calculated as the total 
 #### Update Cart
 
 <div class="infoBlock">
-Although <code class="inline-code">Update Cart</code> is not a standard <Link to="/event-spec/ecommerce-events-spec/">RudderStack E-commerce Event</Link>, you can still send this event to update your cart and view the items that are currently present in it.
+Although <code class="inline-code">Update Cart</code> is not a standard <Link to="/event-spec/ecommerce-events-spec/">RudderStack Ecommerce Event</Link>, you can still send this event to update your cart and view the items that are currently present in it.
 </div>
 
 RudderStack also maps the `Update Cart` event name to <a href="https://developer.matomo.org/api-reference/tracking-javascript#ecommerce:~:text=trackEcommerceCartUpdate"><code class="inline-code">trackEcommerceCartUpdate</code></a>. The following event properties are mapped to the Matomo properties:

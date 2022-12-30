@@ -1,7 +1,6 @@
 ---
 title: "Models"
-description: >-
-  Detailed guide on custom SQL models and how to create, update, and fetch their details in the RudderStack dashboard.
+description: Create, update, and fetch details from custom SQL models.
 ---
 
 RudderStack's **Models** feature lets you create models by defining custom SQL queries. You can then run these queries on your warehouse and send the resulting data to specific destinations. You can create as many models and reuse them with their corresponding Reverse ETL sources.
@@ -38,16 +37,16 @@ Follow these steps to create a model:
 
 1. Log in to the **RudderStack dashboard**.
 
-2. Click on **Models** in the left navigation bar and select **New model**.
+2. Click **Models** in the left navigation bar and select **New model**.
 
 <img src="../../../assets/warehouse-actions-sources/models-dashboard.png" alt="RudderStack Models"/>
 
-3. Select the Reverse ETL source for the model and click on **Next**.
+3. Select the Reverse ETL source for the model and click **Next**.
 
 <img src="../../../assets/warehouse-actions-sources/select-source-model.png" alt="Add Model"/>
 
 4. Enter a name for the model.
-5. Select your existing warehouse credentials or click on **Create Credentials from Scratch** and enter the warehouse-specific details.
+5. Select your existing warehouse credentials or click **Create Credentials from Scratch** and enter the warehouse-specific details.
  
 <div class="warningBlock">
 
@@ -57,11 +56,11 @@ Your warehouse account must have the necessary user permissions for RudderStack 
 <img src="../../../assets/warehouse-actions-sources/model-settings.png" alt="Model settings" />
 
 <div class="infoBlock">
-Once you select or add your warehouse credentials and click on <strong>Next</strong>, RudderStack will validate them before you can proceed with the setup. For more information on these validations, refer to the <a href="#faq">FAQ</a> section below.
+Once you select or add your warehouse credentials and click <strong>Next</strong>, RudderStack will validate them before you can proceed with the setup. For more information on these validations, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
 6. Next, enter the **Description** for the model. Then, add your custom SQL query in the **Query** section. 
-7. Click on **Run Query** to preview the result.
+7. Click **Run Query** to preview the result.
 
 <img src="../../../assets/warehouse-actions-sources/sample-sql-query.png" alt="Sample SQL query" />
 
@@ -70,7 +69,7 @@ Once you select or add your warehouse credentials and click on <strong>Next</str
 The <strong>Preview</strong> section displays the preview of the 50 resultant rows in a paginated format.
 </div>
 
-8. Click on **Next** to create the model.
+8. Click **Next** to create the model.
 
 <div class="infoBlock">
 Once a model is created, you can use it to send the data from a Reverse ETL source to a specified destination. For more information and detailed steps, refer to the <Link to="/sources/reverse-etl/common-settings/importing-data-using-models/">Importing Data using Models</Link> guide.
@@ -81,9 +80,9 @@ Once a model is created, you can use it to send the data from a Reverse ETL sour
 Follow these steps to update an existing model:
 
 1. Click the model you want to update and select the **Configuration** tab.
-2. Click on **Edit Configuration** and make the required changes in  **Description** and **Query**.
-3. If you have edited the query, click on **Run Query** to see if the new query generates the desired result.
-4. Finally, click on **Finish** to save your changes.
+2. Click **Edit Configuration** and make the required changes in  **Description** and **Query**.
+3. If you have edited the query, click **Run Query** to see if the new query generates the desired result.
+4. Finally, click **Finish** to save your changes.
 
 <img src="../../../assets/warehouse-actions-sources/edit-model-configuration.png" alt="Edit existing Model configuration" />
 
@@ -94,7 +93,7 @@ If you update a model's query, you also need to check and update the relevant JS
 
 ## Model details
 
-To get details about an existing model, you can click on it to see the options listed below:
+To get details about an existing model, you can click it to see the options listed below:
 
 - **Rename**: Lets you rename the model by clicking on the edit icon next to the model's name.
 

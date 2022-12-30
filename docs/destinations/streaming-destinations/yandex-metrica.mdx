@@ -1,7 +1,6 @@
 ---
 title: "Yandex.Metrica"
-description: >-
-  Step-by-step guide on sending your event data from RudderStack to Yandex.Metrica.
+description: Send your event data from RudderStack to Yandex.Metrica.
 ---
 
 [Yandex.Metrica](https://metrica.yandex.com/) is a web analytics platform that lets you get an in-depth understanding of your audience's behavior and use the insights to drive business growth.
@@ -33,7 +32,7 @@ To successfully set up Yandex.Metrica as a destination, you need to configure th
 - **Enable Tracklinks**: Enable this setting to track user clicks on the <a href="https://yandex.com/support/metrica/code/counter-initialize.html#:~:text=browser%27s%20address%20bar-,trackLinks,-true">outbound links</a>.
 - **Enable Accurate Track Bounce**: This setting enables the accurate bounce rate with a non-bounce event that is registered after 15 seconds (15000 ms). For more information on this setting, refer to the <a href="https://yandex.com/support/metrica/code/counter-initialize.html#:~:text=Description-,accurateTrackBounce,-true">Yandex.Metrica documentation</a>.
 - **Enable WebVisor**: Enable this setting to use Yandex.Metrica's <a href="https://yandex.com/support/metrica/code/counter-initialize.html#:~:text=1%20for%20YAN-,webvisor,-false">sesssion replay feature</a>.
-- **Container name**: Enter the name of your Yandex.Metrica e-commerce data container that you set while <a href="https://yandex.ru/support/metrica/general/creating-counter.html">creating a new counter</a>. If not specified, RudderStack sets it to `dataLayer` by default.
+- **Container name**: Enter the name of your Yandex.Metrica ecommerce data container that you set while <a href="https://yandex.ru/support/metrica/general/creating-counter.html">creating a new counter</a>. If not specified, RudderStack sets it to `dataLayer` by default.
 - **Map your event name with supported Yandex.Metrica event name**: Use this setting to map the RudderStack event to the Yandex.Metrica event selected from the dropdown.
 - **Goal ID**: Enter your Yandex.Metrica goal ID.
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Yandex.Metrica. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
@@ -70,7 +69,7 @@ The following table lists the mappings between the RudderStack attributes and th
 
 ## Track
 
-You can use the <Link to="/event-spec/standard-events/track/">`track`</Link> call to send your <Link to="/event-spec/ecommerce-events-spec/">e-commerce events</Link> to Yandex.Metrica.
+You can use the <Link to="/event-spec/standard-events/track/">`track`</Link> call to send your <Link to="/event-spec/ecommerce-events-spec/">ecommerce events</Link> to Yandex.Metrica.
 
 A sample `track` call is shown below:
 

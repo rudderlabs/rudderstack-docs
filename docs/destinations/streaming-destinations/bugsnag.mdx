@@ -18,13 +18,13 @@ RudderStack supports sending event data to Bugsnag via the following <a href="ht
 
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Bugsnag native SDK is loaded from <code class="inline-code">https://d2wy8f7a9ursnm.cloudfront.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Bugsnag SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Bugsnag native SDK is loaded from <code class="inline-code">https://d2wy8f7a9ursnm.cloudfront.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Bugsnag SDK successfully.
 </div>
 
 Once you have confirmed that the platform supports sending events to Bugsnag, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Bugsnag**.
-2. Assign a name to the destination and click on **Next**.
+2. Assign a name to the destination and click **Next**.
 
 ### Connection settings
 
@@ -208,8 +208,8 @@ Along with user-specific information, you can also use Bugsnag to track handled 
 ### Where can I find the Bugsnag API Key?
 
 1. Log into your [Bugsnag dashboard](https://app.bugsnag.com/).
-2. Click on **Settings** at the top right corner.
-3. Click on **Project Settings** to find the API key as shown:
+2. Click **Settings** at the top right corner.
+3. Click **Project Settings** to find the API key as shown:
 
 <img src="../../assets/event-stream-destinations/bugsnag-api-key.png" />
 

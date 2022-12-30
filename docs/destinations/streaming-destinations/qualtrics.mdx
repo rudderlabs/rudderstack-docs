@@ -17,7 +17,7 @@ RudderStack supports sending event data to Qualtrics via the following <a href="
 | **Cloud mode** | - | - | - |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Qualtrics native SDK is loaded from <code class="inline-code">http://qualtrics.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Qualtrics SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Qualtrics native SDK is loaded from <code class="inline-code">http://qualtrics.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Qualtrics SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Qualtrics, follow these steps:
@@ -366,12 +366,12 @@ MainApplication.rudderClient.identify(
 To get your Qualtrics Project ID and Brand ID, follow these steps:
 
 * Log into your [**Qualtrics account**](https://login.qualtrics.com/login?lang=au).
-* Click on the project you will be using.
-* Click on **Settings** tab, followed by **Manage Project** option \(the right-most dropdown menu in the dashboard\).
+* Click the project you will be using.
+* Click **Settings** tab, followed by **Manage Project** option \(the right-most dropdown menu in the dashboard\).
 
 ![](https://user-images.githubusercontent.com/59817155/128864100-05ef5c5a-8c04-4607-b742-633938f440ac.png)
 
-* Click on **Project ID's**. Here you will find both your Project ID and Brand ID, as shown:
+* Click **Project ID's**. Here you will find both your Project ID and Brand ID, as shown:
 
 ![](https://user-images.githubusercontent.com/59817155/128864303-2660ccb8-a91d-4633-b6bf-eef4253cb381.png)
 

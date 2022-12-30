@@ -21,13 +21,13 @@ RudderStack supports sending event data to Kissmetrics via the following <a href
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Kissmetrics native SDK is loaded from <code class="inline-code">https://kissmetrics.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Kissmetrics SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Kissmetrics native SDK is loaded from <code class="inline-code">https://kissmetrics.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Kissmetrics SDK successfully.
 </div>
 
 Once you have confirmed that Kissmetrics supports the source type, perform the steps below:
 
 - From your [RudderStack dashboard](https://app.rudderlabs.com/), add the source and select **Kissmetrics** as a destination.
-- Give a name to your destination, and then click on **Next**. You should see the following screen:
+- Give a name to your destination, and then click **Next**. You should see the following screen:
 
 <img src="../../assets/image (24) (1) (1).png" />
 
@@ -42,7 +42,7 @@ Enabling this setting will add the event name to all the properties of the event
 You will need to enable this setting while building reports in Kissmetrics.
 </div>
 
-- Once you have finalized the settings, click on **Next** to complete the configuration and add Kissmetrics as a destination in RudderStack.
+- Once you have finalized the settings, click **Next** to complete the configuration and add Kissmetrics as a destination in RudderStack.
 
 ## Identify
 
@@ -145,14 +145,14 @@ An event sent to RudderStack with a property called `revenue` , is passed on to 
 
 <div class="infoBlock">
 
-In order to send E-commerce events that have a product array as one of their <code class="inline-code">track</code> properties, RudderStack sends each product property to the <code class="inline-code">/s</code> endpoint from the cloud mode, or pushes it as <code class="inline-code">['set', &#123;id:, sku: ...&#125;]</code> from the native SDK.
+In order to send ecommerce events that have a product array as one of their <code class="inline-code">track</code> properties, RudderStack sends each product property to the <code class="inline-code">/s</code> endpoint from cloud mode, or pushes it as <code class="inline-code">['set', &#123;id:, sku: ...&#125;]</code> from the native SDK.
 </div>
 
 ## Alias
 
 Calling `rudderanalytics.alias()` passes an `alias`call with `userId` and `previousId` to the Kissmetrics queue, when used as a Native SDK integration.
 
-While passing data using the cloud mode, we call the [http://trk.kissmetrics.com/a](http://trk.kissmetrics.com/a) endpoint to alias user identities.
+While passing data using cloud mode, we call the [http://trk.kissmetrics.com/a](http://trk.kissmetrics.com/a) endpoint to alias user identities.
 
 The following code snippet shows a sample `alias` call in RudderStack:
 

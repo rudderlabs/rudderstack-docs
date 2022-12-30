@@ -29,7 +29,7 @@ To learn more about the difference between cloud mode and device mode in RudderS
 Once you have confirmed that the source platform supports sending events to Attentive Tag, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Attentive Tag**.
-2. Assign a name to the destination and click on **Next**.
+2. Assign a name to the destination and click **Next**.
 
 ## Connection settings
 
@@ -203,7 +203,7 @@ The event type is case sensitive. For example, `Order shipped` and `Order Shippe
 
 ### E-Commerce events
 
-RudderStack converts the following e-commerce events to the corresponding Attentive Tag events:
+RudderStack converts the following ecommerce events to the corresponding Attentive Tag events:
 
 | RudderStack event | Attentive Tag event |
 |:--------------------------------|:--------------------------|
@@ -258,7 +258,7 @@ The `Order Completed` event properties are mapped to the following Attentive Tag
 | `properties.products.$.url` | `productUrl` | Optional |
 | `properties.products.$.image_url` | `productImage` | Optional |
 
-A sample `track` call for the above e-commerce event parameters is shown below:
+A sample `track` call for the above ecommerce event parameters is shown below:
 
 ```javascript
 rudderanalytics.track("Order Completed", {
@@ -301,7 +301,7 @@ To obtain the Attentive Tag API Key, follow these steps:
 
 1. In your Attentive dashboard, go to **Marketplace**.
 2. Create an app by clicking on **Create App**.
-3. Then, click on **Create** and you will be able to see the API Key, as shown:
+3. Then, click **Create** and you will be able to see the API Key, as shown:
 
 <img src="../../assets/event-stream-destinations/attentive-tag-connection-settings-1.png" alt="Attentive Tag Connection Settings"/>
 

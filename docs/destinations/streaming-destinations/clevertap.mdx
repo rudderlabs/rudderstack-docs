@@ -21,7 +21,7 @@ RudderStack supports sending event data to CleverTap via the following <a href="
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the CleverTap native SDK is loaded from <code class="inline-code">https://d2r1yp2w7bby2u.cloudfront.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the CleverTap SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the CleverTap native SDK is loaded from <code class="inline-code">https://d2r1yp2w7bby2u.cloudfront.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the CleverTap SDK successfully.
 </div>
 
 Once you have confirmed that the platform supports sending events to CleverTap, perform the steps below:
@@ -672,7 +672,7 @@ CleverTap does not support nested objects or arrays for custom attributes in the
 
 ### Order Completed
 
-When you track an event with the name `Order Completed` using the using the RudderStack <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events</Link> tracking, RudderStack maps that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/events#recording-customer-purchases) event.
+When you track an event with the name `Order Completed` using the using the RudderStack <Link to="/event-spec/ecommerce-events-spec/">Ecommerce Events</Link> tracking, RudderStack maps that event to CleverTap’s [Charged](https://developer.clevertap.com/docs/events#recording-customer-purchases) event.
 
 A number of RudderStack's specific fields map to CleverTap’s standard `Charged` event fields
 

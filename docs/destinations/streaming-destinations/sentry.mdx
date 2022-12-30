@@ -17,13 +17,13 @@ RudderStack supports sending event data to Sentry via the following <a href="htt
 | **Cloud mode** | - | - | - |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Sentry native SDK is loaded from <code class="inline-code">https://browser.sentry-cdn.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Sentry SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Sentry native SDK is loaded from <code class="inline-code">https://browser.sentry-cdn.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Sentry SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Sentry, follow these steps:
 
 * From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. Then, select **Sentry** from the list of destinations.
-* Assign a name to the destination and click on **Next**. You will then see the following screen:
+* Assign a name to the destination and click **Next**. You will then see the following screen:
 
 <img src="../../assets/sentry.png" alt="Configuration settings for sentry" />
 <span class="imageTitle">Configuration Settings for Sentry</span>
@@ -104,8 +104,8 @@ To get your public DSN, follow these steps:
 
 * Log into your [**Sentry account**](https://sentry.io/auth/login/).
 * In the left navigation bar, go to **Projects** .
-* Click on the right-most settings icon. This will open the settings window.
-* Click on **Client Keys \(DSN\)** under **SDK Setup**.
+* Click the right-most settings icon. This will open the settings window.
+* Click **Client Keys \(DSN\)** under **SDK Setup**.
 * Copy the DSN and use it in your RudderStack destination configuration.
 
 

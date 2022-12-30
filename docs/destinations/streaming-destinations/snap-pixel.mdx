@@ -15,7 +15,7 @@ RudderStack supports sending event data to Snap Pixel via the following <a href=
 | **Cloud mode** | - | - | - |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Snap Pixel native SDK is loaded from <code class="inline-code">https://sc-static.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Snap Pixel SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Snap Pixel native SDK is loaded from <code class="inline-code">https://sc-static.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Snap Pixel SDK successfully.
 </div>
 
 Once you have confirmed that the source supports sending events to Snap Pixel, follow these steps:
@@ -92,7 +92,7 @@ rudderanalytics.track('Order Completed', {
 });
 ```
 
-You can also send the following <Link to="/event-spec/ecommerce-events-spec/">RudderStack e-commerce events</Link>:
+You can also send the following <Link to="/event-spec/ecommerce-events-spec/">RudderStack ecommerce events</Link>:
 
 | **RudderStack event** | **Snap Pixel event** |
 | :--- | :--- |

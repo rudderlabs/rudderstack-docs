@@ -1,8 +1,6 @@
 ---
 title: "Google Analytics 360"
-description: >-
-  Step-by-step guide on sending your event data from RudderStack to Google
-  Analytics 360.
+description: Send your event data from RudderStack to Google Analytics 360.
 ---
 
 [Google Analytics 360](https://marketingplatform.google.com/about/analytics-360/) is the enterprise version of Google Analytics that allows you to get actionable insights from your data. It provides enterprise teams with all the standard Google Analytics features along with more sophisticated analytics capabilities and the ability to export your data and insights to BigQuery. You also get SLA obligations, guaranteed uptime, extended support, and a lot more.
@@ -23,13 +21,13 @@ RudderStack supports sending event data to Google Analytics 360 via the followin
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Analytics 360 native SDK is loaded from <code class="inline-code">https://www.google-analytics.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Analytics 360 SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Analytics 360 native SDK is loaded from <code class="inline-code">https://www.google-analytics.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Analytics 360 SDK successfully.
 </div>
 
 Then, perform the steps below:
 
 - Choose a source for which you would like to add Google Analytics 360 as a destination.
-- From the list of destinations, select **Google Analytics 360**. Then, assign a name to the destination and click on **Next**.
+- From the list of destinations, select **Google Analytics 360**. Then, assign a name to the destination and click **Next**.
 - You should then see the following **Connection Settings** page:
 
 <img src="../../assets/1 (20).png" />
@@ -39,7 +37,7 @@ Then, perform the steps below:
 <img src="../../assets/3 (23).png" />
 
 - **Tracking ID** is a required field to configure the destination. You can configure the other options as per your preference.
-- To add a transformation, click on **Create New Transformation**. Otherwise, click on **Next**.
+- To add a transformation, click **Create New Transformation**. Otherwise, click **Next**.
 
 <div class="infoBlock">
 Refer to the <Link to="/features/transformations/">Transformations</Link> guide for more details on this feature.

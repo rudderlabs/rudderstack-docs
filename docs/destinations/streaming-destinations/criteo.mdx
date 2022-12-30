@@ -17,7 +17,7 @@ RudderStack supports sending event data to Criteo via the following <a href="htt
 | **Cloud mode**      | -             | -          | -          |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Criteo native SDK is loaded from <code class="inline-code">https://dynamic.criteo.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Criteo SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Criteo native SDK is loaded from <code class="inline-code">https://dynamic.criteo.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Criteo SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Criteo, follow these steps:
@@ -120,9 +120,9 @@ rudderanalytics.track("Product Viewed", {
 
 In the above example, RudderStack captures the information related to the `Product Viewed` event and the associated details such as quantity, price, category, etc.
 
-The following table details the mapping of the <Link to="/event-spec/ecommerce-events-spec/">RudderStack e-commerce events</Link> and the [Criteo OneTag events](https://help.criteo.com/kb/guide/en/all-criteo-onetag-events-and-parameters-vZbzbEeY86/Steps/775825).
+The following table details the mapping of the <Link to="/event-spec/ecommerce-events-spec/">RudderStack ecommerce events</Link> and the [Criteo OneTag events](https://help.criteo.com/kb/guide/en/all-criteo-onetag-events-and-parameters-vZbzbEeY86/Steps/775825).
 
-| **RudderStack e-commerce event** | **Criteo OneTag event**               | **OneTag Event Name Used By Criteo** |
+| **RudderStack ecommerce event** | **Criteo OneTag event**               | **OneTag Event Name Used By Criteo** |
 | :------------------------------- | :------------------------------------ | :----------------------------------- |
 | `Product Viewed`                 | `Product tag`                         | `viewItem`                           |
 | `Cart Viewed`                    | `Basket/cart tag`                     | `viewBasket`                         |
@@ -173,7 +173,7 @@ To get your Criteo account/partner ID, follow these steps:
 
 <img src="https://user-images.githubusercontent.com/59817155/127632648-75ef6105-09fc-4344-b59d-876d45d82951.png" />
 
-3. Click on **Setup**, followed by **Direct Implementation**.
+3. Click **Setup**, followed by **Direct Implementation**.
 4. In the resulting loader file, you can find your 5-digit partner ID in the `src` key, as shown:
 
 <img src="https://user-images.githubusercontent.com/59817155/127632914-01fb0c10-1741-478e-b5d3-685d4c145f26.png" />

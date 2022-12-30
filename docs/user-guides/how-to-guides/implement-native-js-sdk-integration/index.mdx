@@ -1,7 +1,6 @@
 ---
 title: "How to Implement a Native JavaScript SDK Integration"
-description: >-
-  Step-by-step guide on adding a destination SDK to the base RudderStack JavaScript SDK for sending events directly through the native integration.
+description: Add a destination SDK to the base RudderStack JavaScript SDK when sending events through the native integration.
 ---
 
 This guide is helpful if you want to add a destination SDK to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">RudderStack JavaScript SDK</Link> while sending events directly via your native integration **without the RudderStack support**.
@@ -10,7 +9,7 @@ This guide is helpful if you want to add a destination SDK to the <Link to="/sou
 This guide uses the terms <strong>integration</strong> and <strong>destination</strong> interchangeably.
 </div>
 
-RudderStack JS SDK reads the config data from the control plane to fetch the native integrations. The native integrations must have the following methods/attributes defined by you as shown below. RudderStack JS SDK calls these for initializing the destination global object and forwarding event data namely `identify`, `page` and `track`.
+The RudderStack JavaScript SDK reads the config data from the control plane to fetch native integrations. The native integrations must have the following methods/attributes defined by you as shown below. The RudderStack SDK calls these for initializing the destination global object and forwarding event data namely `identify`, `page` and `track`.
 
 <img src="../../../assets/screenshot-2019-12-10-at-7.57.43-pm.png" />
 

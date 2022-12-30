@@ -1,8 +1,6 @@
 ---
 title: "Google Tag Manager"
-description: >-
-  Step-by-step guide on sending your event data from RudderStack to Google Tag
-  Manager
+description: Send your event data from RudderStack to Google Tag Manager.
 ---
 
 [**Google Tag Manager**](https://support.google.com/tagmanager) is a popular tag management system that lets you update tags for your web or mobile applications. Once added to your project, you can configure, deploy, and measure your tags from a web-based UI without needing any additional code.
@@ -19,13 +17,13 @@ RudderStack supports sending event data to Google Tag Manager (GTM) via the foll
 | **Cloud mode**      | -             | -          | -          |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Tag Manager native SDK is loaded from <code class="inline-code">https://www.googletagmanager.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Tag Manager SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Tag Manager native SDK is loaded from <code class="inline-code">https://www.googletagmanager.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Tag Manager SDK successfully.
 </div>
 
 Once you have confirmed that your source platform supports sending events to Google Tag Manager, follow these steps:
 
 * From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Google Tag Manager**.
-* Assign a name to the destination and click on **Next**. You should then see the following screen:
+* Assign a name to the destination and click **Next**. You should then see the following screen:
 
 <img src="../../assets/event-stream-destinations/gtm-connection-settings.png" />
 
@@ -46,7 +44,7 @@ The connection settings required to configure Google Tag Manager as a destinatio
 For more information on obtaining the server container URL, refer to the <a href="#faqs">FAQs</a> section below.
 </div>
 
-- Finally, click on **Next** to complete the setup. Google Tag Manager will now load on any page where the RudderStack snippet is initialized, and `rudderanalytics.page` is called.
+- Finally, click **Next** to complete the setup. Google Tag Manager will now load on any page where the RudderStack snippet is initialized, and `rudderanalytics.page` is called.
 
 ### Loading RudderStack as a custom HTML tag
 
@@ -138,9 +136,9 @@ You can find your Tag Manager container ID in the admin section of your [**GTM d
 
 To get your server container URL, follow these steps:
 
-- Click on your server container and go to the **Admin** tab.
+- Click your server container and go to the **Admin** tab.
 
-- Click on **Container Settings**. You can find the container URL listed here.
+- Click **Container Settings**. You can find the container URL listed here.
 
 <img src="../../assets/event-stream-destinations/rudderstack-server-container-url.png" />
 

@@ -1,7 +1,6 @@
 ---
 title: "Facebook Custom Audience"
-description: >-
-  Step-by-step guide on sending your event data from RudderStack to Facebook Custom Audience.
+description: Send your event data from RudderStack to Facebook Custom Audience.
 ---
 
 [**Facebook Custom Audience**](https://developers.facebook.com/docs/marketing-api/audiences/guides/custom-audiences) is a popular targeting tool that lets you find people on Facebook, who are interested in your business. It lets you create custom audiences through customer lists, Facebook engagement, and website/app traffic.
@@ -36,7 +35,7 @@ To learn more about the difference between cloud mode and device mode in RudderS
 Once you have confirmed that the platform supports sending events to Custom Audience, perform the steps below:
 
 - From your [**RudderStack dashboard**](https://app.rudderstack.com), add the source. Then, select **Facebook Custom Audience** from the list of destinations.
-- Assign a name to the destination and click on **Next**. 
+- Assign a name to the destination and click **Next**. 
 
 
 ### Connection settings
@@ -222,17 +221,17 @@ The event payload must include <code class="inline-code">add</code> or <code cla
 ### How do I create a new audience list?
 
 1. Go to the **Audiences** option in your [Facebook Ad Manager account](https://www.facebook.com/adsmanager/audiences?act=1546877239033017&tool=AUDIENCES).
-2. Select **Customer list** as your Custom Audience source and click on **Next**.
+2. Select **Customer list** as your Custom Audience source and click **Next**.
 
 <img src="../../assets/event-stream-destinations/fb-custom-audience-source.png" alt="Audience source" /> 
 
-3. If your list includes a column for customer value, then select the **Yes** option, else select **No** and click on **Next**.
+3. If your list includes a column for customer value, then select the **Yes** option, else select **No** and click **Next**.
 
 <img src="../../assets/event-stream-destinations/fb-custom-audience-customer-value.png" alt="Customer value" /> 
 
 4. Add the list that you want to use for your new Custom Audience and give it a name. You can upload either a CSV or a text file.
 5. Prepare your customer list by selecting and mapping the identifiers.
-6. Once your list is added and ready for use, click on **Upload and Create**.
+6. Once your list is added and ready for use, click **Upload and Create**.
 
 <div class="infoBlock">
 Make sure you have enough identifiers before uploading the list.
@@ -255,8 +254,8 @@ To check if the audience has edit permissions enabled, go to the **Audiences** t
 
 <img src="https://user-images.githubusercontent.com/59817155/123789893-4ae75e80-d8fb-11eb-879f-825b7b6662b7.png" />
 
-- Then, click on **All Audience** and select the specific custom audience from the list.
-- Finally, click on the **History** tab. Here, you will find the audience ID under the **Item Changed** column, as shown:
+- Then, click **All Audience** and select the specific custom audience from the list.
+- Finally, click the **History** tab. Here, you will find the audience ID under the **Item Changed** column, as shown:
 
 <img src="https://user-images.githubusercontent.com/59817155/123789891-49b63180-d8fb-11eb-8c60-0232bfedaffe.png" />
 
@@ -273,11 +272,11 @@ To use the Facebook Marketing API, you need to generate a user access token. Fol
 
 <img src="https://user-images.githubusercontent.com/59817155/123803479-f697ab00-d909-11eb-8df9-d003c0803d7e.png" />
 
-4. Next, in the left navigation click bar, click on the **Tools** option under **Marketing API** , as shown:
+4. Next, in the left navigation click bar, click the **Tools** option under **Marketing API** , as shown:
 
 <img src="../../assets/event-stream-destinations/fb-custom-audience-api-tools.png" alt="Marketing API tools" /> 
 
-5. Under **Get Access Token**, select **ads_management** and **ads_read** as the token permissions and click on **Get Token**:
+5. Under **Get Access Token**, select **ads_management** and **ads_read** as the token permissions and click **Get Token**:
 
 <img src="../../assets/event-stream-destinations/fb-custom-audience-access-token.png" alt="Access token" />
 

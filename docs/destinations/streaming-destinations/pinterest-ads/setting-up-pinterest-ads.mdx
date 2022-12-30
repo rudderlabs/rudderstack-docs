@@ -11,7 +11,7 @@ RudderStack supports sending event data to Pinterest Tag via the following <a hr
 | **Cloud Mode**      | **Supported**         | **Supported**  | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Pinterest Tag native SDK is loaded from <code class="inline-code">https://s.pinimg.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Pinterest Tag SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Pinterest Tag native SDK is loaded from <code class="inline-code">https://s.pinimg.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Pinterest Tag SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Pinterest Tag, follow these steps:
@@ -54,7 +54,7 @@ For more information on using the custom properties, refer to the <Link to="/des
 <div class="infoBlock">
 <ul>
 <li> The event mapping specified in the above connection setting is given the highest priority.</li>
-<li> If not specified, the <Link to="/destinations/streaming-destinations/pinterest-ads/pinterest-ads-device-mode/#e-commerce-conversion-tracking">standard e-commerce event mapping</Link> is considered.</li>
+<li> If not specified, the <Link to="/destinations/streaming-destinations/pinterest-ads/pinterest-ads-device-mode/#ecommerce-conversion-tracking">standard ecommerce event mapping</Link> is considered.</li>
 <li> If none of the above qualifies, RudderStack sends the event name as is, and it is shown as an <code class="inline-code">unknown</code> event in the Pinterest dashboard.</li>
 </ul>
 </div>

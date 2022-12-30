@@ -1,7 +1,6 @@
 ---
 title: "Identity Resolution"
-description: >-
-  Detailed technical description of RudderStack's identity resolution feature to create comprehensive and unified user profiles.
+description: Create comprehensive and unified user profiles with our identity resolution feature.
 ---
 
 <div class="warningBlock">
@@ -55,12 +54,12 @@ With RudderStack, you can build an identity graph on top of your enriched wareho
 
 ## Use case 
 
-This use case gives a quick walkthrough of a user's product journey on an e-commerce app integrated with RudderStack. You will see how RudderStack can be used to track and merge different user identifiers to build a unified customer profile.
+This use case gives a quick walkthrough of a user's product journey on an ecommerce app integrated with RudderStack. You will see how RudderStack can be used to track and merge different user identifiers to build a unified customer profile.
 
 1. The user **anonymously** searches for a particular product on their mobile app - in this case, an iPhone. Here, RudderStack identifies the user with `anonymous_id_1` and the device with `device_id_1`.
 2. After browsing through the app, the user adds a product to their cart and **logs in** using their email. Here, RudderStack generates an `identify` event and associates `anonymous_id_1` with the user's email ID `email` (user's unique identifier). Note that RudderStack also generates a `track` call with the details around the browsing activity and updates to the cart.
 3. For some reason, the user does not proceed with the purchase and drops off.
-4. Later, the same user uses a laptop and browses through the e-commerce website **anonymously**. Again, RudderStack generates an `anonymous_id_2` corresponding to the user and a device ID `device_id_2`.
+4. Later, the same user uses a laptop and browses through the ecommerce website **anonymously**. Again, RudderStack generates an `anonymous_id_2` corresponding to the user and a device ID `device_id_2`.
 5. The user then **logs in** with their email and password. RudderStack then generates an `identify` call associating the same `email` with `anonymous_id_2`. The user then proceeds to complete the purchase. A `track` call is then generated with the details around the purchase.
 
 The above workflow is visually represented in the following image:

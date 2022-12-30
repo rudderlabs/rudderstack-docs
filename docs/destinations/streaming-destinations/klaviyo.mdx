@@ -23,7 +23,7 @@ RudderStack supports sending event data to Klaviyo via the following <a href="ht
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Klaviyo native SDK is loaded from <code class="inline-code">https://static.klaviyo.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Klaviyo SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Klaviyo native SDK is loaded from <code class="inline-code">https://static.klaviyo.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Klaviyo SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Klaviyo, follow these steps:
@@ -163,13 +163,13 @@ In the above snippet, RudderStack captures the information related to the `Item 
 </ul>
 </div>
 
-### E-commerce event name mapping
+### Ecommerce event name mapping
 
 <div class="successBlock">
-E-commerce event name mapping is supported for both RudderStack cloud mode and web device mode.
+Ecommerce event name mapping is supported for both RudderStack cloud mode and web device mode.
 </div>
 
-RudderStack converts the following E-commerce event names to the corresponding Klaviyo event names, before sending the events to Klaviyo:
+RudderStack converts the following ecommerce event names to the corresponding Klaviyo event names, before sending the events to Klaviyo:
 
 | **RudderStack Event Name** | **Klaviyo Event Name** |
 |:--------------------------------|:--------------------------|
@@ -275,7 +275,7 @@ Furthermore, `products` / `items` can contain the following parameters:
 | `image_url` | `ImageURL` |
 | `categories` | `ProductCategories` |
 
-A sample `track` call containing the above e-commerce event parameters is shown below:
+A sample `track` call containing the above ecommerce event parameters is shown below:
 
 ```javascript
 rudderanalytics.track("checkout started ", {
@@ -311,7 +311,7 @@ rudderanalytics.track("checkout started ", {
 ```
 
 <div class="warningBlock">
-When sending events via the web device mode, specifying <code class="inline-code">order_id</code> is not mandatory, as Klaviyo automatically assigns the timestamp to the event. However, if explicitly specified, it <strong>must be unique</strong>. Klaviyo automatically discards the events with a duplicate <code class="inline-code">order_id</code>.
+When sending events via web device mode, specifying <code class="inline-code">order_id</code> is not mandatory, as Klaviyo automatically assigns the timestamp to the event. However, if explicitly specified, it <strong>must be unique</strong>. Klaviyo automatically discards the events with a duplicate <code class="inline-code">order_id</code>.
 </div>
 
 ## Identify

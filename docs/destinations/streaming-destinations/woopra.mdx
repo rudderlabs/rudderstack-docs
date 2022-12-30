@@ -17,7 +17,7 @@ RudderStack supports sending event data to Woopra via the following <a href="htt
 | **Cloud mode**      |  **Supported** | **Supported** |  **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Woopra native SDK is loaded from <code class="inline-code">https://static.woopra.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Woopra SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Woopra native SDK is loaded from <code class="inline-code">https://static.woopra.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Woopra SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Woopra, follow these steps:
@@ -62,7 +62,7 @@ To send the events to Woopra via the <Link to="https://www.rudderstack.com/docs/
 For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
 </div>
 
-- **Use device mode to send events**: This setting **must be enabled** to send the events to Woopra via the web device mode.
+- **Use device mode to send events**: This setting **must be enabled** to send the events to Woopra via web device mode.
 - **OneTrust Cookie Categories**: If **Use device mode to send events** is enabled, this setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Woopra.
 
 ## Identify

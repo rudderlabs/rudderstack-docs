@@ -23,13 +23,13 @@ RudderStack supports sending event data to Facebook Pixel via the following <a h
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Facebook Pixel native SDK is loaded from <code class="inline-code">https://connect.facebook.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Facebook Pixel SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Facebook Pixel native SDK is loaded from <code class="inline-code">https://connect.facebook.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Facebook Pixel SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Facebook Pixel, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Facebook Pixel**.
-2. Assign a name to your destination and click on **Continue**.
+2. Assign a name to your destination and click **Continue**.
 
 ### Connection settings
 
@@ -188,7 +188,7 @@ RudderStack then changes the traits as shown below, before sending them to Faceb
 - **Legacy Conversion Pixel IDs**: With this setting, you can send specific events to a legacy conversion Pixel by specifying the event-Pixel ID mapping. Note that this option is available only when sending events via device mode.
 - **Use device-mode to send events**: Enable this setting to send events from the JavaScript SDK to Facebook Pixel via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
-- Finally, click on **Next** to complete the configuration.
+- Finally, click **Next** to complete the configuration.
 
 ## Identify
 
@@ -200,10 +200,10 @@ The following snippet highlights the use of the `identify` call:
 rudderanalytics.identify("userId", userVars) // userVars is a JSON object
 ```
 
-To send `external_id` via the web device mode, you need to include and send it via an `identify` call before making any other call.
+To send `external_id` via web device mode, you need to include and send it via an `identify` call before making any other call.
 
 <div class="infoBlock">
-For more information on implementing Advanced Matching in the web device mode, refer to the <a href="https://developers.facebook.com/docs/meta-pixel/advanced/advanced-matching">Facebook documentation</a>.
+For more information on implementing Advanced Matching in web device mode, refer to the <a href="https://developers.facebook.com/docs/meta-pixel/advanced/advanced-matching">Facebook documentation</a>.
 </div>
 
 ## Page
@@ -265,7 +265,7 @@ String is the only valid data type for the <code class="inline-code">category</c
 RudderStack maps the event name in the payload to the Facebook standard event before sending it to Facebook Pixel. The properties are sent as the standard events require them.
 
 <div class="infoBlock">
-Refer to the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide for more information.
+Refer to the <Link to="/event-spec/ecommerce-events-spec/">Ecommerce Events Specification</Link> guide for more information.
 </div>
 
 RudderStack maps the following events to the Facebook standard events by default:
@@ -414,7 +414,7 @@ RudderStack sets the value of `content_type` in the following priority order:
 
 #### Where can I find the Pixel ID?
 
-To get your Pixel ID, go to your Facebook Ads Manager account. On the left navigation bar, select Business Tools, and click on **Events Manager** under **Manage Business**.
+To get your Pixel ID, go to your Facebook Ads Manager account. On the left navigation bar, select Business Tools, and click **Events Manager** under **Manage Business**.
 
 <img src="../../assets/screen-shot-2021-03-03-at-1.22.01-pm.png" />
 
@@ -426,8 +426,8 @@ In the Data Sources, you should be able to see your Pixel ID underneath your sit
 
 In order to use the Facebook Conversions API, you need to generate an access token. We recommend using the Facebook Events Manager to do so, by following these steps:
 
-- Choose the relevant Facebook Pixel and click on the **Settings** tab.
-- In the Conversions API section, click on **Generate access token** under the **Set up manually** section, as shown:
+- Choose the relevant Facebook Pixel and click the **Settings** tab.
+- In the Conversions API section, click **Generate access token** under the **Set up manually** section, as shown:
 
 <img src="../../assets/screen-shot-2021-03-03-at-1.44.33-pm.png" />
 

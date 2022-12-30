@@ -1,8 +1,6 @@
 ---
 title: "React Native"
-description: >-
-  Detailed technical documentation on RudderStack’s React Native SDK to send
-  events from your React Native application to various destinations.
+description: Use RudderStack’s React Native SDK to send events from your React Native application to various destinations.
 ---
 
 The **RudderStack React Native SDK** allows you to track event data from your React Native applications and send it to your specified destinations via RudderStack.
@@ -666,7 +664,7 @@ For example, if the `flushQueueSize` is 30 and there are 180 events in the datab
 
 If a batch fails for some reason, the SDK drops the remaining batches to maintain the sequence of the messages. A batch is considered as failed if it isn’t sent to the RudderStack server after 3 retries. 
 
-In the device mode, the `flush()` API also calls the destination SDK’s `flush()` API (if applicable).  
+In device mode, the `flush()` API also calls the destination SDK’s `flush()` API (if applicable).  
 
 ## FAQs
 

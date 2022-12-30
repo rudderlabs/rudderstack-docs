@@ -1,8 +1,6 @@
 ---
 title: "iOS"
-description: >-
-  Detailed technical documentation on using RudderStack’s iOS SDK to send
-  events from your iOS apps to various destinations.
+description: Use RudderStack’s iOS SDK to send events from your iOS apps to various destinations.
 aliases: ["iOS", "iOS SDK", "iOS Source", "tvOS", "watchOS"]
 ---
 
@@ -1056,7 +1054,7 @@ NS_ASSUME_NONNULL_END
 
 Some pointers to keep in mind:
 
-- RudderStack's iOS SDK dumps every event it receives to the `dump()` method of the `CustomFIntegration` class. From here, you can process the event and hand it over to the native SDK of the Device Mode destination.
+- RudderStack's iOS SDK dumps every event it receives to the `dump()` method of the `CustomFIntegration` class. From here, you can process the event and hand it over to the native SDK of the device mode destination.
 - The SDK also triggers the `reset()` method of the `CustomFactory` class on every `reset()` call made via the SDK. You can use this to handle the destination-specific reset logic.
 - Make sure you do not duplicate the value of `KEY` present inside `CustomFactory`, across multiple `CustomFactory` that you develop.
 
@@ -1068,7 +1066,7 @@ For example, if the `flushQueueSize` is 30 and there are 180 events in the datab
 
 If a batch fails for some reason, RudderStack drops the remaining batches to maintain the sequence of the messages. A batch is considered as failed if it isn’t sent to the RudderStack server after 3 retries. 
 
-In the device mode, the `flush()` API also calls the destination SDK’s `flush()` API (if applicable). 
+In device mode, the `flush()` API also calls the destination SDK’s `flush()` API (if applicable). 
 
 For every `flush()` call made via the iOS SDK, the `flush()` method of the `CustomFactory` class is also triggered, which can be used to handle the destination-specific reset logic. You can make a `flush` call using the SDK as shown:
 

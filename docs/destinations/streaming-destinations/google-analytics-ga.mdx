@@ -1,7 +1,6 @@
 ---
 title: "Google Analytics"
-description: >-
-  Step-by-step guide on sending your event data from RudderStack to Google Analytics.
+description: Send your event data from RudderStack to Google Analytics.
 ---
 
 [Google Analytics](https://analytics.google.com/) is a popular analytics service that lets you track and report your website traffic across a variety of sources.
@@ -22,7 +21,7 @@ RudderStack supports sending event data to Google Analytics via the following <a
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Analytics native SDK is loaded from <code class="inline-code">https://www.google-analytics.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Analytics SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Google Analytics native SDK is loaded from <code class="inline-code">https://www.google-analytics.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Google Analytics SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Google Analytics, follow these steps:
@@ -46,7 +45,7 @@ To successfully set up Google Analytics as a destination, configure the followin
 - **Server Side Identify Event Action**: Specify the event action of the `identify` call triggered from the server side. If you specify an action, it is sent as `ea`; otherwise, the default value is set to `User Enriched`.
 - **Disable Md5 encryption from Client ID**: Use this setting to determine how RudderStack should map the `client id`. For more information on this setting, refer to the <Link to="#how-rudderstack-takes-the-clientid">How RudderStack takes the `clientId`</Link> section.  
 - **Anonymize IP Addresses**: Enable this setting to anonymize the IP address at the earliest possible stage of the collection network. Refer to the [IP Anonymization](https://support.google.com/analytics/answer/2763052?hl=en) guide for more information.
-- **Enable Enhanced Ecommerce**: Enable this setting to derive detailed insights for e-commerce events. Refer to the <Link to="#enhanced-e-commerce">Enhanced e-commerce</Link> section for more information. 
+- **Enable Enhanced Ecommerce**: Enable this setting to derive detailed insights for ecommerce events. Refer to the <Link to="#enhanced-ecommerce">Enhanced ecommerce</Link> section for more information. 
 - **Add the non-interaction flag to all events**: Enable this setting to consider all the event hits as non-interaction event hits. For more information on this feature, refer to the <Link to="#non-interaction-events">Non-Interaction events</Link> section. 
 - **Send user-id to GA**: Enable this setting to set a user ID for the identified visitors before sending it to Google Analytics.
 - **Use device-mode to send events**: Enable this setting to send events to Google Analytics via the web <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
@@ -61,7 +60,7 @@ To successfully set up Google Analytics as a destination, configure the followin
 - **Optimize Container ID**: Enter your Optimize container ID to integrate with the Google Analytics [Optimize plugin](https://support.google.com/optimize/answer/6262084#optimize-ga-plugin).
 
 <div class="infoBlock">
-If you specify the container ID and Optimize plugin is linked to your Google Analytics property, it will be enabled automatically the next time <code class="inline-code">analytics.js</code> is loaded. <strong>Note that this is applicable only if you are using Google Analytics in the web device mode</strong>.
+If you specify the container ID and Optimize plugin is linked to your Google Analytics property, it will be enabled automatically the next time <code class="inline-code">analytics.js</code> is loaded. <strong>Note that this is applicable only if you are using Google Analytics in web device mode</strong>.
 </div>
 
 - **Use Google AMP Client ID**: Enable this setting to uniquely identify users who engage with your content on AMP and non-AMP pages. Refer to the [Google Analytics session unification for AMP](https://support.google.com/analytics/answer/7486764?hl=en&ref_topic=7378717#zippy=%2Cin-this-article) guide for more information. 
@@ -236,7 +235,7 @@ If the <strong>Include the Querystring in Page Views</strong> setting is enabled
 
 #### Page title in device mode
 
-Depending on the presence of `message.properties.category` and `message.name` properties, the page title is set as one of the following in the device mode: 
+Depending on the presence of `message.properties.category` and `message.name` properties, the page title is set as one of the following in device mode: 
 
 | `message.properties.category`  | `message.name`        | Page title|
 | :--------- | :------------ | :------------ |
@@ -247,29 +246,29 @@ Depending on the presence of `message.properties.category` and `message.name` pr
 
 #### Page title in cloud mode
 
-The page title is set as the `properties.title` or ` context.page.title` in the cloud mode.
+The page title is set as the `properties.title` or ` context.page.title` in cloud mode.
 
 ## E-Commerce
 
-RudderStack supports e-commerce tracking for Google Analytics. The required steps are:
+RudderStack supports ecommerce tracking for Google Analytics. The required steps are:
 
 - For every order completed, `orderId` is required. For each product in the order, there must be an `id` and `name`. Other properties are optional.
-- The e-commerce tracking should be enabled otherwise it will not be shown in the reports.
+- The ecommerce tracking should be enabled otherwise it will not be shown in the reports.
 
-### Enhanced e-commerce
+### Enhanced ecommerce
 
-[Enhanced e-commerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce) allows you to derive insights on the e-commerce events by combining impression data, product data, promotion data and action data. This is a necessity for product-scoped custom dimensions.
+[Enhanced ecommerce](https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce) allows you to derive insights on the ecommerce events by combining impression data, product data, promotion data and action data. This is a necessity for product-scoped custom dimensions.
 
-To use this feature, the **Enable Enhanced Ecommerce** setting must be enabled in the RudderStack dashboard, Google Analytics, and should follow RudderStack's <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link>.
+To use this feature, the **Enable Enhanced Ecommerce** setting must be enabled in the RudderStack dashboard, Google Analytics, and should follow RudderStack's <Link to="/event-spec/ecommerce-events-spec/">Ecommerce Events Specification</Link>.
 
 The required steps are:
-- Similar to e-commerce tracking, for every order completed the `orderId` is required. For each product, `id` and `name`are required.
+- Similar to ecommerce tracking, for every order completed the `orderId` is required. For each product, `id` and `name`are required.
 - The product ID or name must be passed for all the events that has the product details. `product_id` will check if `properties.product_id` is present or not. Else `properties.sku` will be picked.
 - `order_id` is required for refunded orders.
 
 #### Measuring Checkout steps
 
-The Checkout steps feature is a key difference between the regular e-commerce and Enhanced e-commerce tracking, and a major feature of the latter.
+The Checkout steps feature is a key difference between the regular ecommerce and Enhanced ecommerce tracking, and a major feature of the latter.
 
 You can configure the checkout funnel in the Google Analytics admin interface as shown below:
 
@@ -356,7 +355,7 @@ rudderanalytics.track('order completed', {
 
 #### Measuring product impressions
 
-Information related to impressions of the users who have viewed or filtered through the product can be collected through Enhanced e-commerce. The product impressions are mapped to **`product list viewed`** and **`product list filtered`** events.
+Information related to impressions of the users who have viewed or filtered through the product can be collected through Enhanced ecommerce. The product impressions are mapped to **`product list viewed`** and **`product list filtered`** events.
 
 ```javascript
 rudderanalytics.track('product list filtered', {
@@ -551,7 +550,7 @@ The sample code below shows how to send `gclid` and `dclid` using `externalID`:
 
 You can configure the [custom dimensions](https://support.google.com/analytics/answer/10075209?hl=en) in the [Admin](https://support.google.com/analytics/answer/6132368?hl=en) page in Google Analytics.
 
-There are multiple scopes for custom dimensions, such as `hits`, `session`, `user`, and `products` (if **Enhanced e-commerce** setting is enabled). Once these are set up in Google Analytics, the traits and properties can be mapped to the custom dimensions in the RudderStack dashboard.
+There are multiple scopes for custom dimensions, such as `hits`, `session`, `user`, and `products` (if **Enhanced ecommerce** setting is enabled). Once these are set up in Google Analytics, the traits and properties can be mapped to the custom dimensions in the RudderStack dashboard.
 
 A custom dimension should be set as `dimension{index}`. For example, `dimension1` is mapped to the `first_name` when the user sets the dimension in Google Analytics settings, as shown below. Similarly, you can set up different metrics.
 
@@ -680,11 +679,11 @@ Please adjust the Google Analytics' default reporting time frame from a month ag
 
 <img src="../../assets/faq1.png" />
 
-#### Why are my page views in Google Analytics different when sent from device mode as against the cloud mode?
+#### Why are my page views in Google Analytics different when sent from device mode as against cloud mode?
 
 There could be 2 reasons for this:
 
 - There can be ad blockers enabled in the user's browser while visiting your site. This blocks the Google Analytics requests from being sent directly from the browser.
-- For the cloud mode, RudderStack is not blocked by ad blockers presently. If the events are sent to Google Analytics via cloud mode, the actual number of events intended to be sent to Google Analytics are forwarded by the RudderStack server. So, the number of requests from the native mode or device mode is expected to be lower than cloud mode.
+- For cloud mode, RudderStack is not blocked by ad blockers presently. If the events are sent to Google Analytics via cloud mode, the actual number of events intended to be sent to Google Analytics are forwarded by the RudderStack server. So, the number of requests from the native mode or device mode is expected to be lower than cloud mode.
 
 The RudderStack JavaScript SDK provides a way of detecting how many page view requests are potentially being blocked by the ad blockers throughout your site pages. Please check the section on <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/detecting-adblocked-pages/">Detecting Ad-blocked Pages</Link> for more information.

@@ -21,13 +21,13 @@ RudderStack supports sending event data to Lytics via the following <a href="htt
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Lytics native SDK is loaded from <code class="inline-code">http&#40;s&#41;://c.lytics.io/api/tag/$$&#123;this.accountId&#125;/latest.min.js</code> domain. The value for <code class="inline-code">accountId</code> is taken from the <strong>Account ID</strong> RudderStack dashboard setting. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Lytics SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Lytics native SDK is loaded from <code class="inline-code">http&#40;s&#41;://c.lytics.io/api/tag/$$&#123;this.accountId&#125;/latest.min.js</code> domain. The value for <code class="inline-code">accountId</code> is taken from the <strong>Account ID</strong> RudderStack dashboard setting. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Lytics SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to Lytics, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Lytics**.
-2. Assign a name to your destination and click on **Next**.
+2. Assign a name to your destination and click **Next**.
 
 ### Connection settings
 
@@ -123,7 +123,7 @@ For more information, refer to the [Lytics documentation](https://learn.lytics.c
 To obtain your Lytics account ID, follow these steps:
 
 1. Log into your Lytics dashboard.
-2. Click on the account name on the top right and go to **Manage Accounts**.
+2. Click the account name on the top right and go to **Manage Accounts**.
 
 Here, you will see the account ID associated with your Lytics account.
 

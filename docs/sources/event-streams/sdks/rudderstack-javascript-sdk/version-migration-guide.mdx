@@ -6,7 +6,7 @@ aliases: ["javascript sdk version migration", "js sdk version migration"]
 
 The latest **JavaScript SDK (v1.1)** is the lightweight, efficient, and optimized version of the SDK with a size reduction of approximately 70%, thereby increasing its loading speed considerably.
 
-Another significant improvement in the latest version (v1.1) is that the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations are published as individual plugins and loaded dynamically as per the dashboard configurations. In v1, the device mode destinations were bundled with the core SDK.
+Another significant improvement in the latest version (v1.1) is that the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations are published as individual plugins and loaded dynamically as per the dashboard configurations. In v1, device mode destinations were bundled with the core SDK.
 
 ## Migrating to JavaScript SDK v1.1
 
@@ -65,7 +65,7 @@ To migrate the self-hosted JavaScript SDK to v1.1, follow any of the three optio
 
   <br/>
 
-  In this structure, the file name for the JavaScript SDK is `rudder-analytics.min.js` and the device mode destination SDKs are located next to the core SDK file under the `js-integrations` directory. To migrate to v1.1, update the script tag in your website, as shown:
+  In this structure, the file name for the JavaScript SDK is `rudder-analytics.min.js` and device mode destination SDKs are located next to the core SDK file under the `js-integrations` directory. To migrate to v1.1, update the script tag in your website, as shown:
 
     ```html
     <script src="https://<subdomain>.<yourdomain>.com/<path-to-sdk-base-directory>/rudder-analytics.min.js"></script>
@@ -125,7 +125,7 @@ Depending on the dashboard settings, all the destination SDKs are loaded from ht
 
 For example, the path for HubSpot is: https://cdn.rudderlabs.com/v1.1/js-integrations/HubSpot.min.js, and Google Analytics is: https://cdn.rudderlabs.com/v1.1/js-integrations/GA.min.js, etc.
 
-However, if you are loading the device mode destinations from a custom path using any of the below methods:
+However, if you are loading device mode destinations from a custom path using any of the below methods:
 
 - <Link to="#forwardedproxied-rudderstack-cdn">Forwarded/proxied RudderStack CDN</Link>
 - <Link to="#self-hosted-javascript-sdk">Self-hosted JavaScript SDK</Link>

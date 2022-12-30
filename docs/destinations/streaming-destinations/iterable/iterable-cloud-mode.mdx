@@ -1,6 +1,6 @@
 ---
 title: "Iterable Cloud Mode"
-description:  Detailed technical documentation on sending events to Iterable using RudderStack cloud mode.
+description: Send events to Iterable using RudderStack cloud mode.
 aliases: ["Iterable destination"]
 ---
 
@@ -134,13 +134,13 @@ rudderanalytics.track(
 );
 ```
 
-## E-commerce
+## Ecommerce
 
-You can find the relevant details of the e-commerce events in the <Link to="/event-spec/ecommerce-events-spec/">E-commerce Events Specification</Link> guide.
+You can find the relevant details of the ecommerce events in the <Link to="/event-spec/ecommerce-events-spec/">Ecommerce Events Specification</Link> guide.
 
 ### Order Completed
 
-RudderStack supports the e-commerce event `Order Completed` and sends the other events as generic `track` events. Refer to the corresponding Iterable endpoint details in the [Track a purchase API](https://api.iterable.com/api/docs#commerce_trackPurchase).
+RudderStack supports the ecommerce event `Order Completed` and sends the other events as generic `track` events. Refer to the corresponding Iterable endpoint details in the [Track a purchase API](https://api.iterable.com/api/docs#commerce_trackPurchase).
 
 <div class="infoBlock">
 RudderStack requires the user properties, item properties, and <code class="inline-code">total</code> to successfully send the <strong>Order Completed</strong> event.
@@ -179,7 +179,7 @@ rudderanalytics.track("Order Completed", {
 
 ### Product Added / Product Removed
 
-RudderStack supports the e-commerce event `Product Added` or `Product Removed` and sends the information to Iterable via the [updateCart endpoint](https://api.iterable.com/api/docs#commerce_updateCart), corresponding to updating a user's shopping cart items.
+RudderStack supports the ecommerce event `Product Added` or `Product Removed` and sends the information to Iterable via the [updateCart endpoint](https://api.iterable.com/api/docs#commerce_updateCart), corresponding to updating a user's shopping cart items.
 
 <div class="warningBlock">
 RudderStack requires the user and item properties to successfully send the <strong>Order Completed</strong> event to Iterable. Also, you must  send the whole updated cart details and not just the updated individual items added/removed from the cart.

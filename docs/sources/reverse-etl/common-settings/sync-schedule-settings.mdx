@@ -1,7 +1,6 @@
 ---
 title: "Sync Schedule"
-description: >-
- Detailed technical description of the different sync schedule settings for the Reverse ETL sources.
+description: Synchronize reverse ETL sources on a schedule.
 ---
 
 RudderStack lets you set a schedule for importing data from your Reverse ETL sources while setting them up in your dashboard. It lets you specify the schedule type that defines how and when the syncs will run.
@@ -52,7 +51,7 @@ The sync frequency specified under <strong>Run Settings</strong> needs to be gre
 
 This schedule type lets you run your data syncs manually. RudderStack won't sync the data until you explicitly trigger it.
 
-To trigger a sync manually, go to the **Syncs** tab in your Reverse ETL source details page and click on **Sync Now**, as shown:
+To trigger a sync manually, go to the **Syncs** tab in your Reverse ETL source details page and click **Sync Now**, as shown:
 
 <img src="../../../assets/warehouse-actions-sources/sync-schedule-manual.png" alt="Manual sync schedule" />
 
@@ -83,13 +82,13 @@ Suppose you have a sync scheduled for every 30 minutes. If there is a sync runni
 
 Yes, you can. 
 
-1. Go to the **Syncs** tab in your Reverse ETL source details page and click on the settings button as shown:
+1. Go to the **Syncs** tab in your Reverse ETL source details page and click the settings button as shown:
 
 <img src="../../../assets/warehouse-actions-sources/sync-schedule-settings-change.png" alt="Syncs schedule settings change" />
 
 2. Then, select your new sync schedule type.
 
-Alternatively, you can also go to the **Settings** tab and click on the **Edit sync schedule** button to define your new schedule type.
+Alternatively, you can also go to the **Settings** tab and click the **Edit sync schedule** button to define your new schedule type.
 
 ### I'm unable to run a sync manually and get the message "Your pipeline is paused. Make sure that the source and at least one destination is enabled". What do I do?
 

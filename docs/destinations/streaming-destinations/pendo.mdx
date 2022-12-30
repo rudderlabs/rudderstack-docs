@@ -17,13 +17,13 @@ RudderStack supports sending event data to Pendo via the following <a href="http
 | **Cloud Mode**      | **-**         | **-**      | **-**      |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Pendo native SDK is loaded from <code class="inline-code">https://cdn.pendo.io/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Pendo SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Pendo native SDK is loaded from <code class="inline-code">https://cdn.pendo.io/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Pendo SDK successfully.
 </div>
 
 Once you have ascertained that the platform is supported by Pendo, please follow these steps:
 
 - Choose a source to which you would like to add Pendo as a destination.
-- Select the destination as **Pendo** to your source. Give your destination a name and then click on **Next**.
+- Select the destination as **Pendo** to your source. Give your destination a name and then click **Next**.
 - On the **Connection Settings** page, fill all the fields with the relevant information and click **Next**.
 
 <img src="../../assets/screenshot-2020-11-27-at-2.29.18-pm.png" /><span class="imageTitle">Pendo Connection Settings in RudderStack</span>
@@ -33,8 +33,8 @@ Once you have ascertained that the platform is supported by Pendo, please follow
 To get the Pendo **API Key**, follow these steps:
   <ul>
     <li>Login to Pendo dashboard.</li>
-    <li>Go to the <strong>Settings</strong> on the left sidebar and click on <strong>Subscription Settings.</strong></li>
-    <li>You will see an option called <strong>Apps</strong> and under that hover on the square box and click on <strong>view app details</strong>.</li>
+    <li>Go to the <strong>Settings</strong> on the left sidebar and click <strong>Subscription Settings.</strong></li>
+    <li>You will see an option called <strong>Apps</strong> and under that hover on the square box and click <strong>view app details</strong>.</li>
     <li>Here you will find your <strong>API Key</strong> in <strong>App Details</strong> section.
     </li>
   </ul>
@@ -97,8 +97,8 @@ rudderanalytics.track("test track event", {
 ### Where do I find the Pendo API Key?
 
 - Login to Pendo dashboard.
-- Go to the **Settings** on the left sidebar and click on **Subscription Settings.**
-- You will see an option called **Apps** and under that hover on the square box and click on **view app details**.
+- Go to the **Settings** on the left sidebar and click **Subscription Settings.**
+- You will see an option called **Apps** and under that hover on the square box and click **view app details**.
 - Here you will find your **API Key** in **App Details** section.
 
 

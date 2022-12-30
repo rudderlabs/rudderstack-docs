@@ -1,16 +1,9 @@
 ---
 title: "Common Fields"
-description: >-
-  Detailed technical description of the common fields that define the core event data structure.
+description: Understand the common fields that define the core RudderStack event data structure.
 ---
 
-The common fields define the core event data structure in RudderStack. They contain vital information about the event and the source platform.
-
-<div class="successBlock">
-Every RudderStack API call shares the same common fields.
-</div>
-
-The following table lists all the common fields with their detailed description:
+Every RudderStack API call shares the same common fields that define the core event data structure. The following table describes the common fields in every call.
 
 | <div style="width:100px">Name</div>       | <div style="width:150px">Data type</div> | Description                    |
 | :------------------ | :------- | :-------------------- |
@@ -26,12 +19,12 @@ The following table lists all the common fields with their detailed description:
 | `properties`        | Object   | Passes all the relevant information associated with the event.     |
 
 <div class="infoBlock">
-Upon receving the event, RudderStack also sets <code class="inline-code">receivedAt</code> - the timestamp when the event is ingested(received). You need not set this field explicitly when sending the events to RudderStack.
+Upon receving an event, RudderStack also sets <code class="inline-code">receivedAt</code> - the timestamp when the event is ingested (received). You need not set this field explicitly when sending the events to RudderStack.
 </div>
 
 ## Contextual fields
 
-The contextual fields give additional context about a particular event. The following table lists all the contextual fields with their detailed description.
+Contextual fields give additional information about a particular event. The following table describes the available contextual fields.
 
 | <div style="width:100px">Name</div>       | <div style="width:150px">Data type</div> | Description |
 | :--- | :--- | :--- |
@@ -49,7 +42,7 @@ The contextual fields give additional context about a particular event. The foll
 
 ### Automatically collected contextual fields
 
-The following table lists the contextual fields that are automatically collected and populated by the RudderStack SDKs:
+The following table describes contextual fields that are automatically collected and populated by the RudderStack SDKs:
 
 | Field | JavaScript | Android | iOS | Description | 
 | :--- | :--- |:--- |:--- |:--- |

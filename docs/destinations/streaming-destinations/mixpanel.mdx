@@ -26,7 +26,7 @@ RudderStack supports sending event data to Mixpanel via the following <a href="h
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Mixpanel native SDK is loaded from <code class="inline-code">https://cdn.mxpnl.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Mixpanel SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Mixpanel native SDK is loaded from <code class="inline-code">https://cdn.mxpnl.com/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Mixpanel SDK successfully.
 </div>
 
 
@@ -61,7 +61,7 @@ For more information on getting your Mixpanel project ID, refer to this <a href=
 
 - **Data Residency**: Select the relevant option among `US` and `EU`. RudderStack will send your event data to the Mixpanel server in that region.
 
-The following settings are applicable if you are using this destination via the web device mode:
+The following settings are applicable if you are using this destination via web device mode:
 
 - **Use Mixpanel People**: This option sends all your `identify` calls to Mixpanel People. For more information, refer to the [**Mixpanel People**](#mixpanel-people) section below.
 - **Automatically set all Traits as Super Properties and People properties**: Refer to the [**Explicitly setting People Properties and Super Properties**](#explicitly-setting-people-properties-and-super-properties) section below.
@@ -164,7 +164,7 @@ rudderanalytics.identify({
 ```
 
 <div class="infoBlock">
-Currently, RudderStack supports this feature only for the web device mode.
+Currently, RudderStack supports this feature only for web device mode.
 </div>
 
 ### Deleting a user

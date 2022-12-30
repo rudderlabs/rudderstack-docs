@@ -12,7 +12,7 @@ RudderStack supports sending events to PostHog via the following <Link to="/dest
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the PostHog native SDK is either loaded from the <code class="inline-code">https://app.posthog.com</code> domain or your instance URL. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist the required domain</Link> to load the PostHog SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the PostHog native SDK is either loaded from the <code class="inline-code">https://app.posthog.com</code> domain or your instance URL. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist the required domain</Link> to load the PostHog SDK successfully.
 </div>
 
 Once you have confirmed that the source platform supports sending events to PostHog, follow these steps:
@@ -37,7 +37,7 @@ If you are hosting your own PostHog instance, add the URL of your instance witho
 - **Use updated mapping for Group calls**: Enable this setting to send the `group` traits as event properties to PostHog. It is strongly recommended to enable this setting to send all your `group` events to PostHog correctly.
 
 <div class="warningBlock">
-<strong>This setting is applicable only when sending events via cloud mode</strong>. RudderStack uses the updated group mappings in the device mode by default. For more information on this setting, refer to the <Link to="/destinations/streaming-destinations/posthog/posthog-cloud-mode/#updated-group-mapping">Updated group mapping</Link> section.
+<strong>This setting is applicable only when sending events via cloud mode</strong>. RudderStack uses the updated group mappings in device mode by default. For more information on this setting, refer to the <Link to="/destinations/streaming-destinations/posthog/posthog-cloud-mode/#updated-group-mapping">Updated group mapping</Link> section.
 </div>
 
 ### Web device mode settings

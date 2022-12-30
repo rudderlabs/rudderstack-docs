@@ -21,13 +21,13 @@ RudderStack supports sending event data to Customer.io via the following <a href
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In the web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Customer.io native SDK is loaded from <code class="inline-code">https://assets.customer.io/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Customer.io SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Customer.io native SDK is loaded from <code class="inline-code">https://assets.customer.io/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Customer.io SDK successfully.
 </div>
 
 Once you have confirmed that the platform supports sending events to Customer.io, follow these steps:
 
 1. From your [**RudderStack dashboard**](https://app.rudderstack.com/), add the source. From the list of destinations, select **Customer.io**.
-2. Assign a name to the destination and click on **Continue**. You should then see the following screen:
+2. Assign a name to the destination and click **Continue**. You should then see the following screen:
 
 <img src="../../assets/event-stream-destinations/customerio-connection-settings.png" alt="Customer.io connection settings" />
 
@@ -58,7 +58,7 @@ Refer to the <a href="https://customer.io/docs/api/?region=eu#section/Overview">
 For more information on this setting, refer to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/">OneTrust Consent Manager</Link> guide.
 </div>
 
-Finally, click on **Next** to complete the setup. Customer.io will now be enabled as a destination in RudderStack.
+Finally, click **Next** to complete the setup. Customer.io will now be enabled as a destination in RudderStack.
 
 ## Identify
 
@@ -249,8 +249,8 @@ RudderStack also supports the removal of the device (identified by `device_id`) 
 To obtain the API Key and Site ID, follow these steps:
 
 1. Sign into your [Customer.io dashboard](https://fly.customer.io/).
-2. In the left panel, click on **Settings** and select **Account Settings**.
-3. Then, click on **API Credentials**. You should find the site ID and API key for your project listed here, as shown:
+2. In the left panel, click **Settings** and select **Account Settings**.
+3. Then, click **API Credentials**. You should find the site ID and API key for your project listed here, as shown:
 
 <img src="../../assets/event-stream-destinations/customerio-siteid-apikey.png" alt="Customer.io site ID and API key" />
 
