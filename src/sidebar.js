@@ -465,6 +465,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Bing Ads V2",
+                link: "/sources/extract/bing-ads-v2/",
+                content: []
+            },
+            {
                 title: "Chargebee",
                 link: "/sources/extract/chargebee/",
                 content: []
