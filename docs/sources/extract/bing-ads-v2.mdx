@@ -22,24 +22,26 @@ All the Cloud Extract sources support sending data only to a <Link to="/destinat
 ## Getting Started
 
 1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
-2. Go to **Sources** > **New source** > **Cloud Extract** and select **Bing Ads** from the list of sources.
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **Bing Ads V2** from the list of sources.
 3. Assign a name to your source and click **Continue**.
 
 ### Connection settings
+
+Next, configure the following dashboard settings:
 
 <img src="../../assets/cloud-extract-sources/bing-ads-v2-settings.png" alt="Freshdesk credentials" />
 
 - **Tenant ID**: Enter the Tenant ID of your Microsoft Advertising developer application.
 - **Connect with Bing Ads V2**: Click this button to give RudderStack the required permissions to access your Bing Ads account.
-- **Developer Token**: Enter the developer token. Refer to the [Microsoft documentation](https://learn.microsoft.com/en-us/advertising/guides/get-started?view=bingads-13#get-developer-token) for more information on obtaining the developer token.
-- **Reports replication start date**: Select the date from when RudderStack ingests your Bing Ads data. RudderStack will <strong>not replicate</strong> any data before this date.
+- **Developer Token**: Enter your user developer token. Refer to the [Microsoft documentation](https://learn.microsoft.com/en-us/advertising/guides/get-started?view=bingads-13#get-developer-token) for more information on obtaining the developer token.
+- **Reports replication start date**: Select the date from when RudderStack should ingest your Bing Ads data. RudderStack will <strong>not replicate</strong> any data before this date.
 
 ### Destination settings
 
-The following settings specify how RudderStack sends the data ingested from Amplitude to the connected warehouse destination:
+The following settings specify how RudderStack sends the data ingested from Bing Ads to the connected warehouse destination:
 
-- **Table prefix**: RudderStack uses this prefix to create a table in your data warehouse and loads all your Amplitude data into it.
-- **Schedule Settings**: RudderStack gives you three options to ingest the data from Amplitude:
+- **Table prefix**: RudderStack uses this prefix to create a table in your data warehouse and loads all your Bing Ads data into it.
+- **Schedule Settings**: RudderStack gives you three options to ingest the data from Bing Ads:
     - **Basic**: Runs the syncs at the specified time interval. 
     - **CRON**: Runs the syncs based on the user-defined CRON expression.
     - **Manual**: You are required to run the syncs manually.
@@ -50,25 +52,30 @@ For more information on the schedule types, refer to the <Link to="/sources/extr
 
 ### Selecting the data to import
 
-You can choose the Amplitude data you want to ingest by selecting the required resources:
+You can choose the Bing Ads data you want to ingest by selecting the required resources:
 
-<img src="../../assets/cloud-extract-sources/amplitude-connection-settings-2.png" alt="Selecting the data to import" />
+<img src="../../assets/cloud-extract-sources/bing-ads-connection-settings-2.png" alt="Selecting the data to import" />
 
-The below table mentions the syncs and [API endpoints](https://www.docs.developers.amplitude.com/analytics/#api-references) supported by these resources from Amplitude to your warehouse destination:
+The below table mentions the syncs and primary keys supported by these resources from Bing Ads to your warehouse destination:
 
-| Resource | Full Refresh sync | Incremental sync | Primary key | Amplitude API endpoint |
-| :---| :---- | :---- | :---- | :---- |
-| `events` |  Yes | Yes | `uuid` |  `/export` |
-| `cohorts` | Yes | No | `id` | `/cohorts` |
-| `average_session_length` | No | Yes | `date` | `/dashboard` |
-| `annotations` | Yes | No | `id` | `/annotations` |
-| `active_users` | No | Yes |  `date` | `/dashboard` |
+| Resource | Sync type | Primary key |
+| :---| :--- | :----| 
+| `Account Performance Report` | Incremental | `AccountId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Network`, `DeliveredMatchType`, `DeviceOS`, `TopVsOther`, `BidMatchType` |
+| `Accounts` | Full refresh | `Id` |
+| `Ad Group Performance Report` | Incremental | `AccountId`, `CampaignId`, `AdGroupId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Network`, `DeliveredMatchType`, `DeviceOS`, `TopVsOther`, `BidMatchType`, `Language` |
+| `Ad Groups` | Full refresh | `Id` |
+| `Ad Performance Report` | Incremental | `AccountId `, `CampaignId`, `AdGroupId`, `AdId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Language`, `Network`, `DeviceOS`, `TopVsOther`, `BidMatchType`, `DeliveredMatchType` |
+| `Ads` | Full refresh | `Id` |
+| `Budget Summary Report` | Incremental | `Date` |
+| `Campaign Performance Report` | Full refresh | `AccountId`, `CampaignId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Network`, `DeliveredMatchType`, `DeviceOS`, `TopVsOther`, `BidMatchType` |
+| `Campaigns` | Full refresh | `Id` |
+| `Keyword Performance Report` | Incremental | `AccountId`, `CampaignId`, `AdGroupId`, `KeywordId`, `AdId`, `TimePeriod`, `CurrencyCode`, `DeliveredMatchType`, `AdDistribution`, `DeviceType`, `Language`, `Network`, `DeviceOS`, `TopVsOther`, `BidMatchType` |
 
 <div class="infoBlock">
 For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
 </div>
 
-Amplitude is now configured as a source. RudderStack will start ingesting data from Amplitude as per your specified schedule and frequency.
+Bing Ads is now configured as a source. RudderStack will start ingesting data from Bing Ads as per your specified schedule and frequency.
 
 You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
 
