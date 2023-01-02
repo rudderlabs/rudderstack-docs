@@ -56,7 +56,7 @@ RudderStack adds the global <code class="inline-code">g</code> parameter implici
 Identified {{name}} <traits_key1>:<traits_value1> <traits_key2>:<traits_value2> ....
 ```
 
-Here, the traits key and value are the key-value pairs in the `traits` object of the <Link to="/event-spec/standard-events/identify">`identify`</Link> event payload. 
+Here, the traits key and value are the key-value pairs in the `traits` object of the <Link to="/event-spec/standard-events/identify">`identify`</Link> event payload.
 
 The `name` field in the template is determined from either of the following:
 
@@ -69,16 +69,16 @@ The `name` field in the template is determined from either of the following:
   - `Anonymous user anonymousId`
 
 Note that only the traits listed in the **Allowlisted Traits** section are considered to be a part of the identify template. The rest of them are sent to Slack.
- 
+
 <img src="../../assets/event-stream-destinations/slack-traits.png" alt="Allowlisted traits" />
 
 #### Event Templates
 
 <img src="../../assets/event-stream-destinations/slack-settings2.png" alt="Event templates settings" />
 
-- **Event Name**: Enter the event name or the regex to match the RudderStack event name.                                                                     
+- **Event Name**: Enter the event name or the regex to match the RudderStack event name.
 - **Event Template**: Specify the template for the above event names matching the regex. The default template is as shown:
- 
+
 ```
 {{name}} did {{event}}
 ```
@@ -91,7 +91,7 @@ Here, `name` is determined in the same way as described in the [Identify Templat
 
 <img src="../../assets/event-stream-destinations/slack-settings3.png" alt="Slack connection settings" />
 
-**Webhook URL:** Enter your Slack's [incoming webhook URL](https://my.slack.com/services/new/incoming-webhook/). 
+**Webhook URL:** Enter your Slack's [incoming webhook URL](https://my.slack.com/services/new/incoming-webhook/).
 
 To obtain the webhook URL, follow the below steps:
 
@@ -117,10 +117,10 @@ The following table lists the variables you can select in your template messages
 | :--------------------------------------- | :---------------------------------------------------------------------- |
 | `{{name}}`                               | Identity of the user in the priority listed above.                   |
 | `{{event}}`                              | Event name, that is, `product viewed` or `user login`.                    |
-| `{{<key_1>}}` or`{{properties.<key_1>}}` | Any of the property values from the event's properties object.           |
+| `{{key_1}}` or`{{properties.key_1}}` | Any of the property values from the event's properties object.           |
 | `{{propertiesList}}`                     | JSON stringified version of your properties object. |
 | `{{traits}}`                             | JSON stringified version of your traits object.     |
-| `{{traitsList.<key_1>}}`                 | Any of the trait values from the event's traits object.                  |
+| `{{traitsList.key_1}}`                 | Any of the trait values from the event's traits object.                  |
 
 ### Escaped content
 
@@ -132,7 +132,7 @@ The values returned by the `{{variable}}` are HTML-escaped. For example, if a `v
 | `{{{variable}}}` | `"Marcia & Jan"` | `"Marcia & Jan"`     |
 
 <div class="infoBlock">
- 
+
 Refer to the <a href="https://handlebarsjs.com/guide/expressions.html#html-escaping">Handlebar document</a> for more information on the escaped content.
 </div>
 
