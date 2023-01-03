@@ -96,7 +96,7 @@ The `identify` method parameters are as described below:
 | `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.                |
 | `traits`       | Object   | An optional dictionary of the user's traits like `name`or `email`.     |
 
-## Track
+### Track
 
 The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record the user actions along with their associated properties. Each user action is called an **event**.
 
@@ -126,7 +126,7 @@ The `track` method parameters are as described below:
 | `integrations` | Object   | An optional dictionary containing the destinations to be enabled or disabled.            |
 | `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.  |
 
-## Page
+### Page
 
 The <Link to="/event-spec/standard-events/page/">`page`</Link> call allows you to record the page views on your application, along with the other relevant information about the page.
 
@@ -155,7 +155,7 @@ The `page` method parameters are as described below:
 | `integrations` | Object   | An optional dictionary containing the destinations to be enabled or disabled.            |
 | `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.  |
 
-## Screen
+### Screen
 
 The <Link to="/event-spec/standard-events/screen/">`screen`</Link> call is the mobile equivalent of the <Link to="/event-spec/standard-events/page/">`page`</Link> call. It lets you record the screen views on your mobile app along with other relevant information about the screen.
 
@@ -184,7 +184,7 @@ The `screen` method parameters are as described below:
 | `integrations` | Object   | An optional dictionary containing the destinations to be enabled or disabled.            |
 | `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.  |
 
-## Group
+### Group
 
 The <Link to="/event-spec/standard-events/group/">`group`</Link> call lets you link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits or properties associated with that group.
 
@@ -213,7 +213,7 @@ The `group` method parameters are as follows:
 | `integrations` | Object   | An optional dictionary containing the destinations to be enabled or disabled.            |
 | `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.                |
 
-## Alias
+### Alias
 
 The <Link to="/event-spec/standard-events/alias/">`alias`</Link> call lets you merge different identities of a known user. It is an advanced method that lets you change the tracked user's ID explicitly. You can use `alias` for managing the user's identity in some of the downstream destinations.
 
