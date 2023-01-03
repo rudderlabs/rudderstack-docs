@@ -49,7 +49,7 @@ If you're using **Gradle**, add the following line to your dependencies:
 
 ```markup
 implementation 'com.rudderstack.sdk.java.analytics:analytics:3.0.0'
-```
+``` 
 
 ## Initializing the RudderStack client
 
@@ -61,6 +61,10 @@ RudderAnalytics analytics = RudderAnalytics
          .setDataPlaneUrl("<DATA_PLANE_URL>")
          .build();
 ```
+
+## Migrating from v2 to v3
+
+To migrate to the Java SDK v3.0.0, set the data plane URL using `setDataPlaneUrl("<DATA_PLANE_URL>")` instead of passing it as an argument.
 
 ## Sending events
 
@@ -274,7 +278,20 @@ analytics.enqueue(TrackMessage.builder("Button Clicked")
 );
 ```
 
-The Java SDK adds the information present in `context.library` with every message. If you pass your `context` object, then the SDK automatically merges this information except the information contained in `library`. 
+The Java SDK also adds the information present in `context.library` with every message like `name`, `version`, etc. 
+
+A sample `context` object containing the `library` information is shown below:
+
+```java
+"context": {
+	"library": {
+		"name": "analytics-java",
+		"version": "x.x.x"
+	}
+}
+```
+
+If you pass any custom information in the `context` object, the SDK automatically merges it with the existing context, except the information contained in `library`. 
 
 ## Batching events
 
@@ -299,7 +316,7 @@ final BlockingFlush blockingFlush = BlockingFlush.create();
 
 RudderAnalytics analytics = RudderAnalytics
          .builder("<WRITE_KEY>")
-				 .plugin(blockingFlush.plugin())
+		 .plugin(blockingFlush.plugin())
          .setDataPlaneUrl("<DATA_PLANE_URL>")
          .build();
 
@@ -384,7 +401,7 @@ final TierBlockingFlush blockingFlush = TierBlockingFlush.create();
 
 RudderAnalytics analytics = RudderAnalytics
          .builder("<WRITE_KEY>")
-				 .plugin(blockingFlush.plugin())
+		 .plugin(blockingFlush.plugin())
          .setDataPlaneUrl("<DATA_PLANE_URL>")
          .build();
 
@@ -492,7 +509,7 @@ To disable the Gzip feature using the `setGZIP` API while initializing the SDK, 
 RudderAnalytics analytics = RudderAnalytics
          .builder("<WRITE_KEY>")
          .setDataPlaneUrl("<DATA_PLANE_URL>")
-				 .setGZIP(false)
+		 .setGZIP(false)
          .build();
 ```
 
@@ -506,7 +523,7 @@ To gzip requests on a self-hosted data plane, make sure your <a href="https://gi
 
 ### Can I use the `ImmutableMap` class?
 
-Yes, you can use the `ImmutableMap` class via the <a href="https://guava.dev/">Guava library</a> or using the Java maps.
+Yes, you can use the `ImmutableMap` class via the <a href="https://guava.dev/">Guava library</a> or use the Java maps.
 
 ### How do I flush events on demand?
 
