@@ -86,7 +86,28 @@ In case of the HTTP protocol, <code class="inline-code">ssl</code> is a required
 
 ### Initialization options
 
+The detailed description of Initialization options is as follows:
 
+| Parameter        | Data type         | Description     |
+| :----------- | :--------------- | :----------|
+|  `consumer`           | String      | To explicitly mark which consumer to use. Defaults to lib_curl.  |
+|  `data_plane_url `       | String | Explicitly set the url to the data plane. Defaults to “hosted.rudderlabs.com”    |
+|  `debug`          | Boolean                              |  Whether to log messages and wait for a response. Makes any queuing consumers non-async, defaults to false. This will make the library block until a response has been received from the API, so it is not recommended for production use.  |
+|  `ssl`           | Boolean      | Whether to use TLS instead of SSL for the socket connection, defaults to false. |
+|  `error_handler`       | Function | A handler which will be called on errors to aid in debugging. A function to handle errors, particularly useful for debugging. Note that if debug mode is not specified, then the error_handler will only be called on connection level errors and timeouts.
+function ($code, $message) {}   |
+|  `max_queue_size`           | Number      | The max size of the queue, defaults to 10000 items. |
+|  `batch_size`       | Number | How many items to send in a single curl request, defaults to 100. This is deprecated now use flush_at instead   |
+|  `flush_at`           | Number      | How many items to send in a single curl request, defaults to 100.  |
+|  `timeout `       | Number | The number of seconds to wait for the socket request to time out, defaults to 0.5   |
+|  `filename`           | String      | The location to write the log file, defaults to "/tmp/analytics.log" when file consumer is selected |
+|  `compress_request`       | Boolean | Whether to use gzipped request payloads, defaults to true. This is supported for server versions 1.4.0 and above.  |
+|  `flush_interval`           | Number      | Frequency in milliseconds to send data using flush method execution, defaults to 10000 miliseconds. |
+|  `curl_timeout `       | Number | Set timeout for the curl connections, defaults to 0, this is infinite  |
+|  `curl_connecttimeout`           | Number      | Set connect timeout for the curl connections, defaults to 300 |
+|  `max_item_size_bytes`       | Number | Set maximum message item size, defaults to 32000 bytes (32kb) |
+|  `max_queue_size_bytes`           | Number      | Set maximum batch size, defaults to 512000 bytes (512kb)   |
+|  `filepermissions `       | String | Set the file permissions for file consumer, defaults to 0644   |
 
 ## Sending events from the RudderStack client
 
@@ -108,6 +129,14 @@ Rudder::track(array(
   )
 ));
 ```
+
+## Migration from v1.x.x
+
+No migration steps are required, aside from a couple of edge cases.
+
+- Make sure that your PHP version is v7.4 and above
+- if you use a self hosted rudder server either upgrade it to v1.4.0 and above or use the option to turn off gzipped request payloads. (compress_request to false)
+- Use any of the newly added options in version 2 if desired
 
 ## Identify
 
