@@ -13,6 +13,10 @@ Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-php-sdk
   style={'flat'}
 />
 
+<div class="infoBlock">
+The PHP SDK supports PHP version 7.4 and above.
+</div>
+
 ## SDK setup requirements
 
 To set up the RudderStack PHP SDK, the following prerequisites must be met:
@@ -47,20 +51,20 @@ composer require rudderstack/rudder-php-sdk
 To initialize the RudderStack client, run the following code snippet:
 
 ```php
-require_once("/path/to/lib/Rudder.php");
+use Rudder\Rudder;
+
+require_once realpath(__DIR__ . '/vendor/autoload.php');
 
 Rudder::init(WRITE_KEY, array(
   "data_plane_url" => DATA_PLANE_URL,
-  "consumer"       => "lib_curl", // fork_curl
-  "debug"          => true,
-  "max_queue_size" => 10000, // Maximum number of events stored in the in-memory queue, defaults to 1000
-  "batch_size"     => 100, // Number of events sent in a batch request, defaults to 100
-  "ssl"            => true // defaults to true
+  "consumer"       => "lib_curl",
+  "debug"          => false,
+  "max_queue_size" => 10000,
+  "batch_size"     => 100
 ));
 ```
 
 <div class="infoBlock">
-
 RudderStack accepts the <code class="inline-code">DATA_PLANE_URL</code> with or without the protocol. If the protocol is missing, RudderStack automatically prepends it to the URL based on whether the <code class="inline-code">ssl</code> option is set to  <code class="inline-code">true</code> or  <code class="inline-code">false</code>.
 </div>
 
@@ -79,6 +83,10 @@ While initializing the RudderStack client, the <code class="inline-code">ssl</co
 
 In case of the HTTP protocol, <code class="inline-code">ssl</code> is a required field and must always be set to <code class="inline-code">false</code>.
 </div>
+
+### Initialization options
+
+
 
 ## Sending events from the RudderStack client
 
