@@ -316,10 +316,10 @@ You can use the [socket consumer](https://github.com/rudderlabs/rudder-php-sdk/b
 
 You can also use the [file consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/File.php) for making requests to RudderStack. It records each `identify` or `track` call you make to a log file. Further, it uploads the log file by running the `file.php` file in RudderStack's [github repository](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/File.php).
 
-You can run the `send.php` file to upload your log file to RudderStack, as shown:
+You can run the `examples/SendBatchFromFile.php` file to upload your log file to RudderStack, as shown:
 
 ```bash
-php send.php --secret YOUR_WRITE_KEY --file /tmp/analytics.log
+php examples/SendBatchFromFile.php --secret YOUR_WRITE_KEY --file /tmp/analytics.log
 ```
 
 <div class="infoBlock">
@@ -330,6 +330,6 @@ You can create a new cron job to upload your log files. A sample snippet to crea
 
 ```bash
 $ # create a cron job that runs as www-data every minute
-$ echo '*/1 * * * * www-data php /my/path/to/analytics-php/send.php > /dev/null' | sudo tee /etc/cron.d/analytics
+$ echo '*/1 * * * * www-data php /my/path/to/analytics-php/SendBatchFromFile.php > /dev/null' | sudo tee /etc/cron.d/analytics
 $ sudo service cron reload    # reload the cron daemon
 ```
