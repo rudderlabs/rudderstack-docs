@@ -3,9 +3,11 @@ title: "PHP"
 description: Use RudderStack’s PHP SDK to send your server-side events to various destinations.
 ---
 
-RudderStack’s PHP SDK allows you to track your event data from your PHP applications and send it to your specified destinations via RudderStack.
+RudderStack's PHP SDK lets you track and send the events from your PHP applications to the specified destinations.
 
-Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-php-sdk) to get a more hands-on understanding of the SDK.
+<div class="infoBlock">
+Refer to the PHP SDK's <a href="https://github.com/rudderlabs/rudder-php-sdk">GitHub codebase</a> for the implementation-specific details.
+</div>
 
 <GhBadge
   url={'https://packagist.org/packages/rudderstack/rudder-php-sdk'}
@@ -14,22 +16,20 @@ Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-php-sdk
 />
 
 <div class="infoBlock">
-The PHP SDK supports PHP version 7.4 and above.
+RudderStack's PHP SDK supports PHP version 7.4 and above.
 </div>
 
 ## SDK setup requirements
 
-To set up the RudderStack PHP SDK, the following prerequisites must be met:
-
-- You need to set up a [**RudderStack account**](https://app.rudderstack.com/signup).
-- Once signed up, <Link to="/dashboard-guides/sources/#adding-a-source">set up a PHP source</Link> in the dashboard. You should be able to see a **Write Key** for this source, as shown below:
+1. Sign up to [RudderStack Cloud](https://app.rudderstack.com/signup).
+2. <Link to="/dashboard-guides/sources/#adding-a-source">Set up a PHP source</Link> in your dashboard. You should be able to see the <strong>write key</strong> for this source, as shown:
 
 <img src="../../../assets/event-stream-sources/php-write-key-new.png" alt="PHP source write key" />
 
-- You will also need a data plane URL. Refer to the <Link to="/resources/glossary/#data-plane-url">Glossary</Link> for more information on the data plane URL and where to find it.
+You will also need the data plane URL. Refer to the <Link to="/resources/glossary/#data-plane-url">Glossary</Link> for more information on the data plane URL and where to find it.
 
 <div class="successBlock">
-The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has an SDK installation snippet containing both the write key and the data plane URL. You can use it to integrate the PHP SDK into your application.
+The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has the SDK installation snippet containing both the write key and the data plane URL. Copy it to integrate the PHP SDK into your application.
 </div>
 
 ## Installing the PHP SDK
@@ -60,12 +60,13 @@ Rudder::init(WRITE_KEY, array(
   "consumer"       => "lib_curl",
   "debug"          => false,
   "max_queue_size" => 10000,
-  "batch_size"     => 100
+  "flush_at"       => 100,
+  "ssl"            => true
 ));
 ```
 
 <div class="infoBlock">
-RudderStack accepts the <code class="inline-code">DATA_PLANE_URL</code> with or without the protocol. If the protocol is missing, RudderStack automatically prepends it to the URL based on whether the <code class="inline-code">ssl</code> option is set to  <code class="inline-code">true</code> or  <code class="inline-code">false</code>.
+RudderStack accepts the <code class="inline-code">DATA_PLANE_URL</code> with or without the protocol. If the protocol is missing, RudderStack automatically prepends it to the URL based on whether the <code class="inline-code">ssl</code> option is set to <code class="inline-code">true</code> or  <code class="inline-code">false</code>.
 </div>
 
 RudderStack accepts the following data plane URL formats:
@@ -78,36 +79,39 @@ RudderStack accepts the following data plane URL formats:
 | `false` | `example.dataplane.com`         |
 
 <div class="warningBlock">
-
-While initializing the RudderStack client, the <code class="inline-code">ssl</code> field is optional if you are using the HTTPS protocol. If included, its value must be set to <code class="inline-code">true</code>. 
-
-In case of the HTTP protocol, <code class="inline-code">ssl</code> is a required field and must always be set to <code class="inline-code">false</code>.
+While initializing the RudderStack client, the <code class="inline-code">ssl</code> field is optional if you are using the HTTPS protocol. If included, its value must be set to <code class="inline-code">true</code>. In case of the HTTP protocol, <code class="inline-code">ssl</code> is a required field and must always be set to <code class="inline-code">false</code>.
 </div>
 
-### Initialization options
+### Other initialization options
 
-The detailed description of Initialization options is as follows:
+RudderStack provides some additional initialization options which are explained in the following table:
 
-| Parameter        | Data type         | Description     |
+| Option        | Data type         | Description     |
 | :----------- | :--------------- | :----------|
-|  `consumer`           | String      | To explicitly mark which consumer to use. Defaults to lib_curl.  |
-|  `data_plane_url `       | String | Explicitly set the url to the data plane. Defaults to “hosted.rudderlabs.com”    |
-|  `debug`          | Boolean                              |  Whether to log messages and wait for a response. Makes any queuing consumers non-async, defaults to false. This will make the library block until a response has been received from the API, so it is not recommended for production use.  |
-|  `ssl`           | Boolean      | Whether to use TLS instead of SSL for the socket connection, defaults to false. |
-|  `error_handler`       | Function | A handler which will be called on errors to aid in debugging. A function to handle errors, particularly useful for debugging. Note that if debug mode is not specified, then the error_handler will only be called on connection level errors and timeouts.
-function ($code, $message) {}   |
-|  `max_queue_size`           | Number      | The max size of the queue, defaults to 10000 items. |
-|  `batch_size`       | Number | How many items to send in a single curl request, defaults to 100. This is deprecated now use flush_at instead   |
-|  `flush_at`           | Number      | How many items to send in a single curl request, defaults to 100.  |
-|  `timeout `       | Number | The number of seconds to wait for the socket request to time out, defaults to 0.5   |
-|  `filename`           | String      | The location to write the log file, defaults to "/tmp/analytics.log" when file consumer is selected |
-|  `compress_request`       | Boolean | Whether to use gzipped request payloads, defaults to true. This is supported for server versions 1.4.0 and above.  |
-|  `flush_interval`           | Number      | Frequency in milliseconds to send data using flush method execution, defaults to 10000 miliseconds. |
-|  `curl_timeout `       | Number | Set timeout for the curl connections, defaults to 0, this is infinite  |
-|  `curl_connecttimeout`           | Number      | Set connect timeout for the curl connections, defaults to 300 |
-|  `max_item_size_bytes`       | Number | Set maximum message item size, defaults to 32000 bytes (32kb) |
-|  `max_queue_size_bytes`           | Number      | Set maximum batch size, defaults to 512000 bytes (512kb)   |
-|  `filepermissions `       | String | Set the file permissions for file consumer, defaults to 0644   |
+|  `consumer`           | String      | Explicitly marks which consumer to use. The default value is `lib_curl`. Refer to the <Link to="#consumers">Consumers</Link> section for more information. |
+|  `data_plane_url `       | String | Explicitly sets the URL to data plane. The default value is `hosted.rudderlabs.com`.  |
+|  `debug`          | Boolean  |  Determines whether to log messages and wait for a response. The default value is `false`. It makes the queuing consumers non-async and blocks the library until a response is received from the API. Hence it is **not recommended** for production use.  |
+|  `ssl`           | Boolean      | Determines whether to use TLS instead of SSL for the socket connection. The default value is `false`. |
+|  `error_handler`       | Function | Function to handle errors and is particularly useful for debugging. Note that if the debug mode is not specified, then the `error_handler` is only called on connection level errors and timeouts. For example, `function ($code, $message) {}`   |
+|  `max_queue_size`           | Number      | Max size of the queue. The default value is 10000 items. |
+|  `batch_size`       | Number | Items to be sent in a single curl request. The default value is 100. It is recommended to use `flush_at` instead of `batch_size` as it is deprecated.   |
+|  `flush_at`           | Number      | Items to be sent in a single curl request. The default value is 100. |
+|  `timeout `       | Number | Number of seconds to wait for the socket request to time out. The default value is 0.5.  |
+|  `filename`           | String      |Location to write the log file. The default value is `/tmp/analytics.log` when file consumer is selected. |
+|  `compress_request`       | Boolean | Determines whether to use gzipped request payloads. The default value is `true`. It is supported for server versions 1.4.0 and above.  |
+|  `flush_interval`           | Number      | Frequency in milliseconds to send data using flush method execution. The default value is 10000 miliseconds. |
+|  `curl_timeout `       | Number | Timeout for the curl connections. The default value is 0, meaning infinite. |
+|  `curl_connecttimeout`           | Number      | Connect timeout for the curl connections. The default value is 300. |
+|  `max_item_size_bytes`       | Number | Maximum message item size. The default value is 32000 bytes (32kb). |
+|  `max_queue_size_bytes`           | Number      | Maximum batch size. The default value is 512000 bytes (512kb).   |
+|  `filepermissions `       | String | File permissions for file consumer. The default value is 0644.   |
+
+## Migrating from v1 to v2
+
+To migrate to PHP SDK v2, ensure the following points:
+
+- Your PHP version should be v7.4 or above.
+- If you are using self hosted <a href="https://github.com/rudderlabs/rudder-server">rudder-server</a>, either upgrade it to v1.4.0/above or turn off the gzipped request payloads  (by setting `compress_request` to `false`).
 
 ## Sending events from the RudderStack client
 
@@ -129,14 +133,6 @@ Rudder::track(array(
   )
 ));
 ```
-
-## Migration from v1.x.x
-
-No migration steps are required, aside from a couple of edge cases.
-
-- Make sure that your PHP version is v7.4 and above
-- if you use a self hosted rudder server either upgrade it to v1.4.0 and above or use the option to turn off gzipped request payloads. (compress_request to false)
-- Use any of the newly added options in version 2 if desired
 
 ## Identify
 
@@ -318,4 +314,40 @@ The `alias` method parameters are as mentioned below:
 For a detailed explanation of the <code class="inline-code">alias</code> call, refer to our <a href="https://rudderstack.com/docs/event-spec/standard-events/alias">RudderStack API Specification</a> guide.
 </div>
 
+## Consumers
 
+You can specify different consumers to make requests to RudderStack servers as explained below:
+
+### Lib-Curl Consumer
+
+The [lib-curl consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/LibCurl.php) is RudderStack's default PHP library. You can use it for faster response during light loads. It runs synchronously, queuing calls and sending them in batches to RudderStack's servers. 
+
+### Fork-Curl Consumer
+
+The [fork-curl consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/ForkCurl.php) can be used when you can't use persistent sockets or want to ensure quick response for lighter loads. It creates an in-memory queue which buffers the `identify` and `track` calls. The queue is flushed by forking an async `curl` process that sends a batch request. It happens after every `100` calls or at the end of serving the page, by default. 
+
+### Socket Consumer
+
+You can use the [socket consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/Socket.php) which lets you to make requests to RudderStack when you can't spawn other processes from your PHP scripts. It initiates  a socket request to RudderStack servers each time an `identify` or `track` call is made. The socket request writes the event data and closes the connection before waiting for a response. If your servers are dealing with more than 100's of requests per second or cannot use a persistent connection, you may want to use some other consumer.
+
+### File Consumer
+
+You can also use the [file consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/File.php) for making requests to RudderStack. It records each `identify` or `track` call you make to a log file. Further, it uploads the log file by running the `file.php` file in RudderStack's [github repository](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/File.php).
+
+You can run the `send.php` file to upload your log file to RudderStack, as shown:
+
+```bash
+php send.php --secret YOUR_WRITE_KEY --file /tmp/analytics.log
+```
+
+<div class="infoBlock">
+It is recommended to run this command as a cron job after every few minutes so that your log files are created in manageable sizes. Every time you run the command, it will remove the old log files once they are processed successfully.
+</div>
+
+You can create a new cron job to upload your log files. A sample snippet to create a cron job is shown:
+
+```bash
+$ # create a cron job that runs as www-data every minute
+$ echo '*/1 * * * * www-data php /my/path/to/analytics-php/send.php > /dev/null' | sudo tee /etc/cron.d/analytics
+$ sudo service cron reload    # reload the cron daemon
+```
