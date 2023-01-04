@@ -139,17 +139,17 @@ Rudder::identify(array(
 The `identify` method parameters are as described below:
 
 | **Field**      | **Type** | **Description**        |
-| :------------- | :------- | :-------------------- | :------------- |
-| `anonymousId` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>      | String   |  Unique identifier for a particular user in your database.                                                                  |
+| :------------- | :------- | :------------- |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   | Sets the user ID for cases where there is no unique identifier for the user. |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>      | String   |  Unique identifier for a particular user in your database.                                                                  |
 | `context`      | Object   |  Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `integrations` | Object   |  A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `timestamp`    | Date     | The timestamp of the message's arrival.                                                                                    |
-| `traits`       | Object   | Dictionary of the traits associated with the user, such as `name`or `email`    |
+| `integrations` | Object   |  A dictionary containing the destinations to be either enabled or disabled.     |
+| `timestamp`    | Date     | The timestamp of the message's arrival.        |
+| `traits`       | Object   | Dictionary of the traits associated with the user, such as `name` or `email`.    |
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record the user actions along with their associated properties. Each user action is called an **event**
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record the user actions along with their associated properties. Each user action is called an **event**.
 
 A sample `track` call is shown below:
 
@@ -168,9 +168,9 @@ Rudder::track(array(
 The `track` method parameters are as described below:
 
 | Name           | Type   | Description     |
-| :------------- | :----- | :------- | :------------------------------- |
-| `user_id` <span style="color: #4D4DFF;font-size:12px;">Required</span>     | String |  The developer identification for your user                                                                                 |
-| `event` <span style="color: #4D4DFF;font-size:12px;">Required</span>        | String |  Name of the event being performed by the user                                                                              |
+| :------------- | :----- | :------------------------------- |
+| `user_id` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>     | String |  The developer identification for your user.                                                                                 |
+| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>        | String |  Name of the event being performed by the user.                                                                              |
 | `properties`   | Object |  Dictionary of the properties associated with a particular event.                                                           |
 | `context`      | Object |  Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
 | `timestamp`    | Date   |  The timestamp of the message's arrival.                                                                                    |
@@ -197,18 +197,18 @@ Rudder::page(array(
 The `page` method parameters are as described below:
 
 | **Field**      | **Type** | **Description**                  |
-| :------------- | :------- | :---------------------------------------- | :-------------------------------- |
-| `anonymousId` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  Sets the user ID for cases where there is no unique identifier for the user.  |
-| `userId`   <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>    | String   | Unique identifier for a particular user in your database.      |
+| :------------- | :------- | :-------------------------------- |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  Sets the user ID for cases where there is no unique identifier for the user.  |
+| `userId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>    | String   | Unique identifier for a particular user in your database.      |
 | `context`      | Object   |  Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
 | `integrations` | Object   |  A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `name`   <span style="color: #4D4DFF;font-size:12px;">Required</span>        | String         | Name of the page being viewed.                                                                                             |
-| `properties`   | Object   |  Dictionary of the properties associated with the page being viewed, such as `url` and `referrer`                           |
+| `name`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>        | String         | Name of the page being viewed.                                                                                             |
+| `properties`   | Object   |  Dictionary of the properties associated with the page being viewed, such as `url` and `referrer`.                          |
 | `timestamp`    | Date     |  The timestamp of the message's arrival.                    |
 
 ## Screen
 
-The <Link to="/event-spec/standard-events/screen/">`screen`</Link> call is the mobile equivalent of the <Link to="/event-spec/standard-events/page/">`page`</Link> call. It lets you record the screen views on your mobile app along with other relevant information about the screen
+The <Link to="/event-spec/standard-events/screen/">`screen`</Link> call is the mobile equivalent of the <Link to="/event-spec/standard-events/page/">`page`</Link> call. It lets you record the screen views on your mobile app along with other relevant information about the screen.
 
 A sample `screen` call is as shown:
 
@@ -226,7 +226,7 @@ Rudder::screen(array(
 The `screen` method parameters are as described below:
 
 | **Field**      | **Type** | **Description**                 |
-| :------------- | :------- | :---------------------------------------- | :---------------------------- |
+| :------------- | :------- |  :---------------------------- |
 | `anonymousId` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
 | `userId`  <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a particular user in your database.            |
 | `context`      | Object   |  Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
@@ -256,11 +256,11 @@ The `group` method parameters are as follows:
 
 | **Field**      | **Type** | **Description**      |
 | :------------- | :------- | :---------------------------------------- | :--------------------------------- |
-| `anonymousId` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>  | String   |  Sets the user ID for cases where there is no unique identifier for the user.  |
-| `userId` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>       | String   |  Unique identifier for a particular user in your database.                                                                  |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>  | String   |  Sets the user ID for cases where there is no unique identifier for the user.  |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>       | String   |  Unique identifier for a particular user in your database.                                                                  |
 | `context`      | Object   | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
 | `integrations` | Object   |  A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `groupId` <span style="color: #4D4DFF;font-size:12px;">Required</span>     | String   | Unique identifier of the group, as present in your database.                                                               |
+| `groupId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>     | String   | Unique identifier of the group, as present in your database.                                                               |
 | `traits`       | Object   |  Dictionary of the properties or traits associated with the group, such as `email` or `name`.                               |
 | `timestamp`    | Date     | The timestamp of the message's arrival.                                                                                    |
 
@@ -285,10 +285,10 @@ The `alias` method parameters are as mentioned below:
 
 | **Field**      | **Type** | **Description**          |
 | :------------- | :------- | :---------------------------------------- | :--------------------------- |
-| `userId`  <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a particular user in your database.                                                             |
+| `userId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a particular user in your database.                                                             |
 | `context`      | Object   | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
 | `integrations` | Object   | A dictionary containing the destinations to be either enabled or disabled.                                            |
-| `previousId` <span style="color: #4D4DFF;font-size:12px;">Required</span>  | String    | The previous unique identifier of the user.                                                                           |
+| `previousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | String    | The previous unique identifier of the user.                                                                           |
 | `traits`       | Object   | Dictionary of the properties or traits associated with the group, such as `email` or `name`.                          |
 | `timestamp`    | Date     | The timestamp of the message's arrival.                                                                               |
 
@@ -302,7 +302,7 @@ You can specify different consumers to make requests to RudderStack servers as e
 
 ### Lib-Curl Consumer
 
-The [lib-curl consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/LibCurl.php) is RudderStack's default PHP library. You can use it for faster response during light loads. It runs synchronously, queuing calls and sending them in batches to RudderStack's servers. 
+The [lib-curl consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/LibCurl.php) is RudderStack's default PHP library. You can use it for faster response during lighter loads. It runs synchronously, queuing and sending calls in batches to RudderStack's servers. 
 
 ### Fork-Curl Consumer
 
@@ -310,7 +310,7 @@ The [fork-curl consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/devel
 
 ### Socket Consumer
 
-You can use the [socket consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/Socket.php) which lets you to make requests to RudderStack when you can't spawn other processes from your PHP scripts. It initiates  a socket request to RudderStack servers each time an `identify` or `track` call is made. The socket request writes the event data and closes the connection before waiting for a response. If your servers are dealing with more than 100's of requests per second or cannot use a persistent connection, you may want to use some other consumer.
+You can use the [socket consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/Socket.php) which lets you make requests to RudderStack when you can't spawn other processes from your PHP scripts. It initiates  a socket request to RudderStack servers each time an `identify` or `track` call is made. The socket request writes the event data and closes the connection before waiting for a response. If your servers are dealing with more than 100's of requests per second or cannot use a persistent connection, it is recommended use some other consumer.
 
 ### File Consumer
 
@@ -323,10 +323,10 @@ php send.php --secret YOUR_WRITE_KEY --file /tmp/analytics.log
 ```
 
 <div class="infoBlock">
-It is recommended to run this command as a cron job after every few minutes so that your log files are created in manageable sizes. Every time you run the command, it will remove the old log files once they are processed successfully.
+It is recommended to run this command as a cron job after every few minutes so that your log files are created in manageable sizes. Every time you run the command, it removes the old log files once they are processed successfully.
 </div>
 
-You can create a new cron job to upload your log files. A sample snippet to create a cron job is shown:
+You can create a new cron job to upload your log files. A sample snippet to create a cron job is as shown:
 
 ```bash
 $ # create a cron job that runs as www-data every minute
