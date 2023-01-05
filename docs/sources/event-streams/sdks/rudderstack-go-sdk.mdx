@@ -1,11 +1,13 @@
 ---
 title: "Go"
-description: Use RudderStack’s Go SDK to send events to various destinations.
+description: Use RudderStack’s Go SDK to send server-side events to various destinations.
 ---
 
-The **RudderStack Go SDK** lets you track your customer event data from your Go applications and send it to your specified destinations via RudderStack.
+RudderStack's Go SDK lets you track and send the events from your Go applications to the specified destinations.
 
-Check out the [**GitHub codebase**](https://github.com/rudderlabs/analytics-go) to get a more hands-on understanding of the SDK.
+<div class="infoBlock">
+Refer to the SDK's <a href="https://github.com/rudderlabs/analytics-go">GitHub codebase</a> for the implementation-specific details.
+</div>
 
 <GhBadge
   url={'https://github.com/rudderlabs/analytics-go'}
@@ -14,14 +16,12 @@ Check out the [**GitHub codebase**](https://github.com/rudderlabs/analytics-go) 
 
 ## SDK setup requirements
 
-To set up the RudderStack Go SDK, the following prerequisites must be met:
+1. Sign up to [RudderStack Cloud](https://app.rudderstack.com/signup).
+2. <Link to="/dashboard-guides/sources/#adding-a-source">Set up a Go source</Link> in your dashboard. You should be able to see a <strong>write key</strong> for this source, as shown:
 
-- You need to set up a [**RudderStack account**](https://app.rudderstack.com/signup).
-- Once signed up, <Link to="/dashboard-guides/sources/#adding-a-source">set up a Go source</Link> in the dashboard. You should be able to see a **Write Key** for this source, as shown below:
+<img src="../../../assets/event-stream-sources/go-sdk-write-key.png" alt="Go source write key" />
 
-<img src="../../../assets/event-stream-sources/go-write-key-new.png" alt="Go source write key" />
-
-- You will also need a data plane URL. Refer to the <Link to="/resources/glossary/#data-plane-url">Glossary</Link> for more information on the data plane URL and where to find it.
+You will also need a data plane URL. Refer to the <Link to="/dashboard-guides/overview/#data-plane-url">Dashboard Overview</Link> guide for more information on the data plane URL and where to find it.
 
 <div class="successBlock">
 The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has an SDK installation snippet containing both the write key and the data plane URL. You can use it to integrate the Go SDK into your application.
@@ -29,33 +29,40 @@ The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has an 
 
 ## Installing the Go SDK
 
-You can install the RudderStack Go SDK via the `go get` command. We highly recommend that you use a tool like **Godep** to avoid the issues related to any breaking API changes introduced between major versions of the library.
+You can install the RudderStack Go SDK via the `go get` command. 
 
-To install it in the `GOPATH`, run the following:
+<div class="warningBlock">
+It is highly recommended to use a tool like <a href="https://github.com/tools/godep">Godep</a> to avoid the issues related to any breaking API changes introduced between major versions of the library.
+</div>
+
+To install the Go SDK in the `GOPATH`, run the following command:
 
 ```go
 go get github.com/rudderlabs/analytics-go
 ```
 
-## Using the Go SDK
+## Initializing the SDK
 
-To use the SDK, run the following code snippet:
+Run the following code snippet to initialize the Go SDK:
 
 ```go
 package main
 
 import (
-    "github.com/rudderlabs/analytics-go"
+    "github.com/rudderlabs/analytics-go/v4"
 )
 
 func main() {
-    // Instantiates a client to use send messages to the Rudder API.
-    client := analytics.New(WRITE_KEY, DATA_PLANE_URL)
+    // Instantiates a client to use send messages to the RudderStack API.
+    
+    // Use your write key in the below placeholder:
+    
+    client := analytics.New(<WRITE_KEY>, <DATA_PLANE_URL>)
 
     // Enqueues a track event that will be sent asynchronously.
     client.Enqueue(analytics.Track{
-        UserId: "test-user",
-        Event:  "test-snippet",
+        UserId: "1hKOmRA4GRlm",
+        Event:  "Test Event",
     })
 
     // Flushes any queued messages and closes the client.
@@ -69,74 +76,94 @@ Alternatively, you can run the following snippet:
 package main
 
 import (
-    "github.com/rudderlabs/analytics-go"
+    "github.com/rudderlabs/analytics-go/v4"
 )
 
 func main() {
-    // Instantiates a client to use send messages to the Rudder API.
-    client, _ := analytics.NewWithConfig(WRITE_KEY, DATA_PLANE_URL,
-        analytics.Config{
-            Interval:  30 * time.Second,
-            BatchSize: 100,
-            Verbose:   true,
-        })
+    // Instantiates a client to use send messages to the RudderStack API.
+    
+    // Enter your write key in the below placeholder:
+    
+    client, _ := analytics.NewWithConfig(WRITE_KEY,
+		analytics.Config{
+			DataPlaneUrl: DATA_PLANE_URL,
+			Interval:     30 * time.Second,
+			BatchSize:    100,
+			Verbose:      true,
+			Gzip:         0,  // Enables Gzip compression - set to 1 to disable Gzip.
+		})
 
     // Enqueues a track event that will be sent asynchronously.
+    
     client.Enqueue(analytics.Track{
-        UserId: "test-user",
-        Event:  "test-snippet",
+        UserId: "1hKOmRA4GRlm",
+        Event:  "Test Event",
     })
 
     // Flushes any queued messages and closes the client.
+    
     client.Close()
 }
 ```
 
-The `Config` object parameters are described in the following table:
+### SDK initialization options
 
-| **Field**               | **Type**      | **Presence** | **Description**                                                                          |
-| :---------------------- | :------------ | :----------- | :--------------------------------------------------------------------------------------- |
-| `Interval`              | time.Duration | Optional     | Messages will be sent when this flushing interval time triggers                          |
-| `BatchSize`             | int           | Optional     | Total number of messages to be sent in a single batch                                    |
-| `Verbose`               | bool          | Optional     | When set to true, the client will send more frequent and detailed messages to its logger |
-| `RetryAfter`            | time.Duration | Optional     | This can be used to set up how long the failed messages can be retried                   |
-| `maxConcurrentRequests` | int           | Optional     | The maximum number of parallel goroutines which will be spawned                          |
-| `NoProxySupport`        | bool          | Optional     | Setting this variable to true will disable making calls to cluster-info end point        |
+The RudderStack Go SDK provides the following initialization options:
 
-Users who do not use a proxy should set the `NoProxySupport` parameter to `true` while initializing the config.
-
-```go
-    // Instantiates a client to use send messages to the Rudder API.
-    client, _ := analytics.NewWithConfig(WRITE_KEY, DATA_PLANE_URL,
-        analytics.Config{
-            Interval:  30 * time.Second,
-            BatchSize: 100,
-            NoProxySupport:   true,
-        })
-```
+| **Field**      | **Type**      | **Description**        |
+| :---------------------- | :------------ |:---------------- |
+| `Interval`   | Time (in sec) | The SDK sends the messages when this flushing interval time has elapsed.       |
+| `BatchSize`       | Integer           | Total number of messages to be sent in a single batch.  Default value is 100.     |
+| `Verbose`  | Boolean  | When set to `true`, the client sends more frequent and detailed messages to the logger.  |
+| `RetryAfter`    | Time (in sec) |  Determines how long the SDK should wait to retry sending the failed messages. |
+| `maxConcurrentRequests` | Integer   | Maximum number of parallel goroutines to be spawned.          |
+| `NoProxySupport`        | Boolean          | Setting this variable to `true` if you do not use a proxy to send the events.    |
 
 <div class="infoBlock">
-
-Setting <code class="inline-code">NoProxySupport</code> to <code class="inline-code">true</code> will avoid RudderStack making calls to the proxy for fetching the total number of nodes, in case of multi-node setup.
+Setting <code class="inline-code">NoProxySupport</code> to <code class="inline-code">true</code> will avoid RudderStack making calls to the proxy for fetching the total number of nodes in case of a multi-node setup.
 </div>
 
-## Identify
+## Gzipping requests
 
-The `identify` call lets you identify a visiting user and capture any related information such as their name, email address, etc.
+<div class="successBlock">
+The Gzip feature is enabled by default in the Go SDK version 4.0.0.
+</div>
+
+The Go SDK automatically gzips requests. However, you can disable this by setting the `Gzip` parameter to `1` while initializing the SDK, as shown:
+
+```go
+client, _ := analytics.NewWithConfig(WRITE_KEY,
+		analytics.Config{
+			DataPlaneUrl: DATA_PLANE_URL,
+			Interval:     30 * time.Second,
+			BatchSize:    100,
+			Verbose:      true,
+			Gzip:         1   // Disables Gzip compression
+		})
+```
 
 <div class="warningBlock">
-
-RudderStack does not store the user state in any of the server-side SDKs. Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users at the same time. Therefore, for any of the calls supported by the Node.js SDK, you need to specify either `userId` or `anonymousId` every time.
+Gzip requires <a href="https://github.com/rudderlabs/rudder-server">rudder-server</a> <strong>v1.4 or higher</strong>. Otherwise, your events might fail.
 </div>
 
-A sample `identify` call is as shown:
+## Sending events
+
+<div class="warningBlock">
+<strong>RudderStack does not store or persist the user state in any of the server-side SDKs</strong>. <br /><br />Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users simultaneously. Therefore, you must specify either the <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> <strong>every time</strong> while making any API calls supported by the Go SDK.
+</div>
+
+### Identify
+
+The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
+
+A sample `identify` call made using the Go SDK is shown below:
 
 ```go
 client.Enqueue(analytics.Identify{
   UserId: "123",
   Traits: analytics.NewTraits().
-    SetName("Name Surname").
-    SetEmail("name@example.com").
+    SetName("Alex Keener").
+    SetEmail("alex@example.com").
     Set("plan", "Free").
     Set("manager", 12),
 })
@@ -144,24 +171,23 @@ client.Enqueue(analytics.Identify{
 
 The `identify` method parameters are as described below:
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                            |
-| :------------- | :------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `anonymousId`  | String   | Optional                                  | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId`       | String   | Optional, if `anonymousId` is already set | Unique identifier for a particular user in your database.                                                                  |
-| `context`      | Object   | Optional                                  | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `integrations` | Object   | Optional                                  | A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
-| `traits`       | Object   | Optional                                  | Dictionary of the traits associated with the user, such as `name`or `email`                                                |
+| **Field**      | **Type** |  **Description**     |
+| :------------- | :------- |  :---------------- |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a user in your database.      |
+| `anonymousId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  The SDK automatically sets this identifier in cases where there is no unique identifier for the user. |
+| `traits`       | Object   | An optional dictionary of the user's traits like `name` or `email`.     |
+| `context`      | Object   |  An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.                |
 
-## Track
+### Track
 
-The `track` call lets you record the user actions along with their associated properties. Each user action is called an **event**.
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record the user actions along with their associated properties. Each user action is called an **event**.
 
 A sample `track` call is shown below:
 
 ```go
 client.Enqueue(analytics.Track{
-  UserId: "123",
+  UserId: "1hKOmRA4GRlm",
   Event:  "Signed Up",
   Properties: analytics.NewProperties().
     Set("plan", "Free"),
@@ -170,19 +196,18 @@ client.Enqueue(analytics.Track{
 
 The `track` method parameters are as described below:
 
-| Name           | Type   | Presence | Description                                                                                                                |
-| :------------- | :----- | :------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `user_id`      | String | Required | The developer identification for your user                                                                                 |
-| `event`        | String | Required | Name of the event being performed by the user                                                                              |
-| `properties`   | Object | Optional | Dictionary of the properties associated with a particular event.                                                           |
-| `context`      | Object | Optional | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `timestamp`    | Date   | Optional | The timestamp of the message's arrival.                                                                                    |
-| `anonymous_id` | String | Optional | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `integrations` | Object | Optional | A dictionary containing the destinations to be either enabled or disabled.                                                 |
+| **Field**      | **Type** |  **Description**     |
+| :------------- | :------- |  :---------------- |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a user in your database.      |
+| `anonymousId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  The SDK automatically sets this identifier in cases where there is no unique identifier for the user. |
+| `event`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>      | String | Name of the event.           |
+| `properties`   | Object | An optional dictionary of the properties associated with the event.   |
+| `context`      | Object | An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.  |
 
-## Page
+### Page
 
-The `page` call allows you to record the page views on your website along with the other relevant information about the viewed page.
+The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record the page views on your application along with the other relevant information about the page.
 
 A sample `page` call is as shown:
 
@@ -197,21 +222,46 @@ client.Enqueue(analytics.Page{
 
 The `page` method parameters are as described below:
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                            |
-| :------------- | :------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `anonymousId`  | String   | Optional                                  | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId`       | String   | Optional, if `anonymousId` is already set | Unique identifier for a particular user in your database.                                                                  |
-| `context`      | Object   | Optional                                  | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `integrations` | Object   | Optional                                  | A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `name`         | String   | Required                                  | Name of the page being viewed.                                                                                             |
-| `properties`   | Object   | Optional                                  | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer`                           |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
+| **Field**      | **Type** |  **Description**     |
+| :------------- | :------- |  :---------------- |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a user in your database.      |
+| `anonymousId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  The SDK automatically sets this identifier in cases where there is no unique identifier for the user. |
+| `name`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>      | String | Name of the viewed page.           |
+| `properties`   | Object | An optional dictionary of the properties associated with the viewed page, like `url` or `referrer`.   |
+| `context`      | Object | An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.  |
 
-## Group
+### Screen
 
-The `group` call lets you associate an identified user to a group - either a company, project or a team and record any custom traits or properties associated with that group.
+The <Link to="/event-spec/standard-events/screen/">`screen`</Link> call is the mobile equivalent of the <Link to="/event-spec/standard-events/page/">`page`</Link> call. It lets you record the screen views on your mobile app along with other relevant information about the screen.
 
-A sample `group` call is as shown:
+A sample `screen` call is as shown:
+
+```go
+client.Enqueue(analytics.Screen{
+  UserId: "1hKOmRA4GRlm",
+  Name:   "Pizza",
+  Properties: analytics.NewProperties().
+    SetURL("https://dominos.com"),
+})
+```
+
+The `screen` method parameters are as described below:
+
+| **Field**      | **Type** |  **Description**     |
+| :------------- | :------- |  :---------------- |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a user in your database.      |
+| `anonymousId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  The SDK automatically sets this identifier in cases where there is no unique identifier for the user. |
+| `name`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>      | String | Name of the viewed screen.           |
+| `properties`   | Object | An optional dictionary of the properties associated with the viewed screen, like `url` or `referrer`.   |
+| `context`      | Object | An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.  |
+
+### Group
+
+The <Link to="/event-spec/standard-events/group/">`group`</Link> call lets you link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits or properties associated with that group.
+
+A sample `group` call made using the Go SDK is shown below:
 
 ```go
 client.Enqueue(analytics.Group{
@@ -226,23 +276,21 @@ client.Enqueue(analytics.Group{
 
 The `group` method parameters are as follows:
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                            |
-| :------------- | :------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `anonymousId`  | String   | Optional                                  | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId`       | String   | Optional, if `anonymousId` is already set | Unique identifier for a particular user in your database.                                                                  |
-| `context`      | Object   | Optional                                  | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `integrations` | Object   | Optional                                  | A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `groupId`      | String   | Required                                  | Unique identifier of the group, as present in your database.                                                               |
-| `traits`       | Object   | Optional                                  | Dictionary of the properties or traits associated with the group, such as `email` or `name`.                               |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
+| **Field**      | **Type** |  **Description**     |
+| :------------- | :------- |  :---------------- |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a user in your database.      |
+| `anonymousId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  The SDK automatically sets this identifier in cases where there is no unique identifier for the user. |
+| `groupId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | String   | Unique identifier of the group in your database.    |
+| `traits`       | Object   | An optional dictionary of the group's traits like `name`or `email`.     |
+| `context`      | Object   |  An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.                |
 
-## Alias
+### Alias
 
-The `alias` call lets you merge different identities of a known user.
+The <Link to="/event-spec/standard-events/alias/">`alias`</Link> call lets you merge different identities of a known user. It is an advanced method that lets you change the tracked user's ID explicitly. You can use `alias` for managing the user's identity in some of the downstream destinations.
 
-<div class="infoBlock">
-
-<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
+<div class="warningBlock">
+RudderStack supports sending <code class="inline-code">alias</code> events only to select downstream destinations. Refer to the <Link to="/destinations/streaming-destinations/">destination-specific documentation</Link> for more details.
 </div>
 
 A sample `alias` call is as shown:
@@ -256,18 +304,13 @@ client.Enqueue(analytics.Alias{
 
 The `alias` method parameters are as mentioned below:
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                       |
-| :------------- | :------- | :---------------------------------------- | :-------------------------------------------------------------------------------------------------------------------- |
-| `userId`       | String   | Optional, if `anonymousId` is already set | Unique identifier for a particular user in your database.                                                             |
-| `context`      | Object   | Optional                                  | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
-| `integrations` | Object   | Optional                                  | A dictionary containing the destinations to be either enabled or disabled.                                            |
-| `previousId`   | String   | Required                                  | The previous unique identifier of the user.                                                                           |
-| `traits`       | Object   | Optional                                  | Dictionary of the properties or traits associated with the group, such as `email` or `name`.                          |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                               |
+| **Field**      | **Type** |  **Description**     |
+| :------------- | :------- |  :---------------- |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a user in your database.      |
+| `anonymousId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  The SDK automatically sets this identifier in cases where there is no unique identifier for the user. |
+| `previousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | String   | The previous unique identifier of the user.        |
+| `traits`       | Object   | An optional dictionary of the user's traits like `name` or `email`.     |
+| `context`      | Object   |  An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.     |
 
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">alias</code> call, refer to the <a href="https://rudderstack.com/docs/event-spec/standard-events/alias/">RudderStack API Specification</a> guide.
-</div>
-
-
+<br />
