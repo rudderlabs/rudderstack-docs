@@ -1,9 +1,9 @@
 ---
 title: "Java"
-description: Use RudderStack’s Java SDK to send events to various destinations.
+description: Use RudderStack’s Java SDK to send server-side events to various destinations.
 ---
 
-RudderStack’s Java SDK lets you track and send the events from your Java apps to your specified destinations.
+RudderStack's Java SDK lets you track and send the events from your Java applications to the specified destinations.
 
 <div class="infoBlock">
 Refer to the SDK's <a href="https://github.com/rudderlabs/rudder-sdk-java">GitHub codebase</a> for the implementation-specific details.
@@ -132,7 +132,7 @@ The `track` method parameters are as described below:
 
 ### Page
 
-The <Link to="/event-spec/standard-events/page/">`page`</Link> call allows you to record the page views on your application, along with the other relevant information about the page.
+The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record the page views on your application along with the other relevant information about the page.
 
 A sample `page` call is as shown:
 
@@ -240,7 +240,7 @@ The `alias` method parameters are as mentioned below:
 | `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a user in your database.      |
 | `anonymousId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  The SDK automatically sets this identifier in cases where there is no unique identifier for the user. |
 | `previousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | String   | The previous unique identifier of the user.        |
-| `traits`       | Object   | An optional dictionary of the group's traits like `name` or `email`.     |
+| `traits`       | Object   | An optional dictionary of the user's traits like `name` or `email`.     |
 | `context`      | Object   |  An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
 | `integrations` | Object   | An optional dictionary containing the destinations to be enabled or disabled.            |
 | `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.     |
