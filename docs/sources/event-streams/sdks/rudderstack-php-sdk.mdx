@@ -168,7 +168,7 @@ The `track` method parameters are as described below:
 | `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String |  Unique identifier for a user in your database.   |
 | `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>| String |  The SDK automatically sets this identifier in cases where there is no unique identifier for the user.  |
 | `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>        | String | Name of the event.                                                                    |
-| `properties`   | Object |  An optional dictionary of information that provides context about the message. It is not directly related to the API call.  |
+| `properties`   | Object |  An optional dictionary of the properties associated with the event.   |
 | `context`      | Object |  An optional dictionary of information that provides context about a message. It is not directly related to the API call.   |
 | `timestamp`    | Date   |  The timestamp of the message's arrival.                                                                                    |
 | `integrations` | Object |   An optional dictionary containing the destinations to be enabled or disabled.                                    |
