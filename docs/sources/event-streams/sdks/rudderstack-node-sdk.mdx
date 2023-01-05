@@ -275,8 +275,8 @@ The `alias` method parameters are as mentioned below:
 
 | **Field**       | **Type** |  **Description**           |
 | :------------ | :------- | :------------------- |
-| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>       | String | Unique identifier for a user in your database.                                            |
-| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>   | String | The SDK automatically sets this identifier in cases where there is no unique identifier for the user.|
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>       | String | Unique identifier for a user in your database.                                            |
+| `anonymousId`   | String | The SDK automatically sets this identifier in cases where there is no unique identifier for the user.|
 | `previousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | String   | The previous unique identifier of the user.       |
 | `context`      | Object   | An optional dictionary of information that provides context about a message. It is not directly related to the API call.  |
 | `integrations` | Object   |  An optional dictionary containing the destinations to be either enabled or disabled.   |
