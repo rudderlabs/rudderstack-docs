@@ -165,8 +165,8 @@ The `track` method parameters are as described below:
 
 | Name           | Type   | Description     |
 | :------------- | :----- | :------------------------------- |
-| `user_id` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anomymousId</strong> is absent.</span>     | String |  Unique identifier for a user in your database.   |
-| `anonymous_id` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>| String |  The SDK automatically sets this identifier in cases where there is no unique identifier for the user.  |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anomymousId</strong> is absent.</span>     | String |  Unique identifier for a user in your database.   |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>| String |  The SDK automatically sets this identifier in cases where there is no unique identifier for the user.  |
 | `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>        | String | Name of the event.                                                                    |
 | `properties`   | Object |  An optional dictionary of information that provides context about the message. It is not directly related to the API call.  |
 | `context`      | Object |  An optional dictionary of information that provides context about a message. It is not directly related to the API call.   |
@@ -302,7 +302,7 @@ The [lib-curl consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develo
 
 ### Fork-Curl Consumer
 
-The [fork-curl consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/ForkCurl.php) can be used when you can't use persistent sockets or want to ensure quick response for lighter loads. It creates an in-memory queue which buffers the `identify` and `track` calls. The queue is flushed by forking an async `curl` process that sends a batch request. It happens after every `100` calls or at the end of serving the page, by default. 
+The [fork-curl consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/ForkCurl.php) can be used when you can't use persistent sockets or want to ensure quick response for lighter loads. It creates an in-memory queue which buffers the `identify` and `track` calls. The queue is flushed by forking an async `curl` process that sends a batch request. The flushing happens after every 100 calls or at the end of serving the page, by default. You can use the `flush_at` property to configure this value.
 
 ### Socket Consumer
 
