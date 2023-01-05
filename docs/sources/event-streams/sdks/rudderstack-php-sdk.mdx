@@ -109,7 +109,7 @@ To migrate to PHP SDK v2, make sure the following conditions are met:
 - Your PHP version should be v7.4 or above.
 - If you are using self-hosted <a href="https://github.com/rudderlabs/rudder-server">rudder-server</a>, either upgrade it to v1.4.0 or above, or disable the gzipped request payloads  (by setting `compress_request` to `false`).
 
-## Sending events from the RudderStack client
+## Sending events
 
 <div class="warningBlock">
 <strong>RudderStack does not store or persist the user state in any of the server-side SDKs</strong>. <br /><br />Unlike the client-side SDKs that deal with a single user at a given time, the server-side SDKs deal with multiple users simultaneously. Therefore, you must specify either the <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> <strong>every time</strong> while making any API calls supported by the PHP SDK.
