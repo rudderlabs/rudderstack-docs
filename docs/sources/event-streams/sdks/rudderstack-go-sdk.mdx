@@ -29,12 +29,6 @@ The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has an 
 
 ## Installing the Go SDK
 
-You can install the RudderStack Go SDK via the `go get` command. 
-
-<div class="warningBlock">
-It is highly recommended to use a tool like <a href="https://github.com/tools/godep">Godep</a> to avoid the issues related to any breaking API changes introduced between major versions of the library.
-</div>
-
 To install the Go SDK in the `GOPATH`, run the following command:
 
 ```go
@@ -116,7 +110,7 @@ The RudderStack Go SDK provides the following initialization options:
 | `BatchSize`       | Integer           | Total number of messages to be sent in a single batch.  Default value is 100.     |
 | `Verbose`  | Boolean  | When set to `true`, the client sends more frequent and detailed messages to the logger.  |
 | `RetryAfter`    | Time (in sec) |  Determines how long the SDK should wait to retry sending the failed messages. |
-| `maxConcurrentRequests` | Integer   | Maximum number of parallel goroutines to be spawned.          |
+| `Gzip` | Integer   | Enables Gzip compression of the requests. By default, this is enabled (value set to `0`). To disable gzip, set this parameter to `1`.          |
 | `NoProxySupport`        | Boolean          | Setting this variable to `true` if you do not use a proxy to send the events.    |
 
 <div class="infoBlock">
@@ -177,6 +171,7 @@ The `identify` method parameters are as described below:
 | `anonymousId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  The SDK automatically sets this identifier in cases where there is no unique identifier for the user. |
 | `traits`       | Object   | An optional dictionary of the user's traits like `name` or `email`.     |
 | `context`      | Object   |  An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `integrations` | Object   | An optional dictionary containing the destinations to be enabled or disabled.            |
 | `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.                |
 
 ### Track
@@ -203,6 +198,7 @@ The `track` method parameters are as described below:
 | `event`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>      | String | Name of the event.           |
 | `properties`   | Object | An optional dictionary of the properties associated with the event.   |
 | `context`      | Object | An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `integrations` | Object   | An optional dictionary containing the destinations to be enabled or disabled.            |
 | `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.  |
 
 ### Page
@@ -229,6 +225,7 @@ The `page` method parameters are as described below:
 | `name`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>      | String | Name of the viewed page.           |
 | `properties`   | Object | An optional dictionary of the properties associated with the viewed page, like `url` or `referrer`.   |
 | `context`      | Object | An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `integrations` | Object   | An optional dictionary containing the destinations to be enabled or disabled.            |
 | `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.  |
 
 ### Screen
@@ -255,6 +252,7 @@ The `screen` method parameters are as described below:
 | `name`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>      | String | Name of the viewed screen.           |
 | `properties`   | Object | An optional dictionary of the properties associated with the viewed screen, like `url` or `referrer`.   |
 | `context`      | Object | An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `integrations` | Object   | An optional dictionary containing the destinations to be enabled or disabled.            |
 | `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.  |
 
 ### Group
@@ -283,6 +281,7 @@ The `group` method parameters are as follows:
 | `groupId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | String   | Unique identifier of the group in your database.    |
 | `traits`       | Object   | An optional dictionary of the group's traits like `name`or `email`.     |
 | `context`      | Object   |  An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `integrations` | Object   | An optional dictionary containing the destinations to be enabled or disabled.            |
 | `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.                |
 
 ### Alias
@@ -311,6 +310,7 @@ The `alias` method parameters are as mentioned below:
 | `previousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | String   | The previous unique identifier of the user.        |
 | `traits`       | Object   | An optional dictionary of the user's traits like `name` or `email`.     |
 | `context`      | Object   |  An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `integrations` | Object   | An optional dictionary containing the destinations to be enabled or disabled.            |
 | `timestamp`    | Timestamp in ISO 8601 format     | The timestamp of the event's arrival.     |
 
 <br />
