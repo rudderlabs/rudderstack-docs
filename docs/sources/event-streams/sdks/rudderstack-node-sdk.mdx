@@ -302,7 +302,7 @@ To achieve data persistence, you need to call the `createPersistenceQueue` metho
 <span>
 
 ```jsx
-const client = new Analytics("write_key","server_url/v1/batch",{
+const client = new Analytics("write_key","DATA_PLANE_URL/v1/batch",{
     flushAt: <number> = 20,
     flushInterval: <ms> = 20000
     // the max number of elements that the SDK can hold in memory,
