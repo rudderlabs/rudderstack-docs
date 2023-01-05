@@ -22,7 +22,7 @@ Refer to the Node SDK's <a href="https://github.com/rudderlabs/rudder-sdk-node">
 
 <img src="../../../assets/event-stream-sources/node-write-key-new.png" alt="Node source write key" />
 
-You will also need the data plane URL.  Refer to the <Link to="/dashboard-guides/overview/#data-plane-url">Dashboard Overview</Link> guide for more information on the data plane URL and where to find it.
+You will also need the data plane URL. Refer to the <Link to="/dashboard-guides/overview/#data-plane-url">Dashboard Overview</Link> guide for more information on the data plane URL and where to find it.
 
 <div class="successBlock">
 The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has the SDK installation snippet containing both the write key and the data plane URL. Copy it to integrate the Node SDK into your application.
@@ -30,7 +30,7 @@ The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has the
 
 ## Installing the Node.js SDK
 
-To install the RudderStack Node.js SDK using [**npm**](https://www.npmjs.com/), run the following command:
+To install the RudderStack Node.js SDK using [npm](https://www.npmjs.com/), run the following command:
 
 ```bash
 npm install @rudderstack/rudder-sdk-node
@@ -76,41 +76,42 @@ const client = new Analytics(WRITE_KEY, {
 
 ## SDK initialization options
 
-Below parameters are optional and can be passed during SDK initialization.
+The RudderStack Node.js SDK provides the following parameters which are optional and can be passed during the SDK initialization:
 
-| Name                   | Data type     | Default value    | Description         |
+| Parameter                   | Data type     | Default value    | Description         |
 | :--------------------- | :------- | :------------------------------ | :------------------ |
 | `dataPlaneUrl`         | String   | `https://hosted.rudderlabs.com` | The data plane URL.        |
 | `path`                 | String   | `/v1/batch`                     | Path to batch endpoint.          |
 | `flushAt`              | Number   | 20                              | The number of events to be flushed when reached this limit.   |
-| `flushInterval`        | Number   | 10000                           | The maximum timespan (in milliseconds) after which the events from the in-memory queue is flushed |
-| `maxQueueSize`         | Number   | 460800(500kb)                   | Maximum payload size of a batch request   |
-| `maxInternalQueueSize` | Number   | 20000                           | The maximum length of the in-memory queue     |
-| `logLevel`             | String   | 'info'                          | Log level. `Ex: 'debug', 'error'`     |
-| `axiosConfig`          | Object   | N/A                             | Axios config            |
-| `axiosInstance`        | Object   | N/A                             | Axios instance              |
-| `axiosRetryConfig`     | Object   | N/A                             | Axios retry configuration          |
-| `retryCount`           | Number   | 3                               | Number of times requests will be retried by axios if failed  |
-| `errorHandler`         | Function | N/A                             | A function that will be called if request to server failed |
-| `gzip`                 | Boolean  | true                            | Whether to compress request with gzip or not  |
+| `flushInterval`        | Number   | 10000                           | The maximum timespan (in milliseconds) after which the events from the in-memory queue are flushed. |
+| `maxQueueSize`         | Number   | 460800(500KB)                   | Maximum payload size of a batch request.   |
+| `maxInternalQueueSize` | Number   | 20000                           | The maximum length of the in-memory queue.     |
+| `logLevel`             | String   | 'info'                          | Log level. Fro example: `debug`, `error`, etc.     |
+| `axiosConfig`          | Object   | N/A                             | Axios configuration.            |
+| `axiosInstance`        | Object   | N/A                             | Axios instance.              |
+| `axiosRetryConfig`     | Object   | N/A                             | Axios retry configuration.          |
+| `retryCount`           | Number   | 3                               | Number of times a request is retried by axios if failed.  |
+| `errorHandler`         | Function | N/A                             | A function that is called if the request to server fails. |
+| `gzip`                 | Boolean  | true                            | Determines whether to compress the request with gzip or not.  |
+
+## Sending events
+
+<div class="warningBlock">
+<strong>RudderStack does not store or persist the user state in any of the server-side SDKs</strong>. <br /><br />Unlike the client-side SDKs that deal with a single user at a given time, the server-side SDKs deal with multiple users simultaneously. Therefore, you must specify either the <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> <strong>every time</strong> while making any API calls supported by the Node.js SDK.
+</div>
 
 ## Identify
 
-The `identify` call lets you identify a visiting user and capture any related information such as their name, email address, etc.
-
-<div class="warningBlock">
-
-RudderStack does not store the user state in any of the server-side SDKs. Unlike the client-side SDKs that deal with only a single user at a given time, the server-side SDKs deal with multiple users at the same time. Therefore, for any of the calls supported by the Node.js SDK, you need to specify either `userId` or `anonymousId` every time.
-</div>
+The <Link to="/event-spec/standard-events/identify/">`identify`</Link> call lets you identify a visiting user and associate them to their actions. It also lets you record the traits about them like their name, email address, etc.
 
 A sample `identify` call is as shown:
 
 ```javascript
 client.identify({
-  userId: "123456",
+  userId: "1hKOmRA4GRlm",
   traits: {
-    name: "Name Username",
-    email: "name@website.com",
+    name: "Alex Keener",
+    email: "alex@example.com",
     plan: "Free",
     friends: 21,
   },
@@ -119,24 +120,24 @@ client.identify({
 
 The `identify` parameters are as described below:
 
-| **Field**                                                                                                  | **Type** | **Presence**                              | **Description**                                                                                                            |
-| :--------------------------------------------------------------------------------------------------------- | :------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `anonymousId`                                                                                              | String   | Optional                                  | A user identifier for cases where there is no `userId` set for the user. Either `userId` or `anonymousId` is required.     |
-| `userId`                                                                                                   | String   | Optional, if `anonymousId` is already set | The unique identifier for a user in your database.                                                                         |
-| `context`                                                                                                  | Object   | Optional                                  | The dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
-| `integrations`                                                                                             | Object   | Optional                                  | The dictionary of destinations to be either enabled or disabled.                                                           |
-| `timestamp`                                                                                                | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
-| [`traits`](https://rudderstack.com/docs/event-spec/standard-events/identify/#identify-traits) | Object   | Optional                                  | The dictionary of the traits associated with the user, such as `name`or `email.`                                           |
+| **Field**       | **Type** |  **Description**           |
+| :------------ | :------- | :------------------- |
+| `userId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>    | String   | Unique identifier for a user in your database.      |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>       | String    | The SDK automatically sets this identifier in cases where there is no unique identifier for the user.|  
+| `context`    | Object   |  An optional dictionary of information that provides context about a message. It is not directly related to the API call. |
+| `integrations`     | Object   | An optional dictionary containing the destinations to be either enabled or disabled.                               |
+| `timestamp`  | Date     | The timestamp of the message's arrival.                                                                                    |
+| [`traits`](https://rudderstack.com/docs/event-spec/standard-events/identify/#identify-traits) | Object   | Dictionary of the user's traits like `name` or `email`.  |
 
 ## Track
 
-The `track` call lets you record the user actions along with their associated properties. Each user action is called an **event**.
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you track the user actions along with any properties associated with them.
 
 A sample `track` call is shown below:
 
 ```javascript
 client.track({
-  userId: "123456",
+  userId: "1hKOmRA4GRlm",
   event: "Item Viewed",
   properties: {
     revenue: 19.95,
@@ -147,29 +148,29 @@ client.track({
 
 The `track` method parameters are as described below:
 
-| Name           | Type   | Presence | Description                                                                                                                |
-| :------------- | :----- | :------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `userId`       | String | Required | The unique identifier for a user in your database.                                                                         |
-| `event`        | String | Required | Name of the user event.                                                                                                    |
-| `properties`   | Object | Optional | The dictionary of the properties associated with the particular event.                                                     |
-| `context`      | Object | Optional | The dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
-| `timestamp`    | Date   | Optional | The timestamp of the message's arrival.                                                                                    |
-| `anonymousId`  | String | Optional | A user identifier for cases where there is no `userId` set for the user. Either `userId` or `anonymousId` is required.     |
-| `integrations` | Object | Optional | A dictionary of destinations to be either enabled or disabled.                                                             |
+| **Field**       | **Type** |  **Description**           |
+| :------------ | :------- | :------------------- |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>       | String | Unique identifier for a user in your database.                                            |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>   | String | The SDK automatically sets this identifier in cases where there is no unique identifier for the user.|
+| `event`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>         | String | Name of the event.    |
+| `properties`   | Object |  An optional dictionary of the properties associated with the event.  |
+| `context`      | Object | An optional dictionary of information that provides context about a message. It is not directly related to the API call. |
+| `timestamp`    | Date   |  The timestamp of the message's arrival.    |
+| `integrations` | Object |  An optional dictionary containing the destinations to be either enabled or disabled.   |
 
 ## Page
 
-The `page` call allows you to record the page views on your website along with the other relevant information about the viewed page.
+The <Link to="/event-spec/standard-events/page/">`page`</Link> call allows you to record the page views on your application, along with the other relevant information about the page.
 
 A sample `page` call is as shown:
 
 ```javascript
 client.page({
-  userId: "12345",
+  userId: "1hKOmRA4GRlm",
   category: "Food",
   name: "Pizza",
   properties: {
-    url: "https://dominos.com",
+    url: "https://example.com",
     title: "Pizza",
     referrer: "https://google.com",
   },
@@ -178,19 +179,19 @@ client.page({
 
 The `page` method parameters are as described below:
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                            |
-| :------------- | :------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `anonymousId`  | String   | Optional                                  | A user identifier for cases where there is no `userId` set for the user. Either `userId` or `anonymousId` is required.     |
-| `userId`       | String   | Optional, if `anonymousId` is already set | The unique identifier for a user in your database.                                                                         |
-| `context`      | Object   | Optional                                  | The dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
-| `integrations` | Object   | Optional                                  | A dictionary of destinations to be either enabled or disabled.                                                             |
-| `name`         | String   | Required                                  | Name of the viewed page.                                                                                                   |
-| `properties`   | Object   | Optional                                  | A dictionary of the properties associated with the viewed page, like `url` and `referrer`.                                 |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
+| **Field**       | **Type** |  **Description**           |
+| :------------ | :------- | :------------------- |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>       | String | Unique identifier for a user in your database.                                            |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>   | String | The SDK automatically sets this identifier in cases where there is no unique identifier for the user.|
+| `name` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | String | Name of the viewed page. |
+| `context`      | Object | An optional dictionary of information that provides context about a message. It is not directly related to the API call. |
+| `timestamp`    | Date   |  The timestamp of the message's arrival.    |
+| `integrations` | Object |  An optional dictionary containing the destinations to be either enabled or disabled.   |
+| `properties`   | Object |  An optional dictionary of the properties associated with the viewed page, like `url` and `referrer`.   |
 
 ## Screen
 
-The `screen` call is the mobile equivalent of the `page` call. It allows you to record the screen views on your mobile app along with the other relevant information about the app screen.
+The <Link to="/event-spec/standard-events/screen/">`screen`</Link> call is the mobile equivalent of the <Link to="/event-spec/standard-events/page/">`page`</Link> call. It lets you record the screen views on your mobile app along with other relevant information about the screen.
 
 A sample `screen` call is as shown:
 
@@ -209,19 +210,19 @@ client.screen({
 
 The `screen` method parameters are as described below:
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                            |
-| :------------- | :------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
-| `anonymousId`  | String   | Optional                                  | Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId`       | String   | Optional, if `anonymousId` is already set | Unique identifier for a particular user in your database.                                                                  |
-| `context`      | Object   | Optional                                  | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `integrations` | Object   | Optional                                  | A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `name`         | String   | Required                                  | Name of the screen being viewed.                                                                                           |
-| `properties`   | Object   | Optional                                  | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer`                           |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                    |
+| **Field**       | **Type** |  **Description**           |
+| :------------ | :------- | :------------------- |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>       | String | Unique identifier for a user in your database.                                            |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>   | String | The SDK automatically sets this identifier in cases where there is no unique identifier for the user.|
+| `name` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | String | Name of the viewed page. |
+| `context`      | Object | An optional dictionary of information that provides context about a message. It is not directly related to the API call. |
+| `timestamp`    | Date   |  The timestamp of the message's arrival.    |
+| `integrations` | Object |  An optional dictionary containing the destinations to be either enabled or disabled.   |
+| `properties`   | Object   | n optional dictionary of the properties associated with the screen, like `url` or `referrer`.                  |
 
 ## Group
 
-The `group` call lets you associate an identified user to a group - either a company, project or a team and record any custom traits or properties associated with that group.
+The <Link to="/event-spec/standard-events/group/">`group`</Link> call lets you link an identified user with a group, such as a company, organization, or an account. It also lets you record any custom traits or properties associated with that group.
 
 A sample `group` call is as shown:
 
@@ -238,23 +239,22 @@ client.group({
 
 The `group` method parameters are as follows:
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                          |
-| :------------- | :------- | :---------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- |
-| `anonymousId`  | String   | Optional                                  | A user identifier for cases where there is no `userId` set for the user. Either `userId` or `anonymousId` is required.   |
-| `userId`       | String   | Optional, if `anonymousId` is already set | The unique identifier for a user in your database.                                                                       |
-| `context`      | Object   | Optional                                  | A dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
-| `integrations` | Object   | Optional                                  | A dictionary of the destinations to be either enabled or disabled.                                                       |
-| `groupId`      | String   | Required                                  | Unique identifier for the group present in your database.                                                                |
-| `traits`       | Object   | Optional                                  | A dictionary of the group's properties or traits, like `email` or `name`.                                                |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                  |
+| **Field**       | **Type** |  **Description**           |
+| :------------ | :------- | :------------------- |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>       | String | Unique identifier for a user in your database.                                            |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>   | String | The SDK automatically sets this identifier in cases where there is no unique identifier for the user.|
+| `groupId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>     | String   | Unique identifier for the group present in your database.        |
+| `context`      | Object   | An optional dictionary of information that provides context about a message. It is not directly related to the API call. |
+| `integrations` | Object   | An optional dictionary containing the destinations to be either enabled or disabled.  |
+| `traits`       | Object   |  An optional dictionary of the group's traits like `name`or `email`.            |
+| `timestamp`    | Date     | The timestamp of the message's arrival. |
 
 ## Alias
 
-The `alias` call lets you merge different identities of a known user.
+The <Link to="/event-spec/standard-events/alias/">`alias`</Link> call lets you merge different identities of a known user. It is an advanced method that lets you change the tracked user's ID explicitly. You can use `alias` for managing the user's identity in some of the downstream destinations.
 
-<div class="infoBlock">
-
-<code class="inline-code">alias</code> is an advanced method that lets you change the tracked user's ID explicitly. This method is useful when managing identities for some of the downstream destinations.
+<div class="warningBlock">
+RudderStack supports sending <code class="inline-code">alias</code> events only to select downstream destinations. Refer to the <Link to="/destinations/streaming-destinations/">destination-specific documentation</Link> for more details.
 </div>
 
 A sample `alias` call is as shown:
@@ -268,38 +268,29 @@ client.alias({
 
 The `alias` method parameters are as mentioned below:
 
-| **Field**      | **Type** | **Presence**                              | **Description**                                                                                                          |
-| :------------- | :------- | :---------------------------------------- | :----------------------------------------------------------------------------------------------------------------------- |
-| `userId`       | String   | Optional, if `anonymousId` is already set | The unique identifier for a user in your database.                                                                       |
-| `context`      | Object   | Optional                                  | A dictionary of information that provides context about a message. Note that it is not directly related to the API call. |
-| `integrations` | Object   | Optional                                  | A dictionary of the destinations to be either enabled or disabled.                                                       |
-| `previousId`   | String   | Required                                  | The previous unique identifier of the user.                                                                              |
-| `traits`       | Object   | Optional                                  | The dictionary of the traits associated with the user, like `name`or `email.`                                            |
-| `timestamp`    | Date     | Optional                                  | The timestamp of the message's arrival.                                                                                  |
-
-<div class="infoBlock">
-
-For a detailed explanation of the <code class="inline-code">alias</code> call, refer to our <a href="https://rudderstack.com/docs/event-spec/standard-events/alias/">RudderStack API Specification</a> guide.
-</div>
+| **Field**       | **Type** |  **Description**           |
+| :------------ | :------- | :------------------- |
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>       | String | Unique identifier for a user in your database.                                            |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>   | String | The SDK automatically sets this identifier in cases where there is no unique identifier for the user.|
+| `previousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | String   | The previous unique identifier of the user.       |
+| `context`      | Object   | An optional dictionary of information that provides context about a message. It is not directly related to the API call.  |
+| `integrations` | Object   |  An optional dictionary containing the destinations to be either enabled or disabled.   |
+| `traits`       | Object   | An optional dictionary of the group's traits like `name`or `email`.     |
+| `timestamp`    | Date     | The timestamp of the message's arrival.   |
 
 ## Node.js SDK data persistence
 
 <div class="warningBlock">
-
-This feature is still in beta. Contact us on our <a href="https://rudderstack.com/join-rudderstack-slack-community">Community Slack</a> if you face any issues.
+This is a beta feature. Contact the RudderStack team on <a href="https://rudderstack.com/join-rudderstack-slack-community">Slack</a> if you face any issues.
 </div>
 
-If the Node.js SDK fails to successfully deliver the event data to RudderStack at the first attempt, it retries the event delivery. However, if, for some reason, RudderStack is unavailable for a longer duration, there is a possibility of data loss. To prevent this scenario, RudderStack has a data persistence feature to persist the events in **Redis**, leading to better event delivery guarantees. Also, the SDK can retry multiple times as the queue is maintained in a different process space (in this case, Redis).
+If the Node.js SDK fails to deliver the event data to RudderStack in first attempt, it retries the event delivery. However, if RudderStack is unavailable for a longer duration, there is a possibility of data loss. To prevent this scenario, RudderStack provides a data persistence feature where the event data is persisted in **Redis**, guaranteeing event delivery. Simultaneously, the SDK can retry multiple times as the queue is maintained in a different process space (in this case, Redis).
 
 <div class="infoBlock">
-To use this feature, you will need to host a Redis server and use it as the intermediary data storage queue.
+To use this feature, you will need to host a Redis server to use it as the intermediary data storage queue. RudderStack uses <a href="https://github.com/OptimalBits/bull">Bull</a> as the interface layer between the Node.js SDK and Redis.
 </div>
 
-<div class="infoBlock">
-
-RudderStack uses <a href="https://github.com/OptimalBits/bull">Bull</a> as the interface layer between the Node.js SDK and Redis.
-
-</div>
+To achieve data persistence, you need to call the `createPersistenceQueue` method which takes two parameters - `queueOpts` and `callback`. It initializes the persistent queue. A sample SDK initialization is shown below:
 
 <Tabs>
   <TabList>
@@ -309,8 +300,6 @@ RudderStack uses <a href="https://github.com/OptimalBits/bull">Bull</a> as the i
     <TabPanels>
       <TabPanel>
 <span>
-
-A sample SDK initialization is shown below:
 
 ```jsx
 const client = new Analytics("write_key","server_url/v1/batch",{
@@ -330,8 +319,6 @@ client.createPersistenceQueue({ redisOpts: { host: "localhost" } }, err => {})
       <TabPanel>
 <span>
 
-A sample SDK initialization is shown below:
-
 ```jsx
 const client = new Analytics("WRITE_KEY", {
     dataPlaneUrl: DATA_PLANE_URL // default: https://hosted.rudderlabs.com with default path set to /v1/batch
@@ -350,20 +337,15 @@ client.createPersistenceQueue({ redisOpts: { host: "localhost" } }, err => {})
     </TabPanels>
 </Tabs>
 
-To achieve the data persistence, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`. This will initialize the persistent queue.
-
 <div class="warningBlock">
-
-If the createPersistenceQueue method is not called after initializing the SDK, the SDK will work without any persistence.
+If the <code class="inline-code">createPersistenceQueue</code> method is not called after initializing the SDK, the SDK will work without any persistence.
 </div>
 
 ### `queueOpts`
 
-As mentioned in the previous section, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`- to achieve data persistence. This method will initialize the persistent queue.
+The syntax for `createPersistenceQueue` method is as follows:
 
 `client.createPersistenceQueue(QueueOpts, callback)`
-
-Calling the `createPersistenceQueue` method will initialize a Redis list by calling [**Bull's**](https://github.com/OptimalBits/bull) utility methods. It will also add a **single** job processor for the processing \(making requests to RudderStack\) jobs that are pushed into the list. Any error encountered while doing this leads to a callback with the error.
 
 A sample `queueOpts` initialization is shown below:
 
@@ -386,17 +368,13 @@ The specification of the different `queueOpts` parameters is listed in the follo
 | `queueName` | Name of the queue. | `20` |
 | `isMultiProcessor` | Determines whether to handle previously active jobs. If set to `false`, the previously active job will be picked up first by the processor. Otherwise, Bull moves this job to the back of the Redis queue to be picked up after the already pushed event. | `false` |
 | `prefix` | Used as the prefix to the Redis keys needed to support the Redis cluster slots. | `20000` |
-| `redisOpts` | Refer to the `RedisOpts` section below | `RedisOpts` |
-| `jobOpts` | Refer to the `JobOpts` section below | `JobOpts` |
+| `redisOpts` | Refer to the <Link to="#redisopts">`RedisOpts`</Link> section below. | `RedisOpts` |
+| `jobOpts` | Refer to the <Link to="#jobopts">`JobOpts`</Link> section below. | `JobOpts` |
+
+For more information on these parameters, refer to the [Bull docs](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queue).
 
 <div class="warningBlock">
-
-If the same queue \(RudderStack SDK initialized with the same queue name\) is used in case of multiple servers \(server-side SDKs\), set the value of `isMultiProcessor` to `true` as event ordering is not applicable in this case.
-</div>
-
-<div class="infoBlock">
-
-More information on this parameter can be found in the [**Bull docs**](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queue).
+If the same queue (RudderStack SDK initialized with the same queue name) is used in case of multiple servers (server-side SDKs), set the value of <code class="inline-code">isMultiProcessor</code> to <code class="inline-code">true</code> as event ordering is not applicable in this case.
 </div>
 
 #### `RedisOpts`
@@ -409,11 +387,6 @@ RedisOpts {
     password?: string;
 }
 ```
-
-<div class="infoBlock">
-
-More information on this parameter can be found in the [**Bull docs**](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queue).
-</div>
 
 #### `JobOpts`
 
@@ -432,12 +405,10 @@ In case of an error, the `createPersistenceQueue` method returns a callback. You
 callback: function(error) || function()
 ```
 
-Calling the `createPersistenceQueue` method will initialize a Redis list by calling [**Bull's**](https://github.com/OptimalBits/bull) utility methods. It will also add a **single** job processor for the processing \(making requests to RudderStack\) jobs that are pushed into the list. Any error encountered while doing this leads to calling `callback` with the error.
+Calling the `createPersistenceQueue` method initializes a Redis list by calling the [Bull's](https://github.com/OptimalBits/bull) utility methods. It also adds a **single** job processor for the processing (making requests to RudderStack) jobs that are pushed into the list. Any error encountered while doing this leads to a callback with the error.
 
 <div class="infoBlock">
-
-If the callback returns with an error, we recommend retrying calling `createPersistenceQueue` with a backoff.
-
+If the callback returns with an error, RudderStack recommends retry calling <code class="inline-code">createPersistenceQueue</code> with a backoff.
 </div>
 
 ###  Event flow
@@ -448,5 +419,3 @@ If the callback returns with an error, we recommend retrying calling `createPers
 - If the job fails even after `JobOpts.maxAttempts`, it will not be retried again and pushed to a `failed queue`. **You can retry them later manually using Bull’s utility methods** [**listed here**](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queuegetfailed) **or get them from Redis directly**.
 - There might be a scenario where the node process dies with the jobs still in active state \(not completed nor failed but in the process of sending/retrying\). Since the RudderStack SDK has only **1 processor for sending events** \(this count should always be **1**\), the next time the SDK is initialized and `createPersistenceQueue` is called, **the jobs will be picked up first by the processor to get processed to maintain event ordering based on the value of `QueueOpts.isMultiProcessor`**.
 - For multiple servers \(SDK\) connecting to the same queue \(`QueueOpts.queueName`\), there will be multiple processors fetching events from the same queue and event ordering won’t be implemented. Hence, `QueueOpts.isMultiProcessor` should be set to **`true`.**
-
-
