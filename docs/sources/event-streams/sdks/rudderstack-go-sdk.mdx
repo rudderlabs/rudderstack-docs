@@ -160,7 +160,7 @@ A sample `identify` call made using the Go SDK is shown below:
 
 ```go
 client.Enqueue(analytics.Identify{
-  UserId: "123",
+  UserId: "1hKOmRA4GRlm",
   Traits: analytics.NewTraits().
     SetName("Alex Keener").
     SetEmail("alex@example.com").
@@ -265,7 +265,7 @@ A sample `group` call made using the Go SDK is shown below:
 
 ```go
 client.Enqueue(analytics.Group{
-  UserId:  "12345",
+  UserId:  "1hKOmRA4GRlm",
   GroupId: "1",
   Traits: map[string]interface{}{
     "name": "Company",
@@ -298,7 +298,7 @@ A sample `alias` call is as shown:
 ```go
 client.Enqueue(analytics.Alias{
   PreviousId: "12345",
-  UserId:     "45678",
+  UserId:     "1hKOmRA4GRlm",
 })
 ```
 
