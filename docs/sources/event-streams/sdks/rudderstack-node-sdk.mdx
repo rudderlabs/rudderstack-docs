@@ -284,7 +284,7 @@ The `alias` method parameters are as mentioned below:
 This is a beta feature. Contact the RudderStack team on <a href="https://rudderstack.com/join-rudderstack-slack-community">Slack</a> if you face any issues.
 </div>
 
-If the Node.js SDK fails to deliver the event data to RudderStack in first attempt, it retries the event delivery. However, if RudderStack is unavailable for a longer duration, there is a possibility of data loss. To prevent this scenario, RudderStack provides a data persistence feature where the event data is persisted in **Redis**, guaranteeing event delivery. Simultaneously, the SDK can retry multiple times as the queue is maintained in a different process space (in this case, Redis).
+If the Node.js SDK fails to deliver the event data to RudderStack in first attempt, it retries the event delivery. However, if RudderStack is unavailable for a longer duration, there is a possibility of data loss. To prevent this scenario, RudderStack provides the data persistence feature where the event data is persisted in **Redis**, guaranteeing event delivery. Simultaneously, the SDK can retry multiple times as the queue is maintained in a different process space (in this case, Redis).
 
 <div class="infoBlock">
 To use this feature, you will need to host a Redis server to use it as the intermediary data storage queue. RudderStack uses <a href="https://github.com/OptimalBits/bull">Bull</a> as the interface layer between the Node.js SDK and Redis.
