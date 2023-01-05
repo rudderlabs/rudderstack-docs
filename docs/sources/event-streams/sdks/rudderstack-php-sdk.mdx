@@ -66,7 +66,7 @@ Rudder::init(WRITE_KEY, array(
 ```
 
 <div class="infoBlock">
-RudderStack accepts the <code class="inline-code">DATA_PLANE_URL</code> with or without the protocol. If the protocol is missing, RudderStack automatically prepends it to the URL based on whether the <code class="inline-code">ssl</code> option is set to <code class="inline-code">true</code> or  <code class="inline-code">false</code>.
+RudderStack accepts the <code class="inline-code">DATA_PLANE_URL</code> with or without the protocol. If the protocol is missing, RudderStack automatically prepends it to the URL based on whether the <code class="inline-code">ssl</code> option is set to <code class="inline-code">true</code> or <code class="inline-code">false</code>.
 </div>
 
 RudderStack accepts the following data plane URL formats:
@@ -89,18 +89,18 @@ RudderStack provides some additional initialization options which are explained 
 | Option        | Data type         | Description     |
 | :----------- | :--------------- | :----------|
 |  `consumer`           | String      | Explicitly marks which consumer to use. The default value is `lib_curl`. Refer to the <Link to="#consumers">Consumers</Link> section for more information. |
-|  `data_plane_url `       | String | Explicitly sets the URL to data plane. The default value is `hosted.rudderlabs.com`.  |
+|  `data_plane_url `       | String | Explicitly sets the data plane URL. The default value is `hosted.rudderlabs.com`.  |
 |  `debug`          | Boolean  |  Determines whether to log messages and wait for a response. The default value is `false`. It makes the queuing consumers non-async and blocks the library until a response is received from the API. Hence it is **not recommended** for production use.  |
 |  `ssl`           | Boolean      | Determines whether to use TLS instead of SSL for the socket connection. The default value is `false`. |
-|  `error_handler`       | Function | Function to handle errors and is particularly useful for debugging. Note that if the debug mode is not specified, then the `error_handler` is only called on connection level errors and timeouts. For example, `function ($code, $message) {}`   |
-|  `max_queue_size`           | Number      | Max size of the queue. The default value is 10000 items. |
+|  `error_handler`       | Function | Function to handle errors and is particularly useful for debugging. Note that if the debug mode is not specified, then the `error_handler` is only called on connection level errors and timeouts. For example, `function ($code, $message) {}`.   |
+|  `max_queue_size`           | Number      | Max size of the queue. The default value is 10000. |
 |  `batch_size`       | Number | Items to be sent in a single curl request. The default value is 100. It is recommended to use `flush_at` instead of `batch_size` as this option is deprecated.   |
 |  `flush_at`           | Number      | Items to be sent in a single curl request. The default value is 100. |
 |  `timeout `       | Number | Number of seconds to wait for the socket request to time out. The default value is 0.5.  |
-|  `filename`           | String      |Location to write the log file. The default value is `/tmp/analytics.log` when file consumer is selected. |
-|  `compress_request`       | Boolean | Determines whether to use gzipped request payloads. The default value is `true`. It is supported for server versions 1.4.0 and above.  |
+|  `filename`           | String      |Location to write the log file. The default value is `/tmp/analytics.log` when the file consumer is selected. |
+|  `compress_request`       | Boolean | Determines whether to use gzipped request payloads. The default value is `true`. It is supported for <a href="https://github.com/rudderlabs/rudder-server">RudderStack server</a> v1.4.0 and above.  |
 |  `flush_interval`           | Number      | Frequency in milliseconds to send data using flush method execution. The default value is 10000 miliseconds. |
-|  `curl_timeout `       | Number | Timeout for the curl connections. The default value is 0, meaning infinite. |
+|  `curl_timeout `       | Number | Timeout for the curl connections. The default value is 0, that is, infinite. |
 |  `curl_connecttimeout`           | Number      | Connect timeout for the curl connections. The default value is 300. |
 |  `max_item_size_bytes`       | Number | Maximum message item size. The default value is 32000 bytes (32kb). |
 |  `max_queue_size_bytes`           | Number      | Maximum batch size. The default value is 512000 bytes (512kb).   |
@@ -108,10 +108,10 @@ RudderStack provides some additional initialization options which are explained 
 
 ## Migrating from v1 to v2
 
-To migrate to PHP SDK v2, ensure the following conditions are met:
+To migrate to PHP SDK v2, make sure the following conditions are met:
 
 - Your PHP version should be v7.4 or above.
-- If you are using self hosted <a href="https://github.com/rudderlabs/rudder-server">rudder-server</a>, either upgrade it to v1.4.0/above or turn off the gzipped request payloads  (by setting `compress_request` to `false`).
+- If you are using self-hosted <a href="https://github.com/rudderlabs/rudder-server">rudder-server</a>, either upgrade it to v1.4.0 or above, or disable the gzipped request payloads  (by setting `compress_request` to `false`).
 
 ## Sending events from the RudderStack client
 
@@ -140,12 +140,12 @@ The `identify` method parameters are as described below:
 
 | **Field**      | **Type** | **Description**        |
 | :------------- | :------- | :------------- |
-| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   | Sets the user ID for cases where there is no unique identifier for the user. |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   | The SDK automatically sets this identifier in cases where there is no unique identifier for the user. |
 | `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>      | String   |  Unique identifier for a particular user in your database.                                                                  |
-| `context`      | Object   |  Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `integrations` | Object   |  A dictionary containing the destinations to be either enabled or disabled.     |
+| `context`      | Object   |  An optional dictionary of information that provides context about a message. It is not directly related to the API call.      |
+| `integrations` | Object   | An optional dictionary containing the destinations to be either enabled or disabled.     |
 | `timestamp`    | Date     | The timestamp of the message's arrival.        |
-| `traits`       | Object   | Dictionary of the traits associated with the user, such as `name` or `email`.    |
+| `traits`       | Object   | Dictionary of the user's traits like `name` or `email`.    |
 
 ## Track
 
@@ -170,12 +170,12 @@ The `track` method parameters are as described below:
 | Name           | Type   | Description     |
 | :------------- | :----- | :------------------------------- |
 | `user_id` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>     | String |  The developer identification for your user.                                                                                 |
-| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>        | String |  Name of the event being performed by the user.                                                                              |
-| `properties`   | Object |  Dictionary of the properties associated with a particular event.                                                           |
-| `context`      | Object |  Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
+| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>        | String |  Name of the event.                                                   |
+| `properties`   | Object |  An optional dictionary of the properties associated with the event.          |
+| `context`      | Object |  An optional dictionary of information that provides context about the message. It is not directly related to the API call.      |
 | `timestamp`    | Date   |  The timestamp of the message's arrival.                                                                                    |
 | `anonymous_id` | String |  Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `integrations` | Object |  A dictionary containing the destinations to be either enabled or disabled.                                                 |
+| `integrations` | Object |  An optional dictionary containing the destinations to be enabled or disabled.                |
 
 ## Page
 
@@ -198,12 +198,12 @@ The `page` method parameters are as described below:
 
 | **Field**      | **Type** | **Description**                  |
 | :------------- | :------- | :-------------------------------- |
-| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  Sets the user ID for cases where there is no unique identifier for the user.  |
-| `userId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>    | String   | Unique identifier for a particular user in your database.      |
-| `context`      | Object   |  Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `integrations` | Object   |  A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `name`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>        | String         | Name of the page being viewed.                                                                                             |
-| `properties`   | Object   |  Dictionary of the properties associated with the page being viewed, such as `url` and `referrer`.                          |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  The SDK automatically sets this identifier in cases where there is no unique identifier for the user.  |
+| `userId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>    | String   | Unique identifier for a user in your database.      |
+| `context`      | Object   |  An optional dictionary of information that provides context about the event. It is not directly related to the API call.      |
+| `integrations` | Object   |  An optional dictionary containing the destinations to be enabled or disabled.        |
+| `name`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>        | String         | Name of the viewed page.      |
+| `properties`   | Object   |  An optional dictionary of the properties associated with the viewed page, like `url` and `referrer`.       |
 | `timestamp`    | Date     |  The timestamp of the message's arrival.                    |
 
 ## Screen
@@ -227,12 +227,12 @@ The `screen` method parameters are as described below:
 
 | **Field**      | **Type** | **Description**                 |
 | :------------- | :------- |  :---------------------------- |
-| `anonymousId` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
-| `userId`  <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a particular user in your database.            |
-| `context`      | Object   |  Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
-| `integrations` | Object   | A dictionary containing the destinations to be either enabled or disabled.                                                 |
-| `name` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>        | String                                  | Name of the screen being viewed.                                                                                           |
-| `properties`   | Object   | Dictionary of the properties associated with the page being viewed, such as `url` and `referrer`                           |
+| `anonymousId` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   | The SDK automatically sets this identifier in cases where there is no unique identifier for the user. |
+| `userId`  <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a user in your database. |
+| `context`      | Object   |  An optional dictionary of information that provides context about the event. It is not directly related to the API call.  |
+| `integrations` | Object   | An optional dictionary containing the destinations to be enabled or disabled.           |
+| `name` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>        | String       | Name of the viewed screen.   |
+| `properties`   | Object   | An optional dictionary of the properties associated with the screen, like `url` and `referrer`.                           |
 | `timestamp`    | Date     |  The timestamp of the message's arrival.                                                                                    |
 
 ## Group
