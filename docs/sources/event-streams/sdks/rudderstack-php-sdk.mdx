@@ -306,7 +306,7 @@ The [fork-curl consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/devel
 
 ### Socket Consumer
 
-You can use the [socket consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/Socket.php) which lets you make requests to RudderStack when you can't spawn other processes from your PHP scripts. It initiates  a socket request to RudderStack servers each time an `identify` or `track` call is made. The socket request writes the event data and closes the connection before waiting for a response. If your servers are dealing with more than 100's of requests per second or cannot use a persistent connection, it is recommended use some other consumer.
+You can use the [socket consumer](https://github.com/rudderlabs/rudder-php-sdk/blob/develop/lib/Consumer/Socket.php) which lets you make requests to RudderStack when you can't spawn other processes from your PHP scripts. It initiates  a socket request to RudderStack servers each time an `identify` or `track` call is made. The socket request writes the event data and closes the connection before waiting for a response. It is recommended to use some other consumer if your servers are dealing with hundreds of requests per second or cannot use a persistent connection.
 
 ### File Consumer
 
@@ -322,7 +322,7 @@ php examples/SendBatchFromFile.php --secret YOUR_WRITE_KEY --file /tmp/analytics
 It is recommended to run this command as a cron job after every few minutes so that your log files are created in manageable sizes. Every time you run the command, it removes the old log files once they are processed successfully.
 </div>
 
-You can create a new cron job to upload your log files. A sample snippet to create a cron job is as shown:
+You can create a new cron job to upload your log files, as shown in the following snippet:
 
 ```bash
 $ # create a cron job that runs as www-data every minute
