@@ -3,9 +3,11 @@ title: "Node.js"
 description: Use RudderStack’s Node SDK to send events to various destinations.
 ---
 
-The **RudderStack Node SDK** lets you track your customer event data from your Node.js applications and send it to your specified destinations via RudderStack.
+RudderStack's Node SDK lets you track and send the events from your Node.js applications to the specified destinations.
 
-Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-node) to get a more hands-on understanding of the SDK.
+<div class="infoBlock">
+Refer to the Node SDK's <a href="https://github.com/rudderlabs/rudder-sdk-node">GitHub codebase</a> for the implementation-specific details.
+</div>
 
 <GhBadge
   url={'https://www.npmjs.com/package/@rudderstack/rudder-sdk-node/'}
@@ -15,17 +17,15 @@ Check out the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-nod
 
 ## SDK setup requirements
 
-To set up the RudderStack Node SDK, the following prerequisites must be met:
-
-- You need to set up a [**RudderStack account**](https://app.rudderstack.com/signup).
-- Once signed up, <Link to="/dashboard-guides/sources/#adding-a-source">set up a Node source</Link> in the dashboard. You should be able to see a **Write Key** for this source, as shown below:
+1. Sign up to [RudderStack Cloud](https://app.rudderstack.com/signup).
+2. <Link to="/dashboard-guides/sources/#adding-a-source">Set up a Node source</Link> in the dashboard. You should be able to see the <strong>write key</strong> for this source, as shown:
 
 <img src="../../../assets/event-stream-sources/node-write-key-new.png" alt="Node source write key" />
 
-- You will also need a data plane URL. Refer to the <Link to="/resources/glossary/#data-plane-url">Glossary</Link> for more information on the data plane URL and where to find it.
+You will also need the data plane URL.  Refer to the <Link to="/dashboard-guides/overview/#data-plane-url">Dashboard Overview</Link> guide for more information on the data plane URL and where to find it.
 
 <div class="successBlock">
-The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has an SDK installation snippet containing both the write key and the data plane URL. You can use it to integrate the Node SDK into your application.
+The <strong>Setup</strong> tab in the RudderStack dashboard (seen above) has the SDK installation snippet containing both the write key and the data plane URL. Copy it to integrate the Node SDK into your application.
 </div>
 
 ## Installing the Node.js SDK
@@ -38,7 +38,16 @@ npm install @rudderstack/rudder-sdk-node
 
 ## Using the SDK
 
-To use the Node.js SDK, run the following code snippet:
+Run the following snippet to use the Node.js SDK. It creates a global RudderStack client object that can be used for all the subsequent event requests.
+
+<Tabs>
+  <TabList>
+    <Tab>Below v2.0.0</Tab>
+    <Tab>v2.0.0 and above</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
 
 ```javascript
 const Analytics = require("@rudderstack/rudder-sdk-node")
@@ -47,7 +56,43 @@ const Analytics = require("@rudderstack/rudder-sdk-node")
 const client = new Analytics(WRITE_KEY, DATA_PLANE_URL / v1 / batch)
 ```
 
-Running the above snippet creates a global RudderStack client object that can be used for all the subsequent event requests.
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+```javascript
+const Analytics = require('@rudderstack/rudder-sdk-node');
+
+const client = new Analytics(WRITE_KEY, {
+  dataPlaneUrl: DATA_PLANE_URL, // default: https://hosted.rudderlabs.com
+});
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+
+## SDK initialization options
+
+Below parameters are optional and can be passed during SDK initialization.
+
+| Name                   | Data type     | Default value    | Description         |
+| :--------------------- | :------- | :------------------------------ | :------------------ |
+| `dataPlaneUrl`         | String   | `https://hosted.rudderlabs.com` | The data plane URL.        |
+| `path`                 | String   | `/v1/batch`                     | Path to batch endpoint.          |
+| `flushAt`              | Number   | 20                              | The number of events to be flushed when reached this limit.   |
+| `flushInterval`        | Number   | 10000                           | The maximum timespan (in milliseconds) after which the events from the in-memory queue is flushed |
+| `maxQueueSize`         | Number   | 460800(500kb)                   | Maximum payload size of a batch request   |
+| `maxInternalQueueSize` | Number   | 20000                           | The maximum length of the in-memory queue     |
+| `logLevel`             | String   | 'info'                          | Log level. `Ex: 'debug', 'error'`     |
+| `axiosConfig`          | Object   | N/A                             | Axios config            |
+| `axiosInstance`        | Object   | N/A                             | Axios instance              |
+| `axiosRetryConfig`     | Object   | N/A                             | Axios retry configuration          |
+| `retryCount`           | Number   | 3                               | Number of times requests will be retried by axios if failed  |
+| `errorHandler`         | Function | N/A                             | A function that will be called if request to server failed |
+| `gzip`                 | Boolean  | true                            | Whether to compress request with gzip or not  |
 
 ## Identify
 
@@ -256,6 +301,15 @@ RudderStack uses <a href="https://github.com/OptimalBits/bull">Bull</a> as the i
 
 </div>
 
+<Tabs>
+  <TabList>
+    <Tab>Below v2.0.0</Tab>
+    <Tab>v2.0.0 and above</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
 A sample SDK initialization is shown below:
 
 ```jsx
@@ -271,38 +325,37 @@ const client = new Analytics("write_key","server_url/v1/batch",{
 client.createPersistenceQueue({ redisOpts: { host: "localhost" } }, err => {})
 ```
 
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+A sample SDK initialization is shown below:
+
+```jsx
+const client = new Analytics("WRITE_KEY", {
+    dataPlaneUrl: DATA_PLANE_URL // default: https://hosted.rudderlabs.com with default path set to /v1/batch
+    flushAt: <number> = 20,
+    flushInterval: <ms> = 20000
+    // the max number of elements that the SDK can hold in memory,
+    // this is different than the Redis list created when persistence is enabled.
+    // This restricts the data in-memory when Redis is down, unreachable etc.
+    maxInternalQueueSize: <number> = 20000
+});
+
+client.createPersistenceQueue({ redisOpts: { host: "localhost" } }, err => {})
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
 To achieve the data persistence, you need to call the `createPersistenceQueue` method which takes two parameters as input - `queueOpts` and a `callback`. This will initialize the persistent queue.
 
 <div class="warningBlock">
 
 If the createPersistenceQueue method is not called after initializing the SDK, the SDK will work without any persistence.
 </div>
-
-### Configurable parameters
-
-| **Parameter** | **Description** | **Default Value** |
-| :--- | :--- | :--- |
-| `flushAt` | The maximum number of events to batch and send to the server | `20` |
-| `flushInterval` | The maximum timespan \(in milliseconds\) after which the events from the in-memory queue is flushed to Redis' persistence queue | `20000` |
-| `maxInternalQueueSize` | The maximum size of the in-memory queue | `20000` |
-| `JobOpts.maxAttempts` | The maximum number of retry attempts | `10` |
-| `isMultiProcessor` | Determines whether to handle previously active jobs. If set to `false`, the previously active job will be picked up first by the processor. Otherwise, Bull moves this job to the back of the Redis queue to be picked up after the already pushed event. | `false` |
-
-<div class="warningBlock">
-
-If the same queue \(RudderStack SDK initialized with the same queue name\) is used in case of multiple servers \(server-side SDKs\), set the value of `isMultiProcessor` to `true` as event ordering is not applicable in this case.
-</div>
-
-#### How to ensure that all my events in the queue are processed?
-
-You can use the `flush()` method to ensure that all the events in the queue are processed. The following example highlights the use of `flush()` with a callback:
-
-```jsx
-client.flush(function(err, batch){
-  console.log('Flushing done');
-}
-)
-```
 
 ### `queueOpts`
 
@@ -335,6 +388,11 @@ The specification of the different `queueOpts` parameters is listed in the follo
 | `prefix` | Used as the prefix to the Redis keys needed to support the Redis cluster slots. | `20000` |
 | `redisOpts` | Refer to the `RedisOpts` section below | `RedisOpts` |
 | `jobOpts` | Refer to the `JobOpts` section below | `JobOpts` |
+
+<div class="warningBlock">
+
+If the same queue \(RudderStack SDK initialized with the same queue name\) is used in case of multiple servers \(server-side SDKs\), set the value of `isMultiProcessor` to `true` as event ordering is not applicable in this case.
+</div>
 
 <div class="infoBlock">
 
