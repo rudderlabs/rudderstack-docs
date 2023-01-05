@@ -80,18 +80,18 @@ The RudderStack Node.js SDK provides the following parameters which are optional
 
 | Parameter                   | Data type     | Default value    | Description         |
 | :--------------------- | :------- | :------------------------------ | :------------------ |
-| `dataPlaneUrl`         | String   | `https://hosted.rudderlabs.com` | The data plane URL.        |
+| `dataPlaneUrl`         | String   | `https://hosted.rudderlabs.com` | Data plane URL.        |
 | `path`                 | String   | `/v1/batch`                     | Path to batch endpoint.          |
-| `flushAt`              | Number   | 20                              | The number of events to be flushed when reached this limit.   |
-| `flushInterval`        | Number   | 10000                           | The maximum timespan (in milliseconds) after which the events from the in-memory queue are flushed. |
-| `maxQueueSize`         | Number   | 460800(500KB)                   | Maximum payload size of a batch request.   |
-| `maxInternalQueueSize` | Number   | 20000                           | The maximum length of the in-memory queue.     |
-| `logLevel`             | String   | 'info'                          | Log level. Fro example: `debug`, `error`, etc.     |
+| `flushAt`              | Integer   | 20                              | Number of events to be flushed when reached this limit.   |
+| `flushInterval`        | Integer   | 10000                           |  Maximum timespan (in milliseconds) after which the events from the in-memory queue are flushed. |
+| `maxQueueSize`         | Integer   | 460800 (500KB)                   | Maximum payload size of a batch request.   |
+| `maxInternalQueueSize` | Integer   | 20000                           |  Maximum length of the in-memory queue.     |
+| `logLevel`             | String   | 'info'                          | Log level. For example: `debug`, `error`, etc.     |
 | `axiosConfig`          | Object   | N/A                             | Axios configuration.            |
 | `axiosInstance`        | Object   | N/A                             | Axios instance.              |
 | `axiosRetryConfig`     | Object   | N/A                             | Axios retry configuration.          |
-| `retryCount`           | Number   | 3                               | Number of times a request is retried by axios if failed.  |
-| `errorHandler`         | Function | N/A                             | A function that is called if the request to server fails. |
+| `retryCount`           | Integer   | 3                               | Number of times a request is retried by axios if failed.  |
+| `errorHandler`         | Function | N/A                             | Function that is called if the request to server fails. |
 | `gzip`                 | Boolean  | true                            | Determines whether to compress the request with gzip or not.  |
 
 ## Sending events
@@ -218,7 +218,7 @@ The `screen` method parameters are as described below:
 | `context`      | Object | An optional dictionary of information that provides context about a message. It is not directly related to the API call. |
 | `timestamp`    | Date   |  The timestamp of the message's arrival.    |
 | `integrations` | Object |  An optional dictionary containing the destinations to be either enabled or disabled.   |
-| `properties`   | Object   | n optional dictionary of the properties associated with the screen, like `url` or `referrer`.                  |
+| `properties`   | Object   | An optional dictionary of the properties associated with the screen, like `url` or `referrer`.                  |
 
 ## Group
 
