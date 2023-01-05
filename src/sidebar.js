@@ -271,7 +271,7 @@ export const jsonData = [
                         link: "/sources/event-streams/sdks/rudderstack-rust-sdk/",
                         content: []
                     }, {
-                        title: "Node.js",
+                        title: "Node",
                         link: "/sources/event-streams/sdks/rudderstack-node-sdk/",
                         content: []
                     }, {
