@@ -1,12 +1,12 @@
 ---
 title: "PHP"
-description: Use RudderStack’s PHP SDK to send your server-side events to various destinations.
+description: Use RudderStack's PHP SDK to send your server-side events to various destinations.
 ---
 
 RudderStack's PHP SDK lets you track and send the events from your PHP applications to the specified destinations.
 
 <div class="infoBlock">
-Refer to the PHP SDK's <a href="https://github.com/rudderlabs/rudder-php-sdk">GitHub codebase</a> for the implementation-specific details.
+RudderStack's PHP SDK supports PHP version 7.4 and above. Refer to the PHP SDK's <a href="https://github.com/rudderlabs/rudder-php-sdk">GitHub codebase</a> for the implementation-specific details.
 </div>
 
 <GhBadge
@@ -14,10 +14,6 @@ Refer to the PHP SDK's <a href="https://github.com/rudderlabs/rudder-php-sdk">Gi
   repo={'packagist/v/rudderstack/rudder-php-sdk'}
   style={'flat'}
 />
-
-<div class="infoBlock">
-RudderStack's PHP SDK supports PHP version 7.4 and above.
-</div>
 
 ## SDK setup requirements
 
@@ -82,7 +78,7 @@ RudderStack accepts the following data plane URL formats:
 While initializing the RudderStack client, the <code class="inline-code">ssl</code> field is optional if you are using the HTTPS protocol. If included, its value must be set to <code class="inline-code">true</code>. In case of the HTTP protocol, <code class="inline-code">ssl</code> is a required field and must always be set to <code class="inline-code">false</code>.
 </div>
 
-### Other initialization options
+### SDK initialization options
 
 RudderStack provides some additional initialization options which are explained in the following table:
 
@@ -93,17 +89,17 @@ RudderStack provides some additional initialization options which are explained 
 |  `debug`          | Boolean  |  Determines whether to log messages and wait for a response. The default value is `false`. It makes the queuing consumers non-async and blocks the library until a response is received from the API. Hence it is **not recommended** for production use.  |
 |  `ssl`           | Boolean      | Determines whether to use TLS instead of SSL for the socket connection. The default value is `false`. |
 |  `error_handler`       | Function | Function to handle errors and is particularly useful for debugging. Note that if the debug mode is not specified, then the `error_handler` is only called on connection level errors and timeouts. For example, `function ($code, $message) {}`   |
-|  `max_queue_size`           | Number      | Max size of the queue. The default value is 10000 items. |
-|  `batch_size`       | Number | Items to be sent in a single curl request. The default value is 100. It is recommended to use `flush_at` instead of `batch_size` as this option is deprecated.   |
-|  `flush_at`           | Number      | Items to be sent in a single curl request. The default value is 100. |
-|  `timeout `       | Number | Number of seconds to wait for the socket request to time out. The default value is 0.5.  |
+|  `max_queue_size`           | Integer      | Max size of the queue. The default value is 10000 items. |
+|  `batch_size`       | Integer | Items to be sent in a single curl request. The default value is 100. It is recommended to use `flush_at` instead of `batch_size` as this option is deprecated.   |
+|  `flush_at`           | Integer      | Items to be sent in a single curl request. The default value is 100. |
+|  `timeout `       | Integer | Number of seconds to wait for the socket request to time out. The default value is 0.5.  |
 |  `filename`           | String      |Location to write the log file. The default value is `/tmp/analytics.log` when file consumer is selected. |
 |  `compress_request`       | Boolean | Determines whether to use gzipped request payloads. The default value is `true`. It is supported for server versions 1.4.0 and above.  |
-|  `flush_interval`           | Number      | Frequency in milliseconds to send data using flush method execution. The default value is 10000 miliseconds. |
-|  `curl_timeout `       | Number | Timeout for the curl connections. The default value is 0, meaning infinite. |
-|  `curl_connecttimeout`           | Number      | Connect timeout for the curl connections. The default value is 300. |
-|  `max_item_size_bytes`       | Number | Maximum message item size. The default value is 32000 bytes (32kb). |
-|  `max_queue_size_bytes`           | Number      | Maximum batch size. The default value is 512000 bytes (512kb).   |
+|  `flush_interval`           | Integer      | Frequency in milliseconds to send data using flush method execution. The default value is 10000 miliseconds. |
+|  `curl_timeout `       | Integer | Timeout for the curl connections. The default value is 0, meaning infinite. |
+|  `curl_connecttimeout`           | Integer      | Connect timeout for the curl connections. The default value is 300. |
+|  `max_item_size_bytes`       | Integer | Maximum message item size. The default value is 32000 bytes (32KB). |
+|  `max_queue_size_bytes`           | Integer      | Maximum batch size. The default value is 512000 bytes (512KB).   |
 |  `filepermissions `       | String | File permissions for file consumer. The default value is 0644.   |
 
 ## Migrating from v1 to v2
@@ -198,8 +194,8 @@ The `page` method parameters are as described below:
 
 | **Field**      | **Type** | **Description**                  |
 | :------------- | :------- | :-------------------------------- |
-| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  Sets the user ID for cases where there is no unique identifier for the user.  |
 | `userId`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>    | String   | Unique identifier for a particular user in your database.      |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |  Sets the user ID for cases where there is no unique identifier for the user.  |
 | `context`      | Object   |  Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
 | `integrations` | Object   |  A dictionary containing the destinations to be either enabled or disabled.                                                 |
 | `name`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>        | String         | Name of the page being viewed.                                                                                             |
@@ -227,8 +223,8 @@ The `screen` method parameters are as described below:
 
 | **Field**      | **Type** | **Description**                 |
 | :------------- | :------- |  :---------------------------- |
-| `anonymousId` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
 | `userId`  <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a particular user in your database.            |
+| `anonymousId` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span> | String   |Sets the user ID for cases where there is no unique identifier for the user. Either `userId` or `anonymousId` is required. |
 | `context`      | Object   |  Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
 | `integrations` | Object   | A dictionary containing the destinations to be either enabled or disabled.                                                 |
 | `name` <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>        | String                                  | Name of the screen being viewed.                                                                                           |
@@ -255,9 +251,9 @@ Rudder::group(array(
 The `group` method parameters are as follows:
 
 | **Field**      | **Type** | **Description**      |
-| :------------- | :------- | :---------------------------------------- | :--------------------------------- |
-| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>  | String   |  Sets the user ID for cases where there is no unique identifier for the user.  |
+| :------------- | :------- | :--------------------------------- |
 | `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>       | String   |  Unique identifier for a particular user in your database.                                                                  |
+| `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>userId</strong> is absent.</span>  | String   |  Sets the user ID for cases where there is no unique identifier for the user.  |
 | `context`      | Object   | Dictionary of information that provides context about a message. However, it is not directly related to the API call.      |
 | `integrations` | Object   |  A dictionary containing the destinations to be either enabled or disabled.                                                 |
 | `groupId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>     | String   | Unique identifier of the group, as present in your database.                                                               |
@@ -284,11 +280,11 @@ Rudder::alias(array(
 The `alias` method parameters are as mentioned below:
 
 | **Field**      | **Type** | **Description**          |
-| :------------- | :------- | :---------------------------------------- | :--------------------------- |
+| :------------- | :------- | :--------------------------- |
 | `userId`  <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if <strong>anonymousId</strong> is absent.</span>     | String   | Unique identifier for a particular user in your database.                                                             |
+| `previousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | String    | The previous unique identifier of the user.                                                                           |
 | `context`      | Object   | Dictionary of information that provides context about a message. However, it is not directly related to the API call. |
 | `integrations` | Object   | A dictionary containing the destinations to be either enabled or disabled.                                            |
-| `previousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>  | String    | The previous unique identifier of the user.                                                                           |
 | `traits`       | Object   | Dictionary of the properties or traits associated with the group, such as `email` or `name`.                          |
 | `timestamp`    | Date     | The timestamp of the message's arrival.                                                                               |
 
@@ -298,7 +294,7 @@ For a detailed explanation of the <code class="inline-code">alias</code> call, r
 
 ## Consumers
 
-You can specify different consumers to make requests to RudderStack servers as explained below:
+You can specify the following consumers to make requests to RudderStack:
 
 ### Lib-Curl Consumer
 
