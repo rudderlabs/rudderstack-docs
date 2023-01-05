@@ -80,12 +80,12 @@ The RudderStack Node SDK provides the following parameters which you can pass du
 
 | Parameter                   | Data type     | Default value    | Description         |
 | :--------------------- | :------- | :------------------------------ | :------------------ |
-| `flushAt`              | Integer   | 20                              | Number of events to be flushed when reached this limit.   |
+| `flushAt`              | Integer   | 20                              | Number of events flushed by the SDK when reached this limit.   |
 | `flushInterval`        | Integer   | 10000                           |  Maximum timespan (in milliseconds) after which the events from the in-memory queue are flushed. |
 | `maxInternalQueueSize` | Integer   | 20000                           |  Maximum length of the in-memory queue.     |
-| `logLevel`             | String   | 'info'                          | Log level. For example: `debug`, `error`, etc.     |
+| `logLevel`             | String   | 'info'                          | Sets the logging level. The acceptable values are `info`, `debug`, `error`, etc.    |
 
-The following initialization parameters are only available for RudderStack Node.js SDK **v2.x.x and above**:
+The following initialization parameters are only available for RudderStack Node SDK **v2.x.x and above**:
 
 | Parameter                   | Data type     | Default value    | Description         |
 | :--------------------- | :------- | :------------------------------ | :------------------ |
