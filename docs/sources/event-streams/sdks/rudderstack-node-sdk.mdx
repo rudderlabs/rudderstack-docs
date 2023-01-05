@@ -76,17 +76,22 @@ const client = new Analytics(WRITE_KEY, {
 
 ## SDK initialization options
 
-The RudderStack Node.js SDK provides the following parameters which are optional and can be passed during the SDK initialization:
+The RudderStack Node.js SDK provides the following parameters which can be passed during the SDK initialization:
+
+| Parameter                   | Data type     | Default value    | Description         |
+| :--------------------- | :------- | :------------------------------ | :------------------ |
+| `flushAt`              | Integer   | 20                              | Number of events to be flushed when reached this limit.   |
+| `flushInterval`        | Integer   | 10000                           |  Maximum timespan (in milliseconds) after which the events from the in-memory queue are flushed. |
+| `maxInternalQueueSize` | Integer   | 20000                           |  Maximum length of the in-memory queue.     |
+| `logLevel`             | String   | 'info'                          | Log level. For example: `debug`, `error`, etc.     |
+
+The following initialization parameters are only available for RudderStack Node.js SDK **v2 and above**:
 
 | Parameter                   | Data type     | Default value    | Description         |
 | :--------------------- | :------- | :------------------------------ | :------------------ |
 | `dataPlaneUrl`         | String   | `https://hosted.rudderlabs.com` | Data plane URL.        |
 | `path`                 | String   | `/v1/batch`                     | Path to batch endpoint.          |
-| `flushAt`              | Integer   | 20                              | Number of events to be flushed when reached this limit.   |
-| `flushInterval`        | Integer   | 10000                           |  Maximum timespan (in milliseconds) after which the events from the in-memory queue are flushed. |
 | `maxQueueSize`         | Integer   | 460800 (500KB)                   | Maximum payload size of a batch request.   |
-| `maxInternalQueueSize` | Integer   | 20000                           |  Maximum length of the in-memory queue.     |
-| `logLevel`             | String   | 'info'                          | Log level. For example: `debug`, `error`, etc.     |
 | `axiosConfig`          | Object   | N/A                             | Axios configuration.            |
 | `axiosInstance`        | Object   | N/A                             | Axios instance.              |
 | `axiosRetryConfig`     | Object   | N/A                             | Axios retry configuration.          |
