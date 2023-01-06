@@ -424,3 +424,15 @@ If the callback returns with an error, RudderStack recommends retry calling <cod
 - If the job fails even after `JobOpts.maxAttempts`, it will not be retried again and pushed to a `failed queue`. **You can retry them later manually using Bull’s utility methods** [**listed here**](https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md#queuegetfailed) **or get them from Redis directly**.
 - There might be a scenario where the node process dies with the jobs still in active state \(not completed nor failed but in the process of sending/retrying\). Since the RudderStack SDK has only **1 processor for sending events** \(this count should always be **1**\), the next time the SDK is initialized and `createPersistenceQueue` is called, **the jobs will be picked up first by the processor to get processed to maintain event ordering based on the value of `QueueOpts.isMultiProcessor`**.
 - For multiple servers \(SDK\) connecting to the same queue \(`QueueOpts.queueName`\), there will be multiple processors fetching events from the same queue and event ordering won’t be implemented. Hence, `QueueOpts.isMultiProcessor` should be set to **`true`.**
+        
+## FAQ
+
+#### How to ensure that all my events in the queue are processed?
+
+You can use the `flush()` method to ensure that all the events in the queue are processed. The following example highlights the use of `flush()` with a callback:
+```jsx
+client.flush(function(err, batch){
+  console.log('Flushing done');
+}
+)
+```
