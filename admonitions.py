@@ -14,6 +14,9 @@ for root, dirs, files in os.walk("docs"):
             # Construct the full path to the file
             file_path = os.path.join(root, file)
 
+            # Get the relative path to the file
+            relative_path = os.path.relpath(file_path, "docs")
+
             # Open the .mdx file
             with open(file_path, "r") as f:
                 # Read the contents of the file
@@ -35,11 +38,14 @@ for root, dirs, files in os.walk("docs"):
                 # Count the number of success blocks in the file
                 success_block_count = contents.count('<div class="successBlock">')
 
-                # Calculate the total number of admonitions in the file
-                total_admonitions = warning_block_count + info_block_count + success_block_count
+                # Count the number of danger blocks in the file
+                danger_block_count = contents.count('<div class="dangerBlock">')
 
-                # Add the title, warning block count, info block count, success block count, and total admonitions to the results list
-                results.append((title, warning_block_count, info_block_count, success_block_count, total_admonitions))
+                # Calculate the total number of admonitions in the file
+                total_admonitions = warning_block_count + info_block_count + success_block_count + danger_block_count
+
+                # Add the title, warning block count, info block count, success block count, danger block count and total admonitions to the results list
+                results.append((title, relative_path, warning_block_count, info_block_count, success_block_count, danger_block_count, total_admonitions))
 
 # Open
 
@@ -50,8 +56,8 @@ with open("results.csv", "w", newline="") as csvfile:
     writer = csv.writer(csvfile)
 
     # Write the header row
-    writer.writerow(["Title", "Warning Blocks", "Info Blocks", "Success Blocks", "Total admonitions"])
+    writer.writerow(["Title", "Path", "Warning blocks", "Info blocks", "Success blocks", "Danger blocks", "Total admonitions"])
 
     # Write the results to the CSV file
     for result in results:
-        writer.writerow([result[0], result[1], result[2], result[3], result[4]])
+        writer.writerow([result[0], result[1], result[2], result[3], result[4], result[5], result[6]])
