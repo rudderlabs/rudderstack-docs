@@ -13,11 +13,7 @@ for root, dirs, files in os.walk("docs"):
             with open(os.path.join(root, file), "r") as f:
                 content = f.read()
 
-            # Check if the .mdx file contains two --- delimiters
-            if content.count("---") == 2:
-                frontmatter, rest = content.split("---", 1)
-                lines = frontmatter.split("\n")
-                
+
                 # Find the index of the second line that starts with three dashes
                 end_index = 0
                 dashes_count = 0
