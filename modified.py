@@ -12,9 +12,14 @@ for root, dirs, files in os.walk("."):
             with open(file, "r") as f:
                 content = f.read()
 
-            frontmatter, rest = content.split("---", 1)
-            frontmatter += f"\nlastModified: {last_modified}\n"
+            # Check if the .mdx file contains two --- delimiters
+            if content.count("---") == 2:
+                frontmatter, rest = content.split("---", 1)
+                frontmatter += f"\nlastModified: {last_modified}\n"
 
-            # Write the modified content back to the file
-            with open(file, "w") as f:
-                f.write(f"---{frontmatter}---{rest}")
+                # Write the modified content back to the file
+                with open(file, "w") as f:
+                    f.write(f"---{frontmatter}---{rest}")
+            else:
+                # Skip the file if it does not contain two --- delimiters
+                print(f"Skipping {file} because it does not contain two --- delimiters")
