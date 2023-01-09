@@ -14,23 +14,22 @@ for root, dirs, files in os.walk("docs"):
                 content = f.read()
 
 
-                # Find the index of the second line that starts with three dashes
-                end_index = 0
-                dashes_count = 0
-                for i, line in enumerate(lines):
-                    if line.startswith('---'):
-                        dashes_count += 1
-                        if dashes_count == 2:
-                            end_index = i
-                            break
                 
-                # Insert the new lastModified key/value pair at the index right before the second line that starts with three dashes
-                lines.insert(end_index, f"lastModified: {last_modified}")
-                frontmatter = "\n".join(lines)
+            # Find the index of the second line that starts with three dashes
+            end_index = 0
+            dashes_count = 0
+            for i, line in enumerate(lines):
+                if line.startswith('---'):
+                    dashes_count += 1
+                    if dashes_count == 2:
+                        end_index = i
+                        break
+            
+            # Insert the new lastModified key/value pair at the index right before the second line that starts with three dashes
+            lines.insert(end_index, f"lastModified: {last_modified}")
+            frontmatter = "\n".join(lines)
 
-                # Write the modified content back to the file
-                with open(os.path.join(root, file), "w") as f:
-                    f.write(f"---{frontmatter}---{rest}")
-            else:
-                # Skip the file if it does not contain two --- delimiters
-                print(f"Skipping {file} because it does not contain two --- delimiters")
+            # Write the modified content back to the file
+            with open(os.path.join(root, file), "w") as f:
+                f.write(f"---{frontmatter}---{rest}")
+
