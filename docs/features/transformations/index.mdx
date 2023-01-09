@@ -1,12 +1,12 @@
 ---
 title: "Transformations"
-description: Write functions to transform data from your source to your destination on the fly.
+description: Write functions to transform your source data before sending it to your destinations.
 ---
 
-RudderStack's **Transformations** feature enables you to write custom JavaScript functions to implement specific use-cases on your event data, such as:
+RudderStack's **Transformations** feature lets you write custom functions to implement specific use-cases on your event data, like:
 
-- Filtering or sampling events
-- Cleaning or aggregating data
+- Event filtering or sampling
+- Data cleaning or aggregation
 - Data masking or removing sensitive PII to ensure data privacy
 - Enriching events by implementing static logic or leveraging an external API
 - Using an API to implement specific actions on the events
@@ -15,32 +15,21 @@ RudderStack's **Transformations** feature enables you to write custom JavaScript
   videoId={'C11Na9oIv-E'}
 />
 
-RudderStack supports the Transformations feature across your <Link to="/sources/event-streams/">Event Streams</Link>, <Link to="/sources/extract/">Cloud Extract</Link>, and <Link to="/sources/reverse-etl/">Reverse ETL</Link> pipelines in both the cloud and device modes. Refer to the <Link to="/features/transformations/device-mode-transformations">Device Mode Transformations</Link> and <Link to="/features/transformations/cloud-mode-transformations">Cloud Mode Transformations</Link> documentation for more details on using transformations in each <Link to="/destinations/rudderstack-connection-modes/">connection mode</Link>.
-
-The below table summarizes the availability of Transformations feature across different [pricing plans](https://www.rudderstack.com/pricing/):
-
-| Connection Mode | Free       | Pro   | Enterprise    |
-| :------------------ | :------------ | :------------ | :------------ |
-| **Cloud mode**      | Upto 3 | ✅  | ✅   |
-| **Device mode**     | ❌    | ❌      | ✅        |
+You can use this feature across your <Link to="/sources/event-streams/">Event Streams</Link>, <Link to="/sources/extract/">Cloud Extract</Link>, and <Link to="/sources/reverse-etl/">Reverse ETL</Link> pipelines in both the cloud and device modes. For more information, refer to the <Link to="/features/transformations/cloud-mode-transformations">Cloud Mode Transformations</Link> and <Link to="/features/transformations/device-mode-transformations">Device Mode Transformations</Link> guides.
 
 ## Key features
 
-Some key features of RudderStack Transformations are listed below:
+- You can transform your events in real-time.
+- Transformations easier to build, manage, and debug, and reuse.
+- You can also programmatically add or remove the transformations using the <Link to="/api/transformation-api/">Transformations API</Link>.
+- You can create an organization-wide sandbox where your team can store the transformations before publishing them in a production environment.
+- You can version control your transformations.
 
-- You can apply the Transformations to your events in real-time.
-- You can programmatically add and remove Transformations using the <Link to="/api/transformation-api/">Transformations API</Link>.
-- They're easier to build, manage, and debug, and reuse.
-- You can create an organization-wide sandbox where your team can store the Transformations before publishing them in a production environment.
-- You can version control your Transformations.
-
-<div class="infoBlock">
 Read more about why your data pipeline needs to have an efficient event transformations capability in the <a href="https://rudderstack.com/blog/the-future-of-data-pipeline-tools-must-include-better-transformations-than-etl-ever-had">RudderStack blog</a>.
-</div>
 
 ## Use case
 
-Suppose you want to set the `context.os` field to `Android` for all the events, irrespective of the actual platform RudderStack tracks the event from. You can write a simple transformation to do this:
+Suppose you want to set the `context.os` field to `Android` for all the events, irrespective of the actual platform RudderStack tracks the event from. To do this, you can write a simple transformation as shown:
 
 ```javascript
 export function transformEvent(event, metadata) {
@@ -57,14 +46,10 @@ The `transformEvent` function overrides the event's `context.os.name` and sets i
 
 To add a new transformation in the RudderStack dashboard, follow these steps:
 
-1. Log into the [RudderStack dashboard](https://app.rudderstack.com/).
-2. Go to **Enhance** > **Transformations**, as shown:
-
-<img src="../../assets/features/adding-a-transformation-1.png" alt="Adding a Transformation" />
-
-3. Click **New Transformation**.
-4. Add a name for your transformation and an optional description.
-5. Next, add your JavaScript function in the **Transformation** window, as shown:
+1. Log in to the [RudderStack dashboard](https://app.rudderstack.com/).
+2. Go to **Enhance** > **Transformations** and click **New Transformation**.
+3. Name your transformation and an optional description.
+4. Add your transformation function in the **Transformation** window, as shown:
 
 <img src="../../assets/features/adding-a-transformation-2.png" alt="Adding a Transformation" />
 
@@ -72,43 +57,39 @@ To add a new transformation in the RudderStack dashboard, follow these steps:
 You can also add other functions and call them from within <code class="inline-code">transformEvent</code>.
 </div>
 
-6. To test your transformation, paste your sample event in the **Events** block and click **Run Test**. By default, RudderStack provides some sample events to test if your transformation logic works as expected.
+5. To test your transformation, click the **Run Test** button. By default, RudderStack provides a sample event payload to test if your transformation logic works as expected.
 
-  <img src="../../assets/features/adding-a-transformation-3.png" alt="Adding a Transformation" />
+<img src="../../assets/features/adding-a-transformation-3.png" alt="Adding a Transformation" />
 
-7. To save the transformation, click **Save**.
+6. Finally, click **Save** to save the transformation.
 
 ## Connecting transformation to a destination
 
 You can connect a transformation to a destination in two cases:
 
-### Case 1: While setting up a new destination
+### Case 1: Setting up a new destination
 
-RudderStack provides the option to connect an existing transformation or create a new transformation while setting up a destination, as shown:
+You can connect an existing transformation or create a new transformation from scratch while setting up a destination, as shown:
 
 <img src="../../assets/features/connecting-a-transformation.png" alt="Connecting a transformation" />
 
-### Case 2: While connecting to an existing destination
+### Case 2: Connecting to an existing destination
 
-To add a transformation to an existing destination, follow these steps:
-
-1. In the dashboard, go to the **Transformation** tab in your destination dashboard and click **Add a transformation**, as shown:
+1. In the dashboard, go to the **Transformation** tab and click **Add a transformation**, as shown:
 
 <img src="../../assets/features/adding-transformation-existing-destination-1.png" alt="Connecting a transformation to existing destination" />
 
-2. Then, choose the transformation to connect to the destination.
+2. Select the transformation to connect to the destination and click **Choose**.
 
 <img src="../../assets/features/adding-transformation-existing-destination-2.png" alt="Connecting a transformation to existing destination" />
 
 ## Deleting a transformation
 
-To delete a transformation, go to **Enhance** > **Transformations** and click the **Delete** button next to the transformation that you want to delete, as shown:
-
-<img src="../../assets/features/deleting-a-transformation.png" alt="Deleting a transformation" />
-
 <div class="warningBlock">
 You cannot delete a transformation that is connected to a destination.
 </div>
+
+To delete a transformation, go to **Enhance** > **Transformations** and click the **Delete** button next to the transformation that you want to delete.
 
 ## `transformEvent` function
 
@@ -130,10 +111,6 @@ RudderStack injects a function `metadata(event)` into your transformations as an
 <code class="inline-code">metadata()</code> takes the event as the input and returns the metadata of the event.
 </div>
 
-<div class="infoBlock">
-Since you may not need the event metadata in every transformation, it is an <strong>optional argument</strong> and can be skipped.
-</div>
-
 The following properties, if available, are present in the metadata response:
 
 | Property   | Description       |
@@ -141,6 +118,8 @@ The following properties, if available, are present in the metadata response:
 | `sourceId`      | The source ID in the **Settings** tab of your configured source in the dashboard. |
 | `destinationId` | The destination ID in the **Settings** tab of your configured destination in the dashboard.           |
 | `messageId`     | The unique ID for each event.            |
+| `sourceType` | The type of source, for example, Android, iOS, etc. |
+| `destinationType` | The type of destination where RudderStack sends the transformed event, for example, Snowflake. | 
 
 An example of using `metadata` is shown below:
 
@@ -155,7 +134,9 @@ export function transformEvent(event, metadata) {
 
 ## Making external API requests
 
-You can make any number of external API requests in your transformation functions and use the response to enrich your events. 
+You can make any number of external API requests in your transformation functions and use the fetched responses to enrich your events. 
+
+### JavaScript
 
 RudderStack injects an asynchronous `fetch` function in your transformations. It makes an API call to the given URL and returns the response in the JSON format.
 
@@ -176,19 +157,17 @@ export async function transformEvent(event, metadata) {
 }
 ```
 
-<div class="infoBlock">
-To see the <code class="inline-code">fetch</code> function in action, refer to the <a href="https://github.com/rudderlabs/sample-user-transformers/blob/sampleTransformationV1/EnrichWithClearbit.js">Clearbit enrichment</a> sample transformation.
-</div>
+To see the <code class="inline-code">fetch</code> function in action, refer to the <a href="https://github.com/rudderlabs/sample-user-transformers/blob/sampleTransformationV1/EnrichWithClearbit.js">Clearbit enrichment</a> example.
 
 <div class="infoBlock">
-For improved performance, it is highly recommended to use the <code class="inline-code">batch</code> API requests instead of a separate API request for each event wherever possible.
+For improved performance, it is highly recommended to use the <code class="inline-code">batch</code> API requests wherever possible instead of a separate API request for each event.
 </div>
 
-### Fetching response properties using `fetchV2`
+#### `fetchV2`
 
-**FetchV2** is a wrapper for the `fetch` call. It enables you to fetch the response properties more efficiently while making the external API calls.
+`fetchv2` is a wrapper for the `fetch` call. It enables you to fetch the response properties more efficiently while making the external API calls.
 
-The following properties are present in a `fetchV2` response:
+The `fetchv2` response contains the following properties:
 
 | Property | Description  |
 | :-------------- | :----------- |
@@ -197,7 +176,7 @@ The following properties are present in a `fetchV2` response:
 | `headers`     | The response headers   |
 | `body`     | The response body in JSON or TEXT. By default, it is JSON. |
 
-The below example highlights the use of the `fetchV2` function in a transformation to capture failure due to a timeout: 
+The following example highlights the use of the `fetchV2` function in a transformation to capture failure due to a timeout: 
   
 ```javascript
 export async function transformEvent(event) {
@@ -212,3 +191,9 @@ export async function transformEvent(event) {
   return event;
 }
 ```
+
+### Python
+
+Content to be added.
+
+<br />

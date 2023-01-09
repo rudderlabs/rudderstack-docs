@@ -3,25 +3,31 @@ title: "Transformations in Cloud Mode"
 description: Use transformations with cloud mode destinations.
 ---
 
-When you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination supporting <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, RudderStack:
+When you <Link to="/features/transformations/#adding-a-transformation">add a transformation</Link> and connect it to a <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> destination, RudderStack does the following:
 
 1. Tracks and collects events at the source.
 2. Applies the transformation logic to the your events.
 3. Forwards the transformed event to your connected destination.
 
-
-<GhBadge
-  url={'https://rudderstack.com/enterprise-quote'}
-  label={'Plan'}
-  message={'Pro/Enterprise'}
-  color={'blueviolet'}
-/>
-
 <img src="../../assets/features/transformations-workflow.png" alt="Transformations workflow" />
+
+## Applying transformation on a batch of events
+
+You can perform any aggregation or roll-up operation on a batch of events using the `transformBatch` function instead of <Link to="/features/transformations/#transformevent-function">`transformEvent`</Link>, as shown:
+
+```javascript
+export function transformBatch(events, metadata) {
+    return events;
+}
+```
+
+<div class="dangerBlock">
+To ensure event ordering when using the <code class="inline-code">transformBatch</code> function, make sure you pass the <code class="inline-code">messageId</code> from the input event to the output event. Without the <code class="inline-code">messageId</code>, RudderStack <strong>does not</strong> guarantee the event ordering. It is highly recommended to use <code class="inline-code">transformEvent</code> as much as possible, as it ensures event ordering.
+</div>
 
 ## Debugging transformations
 
-Once you <Link to="#adding-a-transformation">add a transformation</Link>, you can capture any event-related information in the form of logs while running a test on your transformation. You can do this by including the `log` function in your transformation code. 
+Once you <Link to="/features/transformations/#adding-a-transformation">add a transformation</Link>, you can capture any event-related information in the form of logs while running a test on your transformation. You can do this by including the `log` function in your transformation code. 
 
 An example of using the `log` function is shown below:
 
@@ -43,20 +49,6 @@ On adding the above transformation and clicking **Run Test**, you can see the re
 
 <div class="infoBlock">
 You can pass a string, number, or an object as an argument to the <code class="inline-code">log</code> function.
-</div>
-
-## Applying transformation on a batch of events
-
-You can also perform any aggregation or roll-up operation on a batch of events using the `transformBatch` function instead of `transformEvent`, as shown:
-
-```javascript
-export function transformBatch(events, metadata) {
-    return events;
-}
-```
-
-<div class="dangerBlock">
-If you want to ensure event ordering while using <code class="inline-code">transformBatch</code>, make sure you pass the <code class="inline-code">messageId</code> from the input event to the output event. Without the <code class="inline-code">messageId</code>, RudderStack will <strong>not</strong> guarantee the event ordering. It is highly recommended to use <code class="inline-code">transformEvent</code> as much as possible, as it ensures event ordering.
 </div>
 
 ## Limitations
