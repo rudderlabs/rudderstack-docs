@@ -82,7 +82,6 @@ The Ruby SDK automatically gzips requests. However, you can disable this feature
 analytics = RudderAnalyticsSync::Client.new(
   write_key: 'WRITE_KEY', # required
   data_plane_url: 'DATA_PLANE_URL',
-  stub: false,
   gzip: false, // Set to true to enable Gzip compression
   on_error: proc { |error_code, error_body, exception, response|
     # defaults to an empty proc
