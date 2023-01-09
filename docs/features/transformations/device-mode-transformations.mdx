@@ -3,12 +3,15 @@ title: "Transformations in Device Mode"
 description: Use transformations with device mode destinations.
 ---
 
-RudderStack's Device Mode Transformations feature enables you to use the powerful user transformations with the [device mode-only destinations](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations), for example, Firebase, Hotjar, etc.
+You can use RudderStack's Transformations feature with the [device mode destinations](https://github.com/rudderlabs/rudder-sdk-js/tree/production/integrations) like Firebase, Hotjar, etc. 
 
-Using this feature, you can enrich the event data using your custom logic. Moreover, it provides an easier way to filter out the events to get rid of the bad data, sample events to reduce costs to some destinations, and many more interesting use cases. To learn more about the use cases, refer to the <Link to="/features/transformations/#use-case">Use case</Link> section.
+To learn more about the use cases of device mode transformations, refer to the <Link to="/features/transformations/#use-case">Use case</Link> section.
 
-<div class="warningBlock">
-Only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>  SDKs support the Transformations feature to send events to the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> destinations.
+<div class="infoBlock">
+<ul>
+<li>Only the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/">JavaScript</Link>, <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android</Link>, and <Link to="/sources/event-streams/sdks/rudderstack-ios-sdk/">iOS</Link> SDKs support device mode transformations.</li>
+<li><strong>You can write device mode transformations only in JavaScript</strong>. Python support will be added soon.</li>
+</ul>
 </div>
 
 <GhBadge
@@ -30,6 +33,7 @@ Only the <Link to="/sources/event-streams/sdks/rudderstack-android-sdk/">Android
 RudderStack provides the Client Transformation service to facilitate the Transformations feature for device mode destinations. It ensures that the event ingestion to RudderStack backend isn't affected, assuring minimum response time from the RudderStack backend.
 
 <img src="../../assets/features/device-mode-transformations-workflow.png" alt="Transformations workflow" />
+<br />
 
 When you <Link to="#adding-a-transformation">add a transformation</Link> and connect it to a destination supporting the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, the following steps are performed:
 
