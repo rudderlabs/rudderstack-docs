@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-for root, dirs, files in os.walk("."):
+for root, dirs, files in os.walk("docs"):
     for file in files:
         if file.endswith(".mdx"):
             # Get the last time the file was modified
