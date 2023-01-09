@@ -54,7 +54,6 @@ The <strong>Start Date</strong> setting is valid only for the first (historical)
 - **Conversion Window**: Enter the [Google Ads conversion window](https://support.google.com/google-ads/answer/3123169?hl=en) duration.
 
 <div class="infoBlock">
-
 For more information on the conversion windows in Google Ads, refer to the <a href="#faq">FAQ</a> section below.
 </div>
 
@@ -72,6 +71,12 @@ As you select the relevant options from the dropdown, you can observe the custom
 The following image shows a sample custom GAQL query:
 
 <img src="../../assets/cloud-extract-sources/g-ads-connection-settings-5.png" alt="Connection settings" />
+
+You can also use the [Google Ads Query Builder tool](https://developers.google.com/google-ads/api/fields/v12/query_validator) to validate your queries.
+
+<div class="warningBlock">
+RudderStack does not support creating a custom GAQL query for the <code class="inline-code">click_view</code> resource as it requires a <a href="https://developers.google.com/google-ads/api/fields/v11/click_view">filter limiting the results to one day</a>. You can use the <code class="inline-code">clickView</code> predefined stream instead.
+</div>
 
 ### Destination settings
 
@@ -101,7 +106,6 @@ You can further connect this source to your data warehouse by clicking on **Add 
 <img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
 
 <div class="successBlock">
-
 Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
 </div>
 
