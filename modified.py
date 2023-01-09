@@ -16,7 +16,9 @@ for root, dirs, files in os.walk("docs"):
             # Check if the .mdx file contains two --- delimiters
             if content.count("---") == 2:
                 frontmatter, rest = content.split("---", 1)
-                frontmatter += f"\nlastModified: {last_modified}\n"
+                lines = frontmatter.split("\n")
+                lines.append(f"lastModified: {last_modified}")
+                frontmatter = "\n".join(lines)
 
                 # Write the modified content back to the file
                 with open(os.path.join(root, file), "w") as f:
