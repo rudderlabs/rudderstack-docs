@@ -17,7 +17,19 @@ for root, dirs, files in os.walk("docs"):
             if content.count("---") == 2:
                 frontmatter, rest = content.split("---", 1)
                 lines = frontmatter.split("\n")
-                lines.append(f"lastModified: {last_modified}")
+                
+                # Find the index of the second line that starts with three dashes
+                end_index = 0
+                dashes_count = 0
+                for i, line in enumerate(lines):
+                    if line.startswith('---'):
+                        dashes_count += 1
+                        if dashes_count == 2:
+                            end_index = i
+                            break
+                
+                # Insert the new lastModified key/value pair at the index right before the second line that starts with three dashes
+                lines.insert(end_index, f"lastModified: {last_modified}")
                 frontmatter = "\n".join(lines)
 
                 # Write the modified content back to the file
