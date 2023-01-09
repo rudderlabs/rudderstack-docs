@@ -936,7 +936,7 @@ export const jsonData = [
                         content: []
                     }, {
                         title: "E-commerce Events",
-                        link: "/destinations/streaming-destinations/adobe-analytics/e-commerce-events/",
+                        link: "/destinations/streaming-destinations/adobe-analytics/ecommerce-events/",
                         content: []
                     },
                 ]
