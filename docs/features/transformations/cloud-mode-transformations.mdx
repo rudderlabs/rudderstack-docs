@@ -15,14 +15,36 @@ When you <Link to="/features/transformations/#adding-a-transformation">add a tra
 
 You can perform any aggregation or roll-up operation on a batch of events using the `transformBatch` function instead of <Link to="/features/transformations/#transformevent-function">`transformEvent`</Link>, as shown:
 
+<Tabs>
+  <TabList>
+    <Tab>JavaScript</Tab>
+    <Tab>Python</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+<span>
+
 ```javascript
 export function transformBatch(events, metadata) {
     return events;
 }
 ```
+</span>
+    </TabPanel>
+    <TabPanel>
+<span>
+
+```python
+def transformBatch(events, metadata):
+    return events
+```
+</span>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
 
 <div class="dangerBlock">
-To ensure event ordering when using the <code class="inline-code">transformBatch</code> function, make sure you pass the <code class="inline-code">messageId</code> from the input event to the output event. Without the <code class="inline-code">messageId</code>, RudderStack <strong>does not</strong> guarantee the event ordering. It is highly recommended to use <code class="inline-code">transformEvent</code> as much as possible, as it ensures event ordering.
+To ensure event ordering when using the <code class="inline-code">transformBatch</code> function, make sure you pass the <code class="inline-code">messageId</code> from the input event to the output event. Without the <code class="inline-code">messageId</code>, RudderStack <strong>does not</strong> guarantee event ordering. <br /><br /><strong>It is highly recommended to use <code class="inline-code">transformEvent</code> as much as possible, as it ensures event ordering.</strong>
 </div>
 
 ## Debugging transformations
@@ -30,6 +52,15 @@ To ensure event ordering when using the <code class="inline-code">transformBatch
 Once you <Link to="/features/transformations/#adding-a-transformation">add a transformation</Link>, you can capture any event-related information in the form of logs while running a test on your transformation. You can do this by including the `log` function in your transformation code. 
 
 An example of using the `log` function is shown below:
+
+<Tabs>
+  <TabList>
+    <Tab>JavaScript</Tab>
+    <Tab>Python</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+<span>
 
 ```javascript
 export function transformEvent(event, metadata) {
@@ -42,6 +73,25 @@ export function transformEvent(event, metadata) {
   return event;
 }
 ```
+</span>
+    </TabPanel>
+    <TabPanel>
+<span>
+
+```python
+def transformEvent(event, metadata):
+    meta = metadata(event)
+    event['sourceId'] = meta['sourceId']
+    
+    log("Event Name is", event['event'], ";", "Message ID is", event['messageId'])
+    log("Source ID is", meta['sourceId']);
+    
+    return event
+```
+</span>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
 
 On adding the above transformation and clicking **Run Test**, you can see the resulting log in the **Logs** section of the dashboard, as shown:
 
@@ -59,3 +109,5 @@ The transformation fails if the following memory and time limits are exceeded:
 | :----------- | :-------- |
 | Memory limit | 128 MB      |
 | Execution time limit   | 4 seconds |
+
+<br />

@@ -3,37 +3,36 @@ title: "Transformations"
 description: Write functions to transform your source data before sending it to your destinations.
 ---
 
-RudderStack's **Transformations** feature lets you write custom functions to implement specific use-cases on your event data, like:
+RudderStack's **Transformations** feature lets you write custom functions to implement specific use-cases on your event data, like event filtering, sampling, aggregation, enrichment, and more. 
 
-- Event filtering or sampling
-- Data cleaning or aggregation
-- Data masking or removing sensitive PII to ensure data privacy
-- Enriching events by implementing static logic or leveraging an external API
-- Using an API to implement specific actions on the events
+## Key features
 
-<div class="successBlock">
-RudderStack supports both JavaScript and Python to write your transformations.
-</div>
+- Easier to build, manage, debug, and reuse.
+- You can add custom logic to your source events in real-time, before sending them to your destination.
+- Support for JavaScript and <Link to="#python-transformations">Python</Link>.
+- You can use the transformations across your <Link to="/sources/event-streams/">Event Streams</Link>, <Link to="/sources/extract/">Cloud Extract</Link>, and <Link to="/sources/reverse-etl/">Reverse ETL</Link> pipelines in both <Link to="/features/transformations/cloud-mode-transformations">cloud mode</Link> and <Link to="/features/transformations/device-mode-transformations">device mode</Link>.
+- Ability to version control your transformations.
+- You can create an organization-wide sandbox where your team can store all the transformations before publishing them in production.
+- Programmatically manage your transformations using the <Link to="/api/transformation-api/">Transformations API</Link>.
 
-You can use the Transformations feature across your <Link to="/sources/event-streams/">Event Streams</Link>, <Link to="/sources/extract/">Cloud Extract</Link>, and <Link to="/sources/reverse-etl/">Reverse ETL</Link> pipelines in both the cloud and device modes. For more information, refer to the <Link to="/features/transformations/cloud-mode-transformations">Cloud Mode Transformations</Link> and <Link to="/features/transformations/device-mode-transformations">Device Mode Transformations</Link> guides.
+Here's a quick overview of the feature:
 
 <YouTube
   videoId={'C11Na9oIv-E'}
 />
 
-## Key features
-
-- You can transform your events in real-time.
-- Transformations easier to build, manage, and debug, and reuse.
-- You can also programmatically add or remove the transformations using the <Link to="/api/transformation-api/">Transformations API</Link>.
-- You can create an organization-wide sandbox where your team can store the transformations before publishing them in a production environment.
-- You can version control your transformations.
-
-Read more about why your data pipeline needs to have an efficient event transformations capability in the <a href="https://rudderstack.com/blog/the-future-of-data-pipeline-tools-must-include-better-transformations-than-etl-ever-had">RudderStack blog</a>.
-
 ## Use case
 
 Suppose you want to set the `context.os` field to `Android` for all the events, irrespective of the actual platform RudderStack tracks the event from. To do this, you can write a simple transformation as shown:
+
+<Tabs>
+  <TabList>
+    <Tab>JavaScript</Tab>
+    <Tab>Python</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+<span>
 
 ```javascript
 export function transformEvent(event, metadata) {
@@ -41,10 +40,36 @@ export function transformEvent(event, metadata) {
     return event;
 }
 ```
+</span>
+    </TabPanel>
+    <TabPanel>
+<span>
+
+```python
+def transformEvent(event, metadata):
+    event['context']['os'] = { "name": "Android"}
+    return event
+```
+</span>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
 
 The `transformEvent` function overrides the event's `context.os.name` and sets it as `Android`, as seen below:
 
 <img src="../../assets/features/adding-a-transformation-3.png" alt="Transformation use-case" />
+
+## Python transformations
+
+<div class="infoBlock">
+Python transformations are available only in the RudderStack Cloud <a href="https://rudderstack.com/pricing/"><strong>Growth</strong></a> and <a href="https://www.rudderstack.com/enterprise-quote/"><strong>Enterprise</strong></a> plans.
+</div>
+
+RudderStack now supports writing your transformations in Python, giving you full flexibility to use custom Python code to transform your source events on the fly. This feature is especially useful for the data teams that generally deal with Python.
+
+### Limitations
+
+RudderStack currently supports only two Python packages for writing your transformations - <a href="https://pypi.org/project/requests/">requests</a> and <a href="https://pypi.org/project/python-dateutil/">dateutil</a>.
 
 ## Adding a transformation
 
@@ -52,12 +77,16 @@ To add a new transformation in the RudderStack dashboard, follow these steps:
 
 1. Log in to the [RudderStack dashboard](https://app.rudderstack.com/).
 2. Go to **Enhance** > **Transformations** and click **New Transformation**.
-3. Name your transformation and an optional description.
-4. Add your transformation function in the **Transformation** window, as shown:
+3. Name your transformation and add an optional description.
+4. In the **Transformation** window, select the language to write your transformations, as shown:
+
+<img src="../../assets/features/adding-a-transformation-1.png" alt="Adding a Transformation" />
+
+5. Add your transformation function in the , as shown:
 
 <img src="../../assets/features/adding-a-transformation-2.png" alt="Adding a Transformation" />
 
-<div class="successBlock">
+<div class="infoBlock">
 You can also add other functions and call them from within <code class="inline-code">transformEvent</code>.
 </div>
 
@@ -71,13 +100,13 @@ You can also add other functions and call them from within <code class="inline-c
 
 You can connect a transformation to a destination in two cases:
 
-### Case 1: Setting up a new destination
+#### Case 1: Setting up a new destination
 
 You can connect an existing transformation or create a new transformation from scratch while setting up a destination, as shown:
 
 <img src="../../assets/features/connecting-a-transformation.png" alt="Connecting a transformation" />
 
-### Case 2: Connecting to an existing destination
+#### Case 2: Connecting to an existing destination
 
 1. In the dashboard, go to the **Transformation** tab and click **Add a transformation**, as shown:
 
@@ -97,19 +126,18 @@ To delete a transformation, go to **Enhance** > **Transformations** and click th
 
 ## `transformEvent` function
 
-While using a transformation, RudderStack applies the `transformEvent` function on each event that takes two arguments:
-- `event`: Corresponds to the input event.
-- `metadata` (optional): Corresponds to the JavaScript function which you can use to access the metadata of the given event.
+While using a transformation, RudderStack applies the `transformEvent` function on each event that takes the following two arguments:
 
-<div class="infoBlock">
-For more information on <code class="inline-code">metadata</code>, refer to the <Link to="#accessing--the-event-metadata">Accessing metadata</Link> section below.
-</div>
+| <div style="width:140px">Argument</div> | Description |
+| :----------| :-----------|
+| `event`     | The input event. |
+| `metadata` | The JavaScript function to access the event's metadata. Refer to the <Link to="#accessing-event-metadata">Accessing event metadata</Link> section below for more information. |
 
-After the transformation is complete, `transformEvent` returns the final event to be sent to the destination.
+After the transformation is complete, the `transformEvent` function returns the final event to be sent to the destination.
 
 ## Accessing event metadata
 
-RudderStack injects a function `metadata(event)` into your transformations as an argument. This allows you to access the event metadata variables that help you customize your transformations.
+RudderStack injects a function `metadata(event)` into your transformations as an argument. This lets you access the event metadata variables to customize your transformations.
 
 <div class="infoBlock">
 <code class="inline-code">metadata()</code> takes the event as the input and returns the metadata of the event.
@@ -117,15 +145,24 @@ RudderStack injects a function `metadata(event)` into your transformations as an
 
 The following properties, if available, are present in the metadata response:
 
-| Property   | Description       |
+| <div style="width:140px">Property</div>   | Description       |
 | :-------------- | :------------------------- |
 | `sourceId`      | The source ID in the **Settings** tab of your configured source in the dashboard. |
 | `destinationId` | The destination ID in the **Settings** tab of your configured destination in the dashboard.           |
 | `messageId`     | The unique ID for each event.            |
-| `sourceType` | The type of source, for example, Android, iOS, etc. |
-| `destinationType` | The type of destination where RudderStack sends the transformed event, for example, Snowflake. | 
+| `sourceType` | The source type, for example, Android, iOS, etc. |
+| `destinationType` | The destination type where RudderStack sends the transformed event, for example, Snowflake. | 
 
 An example of using `metadata` is shown below:
+
+<Tabs>
+  <TabList>
+    <Tab>JavaScript</Tab>
+    <Tab>Python</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+<span>
 
 ```javascript
 export function transformEvent(event, metadata) {
@@ -135,6 +172,21 @@ export function transformEvent(event, metadata) {
   return event;
 }
 ```
+</span>
+    </TabPanel>
+    <TabPanel>
+<span>
+
+```python
+def transformEvent(event, metadata):
+    meta = metadata(event)
+    event['sourceId'] = meta['sourceId']
+    return event
+```
+</span>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
 
 ## Making external API requests
 
@@ -198,6 +250,20 @@ export async function transformEvent(event) {
 
 ### Python
 
-Content to be added.
+You can use Python's `requests` package to fetch response properties while making the external API calls, as shown:
+
+```python
+import requests
+
+def transformEvent(event, metadata):
+    res = requests.get("url")
+    if res.status_code == 200:
+        event["response"] = res.json();
+    return event
+```
 
 <br />
+
+## FAQ
+
+Refer to the <Link to="/features/transformations/faq">FAQ</Link> guide for answers to all the frequently asked questions on RudderStack Transformations.
