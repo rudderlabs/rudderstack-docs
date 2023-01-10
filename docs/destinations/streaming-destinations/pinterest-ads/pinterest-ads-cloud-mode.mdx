@@ -182,6 +182,20 @@ The following table lists the custom fields mappings for `track` and `page` call
 | `properties.order_id` | `order_id` | String|
 | `properties.query` | `search_string` | String |
 
+## Limited Data Processing (LDP)
+
+Starting January 1, 2023, you can use the Limited Data Processing (LDP) flag to limit how Pinterest uses certain data to help the advertisers comply with the users' privacy settings in accordance with the CCPA (California Consumer Privacy Act).
+
+To read more about this feature, refer to the [Pinterest documentation](https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing).
+
+The following table lists the event properties required to enable LDP and their mappings with the Pinterest fields:
+
+| RudderStack property | Pinterest property | Data type | Description |
+| :----------------------| :------------------| :----------| :-----------|
+| `properties.optOutType` |  `custom_data.opt_out_type` | String | Set this field to `LDP`. |
+| `traits.address.state` <br /> `context.traits.address.state` | `st` | Array of strings with SHA-256 encoding | Should be a two-letter code. |
+|  `traits.address.country`/`context.traits.address.country` | `country` | Array of strings with SHA-256 encoding |  Should be a two-character ISO-3166 country code. |
+
 ## FAQ
 
 ### How can I verify if my events are being sent to Pinterest Conversions API?
