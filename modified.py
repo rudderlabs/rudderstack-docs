@@ -21,7 +21,7 @@ for root, dirs, files in os.walk(docs_dir):
       last_modified = subprocess.run(["git", "log", "-1", "--format=%Y-%m-%dT%H:%M:%S.%3N%z", "--", filepath], capture_output=True).stdout.decode().strip()
       
       # Add the lastModified frontmatter item to the content
-      content = content.replace("---", "---\nlastModified: " + last_modified)
+      content = content.replace("---", "---\nlastModified: " + " + last_modified + ")
       
       # Open the file in write mode
       with open(filepath, "w") as f:
