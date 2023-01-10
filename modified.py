@@ -17,11 +17,32 @@ for root, dirs, files in os.walk(docs_dir):
         # Read the entire file into a string
         content = f.read()
       
-      # Use git to get the last modified timestamp of the file
+      # Use git to get the last modified timestamp of the file in the desired format
       last_modified = subprocess.run(["git", "log", "-1", "--format=%ci", "--", filepath], capture_output=True).stdout.decode().strip()
       
-      # Add the lastModified frontmatter item to the content
-      content = content.replace("---", "---\nlastModified: " + last_modified)
+      # Split the content into a list of lines
+      lines = content.split("\n")
+      
+      # Find the index of the opening and closing frontmatter delimiters
+      start_index = -1
+      end_index = -1
+      for i, line in enumerate(lines):
+        if line == "---":
+          if start_index == -1:
+            start_index = i
+          else:
+            end_index = i
+            break
+      
+      # Make sure that the opening and closing delimiters were found
+      if start_index == -1 or end_index == -1:
+        continue
+      
+      # Insert the lastModified frontmatter item within the frontmatter block
+      lines.insert(end_index, "lastModified: " + last_modified)
+      
+      # Join the lines back into a single string
+      content = "\n".join(lines)
       
       # Open the file in write mode
       with open(filepath, "w") as f:
