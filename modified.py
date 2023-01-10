@@ -18,7 +18,7 @@ for root, dirs, files in os.walk(docs_dir):
         content = f.read()
       
       # Use git to get the last modified timestamp of the file
-      last_modified = subprocess.run(["git", "log", "-1", "--format=%ad", "--", filepath], capture_output=True).stdout.decode().strip()
+      last_modified = subprocess.run(["git", "log", "-1", "--format=%ci", "--", filepath], capture_output=True).stdout.decode().strip()
       
       # Add the lastModified frontmatter item to the content
       content = content.replace("---", "---\nlastModified: " + last_modified)
