@@ -66,6 +66,7 @@ const Analytics = require('@rudderstack/rudder-sdk-node');
 
 const client = new Analytics(WRITE_KEY, {
   dataPlaneUrl: DATA_PLANE_URL, // default: https://hosted.rudderlabs.com
+  // Set more initialization options
 });
 ```
 </span>
@@ -73,6 +74,9 @@ const client = new Analytics(WRITE_KEY, {
     </TabPanels>
 </Tabs>
 
+<div class="warningBlock">
+If you are using self-hosted <a href="https://github.com/rudderlabs/rudder-server">rudder-server</a>, either upgrade it to v1.4.0 or above, or disable the gzipped request payloads (by setting <code class="inline-code">gzip</code> to <code class="inline-code">false</code> in the SDK initialization options).
+</div>
 
 ## SDK initialization options
 
