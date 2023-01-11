@@ -12,9 +12,8 @@ RudderStack lets you send your event data to [Pinterest Conversions API](https:/
 />
 
 <div class="warningBlock">
-To use Pinterest Tag's cloud mode (Pinterest conversions API), you need to contact <a href="https://help.pinterest.com/en/contact">Pinterest Support</a> to enable the beta access.
+To use Pinterest Tag's cloud mode (Pinterest conversions API), contact <a href="https://help.pinterest.com/en/contact">Pinterest Support</a> to enable the beta access.
 </div>
-
 
 <div class="infoBlock">
 Find the open source JavaScript SDK code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/pinterest_tag">GitHub repository</a>.
@@ -114,23 +113,23 @@ rudderanalytics.page("Best Seller", {
 
 The following table lists the mappings specific for Pinterest Conversion API and are relevant for both the `track` and `page` calls:
 
-| RudderStack property | Pinterest Tag property | Presence | Description | 
-|:---------------------|:-------------|:--------------|:--------------|
-| `message.event` | `event_name` | Required | Type of the user event. |
-| `context.traits.action_source`/`properties.action_source`/`message.channel` | `action_source` |Required | Source indicating the occurence of conversion event. |
-| `timestamp` | `event_time` | Required | Unix timestamp (in UTC) in seconds indicating when the user conversion event occurred. |
-| `destination.Config.advertiserId` | `advertiser_id` | Required | Pinterest Advertiser ID. |
-|  Integrations Object `messageId` | `event_id` | Optional | Deduplication key from the dashboard setting or `messageId`. The dashboard setting is given higher priority. |
-| `pageUrl` | `event_source_url` | Optional | URL of the web conversion event. |
-| `context.device.adTrackingEnabled` | `opt_out` | Optional | When <code class="inline-code">action_source</code> is **web** or **offline**, it defines whether the user has opted out of tracking for web conversion events. When <code class="inline-code">action_source</code> is **app_android** or **app_ios**, it defines whether the user has enabled **Limit Ad Tracking** on their iOS device or opted out of **Ads Personalization** on their Android device.|
-| `destination.Config.appId` | `app_id` | Optional | App store's App ID. |
-| `context.app.name`/`properties.appName` | `app_name` |Optional | Name of the app. |
-| `context.app.version`/`properties.appVersion` | `app_version` | Optional |Version of the app. |
-| `context.device.manufacturer`/`properties.manufacturer` | `device_brand` |Optional | Brand of the user device. |
-|  `context.device.model`/`properties.deviceModel` | `device_model` | Optional | Model of the user device. |
-| `context.device.type`/`properties.deviceType` | `device_type` | Optional | Type of the user device. |
-|  `context.os.version` | `os_version` | Optional | Version of the device's operating system. |
-| `context.locale` | `language` | Optional | Two-character ISO-639-1 language code indicating the user's language. | 
+| RudderStack property | Pinterest Tag property | Description | 
+|:---------------------|:------------- |:--------------|
+| `message.event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event_name` | Type of the user event. |
+| `context.traits.action_source` <br /> `properties.action_source` <br /> `message.channel` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `action_source` <br/> | Source indicating the occurence of conversion event. |
+| `timestamp` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event_time` | Unix timestamp (in UTC) in seconds indicating when the user conversion event occurred. |
+| `destination.Config.advertiserId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `advertiser_id` | Pinterest Advertiser ID. |
+|  Integrations Object `messageId` | `event_id` | Deduplication key from the dashboard setting or `messageId`. The dashboard setting is given higher priority. |
+| `pageUrl` | `event_source_url` | URL of the web conversion event. |
+| `context.device.adTrackingEnabled` | `opt_out` | <ul><li>When <code class="inline-code">action_source</code> is **web** or **offline**, it defines whether the user has opted out of tracking for web conversion events.</li><li>When <code class="inline-code">action_source</code> is **app_android** or **app_ios**, it defines whether the user has enabled **Limit Ad Tracking** on their iOS device or opted out of **Ads Personalization** on their Android device. </li></ul>|
+| `destination.Config.appId` | `app_id` | App store's App ID. |
+| `context.app.name` <br /> `properties.appName` | `app_name` | Name of the app. |
+| `context.app.version` <br /> `properties.appVersion` | `app_version` | Version of the app. |
+| `context.device.manufacturer` <br /> `properties.manufacturer` | `device_brand` | Brand of the user device. |
+|  `context.device.model` <br /> `properties.deviceModel` | `device_model` |  Model of the user device. |
+| `context.device.type` <br /> `properties.deviceType` | `device_type` |  Type of the user device. |
+|  `context.os.version` | `os_version` |  Version of the device's operating system. |
+| `context.locale` | `language` |  Two-character ISO-639-1 language code indicating the user's language. | 
 
 
 <div class="infoBlock">
@@ -146,17 +145,16 @@ The following table lists the mappings for fields carrying the user information 
 | `email` | `em` | Array of strings with SHA-256 encoding |
 | `phone` | `ph` | Array of strings with SHA-256 encoding |
 | `context.traits.gender` | `ge` | Array of strings with SHA-256 encoding |
-| `birthday` | `db` (yyyymmdd format) |  Array of strings with SHA-256 encoding |
+| `birthday` | `db` (YYYYMMDD format) |  Array of strings with SHA-256 encoding |
 |  `lastName` | `ln` | Array of strings with SHA-256 encoding | 
 | `firstName` | `fn` | Array of strings with SHA-256 encoding |
-| `context.traits.city`/`context.traits.address.city` | `ct` | Array of strings with SHA-256 encoding|
-| `context.traits.state`/`context.traits.address.state` | `st` (Two-letter code) | Array of strings with SHA-256 encoding |
-| `context.traits.zip`/`context.traits.address.zip` | `zp` | Array of strings with SHA-256 encoding |
-|  `context.traits.country`/`context.traits.address.country` | `country` (Two-character ISO-3166 country code) |Array of strings with SHA-256 encoding | 
+| `traits.address.city` <br /> `context.traits.address.city` | `ct` | Array of strings with SHA-256 encoding|
+| `traits.address.state` <br /> `context.traits.address.state` | `st` (Two-letter code) | Array of strings with SHA-256 encoding |
+| `traits.address.zip` <br /> `context.traits.address.zip` | `zp` | Array of strings with SHA-256 encoding |
+|  `traits.address.country` <br /> `context.traits.address.country` | `country` (Two-character ISO-3166 country code) | Array of strings with SHA-256 encoding | 
 | `context.device.advertisingId` | `hashed_maids` | Array of strings with SHA-256 encoding |
-| `context.ip`/`context.requestIP`/`properties.ip`/`properties.clientIpAddress` | `client_ip_address` | String|
+| `context.ip` <br /> `context.requestIP` <br /> `properties.ip` <br /> `properties.clientIpAddress` | `client_ip_address` | String|
 | `context.userAgent` | `client_user_agent` | String |
-
 
 <div class="warningBlock">
 To send the <code class="inline-code">track</code> or <code class="inline-code">page</code> events successfully, you need to include <strong>at least one</strong> of the following user properties:
@@ -174,13 +172,25 @@ The following table lists the custom fields mappings for `track` and `page` call
 | RudderStack property | Pinterest Tag property | Data Type | 
 |:---------------------|:-------------|:--------------|
 | `properties.currency` | `currency` | String |
-| `properties.value`/`properties.total`/`properties.revenue` | `value` | String |
-| `properties.product_id`/`properties.product_sku`/`properties.products[index].product_id`/`properties.products[index].product_sku` | `content_ids` | Array of strings |
-| `properties.price`/`properties.products[index].price` | `contents.[index].item_price` | Array of strings |
-|  `properties.quantity`/`properties.products[index].quantity` | `contents.[index].quantity` | Integer | 
+| `properties.value` <br /> `properties.total` <br />`properties.revenue` | `value` | String |
+| `properties.product_id` <br /> `properties.product_sku` <br /> `properties.products[index].product_id` <br /> `properties.products[index].product_sku` | `content_ids` | Array of strings |
+| `properties.price` <br /> `properties.products[index].price` | `contents.[index].item_price` | Array of strings |
+|  `properties.quantity` <br /> `properties.products[index].quantity` | `contents.[index].quantity` | Integer | 
 | `properties.numOfItems` (if not present, sum of quantity) | `num_items` | Integer |
 | `properties.order_id` | `order_id` | String|
 | `properties.query` | `search_string` | String |
+
+## Limited Data Processing (LDP)
+
+Starting January 1, 2023, you can use Pinterest's [Limited Data Processing (LDP)](https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing) flag to limit how Pinterest uses certain data to help the advertisers comply with the users' privacy settings in accordance with the CCPA (California Consumer Privacy Act).
+
+The following table lists the event properties **required to enable Limited Data Processing** and their mappings with the Pinterest fields:
+
+| RudderStack property | Pinterest property | Data type | Description |
+| :----------------------| :------------------| :----------| :-----------|
+| `properties.optOutType` |  `custom_data.opt_out_type` | String | Set this field to `LDP`. |
+| `traits.address.state` <br /> `context.traits.address.state` | `st` | Array of strings with SHA-256 encoding | Should be a two-letter code |
+|  `traits.address.country` <br /> `context.traits.address.country` | `country` | Array of strings with SHA-256 encoding |  Should be a two-character ISO-3166 country code |
 
 ## FAQ
 
