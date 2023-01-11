@@ -149,10 +149,10 @@ The following table lists the mappings for fields carrying the user information 
 | `birthday` | `db` (yyyymmdd format) |  Array of strings with SHA-256 encoding |
 |  `lastName` | `ln` | Array of strings with SHA-256 encoding | 
 | `firstName` | `fn` | Array of strings with SHA-256 encoding |
-| `context.traits.city`/`context.traits.address.city` | `ct` | Array of strings with SHA-256 encoding|
-| `context.traits.state`/`context.traits.address.state` | `st` (Two-letter code) | Array of strings with SHA-256 encoding |
-| `context.traits.zip`/`context.traits.address.zip` | `zp` | Array of strings with SHA-256 encoding |
-|  `context.traits.country`/`context.traits.address.country` | `country` (Two-character ISO-3166 country code) |Array of strings with SHA-256 encoding | 
+| `traits.address.city` / `context.traits.address.city` | `ct` | Array of strings with SHA-256 encoding|
+| `traits.address.state` / `context.traits.address.state` | `st` (Two-letter code) | Array of strings with SHA-256 encoding |
+| `traits.address.zip` / `context.traits.address.zip` | `zp` | Array of strings with SHA-256 encoding |
+|  `traits.address.country` / `context.traits.address.country` | `country` (Two-character ISO-3166 country code) | Array of strings with SHA-256 encoding | 
 | `context.device.advertisingId` | `hashed_maids` | Array of strings with SHA-256 encoding |
 | `context.ip`/`context.requestIP`/`properties.ip`/`properties.clientIpAddress` | `client_ip_address` | String|
 | `context.userAgent` | `client_user_agent` | String |
@@ -193,8 +193,8 @@ The following table lists the event properties required to enable LDP and their 
 | RudderStack property | Pinterest property | Data type | Description |
 | :----------------------| :------------------| :----------| :-----------|
 | `properties.optOutType` |  `custom_data.opt_out_type` | String | Set this field to `LDP`. |
-| `traits.address.state` <br /> `context.traits.address.state` | `st` | Array of strings with SHA-256 encoding | Should be a two-letter code. |
-|  `traits.address.country`/`context.traits.address.country` | `country` | Array of strings with SHA-256 encoding |  Should be a two-character ISO-3166 country code. |
+| `traits.address.state` / `context.traits.address.state` | `st` | Array of strings with SHA-256 encoding | Should be a two-letter code |
+|  `traits.address.country`/`context.traits.address.country` | `country` | Array of strings with SHA-256 encoding |  Should be a two-character ISO-3166 country code |
 
 ## FAQ
 
