@@ -6,7 +6,7 @@ description: Reuse tranformation code with RudderStack libraries.
 RudderStack's Transformations feature lets you reuse the transformation code in other transformations using **Libraries**.
 
 <div class="infoBlock">
-You can write a transformation library only in JavaScript. Support for Python will be added soon.
+Currently, RudderStack supports writing transformation libraries only in JavaScript. Python support will be added soon.
 </div>
 
 ## Adding a library
@@ -36,9 +36,7 @@ You can then use the library in a transformation with a simple `import` statemen
 
 ### Use case
 
-Suppose you want to import a function `rudderEmail` from a transformation library called `Is Rudder Email` to filter events that don't have the email address containing the RudderStack domain.
-
-The `rudderEmail` function is as follows:
+Suppose you want to filter the events that don't contain an email address with the RudderStack domain. To do so, you can import a `rudderEmail` function from a transformation library called `isRudderEmail`, as shown:
 
 ```javascript
 export function rudderEmail(email) {
