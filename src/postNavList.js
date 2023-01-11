@@ -1722,6 +1722,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "tiktok-ads-offline-events",
+    title: "TikTok Ads Offline Events",
+    link: "/destinations/streaming-destinations/tiktok-ads-offline-events/",
+    content: [],
+  },
+  {
     key: "yahoo-dsp",
     title: "Yahoo DSP",
     link: "/destinations/streaming-destinations/yahoo-dsp/",
