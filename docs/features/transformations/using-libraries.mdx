@@ -36,7 +36,9 @@ You can then use the library in a transformation with a simple `import` statemen
 
 ### Use case
 
-Suppose you want to filter the events that don't contain an email address with the RudderStack domain. To do so, you can import a `rudderEmail` function from a transformation library called `isRudderEmail`, as shown:
+Suppose you want to filter the events that don't contain an email address with the RudderStack domain. To do so, you can import a `rudderEmail` function from the transformation library `isRudderEmail`. 
+
+The `rudderEmail` function containing the filtering logic is shown below:
 
 ```javascript
 export function rudderEmail(email) {
@@ -44,7 +46,7 @@ export function rudderEmail(email) {
 }
 ```
 
-The following code snippet demonstrates how you can implement this in a transformation:
+The following code snippet demonstrates how you can import this function in a transformation:
 
 ```javascript
 import { rudderEmail } from "isRudderEmail";
