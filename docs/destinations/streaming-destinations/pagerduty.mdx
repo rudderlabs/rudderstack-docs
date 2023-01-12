@@ -4,11 +4,9 @@ description: Send your event data from RudderStack to PagerDuty.
 aliases: ["PagerDuty destination"]
 ---
 
-[PagerDuty](https://www.pagerduty.com/) is a SaaS-based platform that helps prevent and resolve business-impacting incidents, thereby improving the customer experience.
+[PagerDuty](https://www.pagerduty.com/) is a SaaS platform that helps you prevent and resolve business-impacting incidents, thereby improving the customer experience.
 
-<div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/pagerduty">GitHub repository</a>.
-</div>
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/pagerduty">GitHub repository</a>.
 
 ## Getting started
 
@@ -28,8 +26,8 @@ Once you have confirmed that the source platform supports sending events to Page
 
 To successfully configure PagerDuty as a destination, you will need to configure the following settings:
 
-- **PagerDuty Routing Key**: Enter the integration key from PagerDuty service. Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain it.
-- **dedup_key Field Identifier**: Enter a `dedup_key` which acts as an identifier for the event. You can provide any value in this field. If not provided, PagerDuty automatically generates and assigns a `dedup_key` to the event. This key is used while updating, resolving, or acknowledging an event.
+- **PagerDuty Routing Key**: Enter the integration key associated with your PagerDuty service. Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain it.
+- **dedup_key Field Identifier**: Enter a `dedup_key` which acts as the event identifier and is used while updating, resolving, or acknowledging an event. You can provide any value in this field. If not provided, PagerDuty automatically generates and assigns a `dedup_key` to the event.
 
 ## Track
 
@@ -166,7 +164,7 @@ The following table lists the mappings between RudderStack and PagerDuty propert
 
 1. Log in to the [PagerDuty dashboard](https://app.pagerduty.com/).
 2. Go to **Services** > **Service Directory**.
-3. Select your desired service and click **Integrations** tab.
-4. Click **Add integration** and select any desired integration platform. Here, you can find the integration/routing key as shown:
+3. Select your desired service and click the **Integrations** tab.
+4. Click **Add integration** and select the integration platform. Here, you can find the integration/routing key as shown:
 
 <img src="../../assets/event-stream-destinations/integration-key-pagerduty.png" alt="PagerDuty integration key"/>
