@@ -181,6 +181,16 @@ If the duration between the last received event and the next `Application Opened
 For more information on how session tracking works in the mobile SDKs, refer to the <Link to="#session-tracking-flow">Session tracking flow</Link> section below.
 </div>
 
+## Getting session ID for JavaScript SDK
+
+The JavaScript SDK provides a `getSessionId` method to fetch the current session's `sessionId`. In case the session ID is unavailable, this method returns a `null` value.
+
+A sample snippet to fetch the current session ID is as shown:
+
+```javascript
+rudderanalytics.getSessionId();
+```
+
 ## Session tracking flow
 
 The following sections describe how the session tracking works in the RudderStack SDKs.

@@ -31,7 +31,7 @@ Alternatively, you can copy and use the below snippet (same as above) by replaci
 
 ```javascript
 <script type="text/javascript">
-!function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits","startSession","endSession"],e.factory=function(t){return function(){e.push([t].concat(Array.prototype.slice.call(arguments)))}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
+!function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits","startSession","endSession","getSessionId"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
 e.load(<WRITE_KEY>,<DATA_PLANE_URL>),
 e.page()}();
 </script>
@@ -43,7 +43,7 @@ To integrate the SDK with your website and load it **synchronously**, add any of
 
 ```javascript
 <script>
-rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits","startSession","endSession"],i=0;i<methods.length;i++){var method=methods[i];rudderanalytics[method]=function(a){return function(){rudderanalytics.push([a].concat(Array.prototype.slice.call(arguments)))}}(method)}rudderanalytics.load(WRITE_KEY,DATA_PLANE_URL),rudderanalytics.page();
+rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits","startSession","endSession","getSessionId"],i=0;i<methods.length;i++){var method=methods[i];rudderanalytics[method]=function(a){return function(){rudderanalytics.push([a].concat(Array.prototype.slice.call(arguments)))}}(method)}rudderanalytics.load(WRITE_KEY,DATA_PLANE_URL),rudderanalytics.page();
 </script>
 
 <script src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js"></script>
@@ -70,7 +70,8 @@ rudderanalytics=window.rudderanalytics=[];for(var methods=["load","page","track"
     "getGroupId",
     "getGroupTraits",
     "startSession",
-    "endSession"
+    "endSession",
+    "getSessionId"
   ];
   for (var i = 0; i < methods.length; i++) {
     var method = methods[i];
@@ -166,6 +167,7 @@ The installation code snippets discussed above perform the following actions:
 | `getGroupTraits`  | Fetches the current group traits.       |
 | `startSession`    | Starts a new session.       |
 | `endSession`  | Clears the `sessionId` and ends the current session.     |
+| `getSessionId` | Fetches the session ID of the current session. Returns `null` if the session ID is not available. |
 
 - Loads the analytics object with the specified write key.
 - Makes a `page()`call to track the page views. It captures the whole URL including the UTM parameters as part of the `page` call payload, such as `path`, `referrer`, `search`, `title`, and `URL`. Refer to the <Link to="/event-spec/standard-events/page/#properties">`page`</Link> method to override these properties.
