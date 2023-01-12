@@ -164,12 +164,6 @@ rudderanalytics.page("Best Seller", {
 
 Starting January 1, 2023, you can use Pinterest's [Limited Data Processing (LDP)](https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing) flag to limit how Pinterest uses certain data to help the advertisers comply with the users' privacy settings in accordance with the CCPA (California Consumer Privacy Act).
 
-To enable the LDP feature, add the following script before your events' code:
-
-```javascript
-<script> pintrk('set', {opt_out_type: 'LDP',st:st, country:country});</script>
-```
-
 The following table lists the event properties **required to enable Limited Data Processing** and their mappings with the Pinterest fields:
 
 | RudderStack property | Pinterest property | Data type | Description |
