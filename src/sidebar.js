@@ -1171,6 +1171,10 @@ export const jsonData = [
                 title: "Branch",
                 link: "/destinations/streaming-destinations/branchio/",
                 content: []
+            },{
+                title: "impact.com",
+                link: "/destinations/streaming-destinations/impact-com/",
+                content: []
             }, {
                 title: "Kochava",
                 link: "/destinations/streaming-destinations/kochava/",
