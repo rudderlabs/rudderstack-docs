@@ -401,6 +401,11 @@ export const jsonData = [
                         content: []
                     },
                     {
+                        title: "PagerDuty",
+                        link: "/sources/event-streams/cloud-apps/pagerduty/",
+                        content: []
+                    },
+                    {
                         title: "Pipedream",
                         link: "/sources/event-streams/cloud-apps/pipedream/",
                         content: []
