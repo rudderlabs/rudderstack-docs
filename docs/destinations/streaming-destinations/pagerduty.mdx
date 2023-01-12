@@ -29,7 +29,7 @@ Once you have confirmed that the source platform supports sending events to Page
 To successfully configure PagerDuty as a destination, you will need to configure the following settings:
 
 - **PagerDuty Routing Key**: Enter the integration key from PagerDuty service. Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain it.
-- **dedup_key Field Identifier**: dedup_key is an id of an event. You can provide this key. Otherwise, PagerDuty generates a dedup_key and assigns it to an event. This key is used to update, resolve, or acknowledge an event.
+- **dedup_key Field Identifier**: Enter a `dedup_key` which acts as an identifier for the event. You can provide any value in this field. If not provided, PagerDuty automatically generates and assigns a `dedup_key` to the event. This key is used while updating, resolving, or acknowledging an event.
 
 ## Track
 
