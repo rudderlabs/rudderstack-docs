@@ -29,7 +29,7 @@ Once you have confirmed that the source platform supports sending events to Page
 To successfully configure PagerDuty as a destination, you will need to configure the following settings:
 
 - **PagerDuty Routing Key**: Enter the integration key from PagerDuty service. Refer to the <a href="#faq">FAQ</a> section for more information on how to obtain it.
-- **dedup_key Field Identifier**: 
+- **dedup_key Field Identifier**: dedup_key is an id of an event. You can provide this key. Otherwise, PagerDuty generates a dedup_key and assigns it to an event. This key is used to update, resolve, or acknowledge an event.
 
 ## Track
 
@@ -140,7 +140,7 @@ rudderanalytics.track(
   }, {
     integrations: {
       pagerduty: {
-        type: "change",
+        type: "changeEvent",
       },
     },
   }
