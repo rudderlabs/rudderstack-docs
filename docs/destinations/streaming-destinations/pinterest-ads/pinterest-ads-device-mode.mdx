@@ -1,14 +1,11 @@
 ---
 title: "Pinterest Tag Device Mode"
-description: Send events to Pinterest Tag using RudderStack web device mode.
+description: Send events to Pinterest Tag via the web device mode.
 ---
 
 RudderStack lets you send your event data to Pinterest Tag using Pinterest's `pintrk` conversion tag via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
-<div class="infoBlock">
 Find the open source JavaScript SDK code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/src/integrations/PinterestTag">GitHub repository</a>.
-</div>
-
 
 ## Identify
 
@@ -163,6 +160,18 @@ rudderanalytics.page("Best Seller", {
 })
 ```
 
+## Limited Data Processing (LDP)
+
+Starting January 1, 2023, you can use Pinterest's [Limited Data Processing (LDP)](https://developers.pinterest.com/docs/conversions/conversion-management/#Understanding%20Limited%20Data%20Processing) flag to limit how Pinterest uses certain data to help the advertisers comply with the users' privacy settings in accordance with the CCPA (California Consumer Privacy Act).
+
+The following table lists the event properties **required to enable Limited Data Processing** and their mappings with the Pinterest fields:
+
+| RudderStack property | Pinterest property | Data type | Description |
+| :----------------------| :------------------| :----------| :-----------|
+| `context.traits.optOutType` <br /> `properties.optOutType` |  `custom_data.opt_out_type` | String | Set this field to `LDP`. |
+| `context.traits.state` <br /> `context.traits.State` <br /> `context.traits.address.state` <br /> `context.traits.address.State` | `st` | Array of strings with SHA-256 encoding | Should be a two-letter code |
+|  `context.traits.country` <br /> `context.traits.Country` <br /> `context.traits.address.country` <br /> `context.traits.address.Country` | `country` | Array of strings with SHA-256 encoding |  Should be a two-character ISO-3166 country code |
+
 ## FAQ
 
 ### How can I verify if my events are being sent to Pinterest Tag?
@@ -173,3 +182,5 @@ Follow these steps to see your events in Pinterest Tag:
 2. Click the **Ads** tab and select **Conversions** from the dropdown to see your events, as shown:
 
 <img src="../../../assets/event-stream-destinations/pinterest-tag-events.png" />
+
+<br />
