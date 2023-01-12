@@ -28,8 +28,11 @@ To successfully configure impact.com as a destination, you will need to configur
 
 - **Account SID**: Enter the Account SID present in the **Settings** > **API** option in the [Impact dashboard](https://demo.impact.com/login.user).
 - **API Key**: Enter the auth token present in the **Settings** > **API** option in the [Impact dashboard](https://demo.impact.com/login.user).
-- **Campaign Id**: Enter the 
-- **impact.com App Id**: Enter the 
+- **Campaign Id**: Enter the campaign ID present under your impact.com **Account** > **Programs**, as shown:
+
+<img src="../../assets/event-stream-destinations/campaign-id-impact.png" alt="Campaign ID Impact" />
+
+- **Impact App Id**: Enter the system app ID present in the **Settings** > **Mobile Apps** option in the [Impact dashboard](https://demo.impact.com/login.user).
 - **Event Type Id**: Enter the auth token present in the **Settings** > **Event Type** option in the [Impact dashboard](https://demo.impact.com/login.user).
 - **Enable to hash email**: Enable this setting to hash the `email` in SHA1 format. You can keep it disabled, if the `email` is already hashed.
 - **Additional parameters mapping**: Enter the property mappings from RudderStack to impact.com for any additional parameters (other than the default ones mentioned in the doc below).
@@ -80,6 +83,10 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.referrer.url` <br/> `context.page.referrer`|`ReferringUrl`|
 |`context.userAgent`|`UserAgent`|
 |`context.device.advertisingId`|`AppleIfa`|
+
+<div class="infoBlock">
+At least one of the <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, <code class="inline-code">AppleIfv</code> properties is required while making a <code class="inline-code">page</code> call.
+</div>
 
 ## Track
 
@@ -241,6 +248,10 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.referrer.url` <br/> `context.page.referrer`|`ReferringUrl`|
 |`context.userAgent`|`UserAgent`|
 |`context.device.advertisingId`|`AppleIfa`|
+
+<div class="infoBlock">
+At least one of the <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, <code class="inline-code">AppleIfv</code> properties is required while making a <code class="inline-code">page</code> call.
+</div>
 
 ## FAQ
 
