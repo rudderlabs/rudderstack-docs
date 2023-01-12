@@ -19,33 +19,33 @@ RudderStack supports sending events to impact.com via the following <a href="htt
 
 Once you have confirmed that the source platform supports sending events to impact.com, follow these steps:
 
-1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **impact Radius**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Impact Radius**.
 2. Assign a name to the destination and click **Continue**.
 
 ## Connection settings
 
 To successfully configure impact.com as a destination, you will need to configure the following settings:
 
-- **Account SID**: Enter the Account SID present in the **Settings** > **API** option in the [Impact dashboard](https://demo.impact.com/login.user).
-- **API Key**: Enter the auth token present in the **Settings** > **API** option in the [Impact dashboard](https://demo.impact.com/login.user).
-- **Campaign Id**: Enter the campaign ID present under your impact.com **Account** > **Programs**, as shown:
+- **Account SID**: Enter the account SID present in the **Settings** > **API** option in the [impact.com dashboard](https://demo.impact.com/login.user).
+- **API Key**: Enter the auth token present in the **Settings** > **API** option in the [impact.com dashboard](https://demo.impact.com/login.user).
+- **Campaign Id**: Enter the campaign ID present under your **Account** > **Programs** in the [impact.com dashboard](https://demo.impact.com/login.user), as shown:
 
 <img src="../../assets/event-stream-destinations/campaign-id-impact.png" alt="Campaign ID Impact" />
 
-- **Impact App Id**: Enter the system app ID present in the **Settings** > **Mobile Apps** option in the [Impact dashboard](https://demo.impact.com/login.user).
-- **Event Type Id**: Enter the auth token present in the **Settings** > **Event Type** option in the [Impact dashboard](https://demo.impact.com/login.user).
-- **Enable to hash email**: Enable this setting to hash the `email` in SHA1 format. You can keep it disabled, if the `email` is already hashed.
-- **Additional parameters mapping**: Enter the property mappings from RudderStack to impact.com for any additional parameters (other than the default ones mentioned in the doc below).
+- **Impact App Id**: Enter the system app ID present in the **Settings** > **Mobile Apps** option in the [impact.com dashboard](https://demo.impact.com/login.user).
+- **Event Type Id**: Enter the ID present in the **Settings** > **Event Type** option in the [impact.com dashboard](https://demo.impact.com/login.user).
+- **Enable to hash email**: Enable this setting to hash the `email` field in SHA1 format. Keep it disabled in case it is already hashed.
+- **Additional parameters mapping**: Enter the property mappings from RudderStack to impact.com for any additional parameters (other than the default ones mentioned in the sections below).
 - **Custom mapping for Products**: Enter the custom property mappings for the `products` array.
 - **Enable Identify Events**: Enable this setting to send `identify` events.
 - **Enable Page Events**: Enable this setting to send `page` events.
 - **Enable Screen Events**: Enable this setting to send `screen` events.
-- **Action Event Names**: Enter the list of event names that you want to track as actions.
-- **Install Event Names**: Enter the list of event names that correspond to the install event.
+- **Action Event Names**: Enter the list of event names you want to track as actions.
+- **Install Event Names**: Enter the list of event names correspond to the app install events.
 
 ## Identify
 
-You can send an <Link to="/event-spec/standard-events/identify">`identify`</Link> call to impact.com via the [`PageLoad` endpoint](https://integrations.impact.com/impact-brand/reference/create-a-pageload) which lets impact.com.com update the user identifiers for an accurate correlation.
+You can send an <Link to="/event-spec/standard-events/identify">`identify`</Link> call to impact.com via the [`PageLoad` endpoint](https://integrations.impact.com/impact-brand/reference/create-a-pageload). It allows impact.com to update the user identifiers for an accurate correlation.
 
 A sample `identify` call is shown below:
 
@@ -85,12 +85,14 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.device.advertisingId`|`AppleIfa`|
 
 <div class="infoBlock">
-At least one of the <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, <code class="inline-code">AppleIfv</code> properties is required while making a <code class="inline-code">page</code> call.
+At least one of the <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, <code class="inline-code">AppleIfv</code> properties is required while making an <code class="inline-code">identify</code> call.
 </div>
 
 ## Track
 
-You can send a <Link to="/event-spec/standard-events/track">`track`</Link> call to impact.com.com to send event data via the [`Conversions` endpoint](https://integrations.impact.com/impact-brand/reference/submit-a-conversion) or [`PageLoad` endpoint](https://integrations.impact.com/impact-brand/reference/create-a-pageload).
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them. 
+
+You can send a `track` call to impact.com to send event data via the [`Conversions` endpoint](https://integrations.impact.com/impact-brand/reference/submit-a-conversion) or [`PageLoad` endpoint](https://integrations.impact.com/impact-brand/reference/create-a-pageload).
 
 A sample `track` call is shown below:
 
@@ -126,9 +128,9 @@ rudderanalytics.track("Order Completed", {
 You can provide the <code class="inline-code">email</code> field in a plain text format, for example, <code class="inline-code">alex@example.com</code>. However, it is SHA1 hashed (with a HEX output type) before being sent to impact.com.
 </div>
 
-#### Property mappings
+### Property mappings
 
-The following table lists the mappings between RudderStack and impact.com properties for change events:
+The following table lists the mappings between RudderStack and impact.com properties:
 
 | RudderStack property | impact.com property | 
 | :----------------- | :--------------- |
@@ -139,7 +141,7 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.app.namespace`|`AppPackage`|
 |`context.app.version`|`AppVer`|
 |`settings.campaignId`|`CampaignId`|
-|`context.referrer.id|| properties.clickId`|`ClickId`|
+|`context.referrer.id` <br/> ` properties.clickId`|`ClickId`|
 |`properties.currency`|`CurrencyCode`|
 |`context.traits.email` <br/> `properties.email`|`CustomerEmail[1]`|
 |`userId`|`CustomerId`|
@@ -177,11 +179,11 @@ The following table lists the mappings between RudderStack and impact.com proper
 
 ## Page
 
-You can send a <Link to="/event-spec/standard-events/page">`page`</Link> call to impact.com  via the [`PageLoad` endpoint](https://integrations.impact.com/impact-brand/reference/create-a-pageload).
+The <Link to="/event-spec/standard-events/page">`page`</Link> method lets you record your website's page views with any additional relevant information about the viewed page. You can send a `page` call to impact.com  via the [`PageLoad` endpoint](https://integrations.impact.com/impact-brand/reference/create-a-pageload).
 
 A sample `page` call is as shown:
 
-#### Property mappings
+### Property mappings
 
 The following table lists the mappings between RudderStack and impact.com properties:
 
@@ -216,13 +218,13 @@ At least one of the <code class="inline-code">CustomerId</code>, <code class="in
 
 ## Screen
 
-You can send a <Link to="/event-spec/standard-events/screen">`screen`</Link> call to impact.com.com via the [`PageLoad` endpoint](https://integrations.impact.com/impact-brand/reference/create-a-pageload). It acts as the mobile equivalent of a `page` call.
+The <Link to="/event-spec/standard-events/screen">`screen`</Link> call lets you record whenever your user views their mobile screen, with any additional relevant information about the screen. You can send a `screen` call to impact.com  via the [`PageLoad` endpoint](https://integrations.impact.com/impact-brand/reference/create-a-pageload).
 
 A sample `screen` call is as shown:
 
-#### Property mappings
+### Property mappings
 
-The following table lists the mappings between RudderStack and impact.com properties for change events:
+The following table lists the mappings between RudderStack and impact.com properties:
 
 | RudderStack property | impact.com property | 
 | :----------------- | :--------------- |
@@ -250,11 +252,11 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.device.advertisingId`|`AppleIfa`|
 
 <div class="infoBlock">
-At least one of the <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, <code class="inline-code">AppleIfv</code> properties is required while making a <code class="inline-code">page</code> call.
+At least one of the <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, <code class="inline-code">AppleIfv</code> properties is required while making a <code class="inline-code">screen</code> call.
 </div>
 
 ## FAQ
 
-### How can I debug the errors from impact.com?
+### How can I debug impact.com errors?
 
-The errors in impact.com may arise due to failed pathing, invalid parameters, authentication errors, and network unavailability. Refer to the [Errors documentation](https://integrations.impact.com/impact-brand/reference/errors) for more information. Additionally, you can also refer to the [Rate Limits documentation](https://integrations.impact.com/impact-brand/reference/rate-limits) for more information on the API call limits.
+Such errors may arise due to the failed pathing, invalid parameters, authentication errors, and network unavailability. Refer to the [Errors documentation](https://integrations.impact.com/impact-brand/reference/errors) for more information. Additionally, you can also refer to the [Rate Limits documentation](https://integrations.impact.com/impact-brand/reference/rate-limits) for more information on the API call limits.
