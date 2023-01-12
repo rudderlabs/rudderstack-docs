@@ -911,6 +911,12 @@ export const jsonData = [
                 content: [],
             },
             {
+                title: "PagerDuty",
+                sectionTitle: "Alerting",
+                link: "/destinations/streaming-destinations/pagerduty/",
+                content: []
+            },
+            {
                 title: "Adobe Analytics",
                 sectionTitle: "Analytics",
                 link: "/destinations/streaming-destinations/adobe-analytics/",
