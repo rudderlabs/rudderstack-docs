@@ -144,9 +144,10 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.device.id`|`AppleIfv`|
 |`context.app.name`|`AppName`|
 |`context.app.build`|`AppPackage`|
+|`context.device.id`|`AndroidId`|
 |`context.app.version`|`AppVer`|
 |`settings.campaignId`|`CampaignId`|
-|`context.referrer.id` <br/> ` properties.clickId`|`ClickId`|
+|`context.referrer.id` <br/> `properties.clickId`|`ClickId`|
 |`properties.currency`|`CurrencyCode`|
 |`context.traits.email` <br/> `properties.email`|`CustomerEmail`|
 |`userId`|`CustomerId`|
@@ -178,7 +179,7 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.userAgent`|`UserAgent`|
 
 <div class="infoBlock">
-Apart from the required properties mentioned above, at least one of the <code class="inline-code">ClickId</code>, <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">OrderPromoCode</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, or <code class="inline-code">AppleIfv</code> is required to make a <code class="inline-code">track</code> call successfully.
+Apart from the required properties mentioned above, at least one of the <code class="inline-code">context.referrer.id</code>/<code class="inline-code">properties.clickId</code>, <code class="inline-code">userId</code>, <code class="inline-code">anonymousId</code>, <code class="inline-code">properties.coupon</code>/<code class="inline-code">properties.coupon_id</code>, <code class="inline-code">context.device.id</code>, <code class="inline-code">context.device.advertisingId</code>, or <code class="inline-code">context.device.id</code> is required to make a <code class="inline-code">track</code> call successfully.
 </div>
 
 ## Page
