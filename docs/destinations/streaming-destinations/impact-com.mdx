@@ -133,16 +133,16 @@ The following table lists the mappings between RudderStack and impact.com proper
 
 | RudderStack property | impact.com property | 
 | :----------------- | :--------------- |
-|`context.device.adTrackingEnabled`|`AppleAdTrack`|
+|`context.device.adTrackingEnabled`|`TrackingConsent`|
 |`context.device.advertisingId`|`AppleIfa`|
 |`context.device.id`|`AppleIfv`|
 |`context.app.name`|`AppName`|
-|`context.app.namespace`|`AppPackage`|
+|`context.app.build`|`AppPackage`|
 |`context.app.version`|`AppVer`|
 |`settings.campaignId`|`CampaignId`|
 |`context.referrer.id` <br/> ` properties.clickId`|`ClickId`|
 |`properties.currency`|`CurrencyCode`|
-|`context.traits.email` <br/> `properties.email`|`CustomerEmail[1]`|
+|`context.traits.email` <br/> `properties.email`|`CustomerEmail`|
 |`userId`|`CustomerId`|
 |`context.traits.status`|`CustomerStatus`|
 |`anonymousId`|`CustomProfileId`|
@@ -152,11 +152,11 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.device.model`|`DeviceModel`|
 |`context.device.type` <br/> `context.os.name`|`DeviceOs`|
 |`context.os.version`|`DeviceOsVer`|
-|`timestamp`|`EventDate`|
+|`timestamp` <br/> `originalTimestamp` |`EventDate`|
 |`event`|`EventTypeCode`|
 |`settings.eventTypeId`|`EventTypeId`|
-|`properties.advertisingId`|`GoogAId`|
-|`context.ip`|`IpAddress`|
+|`context.device.advertisingId`|`GoogAId`|
+|`context.ip` <br/> `request_ip` |`IpAddress`|
 |`properties.products[i].brand`|`ItemBrand{i}`|
 |`properties.products[i].category`|`ItemCategory{i}`|
 |`properties.products[i].name`|`ItemName{i}`|
