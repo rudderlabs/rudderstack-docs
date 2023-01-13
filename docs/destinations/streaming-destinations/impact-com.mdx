@@ -84,14 +84,16 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.device.advertisingId`|`AppleIfa`|
 
 <div class="infoBlock">
-At least one of the <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, <code class="inline-code">AppleIfv</code> properties is required to make an <code class="inline-code">identify</code> call successfully.
+At least one of the <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, or <code class="inline-code">AppleIfv</code> is required to make an <code class="inline-code">identify</code> call successfully.
 </div>
 
 ## Track
 
 The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them. 
 
-You can send a `track` call to impact.com to send event data via the [`Conversions` endpoint](https://integrations.impact.com/impact-brand/reference/submit-a-conversion) or [`PageLoad` endpoint](https://integrations.impact.com/impact-brand/reference/create-a-pageload).
+You can send a `track` call to impact.com to send the following events:
+- Event names in the RudderStack's **Action Event Names** and **Install Event Names** dashboard settings are sent to the [`Conversions` endpoint](https://integrations.impact.com/impact-brand/reference/submit-a-conversion)
+- Rest of the events are sent to the [`PageLoad` endpoint](https://integrations.impact.com/impact-brand/reference/create-a-pageload).
 
 A sample `track` call is shown below:
 
@@ -123,16 +125,16 @@ rudderanalytics.track("Order Completed", {
 })
 ```
 
-<div class="infoBlock">
-You can provide the <code class="inline-code">email</code> field in a plain text format, for example, <code class="inline-code">alex@example.com</code>. However, it is SHA1 hashed (with a HEX output type) before being sent to impact.com.
-</div>
-
 ### Property mappings
 
 The following table lists the mappings between RudderStack and impact.com properties:
 
 | RudderStack property | impact.com property | 
 | :----------------- | :--------------- |
+|`properties.orderId` <br/> `properties.order_id` <br/> `properties.transactionID` <br/> `properties.checkout_id` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>|`OrderId`|
+|`timestamp` <br/> `originalTimestamp`<br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> |`EventDate`|
+|`event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if settings.eventTypeId is absent.</span>|`EventTypeCode`|
+|`settings.eventTypeId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if event is absent.</span>|`EventTypeId`|
 |`context.device.adTrackingEnabled`|`TrackingConsent`|
 |`context.device.advertisingId`|`AppleIfa`|
 |`context.device.id`|`AppleIfv`|
@@ -152,9 +154,6 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.device.model`|`DeviceModel`|
 |`context.device.type` <br/> `context.os.name`|`DeviceOs`|
 |`context.os.version`|`DeviceOsVer`|
-|`timestamp` <br/> `originalTimestamp` |`EventDate`|
-|`event`|`EventTypeCode`|
-|`settings.eventTypeId`|`EventTypeId`|
 |`context.device.advertisingId`|`GoogAId`|
 |`context.ip` <br/> `request_ip` |`IpAddress`|
 |`properties.products[i].brand`|`ItemBrand{i}`|
@@ -167,13 +166,16 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.location.latitude`|`Latitude`|
 |`context.location.longitude`|`Longitude`|
 |`properties.discount`|`OrderDiscount`|
-|`properties.orderId` <br/> `properties.order_id` <br/> `properties.transactionID` <br/> `properties.checkout_id`|`OrderId`|
 |`properties.coupon` <br/> `properties.coupon_id`|`OrderPromoCode`|
 |`properties.shipping`|`OrderShipping`|
 |`properties.tax`|`OrderTax`|
 |`context.referrer.url` <br/> `context.page.referrer`|`ReferringUrl`|
 |`context.page.url` <br/> `properties.url` <br/> `context.page.referrer` <br/> `context.referrer.url`|`PageUrl`|
 |`context.userAgent`|`UserAgent`|
+
+<div class="infoBlock">
+Apart from the required properties mentioned above, at least one of the <code class="inline-code">ClickId</code>, <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">OrderPromoCode</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, or <code class="inline-code">AppleIfv</code> is required to make a <code class="inline-code">track</code> call successfully.
+</div>
 
 ## Page
 
@@ -217,3 +219,7 @@ The property mappings for <code class="inline-code">screen</code> call are exact
 ### How can I debug impact.com errors?
 
 Such errors may arise due to the failed pathing, invalid parameters, authentication errors, and network unavailability. Refer to the [Errors documentation](https://integrations.impact.com/impact-brand/reference/errors) for more information. Additionally, you can also refer to the [Rate Limits documentation](https://integrations.impact.com/impact-brand/reference/rate-limits) for more information on the API call limits.
+
+### Should I send the `email` field after hashing it?
+
+You can provide the `email` field in a plain text format, for example, `alex@example.com`. It is SHA1 hashed (with a HEX output type) automatically before being sent to impact.com.
