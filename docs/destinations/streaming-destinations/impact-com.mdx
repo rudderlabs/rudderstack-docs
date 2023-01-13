@@ -35,6 +35,11 @@ To successfully configure impact.com as a destination, you will need to configur
 - **Impact App Id**: Enter the system app ID present in the **Settings** > **Mobile Apps** option in the [impact.com dashboard](https://demo.impact.com/login.user).
 - **Event Type Id**: Enter the ID present in the **Settings** > **Event Type** option in the [impact.com dashboard](https://demo.impact.com/login.user).
 - **Enable to hash email**: Enable this setting to hash the `email` field in SHA1 format. Keep it disabled in case it is already hashed.
+
+<div class="warningBlock">
+impact.com expects the <code class="inline-code">email</code> field in a hashed format. Otherwise, the events will fail. Hence, if you are sending the <code class="inline-code">email</code> in a plain text format, make sure the above setting is enabled.
+</div>
+
 - **Additional parameters mapping**: Enter the property mappings from RudderStack to impact.com for any additional parameters (other than the default ones mentioned in the sections below).
 - **Custom mapping for Products**: Enter the custom property mappings for the `products` array.
 - **Enable Identify Events**: Enable this setting to send `identify` events.
@@ -219,7 +224,3 @@ The property mappings for <code class="inline-code">screen</code> call are exact
 ### How can I debug impact.com errors?
 
 Such errors may arise due to the failed pathing, invalid parameters, authentication errors, and network unavailability. Refer to the [Errors documentation](https://integrations.impact.com/impact-brand/reference/errors) for more information. Additionally, you can also refer to the [Rate Limits documentation](https://integrations.impact.com/impact-brand/reference/rate-limits) for more information on the API call limits.
-
-### Should I send the `email` field after hashing it?
-
-You can provide the `email` field in a plain text format, for example, `alex@example.com`. It is SHA1 hashed (with a HEX output type) automatically before being sent to impact.com.
