@@ -25,14 +25,14 @@ Once you have confirmed that the source platform supports sending events to impa
 
 To successfully configure impact.com as a destination, you will need to configure the following settings:
 
-- **Account SID**: Enter the account SID present in the **Settings** > **API** option in the [impact.com dashboard](https://demo.impact.com/login.user).
-- **API Key**: Enter the auth token present in the **Settings** > **API** option in the [impact.com dashboard](https://demo.impact.com/login.user).
+- **Account SID**: Enter the account SID present in the **Settings** > **API** option in the [impact.com dashboard](https://app.impact.com/login.user).
+- **API Key**: Enter the auth token present in the **Settings** > **API** option in the impact.com dashboard.
 - **Campaign Id**: Enter the campaign ID present in the **Account** > **Programs** option in your the impact.com dashboard, as shown:
 
 <img src="../../assets/event-stream-destinations/campaign-id-impact.png" alt="Campaign ID Impact" />
 
-- **Impact App Id**: Enter the system app ID present in the **Settings** > **Mobile Apps** option in the [impact.com dashboard](https://demo.impact.com/login.user).
-- **Event Type Id**: Enter the ID present in the **Settings** > **Event Type** option in the [impact.com dashboard](https://demo.impact.com/login.user).
+- **Impact App Id**: Enter the system app ID present in the **Settings** > **Mobile Apps** option in the impact.com dashboard.
+- **Event Type Id**: Enter the ID present in the **Settings** > **Event Type** option in the impact.com dashboard.
 - **Enable to hash email**: Enable this setting to hash the `email` field in SHA1 format. Keep it disabled in case it is already hashed.
 
 <div class="warningBlock">
@@ -44,7 +44,7 @@ impact.com expects the <code class="inline-code">email</code> field in a hashed 
 - **Enable Identify Events**: Enable this setting to send the `identify` events.
 - **Enable Page Events**: Enable this setting to send the `page` events.
 - **Enable Screen Events**: Enable this setting to send the `screen` events.
-- **Action Event Names**: Enter the list of event names you want to track as actions.
+- **Action Event Names**: Enter the list of event names you want to track as user actions.
 - **Install Event Names**: Enter the list of event names correspond to the app install events.
 
 ## Identify
