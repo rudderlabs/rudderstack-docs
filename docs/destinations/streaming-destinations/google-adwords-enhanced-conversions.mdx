@@ -1,11 +1,11 @@
 ---
-title: "Google AdWords Enhanced Conversions"
-description: Send your event data from RudderStack to Google AdWords Enhanced Conversions.
+title: "Google Ads Enhanced Conversions"
+description: Send your event data from RudderStack to Google Ads Enhanced Conversions.
 ---
 
-[Google Adwords Enhanced Conversions](https://developers.google.com/google-ads/api/docs/conversions/enhance-conversions) lets you improve your conversion measurement accuracy by securely sending first-party conversion data from your website to Google.
+[Google Ads Enhanced Conversions](https://developers.google.com/google-ads/api/docs/conversions/enhance-conversions) lets you improve your conversion measurement accuracy by securely sending first-party conversion data from your website to Google.
 
-RudderStack supports Google Adwords Enhanced Conversions as a destination to which you can send your audience list.
+RudderStack supports Google Ads Enhanced Conversions as a destination to which you can send your audience list.
 
 <div class="infoBlock">
 To use this destination, you must set up Enhanced Conversions with the Google Ads API. For detailed instructions, refer to the <a href="https://support.google.com/google-ads/answer/11062876" target="_blank">Google Ads support page</a>.
@@ -13,7 +13,7 @@ To use this destination, you must set up Enhanced Conversions with the Google Ad
 
 ## Getting started
 
-Before configuring Google AdWords Enhanced Conversions as a destination in RudderStack, verify if the source platform is supported by referring to the table below:
+Before configuring Google Ads Enhanced Conversions as a destination in RudderStack, verify if the source platform is supported by referring to the table below:
 
 | **Connection Mode** | **Web**         | **Mobile**   | **Server**        |
 | :-------------------| :-------------- | :----------- | :-----------------|
@@ -24,23 +24,22 @@ Before configuring Google AdWords Enhanced Conversions as a destination in Rudde
 To learn more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
 </div>
 
-Once you have confirmed that the source platform supports sending events to Google AdWords Enhanced Conversions, follow these steps:
+Once you have confirmed that the source platform supports sending events to Google Ads Enhanced Conversions, follow these steps:
 
-1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Google AdWords Enhanced Conversions**.
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Google Ads Enhanced Conversions**.
 2. Assign a name to your destination and click **Next**.
 
-### Google AdWords Permissions
+### Google Ads Permissions
 
-Actions undertaken via your RudderStack integration rely on the authorizing Google AdWords user's [underlying permissions](https://support.google.com/google-ads/answer/9978556) and must be at least *Standard* or *Admin*.
+Actions undertaken via your RudderStack integration rely on the authorizing Google Ads user's [underlying permissions](https://support.google.com/google-ads/answer/9978556) and must be at least **Standard** or **Admin**.
 
-If an integration is authorized by a user without at least *Standard* or *Admin* permissions, API calls will fail, and a "RudderStack Admin" user will disable the integration in your <Link to="/dashboard-guides/audit-logs">audit logs</Link>. If you encounter an entry in your audit logs from a `Rudder Admin/admin@rudderstack.com` user, this means that the integration was disabled by RudderStack on account of insufficient permissions by your Google AdWords user.
+If an integration is authorized by a user without at least **Standard** or **Admin** permissions, API calls will fail, and a "RudderStack Admin" user will disable the integration in your <Link to="/dashboard-guides/audit-logs">audit logs</Link>. If you encounter an entry in your audit logs from a `Rudder Admin/admin@rudderstack.com` user, this means that the integration was disabled by RudderStack on account of insufficient permissions by your Google Ads user.
 
-To avoid this, ensure that the authorizing user has at mininum, *Standard* permissions.
-
+To avoid this, ensure that the authorizing user has the **Standard** permissions, at minimum.
 
 ### Connection settings
 
-To successfully configure Google AdWords Enhanced Conversions as a destination, first authenticate your account by following the below steps:
+To successfully configure Google Ads Enhanced Conversions as a destination, first authenticate your account by following the below steps:
 
 1. Click **Create Account** in the **Account Settings** section.
 2. From the modal, click the **Sign in with Google** button.
@@ -60,7 +59,7 @@ RudderStack <strong>gives an error</strong> if you try to delete an account used
 
 Next, configure the following settings:
 
-<img src="../../assets/event-stream-destinations/enhanced-conversions-connection-settings.png" alt="Google AdWords Enhanced Conversions connection settings" />
+<img src="../../assets/event-stream-destinations/enhanced-conversions-connection-settings.png" alt="Google Ads Enhanced Conversions connection settings" />
 
 - **Customer ID**: Enter the ID associated with your Google Ads account. You can find it by clicking on the **Help** option in your dashboard.
 
@@ -136,9 +135,9 @@ RudderStack will discard any <code class="inline-code">track</code> call where <
 
 ### Supported mapping
 
-The following table details the mapping of the fields specified in the RudderStack dashboard and Google AdWords Enhanced Conversions, along with the relevant guidelines:
+The following table details the mapping of the fields specified in the RudderStack dashboard and Google Ads Enhanced Conversions, along with the relevant guidelines:
 
-| RudderStack field | Google AdWords Enhanced Conversions field | Guidelines |
+| RudderStack field | Google Ads Enhanced Conversions field | Guidelines |
 | :-----| :--------| :------|
 | `gclid` | `gclid` | This is the Google click ID associated with the original conversion. |
 | `conversionDateTime`  | `conversionDateTime` | The datetime at which the conversion for the adjustment occurred. You must specify the timezone in the format `yyyy-mm-dd hh:mm:ss+|-hh:mm`, e.g. `2022-03-14 12:32:45-03:14`. |
@@ -156,21 +155,21 @@ The following table details the mapping of the fields specified in the RudderSta
 | `country` / `countryCode` | `countryCode` | Use the ISO two-letter/three-letter [country codes](https://developers.google.com/google-ads/api/reference/data/codes-formats#expandable-16). Include the country code even if all your users belong to the same country. |
 | `postalCode` | `postalCode` | Both the US and international zip and postal codes are allowed. For the US, 5 digit codes followed by 4 digit extensions are also allowed. For the rest of the countries, do not include the postal code extensions. |
 
-## FAQs
+## FAQ
 
 ### According to my audit logs, a "Rudder Admin" user updated my destination. Why is this?
 
-This is a Google AdWords permissions issue. See <Link to="#google-adwords-permissions">Google AdWords Permissions</Link> for details.
+This is a Google Ads permissions issue. See <Link to="#google-ads-permissions">Google Ads Permissions</Link> for details.
 
 ### Can I set up the Enhanced Conversions and Remarketing Lists destinations using the same Google Ads account?
 
 Yes, you can. Both the integrations are the sub-features of Google Ads. Hence, you can use the same Google Ads account to configure both the destinations in RudderStack.
 
-### Where can I find my Google Adwords customer ID?
+### Where can I find my Google Ads customer ID?
 
 To get the customer ID associated with your Google Ads account, click the **Help** option in your Google Ads dashboard. You will find the customer ID in the resulting pop-up, as shown:
 
-<img src="../../assets/event-stream-destinations/google-adwords-remarketing-lists-customer-id.png" alt="Google AdWords Enhanced Conversions connection settings" />
+<img src="../../assets/event-stream-destinations/google-adwords-remarketing-lists-customer-id.png" alt="Google Ads Enhanced Conversions connection settings" />
 
 ### What are the account permissions required for this integration?
 
@@ -192,4 +191,4 @@ The account will have the access level permissions once they accept the invitati
 
 If you get a 400 Bad Request error while configuring the destination, make sure your customer account is allow-listed and configured to have **Standard** or **Administrative** access levels in Google Ads. Refer to the above [FAQ](#what-are-the-account-permissions-required-for-this-integration) for steps on setting the access level permissions for the account.
 
-
+<br />
