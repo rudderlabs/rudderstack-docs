@@ -7,7 +7,6 @@ description: Send your event data from RudderStack to impact.com.
 
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/impact.com_radius">GitHub repository</a>.
 
-
 ## Getting started
 
 RudderStack supports sending events to impact.com via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
@@ -28,7 +27,7 @@ To successfully configure impact.com as a destination, you will need to configur
 
 - **Account SID**: Enter the account SID present in the **Settings** > **API** option in the [impact.com dashboard](https://demo.impact.com/login.user).
 - **API Key**: Enter the auth token present in the **Settings** > **API** option in the [impact.com dashboard](https://demo.impact.com/login.user).
-- **Campaign Id**: Enter the campaign ID present under your **Account** > **Programs** in the [impact.com dashboard](https://demo.impact.com/login.user), as shown:
+- **Campaign Id**: Enter the campaign ID present in the **Account** > **Programs** option in your the impact.com dashboard, as shown:
 
 <img src="../../assets/event-stream-destinations/campaign-id-impact.png" alt="Campaign ID Impact" />
 
@@ -37,14 +36,14 @@ To successfully configure impact.com as a destination, you will need to configur
 - **Enable to hash email**: Enable this setting to hash the `email` field in SHA1 format. Keep it disabled in case it is already hashed.
 
 <div class="warningBlock">
-impact.com expects the <code class="inline-code">email</code> field in a hashed format. Otherwise, the events will fail. Hence, if you are sending the <code class="inline-code">email</code> in a plain text format, make sure the above setting is enabled.
+impact.com expects the <code class="inline-code">email</code> field in a hashed format. Otherwise, the events will fail. Hence, if you are sending the <code class="inline-code">email</code> in a plain text format, make sure to enable this setting.
 </div>
 
 - **Additional parameters mapping**: Enter the property mappings from RudderStack to impact.com for any additional parameters (other than the default ones mentioned in the sections below).
 - **Custom mapping for Products**: Enter the custom property mappings for the `products` array.
-- **Enable Identify Events**: Enable this setting to send `identify` events.
-- **Enable Page Events**: Enable this setting to send `page` events.
-- **Enable Screen Events**: Enable this setting to send `screen` events.
+- **Enable Identify Events**: Enable this setting to send the `identify` events.
+- **Enable Page Events**: Enable this setting to send the `page` events.
+- **Enable Screen Events**: Enable this setting to send the `screen` events.
 - **Action Event Names**: Enter the list of event names you want to track as actions.
 - **Install Event Names**: Enter the list of event names correspond to the app install events.
 
@@ -184,7 +183,7 @@ Apart from the required properties mentioned above, at least one of the <code cl
 
 ## Page
 
-The <Link to="/event-spec/standard-events/page">`page`</Link> method lets you record your website's page views with any additional relevant information about the viewed page. You can send a `page` call to impact.com  via the [`PageLoad` endpoint](https://integrations.impact.com/impact-brand/reference/create-a-pageload).
+The <Link to="/event-spec/standard-events/page">`page`</Link> method lets you record your website's page views with any additional relevant information about the viewed page. You can send a `page` call to impact.com via the [`PageLoad` endpoint](https://integrations.impact.com/impact-brand/reference/create-a-pageload).
 
 A sample `page` call is as shown:
 
@@ -197,7 +196,7 @@ rudderanalytics.page("category", "name", {
 ```
 
 <div class="infoBlock">
-The property mappings for <code class="inline-code">page</code> call are exactly the same as <code class="inline-code">identify</code> call. Refer to the <code class="inline-code">identify</code> call's <Link to="#property-mappings">property mappings</Link> for the same.
+The property mappings for <code class="inline-code">page</code> call are exactly the same as <code class="inline-code">identify</code> call. Refer to the <Link to="#property-mappings">property mappings</Link> section for more details.
 </div>
 
 ## Screen
@@ -206,7 +205,7 @@ The <Link to="/event-spec/standard-events/screen">`screen`</Link> call lets you 
 
 A sample `screen` call is as shown:
 
-```javascript
+```objectivec
 [
   [RSClient sharedInstance] screen: @ "Sample Screen Name"
   properties: @ {
@@ -216,11 +215,11 @@ A sample `screen` call is as shown:
 ```
 
 <div class="infoBlock">
-The property mappings for <code class="inline-code">screen</code> call are exactly the same as <code class="inline-code">identify</code> call. Refer to the <code class="inline-code">identify</code> call's <Link to="#property-mappings">property mappings</Link> for the same.
+The property mappings for <code class="inline-code">screen</code> call are exactly the same as <code class="inline-code">identify</code> call. Refer to the <Link to="#property-mappings">property mappings</Link> section for more details.
 </div>
 
 ## FAQ
 
 ### How can I debug impact.com errors?
 
-Such errors may arise due to the failed pathing, invalid parameters, authentication errors, and network unavailability. Refer to the [Errors documentation](https://integrations.impact.com/impact-brand/reference/errors) for more information. Additionally, you can also refer to the [Rate Limits documentation](https://integrations.impact.com/impact-brand/reference/rate-limits) for more information on the API call limits.
+Such errors may arise due to the failed pathing, invalid parameters, authentication errors, and network unavailability. Refer to the [impact.com Errors documentation](https://integrations.impact.com/impact-brand/reference/errors) for more information. Additionally, you can also refer to their [Rate Limits documentation](https://integrations.impact.com/impact-brand/reference/rate-limits) for more information on the API call limits.
