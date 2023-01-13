@@ -77,7 +77,6 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.os.version`|`DeviceOsVer`|
 |`timestamp`|`EventDate`|
 |`context.device.id`|`GoogAId`|
-|`settings.appId` <br/> `context.app.namespace`|`ImpactAppId`|
 |`context.ip`|`IpAddress`|
 |`context.page.url` <br/> `properties.url` <br/> `context.page.referrer` <br/> `context.referrer.url`|`PageUrl`|
 |`context.referrer.url` <br/> `context.page.referrer`|`ReferringUrl`|
@@ -153,7 +152,6 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.device.model`|`DeviceModel`|
 |`context.device.type` <br/> `context.os.name`|`DeviceOs`|
 |`context.os.version`|`DeviceOsVer`|
-|`INSTALL`|`EventCode`|
 |`timestamp`|`EventDate`|
 |`event`|`EventTypeCode`|
 |`settings.eventTypeId`|`EventTypeId`|
@@ -183,37 +181,16 @@ The <Link to="/event-spec/standard-events/page">`page`</Link> method lets you re
 
 A sample `page` call is as shown:
 
-### Property mappings
-
-The following table lists the mappings between RudderStack and impact.com properties:
-
-| RudderStack property | impact.com property | 
-| :----------------- | :--------------- |
-|`context.device.id`|`AppleIfv`|
-|`context.app.name`|`AppName`|
-|`context.app.build`|`AppPackage`|
-|`context.app.version`|`AppVer`|
-|`settings.campaignId`|`CampaignId`|
-|`context.traits.email` <br/> `properties.email`|`CustomerEmail`|
-|`userId`|`CustomerId`|
-|`anonymousId`|`CustomProfileId`|
-|`context.network.carrier`|`DeviceCarrier`|
-|`context.locale`|`DeviceLocale`|
-|`context.device.manufacturer`|`DeviceMfr`|
-|`context.device.model`|`DeviceModel`|
-|`context.device.type` <br/> `context.os.name`|`DeviceOs`|
-|`context.os.version`|`DeviceOsVer`|
-|`timestamp`|`EventDate`|
-|`context.device.id`|`GoogAId`|
-|`settings.appId` <br/> `context.app.namespace`|`ImpactAppId`|
-|`context.ip`|`IpAddress`|
-|`context.page.url` <br/> `properties.url` <br/> `context.page.referrer` <br/> `context.referrer.url`|`PageUrl`|
-|`context.referrer.url` <br/> `context.page.referrer`|`ReferringUrl`|
-|`context.userAgent`|`UserAgent`|
-|`context.device.advertisingId`|`AppleIfa`|
+```javascript
+rudderanalytics.page("category", "name", {
+      path: "path",
+      url: "url",
+      title: "title"
+    }
+```
 
 <div class="infoBlock">
-At least one of the <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, <code class="inline-code">AppleIfv</code> properties is required while making a <code class="inline-code">page</code> call.
+The property mappings for <code class="inline-code">page</code> call are exactly the same as <code class="inline-code">identify</code> call. Refer to the <code class="inline-code">identify</code> call's <Link to="#property-mappings">property mappings</Link> for the same.
 </div>
 
 ## Screen
@@ -222,37 +199,17 @@ The <Link to="/event-spec/standard-events/screen">`screen`</Link> call lets you 
 
 A sample `screen` call is as shown:
 
-### Property mappings
-
-The following table lists the mappings between RudderStack and impact.com properties:
-
-| RudderStack property | impact.com property | 
-| :----------------- | :--------------- |
-|`context.device.id`|`AppleIfv`|
-|`context.app.name`|`AppName`|
-|`context.app.build`|`AppPackage`|
-|`context.app.version`|`AppVer`|
-|`settings.campaignId`|`CampaignId`|
-|`context.traits.email` <br/> `properties.email`|`CustomerEmail`|
-|`userId`|`CustomerId`|
-|`anonymousId`|`CustomProfileId`|
-|`context.network.carrier`|`DeviceCarrier`|
-|`context.locale`|`DeviceLocale`|
-|`context.device.manufacturer`|`DeviceMfr`|
-|`context.device.model`|`DeviceModel`|
-|`context.device.type` <br/> `context.os.name`|`DeviceOs`|
-|`context.os.version`|`DeviceOsVer`|
-|`timestamp`|`EventDate`|
-|`context.device.id`|`GoogAId`|
-|`settings.appId` <br/> `context.app.namespace`|`ImpactAppId`|
-|`context.ip`|`IpAddress`|
-|`context.page.url` <br/> `properties.url` <br/> `context.page.referrer` <br/> `context.referrer.url`|`PageUrl`|
-|`context.referrer.url` <br/> `context.page.referrer`|`ReferringUrl`|
-|`context.userAgent`|`UserAgent`|
-|`context.device.advertisingId`|`AppleIfa`|
+```javascript
+[
+  [RSClient sharedInstance] screen: @ "Sample Screen Name"
+  properties: @ {
+    @ "prop_key": @ "prop_value"
+  }
+];
+```
 
 <div class="infoBlock">
-At least one of the <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, <code class="inline-code">AppleIfv</code> properties is required while making a <code class="inline-code">screen</code> call.
+The property mappings for <code class="inline-code">screen</code> call are exactly the same as <code class="inline-code">identify</code> call. Refer to the <code class="inline-code">identify</code> call's <Link to="#property-mappings">property mappings</Link> for the same.
 </div>
 
 ## FAQ
