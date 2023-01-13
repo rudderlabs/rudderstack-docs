@@ -45,7 +45,7 @@ impact.com expects the <code class="inline-code">email</code> field in a hashed 
 - **Enable Page Events**: Enable this setting to send the `page` events.
 - **Enable Screen Events**: Enable this setting to send the `screen` events.
 - **Action Event Names**: Enter the list of event names you want to track as user actions.
-- **Install Event Names**: Enter the list of event names correspond to the app install events.
+- **Install Event Names**: Enter the list of event names corresponding to the app install events.
 
 ## Identify
 
@@ -88,7 +88,7 @@ The following table lists the mappings between RudderStack and impact.com proper
 |`context.device.advertisingId`|`AppleIfa`|
 
 <div class="infoBlock">
-At least one of the <code class="inline-code">CustomerId</code>, <code class="inline-code">CustomProfileId</code>, <code class="inline-code">GoogAId</code>, <code class="inline-code">AndroidId</code>, <code class="inline-code">AppleIfa</code>, or <code class="inline-code">AppleIfv</code> is required to make an <code class="inline-code">identify</code> call successfully.
+At least one of the <code class="inline-code">userId</code>, <code class="inline-code">anonymousId</code>, <code class="inline-code">context.device.id</code>, or <code class="inline-code">context.device.advertisingId</code> parameters is required to make an <code class="inline-code">identify</code> call successfully.
 </div>
 
 ## Track
@@ -220,6 +220,6 @@ The property mappings for <code class="inline-code">screen</code> call are exact
 
 ## FAQ
 
-### How can I debug impact.com errors?
+### How can I debug the impact.com errors?
 
 Such errors may arise due to the failed pathing, invalid parameters, authentication errors, and network unavailability. Refer to the [impact.com Errors documentation](https://integrations.impact.com/impact-brand/reference/errors) for more information. Additionally, you can also refer to their [Rate Limits documentation](https://integrations.impact.com/impact-brand/reference/rate-limits) for more information on the API call limits.
