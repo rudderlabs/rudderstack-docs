@@ -1575,9 +1575,9 @@ export const jsonData = [
                 ]
             },
             {
-                title: "Monday",
+                title: "Clickup",
                 sectionTitle: "Productivity",
-                link: "/destinations/streaming-destinations/monday/",
+                link: "/destinations/streaming-destinations/clickup/",
                 content: []
             },
             {
@@ -1586,8 +1586,13 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "ClickUp",
-                link: "/destinations/streaming-destinations/clickup/",
+                title: "Monday",
+                link: "/destinations/streaming-destinations/monday/",
+                content: []
+            },
+            {
+                title: "Pipedream",
+                link: "/destinations/streaming-destinations/pipedream/",
                 content: []
             },
             {
