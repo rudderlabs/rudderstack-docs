@@ -1548,6 +1548,25 @@ export const jsonData = [
                 content: []
             }, 
             {
+                title: "Sendinblue",
+                link: "/destinations/streaming-destinations/sendinblue/",
+                content: [
+                    {
+                        title: "Setting Up Sendinblue",
+                        link: "/destinations/streaming-destinations/sendinblue/setting-up-sendinblue/",
+                        content: []
+                    }, {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/sendinblue/sendinblue-cloud-mode/",
+                        content: []
+                    }, {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/sendinblue/sendinblue-device-mode/",
+                        content: []
+                    },
+                ]
+            },
+            {
                 title: "Userlist",
                 link: "/destinations/streaming-destinations/userlist/",
                 content: []

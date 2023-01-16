@@ -1,0 +1,145 @@
+---
+title: "Sendinblue Device Mode"
+description: Send events to Sendinblue using the RudderStack device mode.
+---
+
+RudderStack lets you send your event data to Sendinblue via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK.
+
+<div class="infoBlock">
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-sdk-js/tree/production/src/integrations/">GitHub repository</a>.
+</div>
+
+## Identify
+
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to identify the users who visited your website. You can also use it to trigger a workflow in Sendinblue, for example, adding all the identified contacts to a list.
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9", {
+  email: "alex@example.com",
+  firstName: "Alex",
+  lastName: "Keener",
+  phone: "+12025550146",
+  payment: 2,
+  age: 21,
+  location: "USA",
+});
+```
+
+<div class="infoBlock">
+The Sendinblue tracker writes the <code class="inline-code">sib_cuid</code> cookie on your domain to track the user activity. As a result, you can create only one contact per session in Sendinblue using the <code class="inline-code">identify</code> call and update the same contact in that session.
+To create a new contact, you must clear the <code class="inline-code">sib_cuid</code> cookie first or use a different browser.
+</div>
+
+### Supported mappings
+
+The following table details the property mappings between RudderStack and Sendinblue:
+
+| RudderStack property | Sendinblue property | Data type |
+| :-----| :--------| :------|
+| `context.traits.email` <br/>`context.traits.Email`<br/> `context.traits.E-mail` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `email` | String |
+| `context.traits`  | `properties` | Object |
+| `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name`  | `properties.FIRSTNAME` | String | 
+| `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name`  | `properties.LASTNAME` | String |  
+| `context.traits.phone` <br/> `context.traits.Phone` | `properties.SMS`  |  String (valid mobile number <br/> with country code) |
+
+## Track
+
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to capture user events along with their associated properties.
+
+A sample `track` call is as shown below:
+
+```javascript
+rudderanalytics.track(
+  "Order Delivered", {
+    orderId: "123",
+    products: [{
+        product_id: 1234,
+        product_name: "Track Pants",
+        amount: 1,
+        price: 220,
+      },
+      {
+        product_id: 5768,
+        product_name: "T-Shirt",
+        amount: 5,
+        price: 1058,
+      },
+    ],
+  }, {
+    integrations: {
+      All: true,
+      sendinblue: {
+        propertiesIdKey: "orderId",
+      },
+    },
+  }
+);
+}
+```
+### Supported mappings
+
+The following table details the property mappings between RudderStack and Sendinblue:
+
+| RudderStack property | Sendinblue property | Data type |
+| :-----| :--------| :------|
+| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
+| `context.traits`  | `properties` | Object |
+| `context.traits.firstName` <br/> `context.traits.firstname` <br/> `context.traits.first_name`  | `properties.FIRSTNAME` | String | 
+| `context.traits.lastName` <br/> `context.traits.lastname` <br/> `context.traits.last_name`  | `properties.LASTNAME` | String |  
+| `context.traits.phone` <br/> `context.traits.Phone` | `properties.SMS`  |  String |
+| `properties`| `event.data` | Object |
+| Value of `integrations.sendinblue.propertiesIdKey` in `properties` <br/> OR <br/> `messageId` | `event.id` | String |
+
+<div class="infoBlock">
+You can also send the user traits to Sendinblue via the <code class="inline-code">track</code> call by enabling the <strong>Send user traits in track call</strong> setting in the RudderStack dashboard.
+</div>
+
+## Contact attributes
+
+<div class="infoBlock">
+This section is applicable for the <code class="inline-code">identify</code> and <code class="inline-code">track</code> calls.
+</div>
+
+Sendinblue provides various [contact attributes](https://help.sendinblue.com/hc/en-us/articles/209499605-What-are-the-different-types-of-contact-attributes-) which you can use to personalize your communication with your contacts. You can find them in the [Contact Attributes](https://my.sendinblue.com/lists/add-attributes) section in the Sendinblue dashboard where `FIRSTNAME`, `LASTNAME`, and `SMS` are the default contact attributes. 
+
+You can also map the traits in RudderStack's payload to Sendinblue's contact attributes using the **Map your traits to Sendinblue contact attributes** setting in the RudderStack dashboard.
+
+If a contact attribute is **not** present in Sendinblue but you send it in the `identify` call's traits, it can be used only in the [Automation app](https://automation.sendinblue.com/) unless you [add them as contact attributes](https://my.sendinblue.com/lists/add-attributes).
+
+For example, the following sample code will create (or update) the user `alex@example.com` with firstname `Alex` and lastname `Keener`, and create three properties (`payment`, `age`, and `location`) that can be used only in the Marketing Automation workflows unless you also add them as your contact attributes.
+
+```javascript
+rudderanalytics.identify("1hKOmRA4el9", {
+  email: "alex@example.com",
+  firstName: "Alex",
+  lastName: "Keener",
+  payment: 2,
+  age: 21,
+  location: "USA",
+});
+```
+
+## Page
+
+You can use the <Link to="/event-spec/standard-events/page/">`page`</Link> call to send any page-related information to Sendinblue.
+
+A sample `page` call is shown below:
+
+```javascript
+rudderanalytics.page("Home")
+```
+
+### Supported mappings
+
+The following table details the property mappings between RudderStack and Sendinblue:
+
+| RudderStack property | Sendinblue property | Data type |
+| :-----| :--------| :------|
+| `name` | `page_name` | String |
+| `properties`  | `properties` | Object |
+| `properties.url` <br/> `context.page.url` | `ma_url` | String |  
+| `properties.path` <br/> `context.page.path`| `ma_path`  |  String |
+| `properties.title` <br/> `context.page.title`| `ma_title`  | String |
+| `properties.referrer` <br/> `context.page.referrer`| `ma_referrer` | String |
