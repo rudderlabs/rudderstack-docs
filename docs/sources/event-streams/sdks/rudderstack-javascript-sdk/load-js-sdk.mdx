@@ -33,6 +33,7 @@ You can use **loadOptions** in the above `load` call to define various options w
   anonymousIdOptions: AnonymousIdOptions,
   setCookieDomain: string, // defaults to current domain.
   sameSiteCookie: "Strict" | "Lax" | "None" // defaults to Lax.
+  lockIntegrationsVersion: boolean // defaults to false.
 }
 ```
 
@@ -54,6 +55,11 @@ The detailed description of these parameters is as follows:
 | `anonymousIdOptions` | Object       |  <Link to="#anonymousidoptions">Automatically captures the anonymous ID</Link> from a source and sets it as RudderStack’s `anonymousId`.  |
 | `setCookieDomain` | String       | Sets the cookie domain. SDK captures and uses the current domain as the default value. Refer to the <Link to="">Data Storage</Link> guide for more information. |
 | `sameSiteCookie` | String       |  Sets the `SameSite` attribute of a cookie. Default value is `Lax`. |
+| `lockIntegrationsVersion` | Boolean       |  Determines whether the JavaScript SDK (when installed using the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/#using-npm">npm package</Link>) should retrieve the same version of the destination SDK as the npm package, or the latest one. The default value is `False` which retrieves the latest version of the destination SDK.  |
+
+
+Determines whether the SDK when used as npm package will retrieve the destination integration bundles for the same version of the package or always the latest.
+Default value is false, behavior is to always retrieve the latest destination integration bundles. |
 
 
 The following sections contain the detailed definitions and usage of some of the above parameters:
