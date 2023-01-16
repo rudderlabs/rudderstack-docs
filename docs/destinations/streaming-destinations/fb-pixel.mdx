@@ -3,15 +3,11 @@ title: "Facebook Pixel"
 description: Send your event data from RudderStack to Facebook Pixel.
 ---
 
-[Facebook Pixel](https://developers.facebook.com/docs/facebook-pixel/) is a simple JavaScript snippet that you can add to your website and track visitor activity as well as other important metrics required to build effective marketing and advertising campaigns.
+[Facebook Pixel](https://developers.facebook.com/docs/facebook-pixel/) is a simple JavaScript snippet that you can add to your website and track visitor activity as well as other important metrics required to build effective marketing and advertising campaigns. 
 
-<div class="infoBlock">
-RudderStack leverages the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/">Conversions API</a> for sending server-side events to this destination.
-</div>
+RudderStack leverages the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/">Conversions API</a> for sending the server-side events to this destination.
 
-<div class="infoBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/facebook_pixel">GitHub repository</a>.
-</div>
 
 ## Getting started
 
@@ -192,6 +188,10 @@ RudderStack then changes the traits as shown below, before sending them to Faceb
 
 ## Identify
 
+<div class="infoBlock">
+RudderStack supports the <code class="inline-code">identify</code> only in the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>. For the device mode, it captures the existing user information and passes it to Facebook Pixel during the SDK initialization.
+</div>
+
 In Facebook Pixel, the immediate updating of user properties via the `identify` call is not supported. To do so, you need to enable the **Enable Advanced Matching** setting in the RudderStack dashboard.
 
 The following snippet highlights the use of the `identify` call:
@@ -199,12 +199,6 @@ The following snippet highlights the use of the `identify` call:
 ```javascript
 rudderanalytics.identify("userId", userVars) // userVars is a JSON object
 ```
-
-To send `external_id` via web device mode, you need to include and send it via an `identify` call before making any other call.
-
-<div class="infoBlock">
-For more information on implementing Advanced Matching in web device mode, refer to the <a href="https://developers.facebook.com/docs/meta-pixel/advanced/advanced-matching">Facebook documentation</a>.
-</div>
 
 ## Page
 
@@ -412,7 +406,7 @@ RudderStack sets the value of `content_type` in the following priority order:
 
 ## FAQ
 
-#### Where can I find the Pixel ID?
+### Where can I find the Pixel ID?
 
 To get your Pixel ID, go to your Facebook Ads Manager account. On the left navigation bar, select Business Tools, and click **Events Manager** under **Manage Business**.
 
@@ -422,7 +416,7 @@ In the Data Sources, you should be able to see your Pixel ID underneath your sit
 
 <img src="../../assets/screen-shot-2021-03-03-at-1.19.03-pm.png" />
 
-#### Where can I find the Business Access Token?
+### Where can I find the Business Access Token?
 
 In order to use the Facebook Conversions API, you need to generate an access token. We recommend using the Facebook Events Manager to do so, by following these steps:
 
@@ -435,7 +429,7 @@ In order to use the Facebook Conversions API, you need to generate an access tok
 For more information on how to use this access token or to generate your access token via your own app, refer to the <a href="https://developers.facebook.com/docs/marketing-api/conversions-api/get-started/#via-events-manager">Facebook documentation</a>.
 </div>
 
-#### Can I hash my user data before sending it to RudderStack?
+### Can I hash my user data before sending it to RudderStack?
 
 Yes. Facebook Pixel requires all user data, data coming from `context.traits`, to be hashed. This includes `email`, `phone`, `birthday`, `address`, etc. By default, RudderStack will automatically hash all of the necessary properties for you. However, if you would like to hash these traits before sending to RudderStack then you need to add this code to the event.
 
@@ -456,7 +450,7 @@ rudderanalytics.track(
 The `integrations` object with these key-values will tell RudderStack not to hash the traits in `context.traits` because they are already hashed. Otherwise, RudderStack will hash your data again and Facebook will not be able to match the traits. Please keep in mind that Facebook will not accept un-hashed data.
 
 
-#### I can see my events being sent in the RudderStack dashboard but are not visible in the Facebook Pixel dashboard. What might be the reason?
+### I can see my events being sent in the RudderStack dashboard but are not visible in the Facebook Pixel dashboard. What could be the reason?
 
-It may take upto 24 hrs for your events to reflect in the Facebook Pixel dashboard. <br/>
+It may take upto 24 hours for your events to reflect in the Facebook Pixel dashboard. <br/>
 You can also verify if your events are flowing correctly by enabling the **Use as Test Destination** setting in the RudderStack dashboard. It reflects the events in the Facebook Pixel dashboard in real time.
