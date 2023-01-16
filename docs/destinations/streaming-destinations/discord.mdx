@@ -25,13 +25,13 @@ Once you have confirmed that the source platform supports sending events to Disc
 
 To successfully configure Discord as a destination, you need to configure the following settings:
 
-- **Identify Template**: This is a mandatory field. Enter the Discord API key used to authenticate the request. 
-- **Event Name**: If this setting is enabled, RudderStack will use `anonymousId` to identify the user if `userId` is not present in the event.
-- **Event Template**: If this setting is enabled, RudderStack will use `anonymousId` to identify the user if `userId` is not present in the event.
-- **Regex Matching**: If this setting is enabled, RudderStack will use `anonymousId` to identify the user if `userId` is not present in the event.
-- **Embed Flag**: If this setting is enabled, RudderStack will use `anonymousId` to identify the user if `userId` is not present in the event.
-- **Webhook Url**: If this setting is enabled, RudderStack will use `anonymousId` to identify the user if `userId` is not present in the event.
-- **Trait**: If this setting is enabled, RudderStack will use `anonymousId` to identify the user if `userId` is not present in the event.
+- **Identify Template**:
+- **Event Name**: Enter the event name for which you want the event template to be triggered.
+- **Event Template**:
+- **Regex Matching**: Enable this setting if the event name is a regex which helps to set the same event template for all events matching regex.
+- **Embed Flag**: Enable this setting to get the embed message.
+- **Webhook Url**: Enter the webhook URL of a discord channel where you want to send the data. You can find it by logging in to the Discord dashboard and navigating to **Channel settings** > **Integration** > **Webhooks**. 
+- **Trait**: Enter all the traits you want to send in the text message
 
 ## Identify
 
