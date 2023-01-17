@@ -5,9 +5,17 @@ description: Answers to some of the commonly asked questions related to RudderSt
 
 ## Transformations
 
+#### Is there a limit on the number of transformations I can create and use?
+
+The RudderStack Cloud **Free** and **Starter** plans let you create 5 JavaScript transformations. However, you can create unlimited transformations in the **Growth** and **Enterprise** plans. Refer to the <a href="https://www.rudderstack.com/pricing/">Pricing</a> page for more information.
+
+<div class="infoBlock">
+RudderStack supports Python transformations only in the <strong>Growth</strong> and <strong>Enterprise</strong> plans.
+</div>
+
 #### Are there any sample user transformations I can refer to?
 
-Yes, you can refer to the [Sample RudderStack Transformations](https://github.com/rudderlabs/sample-user-transformers) GitHub repository.
+Refer to the [Sample RudderStack Transformations](https://github.com/rudderlabs/sample-user-transformers) GitHub repository.
 
 #### Is the transformation connected to a source or destination?
 
@@ -17,7 +25,7 @@ A transformation is always connected to a destination. RudderStack gives you the
 
 ####  Can I connect multiple transformations to a destination?
 
-No, it is not possible to connect multiple transformations to a destination. Instead, you can implement multiple use-cases in the same transformaƒtion, for example, event filtering followed by cleaning.
+No, it is not possible to connect multiple transformations to a destination. Instead, you can implement multiple use-cases in the same transformation, for example, event filtering followed by cleaning.
 
 #### Can I write a transformation that can be applied to a small batch of events?
 
@@ -35,11 +43,33 @@ If a library `L` is <Link to="/features/transformations/using-libraries">importe
 
 By default, RudderStack supports writing functions that transform a single event instead of a batch of events. You can now define your transformation in the following manner:
 
+<Tabs>
+  <TabList>
+    <Tab>JavaScript</Tab>
+    <Tab>Python</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+<span>
+
 ```javascript
 export function transformEvent(event, metadata) {
     return event;
 }
 ```
+</span>
+    </TabPanel>
+    <TabPanel>
+<span>
+
+```python
+def transformEvent(event, metadata):
+    return event
+```
+</span>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
 
 #### Can I update my existing version v0 transformation code to the the latest version?
 

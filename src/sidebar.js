@@ -1858,7 +1858,7 @@ export const jsonData = [
         link: "/features/transformations/",
         content: [
             {
-                title: "Using Libraries",
+                title: "Libraries",
                 link: "/features/transformations/using-libraries",
                 content: [],
             },
