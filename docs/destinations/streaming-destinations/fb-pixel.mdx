@@ -51,7 +51,7 @@ For more information on obtaining your Facebook Pixel ID and Business Access Tok
 - **Map your events with Facebook Standard Events**: RudderStack maps some events to the Facebook standard events by default. You can use this option to override the <Link to="#standard-events">default mappings</Link> and map events to the Facebook standard events. 
 - **Standard Events custom properties**: For the standard events, some predefined properties are taken by Facebook. If you want to send more properties for your events, mention those properties in this field.
 - **Value Field Identifier**: You can set this field to `properties.price` or `properties.value`. RudderStack will then assign this to the value field of the Facebook payload.
-- **Enable Advanced Matching**: Enable this setting to update the user information in Facebook Pixel via an `identify` call.
+- **Enable Advanced Matching**: Enable this setting to update the user information in Facebook Pixel device mode.
 
 ### PII properties settings
 
@@ -145,9 +145,9 @@ RudderStack supports specifying which events should be discarded or allowed to f
 
 <img src="../../assets/event-stream-destinations/fbp-connection-settings-5.png" alt="Connection settings" />
 
-- **Use Updated Mapping**: If this setting is disabled, RudderStack will send the `identify` traits as received. If this setting is enabled, RudderStack takes the following `identify` traits:
+- **Use Updated Mapping**: If this setting is disabled, RudderStack sends the user traits to Facebook Pixel without any modification. If you enable this setting, RudderStack takes the following traits:
 
-```JSON
+```json
 {
   firstName: "Alex",
   lastName: "Keener",
@@ -163,9 +163,9 @@ RudderStack supports specifying which events should be discarded or allowed to f
 }
 ```
 
-RudderStack then changes the traits as shown below, before sending them to Facebook:
+It then sends the above traits to Facebook Pixel in the following format:
 
-```JSON
+```json
 {
   fn: "Alex",
   ln: "Keener",
