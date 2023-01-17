@@ -189,7 +189,7 @@ It then sends the above traits to Facebook Pixel in the following format:
 ## Identify
 
 <div class="infoBlock">
-RudderStack supports the <code class="inline-code">identify</code> only in the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>. For the device mode, it captures the existing user information and passes it to Facebook Pixel during the SDK initialization.
+RudderStack supports the <code class="inline-code">identify</code> call only in <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>. For the device mode, it captures the existing user information and passes it to Facebook Pixel during the SDK initialization.
 </div>
 
 In Facebook Pixel, the immediate updating of user properties via the `identify` call is not supported. To do so, you need to enable the **Enable Advanced Matching** setting in the RudderStack dashboard.
