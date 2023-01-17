@@ -29,10 +29,10 @@ To successfully configure Discord as a destination, you need to configure the fo
 - **Event Name**: Enter the event name for which you want the `track` call's event template to be triggered.
 - **Event Template**: Enter a template for building a text message while sending a `track` call to Discord. If not provided, RudderStack uses the default template as: `User {{name}} did {{event}} with {{properties}}`.
 - **Regex Matching**: Enable this setting if you want to match multiple event names in the `track` call using a regex. It helps in setting the same event template for event names matching the regex.
-- **Embed Flag**: Enable this setting to set an embed message for Discord. If enabled, also enter the following:
+- **Embed Flag**: Enable this setting to set an embed message for Discord. If enabled, also specify the following:
     - **Title Template**: Enter the template for building the title of the embed message.
     - **Description Template**: Enter the template for building the description of the embed message.
-- **Webhook Url**: Enter the webhook URL of a Discord channel where you want to send the data. You can find it by logging in to [Discord](https://discord.com/login) and selecting the channel for which you want to send the data. Further, navigate to the **Channel settings** > **Integrations** > **Create Webhook**. 
+- **Webhook Url**: Enter the webhook URL of a Discord channel where you want to send the data. You can create it by logging in to [Discord](https://discord.com/login) and selecting the channel for which you want to send the data. Further, navigate to the **Channel settings** > **Integrations** > **Create Webhook**. 
 - **Trait**: Enter all the traits you want to send to Discord in the text message.
 
 ## Identify
@@ -49,12 +49,24 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 });
 ```
 
-For the above `identify` call, RudderStack sends the following text message to Discord (using the defaut `identify` template):
-`User Alex Keener with email: alex@example.com, country: USA is identified`.
-
 <div class="infoBlock">
 Either one of the <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> is required to make an <code class="inline-code">identify</code> call successfully.
 </div>
+
+RudderStack sends the above `identify` call to Discord in the following text message format (using the defaut `identify` template):
+- `User Alex Keener with email: alex@example.com, country: USA is identified`
+- When **Embed Flag** setting is enabled and the **Title Template** and **Description Template** are provided in the dashboard settings:
+
+```javascript
+"content": "User Alex Keener with email: alex@example.com, country: USA is identified",
+"embeds": [{
+  "description": "Identify call made",
+  "title": "Message from Rudderstack "
+}]
+```
+
+RudderStack sends the text message after converting it into the `identify` template specified in the dashboard. Also, if the **Embed Flag** setting is enabled, it sends the text message in `content` property and the embed message details in the `embeds` property. Refer to the [Discord documentation](https://discord.com/developers/docs/resources/webhook) for more information.
+
 
 ## Track
 
@@ -70,9 +82,20 @@ rudderanalytics.track("Order Completed", {
 });
 ```
 
-For the above `track` call, RudderStack sends the following text message to Discord (using the defaut `track` template):
-`Anonymous user anon_id did Order Completed with category: category, label: label, value: 120`.
-
 <div class="infoBlock">
 <code class="inline-code">event name</code> is a required property to make a <code class="inline-code">track</code> call successfully.
 </div>
+
+RudderStack sends the above `track` call to Discord in the following text message format (using the defaut `track` template):
+- `Anonymous user anon_id did Order Completed with category: category, label: label, value: 120`
+- When **Embed Flag** setting is enabled and the **Title Template** and **Description Template** are provided in the dashboard settings:
+
+```javascript
+"content": "Anonymous user anon_id did Order Completed with category: category, label: label, value: 120",
+"embeds": [{
+  "description": "Track call made",
+  "title": "Message from Rudderstack "
+}]
+```
+
+RudderStack sends the text message after converting it into the `track` template specified in the dashboard. Also, if the **Embed Flag** setting is enabled, it sends the text message in `content` property and the embed message details in the `embeds` property. Refer to the [Discord documentation](https://discord.com/developers/docs/resources/webhook) for more information.
