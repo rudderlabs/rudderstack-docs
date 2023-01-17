@@ -951,7 +951,7 @@ export const jsonData = [
                         link: "/destinations/streaming-destinations/adobe-analytics/adobe-analytics-heartbeat/",
                         content: []
                     }, {
-                        title: "E-commerce Events",
+                        title: "Ecommerce Events",
                         link: "/destinations/streaming-destinations/adobe-analytics/ecommerce-events/",
                         content: []
                     },
@@ -1963,7 +1963,7 @@ export const jsonData = [
         ]
     },
     {
-        title: "E-commerce Events",
+        title: "Ecommerce Events",
         link: "/event-spec/ecommerce-events-spec/",
         content: [
             {

@@ -142,7 +142,7 @@ In addition to the above fields, the customer name can also be sent using the `n
 
 ## Track
 
-The `track` call lets you send custom events to Ometria. Note that `track` also supports the E-Commerce events and sends them using the **Ometria Order Object**.
+The `track` call lets you send custom events to Ometria. Note that `track` also supports the Ecommerce events and sends them using the **Ometria Order Object**.
 
 <div class="warningBlock">
 
@@ -181,7 +181,7 @@ The following table includes all the RudderStack fields set as custom events in 
 | `email` | `identity_email` |
 | `userId / anonymousId` | `identity_account_id` |
 
-### E-Commerce Events
+### Ecommerce Events
 
 The `track` call also lets you record order-related information like `order_id`, `grandtotal`, `timestamp`, `currency`, etc.
 
@@ -192,13 +192,13 @@ RudderStack will create a `customer` object with `userId`, `email`, `firstname` 
 Note that `order_id`, `timestamp`, `grand_total` and `currency` are the mandatory fields for the `orders` event, while `userId` and `email` are required for `customer` object. You can pass `email` either via the `identify` call or the `track` call's properties.
 </div>
 
-The supported `order` E-Commerce events are as listed below:
+The supported `order` Ecommerce events are as listed below:
 
 * `order completed` / `complete`/ `order complete`
 * `order shipped` / `shipped`
 * `order pending` / `pending`
 
-A sample `track` call for an E-Commerce order event is as shown:
+A sample `track` call for an Ecommerce order event is as shown:
 
 ```javascript
 rudderanalytics.track("order completed", {
@@ -234,7 +234,7 @@ A few things to note:
 
 ### Track Orders Mapping
 
-The following table includes all the fields in `track` call for E-Commerce orders, with their relative mapping to the Ometria fields:
+The following table includes all the fields in `track` call for Ecommerce orders, with their relative mapping to the Ometria fields:
 
 | **RudderStack Field** | **Ometria Field** |
 | :--- | :--- |
