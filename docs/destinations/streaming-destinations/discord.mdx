@@ -5,7 +5,7 @@ description: Send your event data from RudderStack to Discord.
 
 [Discord](https://discord.com/) is a popular communications app used by gamers to communicate online. It lets you share voice, video, and text chat with friends, game communities, and developers.
 
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/discord">GitHub repository</a>.
+Find the open-source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/discord">GitHub repository</a>.
 
 ## Getting started
 
@@ -25,13 +25,15 @@ Once you have confirmed that the source platform supports sending events to Disc
 
 To successfully configure Discord as a destination, you need to configure the following settings:
 
-- **Identify Template**:
-- **Event Name**: Enter the event name for which you want the event template to be triggered.
-- **Event Template**:
-- **Regex Matching**: Enable this setting if the event name is a regex which helps to set the same event template for all events matching regex.
-- **Embed Flag**: Enable this setting to get the embed message.
-- **Webhook Url**: Enter the webhook URL of a discord channel where you want to send the data. You can find it by logging in to the Discord dashboard and navigating to **Channel settings** > **Integration** > **Webhooks**. 
-- **Trait**: Enter all the traits you want to send in the text message
+- **Identify Template**: Enter a template for building a text message while sending an `identify` call to Discord. If not provided, RudderStack uses the default template as: `User {{name}} with {{traits}} is identified`.
+- **Event Name**: Enter the event name for which you want the `track` call's event template to be triggered.
+- **Event Template**: Enter a template for building a text message while sending a `track` call to Discord. If not provided, RudderStack uses the default template as: `User {{name}} did {{event}} with {{properties}}`.
+- **Regex Matching**: Enable this setting if you want to match multiple event names in the `track` call using a regex. It helps in setting the same event template for event names matching the regex.
+- **Embed Flag**: Enable this setting to set an embed message for Discord. If enabled, also enter the following:
+    - **Title Template**: Enter the template for building the title of the embed message.
+    - **Description Template**: Enter the template for building the description of the embed message.
+- **Webhook Url**: Enter the webhook URL of a Discord channel where you want to send the data. You can find it by logging in to [Discord](https://discord.com/login) and selecting the channel for which you want to send the data. Further, navigate to the **Channel settings** > **Integrations** > **Create Webhook**. 
+- **Trait**: Enter all the traits you want to send to Discord in the text message.
 
 ## Identify
 
@@ -47,27 +49,16 @@ rudderanalytics.identify("1hKOmRA4GRlm", {
 });
 ```
 
-### Property mappings
+For the above `identify` call, RudderStack sends the following text message to Discord (using the defaut `identify` template):
+`User Alex Keener with email: alex@example.com, country: USA is identified`.
 
-The following table lists the mappings between the RudderStack and Discord properties:
-
-| RudderStack property          | Discord property | Data type |
-| :-------------------- | :---------------------- |:---------------------- |
-| `properties.floodlightActivityId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `floodlightActivityId`           | String |
-| `properties.floodlightConfigurationId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `floodlightConfigurationId`            | String |
-| `properties.ordinal`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `ordinal`             | String |
-| `properties.quantity`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `quantity`             | String |
-| `properties.profileId` <br/> `config.profileId`  | `profileId`              | Number |
-| `properties.encryptedUserId`    | `encryptedUserId`      | String |
-| `properties.encryptedUserIdCandidates[]`    | `encryptedUserIdCandidates[]`      | Array |
-|`properties.dclid`|`dclid`| String |
-| `properties.gclid`     | `gclid`           | String |
-| `properties.matchId`       | `matchId`             | String |
-| `properties.mobileDeviceId`     | `mobileDeviceId`              |String|
+<div class="infoBlock">
+Either one of the <code class="inline-code">userId</code> or <code class="inline-code">anonymousId</code> is required to make an <code class="inline-code">identify</code> call successfully.
+</div>
 
 ## Track
 
-The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you record and send the conversion events along with any properties associated with them.
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to capture user events along with the properties associated with them.
 
 A sample `track` call is shown below:
 
@@ -79,20 +70,9 @@ rudderanalytics.track("Order Completed", {
 });
 ```
 
-### Property mappings
+For the above `track` call, RudderStack sends the following text message to Discord (using the defaut `track` template):
+`Anonymous user anon_id did Order Completed with category: category, label: label, value: 120`.
 
-The following table lists the mappings between the RudderStack and Discord properties:
-
-| RudderStack property          | Discord property | Data type |
-| :-------------------- | :---------------------- |:---------------------- |
-| `properties.floodlightActivityId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `floodlightActivityId`           | String |
-| `properties.floodlightConfigurationId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>   | `floodlightConfigurationId`            | String |
-| `properties.ordinal`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `ordinal`             | String |
-| `properties.quantity`   <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>    | `quantity`             | String |
-| `properties.profileId` <br/> `config.profileId`  | `profileId`              | Number |
-| `properties.encryptedUserId`    | `encryptedUserId`      | String |
-| `properties.encryptedUserIdCandidates[]`    | `encryptedUserIdCandidates[]`      | Array |
-|`properties.dclid`|`dclid`| String |
-| `properties.gclid`     | `gclid`           | String |
-| `properties.matchId`       | `matchId`             | String |
-| `properties.mobileDeviceId`     | `mobileDeviceId`              |String|
+<div class="infoBlock">
+<code class="inline-code">event name</code> is a required property to make a <code class="inline-code">track</code> call successfully.
+</div>
