@@ -17,10 +17,8 @@ The **RudderStack iOS SDK** lets you track the customer event data from your iOS
 Refer to the <a href="https://github.com/rudderlabs/rudder-sdk-ios/tree/master-v2">GitHub codebase</a> to get a more hands-on understanding of the SDK.
 </div>
 
-<GhBadge
-  url={'https://cocoapods.org/pods/Rudder'}
-  repo={'cocoapods/v/Rudder'}
-/>
+<a href="https://github.com/rudderlabs/rudder-sdk-ios/tree/master-v2"><img align="left" src="https://img.shields.io/badge/dynamic/json?color=blue&label=pod&query=%24.version&url=https%3A%2F%2Fraw.githubusercontent.com%2Frudderlabs%2Frudder-sdk-ios%2Fmaster-v2%2Fpackage.json" /></a>
+
 
 <GhBadge
   label={'Stability'}
@@ -135,6 +133,69 @@ import Rudder
 
 RudderStack uses <a href="https://sqlite.org/index.html">SQLite</a> to temporarily store the events before sending them to the data plane. Making calls which are not thread-safe, like <code class="inline-code">SQLite.shutdown()</code>, might lead to unexpected crashes.
 </div>
+
+### Swift Package Manager
+
+You can also install the iOS SDK through Swift Package Manager (SPM) via one of the following methods:
+
+<Tabs>
+  <TabList>
+    <Tab>Xcode</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+        To add the RudderStack package in Xcode, follow these steps:
+<ol>
+  <li>Go to <strong>File</strong> > <strong>Add Package</strong>.</li>
+  <li>In the search bar, enter the package repository <code class="inline-code">git@github.com:rudderlabs/rudder-sdk-ios.git</code>.</li>
+  <li>In <strong>Dependency Rule</strong>, select  <strong>Up to Next Major Version</strong> and enter the value as <strong>2.2.5</strong>, as shown:</li>
+
+<img src="../../../../assets/event-stream-sources/spm-dependency-rule-v2.png" alt="SPM dependency rule" />
+
+  <li>Select the project to which you want to add the package and click <strong>Add Package</strong>.</li> 
+</ol>
+      </TabPanel>
+      <TabPanel>
+      To leverage the RudderStack Swift package, include the following snippet in your project: <br /><br />
+<span>
+
+```swift
+// swift-tools-version:5.5
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+    name: "RudderStack",
+    products: [
+        // Products define the executables and libraries a package produces, and make them visible to other packages.
+        .library(
+            name: "RudderStack",
+            targets: ["RudderStack"]),
+    ],
+    dependencies: [
+        // Dependencies declare other packages that this package depends on.
+        .package(url: "git@github.com:rudderlabs/rudder-sdk-ios.git", from: "1.8.0")
+    ],
+    targets: [
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages this package depends on.
+        .target(
+            name: "RudderStack",
+            dependencies: [
+                .product(name: "Rudder", package: "rudder-sdk-ios")
+            ]),
+        .testTarget(
+            name: "RudderStackTests",
+            dependencies: ["RudderStack"]),
+    ]
+)
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
 
 ## Initializing the RudderStack client
 
