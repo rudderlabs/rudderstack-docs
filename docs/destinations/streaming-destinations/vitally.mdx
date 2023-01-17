@@ -7,42 +7,28 @@ description: Send your event data from RudderStack to Vitally.
 
 This destination is maintained by Vitally. For any issues with the destination, [contact the Vitally Support team](mailto:support@vitally.io).
 
-<div class="infoBlock">
-Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/vitally">GitHub repository</a>.
-</div>
-
 ## Getting Started
 
 RudderStack supports sending events to <Destination_Name> via the following <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link>:
 
 | **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
 | :------------------ | :------------ | :------------ | :------------ |
-| **Device Mode**     | **-**         | **-**         | **-**         |
+| **Device Mode**     | **Supported** | **Supported** | **Supported**         |
 | **Cloud Mode**      | **Supported** | **Supported** | **Supported** |
 
 Enabling Vitally as a destination in RudderStack can be done in one click from your Vitally account. 
 
 1. Navigate to the RudderStack integration page within your Vitally account. This can be found in your **Account Settings** in Vitally by navigating to the **Product Data** integrations list.
-
-  ![](images/6fztyvS.png)
-
-2. In a separate tab/window, make sure you are logged into your RudderStack account
-3. Configure the RudderStack integration using the one-click "Enable with RudderStack" button. Choose the primary source of product usage data in RudderStack and RudderStack will automatically create a destination for Vitally:
-
-  ![](images/uGHrIvX.gif)
-
-4. You'll now be able to see and manage your Vitally Destination directly from your RudderStack workspace
-
-  ![](images/2JQwIBK.png)
-
-5. Once Vitally receives at least one event from RudderStack, you'll be able to proceed with the set up process and configure how to [create accounts from RudderStack](https://docs.vitally.io/managing-the-customer-lifecycle/account-hierarchy-using-vitallys-organization-object/supported-integrations-and-how-to-create-the-hierarchy#rudderstack){:target="_blank"}
+2. Enable the RudderStack integration and copy the API key
+3. Navigate to your Rudderstack dashboard and add a new Vitally destination, pasting in your API key
+4. Once Vitally receives at least one event from RudderStack, you'll be able to proceed with the set up process and configure how to [create accounts from RudderStack](https://docs.vitally.io/managing-the-customer-lifecycle/account-hierarchy-using-vitallys-organization-object/supported-integrations-and-how-to-create-the-hierarchy#rudderstack){:target="_blank"}
 
 ## Identify
 
-If you haven't had a chance to review the spec, take a look to understand what the [Identify method](/docs/connections/spec/identify/) does. An example call would look like:
+If you haven't had a chance to review the spec, take a look to understand what the [Identify method](https://www.rudderstack.com/docs/event-spec/standard-events/identify/) does. An example call would look like:
 
 ```
-analytics.identify('userId123', {
+rudderanalytics.identify('userId123', {
   name: 'John Doe',
   email: 'john.doe@yourcustomer.com',
   avatar: 'https://yourdomain.com/avatars/johndoe.png',
@@ -59,10 +45,10 @@ Passing along the following traits will correspond to what is displayed in Vital
 
 ## Track
 
-If you haven't had a chance to review the spec, take a look to understand what the [Track method](/docs/connections/spec/track/) does. An example call would look like:
+If you haven't had a chance to review the spec, take a look to understand what the [Track method](https://www.rudderstack.com/docs/event-spec/standard-events/track/) does. An example call would look like:
 
 ```
-analytics.track('enabled-slack-integration', {
+rudderanalytics.track('enabled-slack-integration', {
    channel: '#support'
 })
 ```
@@ -72,10 +58,10 @@ Track calls are used in Vitally to track and analyze your accounts' engagement w
 
 ## Group
 
-If you haven't had a chance to review the spec, take a look to understand what the [Group method](/docs/connections/spec/group/) does. An example call would look like:
+If you haven't had a chance to review the spec, take a look to understand what the [Group method](https://www.rudderstack.com/docs/event-spec/standard-events/group/) does. An example call would look like:
 
 ```js
-analytics.group("accountId123", {
+rudderanalytics.group("accountId123", {
   name: "Initech",
   industry: "Technology",
   plan: "enterprise",
