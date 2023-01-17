@@ -6,11 +6,7 @@ aliases: ["Braze destination"]
 
 [Braze](https://www.braze.com/) is a customer engagement platform that helps you better understand your customers' in-app behavior and use the insights to improve your users' app experience.
 
-RudderStack supports Braze as a destination where you can seamlessly send your event data.
-
-<div class="infoBlock">
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/braze">GitHub repository</a>.
-</div>
 
 ## Getting started
 
@@ -30,21 +26,15 @@ Once you have confirmed that the source platform supports sending events to Braz
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Braze**.
 2. Assign a name to the destination and click **Continue**.
 
-### Connection settings
+## Connection settings
 
 To successfully configure Braze as a destination, you need to configure the following settings:
 
-<img src="../../assets/event-stream-destinations/braze-connection-settings.png" alt="Braze connection settings" />
-
-- **App Key**: Enter your Braze app key.
-- **REST API Key**: Enter the REST API key associated with your project.
+- **App Key**: Enter your Braze app key. For more information on obtaining your Braze app key, refer to the <Link to="#faq">FAQ</Link> section below.
+- **REST API Key**: Enter the REST API key associated with your project. For more information on obtaining this key, refer to the <Link to="#faq">FAQ</Link> section below.
 
 <div class="infoBlock">
 When creating a new Braze Rest API Key for your app, you only need to select the <strong>users.track</strong>, <strong>users.identify</strong>, and <strong>users.alias.new</strong> endpoints under the <strong>User Data</strong> permissions.
-</div>
-
-<div class="infoBlock">
-For more information on obtaining your Braze app key and the REST API key, refer to the <Link to="#faq">FAQ</Link> section below.
 </div>
 
 - **Data Center**: Specify the data center associated with your Braze account. The easiest way to get your data center details is to log into your Braze account and observing your URL. Some examples are shown below:
@@ -59,15 +49,18 @@ For more information on obtaining your Braze app key and the REST API key, refer
 For more information on getting your data center instance, refer to the <a href="https://www.braze.com/docs/user_guide/administrative/access_braze/braze_instances">Braze instances</a> page.
 </div>
 
-- **Track events for anonymous users**: Enable this setting to track anonymous users.
+- **Track events for anonymous users**: Enable this setting to track anonymous user activity and send this information to Braze.
 - **Enable subscription groups in group call**: Enable this setting to send the subscription group status in your <code class="inline-code">group</code> events. For more information, refer to the <Link to="#group">Group</Link> section below.
-- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Braze.
+- **Use Nested Array Operations**: Enable this setting to use the <Link to="#nested-array-operations">nested array operations</Link> in your <Link to="#track">`track`</Link> calls.
 
-<div class="infoBlock">
-For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
-</div>
+### Device mode settings
 
-- **Use device mode to send events**: Enable this setting to send events to Braze via the <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+The following settings are applicable only if you're sending events to Braze via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>:
+
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Braze. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+- **Use device mode to send events**: Enable this setting to send events to Braze via the device mode.
+- **Deduplicate Traits**: Enable this setting to deduplicate the user traits in the <Link to="#identify">`identify`</Link> call.
+- **Show Braze logs**: Enable this setting to show the Braze logs to your users.
 - **OneTrust Cookie Categories**: This setting lets you associate the <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Braze.
 
 ## Adding device mode integration
@@ -347,6 +340,12 @@ A sample regulation request body for deleting a user in Braze is shown below:
 }
 ```
 
+ ### Delta management for `identify` calls
+
+If you are sending events to Braze via the device mode, you can save on costs by deduplicating your `identify` calls. To do so, enable the **Deduplicate Traits** dashboard setting. RudderStack then sends only the changed or modified attributes (traits) to Braze. 
+
+It is highly recommended to review Braze's [data points policy](https://www.braze.com/docs/user_guide/onboarding_with_braze/data_points/) to fully understand how this functionality can help you avoid data overages.
+
 ## Track
 
 The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record the customer events, that is, the actions that they perform, along with any properties associated with them.
@@ -379,9 +378,34 @@ rudderanalytics.track("Order Completed", {
 });
 ```
 
-<div class="infoBlock">
-You can also send nested objects inside track events to send nested JSON data as properties.
-</div>
+### Nested array operations
+
+You can also send nested arrays as the `track` properties and perform create, add, update, and remove operations on them. To do so, you must first enable the **Nested Array Operations** dashboard setting. Then, include the field `nestedOperationType` in the `track` event, as shown:
+
+```javascript
+rudderanalytics.track("Product Viewed", {
+  "nestedOperationType": "update",
+  "pets": [{
+      "identifier_key": "id",
+      "identifier_value": 4,
+      "new_object": {
+        "breed": "fish"
+      }
+    },
+    {
+      "identifier_key": "id",
+      "identifier_value": 5,
+      "new_object": {
+        "name": "alex"
+      }
+    }
+  ]
+});
+```
+
+Note that the `nestedOperationType` field is required for this feature to work and must be one of `create`, `update`, `add`, or `remove`.
+
+For more information on sending nested custom attributes to Braze, refer to the <a href="https://www.braze.com/docs/user_guide/data_and_analytics/custom_data/custom_attributes/array_of_objects#usage-examples">Braze documentation</a>.
 
 ## Page
 
@@ -494,12 +518,6 @@ if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_9_x_Max) {
 </TabPanels>
 </Tabs>
 
-## Delta Management for Identify Calls
-
-If you are using Braze in device mode, you can save on costs by deduplicating `identify` calls.
-Configure this in your dashboard under **SDK settings** for JavaScript, Android, and iOS. If you have enabled *device mode*, a toggle for **Deduplicate Traits** appears underneath. Switch on this toggle to begin sending to Braze only those attribute (trait) fields which have changed.  
-
-We suggest you review Braze's [data points policy](https://www.braze.com/docs/user_guide/onboarding_with_braze/data_points/) first to further understand how this functionality can help you avoid data overages.
 ## FAQ
 
 ### Where can I find the Braze App Key and REST API Key?
