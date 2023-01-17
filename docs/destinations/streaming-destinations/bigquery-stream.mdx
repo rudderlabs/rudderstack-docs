@@ -35,7 +35,7 @@ To successfully configure BigQuery Stream as a destination, you will need to con
 
 <img src="../../assets/event-stream-destinations/bqstream-3.png" alt="BigQuery Stream connection settings" />
 
-- **Insert ID**: This is an **optional** field. Enter the insert ID used by Google to deduplicate the data sent to BigQuery. For more information on this setting, refer to the <Link to="#deduplicating-data">Deduplicating data</Link> section.
+- **Insert ID**: This is an **optional** field. Enter the `insertId` used by Google to deduplicate the data sent to BigQuery. For more information on this setting, refer to the <Link to="#deduplicating-data">Deduplicating data</Link> section.
 - **Credentials**: Enter the contents of the credentials JSON you downloaded after <Link to="#creating-a-service-account">creating your service account</Link>.
 
 <div class="infoBlock">
@@ -46,7 +46,6 @@ Create a service account in your GCP Project for RudderStack with the <strong>Bi
 
 RudderStack supports sending only <Link to="/event-spec/standard-events/track">`track`</Link> events to BigQuery Stream.
 
-- Make sure the `track` event payload format matches the table schema specified in the RudderStack dashboard.
 - RudderStack currently does not support the `templateSupportSuffix` feature which creates a table schema during a streaming insert action.
 
 Suppose you want to stream the events from your web source to BigQuery and the table schema in your BigQuery dataset is as shown:
@@ -91,7 +90,7 @@ When sending an `Insert Product` event to BigQuery, you can use the `productId` 
 Use this feature if you are <Link to="/user-guides/how-to-guides/dynamic-destination-configuration/">dynamically configuring BigQuery Stream via the event payload</Link>.
 </div>
 
-To dynamically configure `insertId` via the event payload, make sure that `insertId`is the column name present in your schema (or in the `properties` object in the event payload) used to uniquely identify an event.
+To dynamically configure `insertId` via the event payload, make sure that `insertId` is the column name present in your schema (or in the `properties` object in the event payload) used to uniquely identify an event.
 
 Consider the following schema:
 
@@ -116,7 +115,7 @@ Consider the following payload:
 }
 ```
 
-In the above case, deduplication **will not be applicable** as the event properties do not contain `<some_value>` present in the payload.
+In the above case, deduplication **is not applicable** as the event properties do not contain `<some_value>` present in the payload.
 
 ### Case 2: Unique ID is sent as a value which is a key in  the event properties
 
