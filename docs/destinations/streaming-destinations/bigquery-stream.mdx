@@ -39,14 +39,16 @@ To successfully configure BigQuery Stream as a destination, you will need to con
 - **Credentials**: Enter the contents of the credentials JSON you downloaded after <Link to="#creating-a-service-account">creating your service account</Link>.
 
 <div class="infoBlock">
-Create a service account in your GCP Project for RudderStack with the <strong>BigQuery Data Editor</strong> role, which has the required access to write to BigQuery.
+<Link to="#creating-a-service-account">Create a service account</Link> in your GCP Project for RudderStack with the <strong>BigQuery Data Editor</strong> role, which has the required access to write to BigQuery.
 </div>
 
 ## Sending events to BigQuery Stream
 
-RudderStack supports sending only <Link to="/event-spec/standard-events/track">`track`</Link> events to BigQuery Stream.
+RudderStack supports sending only <Link to="/event-spec/standard-events/track">`track`</Link> events to BigQuery Stream. Make sure your `track` event payload format matches the table schema corresponding to **Table ID** specified in the dashboard settings.
 
-- RudderStack currently does not support the `templateSupportSuffix` feature which creates a table schema during a streaming insert action.
+<div class="infoBlock">
+RudderStack currently does not support the <code class="inline-code">templateSupportSuffix</code> feature which creates a table schema during a streaming insert action.
+</div>
 
 Suppose you want to stream the events from your web source to BigQuery and the table schema in your BigQuery dataset is as shown:
 
