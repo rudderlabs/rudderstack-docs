@@ -96,4 +96,8 @@ Some RudderStack destinations support sending events via both the cloud and devi
 
 In cloud mode, the event data is sent from the sources directly to the RudderStack server. RudderStack takes care of the event transformation and ensuring the format matches the destination's requirements. Since this transformation happens in the RudderStack server itself, your page size as well as the load times are not affected at all.
 
+### Can I use an event forwarding or data plane proxy in the device mode?
 
+Yes, you can use an event forwarding/data plane proxy while sending events to your destinations via the device mode. The default vendor API endpoint will still work as expected.
+
+<br />
