@@ -36,7 +36,7 @@ You will also need the data plane URL. Refer to the <Link to="/dashboard-guides/
 ## Installing the RudderStack Flutter SDK
 
 <div class="infoBlock">
-Starting from v1.0.2, the RudderStack Flutter SDK is migrated to Null Safety.
+Starting from v1.0.2, the RudderStack Flutter SDK supports the <a href="https://dart.dev/null-safety">Null Safety</a> feature.
 </div>
 
 The recommended way to install the Flutter SDK is through [`pub`](https://pub.dev/packages/rudder_sdk_flutter). Follow these steps to add the SDK as a dependency:
@@ -58,7 +58,7 @@ flutter pub get
 
 To install and use the Flutter SDK in your web app, follow the above steps to add the Flutter SDK. Additionally, you need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/quick-start-guide/#step-1-install-javascript-sdk">install the RudderStack script</Link> in the `<head>` section of your web page.
 
-Not all the Flutter SDK API are applicable for the web. Calling the following API on your web app will have **no effect**:
+Not all the Flutter SDK APIs are applicable for the web. The following APIs will have **no effect** on your web app:
 
 - [`optOut`](#enablingdisabling-user-tracking-gdpr-support)
 - [`putDeviceToken`](#setting-the-device-token)
@@ -95,9 +95,9 @@ The `initialize` method has the following signature:
 
 ## Self-hosted control plane
 
-For the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>-supported destinations, the Flutter SDK needs to fetch the required configuration from the control plane. 
+For the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>-supported destinations, the Flutter SDK needs to fetch the required source-destination configuration from the control plane.
 
-If you are self-hosting RudderStack and using the <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to host your own control plane, then follow the steps in [this section](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/#using-sdk-sources-set-up-in-self-hosted-control-plane) and specify `controlPlaneUrl` in your [`RudderConfig.Builder`](#sdk-initialization-options) that points to the hosted source configuration file.
+If you are self-hosting RudderStack and using the <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to host your own control plane, then follow the steps in [this section](https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/#using-sdk-sources-set-up-in-self-hosted-control-plane) and specify the `controlPlaneUrl` parameter in your [`RudderConfig.Builder`](#sdk-initialization-options) that points to the hosted configuration file.
 
 <div class="dangerBlock">
 You should not pass the <code class="inline-code">controlPlaneUrl</code> parameter during SDK initialization if you are using <a href="https://app.rudderstack.com">RudderStack Cloud</a>. This parameter is supported <strong>only</strong> if you are using the open source <a href="https://www.rudderstack.com/docs/rudderstack-open-source/control-plane-lite/">Control Plane Lite</a> utility to set up your own control plane.
@@ -489,7 +489,7 @@ rudderClient.identify("testUserId", options: option);
 
 ## Setting your own `anonymousId` using `putAnonymousId`
 
-By default, RudderStack uses the `deviceId` as the user's `anonymousId`. Use the following method to override and set your own `anonymousId` with the SDK:
+By default, RudderStack uses the `deviceId` as the user's `anonymousId`. Use the following method to override and set your own `anonymousId`:
 
 ```dart
 rudderClient.putAnonymousId(<ANONYMOUS_ID>);
@@ -513,19 +513,15 @@ builder.withTrackLifecycleEvents(true);
 rudderClient.initialize(<WRITE_KEY>,config: builder.build());
 ```
 
-You can use the `putAdvertisingId` method to pass your Android and iOS AAID and IDFA respectively. The `putAdvertisingId` method accepts a string argument as described below:
+You can use the `putAdvertisingId` method to pass your Android AAID and iOS IDFA respectively. The `putAdvertisingId` method accepts a string argument as described below:
 
-- `id` : Your Android `advertisingId` \(AAID\) \(or\) your iOS `advertisingId` \(IDFA\).
+- `<ADVERTISING_ID>` : Your Android `advertisingId` \(AAID\) \(or\) your iOS `advertisingId` \(IDFA\).
 
 An example of how to use `putAdvertisingId` is as shown:
 
 ```dart
 rudderClient.putAdvertisingId(<ADVERTISING_ID>);
 ```
-
-<div class="infoBlock">
-The <code class="inline-code">id</code> parameter that you pass in the <code class="inline-code">putAdvertisingId</code> method is assigned as the AAID if you are on an Android device, and as the IDFA if you are on an iOS device.
-</div>
 
 ## Setting the device token
 
@@ -581,6 +577,6 @@ Map context = await rudderClient.getRudderContext();
 print(context["traits"]);
 ```
 
-For web apps, the `getRudderContext`API returns the user traits and anonymous ID only.
+For the web apps, the `getRudderContext` API returns the user traits and `anonymousId`.
 
 <br />
