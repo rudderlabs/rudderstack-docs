@@ -1224,8 +1224,13 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Intercom",
+                title: "Discord",
                 sectionTitle: "Business Messaging",
+                link: "/destinations/streaming-destinations/discord/",
+                content: []
+            },
+            {
+                title: "Intercom",
                 link: "/destinations/streaming-destinations/intercom/",
                 content: []
             }, {
