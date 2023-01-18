@@ -270,9 +270,11 @@ The `screen` method has the following signature:
 
 ### Automatic screen recording
 
-RudderStack lets you enable automatic recording of screen views while initializing the Flutter SDK. This feature automatically triggers a `screen` call for every screen view activity on the app.
+<div class="infoBlock">
+The <code class="inline-code">recordScreenViews</code> parameter records the screen views of the native <a href="https://developer.android.com/guide/components/activities/intro-activities">Android activities</a> or the <a href="https://developer.apple.com/documentation/uikit/view_controllers">iOS view controllers</a> only, and <strong>not</strong> of the Flutter screen views.
+</div>
 
-By default, automatic screen recording is **disabled** in the Flutter SDK. To enable it, follow these steps:
+To track the screen views of your Flutter app screens, follow these steps:
 
 1. Define the `routes` with their names to the `Material App` constructor of the entry widget.
 2. Register an instance of the custom navigation observer to the `Material App` constructor of the entry widget.
