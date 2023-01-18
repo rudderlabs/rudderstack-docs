@@ -26,7 +26,7 @@ Once you have confirmed that the source platform supports sending events to Disc
 To successfully configure Discord as a destination, you need to configure the following settings:
 
 - **Identify Template**: Enter a template for building a text message while sending an `identify` call to Discord. If not provided, RudderStack uses `User {{name}} with {{traits}} is identified` as the default template.
-- **Event Name**: Enter the event name for which you want the `track` call's event template to be triggered.
+- **Event Name**: Enter the event name for which RudderStack should trigger the `track` call's event template.
 - **Event Template**: Enter a template for building a text message while sending a `track` call to Discord. If not provided, RudderStack uses `User {{name}} did {{event}} with {{properties}}` as the default template.
 - **Regex Matching**: Enable this setting if you want to match multiple event names in the `track` call using a regex. It helps in setting the same event template for the event names matching the regex.
 - **Embed Flag**: Enable this setting to set an embed message for Discord. If enabled, also specify the following:
