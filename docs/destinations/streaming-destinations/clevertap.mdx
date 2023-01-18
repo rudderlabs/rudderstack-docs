@@ -21,7 +21,7 @@ RudderStack supports sending event data to CleverTap via the following <a href="
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
 <div class="infoBlock">
-In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the CleverTap native SDK is loaded from <code class="inline-code">https://d2r1yp2w7bby2u.cloudfront.net/</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the CleverTap SDK successfully.
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the CleverTap native SDK is loaded from `https://d2r1yp2w7bby2u.cloudfront.net/` domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the CleverTap SDK successfully.
 </div>
 
 Once you have confirmed that the platform supports sending events to CleverTap, perform the steps below:
@@ -43,7 +43,7 @@ To successfully configure CleverTap as a destination, you will need to configure
 
 <div class="infoBlock">
 
-All server-side destination requests require either a <code class="inline-code">anonymousId</code> or a <code class="inline-code">userId</code> in the payload.
+All server-side destination requests require either a `anonymousId` or a `userId` in the payload.
 </div>
 
 ## Adding device mode integration
@@ -168,7 +168,7 @@ rudderClient.setup(WRITE_KEY, config)
       <TabPanel>
         To add CleverTap to your Android project and enable functionalities like push notifications, follow these steps :
 <ul>
-<li>Open your project level <code class="inline-code">build.gradle</code> file, and add the following:
+<li>Open your project level `build.gradle` file, and add the following:
 <span>
 
 ```groovy
@@ -186,8 +186,8 @@ allprojects {
 ```
 </span>
 </li>
-<li>Ensure that <code class="inline-code">android.useAndroidX</code> is set to <code class="inline-code">true</code> in your <code class="inline-code">gradle.properties</code> file.</li>
-<li>Also, add the following under the <code class="inline-code">dependencies</code> section:
+<li>Ensure that `android.useAndroidX` is set to `true` in your `gradle.properties` file.</li>
+<li>Also, add the following under the `dependencies` section:
 <span>
 
 ```groovy
@@ -202,7 +202,7 @@ implementation 'com.google.code.gson:gson:2.8.6'
 ```
 </span>
 </li>
-<li>Initialize the RudderStack SDK in the <code class="inline-code">Application</code> class's <code class="inline-code">onCreate()</code> method as shown:
+<li>Initialize the RudderStack SDK in the `Application` class's `onCreate()` method as shown:
 <span>
 
 ```kotlin
@@ -227,7 +227,7 @@ val rudderClient = RudderClient.getInstance(
       <TabPanel>
         Follow these steps to add CleverTap to your iOS project:
 <ul>
-<li>Go your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-CleverTap</code> extension as shown below:
+<li>Go your `Podfile` and add the `Rudder-CleverTap` extension as shown below:
 <span>
 
 ```ruby
@@ -235,7 +235,7 @@ pod 'Rudder-CleverTap'
 ```
 </span>
 </li>
-<li>After adding the dependency followed by <code class="inline-code">pod install</code> , you can add the imports to your <code class="inline-code">AppDelegate.m</code> file as shown:
+<li>After adding the dependency followed by `pod install` , you can add the imports to your `AppDelegate.m` file as shown:
 <span>
 
 ```objectivec
@@ -243,7 +243,7 @@ pod 'Rudder-CleverTap'
 ```
 </span>
 </li>
-<li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> as shown:
+<li>Finally, change the initialization of your `RudderClient` as shown:
 <span>
 
 ```objectivec
@@ -269,7 +269,7 @@ yarn add @rudderstack/rudder-integration-clevertap-react-native
 ```
 </span>
 </li>
-<li>Run <code class="inline-code">pod install</code> inside the <code class="inline-code">ios</code> directory of your project adding <code class="inline-code">@rudderstack/rudder-integration-clevertap-react-native</code> to your project.
+<li>Run `pod install` inside the `ios` directory of your project adding `@rudderstack/rudder-integration-clevertap-react-native` to your project.
 </li>
 <li>Import the module you added above and add it to your SDK initialization code as shown below:
 <span>
@@ -355,7 +355,7 @@ CleverTapAPI.createNotificationChannel(
 
 <div class="infoBlock">
 
-For the Push Notification and In-App messages function correctly, CleverTap needs to know the <code class="inline-code">Application</code> status as early as possible. You can either set the <code class="inline-code">android:name</code> in your <code class="inline-code">AndroidManifest.xml</code> tag to <code class="inline-code">com.clevertap.android.sdk.Application</code>. Or, if you have a custom Application class, call <code class="inline-code">ActivityLifecycleCallback.register(this);</code> before <code class="inline-code">super.onCreate()</code> in your Application class.
+For the Push Notification and In-App messages function correctly, CleverTap needs to know the `Application` status as early as possible. You can either set the `android:name` in your `AndroidManifest.xml` tag to `com.clevertap.android.sdk.Application`. Or, if you have a custom Application class, call `ActivityLifecycleCallback.register(this);` before `super.onCreate()` in your Application class.
 
 to learn more on this you can check the <a href="https://github.com/CleverTap/clevertap-android-sdk#setup-the-lifecycle-callback---important">CleverTap documentation on push notifications</a>.
 
@@ -428,7 +428,7 @@ completionHandler:^(BOOL granted, NSError * _Nullable error) {
       <TabPanel>
         <ul>
         <li>Register push notifications for Android devices on your CleverTap dashboard either by uploading your FCM credentials or any other supported credentials by navigating to <strong>Settings</strong> - <strong>Channels</strong> - <strong>Mobile Push</strong> - <strong>Android</strong>.</li>
-<li>Add the following dependency in your project level <code class="inline-code">build.gradle</code> file inside the <code class="inline-code">buildscript</code>:
+<li>Add the following dependency in your project level `build.gradle` file inside the `buildscript`:
 <span>
 
 ```groovy
@@ -438,7 +438,7 @@ dependencies {
 ```
 </span>
 </li>
-<li>Next, add the following dependencies and plugin to your app level <code class="inline-code">build.gradle</code> file:
+<li>Next, add the following dependencies and plugin to your app level `build.gradle` file:
 <span>
 
 ```groovy
@@ -451,8 +451,8 @@ apply plugin: 'com.google.gms.google-services'
 ```
 </span>
 </li>
-<li>Place the <code class="inline-code">google-services.json</code> downloaded from the <code class="inline-code">Firebase console</code> into the root folder of your <code class="inline-code">app</code>.</li>
-<li>Add your <code class="inline-code">CLEVERTAP_ACCOUNT_ID</code> , <code class="inline-code">CLEVERTAP_TOKEN</code> & <code class="inline-code">FcmMessageListenerService</code> to the <code class="inline-code">application</code> tag of your app's <code class="inline-code">AndroidManifest.xml</code>, as below:
+<li>Place the `google-services.json` downloaded from the `Firebase console` into the root folder of your `app`.</li>
+<li>Add your `CLEVERTAP_ACCOUNT_ID` , `CLEVERTAP_TOKEN` & `FcmMessageListenerService` to the `application` tag of your app's `AndroidManifest.xml`, as below:
 <span>
 
 ```markup
@@ -470,7 +470,7 @@ apply plugin: 'com.google.gms.google-services'
 ```
 </span>
 </li>
-<li>Finally, create a notification channel anywhere in your application using the following block of code. You can then use this <code class="inline-code">channel Id</code> while creating any campaign on your CleverTap Dashboard.
+<li>Finally, create a notification channel anywhere in your application using the following block of code. You can then use this `channel Id` while creating any campaign on your CleverTap Dashboard.
 <span>
 
 ```kotlin
@@ -491,7 +491,7 @@ CleverTapAPI.createNotificationChannel(
 </ul>
 <div class="infoBlock">
 
-For the Push Notification and In-App messages function correctly, CleverTap needs to know the <code class="inline-code">Application</code> status as early as possible. You can either set the <code class="inline-code">android:name</code> in your <code class="inline-code">AndroidManifest.xml</code> tag to <code class="inline-code">com.clevertap.android.sdk.Application</code>. Or, if you have a custom Application class, call <code class="inline-code">ActivityLifecycleCallback.register(this);</code> before <code class="inline-code">super.onCreate()</code> in your Application class.
+For the Push Notification and In-App messages function correctly, CleverTap needs to know the `Application` status as early as possible. You can either set the `android:name` in your `AndroidManifest.xml` tag to `com.clevertap.android.sdk.Application`. Or, if you have a custom Application class, call `ActivityLifecycleCallback.register(this);` before `super.onCreate()` in your Application class.
 
 To learn more on this you can check the <a href="https://github.com/CleverTap/clevertap-android-sdk#setup-the-lifecycle-callback---important">CleverTap documentation on push notifications</a>.
 
@@ -499,8 +499,8 @@ To learn more on this you can check the <a href="https://github.com/CleverTap/cl
       </TabPanel>
       <TabPanel>
       <ul>
-<li>Add Push Notification as a capability by navigating to Target - <code class="inline-code">Signing & Capabilities</code> of your app when opened in Xcode.</li>
-<li>Enable <code class="inline-code">Background Modes/Remote notifications</code> by navigating to <strong>Targets</strong> -&gt; <strong>Your App</strong> -&gt; <strong>Capabilities</strong> -&gt; <strong>Background Modes</strong> and then check <code class="inline-code">Remote notifications</code></li>
+<li>Add Push Notification as a capability by navigating to Target - `Signing & Capabilities` of your app when opened in Xcode.</li>
+<li>Enable `Background Modes/Remote notifications` by navigating to <strong>Targets</strong> -&gt; <strong>Your App</strong> -&gt; <strong>Capabilities</strong> -&gt; <strong>Background Modes</strong> and then check `Remote notifications`</li>
 <li>Register the push notifications for the iOS devices on your CleverTap dashboard either by uploading Auth Key or APNS Push Certificate by navigating to <strong>Settings</strong> -&gt; <strong>Channels</strong> -&gt; <strong>Mobile Push</strong> -&gt; <strong>iOS</strong>.</li>
 <li>Then, add the following code in your app just after initializing RudderStack's iOS SDK to register the push notifications.
 <span>
@@ -551,8 +551,8 @@ completionHandler:^(BOOL granted, NSError * _Nullable error) {
       </TabPanel>
       <TabPanel>
         <ul>
-       <li>Open <code class="inline-code">android</code> folder of your React Native app and do follow all the steps mentioned in <code class="inline-code">Android</code> tab of <a href="#configuring-push-notifications">Configuring Push Notifications</a></li>
-<li>Open <code class="inline-code">ios</code> folder of your React Native app and do follow all the steps mentioned in <code class="inline-code">iOS</code> tab of <a href="#configuring-push-notifications">Configuring Push Notifications</a></li>
+       <li>Open `android` folder of your React Native app and do follow all the steps mentioned in `Android` tab of <a href="#configuring-push-notifications">Configuring Push Notifications</a></li>
+<li>Open `ios` folder of your React Native app and do follow all the steps mentioned in `iOS` tab of <a href="#configuring-push-notifications">Configuring Push Notifications</a></li>
   </ul>
       </TabPanel>
     </TabPanels>
@@ -626,7 +626,7 @@ rudderanalytics.page("Cart", "Cart Viewed", {
 ```
 
 <div class="infoBlock">
-CleverTap does not support nested objects or arrays for custom attributes in the <code class="inline-code">page</code> events. Hence, RudderStack converts the nested objects or arrays into strings before sending them to CleverTap.
+CleverTap does not support nested objects or arrays for custom attributes in the `page` events. Hence, RudderStack converts the nested objects or arrays into strings before sending them to CleverTap.
 </div>
 
 ## Screen
@@ -643,7 +643,7 @@ A sample `screen` call looks like the following code snippet:
 In the above snippet, RudderStack captures all the information related to the screen being viewed, along with any additional info associated with that screen view event. In CleverTap, the above `screen` call will be shown as - **"Screen Viewed: `Sample Screen Name` "** along with the properties.
 
 <div class="infoBlock">
-CleverTap does not support nested objects or arrays for custom attributes in the <code class="inline-code">screen</code> events. Hence, RudderStack converts the nested objects or arrays into strings before sending them to CleverTap.
+CleverTap does not support nested objects or arrays for custom attributes in the `screen` events. Hence, RudderStack converts the nested objects or arrays into strings before sending them to CleverTap.
 </div>
 
 ## Track
@@ -663,11 +663,11 @@ rudderanalytics.track("Checked Out", {
 In the above snippet, RudderStack captures the information related to the `Checked Out` event, along with any additional info about that event - in this case the details of the `Checked out` event.
 
 <div class="infoBlock">
-To set a specific value to the <code class="inline-code">screen</code> or <code class="inline-code">track</code> type event, you need to pass the <code class="inline-code">event</code> related property in the <code class="inline-code">properties</code> field.
+To set a specific value to the `screen` or `track` type event, you need to pass the `event` related property in the `properties` field.
 </div>
 
 <div class="infoBlock">
-CleverTap does not support nested objects or arrays for custom attributes in the <code class="inline-code">track</code> events. Hence, RudderStack converts the nested objects or arrays into strings before sending them to CleverTap.
+CleverTap does not support nested objects or arrays for custom attributes in the `track` events. Hence, RudderStack converts the nested objects or arrays into strings before sending them to CleverTap.
 </div>
 
 ### Order Completed
@@ -731,7 +731,7 @@ rudderanalytics.track("Order Completed", {
 
 <div class="infoBlock">
 
-The <code class="inline-code">Order Completed</code> E-Commerce event is free flowing event, if you are setting extra fields for example: <code class="inline-code">discount</code>, <code class="inline-code">coupon</code> <code class="inline-code">currency</code> etc these will be automatically set to <code class="inline-code">Charged</code> event properties.
+The `Order Completed` ecommerce event is a free-flowing event. If you are setting extra fields, for example: `discount`, `coupon`, `currency`, etc., these will be automatically set to `Charged` event properties.
 
 </div>
 
@@ -782,19 +782,19 @@ In the above snippet, RudderStack captures relevant information about the user s
 
 <div class="infoBlock">
 
-If a user already exists, the new values will be updated for that user. RudderStack automatically maps the <code class="inline-code">userId</code> (or <code class="inline-code">anoymousId</code>) to CleverTap user's <code class="inline-code">identity</code>.
+If a user already exists, the new values will be updated for that user. RudderStack automatically maps the `userId` (or `anoymousId`) to CleverTap user's `identity`.
 
 </div>
 
 <div class="infoBlock">
-CleverTap does not support nested objects or arrays for custom attributes in the <code class="inline-code">identify</code> events. Hence, RudderStack converts the nested objects or arrays into strings before sending them to CleverTap.
+CleverTap does not support nested objects or arrays for custom attributes in the `identify` events. Hence, RudderStack converts the nested objects or arrays into strings before sending them to CleverTap.
 </div>
 
 <div class="infoBlock">
 
-Profile properties <code class="inline-code">MSG-email</code>, <code class="inline-code">MSG-push</code>, <code class="inline-code">MSG-sms</code> and <code class="inline-code">MSG-whatsapp</code> are used to set the Do-Not-Disturb status for the user. Unless these are explicitly set to <code class="inline-code">false</code>, they are always <code class="inline-code">true</code>.
+Profile properties `MSG-email`, `MSG-push`, `MSG-sms` and `MSG-whatsapp` are used to set the Do-Not-Disturb status for the user. Unless these are explicitly set to `false`, they are always `true`.
 
-Example: To disable push notifications for a user, set <code class="inline-code">MSG-push</code> to <code class="inline-code">false</code>
+Example: To disable push notifications for a user, set `MSG-push` to `false`
 
 </div>
 
@@ -803,7 +803,7 @@ Example: To disable push notifications for a user, set <code class="inline-code"
 You can delete a user in CleverTap using the <Link to="/api/data-regulation-api/#adding-a-suppression-with-delete-regulation">Suppression with Delete regulation</Link> of the RudderStack <Link to="/api/data-regulation-api/">Data Regulation API</Link>.
 
 <div class="infoBlock">
-To delete a user, you must specify their <code class="inline-code">userId</code> in the event. Additionally, you can specify a custom identifier (optional) in the event.
+To delete a user, you must specify their `userId` in the event. Additionally, you can specify a custom identifier (optional) in the event.
 </div>
 
 A sample regulation request body for deleting a user in CleverTap is shown below:
