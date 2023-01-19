@@ -2167,12 +2167,6 @@ export const postNavList = [
     content: [],
   },
   {
-      key: "device-mode-transformations",  
-      title: "Device Mode Transformations",
-      link: "/features/transformations/device-mode-transformations",
-      content: [],
-  },
-  {
     key: "faq",
     title: "Transformations FAQ",
     link: "/features/transformations/faq",
