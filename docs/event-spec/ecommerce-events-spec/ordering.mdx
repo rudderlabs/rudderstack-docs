@@ -247,7 +247,7 @@ rudderanalytics.track("Checkout Started", {
   affiliation: "Apple Store",
   value: 20,
   revenue: 15.0,
-  shipping: 22,
+  shipping: 4,
   tax: 1,
   discount: 1.5,
   coupon: "ImagePro",
@@ -377,7 +377,7 @@ rudderanalytics.track("Order Updated", {
   affiliation: "Apple Store",
   value: 20,
   revenue: 15.0,
-  shipping: 22,
+  shipping: 4,
   tax: 1,
   discount: 1.5,
   coupon: "ImagePro",
@@ -445,7 +445,7 @@ rudderanalytics.track("Order Completed", {
   affiliation: "Apple Store",
   total: 20,
   revenue: 15.0,
-  shipping: 22,
+  shipping: 4,
   tax: 1,
   discount: 1.5,
   coupon: "ImagePro",
@@ -540,6 +540,10 @@ This event is triggered whenever an order is canceled. The following properties 
 | `products.$.url`        | String   | Contains the URL of the product page                                                         |
 | `products.$.image_url`  | String   | Contains the image URL of the product                                                        |
 
+<div class="infoBlock">
+RudderStack SDKs do not calculate the value for any of the above properties like `revenue`, value, total, etc. These are provided by the customer when they trigger the track API as per their business logic. the fields are calculated separately with business logic and dev work.
+</div>
+
 An example of the **Order Cancelled** event is as shown:
 
 ```javascript
@@ -548,7 +552,7 @@ rudderanalytics.track("Order Cancelled", {
   affiliation: "Apple Store",
   total: 20,
   revenue: 15.0,
-  shipping: 22,
+  shipping: 4,
   tax: 1,
   discount: 1.5,
   coupon: "ImagePro",
