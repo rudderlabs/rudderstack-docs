@@ -37,7 +37,7 @@ You can also filter the events sent to your custom webhook by category. For more
 
 RudderStack ingests the Auth0 events as <Link to="/event-spec/standard-events/identify">`identify`</Link>, <Link to="/event-spec/standard-events/track">`track`</Link>, and <Link to="/event-spec/standard-events/group">`group`</Link> calls.
 
-- If the event `type` is `ss`, then RudderStack sends it as an `identify` event:
+- RudderStack converts the Auth0 payload into an `identify` event if the Auth0 payload contains the event `type` as `ss`. A sample Auth0 payload is as shown:
 
 ```json
 {
@@ -70,7 +70,7 @@ RudderStack ingests the Auth0 events as <Link to="/event-spec/standard-events/id
 }
 ```
 
-- If the event `description` is `Add members to an organization`, then RudderStack sends it as a `group` event:
+- RudderStack converts the Auth0 payload into an `group` event if the Auth0 payload contains the `description` as `Add members to an organization`. A sample Auth0 payload is as shown:
 
 ```json
 {
@@ -117,7 +117,7 @@ RudderStack ingests the Auth0 events as <Link to="/event-spec/standard-events/id
 }
 ```
 
-- RudderStack sends the rest of the events as `track` events:
+- RudderStack converts the rest of the events as `track` events. A sample Auth0 payload is as shown:
 
 ```json
 {
