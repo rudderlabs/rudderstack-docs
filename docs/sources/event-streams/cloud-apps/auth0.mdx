@@ -52,15 +52,6 @@ RudderStack ingests the Auth0 events as <Link to="/event-spec/standard-events/id
     "client_name": "All Applications",
     "ip": "35.166.202.113",
     "user_agent": "unknown",
-    "details": {
-      "body": {
-        "email": "testrudderstack@gmail.com",
-        "tenant": "dev-cu4jy2zgao6yx15x",
-        "password": "*****",
-        "client_id": "vQcJNDTxsM1W72eHFonRJdzyOvawlwIt",
-        "connection": "Username-Password-Authentication"
-      }
-    },
     "user_id": "auth0|*****",
     "user_name": "testrudderstack@gmail.com",
     "strategy": "auth0",
@@ -83,34 +74,6 @@ RudderStack ingests the Auth0 events as <Link to="/event-spec/standard-events/id
     "client_name": "",
     "ip": "35.167.74.121",
     "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
-    "details": {
-      "request": {
-        "ip": "35.167.74.121",
-        "auth": {
-          "user": {
-            "name": "test rudderstack",
-            "email": "testrudderstack@gmail.com",
-            "user_id": "google-oauth2|123456"
-          },
-          "strategy": "jwt",
-          "credentials": {
-            "jti": "571921bf7833a97efabf08d765a0ec8f"
-          }
-        },
-        "body": {
-          "members": ["auth0|123456"]
-        },
-        "path": "/api/v2/organizations/org_eoe8p2atZ7furBxg/members",
-        "query": {},
-        "method": "post",
-        "channel": "https://manage.auth0.com/",
-        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
-      },
-      "response": {
-        "body": {},
-        "statusCode": 204
-      }
-    },
     "user_id": "google-oauth2|123456",
     "log_id": "90020221031061004280169676882609459981150114445973782546"
   }
@@ -127,45 +90,6 @@ RudderStack ingests the Auth0 events as <Link to="/event-spec/standard-events/id
     "type": "gd_tenant_update",
     "description": "Guardian - Updates tenant settings",
     "ip": "35.160.3.103",
-    "details": {
-      "request": {
-        "ip": "35.160.3.103",
-        "auth": {
-          "scopes": [
-            "read:authenticators",
-            "remove:authenticators",
-            "update:authenticators",
-            "create:authenticators",
-            "read:enrollments",
-            "delete:enrollments",
-            "read:factors",
-            "update:factors",
-            "update:tenant_settings",
-            "update:users",
-            "create:enrollment_tickets",
-            "create:users"
-          ],
-          "subject": "google-oauth2|123456",
-          "strategy": "jwt_api2_internal_token"
-        },
-        "body": {
-          "picture_url": "[REDACTED]",
-          "friendly_name": "[REDACTED]"
-        },
-        "path": "/api/tenants/settings",
-        "query": {},
-        "method": "PATCH"
-      },
-      "response": {
-        "body": {
-          "name": "dev-cu4jy2zgao6yx15x",
-          "picture_url": "[REDACTED]",
-          "friendly_name": "[REDACTED]",
-          "guardian_mfa_page": "[REDACTED]"
-        },
-        "statusCode": 200
-      }
-    },
     "user_id": "google-oauth2|123456",
     "log_id": "90020221031061530247169676961198100736838335677367058450"
   }
