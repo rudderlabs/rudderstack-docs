@@ -239,6 +239,10 @@ This event is triggered whenever an order or transaction is initiated after the 
 | `products.$.url`        | String   | Contains the URL of the product page                                                         |
 | `products.$.image_url`  | String   | Contains the image URL of the product                                                        |
 
+<div class="infoBlock">
+RudderStack SDKs do not calculate the value for any of the above properties like <code class="inline-code">revenue</code>, <code class="inline-code">value</code>, <code class="inline-code">total</code>, <code class="inline-code">Subtotal</code>, etc. These must be provided by the user while triggering the <code class="inline-code">track</code> call. Also, the values associated with these fields are mapped to the destination fields where you want to send the data. Hence, it is helpful to understand how these fields are defined in a specific destination.
+</div>
+
 An example of the **Checkout Started** event is as shown:
 
 ```javascript
@@ -369,6 +373,10 @@ This event is triggered whenever an order or transaction is updated. The followi
 | `products.$.url`        | String   | Contains the URL of the product page                                                         |
 | `products.$.image_url`  | String   | Contains the image URL of the product                                                        |
 
+<div class="infoBlock">
+RudderStack SDKs do not calculate the value for any of the above properties like <code class="inline-code">revenue</code>, <code class="inline-code">value</code>, <code class="inline-code">total</code>, <code class="inline-code">Subtotal</code>, etc. These must be provided by the user while triggering the <code class="inline-code">track</code> call. Also, the values associated with these fields are mapped to the destination fields where you want to send the data. Hence, it is helpful to understand how these fields are defined in a specific destination.
+</div>
+
 An example of the **Order Updated** event is as shown:
 
 ```javascript
@@ -435,6 +443,10 @@ This event is triggered whenever an order is completed successfully. The followi
 | `products.$.position`   | Number   | Contains the position of the product in the product list                                     |
 | `products.$.url`        | String   | Contains the URL of the product page                                                         |
 | `products.$.image_url`  | String   | Contains the image URL of the product                                                        |
+
+<div class="infoBlock">
+RudderStack SDKs do not calculate the value for any of the above properties like <code class="inline-code">revenue</code>, <code class="inline-code">value</code>, <code class="inline-code">total</code>, <code class="inline-code">Subtotal</code>, etc. These must be provided by the user while triggering the <code class="inline-code">track</code> call. Also, the values associated with these fields are mapped to the destination fields where you want to send the data. Hence, it is helpful to understand how these fields are defined in a specific destination.
+</div>
 
 An example of the **Order Completed** event is as shown:
 
@@ -541,7 +553,7 @@ This event is triggered whenever an order is canceled. The following properties 
 | `products.$.image_url`  | String   | Contains the image URL of the product                                                        |
 
 <div class="infoBlock">
-RudderStack SDKs do not calculate the value for any of the above properties like `revenue`, value, total, etc. These are provided by the customer when they trigger the track API as per their business logic. the fields are calculated separately with business logic and dev work.
+RudderStack SDKs do not calculate the value for any of the above properties like <code class="inline-code">revenue</code>, <code class="inline-code">value</code>, <code class="inline-code">total</code>, <code class="inline-code">Subtotal</code>, etc. These must be provided by the user while triggering the <code class="inline-code">track</code> call. Also, the values associated with these fields are mapped to the destination fields where you want to send the data. Hence, it is helpful to understand how these fields are defined in a specific destination.
 </div>
 
 An example of the **Order Cancelled** event is as shown:
