@@ -1873,11 +1873,6 @@ export const jsonData = [
                 content: [],
             },
             {
-                title: "Device Mode Transformations",
-                link: "/features/transformations/device-mode-transformations",
-                content: [],
-            },
-            {
                 title: "FAQ",
                 link: "/features/transformations/faq",
                 content: [],
