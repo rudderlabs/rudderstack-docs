@@ -83,34 +83,6 @@ Using the <Link to ="/api/transformation-api/">Transformations API</Link>, you c
 
 Once the revisions meet the test criteria, you can restore and publish them for production use.
 
-## Device mode transformations
-
-#### While sending events in device mode, how should I choose between event filtering and transformations?
-
-You can choose any based on your requirements:
-
-- **<Link to="/sources/event-streams/sdks/event-filtering/">Event filtering</Link>**: When you just want to filter out the events based on the event names. The event filtering takes place within the SDK and is **only applicable** for the `track` events.
-- **Transformations**: Transformations is a generic feature which can be used to manipulate the events, mask data, enrich events, implement specific actions on events. It involves a call to an external RudderStack service.
-
-In case you plan to use both the above-mentioned features, your events will be filtered (based on the <Link to="/sources/event-streams/sdks/event-filtering/">event filtering</Link> settings in the RudderStack dashboard) and transformed (based on the applied transformation) before being sent to the destination.
-
-#### Is there any added performance cost to using the transformations in device mode?
- 
-Yes, RudderStack makes a network call for each event (in case of JavaScript SDK) or a batch of events (in case of mobile SDKs) when the transformations are used in device mode.
-    
-#### Can I switch back to the previous version of an SDK while using a transformation in device mode?
-
-- **For Mobile SDKs**: Yes, you can switch back to the previous SDK version. However, the transformation might not be supported in the previous version.
-- **For JavaScript SDK**: It depends on the SDK installation method:
-    - If installed through RudderStack CDN, it's not possible to downgrade the SDK version.
-    - If installed through NPM, it's possible to downgrade the SDK version. However, the transformation might not be supported in the previous version.
-
-#### Will my event be lost in case of a network error while using a transformation in device mode?
-
-**No events are lost in case of mobile SDK's** as they are saved locally in the database before being sent to the destination. Once sent successfully, they're removed from the database.
-
-However, there is a chance of events getting lost while sending them via JavaScript SDK in case of a network error as they are not persisted. However, the SDK retries multiple times before dropping the event.
-
 ## Libraries
 
 #### How does RudderStack test any library updates?
