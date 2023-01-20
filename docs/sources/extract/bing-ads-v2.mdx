@@ -27,9 +27,9 @@ All the Cloud Extract sources support sending data only to a <Link to="/destinat
 
 Next, configure the following dashboard settings:
 
-<img src="../../assets/cloud-extract-sources/bing-ads-v2-settings.png" alt="Freshdesk credentials" />
+<img src="../../assets/cloud-extract-sources/bing-ads-v2-settings.png" alt="Bing Ads credentials" />
 
-- **Tenant ID**: Enter the Tenant ID of your Microsoft Advertising developer application.
+- **Tenant ID**: Enter the Tenant ID of your Microsoft Advertising developer application. It is recommended to set it as `common` unless you need a different value.
 - **Connect with Bing Ads V2**: Click this button to give RudderStack the required permissions to access your Bing Ads account.
 - **Developer Token**: Enter your user developer token. Refer to the [Microsoft documentation](https://learn.microsoft.com/en-us/advertising/guides/get-started?view=bingads-13#get-developer-token) for more information on obtaining the developer token.
 - **Reports replication start date**: Select the date from when RudderStack should ingest your Bing Ads data. RudderStack will <strong>not replicate</strong> any data before this date.
@@ -59,14 +59,14 @@ The below table mentions the syncs and primary keys supported by these resources
 | Resource | Sync type | Primary key |
 | :---| :--- | :----| 
 | `Account Performance Report` | Incremental | `AccountId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Network`, `DeliveredMatchType`, `DeviceOS`, `TopVsOther`, `BidMatchType` |
-| `Accounts` | Full refresh | `Id` |
+| `Accounts` | Full Refresh | `Id` |
 | `Ad Group Performance Report` | Incremental | `AccountId`, `CampaignId`, `AdGroupId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Network`, `DeliveredMatchType`, `DeviceOS`, `TopVsOther`, `BidMatchType`, `Language` |
-| `Ad Groups` | Full refresh | `Id` |
+| `Ad Groups` | Full Refresh | `Id` |
 | `Ad Performance Report` | Incremental | `AccountId `, `CampaignId`, `AdGroupId`, `AdId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Language`, `Network`, `DeviceOS`, `TopVsOther`, `BidMatchType`, `DeliveredMatchType` |
-| `Ads` | Full refresh | `Id` |
+| `Ads` | Full Refresh | `Id` |
 | `Budget Summary Report` | Incremental | `Date` |
-| `Campaign Performance Report` | Full refresh | `AccountId`, `CampaignId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Network`, `DeliveredMatchType`, `DeviceOS`, `TopVsOther`, `BidMatchType` |
-| `Campaigns` | Full refresh | `Id` |
+| `Campaign Performance Report` | Full Refresh | `AccountId`, `CampaignId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Network`, `DeliveredMatchType`, `DeviceOS`, `TopVsOther`, `BidMatchType` |
+| `Campaigns` | Full Refresh | `Id` |
 | `Keyword Performance Report` | Incremental | `AccountId`, `CampaignId`, `AdGroupId`, `KeywordId`, `AdId`, `TimePeriod`, `CurrencyCode`, `DeliveredMatchType`, `AdDistribution`, `DeviceType`, `Language`, `Network`, `DeviceOS`, `TopVsOther`, `BidMatchType` |
 
 <div class="infoBlock">
