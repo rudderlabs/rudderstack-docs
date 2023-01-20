@@ -239,6 +239,10 @@ This event is triggered whenever an order or transaction is initiated after the 
 | `products.$.url`        | String   | Contains the URL of the product page                                                         |
 | `products.$.image_url`  | String   | Contains the image URL of the product                                                        |
 
+<div class="infoBlock">
+RudderStack's SDKs do not calculate the value for any of the above properties like <code class="inline-code">revenue</code>, <code class="inline-code">value</code>, <code class="inline-code">total</code>, <code class="inline-code">subtotal</code>, etc. You must provide these values while triggering the <code class="inline-code">track</code> call. Also, RudderStack maps the values associated with these fields to the destination fields where you want to send the data. Hence, it is helpful to understand how these fields are defined in a specific destination.
+</div>
+
 An example of the **Checkout Started** event is as shown:
 
 ```javascript
@@ -247,7 +251,7 @@ rudderanalytics.track("Checkout Started", {
   affiliation: "Apple Store",
   value: 20,
   revenue: 15.0,
-  shipping: 22,
+  shipping: 4,
   tax: 1,
   discount: 1.5,
   coupon: "ImagePro",
@@ -369,6 +373,10 @@ This event is triggered whenever an order or transaction is updated. The followi
 | `products.$.url`        | String   | Contains the URL of the product page                                                         |
 | `products.$.image_url`  | String   | Contains the image URL of the product                                                        |
 
+<div class="infoBlock">
+RudderStack's SDKs do not calculate the value for any of the above properties like <code class="inline-code">revenue</code>, <code class="inline-code">value</code>, <code class="inline-code">total</code>, <code class="inline-code">subtotal</code>, etc. You must provide these values while triggering the <code class="inline-code">track</code> call. Also, RudderStack maps the values associated with these fields to the destination fields where you want to send the data. Hence, it is helpful to understand how these fields are defined in a specific destination.
+</div>
+
 An example of the **Order Updated** event is as shown:
 
 ```javascript
@@ -377,7 +385,7 @@ rudderanalytics.track("Order Updated", {
   affiliation: "Apple Store",
   value: 20,
   revenue: 15.0,
-  shipping: 22,
+  shipping: 4,
   tax: 1,
   discount: 1.5,
   coupon: "ImagePro",
@@ -436,6 +444,10 @@ This event is triggered whenever an order is completed successfully. The followi
 | `products.$.url`        | String   | Contains the URL of the product page                                                         |
 | `products.$.image_url`  | String   | Contains the image URL of the product                                                        |
 
+<div class="infoBlock">
+RudderStack's SDKs do not calculate the value for any of the above properties like <code class="inline-code">revenue</code>, <code class="inline-code">value</code>, <code class="inline-code">total</code>, <code class="inline-code">subtotal</code>, etc. You must provide these values while triggering the <code class="inline-code">track</code> call. Also, RudderStack maps the values associated with these fields to the destination fields where you want to send the data. Hence, it is helpful to understand how these fields are defined in a specific destination.
+</div>
+
 An example of the **Order Completed** event is as shown:
 
 ```javascript
@@ -445,7 +457,7 @@ rudderanalytics.track("Order Completed", {
   affiliation: "Apple Store",
   total: 20,
   revenue: 15.0,
-  shipping: 22,
+  shipping: 4,
   tax: 1,
   discount: 1.5,
   coupon: "ImagePro",
@@ -540,6 +552,10 @@ This event is triggered whenever an order is canceled. The following properties 
 | `products.$.url`        | String   | Contains the URL of the product page                                                         |
 | `products.$.image_url`  | String   | Contains the image URL of the product                                                        |
 
+<div class="infoBlock">
+RudderStack's SDKs do not calculate the value for any of the above properties like <code class="inline-code">revenue</code>, <code class="inline-code">value</code>, <code class="inline-code">total</code>, <code class="inline-code">subtotal</code>, etc. You must provide these values while triggering the <code class="inline-code">track</code> call. Also, RudderStack maps the values associated with these fields to the destination fields where you want to send the data. Hence, it is helpful to understand how these fields are defined in a specific destination.
+</div>
+
 An example of the **Order Cancelled** event is as shown:
 
 ```javascript
@@ -548,7 +564,7 @@ rudderanalytics.track("Order Cancelled", {
   affiliation: "Apple Store",
   total: 20,
   revenue: 15.0,
-  shipping: 22,
+  shipping: 4,
   tax: 1,
   discount: 1.5,
   coupon: "ImagePro",
