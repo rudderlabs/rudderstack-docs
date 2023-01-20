@@ -8,7 +8,7 @@ Every RudderStack API call shares the same common fields that define the core ev
 | <div style="width:100px">Name</div>       | <div style="width:150px">Data type</div> | Description                    |
 | :------------------ | :------- | :-------------------- |
 | `anonymousId`  <br /><span style="color: #4D4DFF;font-size:12px;">Required</span>     | String   | Unique identification for the user. This is the same as the `deviceId`.                 |
-| `channel`  <br /><span style="color: #4D4DFF;font-size:12px;">Required</span>         | String   | Identifies the source of the event. Permitted values are `mobile`, `web`, `server`.     |
+| `channel`  <br /><span style="color: #4D4DFF;font-size:12px;">Required</span>         | String   | Identifies the source of the event. Permitted values are `mobile`, `web`, `server`, and `sources`.     |
 | `context`  <br /><span style="color: #4D4DFF;font-size:12px;">Required</span>         | Object   | Contains all the additional user information. The RudderStack SDKs populate this information automatically. |
 | `type`   <br /><span style="color: #4D4DFF;font-size:12px;">Required</span>           | String   | Captures the type of event. Values can be either `track`, `screen`, `identify`, `page`. |
 | `originalTimestamp` <br /><span style="color: #4D4DFF;font-size:12px;">Required</span> | Timestamp | Records the actual time when the event occurred. Make sure it conforms to the ISO 8601 date format `yyyy-MM-ddTHH:mm:ss.SSSZ`. <br /><br />  For e.g., `2022-02-01T19:14:18.381Z`.   |
