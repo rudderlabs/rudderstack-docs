@@ -36,15 +36,7 @@ Refer to the <Link to="#faq">FAQ</Link> section for more information on how to o
 </div>
 
 - **GA4 client_id Field Identifier**: This field is **only required** while <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/">sending events to GA4 in cloud mode</Link>. Enter the identifier which RudderStack should look for in the payload and map to the GA4 `client_id`. For more information on `client_id`, refer to the <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/#mapping-client_id">Mapping `client_id`</Link> section.
-- **Enable debug mode**: Enable this setting to monitor events in the debug view.
-
-<div class="infoBlock">
-The debug mode works as following: 
-<ul>
-<li>For device mode, it utilizes the <code class="inline-code">debug_mode</code> parameter in the GA4 script. Refer to the <Link to="https://support.google.com/analytics/answer/7201382?hl=en#zippy=%2Cglobal-site-tag-websites">Google documentation</Link> for more information.</li>
-<li>For cloud mode, it is supported via the validation server endpoint. Refer to the <Link to="https://developers.google.com/analytics/devguides/collection/protocol/ga4/validating-events?client_type=gtag">Google documentation</Link> for more information.</li>
-</ul>
-</div>
+- **Enable debug mode**: In the device mode, enabling this setting lets you monitor the events in <a href="https://support.google.com/analytics/answer/7201382?hl=en#zippy=%2Cglobal-site-tag-websites">DebugView</a>. In the cloud mode, you can check the validation responses in the <Link to="/dashboard-guides/live-events/">Live Events</Link> tab. However, note that as per the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/validating-events?client_type=gtag">GA4 documentation</a>, any responses sent to the validation server will not show up in the reports.
 
 ### Identify 
 
