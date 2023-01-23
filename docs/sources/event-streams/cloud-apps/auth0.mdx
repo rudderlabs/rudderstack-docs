@@ -4,11 +4,7 @@ description: Ingest your event data from Auth0 into RudderStack.
 aliases: ["Auth0 source"]
 ---
 
-[Auth0](https://auth0.com/) is a popular solution used by many companies to add authentication and authorization services to their applications. 
-
-You can send your Auth0 authentication and user behavior-related events by adding a custom webhook that points to RudderStack.
-
-This guide will help you set up Auth0 as a source in RudderStack.
+[Auth0](https://auth0.com/) is a popular solution used by many companies to add authentication and authorization services to their applications. You can send your Auth0 authentication and user behavior-related events by adding a custom webhook that points to RudderStack.
 
 ## Getting started
 
@@ -39,13 +35,248 @@ You can also filter the events sent to your custom webhook by category. For more
 
 ## Event transformation
 
-RudderStack supports ingesting the Auth0 events as <Link to="/event-spec/standard-events/track">`track`</Link>, <Link to="/event-spec/standard-events/group">`group`</Link>, and <Link to="/event-spec/standard-events/identify">`identify`</Link> calls.
+RudderStack ingests the Auth0 events as <Link to="/event-spec/standard-events/identify">`identify`</Link>, <Link to="/event-spec/standard-events/track">`track`</Link>, and <Link to="/event-spec/standard-events/group">`group`</Link> events.
 
-<div class="infoBlock">
-RudderStack ingests the events related to adding members to an organization as <code class="inline-code">group</code> calls and the signup-related events as <code class="inline-code">identify</code> calls. All the other events are ingested as <code class="inline-code">track</code> calls.
-</div>
+- RudderStack converts the Auth0 payload into an `identify` event if the Auth0 payload contains the event `type` as `ss`.
 
-The following table lists the properties populated from the Auth0 event payload directly to the RudderStack event:
+<Tabs>
+  <TabList>
+    <Tab>Auth0</Tab>
+    <Tab>RudderStack</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+The sample payload from Auth0 containing the event <code class="inline-code">type</code> as <code class="inline-code">ss</code>:
+
+```json
+{
+  "log_id": "90020221031055712103169676686005480714681762668315934738",
+  "data": {
+    "date": "2022-10-31T05:57:06.859Z",
+    "type": "ss",
+    "description": "",
+    "connection": "Username-Password-Authentication",
+    "connection_id": "con_djwCjiwyID0vZy1S",
+    "client_id": "vQcJNDTxsM1W72eHFonRJdzyOvawlwIt",
+    "client_name": "All Applications",
+    "ip": "35.166.202.113",
+    "user_agent": "unknown",
+    "user_id": "auth0|*****",
+    "user_name": "alex@example.com",
+    "strategy": "auth0",
+    "strategy_type": "database",
+    "log_id": "90020221031055712103169676686005480714681762668315934738"
+  }
+}
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+The sample payload after RudderStack transforms it into an <code class="inline-code">identify</code> event:
+
+```json
+{
+  "context": {
+    "integration": {
+      "name": "Auth0"
+    },
+    "library": {
+      "name": "unknown",
+      "version": "unknown"
+    },
+    "request_ip": "35.166.202.113",
+    "traits": {
+      "userId": "auth0|*****",
+      "user_name": "alex@example.com"
+    },
+    "userAgent": "unknown"
+  },
+  "integrations": {
+    "Auth0": false
+  },
+  "messageId": "782d2e9b-4143-4798-b9dc-8cc55e4deed9",
+  "originalTimestamp": "2022-10-31T05:57:06.859Z",
+  "properties": {
+    "client_id": "vQcJNDTxsM1W72eHFonRJdzyOvawlwIt",
+    "client_name": "All Applications",
+    "description": "",
+    "log_id": "90020221031055712103169676686005480714681762668315934738"
+  },
+  "rudderId": "d3cedaf9-dc50-4602-8ff2-85026d348f69",
+  "sentAt": "2022-10-31T05:57:06.859Z",
+  "traits": {
+    "connection": "Username-Password-Authentication",
+    "connection_id": "con_djwCjiwyID0vZy1S"
+  },
+  "type": "identify",
+  "userId": "auth0|*****"
+}
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+
+- RudderStack converts the Auth0 payload into a `group` event if the Auth0 payload contains the `description` as `Add members to an organization`.
+
+<Tabs>
+  <TabList>
+    <Tab>Auth0</Tab>
+    <Tab>RudderStack</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+The sample payload from Auth0 containing the event <code class="inline-code">description</code> as <code class="inline-code">Add members to an organization</code>:
+
+```json
+{
+  "log_id": "90020221031061004280169676882609459981150114445973782546",
+  "data": {
+    "date": "2022-10-31T06:09:59.135Z",
+    "type": "sapi",
+    "description": "Add members to an organization",
+    "client_id": "vQcJNDTxsM1W72eHFonRJdzyOvawlwIt",
+    "client_name": "",
+    "ip": "35.167.74.121",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
+    "details": {
+      "request": {
+        "path": "/api/v2/organizations/org_eoe8p2atZ7furBxg/members"
+      }
+    },
+    "user_id": "google-oauth2|123456",
+    "log_id": "90020221031061004280169676882609459981150114445973782546"
+  }
+}
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+The sample payload after RudderStack transforms it into a <code class="inline-code">group</code> event:
+
+```json
+{
+  "context": {
+    "integration": {
+      "name": "Auth0"
+    },
+    "library": {
+      "name": "unknown",
+      "version": "unknown"
+    },
+    "request_ip": "35.167.74.121",
+    "traits": {
+      "userId": "google-oauth2|123456"
+    },
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+  },
+  "groupId": "org_eoe8p2atZ7furBxg",
+  "integrations": {
+    "Auth0": false
+  },
+  "messageId": "1bc7876a-7c9d-4c0a-a1a9-179b804135f5",
+  "originalTimestamp": "2022-10-31T06:09:59.135Z",
+  "properties": {
+    "client_id": "vQcJNDTxsM1W72eHFonRJdzyOvawlwIt",
+    "client_name": "",
+    "description": "Add members to an organization",
+    "details": {
+      "request": {
+        "path": "/api/v2/organizations/org_eoe8p2atZ7furBxg/members"
+      }
+    },
+    "log_id": "90020221031061004280169676882609459981150114445973782546"
+  },
+  "rudderId": "414ca53a-7f7e-4ec8-8d62-3c5cfcf15f91",
+  "sentAt": "2022-10-31T06:09:59.135Z",
+  "type": "group",
+  "userId": "google-oauth2|123456"
+}
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+- RudderStack converts the rest of the events as `track` events.
+
+<Tabs>
+  <TabList>
+    <Tab>Auth0</Tab>
+    <Tab>RudderStack</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+<span>
+
+The sample payload from Auth0:
+
+```json
+{
+  "log_id": "90020221031061530247169676961198100736838335677367058450",
+  "data": {
+    "date": "2022-10-31T06:15:25.196Z",
+    "type": "gd_tenant_update",
+    "description": "Guardian - Updates tenant settings",
+    "ip": "35.160.3.103",
+    "user_id": "google-oauth2|123456",
+    "log_id": "90020221031061530247169676961198100736838335677367058450"
+  }
+}
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+<span>
+
+The sample payload after RudderStack transforms it into a <code class="inline-code">track</code> event:
+
+```json
+{
+  "context": {
+    "integration": {
+      "name": "Auth0"
+    },
+    "library": {
+      "name": "unknown",
+      "version": "unknown"
+    },
+    "request_ip": "35.160.3.103",
+    "traits": {
+      "userId": "google-oauth2|123456"
+    }
+  },
+  "event": "Guardian tenant update",
+  "integrations": {
+    "Auth0": false
+  },
+  "messageId": "b7e0134b-3cc9-418d-803c-1fb72139f572",
+  "originalTimestamp": "2022-10-31T06:15:25.196Z",
+  "properties": {
+    "description": "Guardian - Updates tenant settings",
+    "log_id": "90020221031061530247169676961198100736838335677367058450"
+  },
+  "rudderId": "414ca53a-7f7e-4ec8-8d62-3c5cfcf15f91",
+  "sentAt": "2022-10-31T06:15:25.196Z",
+  "type": "track",
+  "userId": "google-oauth2|123456"
+}
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+RudderStack maps the following properties from Auth0 event payload to the RudderStack properties for all the `identify`, `track`, and `group` events:
 
 | **Auth0 Property**        | **RudderStack Property**                  |
 | :------------------------ | :--------------------------------- |
