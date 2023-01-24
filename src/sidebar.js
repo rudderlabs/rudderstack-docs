@@ -749,7 +749,26 @@ export const jsonData = [
             {
                 title: "Optimizely Feature Experimentation",
                 link: "/destinations/streaming-destinations/optimizely-feature-experimentation/",
-                content: []
+                content: [
+                    {
+                        title: "Setup Guide",
+                        link:
+                            "/destinations/streaming-destinations/optimizely-feature-experimentation/setup-guide/",
+                        content: [],
+                    },
+                    {
+                        title: "Cloud Mode",
+                        link:
+                            "/destinations/streaming-destinations/optimizely-feature-experimentation/cloud-mode/",
+                        content: [],
+                    },
+                    {
+                        title: "Device Mode",
+                        link:
+                            "/destinations/streaming-destinations/optimizely-feature-experimentation/device-mode/",
+                        content: [],
+                    },
+                ]
             }, 
             {
                 title: "Optimizely Web Experimentation",
@@ -1195,7 +1214,8 @@ export const jsonData = [
                 title: "Kochava",
                 link: "/destinations/streaming-destinations/kochava/",
                 content: []
-            },{
+            },
+            {
                 title: "Rockerbox",
                 link: "/destinations/streaming-destinations/rockerbox/",
                 content: [
