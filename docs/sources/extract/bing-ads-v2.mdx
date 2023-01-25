@@ -1,0 +1,92 @@
+---
+title: Bing Ads V2
+description: Sync data from Bing Ads to your warehouse destination via RudderStack.
+aliases: ["Bing Ads source", "Bing Ads Extract source"]
+---
+
+[Bing Ads](https://ads.microsoft.com/) is a pay per click (PPC) advertising platform that works on both Bing and Yahoo search engines. It allows marketers to track and monitor their ad campaigns, resulting clicks, CTRs, and more.
+
+<div class="warningBlock">
+All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
+</div>
+
+<GhBadge
+  label={'Stability'}
+  message={'Beta'}
+  color={'blueviolet'}
+  logo={'github'}
+/>
+
+## Getting Started
+
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **Bing Ads V2** from the list of sources.
+3. Assign a name to your source and click **Continue**.
+
+### Connection settings
+
+Next, configure the following dashboard settings:
+
+<img src="../../assets/cloud-extract-sources/bing-ads-v2-settings.png" alt="Bing Ads credentials" />
+
+- **Tenant ID**: Enter the Tenant ID of your Microsoft Advertising developer application. It is recommended to set it as `common` unless you need a different value.
+- **Connect with Bing Ads V2**: Click this button to give RudderStack the required permissions to access your Bing Ads account.
+- **Developer Token**: Enter your user developer token. Refer to the [Microsoft documentation](https://learn.microsoft.com/en-us/advertising/guides/get-started?view=bingads-13#get-developer-token) for more information on obtaining the developer token.
+- **Reports replication start date**: Select the date from when RudderStack should ingest your Bing Ads data. RudderStack will <strong>not replicate</strong> any data before this date.
+
+### Destination settings
+
+The following settings specify how RudderStack sends the data ingested from Bing Ads to the connected warehouse destination:
+
+- **Table prefix**: RudderStack uses this prefix to create a table in your data warehouse and loads all your Bing Ads data into it.
+- **Schedule Settings**: RudderStack gives you three options to ingest the data from Bing Ads:
+    - **Basic**: Runs the syncs at the specified time interval. 
+    - **CRON**: Runs the syncs based on the user-defined CRON expression.
+    - **Manual**: You are required to run the syncs manually.
+
+<div class="infoBlock">
+For more information on the schedule types, refer to the <Link to="/sources/extract/common-settings/">Common Settings</Link> guide.
+</div>
+
+### Selecting the data to import
+
+You can choose the Bing Ads data you want to ingest by selecting the required resources:
+
+<img src="../../assets/cloud-extract-sources/bing-ads-connection-settings-2.png" alt="Selecting the data to import" />
+
+The below table mentions the syncs and primary keys supported by these resources from Bing Ads to your warehouse destination:
+
+| Resource | Sync type | Primary key |
+| :---| :--- | :----| 
+| `Account Performance Report` | Incremental | `AccountId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Network`, `DeliveredMatchType`, `DeviceOS`, `TopVsOther`, `BidMatchType` |
+| `Accounts` | Full Refresh | `Id` |
+| `Ad Group Performance Report` | Incremental | `AccountId`, `CampaignId`, `AdGroupId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Network`, `DeliveredMatchType`, `DeviceOS`, `TopVsOther`, `BidMatchType`, `Language` |
+| `Ad Groups` | Full Refresh | `Id` |
+| `Ad Performance Report` | Incremental | `AccountId `, `CampaignId`, `AdGroupId`, `AdId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Language`, `Network`, `DeviceOS`, `TopVsOther`, `BidMatchType`, `DeliveredMatchType` |
+| `Ads` | Full Refresh | `Id` |
+| `Budget Summary Report` | Incremental | `Date` |
+| `Campaign Performance Report` | Full Refresh | `AccountId`, `CampaignId`, `TimePeriod`, `CurrencyCode`, `AdDistribution`, `DeviceType`, `Network`, `DeliveredMatchType`, `DeviceOS`, `TopVsOther`, `BidMatchType` |
+| `Campaigns` | Full Refresh | `Id` |
+| `Keyword Performance Report` | Incremental | `AccountId`, `CampaignId`, `AdGroupId`, `KeywordId`, `AdId`, `TimePeriod`, `CurrencyCode`, `DeliveredMatchType`, `AdDistribution`, `DeviceType`, `Language`, `Network`, `DeviceOS`, `TopVsOther`, `BidMatchType` |
+
+<div class="infoBlock">
+For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
+</div>
+
+Bing Ads is now configured as a source. RudderStack will start ingesting data from Bing Ads as per your specified schedule and frequency.
+
+You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
+
+<img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
+
+<div class="successBlock">
+Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
+</div>
+
+## FAQ
+
+#### Is it possible to have multiple Cloud Extract sources writing to the same schema?
+
+Yes, it is.
+
+We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
