@@ -150,7 +150,7 @@ This setting will <strong>NOT</strong> work for new users. For new users, the su
 
 ## Track
 
-You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to collect website/in-app actions or [trigger targeted automations](https://mailchimp.com/developer/marketing/guides/track-outside-activity-events/#trigger-automations-with-events) in Mailchimp using their [Events](https://mailchimp.com/developer/marketing/api/list-member-events/) API.
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to track user actions or [trigger targeted automations](https://mailchimp.com/developer/marketing/guides/track-outside-activity-events/#trigger-automations-with-events) in Mailchimp using their [Events](https://mailchimp.com/developer/marketing/api/list-member-events/) API.
 
 A sample `track` call is shown below:
 
@@ -163,7 +163,7 @@ rudderanalytics.track("registered_referral", {
 ```
 
 <div class="infoBlock">
-<code class="inline-code">email</code> is a required field for making a <code class="inline-code">track</code> call successfully and can be passed inside <code class="inline-code">traits.email</code> , <code class="inline-code">context.traits.email</code>, or <code class="inline-code">properties.email</code>. RudderStack hashes the <code class="inline-code">email</code> field and replaces <code class="inline-code">subscriber_hash</code> in the <a href="https://mailchimp.com/developer/marketing/api/list-member-events/">Mailchimp Events API endpoint</a>.
+<code class="inline-code">email</code> is a required field for making a <code class="inline-code">track</code> call successfully. You can pass it in either <code class="inline-code">traits.email</code> , <code class="inline-code">context.traits.email</code>, or <code class="inline-code">properties.email</code>. RudderStack hashes the <code class="inline-code">email</code> field and replaces <code class="inline-code">subscriber_hash</code> in the <a href="https://mailchimp.com/developer/marketing/api/list-member-events/">Mailchimp Events API endpoint</a>.
 </div>
 
 ### Supported mappings
