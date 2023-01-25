@@ -85,7 +85,7 @@ import rudderClient from "@rudderstack/rudder-sdk-react-native"
 ```typescript
 await rudderClient.setup(WRITE_KEY, {
   dataPlaneUrl: DATA_PLANE_URL,
-  trackLifecycleEvents: true,
+  trackAppLifecycleEvents: true,
   recordScreenViews: true,
 })
 ```
@@ -210,7 +210,7 @@ You can configure your client based on the following parameters by passing them 
     </tr>
     <tr>
       <td style="text-align:left">
-        <code class="inline-code">trackLifecycleEvents</code>
+        <code class="inline-code">trackAppLifecycleEvents</code>
       </td>
       <td style="text-align:left">
         <code class="inline-code">boolean</code>
@@ -326,7 +326,7 @@ RudderStack automatically tracks the following optional events:
 <li><code class="inline-code">Application Opened</code></li>
 <li><code class="inline-code">Application Backgrounded</code></li>
 </ol>
-You can disable these events by passing <code class="inline-code">trackLifecycleEvents</code> as <code class="inline-code">false</code> in the configuration object. However, we recommend keeping them enabled.
+You can disable these events by passing <code class="inline-code">trackAppLifecycleEvents</code> as <code class="inline-code">false</code> in the configuration object. However, we recommend keeping them enabled.
 </div>
 
 ## Screen
@@ -569,18 +569,15 @@ You can pass your custom `userId` along with standard `userId` in your `identify
 
 ```typescript
 const options = {
-  externalIds: [
-    {
-      id: "some_external_id_1",
-      type: "brazeExternalId",
-    },
-  ],
+  externalId: [{
+    id: "some_external_id_1",
+    type: "brazeExternalId",
+  }, ],
 }
 rudderClient.identify(
-  "test_userId",
-  {
-    email: "testuser@example.com",
-    location: "UK",
+  "test_userId", {
+    email: "alex@example.com",
+    location: "US",
   },
   options
 )
@@ -623,7 +620,7 @@ RudderStack collects the advertisement ID **only** if `autoCollectAdvertId` is s
 ```typescript
 await rudderClient.setup(WRITE_KEY, {
   dataPlaneUrl: DATA_PLANE_URL,
-  trackLifecycleEvents: true,
+  trackAppLifecycleEvents: true,
   autoCollectAdvertId: true,
   recordScreenViews: true,
 })
