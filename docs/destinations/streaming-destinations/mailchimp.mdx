@@ -157,9 +157,14 @@ A sample `track` call is shown below:
 ```javascript
 rudderanalytics.track("registered_referral", {
   "referee_id": "1233",
-  "referral_acceptance": true
+  "referral_acceptance": true,
+  "email": "alex@example.com"
 })
 ```
+
+<div class="infoBlock">
+<code class="inline-code">email</code> is a required field for making a <code class="inline-code">track</code> call successfully and can be passed inside <code class="inline-code">traits.email</code> , <code class="inline-code">context.traits.email</code>, or <code class="inline-code">properties.email</code>. RudderStack hashes the <code class="inline-code">email</code> field and replaces <code class="inline-code">subscriber_hash</code> in the <a href="https://mailchimp.com/developer/marketing/api/list-member-events/">Mailchimp Events API endpoint</a>.
+</div>
 
 ### Supported mappings
 
