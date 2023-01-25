@@ -157,8 +157,7 @@ A sample `track` call is shown below:
 ```javascript
 rudderanalytics.track("registered_referral", {
   "referee_id": "1233",
-  "referral_acceptance": true,
-  "is_syncing": false
+  "referral_acceptance": true
 })
 ```
 
@@ -171,7 +170,7 @@ The following table lists the mappings between the RudderStack and Mailchimp pro
 | `event`<br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `name` | Event name must contain 2-30 characters. | 
 | `properties` | `properties` | - |
 | `properties.is_syncing` | `is_syncing` | Set `false` if you want to [trigger targeted automations](https://mailchimp.com/developer/marketing/guides/track-outside-activity-events/#trigger-automations-with-events). |
-| `originalTimestamp` | `occured_at` |  - |
+| `originalTimestamp` | `occurred_at` |  - |
 
 ## FAQ
 
