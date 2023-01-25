@@ -58,6 +58,20 @@ rudderanalytics.page("home");
 
 In the above snippet, `home` is the name of the web page. If **Track Named Pages** setting is enabled, RudderStack sends a `track` event named `Viewed home page` to Optimizely.
 
+## Screen
+
+RudderStack's <Link to="/event-spec/standard-events/screen">`screen`</Link> call lets you record your users' mobile screen views with any additional relevant information about the screen.
+
+RudderStack sends every `screen` call to Optimizely as a `track` event with the name `Viewed ${name} screen`, where `name` is the name of the viewed screen. If you do not provide any name, RudderStack sets the event name as `Viewed screen`.
+
+A sample `screen` call is shown below:
+
+```javascript
+rudderanalytics.screen("Main");
+```
+
+In the above snippet, `Main` is the name of the app screen. RudderStack then sends a `track` event named `Viewed Main screen` to Optimizely.
+
 ## FAQ
 
 ### I am unable to see the events in my experiments. What should I do?
