@@ -1,0 +1,65 @@
+---
+title: "Axeptio"
+description: Step-by-step guide on sending your event data from RudderStack to Axeptio.
+aliases: ["Axeptio destination"]
+---
+
+[Axeptio](https://www.axeptio.eu/) is a cookie and consent management platform. It enables you to use interesting widgets and compelling UI to enhance users' cookie/consent experience while keeping your web performance intact.
+
+## Getting started
+
+RudderStack supports sending event data to Axeptio via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
+
+| Connection Mode | Web | Mobile | Server |
+| :--- | :--- | :--- | :--- |
+| Device mode | Supported | - | - |
+| Cloud mode | -  | - | - |
+
+Once you have confirmed that the source platform supports sending events to Axeptio, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Axeptio**.
+2. Assign a name to the destination and click **Continue**.
+
+## Connection settings
+
+To successfully configure Axeptio as a destination, you will need to configure the following settings:
+
+- **Client ID**: Enter your Axeptio client ID. For more information on obtaining the client ID, refer to the <Link to="#faq">FAQ</Link> section below.
+- **Toggle it on to send data through callback**: Enable this setting to allow RudderStack to track and record the callback events from the Axeptio SDK as `track` events.
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Axeptio. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+- **Use device mode to send events**: Enable this setting to send your events to Axeptio via the <Link to="https://www.rudderstack.com/docs/destinations/rudderstack-connection-modes/#device-mode">web device mode</Link>.
+
+<div class="infoBlock">
+You can keep it disabled if you only want to load the Axeptio SDK natively and not send any events.
+</div>
+
+- **OneTrust Cookie Categories**: This setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Axeptio.
+
+## Tracking callback events
+
+The Axeptio SDK triggers events whenever a user interacts with the cookie/consent widgets integrated with your website.
+
+By enabling the **Toggle it on to send data through callback** setting in the RudderStack dashboard, RudderStack tracks and records the interaction events as <Link to="/event-spec/standard-events/track/">`track`</Link> events. You can then view and analyze these events in the other tools (connected to the same source in RudderStack).
+
+RudderStack maps the name and the payload of the triggered interaction event to the `track` event name and properties respectively.
+
+## FAQ
+
+### Where can I find the Axeptio client ID?
+
+To get the client ID associated with your Axeptio project, follow these steps:
+
+1. Log into your <a href="https://admin.axeptio.eu/">Axeptio dashboard</a>.
+2. Click the settings icon on your project. You should be able to see the **Project ID** listed here, as shown:
+
+<img src="../../assets/event-stream-destinations/axeptio-client-id.png" alt="Axeptio client ID" />
+
+You can also find the client ID in the code snippet to integrate into your website. Click the settings icon on your project and go to **Integration** to find the client ID, as shown:
+
+<img src="../../assets/event-stream-destinations/axeptio-client-id-2.png" alt="Axeptio client ID" />
+
+<div class="infoBlock">
+Axeptio client ID is the same as the project ID.
+</div>
+
+<br />
