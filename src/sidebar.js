@@ -728,6 +728,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Axeptio",
+                link: "/destinations/streaming-destinations/axeptio/",
+                content: []
+            },
+            {
                 title: "Candu",
                 link: "/destinations/streaming-destinations/candu/",
                 content: []
@@ -1066,6 +1071,11 @@ export const jsonData = [
                 title: "Matomo",
                 link: "/destinations/streaming-destinations/matomo/",
                 content: [],
+            },
+            {
+                title: "Microsoft Clarity",
+                link: "/destinations/streaming-destinations/microsoft-clarity/",
+                content: []
             },
             {
                 title: "Mixpanel",
@@ -1762,6 +1772,11 @@ export const jsonData = [
                         content: []
                     },
                 ]
+            },
+            {
+                title: "Satismeter",
+                link: "/destinations/streaming-destinations/satismeter/",
+                content: []
             },
             {
                 title: "WebEngage",
