@@ -23,11 +23,11 @@ Once you have confirmed that the source platform supports sending events to Rock
 
 To successfully configure Rockerbox as a destination, configure the following settings:
 
-- **Advertiser Id**: Enter your Rockerbox Advertiser Id. It is a required field for sending events to Rockerbox via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>. To obtain it, contact your <a href="https://help.rockerbox.com/article/5t050dmcxv-webhooks#requirements:~:text=or%20other%20formats-,Server%2Dside%20specs,-You%20will%20need">Rockerbox account manager</a>.
+- **Advertiser Id**: Enter your Rockerbox Advertiser ID. It is a required field for sending events to Rockerbox via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>. To obtain it, contact your <a href="https://help.rockerbox.com/article/5t050dmcxv-webhooks#requirements:~:text=or%20other%20formats-,Server%2Dside%20specs,-You%20will%20need">Rockerbox account manager</a>.
 
-- **Map your Rockerbox events to RudderStack Events**: Enter the corresponding RudderStack and Rockerbox events you want to be mapped. You can specify multiple <strong>RudderStack events</strong> for one <strong>Rockerbox event</strong> and vice versa.
+- **Map your Rockerbox events to RudderStack Events**: Use this setting to map your RudderStack events to specific Rockerbox events. You can map multiple <strong>RudderStack events</strong> to one <strong>Rockerbox event</strong> and vice versa.
 
-- **Map your event property to Rockerbox custom property**: Enter the RudderStack event property and a corresponding Rockerbox property you want to send to Rockerbox as a custom property. To send these custom properties to Rockerbox, you must send them in the `track` call.
+- **Map your event property to Rockerbox custom property**: Use this setting to map your RudderStack event properties to specific Rockerbox properties. RudderStack sends these fields to Rockerbox as custom properties. Note that to send these custom properties to Rockerbox, you must include them in the `track` call.
 
 ### Client-side events filtering
 
