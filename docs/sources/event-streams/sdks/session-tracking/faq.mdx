@@ -5,6 +5,10 @@ description: Answers to the generally asked questions related to RudderStack's s
 
 ## Generic
 
+### Do the RudderStack server-side SDKs support the automatic session tracking feature?
+
+No, the server-side SDKs do not support automatic session tracking. However, you can create your own session start and end events as backend events using the SDKs.
+
 ### How does RudderStack determine the `sessionId`?
 
 RudderStack passes the event's `timestamp` (in milliseconds) as the `sessionId`. 
