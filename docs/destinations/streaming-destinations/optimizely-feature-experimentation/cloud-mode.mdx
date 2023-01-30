@@ -41,14 +41,18 @@ The following table lists the RudderStack event properties and their mappings wi
 
 To view the experimentation-related metrics in the **Results** page of your Optimizely dashboard, make sure you:
 
-- Use the <a href="https://docs.developers.optimizely.com/experimentation/v3.1.0-full-stack/reference/activate">`activate`</a> API first and then send your `track` events. If you do not activate the user, RudderStack will not send any decision event to Optimizely and the event won't be attributed to the user.
+- Use the <a href="https://docs.developers.optimizely.com/experimentation/v3.1.0-full-stack/reference/activate">`activate`</a> API first and then send your `track` events. If you do not activate the user, RudderStack will send the `track` events to Optimizely and they will not be attributed to the user (visible on the **Results** page).
 - Pass the same `userId` in your events that you pass to the `activate` API.
 
 ## Page
 
-RudderStack's <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page.
+You can use the <Link to="/event-spec/standard-events/page">`page`</Link> call to record your website's page views with any additional relevant information about the viewed page.
 
-If you have enabled the **Track Categorized Pages** or **Track Named Pages** dashboard setting, then RudderStack sends a `page` call with the page `category` or `name` as a `track` event to Optimizely with the event name as `Viewed ${category} page` or `Viewed ${name} page`.
+If you have enabled the **Track Categorized Pages** or **Track Named Pages** dashboard setting, then RudderStack sends every `page` call along with the page `category` or `name` as a <Link to="#track">`track`</Link> event to Optimizely, with the event name as `Viewed ${category} page` or `Viewed ${name} page`.
+
+<div class="infoBlock">
+All the mappings supported for the <Link to="#supported-mappings">`track`</Link> event are applicable for `page` event as well.
+</div>
 
 A sample `page` call is shown below:
 
@@ -60,9 +64,13 @@ In the above snippet, `home` is the name of the web page. If **Track Named Pages
 
 ## Screen
 
-RudderStack's <Link to="/event-spec/standard-events/screen">`screen`</Link> call lets you record your users' mobile screen views with any additional relevant information about the screen.
+You can use the <Link to="/event-spec/standard-events/screen">`screen`</Link> call to record your users' mobile screen views with any additional relevant information about the screen.
 
-RudderStack sends every `screen` call to Optimizely as a `track` event with the name `Viewed ${name} screen`, where `name` is the name of the viewed screen. If you do not provide any name, RudderStack sets the event name as `Viewed screen`.
+RudderStack sends every `screen` call you make as a <Link to="#track">`track`</Link> event to Optimizely, with the name `Viewed ${name} screen` - where `name` is the name of the viewed screen. If you do not provide any name, RudderStack sets the event name as `Viewed screen`.
+
+<div class="infoBlock">
+All the mappings supported for the <Link to="#supported-mappings">`track`</Link> event are applicable for `screen` event as well.
+</div>
 
 A sample `screen` call is shown below:
 
