@@ -1,0 +1,54 @@
+---
+title: "Setting up Lemnisk"
+description: Set up Lemnisk as a destination in RudderStack.
+aliases: ["Lemnisk destination"]
+---
+
+RudderStack supports sending events to Lemnisk via the following <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link>:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     |        Supported       |               |               |
+| **Cloud mode**      |        Supported       |  Supported   |   Supported            |
+
+Once you have confirmed that the source platform supports sending events to Lemnisk, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Lemnisk Marketing Automation**.
+2. Assign a name to your destination and click **Continue**.
+
+## Connection settings
+
+To successfully set up Lemnisk as a destination, you need to configure the following settings:
+
+- **Cloud Mode**: Enter your Lemnisk REST API key.
+
+#### Web Device Mode Settings
+* **Client ID**: Your client ID is an unique ID generated for your account.
+* **Use Native SDK to send Events:** Enable this option if you want to send events using device mode.
+
+#### Web Cloud Mode Settings
+* **Write Key**: Each data source at Lemnisk has a unique write key. It can be found on the Source page.
+* **Region URL**: Enter the region URL provided by Lemnisk team.
+
+#### Server-side Cloud Mode Settings
+* **X-API-Key**: Enter the X-API-Key by Lemnisk team.
+* **X-API-PassKey**: Enter the X-API-PassKey provided by Lemnisk team.
+* **Source ID**: Enter the Source ID provided by Lemnisk team.
+
+<div class="infoBlock">
+For more information on obtaining the Lemnisk REST API key and web client API key, refer to the <Link to="#faq">FAQ</Link> section below.
+</div>
+
+## FAQ
+
+### Where can I find my Lemnisk client ID, Write Key and Region URL?
+
+You may contact your Lemnisk customer success manager to get them.
+
+### Do I need X-API-Key and X-API-PassKey?
+
+X-API-Key and X-API-PassKey is only required
+
+### How do I verify if the events are passing to Lemnisk correctly?
+
+You can verify the events coming via Rudderstack in the "Live Events" section. On the Lemnisk platform, go to Sources and click on a particular source. If the integration is successful, you will see the events under the "Live Events" section. Check the event payload to make sure it's correct.

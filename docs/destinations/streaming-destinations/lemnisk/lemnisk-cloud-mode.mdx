@@ -1,0 +1,106 @@
+---
+title: "Lemnisk Cloud Mode"
+description: Send events to Lemnisk using RudderStack cloud mode.
+---
+
+RudderStack lets you send your event data to Lemnisk via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+
+<div class="infoBlock">
+Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/Lemnisk">GitHub repository</a>.
+</div>
+
+## Identify
+
+You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to create or update a contact in Lemnisk.
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("1hKOmRA4GRlm", {
+  name: "Alex Keener",
+  email: "alex@example.com"
+})
+```
+
+<div class="warningBlock">
+To make an <code class="inline-code">identify</code> call successfully, either the <code class="inline-code">email</code> or <code class="inline-code">userId</code> is required.
+</div>
+
+### Supported mappings
+
+The following table lists the RudderStack attributes and their mappings with the Lemnisk properties:
+
+| RudderStack property   | Lemnisk property  | 
+| :-------------| :-----------------| 
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if email is absent.</span> | `id` |
+| `properties.email` <br/> <span style="color: #4D4DFF;font-size:12px;">Required, if userId is absent.</span> | `email` |
+| `traits` <br /> `context.traits` | traits |
+
+## Track
+
+The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events and send them to Lemnisk as `trackEvent` events. If a `track` event contains a `userId`, then Lemnisk updates the corresponding user's information. Otherwise, it creates a new user.
+
+<div class="warningBlock">
+Lemnisk does not store any additional properties sent with the <code class="inline-code">track</code> event.
+</div>
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Order Completed", {
+  orderId: "ORD122",
+  price: "5.67",
+  currency: "USD",
+});
+```
+
+The following table lists the RudderStack properties and their mappings with the Lemnisk properties:
+
+| RudderStack property   | Lemnisk property  | 
+| :-------------| :-----------------| 
+| `userId`  | `id` |
+| event name | event |
+
+## Group
+
+The <Link to="/event-spec/standard-events/group">`group`</Link> call lets you link an identified user with a group, such as a company, organization, or an account. Note that Lemnisk associates all the `group` traits with the `account` object associated with the user.
+
+A sample `group` call is shown below:
+
+```javascript
+rudderanalytics.group("group@123", {
+  name: "Sample Company",
+  employees: 1000,
+  industry: "Software",
+})
+```
+
+The following table lists the RudderStack properties and their mappings with the Lemnisk properties:
+
+| RudderStack property   | Lemnisk property  | 
+| :-------------| :-----------------| 
+| `userId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `id` |
+| `traits.email` | `account.email` | 
+| `context.traits.email` | `email` |
+| `groupId` | `account.id` |
+| `traits` | `account` |
+
+## Page
+
+The <Link to="/event-spec/standard-events/page">`page`</Link> call lets you record your website's page views with any additional relevant information about the viewed page and send this information to Lemnisk.
+
+<div class="infoBlock">
+The behavior of the <code class="inline-code">page</code> call is the same as the <Link to="#track"><code class="inline-code">track</code></Link> call described above. However, note that if you do not set the event name, RudderStack sets <code class="inline-code">pageView</code> as the event name by default.
+</div>
+
+A sample `page` event is shown below:
+
+```javascript
+rudderanalytics.page("Cart", "Cart Viewed", {
+  path: "/cart",
+  referrer: "samplewebsite.com",
+  search: "some item",
+  title: "New Item",
+  url: "http://samplewebsite.in",
+})
+```

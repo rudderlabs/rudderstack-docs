@@ -1,0 +1,68 @@
+---
+title: "Lemnisk Device Mode"
+description: Send events to Lemnisk using RudderStack web device mode.
+---
+
+RudderStack lets you send your event data to Lemnisk via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> using the native web SDK.
+
+## Identify
+
+You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to assocaite a user to their activities and capture relevant traits about them. These traits could be a user ID, email, name etc. Once you call the `identify` event via Rudderstack, Lemnisk [`identify`](https://lemnisk.gitbook.io/lemnisk-platform-documentation/events/identify) event will be triggered. Lemnisk needs a unique user ID to associate an event with a user. By default, we will use our cookie to identify the user. Optionally, a unique user ID can be passed in the first parameter.
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("hashed_user_id", {
+  name: "Name Surname",
+  email: "sample@example.com",
+})
+```
+
+### Supported mappings
+
+The following table lists the RudderStack attributes and their mappings with the Lemnisk properties:
+
+| RudderStack property   | Lemnisk property  | 
+| :-------------| :-----------------| 
+|   <span style="color: #4D4DFF;font-size:12px;">Required</span> | `userId` |
+| `traits` | `customerProperties` |
+
+## Track
+
+The `track` API call records the actions that the users perform, along with the properties of the action. Each action is called an event. Each event has a name and some properties associated with it along with an optional callback function. For example, the event name could be `productViewed`, while the properties can be `sort`, `currencyCode` etc. Once you call the `track` event via Rudderstack, Lemnisk [`track`](https://lemnisk.gitbook.io/lemnisk-platform-documentation/events/track) event will be triggered.
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Product Reviewed", {
+  review_id: "12345",
+  product_id: "123",
+  rating: 3.0,
+  review_body: "Average product, expected much more."
+})
+```
+
+The following table lists the RudderStack properties and their mappings with the Lemnisk properties:
+
+| RudderStack property   | Lemnisk property  | 
+| :-------------| :-----------------| 
+| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` |
+| `properties`  | `properties` |
+|  | `userId` |
+
+## Page
+
+The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record when a user views a page of your website, along with any optional properties about the page. Once you call the `page` event via Rudderstack, Lemnisk [`page`](https://lemnisk.gitbook.io/lemnisk-platform-documentation/events/page) event will be triggered.
+
+A sample `page` call is shown below:
+
+```javascript
+rudderanalytics.page("Home")
+```
+
+The following table lists the RudderStack properties and their mappings with the Lemnisk properties:
+
+| RudderStack property   | Lemnisk property  | 
+| :-------------| :-----------------| 
+| `name` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `name` |
+| `context.page` <br/> `properties` | `properties` |
