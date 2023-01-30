@@ -41,7 +41,7 @@ The following table lists the RudderStack event properties and their mappings wi
 
 To view the experimentation-related metrics in the **Results** page of your Optimizely dashboard, make sure you:
 
-- Use the <a href="https://docs.developers.optimizely.com/experimentation/v3.1.0-full-stack/reference/activate">`activate`</a> API first and then send your `track` events. If you do not activate the user, RudderStack will send the `track` events to Optimizely and they will not be attributed to the user (visible on the **Results** page).
+- Use the <a href="https://docs.developers.optimizely.com/experimentation/v3.1.0-full-stack/reference/activate">`activate`</a> API first and then send your `track` events. If you do not activate the user, the event won't be attributed to the user and won't be shown in the **Results** page.
 - Pass the same `userId` in your events that you pass to the `activate` API.
 
 ## Page
