@@ -1,89 +1,48 @@
 ---
 title: "BigQuery Stream"
-description: Stream your event data from RudderStack to BigQuery via Google's streaming API.
+description: Send your event data from RudderStack to BigQuery via Google's streaming API.
 ---
 
-[Google BigQuery](https://cloud.google.com/bigquery) lets you stream your event data by leveraging its [streaming API](https://cloud.google.com/bigquery/docs/samples/bigquery-table-insert-rows). With this approach, you can insert data into BigQuery in near real-time and have it ready for analysis in no time.
+[Google BigQuery](https://cloud.google.com/bigquery) offers a [streaming API](https://cloud.google.com/bigquery/docs/samples/bigquery-table-insert-rows) which lets you insert data into BigQuery in near real-time and have it ready for analysis in no time.
 
-RudderStack supports BigQuery Stream as a destination to which you can steam your event data seamlessly.
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/bqstream">GitHub repository</a>.
 
 ## Getting started
 
-First, check if your source platform is supported by BigQuery Stream by referring to the following table:
+<div class="warningBlock">
+Before you set up BigQuery Stream as a destination in the <a href="https://app.rudderstack.com/">RudderStack dashboard</a>, make sure you <Link to="#creating-a-service-account">create a service account</Link> in your <a href="https://console.cloud.google.com">Google Cloud Console</a> with the <strong>BigQuery Data Editor</strong> role to have the required access to write to BigQuery.
+</div>
+
+RudderStack supports sending event data to BigQuery Stream via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
 
 | Connection Mode | Web       | Mobile    | Server   |
 | :------------------ | :------------ | :------------ | :------------ |
 | **Device mode**     | -             | -             | -             |
 | **Cloud mode**      | **Supported** | **Supported** | **Supported** |
 
-<div class="infoBlock">
-To learn more about the difference between cloud mode and device mode in RudderStack, refer to the <Link to="/destinations/rudderstack-connection-modes/">RudderStack Connection Modes</Link> guide.
-</div>
+Once you have confirmed that the source platform supports sending events to BigQuery Stream, follow these steps:
 
-Once you've confirmed that the source platform supports sending events to BigQuery Stream, follow these steps:
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **BigQuery Stream**.
+2. Assign a name to the destination and click **Continue**.
 
-- From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, select **BigQuery Stream** from the list of destinations.
-- Assign a name to this destination and click **Next**. You should then see the following screen:
+## Connection settings
 
-<img src="../../assets/event-stream-destinations/bqstream-2.png" alt="BigQuery Stream connection settings" />
+To successfully configure BigQuery Stream as a destination, you will need to configure the following settings:
 
-### Connection settings
-
-To configure BigQuery Stream as a destination in RudderStack, you will need to add the following fields in the dashboard:
-
-- **Project ID**: Enter your BigQuery project ID here.
+- **Project ID**: Enter your BigQuery project ID.
 - **Dataset ID**: This is the ID of the project dataset for which you specified the **Project ID** above.
 - **Table ID**: Provide the ID of the table into which you want to stream the event data.
 
 <img src="../../assets/event-stream-destinations/bqstream-3.png" alt="BigQuery Stream connection settings" />
 
-- **Insert ID**: This is an **optional** field. Enter the insert ID used by Google to de-duplicate the data sent to BigQuery.
-
-<div class="infoBlock">
-
-For more information on the <strong>Insert ID</strong>, refer to the <a href="#insert-id">Insert ID</a> section below.
-</div>
-
-- **Credentials**: Enter the contents of the credentials JSON you downloaded after [creating your service account](#creating-a-service-account).
-
-<div class="infoBlock">
-Create a service account in your GCP Project for RudderStack with the <strong>BigQuery User</strong> role, which has the required access to write to BigQuery.
-</div>
-
-- Optionally, you can select a transformation to apply to the events before sending them to the destination. If you do not wish to apply any transformation, select  **No transformation needed** and click **Next** to complete the setup.
-
-## Insert ID
-
-Google leverages the `insertId` to de-duplicate the data sent to BigQuery. `insertId` is essentially an event property that uniquely identifies an event.
-
-<div class="warningBlock">
-
-RudderStack currently supports only <strong>numeric</strong> or <strong>string</strong> values as `insertId`.
-</div>
-
-<div class="infoBlock">
-
-For more information on the de-duplication process in BigQuery, refer to this <a href="https://cloud.google.com/bigquery/streaming-data-into-bigquery#dataconsistency">BigQuery documentation</a>.
-</div>
-
-### Use-case
-
-Consider the following table schema:
-
-<img src="../../assets/event-stream-destinations/bqstream-5.png" alt="BigQuery table schema" />
-
-When sending an`Insert Product` event to BigQuery, the `productId` can be used to uniquely identify the product. Hence it can be passed as the `insertId`. BigQuery performs the de-duplication of the data based on this `productId`. 
+- **Insert ID**: This is an **optional** field. Enter the `insertId` used by Google to deduplicate the data sent to BigQuery. For more information on this setting, refer to the <Link to="#deduplicating-data">Deduplicating data</Link> section.
+- **Credentials**: Enter the contents of the credentials JSON you downloaded after <Link to="#creating-a-service-account">creating your service account</Link>.
 
 ## Sending events to BigQuery Stream
 
-You can send only `track` events to BigQuery Stream via RudderStack. Also, RudderStack currently does not support batching these events.
-
-<div class="warningBlock">
-Make sure the <code class="inline-code">track</code> event payload format matches the table schema specified in the RudderStack dashboard.
-</div>
+RudderStack supports sending only <Link to="/event-spec/standard-events/track">`track`</Link> events to BigQuery Stream. Make sure your `track` event payload format matches the table schema corresponding to **Table ID** specified in the dashboard settings.
 
 <div class="infoBlock">
-
 RudderStack currently does not support the <code class="inline-code">templateSupportSuffix</code> feature which creates a table schema during a streaming insert action.
 </div>
 
@@ -105,43 +64,31 @@ Note that the `track` properties in the above payload match with the fields spec
 
 <img src="../../assets/event-stream-destinations/bqstream-6.png" alt="BigQuery result" />
 
-## Creating a service account
+## Deduplicating data
 
-To a create a service account from your [Google Cloud Console](https://console.cloud.google.com), follow these steps:
+Google leverages the `insertId` to deduplicate the data sent to BigQuery. `insertId` is essentially an event property that uniquely identifies an event.
 
-1. In the left sidebar, go to **APIs & Services** > **Credentials**.
+<div class="warningBlock">
+RudderStack currently supports only <strong>numeric</strong> or <strong>string</strong> values as <code class="inline-code">insertId</code>.
+</div>
 
-2. Then, click **CREATE CREDENTIALS** > **Service account**, as shown:
+For more information on the deduplication process in BigQuery, refer to the <a href="https://cloud.google.com/bigquery/streaming-data-into-bigquery#dataconsistency">BigQuery documentation</a>.
 
-<img src="../../assets/event-stream-destinations/bqstream-service-account-1.png" alt="Service account under Create Credentials" />
+### Use case
 
-3. Enter the service account details and click **CREATE AND CONTINUE**.
+Consider the following table schema:
 
-4. In the **Select a role** field, search and select the **BigQuery User** role and click **CONTINUE**.
+<img src="../../assets/event-stream-destinations/bqstream-5.png" alt="BigQuery table schema" />
 
-<img src="../../assets/event-stream-destinations/bqstream-service-account-4.png" alt="BigQuery User role" />
+When sending an `Insert Product` event to BigQuery, you can use the `productId` field to uniquely identify the product. Upon setting `productId` as the `insertId`, BigQuery uses it to deduplicate the data.
 
-5. Click **DONE** to finish the setup.
-
-6. Next, you need the service account credentials JSON required for RudderStack to send the data to BigQuery. To obtain this JSON, go to your service account.
-
-<img src="../../assets/event-stream-destinations/bqstream-service-account-2.png" alt="Service account" />
-
-7. Then, go to **KEYS** > **ADD KEY** > **Create new key**.
-
-8. Select the **Key type** as **JSON** and click **CREATE**.
-
-<img src="../../assets/event-stream-destinations/bqstream-service-account-3.png" alt="Service account type" />
-
-Your JSON key will be automatically downloaded. Copy and paste the contents of this JSON key in the **Credentials** field while [configuring BigQuery Stream as a destination](#connection-settings) in RudderStack.
-
-## Dynamically configuring `insertId` via the event payload
+## Dynamically configuring `insertId`
 
 <div class="infoBlock">
 Use this feature if you are <Link to="/user-guides/how-to-guides/dynamic-destination-configuration/">dynamically configuring BigQuery Stream via the event payload</Link>.
 </div>
 
-If you want to dynamically configure `insertId` via the event payload, make sure that `insertId`is column name present in your schema (or in the `properties` object in the event payload) used to uniquely identify an event.
+To dynamically configure `insertId` via the event payload, make sure that `insertId` is the column name present in your schema (or in the `properties` object in the event payload) used to uniquely identify an event.
 
 Consider the following schema:
 
@@ -166,7 +113,7 @@ Consider the following payload:
 }
 ```
 
-In the above case, de-duplication **will not be applicable** as the event properties do not contain `<some_value>` present in the payload.
+In the above case, deduplication **is not applicable** as the event properties do not contain `<some_value>` present in the payload.
 
 ### Case 2: Unique ID is sent as a value which is a key in  the event properties
 
@@ -185,7 +132,7 @@ Consider the following payload:
 }
 ```
 
-In this case, de-duplication **is applicable** as RudderStack sends the `productId` value (`212`) as the `insertId` to Google.
+In this case, deduplication **is applicable** as RudderStack sends the `productId` value (`212`) as the `insertId` to Google.
 
 ### Case 3: Unique ID is not sent in the event payload
 
@@ -202,12 +149,38 @@ Consider the following payload:
 }
 ```
 
-In this case, de-duplication **is applicable** as RudderStack sends the `productId` value (`212`) as the `insertId` to Google.
+In this case, deduplication **is applicable** as RudderStack sends the `productId` value (`212`) as the `insertId` to Google.
 
-If you use the dynamic destination configuration for `insertId` by passing a random value (e.g. `1234`) in the above payload, de-duplication will **not be applicable** as the `properties` object does not contain the value `1234`.
+If you use the dynamic destination configuration for `insertId` by passing a random value (e.g. `1234`) in the above payload, deduplication will **not be applicable** as the `properties` object does not contain the value `1234`.
+
+## Creating a service account
+
+To create a service account in your [Google Cloud Console](https://console.cloud.google.com), follow these steps:
+
+1. In the left sidebar, go to **APIs & Services** > **Credentials**.
+2. Then, click **CREATE CREDENTIALS** > **Service account**, as shown:
+
+<img src="../../assets/event-stream-destinations/bqstream-service-account-1.png" alt="Service account under Create Credentials" />
+
+3. Enter the service account details and click **CREATE AND CONTINUE**.
+4. In the **Select a role** field, search and select the **BigQuery Data Editor** role and click **CONTINUE**.
+
+<img src="../../assets/event-stream-destinations/bqstream-service-account-4.png" alt="BigQuery User role" />
+
+5. Click **DONE** to finish the setup.
+6. Next, you need the service account credentials JSON required for RudderStack to send the data to BigQuery. To obtain this JSON, go to your service account.
+
+<img src="../../assets/event-stream-destinations/bqstream-service-account-2.png" alt="Service account" />
+
+7. Then, go to **KEYS** > **ADD KEY** > **Create new key**.
+8. Select the **Key type** as **JSON** and click **CREATE**.
+
+<img src="../../assets/event-stream-destinations/bqstream-service-account-3.png" alt="Service account type" />
+
+Your JSON key will be automatically downloaded. Copy and paste the contents of this JSON key in the **Credentials** field while [configuring BigQuery Stream as a destination](#connection-settings) in RudderStack.
  
 ## Troubleshooting
 
-This [BigQuery documentation](https://cloud.google.com/bigquery/docs/error-messages) lists the different errors you can possibly encounter while sending data to BigQuery Stream, along with the steps to troubleshoot and resolve them.
+For the different error messages you might get when sending your event data to BigQuery Stream and their troubleshooting steps, refer to the [BigQuery documentation](https://cloud.google.com/bigquery/docs/error-messages).
 
-
+<br />
