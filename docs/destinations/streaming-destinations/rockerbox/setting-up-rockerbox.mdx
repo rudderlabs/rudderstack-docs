@@ -23,31 +23,19 @@ Once you have confirmed that the source platform supports sending events to Rock
 
 To successfully configure Rockerbox as a destination, configure the following settings:
 
-<img src="../../../assets/event-stream-destinations/rockerbox-connection-settings.png" alt="Rockerbox Connection Settings in RudderStack" />
+- **Advertiser Id**: Enter your Rockerbox Advertiser Id. It is a required field for sending events to Rockerbox via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>. To obtain it, contact your <a href="https://help.rockerbox.com/article/5t050dmcxv-webhooks#requirements:~:text=or%20other%20formats-,Server%2Dside%20specs,-You%20will%20need">Rockerbox account manager</a>.
 
-- **Advertiser Id**: Enter your Rockerbox Advertiser Id.
+- **Map your Rockerbox events to RudderStack Events**: Enter the corresponding RudderStack and Rockerbox events you want to be mapped. You can specify multiple <strong>RudderStack events</strong> for one <strong>Rockerbox event</strong> and vice versa.
 
-<div class="infoBlock">
-Advertiser Id is a required field for sending events to Rockerbox via <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>. To obtain it, contact your <a href="https://help.rockerbox.com/article/5t050dmcxv-webhooks#requirements:~:text=or%20other%20formats-,Server%2Dside%20specs,-You%20will%20need">Rockerbox account manager</a>.
-</div>
-
-- **Map your Rockerbox events to RudderStack Events**: Enter the corresponding RudderStack and Rockerbox events you want to be mapped.
-
-<div class="successBlock">
-You can specify multiple <strong>RudderStack events</strong> for one <strong>Rockerbox event</strong> and vice versa.
-</div>
+- **Map your event property to Rockerbox custom property**: Enter the RudderStack event property you want to map to Rockerbox as a custom property. You can send the properties defined here in the `track` call.
 
 ### Client-side events filtering
 
 This setting lets you specify which events should be blocked or allowed to flow through to Rockerbox and is applicable only if you're sending events via the **web device mode**.
 
-<div class="infoBlock">
 Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
-</div>
 
 ### Web SDK settings
-
-<img src="../../../assets/event-stream-destinations/rockerbox-connection-settings-3.png" alt="Rockerbox Connection Settings in RudderStack" />
 
 These settings are applicable only if you are sending events to Rockerbox via web device mode:
 
