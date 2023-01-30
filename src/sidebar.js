@@ -1352,6 +1352,11 @@ export const jsonData = [
                 content: []
             },
             {
+                title: "Lemnisk",
+                link: "/destinations/streaming-destinations/lemnisk/",
+                content: []
+            },
+            {
                 title: "Bugsnag",
                 sectionTitle: "Error Reporting",
                 link: "/destinations/streaming-destinations/bugsnag/",
