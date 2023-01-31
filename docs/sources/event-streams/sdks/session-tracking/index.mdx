@@ -36,7 +36,11 @@ It is strongly recommended to send any other session-related information in the 
 
 ## Automatic session tracking
 
-**By default, the RudderStack SDKs automatically track the user sessions**. This means that RudderStack automatically determines the start and end of a session depending on the inactivity time configured in the SDK.
+**By default, the RudderStack SDKs (JavaScript, Android, and iOS) automatically track the user sessions**. This means that RudderStack automatically determines the start and end of a session depending on the inactivity time configured in the SDK.
+
+<div class="dangerBlock">
+The server-side SDKs do not support automatic session tracking.
+</div>
 
 <div class="infoBlock">
 RudderStack also lets you start and end user sessions manually. Refer to the <Link to="/sources/event-streams/sdks/session-tracking/manual-session-tracking">Manual session tracking</Link> guide for more information. <strong>Note that manual session tracking overrides the automatic session tracking</strong>.
@@ -237,7 +241,14 @@ The following diagram summarizes the workflow:
 
 ## Supported downstream tools
 
-RudderStack supports forwarding the `sessionId` and `sessionStart` fields to the following downstream destinations:
+The RudderStack SDKs support sending the `sessionId` and `sessionStart` fields to all the <Link to="/destinations/streaming-destinations/">cloud</Link> and <Link to="/destinations/warehouse-destinations/">warehouse</Link> destinations, **within the event's `context`**.
+
+It is important to note the following:
+
+- RudderStack passes the `sessionId` to all the subsequent events in the `context.sessionId` field.
+- RudderStack sets the `context.sessionStart` field to `true` in the first event to indicate the start of the session.
+
+RudderStack maps `sessionId` to specific fields **only** in case of the following two destinations:
 
 <table style="table-layout: fixed; width: 100%;" >
 <tr>
@@ -246,17 +257,13 @@ RudderStack supports forwarding the `sessionId` and `sessionStart` fields to the
 </tr>
 <tr>
   <td><Link to="/destinations/streaming-destinations/amplitude/">Amplitude</Link></td>
-  <td>RudderStack sends the <code class="inline-code">sessionId</code> parameter in the event which is mapped to <code class="inline-code">session_id</code> in Amplitude. For more information, refer to the <a href="https://www.docs.developers.amplitude.com/analytics/apis/http-v2-api/#keys-for-the-event-argument:~:text=to%20occur%20simultaneously.-,session_id,-Optional.%20Long.%20The">Amplitude documentation</a>.</td>
+  <td>RudderStack maps <code class="inline-code">sessionId</code> to Amplitude's <code class="inline-code">session_id</code> field. <br /><br />For more information, refer to the <a href="https://www.docs.developers.amplitude.com/analytics/apis/http-v2-api/#keys-for-the-event-argument:~:text=to%20occur%20simultaneously.-,session_id,-Optional.%20Long.%20The">Amplitude documentation</a>.</td>
 </tr>
 <tr>
   <td><Link to="/destinations/streaming-destinations/mixpanel/">Mixpanel</Link></td>
   <td><ul><li>RudderStack passes <code class="inline-code">$session_id</code> under the event properties.</li><li>Mixpanel doesn't have any specific field for <code class="inline-code">$session_id</code> but you can use this field in the reports.</li></ul></td>
 </tr>
 </table>
-
-It is important to note the following:
-- RudderStack passes the `sessionId` to the subsequent events in the `context.sessionId` field.
-- RudderStack sets the `context.sessionStart` field to `true` in the first event to indicate the start of the session.
 
 ## FAQ
 
