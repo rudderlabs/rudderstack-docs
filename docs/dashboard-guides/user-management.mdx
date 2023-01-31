@@ -1,15 +1,26 @@
 ---
-title: "User Management"
-description: Invite teammates and create roles for them in RudderStack.
+title: "Members (User Management)"
+description: Invite team members and assign relevant roles to them in RudderStack.
 ---
 
-RudderStack's user management feature lets you manage users and their permissions in your RudderStack workspace. It lets you easily collaborate with other members of your organization.
+RudderStack's user management feature lets you easily collaborate with other members of your organization. It provides different options to manage users and their permissions in your RudderStack workspace. 
+
+## Member limit
+
+The following table specifies the number of team members you can add to your workspace in different [RudderStack Cloud plans](https://www.rudderstack.com/pricing/):
+
+| Plan | Member limit |
+| :-----| :------|
+| [Free](https://app.rudderstack.com/signup) | 10 |
+| Starter | 10 |
+| Growth | Unlimited |
+| [Enterprise](https://www.rudderstack.com/enterprise-quote/) | Unlimited |
 
 ## Inviting users to your workspace
 
 To invite a member to your RudderStack workspace, follow these steps:
 
-1. Go to **Settings** > **Members** and click the **Invite Teammate** button, as shown:
+1. Go to **Settings** > **Members** and click the **Invite member** button, as shown:
 
 <img src="../assets/rs-cloud/permissions-management-1.png" alt="Invite teammates option" />
 
@@ -19,11 +30,7 @@ To invite a member to your RudderStack workspace, follow these steps:
 Refer to the <Link to="#role-permissions">Role permissions</Link> section below for more information on the Read-Only, Read-Write, and Admin roles.
 </div>
 
-3. Finally, click **Invite**.
-
-<div class="successBlock">
-Your teammate will be automatically added to the workspace once they accept the invite.
-</div>
+3. Finally, click **Invite**. Your teammate will be automatically added to the workspace once they accept the invite.
 
 ## Role permissions
 
@@ -41,7 +48,7 @@ You can also set granular access controls and lock down access to specific Rudde
 
 ### Read-Only
 
-This user role has the following permissions:
+This role has the following permissions:
 
 | Feature       | View | Add | Modify | Delete |
 | :----------- | :--- | :-- | :----- | :----- |
@@ -54,13 +61,13 @@ This user role has the following permissions:
 | <Link to="/features/data-governance/tracking-plans/">Tracking Plans</Link> | Yes  | No  | No     | No     |
 | <Link to="/sources/reverse-etl/features/models/">Models</Link> | Yes | No  | No     | No     |
 
-The members with read-only user permissions can:
+Read-Only users can:
 - View the connection settings for all the destinations. However, they do not have access to view secrets like the access keys.
 - View any secrets in the transformation code like API keys.
 
 ### Read-Write
 
-A read-write user has all the permissions of a read-only user in addition to modifying the key workspace features and options listed below:
+A Read-Write user has all the permissions of a Read-Only user. In addition, they can modify the following workspace features and options:
 
 | Feature          | View | Add | Modify | Delete |
 | :-------------- | :--- | :-- | :----- | :----- |
@@ -75,7 +82,11 @@ A read-write user has all the permissions of a read-only user in addition to mod
 
 ### Admin
 
-This user role has complete access to the RudderStack workspace, including all the features in the current plan:
+This role has complete access to the RudderStack workspace, including all the features in the current RudderStack Cloud plan. It also has some additional permissions related to the workspace settings like managing users, modifying user permissions, enforcing MFA(multi-factor authentication), and more.
+
+Members with this role also have the permissions to <Link to="/dashboard-guides/permissions-management/#setting-granular-access-controls">set granular access controls</Link> for certain business-critical objects and <Link to="/dashboard-guides/permissions-management/#limiting-access-to-pii-related-features">limit PII access</Link> to certain users.
+
+The following table details all the permissions applicable for the Admin role:
 
 | Feature          | View | Add | Modify | Delete |
 | :------------ | :--- | :-- | :----- | :----- |
@@ -87,7 +98,3 @@ This user role has complete access to the RudderStack workspace, including all t
 | <Link to="/dashboard-guides/audit-logs/">Audit Logs</Link> | Yes | - | - | - |
 | <Link to="/features/data-governance/tracking-plans/">Tracking Plans</Link> | Yes  | Yes | Yes    | Yes    |
 | <Link to="/sources/reverse-etl/features/models/">Models</Link> | Yes  | Yes | Yes    | Yes    |
-
-<div class="infoBlock">
-The Admin role also has some additional permissions related to the configuration of the workspace settings, including managing users, modifying user permissions, enforcing MFA(multi-factor authentication), and more. This role also has the required permissions to <Link to="/dashboard-guides/permissions-management/#setting-granular-access-controls">set granular access controls</Link> for certain business-critical objects and <Link to="/dashboard-guides/permissions-management/#limiting-access-to-pii-related-features">limit PII access</Link> to certain users.
-</div>
