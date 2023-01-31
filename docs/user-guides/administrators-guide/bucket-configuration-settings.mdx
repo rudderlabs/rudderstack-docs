@@ -5,8 +5,8 @@ description: Configure cloud-specific buckets for your event backups.
 
 Depending on your <Link to="/dashboard-guides/data-retention/">data retention policy</Link>, RudderStack stores the following two types of events:
 
-* All the raw events ingested by RudderStack
-* The final event payload along with the error, in case of delivery failures
+* All the raw events ingested by RudderStack.
+* The final event payload along with the error, in case of delivery failures.
 
 <div class="successBlock">
 The events are deleted from the bucket upon successful delivery of the events. <strong>RudderStack does not persist any of the customer data</strong>.
@@ -20,7 +20,7 @@ If you are using **RudderStack Open Source** and want to use your own bucket to 
 
 ### Docker setup
 
-#### Dumping events into your S3 bucket
+#### Storing events into your S3 bucket
 
 To capture the event dumps in your S3 bucket, uncomment the following lines in your [docker.env](https://github.com/rudderlabs/rudder-server/blob/master/build/docker.env#L45-L50) file: 
 
@@ -136,4 +136,4 @@ Once the bucket is created, add the required permissions by following the below 
 
 <img src="../../assets/screenshot-2020-08-05-at-11.53.34-am.png" alt="Go to Permissions" />
 
-4. Finally the download the JSON file containing the required permissions.
+4. Finally, download the JSON file containing the required permissions.
