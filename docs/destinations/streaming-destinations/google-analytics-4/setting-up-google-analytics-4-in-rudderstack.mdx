@@ -38,9 +38,6 @@ Refer to the <Link to="#faq">FAQ</Link> section for more information on how to o
 - **GA4 client_id Field Identifier**: This field is **only required** while <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/">sending events to GA4 in cloud mode</Link>. Enter the identifier which RudderStack should look for in the payload and map to the GA4 `client_id`. For more information on `client_id`, refer to the <Link to="/destinations/streaming-destinations/google-analytics-4/google-analytics-4-cloud-mode/#mapping-client_id">Mapping `client_id`</Link> section.
 - **Enable debug mode**: In the device mode, enabling this setting lets you monitor the events in <a href="https://support.google.com/analytics/answer/7201382?hl=en#zippy=%2Cglobal-site-tag-websites">DebugView</a>. In the cloud mode, you can check the validation responses in the <Link to="/dashboard-guides/live-events/">Live Events</Link> tab. However, note that as per the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/validating-events?client_type=gtag">GA4 documentation</a>, any responses sent to the validation server will not show up in the reports.
 
-## Hybrid mode
-
-Hybrid mode sends your event data to Google Analytics 4 via both the native SDK (device mode) and the Google Analytics 4 Measurement Protocol (cloud mode). 
 ### Identify 
 
 <div class="infoBlock">
@@ -100,6 +97,26 @@ This option is applicable only if you're sending events to Google Analytics 4 vi
 - **Send all other events through device mode**: Enable this setting to send all non-attribution or sessionization events through device mode. With this set to ON, and the first toggle set to ON, you will have a pure device mode deployment.
 
 - **OneTrust Cookie Categories**: This setting lets you associate the <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Google Analytics 4.
+
+## Hybrid mode
+
+Hybrid mode sends your event data to Google Analytics 4 via both the native SDK (device mode) and the Google Analytics 4 Measurement Protocol (cloud mode).
+
+### Why hybrid mode?
+
+Unlike GA Universal, GA4’s server-side tracking (cloud mode) is less independent and may require support from client-side tracking (device mode). As noted in Google’s docs, Measurement Protocol is meant to [augment automatic collection](https://developers.google.com/analytics/devguides/collection/protocol/ga4) via gtag, Tag Manager, and Google Analytics, not replace them.
+
+Through a single hybrid mode deployment, you would have access to a fuller, more unified and accurate set of attribution data with the least impact on performance—resulting from a combination of client-side and server-side tracking.  Specifically, a hybrid instrumentation may make sense for those who prefer to maintain the benefits of cloud mode—including a faster site, more reliable data collection, and first-party data capture, while also capturing data required for attribution, sessionization, geolocation, and conversions for Google Ads Remarketing.
+
+### Get started with hybrid mode
+
+Any new GA4 connection is set to hybrid mode by default. Currently, this setting is only applicable for the `gtag.js` web SDK.
+
+To further customize your connection mode settings, navigate to the *Web SDK Settings* section of your RudderStack dashboard. By default, your configuration is set to hybrid mode, with *Use device mode to send events* is set to **ON** and *Enable pure device mode deployment* set to **OFF**.
+
+If you prefer to send all events through device mode, toggle *Enable pure device mode deployment* to **ON**.
+
+If you prefer to send all events through cloud mode, toggle *Use device mode to send events* to **OFF**.
 
 ## FAQ
 
