@@ -16,13 +16,13 @@ Follow the steps in this guide if you want RudderStack to back up the events in 
 
 ## Bucket configuration settings
 
-If you are using **RudderStack Open Source** and want to use your own bucket to dump the events, you will need to enable and set certain variables in your RudderStack backend.
+If you are using **RudderStack Open Source** and want to use your own bucket to store the events, you will need to enable and set certain variables in your RudderStack backend.
 
 ### Docker setup
 
 #### Storing events into your S3 bucket
 
-To capture the event dumps in your S3 bucket, uncomment the following lines in your [docker.env](https://github.com/rudderlabs/rudder-server/blob/master/build/docker.env#L45-L50) file: 
+To capture the events in your S3 bucket, uncomment the following lines in your [docker.env](https://github.com/rudderlabs/rudder-server/blob/master/build/docker.env#L45-L50) file: 
 
 ```
 # JOBS_BACKUP_STORAGE_PROVIDER=S3
@@ -39,12 +39,12 @@ Then follow these steps:
 
 <div class="infoBlock">
 The <code class="inline-code">&lt;prefix&gt;</code> value for the <strong><code class="inline-code">JOBS_BACKUP_PREFIX</code></strong> variable refers to the path under the bucket in which RudderStack stores the data. 
-For example, if <strong><code class="inline-code">JOBS_BACKUP_PREFIX</code></strong> is set to <strong><code class="inline-code">prefix</code></strong>  then RudderStack dumps the data in the location <strong><code class="inline-code">&lt;your_s3_bucket&gt;/prefix</code></strong>.
+For example, if <strong><code class="inline-code">JOBS_BACKUP_PREFIX</code></strong> is set to <strong><code class="inline-code">prefix</code></strong>  then RudderStack stores the data in the location <strong><code class="inline-code">&lt;your_s3_bucket&gt;/prefix</code></strong>.
 </div>
 
-#### Dumping events into your GCS bucket
+#### Storing events into your GCS bucket
 
-To capture the event dumps in your GCS bucket, uncomment the following lines in your [docker.env](https://github.com/rudderlabs/rudder-server/blob/master/build/docker.env#L45-L50) file: 
+To capture the events in your GCS bucket, uncomment the following lines in your [docker.env](https://github.com/rudderlabs/rudder-server/blob/master/build/docker.env#L45-L50) file: 
 
 ```
 # JOBS_BACKUP_STORAGE_PROVIDER=GCS
@@ -64,7 +64,7 @@ Similar to the Docker setup, you can configure your bucket settings by changing 
 
 ## Permissions for Amazon S3
 
-Follow these steps to use your own S3 bucket for RudderStack to dump the events:
+Follow these steps to use your own S3 bucket for RudderStack to store the events:
 
 1. Create a bucket using the Amazon [S3](https://aws.amazon.com/s3/) service.  
 2. Create a new [customer-managed policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_managed-policies.html) with the following JSON:
@@ -92,7 +92,7 @@ Follow these steps to use your own S3 bucket for RudderStack to dump the events:
 
 ## Permissions for GCS
 
-This section lists the steps to use your own GCS bucket for RudderStack to dump the events: 
+This section lists the steps to use your own GCS bucket for RudderStack to store the events: 
 
 Under **Roles** in your GCP dashboard, you need to create a role with the following permissions:
 
