@@ -1354,7 +1354,21 @@ export const jsonData = [
             {
                 title: "Lemnisk",
                 link: "/destinations/streaming-destinations/lemnisk/",
-                content: []
+                content: [
+                    {
+                        title: "Setting up Lemnisk",
+                        link: "/destinations/streaming-destinations/lemnisk/setting-up-lemnisk-in-rudderstack/",
+                        content: []
+                    }, {
+                        title: "Cloud Mode",
+                        link: "/destinations/streaming-destinations/lemnisk/lemnisk-cloud-mode/",
+                        content: []
+                    }, {
+                        title: "Device Mode",
+                        link: "/destinations/streaming-destinations/lemnisk/lemnisk-device-mode/",
+                        content: []
+                    },
+                ]
             },
             {
                 title: "Bugsnag",
