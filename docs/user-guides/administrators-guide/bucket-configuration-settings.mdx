@@ -88,6 +88,7 @@ To use your own S3 bucket for RudderStack to dump the events, you need to perfor
         {
             "Effect": "Allow",
             "Action": [
+                "s3:GetObject",
                 "s3:PutObject",
                 "s3:AbortMultipartUpload"
             ],
@@ -147,5 +148,3 @@ Once the bucket is created, add the required permissions to it by following the 
 <img src="../../assets/screenshot-2020-08-05-at-11.53.34-am.png" alt="Go to Permissions" />
 
 * Finally the download the JSON file containing the required permissions.
-
-
