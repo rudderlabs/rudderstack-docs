@@ -18,37 +18,33 @@ Once you have confirmed that the source platform supports sending events to Lemn
 
 ## Connection settings
 
-To successfully set up Lemnisk as a destination, you need to configure the following settings:
+To send events to Lemnisk via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, you need to configure the following settings:
 
-- **Cloud Mode**: Enter your Lemnisk REST API key.
+- **Cloud Mode**: Select one of the below options and enter the relevant details:
 
-#### Web Device Mode Settings
-* **Client ID**: Your client ID is an unique ID generated for your account.
-* **Use Native SDK to send Events:** Enable this option if you want to send events using device mode.
+#### Web Cloud Mode
+- **Write Key**: Enter the unique write key of your Lemnisk data source.
+- **Region URL**: Enter the Lemnisk region URL.
 
-#### Web Cloud Mode Settings
-* **Write Key**: Each data source at Lemnisk has a unique write key. It can be found on the Source page.
-* **Region URL**: Enter the region URL provided by Lemnisk team.
-
-#### Server-side Cloud Mode Settings
-* **X-API-Key**: Enter the X-API-Key by Lemnisk team.
-* **X-API-PassKey**: Enter the X-API-PassKey provided by Lemnisk team.
-* **Source ID**: Enter the Source ID provided by Lemnisk team.
+#### Server-side Cloud Mode
+- **X-API-Key**: Enter the Lemnisk X-API-Key.
+- **X-API-PassKey**: Enter the Lemnisk X-API-PassKey.
+- **Source ID**: Enter the Lemnisk Source ID.
 
 <div class="infoBlock">
-For more information on obtaining the Lemnisk REST API key and web client API key, refer to the <Link to="#faq">FAQ</Link> section below.
+You may contact your Lemnisk customer success manager to obtain any of the above details.
 </div>
+
+To send events to Lemnisk via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, you need to configure the following settings:
+
+#### Web Device Mode Settings
+- **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Lemnisk. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+- **Client ID**: Enter the unique ID generated for your Lemnisk account. You may contact your Lemnisk customer success manager to obtain the client ID.
+- **Use device mode to send events:** Enable this option if you want to send events using the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+- **OneTrust Cookie Categories**: This setting lets you associate the <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Lemnisk.
 
 ## FAQ
 
-### Where can I find my Lemnisk client ID, Write Key and Region URL?
-
-You may contact your Lemnisk customer success manager to get them.
-
-### Do I need X-API-Key and X-API-PassKey?
-
-X-API-Key and X-API-PassKey is only required
-
 ### How do I verify if the events are passing to Lemnisk correctly?
 
-You can verify the events coming via Rudderstack in the "Live Events" section. On the Lemnisk platform, go to Sources and click on a particular source. If the integration is successful, you will see the events under the "Live Events" section. Check the event payload to make sure it's correct.
+You can verify the events coming via Rudderstack in the <Link to="/dashboard-guides/live-events/">Live Events</Link> tab. In Lemnisk, go to **Sources** and click on a particular source. If the integration is successful, you can see the events under the **Live Events** section. Make sure that the event payload is correct.
