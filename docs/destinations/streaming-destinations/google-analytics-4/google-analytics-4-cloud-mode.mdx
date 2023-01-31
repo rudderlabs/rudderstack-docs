@@ -7,8 +7,9 @@ RudderStack lets you send your event data to Google Analytics 4 via <Link to="/d
 
 
 <div class="warningBlock">
+Note that Google Analytics 4 <strong>does not officially support a complete server-to-server integration</strong>. RudderStack utilizes the <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload">GA4 Measurement Protocol API</a> for our <strong>cloud mode</strong> integration, which <strong>does not currently allow ingestion of UTM parameters</strong> for attribution reporting. This may significantly limit your ability to use certain GA4 reporting features. Please refer to <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4">Google’s documentation</a> for more information on these limitations.
 
-Note that Google Analytics 4 **does not officially support a complete server-to-server integration**. RudderStack utilizes the [GA4 Measurement Protocol API](https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference?client_type=gtag#payload) for our **cloud mode** integration, which **does not currently allow ingestion of UTM parameters** for attribution reporting. This may significantly limit your ability to use certain GA4 reporting features. Please refer to [Google’s documentation](https://developers.google.com/analytics/devguides/collection/protocol/ga4) for more information on these limitations.
+For capturing a fuller, more robust set of attribution data while using Measurement Protocol, we suggest referencing and setting up a <Link to="#hybrid-mode">hybrid mode connection</Link>.
 </div>
 
 <GhBadge
@@ -616,6 +617,11 @@ RudderStack automatically collects <code class="inline-code">engagement_time_mse
 <div class="infoBlock">
 For more information on the optional reporting parameters in Google Analytics 4, refer to their <a href="https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=firebase#optional_parameters_for_reports">documentation</a>.
 </div>
+
+## Hybrid mode
+
+Hybrid mode sends your event data to Google Analytics 4 via both the native SDK (device mode) and the Google Analytics 4 Measurement Protocol (cloud mode). See <Link to="/destinations/streaming-destinations/google-analytics-4/setting-up-google-analytics-4-in-rudderstack#hybrid-mode">Hybrid mode</Link> to learn more.
+
 
 ## FAQ
 
