@@ -166,129 +166,13 @@ You can see that five distinct **MAIN_ID** are created, each representing an act
 
 In this section, you will define the features mentioned in the [use case](#use-case). For this, you need to modify the `feature_table_model` model in the `profiles.yaml` file of your project folder.
 
-9. Uncomment the lines you commented out in <Link to="#part-2-setting-up-id-stitching">Step 6</Link> and modify the `name` from `domain_profile` to `user_profile`. Similar to `user_id_stitcher`, this is the name of the output table that will be created in the warehouse. Also, delete all the information present in the `vars` key - as you will write your own features instead.
-
 <div class="infoBlock">
-You will write the features in the <code class="inline-code">entityvars</code> field. It is considered as a declarative form of SQL to define the features.
+For details on each feature's definition, refer to the <Link to="#feature-definitions">Feature definitions</Link> section below.
 </div>
 
-You can define the features as follows:
+9. Uncomment the lines you commented out in <Link to="#part-2-setting-up-id-stitching">Step 6</Link> and modify the `name` from `domain_profile` to `user_profile`. Similar to `user_id_stitcher`, this is the name of the output table that will be created in the warehouse. Also, delete all the information present in the `vars` key - as you will <Link to="#feature-definitions">write your own features</Link> instead.
 
-- `n_active_days_total`: This is a count of the distinct active days (when the user visited the app). The presence of a `tracks` event is a good indicator for this as every user visit triggers some events from the customer. This feature is defined as follows:
-
-```yaml
-vars:
-  - entityvar:
-		name: n_active_days_total # Alias for the temp feature
-        select: count(distinct(date(timestamp))) # SQL function to first convert timestamp to date, then count the distinct dates
-		from: inputs/rsTracks # Refering to the tracks table defined in the inputs.yaml file
-		description: Optional field describing the feature. It gets stored as feature metadata.
-features:
-  # This block is required to declare that the feature needs to be stored in feature table. 
-  # Often, we may want entityvars that are temp features, which are not required later (see below). 
-  # Such vars are not added to the features list.
-	- n_active_days_total
-```
-
-- `orders_completed_in_past_365_days`: This feature computes the distinct orders completed in the past 365 days. Often, you may want to apply some filters to the table; you can do so with a `where` clause, as shown:
-
-```yaml
-vars:
-  - entityvar:
-	    name: orders_completed_in_past_365_days # Alias for the temp feature
-        select: count( * ) # The SQL function to count all rows from tracks table where event_type = 'order_completed' (see below); If there's an order_id field, you can also use count(distinct order_id) to prevent any duplicate records related to same order
-		from: inputs/rsTracks # Refering to the tracks table defined in inputs.yaml file
-        where: event = 'order_completed' and datediff(day, date(timestamp), current_date()) <= 365
-		description: Optional field describing the feature.
-features:
-	- orders_completed_in_past_365_days
-```
-
-<div class="warningBlock">
-This feature would be a continuation to the <code class="inline-code">vars</code> block mentioned above; the <code class="inline-code">vars</code> key need not repeat again. The same applies to all the features described below.
-</div>
-
-- `first_seen_date`: Takes the earliest timestamp from both `tracks` and `identifies`. To do so, select both of these separately tables and then take the earliest value, as shown:
-
-```yaml
-vars:
-  - entityvar:
-        name: first_seen_tracks # Alias for the temp feature
-	    select: min(timestamp) # The SQL function to get oldest timestamp from the tracks table
-        from: inputs/rsTracks # Refering to the tracks table defined in inputs.yaml file
-		description: Optional field describing the feature.
-  - entityvar: # The prev block is repeated with identifies table as source
-        name: first_seen_identifies
-		select: min(timestamp)
-        from: inputs/rsIdentifies
-		description: First seen timestamp from identifies table; This is an optional field.
-  - entityvar: # Once min timestamps from both tracks and identifies are defined, we pick the earliest timestamp of both here.
-	    # The prev two are temp features used to derive this feature. 
-        # In the profiles.yaml file, we can also see an attribute called features; 
-        # We declare this name as a feature, so it doesn't get deleted and is stored in final feature table
-        name: first_seen_date # This is the name with which the feature gets stored
-		select: to_date(least(first_seen_tracks, first_seen_identifies)) # It uses the names we defined in above entityvars, and performs sql operations ot get lowest value of these
-features:
-   - first_seen_date   # Ensures that the feature is stored in the final table (unlike first_seen_tracks or first_seen_identifies)
-```
-
-- `campaign_source_first_touch`: From the `identifies` table, picks the earliest available `campaign_source`. Sometimes, the first touch may be organic (null source) but the same user may arrive later through a campaign. In such cases, it is desirable to capture the first non-organic touch. For this, you can filter out the empty rows through a `where` operator, as shown:
-
-
-```yaml
-vars:
-	- entityvar:
-		    name: campaign_source_first_touch # Name of the feature
-		    select: first_value(context_campaign_source) # Window functions are supported in entityvars, as long as the value is unique for a given user id (ex: first_value, min, max etc - unlike rank, row_number etc); 
-		    window: 
-				# All the window functions in entityvars are partitioned by main_id by default. It can take only order_by as a parameter.
-				order_by:
-					# In this example, we take the oldest occurence of the campaign source, so we sort the rows by timestamp in ascending order
-					- timestamp asc
-			from: inputs/rsIdentifies
-			where: context_campaign_source is not null and context_campaign_source != '' # We can filter rows with a where condition.  In this case, we ignore all rows where the campaign source is null or blank - to ensure we ignore organic visits
-features:
-  - campaign_source_first_touch  
-```
-
-- `avg_session_length_in_sec_last_7_days`: RudderStack captures a `session_id` and a `session_start_time` by default in the `page` and `track` calls. You can use this `session_id` to compute each session length and their average. 
-
-To add a time-bounded feature, for example, only the sessions in the past one week, `entityvar` is not sufficient. The output of `entityvar` is assumed to be a single row per `user_id` / `main_id`. However, for calculating the average session length, you need to compute session length for each session, followed by averaging it across all the sessions. To do so, you can use `inputvar`. In `inputvar`, you can apply transformations on (a copy of) the input table itself, where row-level modifications are possible. You can also use the window functions with arbitrary `partition_by` clauses too, as shown:
-
-
-```yaml
-vars:
-  - inputvar:
-      name: session_start_time
-			select: min(timestamp)
-			window:
-				partition_by:
-					- session_id # Partition on session_id, or any other key than main_id wouldn't have been possible in entityvar
-					- main_id # inputvars do not make any assumptions around main_id being the primary key of the table, hence this needs to be given in partition by if required.
-			from: inputs/rsTracks
-  - inputvar:
-      name: session_end_time
-			select: max(timestamp)
-			window:
-				partition_by:
-					- session_id
-					- main_id
-			from: inputs/rsTracks
-  - inputvar:
-      name: session_length
-			select: datediff(second, session_start_time, session_end_time)
-			from: inputs/rsTracks
-	- entityvar:
-      # This is the final query
-			name: avg_session_length_in_sec_last_7_days
-			select: avg(session_length)
-			from: inputs/rsTracks
-			where: datediff(day, date(session_start_time), current_date()) <= 7
-features:
-	- avg_session_length_in_sec_last_7_days
-```
-
-Once you add all the features, the `profiles.yaml` file should look something like below:
+Once you define all the features, the `profiles.yaml` file should look something like below:
 
 ```yaml
 # This is a sample file, for detailed reference see: https://rudderlabs.github.io/pywht/
@@ -408,4 +292,126 @@ The feature table output is shown below:
 
 <img src="../assets/features/profiles-feature-table.png" alt="Feature table" />
 
-In the above image, you can see that 5 rows are created - one per `main_id`. For each row, all the five features are created with their values computed and filled in. There is one more column `valid_at` indicating when the feature was computed. 
+In the above image, you can see that 5 rows are created - one per `main_id`. For each row, all the five features are created with their values computed and filled in. There is one more column `valid_at` indicating when the feature was computed.
+
+## Feature definitions
+
+You can define the features in the `profiles.yaml` file as follows:
+
+<div class="infoBlock">
+You will write the features in the <code class="inline-code">entityvars</code> field. It is considered as a declarative form of SQL to define the features.
+</div>
+
+- `n_active_days_total`: This is a count of the distinct active days (when the user visited the app). The presence of a `tracks` event is a good indicator for this as every user visit triggers some events from the customer. This feature is defined as follows:
+
+```yaml
+vars:
+  - entityvar:
+		name: n_active_days_total # Alias for the temp feature
+        select: count(distinct(date(timestamp))) # SQL function to first convert timestamp to date, then count the distinct dates
+		from: inputs/rsTracks # Refering to the tracks table defined in the inputs.yaml file
+		description: Optional field describing the feature. It gets stored as feature metadata.
+features:
+  # This block is required to declare that the feature needs to be stored in feature table. 
+  # Often, we may want entityvars that are temp features, which are not required later (see below). 
+  # Such vars are not added to the features list.
+	- n_active_days_total
+```
+
+- `orders_completed_in_past_365_days`: This feature computes the distinct orders completed in the past 365 days. Often, you may want to apply some filters to the table; you can do so with a `where` clause, as shown:
+
+```yaml
+vars:
+  - entityvar:
+	    name: orders_completed_in_past_365_days # Alias for the temp feature
+        select: count( * ) # The SQL function to count all rows from tracks table where event_type = 'order_completed' (see below); If there's an order_id field, you can also use count(distinct order_id) to prevent any duplicate records related to same order
+		from: inputs/rsTracks # Refering to the tracks table defined in inputs.yaml file
+        where: event = 'order_completed' and datediff(day, date(timestamp), current_date()) <= 365
+		description: Optional field describing the feature.
+features:
+	- orders_completed_in_past_365_days
+```
+
+<div class="warningBlock">
+This feature would be a continuation to the <code class="inline-code">vars</code> block mentioned above; the <code class="inline-code">vars</code> key need not repeat again. The same applies to all the features described below.
+</div>
+
+- `first_seen_date`: Takes the earliest timestamp from both `tracks` and `identifies`. To do so, select both of these separately tables and then take the earliest value, as shown:
+
+```yaml
+vars:
+  - entityvar:
+        name: first_seen_tracks # Alias for the temp feature
+	    select: min(timestamp) # The SQL function to get oldest timestamp from the tracks table
+        from: inputs/rsTracks # Refering to the tracks table defined in inputs.yaml file
+		description: Optional field describing the feature.
+  - entityvar: # The prev block is repeated with identifies table as source
+        name: first_seen_identifies
+		select: min(timestamp)
+        from: inputs/rsIdentifies
+		description: First seen timestamp from identifies table; This is an optional field.
+  - entityvar: # Once min timestamps from both tracks and identifies are defined, we pick the earliest timestamp of both here.
+	    # The prev two are temp features used to derive this feature. 
+        # In the profiles.yaml file, we can also see an attribute called features; 
+        # We declare this name as a feature, so it doesn't get deleted and is stored in final feature table
+        name: first_seen_date # This is the name with which the feature gets stored
+		select: to_date(least(first_seen_tracks, first_seen_identifies)) # It uses the names we defined in above entityvars, and performs sql operations ot get lowest value of these
+features:
+   - first_seen_date   # Ensures that the feature is stored in the final table (unlike first_seen_tracks or first_seen_identifies)
+```
+
+- `campaign_source_first_touch`: From the `identifies` table, picks the earliest available `campaign_source`. Sometimes, the first touch may be organic (null source) but the same user may arrive later through a campaign. In such cases, it is desirable to capture the first non-organic touch. For this, you can filter out the empty rows through a `where` operator, as shown:
+
+
+```yaml
+vars:
+	- entityvar:
+		    name: campaign_source_first_touch # Name of the feature
+		    select: first_value(context_campaign_source) # Window functions are supported in entityvars, as long as the value is unique for a given user id (ex: first_value, min, max etc - unlike rank, row_number etc); 
+		    window: 
+				# All the window functions in entityvars are partitioned by main_id by default. It can take only order_by as a parameter.
+				order_by:
+					# In this example, we take the oldest occurence of the campaign source, so we sort the rows by timestamp in ascending order
+					- timestamp asc
+			from: inputs/rsIdentifies
+			where: context_campaign_source is not null and context_campaign_source != '' # We can filter rows with a where condition.  In this case, we ignore all rows where the campaign source is null or blank - to ensure we ignore organic visits
+features:
+  - campaign_source_first_touch  
+```
+
+- `avg_session_length_in_sec_last_7_days`: RudderStack captures a `session_id` and a `session_start_time` by default in the `page` and `track` calls. You can use this `session_id` to compute each session length and their average. 
+
+To add a time-bounded feature, for example, only the sessions in the past one week, `entityvar` is not sufficient. The output of `entityvar` is assumed to be a single row per `user_id` / `main_id`. However, for calculating the average session length, you need to compute session length for each session, followed by averaging it across all the sessions. To do so, you can use `inputvar`. In `inputvar`, you can apply transformations on (a copy of) the input table itself, where row-level modifications are possible. You can also use the window functions with arbitrary `partition_by` clauses too, as shown:
+
+
+```yaml
+vars:
+  - inputvar:
+      name: session_start_time
+			select: min(timestamp)
+			window:
+				partition_by:
+					- session_id # Partition on session_id, or any other key than main_id wouldn't have been possible in entityvar
+					- main_id # inputvars do not make any assumptions around main_id being the primary key of the table, hence this needs to be given in partition by if required.
+			from: inputs/rsTracks
+  - inputvar:
+      name: session_end_time
+			select: max(timestamp)
+			window:
+				partition_by:
+					- session_id
+					- main_id
+			from: inputs/rsTracks
+  - inputvar:
+      name: session_length
+			select: datediff(second, session_start_time, session_end_time)
+			from: inputs/rsTracks
+	- entityvar:
+      # This is the final query
+			name: avg_session_length_in_sec_last_7_days
+			select: avg(session_length)
+			from: inputs/rsTracks
+			where: datediff(day, date(session_start_time), current_date()) <= 7
+features:
+	- avg_session_length_in_sec_last_7_days
+```
