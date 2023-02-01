@@ -14,7 +14,7 @@ Data protection laws such as GDPR, CCPA, etc., require the websites to get user 
 The JavaScript SDK seamlessly integrates with the OneTrust SDK. It lets you map the OneTrust cookie/consent groups to RudderStack's consent purposes. RudderStack, in turn, uses this consent information to enable/disable tracking and sending the data.
 
 <div class="warningBlock">
-The OneTrust integration with the JavaScript SDK is applicable only for the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> connections. For the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> connections, you can write a <Link to="/features/transformations/">transformation</Link> to achieve your desired use-case.
+The OneTrust integration with the JavaScript SDK is applicable only for the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link> connections. For the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link> connections, you can write a <Link to="/features/transformations/#adding-a-transformation">transformation</Link> to achieve your desired use-case.
 </div>
 
 ## How the RudderStack-OneTrust integration works
@@ -69,9 +69,7 @@ You need to enable OneTrust for a given JavaScript source. To do so, specify the
 ```
 
 <div class="warningBlock">
-As the above snippet shows, you must load the OneTrust script first and if the user provides consent, then only load the JavaScript SDK. This is because the JavaScript SDK determines whether to send events to a destination based on the user's consent. If a user denies OneTrust, then Rudderstack:
-- Does not load the destination SDK.
-- Does not attempt to relay events to the connected destination.
+As the above snippet shows, you <strong>must</strong> first load the OneTrust script and if the user provides consent, only then load the JavaScript SDK. This is because the JavaScript SDK determines whether to send events to a destination or not based on the user's consent. If a user denies OneTrust, then Rudderstack neither loads the destination SDKs nor sends any events to them.
 </div>
 
 2. One way to load the JavaScript SDK after the user provides the consent is to modify the `OptanonWrapper()` callback function provided by OneTrust. You also need to add the `cookieConsentManager` option in the `load()` call as shown:
@@ -102,16 +100,16 @@ Once completed, RudderStack reads the consented categories and filters the desti
 Replace <Link to="/resources/glossary/#write-key"><code class="inline-code">WRITE_KEY</code></Link> and <Link to="/dashboard-guides/overview/#data-plane-url"><code class="inline-code">DATA_PLANE_URL</code></Link> in the above snippet with the actual values.
 </div>
 
-## Consent management with other manager 
+## Consent management with other managers
 
-If you are using a consent manager other than OneTrust, you can configure the cookie categories you want to show on your website whenever a new user visits your website.
+If you are using a consent manager other than OneTrust, configure the cookie categories you want to show on your website whenever a new user visits your website.
 
 Next, you need to create an internal mapping between these cookie categories and the destinations configured in RudderStack. For example:
 - Analytical cookie: Amplitude, Google Analytics
 - Targeting cookie: Bing Ads, Google Ads
 - Marketing cookie: Braze, Mailchimp, Customer.io
 
-When a user provides consent, you should fetch the consent (via API/SDK provided by your consent manager) and filter the destinations depending on the consent. Once you have the list of destinations that the user has provided consent for, you can load the Rudderstack JavaScript SDK. 
+When a user provides consent, you should fetch the consent (via API/SDK provided by your consent manager) and filter the destinations depending on the consent. Once you have the list of destinations that the user has provided consent for, you can load the Rudderstack JavaScript SDK for those destinations.
 
 For example, if a user has provided consent for analytical cookie, then you can load the JavaScript SDK as shown:
 
@@ -131,10 +129,8 @@ rudderanalytics.load(WRITE_KEY,DATA_PLANE_URL,{
 
 ### Can I integrate the RudderStack JavaScript SDK with any consent manager?
 
-Currently, RudderStack only supports **OneTrust** cookie consent manager.
-
-However, you can use a workaround to integrate some other consent manager by managing the cookie consent yourself and translating that information into a list of destinations which need to be loaded/blocked. Once done, load the JavaScript SDK to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/filtering/#filtering-destinations">filter the destinations</Link> via the `integrations` object.
+Currently, RudderStack only supports **OneTrust** cookie consent manager. For using other consent managers, you can refer to the <Link to="#consent-management-with-other-managers">Consent management with other managers</Link> section. 
 
 ### What will happen if RudderStack JavaScript SDK is loaded before the OneTrust modal is closed?
 
-In such a case, the JavaScript SDK will not be able to capture the user consent. Hence, it will load all the connected destinations and the events will flow through all of them.
+In such a case, the JavaScript SDK will not be able to capture the user consent. Hence, it will load all the connected destinations and all the events will flow through them.
