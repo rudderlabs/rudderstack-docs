@@ -1,35 +1,12 @@
 ---
-title: "Optimizely Feature Experimentation"
-description: Send your event data from RudderStack to Optimizely Feature Experimentation.
+title: "Sending Events via Device Mode"
+description: Send events to Optimizely Feature Experimentation using RudderStack's device mode.
+aliases: ["Optimizely Full Stack device mode", "Optimizely Feature Experimentation device mode"]
 ---
 
-[Optimizely Feature Experimentation](https://www.optimizely.com/products/full-stack/) (formerly Optimizely Full Stack) is a powerful A/B testing, feature flagging and experimentation platform. It allows you to track every aspect of your customer's overall product journey, and experiment with various application features.
+RudderStack lets you send the experimentation data from your mobile apps to Optimizely Feature Experimentation via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
-## Getting started
-
-RudderStack supports sending events to Optimizely via the following <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link>:
-
-| **Connection Mode** | **Web** | **Mobile**    | **Server** |
-| :------------------ | :------ | :------------ | :--------- |
-| **Device mode**     | **-**   | **Supported** | **-**      |
-| **Cloud mode**      | **-**   | **-**         | **-**      |
-
-Once you have confirmed that the source platform supports sending events to Optimizely, follow these steps:
-
-1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Optimizely Full Stack**.
-2. Assign a name to your destination and click **Continue**.
-
-## Connection settings
-
-To successfully configure Optimizely Feature Experimentation as a destination, you will need to configure the following settings:
-
-- **Track Known Users**: Optimizely does not alias known and unknown users. Therefore, RudderStack will send the `anonymousId` to Optimizely by default if this setting is disabled. Otherwise, the `userId` will be sent.
-- **Send the experiment and variation information as properties on a track call**: By enabling this setting, the experiment data can be sent to the other destinations as a `track` call. This is done by triggering the `Experiment Viewed` event every time an Optimizely live variable is accessed.
-- **Specifies the experiment viewed as non interaction event for Google Analytics**: Enabling this option sends `Experiment Viewed` as a non-interaction event.
-
-Configure the settings according to your requirements and click **Next** to complete the setup.
-
-### Implementation Prerequisites
+## Prerequisites
 
 Unlike other destinations, Optimizely Feature Experimentation for the mobile integration works a little differently. You will have to implement some Optimizely functions natively to make sure the experiment logic runs correctly.
 
@@ -46,9 +23,9 @@ RudderStack maps the <code class="inline-code">track</code> calls with Optimizel
   </TabList>
     <TabPanels>
       <TabPanel>
-        Follow these steps to add Optimizely to your Android Project:
+        Follow these steps to add Optimizely Feature Experimentation to your Android Project:
 <ol>
-<li>Add the following <code class="inline-code">repository</code> to your <code class="inline-code">app/build.gradle</code> file.
+<li>Add the following <code class="inline-code">repository</code> to your <code class="inline-code">app/build.gradle</code> file.<br /><br />
 <span>
 
 ```
@@ -58,7 +35,7 @@ repositories {
 ```
 </span>
 </li>
-<li>After that, add the following <code class="inline-code">dependency</code> in the same file:
+<li>After that, add the following <code class="inline-code">dependency</code> in the same file:<br /><br />
 <span>
 
 ```
@@ -81,7 +58,7 @@ val optimizelyManager =  OptimizelyManager.builder()
 ```
 </span>
 </li>
-<li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> in your <code class="inline-code">Application</code> class:
+<li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> in your <code class="inline-code">Application</code> class:<br /><br />
 <span>
 
 ```
@@ -103,9 +80,9 @@ Make sure you pass the Optimizely manager instance you created in the previous s
 </ol>
       </TabPanel>
       <TabPanel>
-        Follow these steps to add Optimizely to your iOS project:
+        Follow these steps to add Optimizely Feature Experimentation to your iOS project:
 <ol>
-<li>Go your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Optimizely</code> extension
+<li>Go your <code class="inline-code">Podfile</code> and add the <code class="inline-code">Rudder-Optimizely</code> extension:<br /><br />
 <span>
 
 ```
@@ -113,7 +90,7 @@ pod 'Rudder-Optimizely'
 ```
 </span>
 </li>
-<li>After adding the dependency followed by <code class="inline-code">pod install</code> , you can add the imports to your <code class="inline-code">AppDelegate.m</code> file as shown:
+<li>After adding the dependency followed by <code class="inline-code">pod install</code> , you can add the imports to your <code class="inline-code">AppDelegate.m</code> file as shown:<br /><br />
 <span>
 
 ```
@@ -121,7 +98,7 @@ pod 'Rudder-Optimizely'
 ```
 </span>
 </li>
-<li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> as shown:
+<li>Finally, change the initialization of your <code class="inline-code">RudderClient</code> as shown:<br /><br />
 <span>
 
 ```

@@ -1,0 +1,91 @@
+---
+title: "Sending Events via Cloud Mode"
+description: Send events to Optimizely Feature Experimentation using RudderStack's cloud mode.
+aliases: ["Optimizely Full Stack cloud mode", "Optimizely Feature Experimentation cloud mode"]
+---
+
+RudderStack lets you send your web experimentation data to Optimizely Feature Experimentation via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>.
+
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/">GitHub repository</a>.
+
+## Track
+
+RudderStack uses the <Link to="/event-spec/standard-events/track">`track`</Link> call to send the experiment-related information to Optimizely. To do so, it uses Optimizely's <a href="https://docs.developers.optimizely.com/experimentation/v3.1.0-full-stack/reference/trackevent">`track`</a> API.
+
+<div class="infoBlock">
+You can view the metrics for an experiment either on the <strong>Results</strong> page of your Optimizely dashboard or as a data export. For more information, refer to the <Link to="#viewing-experimentation-results">Viewing experimentation results</Link> section below.
+</div>
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track(
+  "Product Added", {
+    item: "Tshirt",
+    currency: "USD"
+  })
+```
+
+### Supported mappings
+
+The following table lists the RudderStack event properties and their mappings with the Optimizely fields:
+
+| RudderStack property   | Optimizely property |  Data type |
+| :-------------| :-----------------| :---- |
+| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `eventKey` | String |
+| `userId` <br/> `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `userId` | String |
+| `traits` <br/> `context.traits` | `userAttributes` | Object |
+| `properties` | `eventTags` | Object |
+
+### Viewing experimentation results
+
+To view the experimentation-related metrics in the **Results** page of your Optimizely dashboard, make sure you:
+
+- Use the <a href="https://docs.developers.optimizely.com/experimentation/v3.1.0-full-stack/reference/activate">`activate`</a> API first and then send your `track` events. If you do not activate the user, the event won't be attributed to the user and won't be shown in the **Results** page.
+- Pass the same `userId` in your events that you pass to the `activate` API.
+
+## Page
+
+You can use the <Link to="/event-spec/standard-events/page">`page`</Link> call to record your website's page views with any additional relevant information about the viewed page.
+
+If you have enabled the **Track Categorized Pages** or **Track Named Pages** dashboard setting, then RudderStack sends every `page` call along with the page `category` or `name` as a <Link to="#track">`track`</Link> event to Optimizely, with the event name as `Viewed ${category} page` or `Viewed ${name} page`.
+
+<div class="infoBlock">
+All the <Link to="#supported-mappings">mappings</Link> supported for the <code class="inline-code">track</code> event are applicable for <code class="inline-code">page</code> event as well.
+</div>
+
+A sample `page` call is shown below:
+
+```javascript
+rudderanalytics.page("home");
+```
+
+In the above snippet, `home` is the name of the web page. If **Track Named Pages** setting is enabled, RudderStack sends a `track` event named `Viewed home page` to Optimizely.
+
+## Screen
+
+You can use the <Link to="/event-spec/standard-events/screen">`screen`</Link> call to record your users' mobile screen views with any additional relevant information about the screen.
+
+RudderStack sends every `screen` call you make as a <Link to="#track">`track`</Link> event to Optimizely, with the name `Viewed ${name} screen` - where `name` is the name of the viewed screen. If you do not provide any name, RudderStack sets the event name as `Viewed screen`.
+
+<div class="infoBlock">
+All the <Link to="#supported-mappings">mappings</Link> supported for the <code class="inline-code">track</code> event are applicable for <code class="inline-code">screen</code> event as well.
+</div>
+
+A sample `screen` call is shown below:
+
+```javascript
+rudderanalytics.screen("Main");
+```
+
+In the above snippet, `Main` is the name of the app screen. RudderStack then sends a `track` event named `Viewed Main screen` to Optimizely.
+
+## FAQ
+
+### I am unable to see the events in my experiments. What should I do?
+
+Define the custom events in your Optimizely Web dashboard and add those events as metrics in the corresponding Optimizely experiment.
+
+While defining the custom event, make sure you also provide the **API Name** and while calling the <Link to="#track">`track`</Link> API, use this name as the name of your event.
+
+For more information on creating custom events in Optimizely Web, refer to this <a href="https://support.optimizely.com/hc/en-us/articles/4410288960909-Custom-events-in-Optimizely-Web#heading-3">Optimizely support article</a>.
