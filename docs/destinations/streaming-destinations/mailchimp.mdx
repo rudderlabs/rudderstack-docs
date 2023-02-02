@@ -177,6 +177,10 @@ The following table lists the mappings between the RudderStack and Mailchimp pro
 | `properties.isSyncing` | `is_syncing` | RudderStack triggers the [targeted automations](https://mailchimp.com/developer/marketing/guides/track-outside-activity-events/#trigger-automations-with-events) by default. However, you can set `isSyncing` to `true` if you don't want to trigger them. |
 | `originalTimestamp` | `occurred_at` |  - |
 
+<div class="infoBlock">
+RudderStack stringifies all the values received in <code class="inline-code">properties[key]</code> as Mailchimp only accepts the string values in <code class="inline-code">properties[key]</code>. 
+</div>
+
 ## FAQ
 
 ### Where do I get the Mailchimp API Key?
