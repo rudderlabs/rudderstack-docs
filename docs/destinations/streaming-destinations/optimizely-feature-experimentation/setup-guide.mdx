@@ -21,13 +21,17 @@ To successfully configure Optimizely Feature Experimentation as a destination, c
 
 - **SDK Key**: Enter your Optimizely SDK key. You can find it by going to your [Optimizely dashboard](https://app.optimizely.com/) and navigating to **Settings** > **Environments** > **SDK Key / Primary URL**.
 - **Base URL**: Enter the URL where your [Optimizely Agent](https://docs.developers.optimizely.com/full-stack/v4.0/docs/optimizely-agent) is running. For more information on setting up the Optimizely Agent, refer to the [Optimizely documentation](https://docs.developers.optimizely.com/full-stack/v4.0/docs/setup-optimizely-agent).
-- **Track Known Users**: Optimizely does not alias known and unknown users.  By default, this setting is enabled. RudderStack tracks only the known users and maps `userId` to Optimizely's `userId`. When disabled, RudderStack maps `anonymousId` to Optimizely's `userId`.
-- **Send the experiment and variation information as properties in track calls**: This setting is enabled by default. RudderStack sends the experiment-related data to the other destinations as `track` calls. RudderStack does this by triggering the `Experiment Viewed` event every time an Optimizely live variable is accessed.
-- **Specify Experiment Viewed as non-interaction event for Google Analytics**: This setting is enabled by default. RudderStack sends a `Experiment Viewed` call as a non-interaction event.
-- **Track Categorized Pages**: This setting is applicable **only** for the cloud mode. RudderStack sends a `page` call to Optimizely Web having `category` as `track`.
-- **Track Named Pages**: This setting is applicable **only** for the cloud mode. RudderStack sends a `page` call to Optimizely Web having `name` as `track`.
+- **Track Known Users**: By default, this setting is enabled. RudderStack tracks only the known users and maps `userId` to Optimizely's `userId`. When disabled, RudderStack maps `anonymousId` to Optimizely's `userId`.
+
+<div class="infoBlock">
+Optimizely does not alias known and unknown users.
+</div>
+
+- **Send the experiment and variation information as properties in track calls**: This setting is enabled by default and is applicable for the device mode. RudderStack sends the experiment-related data to the other destinations as `track` calls. RudderStack does this by triggering the `Experiment Viewed` event every time an Optimizely live variable is accessed.
+- **Specify Experiment Viewed as non-interaction event for Google Analytics**: This setting is enabled by default and is applicable for the device mode. RudderStack sends a `Experiment Viewed` call as a non-interaction event.
+- **Track Categorized Pages**: This setting is applicable **only** for the cloud mode. When enabled, RudderStack sends every `page` call you make along with the page `category` as a `track` event.
+- **Track Named Pages**: This setting is applicable **only** for the cloud mode. When enabled, RudderStack sends every `page` call you make along with the page `name` as a `track` event.
 - **Client-side Events Filtering**: This setting is applicable only if you're sending events via the **device mode**. It lets you specify which events should be blocked or allowed to flow through to Optimizely.  Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
-- **Use device-mode to send events**: Enable this setting to send all the events from your mobile SDKs to Optimizely via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
 
 <div class="infoBlock">
 If you're planning to send events to Optimizely Feature Experimentation via the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>, you will need to some additional configuration. Refer to the <Link to="/destinations/streaming-destinations/optimizely-feature-experimentation/device-mode/">Sending events via device mode</Link> guide for more details.
