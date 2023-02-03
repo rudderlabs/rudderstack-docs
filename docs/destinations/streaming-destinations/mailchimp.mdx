@@ -148,6 +148,39 @@ rudderanalytics.identify(
 This setting will <strong>NOT</strong> work for new users. For new users, the subscription status will always be set as <code class="inline-code">pending</code> or <code class="inline-code">subscribed</code>, depending on the set <code class="inline-code">doubleOptIn</code> setting.
 </div>
 
+## Track
+
+You can use the <Link to="/event-spec/standard-events/track">`track`</Link> call to track user actions or [trigger targeted automations](https://mailchimp.com/developer/marketing/guides/track-outside-activity-events/#trigger-automations-with-events) in Mailchimp using their [Events](https://mailchimp.com/developer/marketing/api/list-member-events/) API.
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("registered_referral", {
+  "referee_id": "1233",
+  "referral_acceptance": "accepted",
+  "email": "alex@example.com"
+})
+```
+
+<div class="infoBlock">
+<code class="inline-code">email</code> is a required field for making a <code class="inline-code">track</code> call successfully. You can pass it in either <code class="inline-code">traits.email</code> , <code class="inline-code">context.traits.email</code>, or <code class="inline-code">properties.email</code>. RudderStack hashes the <code class="inline-code">email</code> field and replaces <code class="inline-code">subscriber_hash</code> in the <a href="https://mailchimp.com/developer/marketing/api/list-member-events/">Mailchimp Events API endpoint</a>.
+</div>
+
+### Supported mappings
+
+The following table lists the mappings between the RudderStack and Mailchimp properties:
+
+| RudderStack property | Mailchimp property | Notes |
+| :--- | :--- |:--- |
+| `event`<br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `name` | Event name must contain 2-30 characters. | 
+| `properties` | `properties` | - |
+| `properties.isSyncing` | `is_syncing` | RudderStack triggers the [targeted automations](https://mailchimp.com/developer/marketing/guides/track-outside-activity-events/#trigger-automations-with-events) by default. However, you can set `isSyncing` to `true` if you don't want to trigger them. |
+| `originalTimestamp` | `occurred_at` |  - |
+
+<div class="infoBlock">
+RudderStack stringifies all the values received in <code class="inline-code">properties[key]</code> as Mailchimp only accepts the string values in <code class="inline-code">properties[key]</code>. 
+</div>
+
 ## FAQ
 
 ### Where do I get the Mailchimp API Key?
