@@ -14,7 +14,7 @@ Find the open source transformer code for this destination in the <a href="https
 The <Link to="/event-spec/standard-events/track">`track`</Link> call lets you capture user events along with the properties associated with them.
 
 <div class="infoBlock">
-RudderStack supports the <code class="inline-code">track</code> call in both the cloud and device modes for Rockerbox integration. Refer to the <Link to="/destinations/streaming-destinations/rockerbox/setting-up-rockerbox/#hybrid-mode">Hybrid mode</Link> for more information.
+RudderStack supports the <code class="inline-code">track</code> call in both the cloud and device modes for the Rockerbox destination. Refer to <Link to="/destinations/streaming-destinations/rockerbox/setting-up-rockerbox/#hybrid-mode">Hybrid mode</Link> for more information.
 </div>
 
 A sample `track` call is shown below:
@@ -27,6 +27,10 @@ rudderanalytics.track(
     user_actual_id: 12345 
   })
 ```
+
+<div class="infoBlock">
+RudderStack sends all the properties of the <code class="inline-code">track</code> event to Rockerbox.
+</div>
 
 The following table lists the **required** properties and their mappings between RudderStack and Rockerbox:
 
@@ -52,4 +56,3 @@ The following table lists the **optional** properties which are pre-defined in R
 | `properties.products.$.promotion_name`           | `promotion_name`  |
 | `properties.countryCode`           | `country_code`  |
 | `properties.listingId`           | `listing_id`  |
-
