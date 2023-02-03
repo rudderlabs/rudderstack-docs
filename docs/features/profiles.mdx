@@ -86,7 +86,7 @@ yes
 <div class="infoBlock">
 <ul>
     <li>When prompted for a profile name in the CLI, enter <code class="inline-code">test</code>.</li>
-    <li>You will see the last line <strong>only if</strong> you already have set up Profiles earlier. Enter <code class="inline-code">yes</code> in this case.</li>
+    <li>You will see the last line <strong>only if</strong> you have already set up Profiles earlier. Enter <code class="inline-code">yes</code> in this case.</li>
 </ul>
 </div>
 
@@ -96,7 +96,7 @@ yes
 pb init pb-project -o ProfilesDemo
 ```
 
-Your project folder will have the following structure. These files contain some default prefilled values that you need to modify.
+Your project folder will have the following structure. These files contain some default prefilled values that you need to modify (explained in the next sections).
 
 <img src="../assets/features/profiles-pb-structure.png" alt="Project structure" />
 
@@ -282,7 +282,7 @@ models:
 pb run
 ```
 
-In a few minutes, you will see a similar output as <Link to="#part-2-setting-up-id-stitching">Step 7</Link>. However, you will get two SQL files this time - one for the ID stitcher and feature table respectively. You will see also two tables created in the warehouse.
+In a few minutes, you will see a similar output as <Link to="#part-2-setting-up-id-stitching">Step 7</Link>. However, you will get two SQL files this time - one for the ID stitcher and the other for the feature table. You will also see two tables created in the warehouse.
 
 <div class="infoBlock">
 The two SQL files are created in a new folder and are present for debugging purposes. You can check the queries to understand what is happening behind the scenes.
@@ -349,7 +349,7 @@ features:
 This feature would be a continuation to the <code class="inline-code">vars</code> block mentioned above; the <code class="inline-code">vars</code> key need not repeat again. The same applies to all the features described below.
 </div>
 
-- `first_seen_date`: Takes the earliest timestamp from both `tracks` and `identifies`. To do so, select both of these separately tables and then take the earliest value, as shown:
+- `first_seen_date`: Takes the earliest timestamp from both `tracks` and `identifies`. To do so, select both of these tables separately and then take the earliest value, as shown:
 
 ```yaml
 vars:
