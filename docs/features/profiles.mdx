@@ -3,21 +3,19 @@ title: "Profiles"
 description: Create unified customer profiles with RudderStack Profiles.
 ---
 
-This guide walks you through RudderStack **Profiles**. It lets you build a unified customer profile from all the cross-platform data residing in your warehouse.
+This guide walks you through RudderStack **Profiles**. It lets you build a unified customer profile from all the cross-platform data in your warehouse.
 
 ## Introduction
 
-Companies gather user data across various digital touchpoints like websites, mobile apps, enterprise systems like CRMs, marketing platforms, etc. A user is also identified with multiple identifiers across their product journey like their email ID, phone number, device ID, anonymous ID, account usernames. In addition, they might have multiple such identifiers as they often change their devices and use work and personal emails together.
+Companies gather user data across various digital touchpoints like websites, mobile apps, enterprise systems like CRMs, marketing platforms, etc. Users are also identified with multiple identifiers across their product journey, like their email ID, phone number, device ID, anonymous ID, account usernames, and more. In addition, they might have multiple identifiers as they often change their devices and use work and personal emails together.
 
-All of this data is typically scattered across multiple tables within a warehouse. **Profiles** is RudderStack's solution to tie all the user data from these tables into a unified view, giving you a 360-degree view of the user - often called as **Customer 360**.
+All of this data is typically scattered across multiple tables within a warehouse. **Profiles** is RudderStack's solution to tie all the user data from these tables into a unified view, giving you a 360-degree view of the user - often called **Customer 360**.
 
 <div class="infoBlock">
-Customer 360 can be best represented as a table with one row per user, with bunch of features or attributes computed for that user.
+Customer 360 is best represented as a table with one row per user, with multiple features or attributes computed for that user.
 </div>
 
 ## 10-step guide to using Profiles
-
-To understand how Profiles works, you will implement a use case by leveraging a sample dataset based on [RudderStack's ecommerce tracking plan](https://www.rudderstack.com/docs/event-spec/ecommerce-events-spec/). This data is available in Snowflake, which you can access by following the steps in this section. 
 
 This section is divided into four parts:
 
@@ -28,9 +26,11 @@ This section is divided into four parts:
 
 ### Use case
 
+To understand how Profiles works, you will implement a use case by leveraging a sample dataset based on [RudderStack's ecommerce tracking plan](https://www.rudderstack.com/docs/event-spec/ecommerce-events-spec/). This data is available in Snowflake, which you can access by following the steps in this guide.
+
 You will create a simple Profiles project with the following capabilities:
 
-- ID stitch `anonymous_id`, `user_id`, and `email` so that the user activity prior to signup can be tied to their post-signup activity. Also, connect different user IDs if they share the same email.
+- ID stitch `anonymous_id`, `user_id`, and `email` so that the user activity before signup can be tied to their post-signup activity. Also, connect different user IDs if they share the same email.
 - Create the following features:
 
 | Feature | Description |
@@ -38,11 +38,11 @@ You will create a simple Profiles project with the following capabilities:
 | `n_active_days_total` | Number of days since the user first visited the app. |
 | `orders_completed_in_past_365_days` | Number of orders completed in the past 365 days. |
 |  `first_seen_date` | The date and time when the user was first seen, including their time as an anonymous user. |
-| `campaign_source_first_touch` | Captured from the campaign data that is **automatically tracked** by RudderStack. |
-| `avg_session_length_in_sec_last_7_days` | Average length of the user session. |
+| `campaign_source_first_touch` | Captured from the campaign data - this is **automatically tracked** by RudderStack. |
+| `avg_session_length_in_sec_last_7_days` | Average length of the user session in the past week. |
 
 <div class="infoBlock">
-These are very basic features to demonstrate how you can use Profiles. You can add a lot more features with complex logic to explore its full capabilities.
+These are some basic features to demonstrate how you can use Profiles. You can add many more features with complex logic to explore its full capabilities.
 </div>
 
 ### Part 1: Setup
@@ -53,29 +53,21 @@ These are very basic features to demonstrate how you can use Profiles. You can a
 pip3 install profiles-rudderstack
 ```
 
-<div class="infoBlock">
-To install the PIP3 Python package manager - run the following commands:
-<ol>
-<li>Install Homebrew:</li>
+To install the PIP3 Python package manager, run the following commands:
 
-<span>
+- Install Homebrew:
 
 ```curl
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)""
 ```
-</span>
 
-<li>Install Python 3:</li>
-<span>
+- Install Python 3:
 
 ```
 brew install python3
 ```
-</span>
-</ol>
-</div>
 
-2. Set up a connection profile to connect to RudderStack's data warehouse having the test dataset for this use case. To do so, go to your terminal and enter `pb init profile` and follow the prompts. A sample profile for a Snowflake account is shown below:
+2. Next, you need to set up a connection profile to connect to the RudderStack warehouse having the test dataset for this use case. Go to your terminal, run `pb init profile`, and follow the prompts. A sample profile for a Snowflake account is as follows:
 
 ```
 Enter profile_name: test
@@ -93,58 +85,59 @@ yes
 
 <div class="infoBlock">
 <ul>
-    <li>Use the name <code class="inline-code">test</code> in the CLI when asked for a profile name.</li>
-    <li>You may see the last line only if you already have set up profiles earlier. Type <code class="inline-code">yes</code> in this case.</li>
+    <li>When prompted for a profile name in the CLI, enter <code class="inline-code">test</code>.</li>
+    <li>You will see the last line <strong>only if</strong> you already have set up Profiles earlier. Enter <code class="inline-code">yes</code> in this case.</li>
 </ul>
 </div>
 
-3. Run `pb init pb-project` to create a sample project in a folder called `HelloPbProject`. This folder is created automatically. To choose a custom folder name like `MyFirstProject`, run the following command:
+3. Run `pb init pb-project`. This command creates a sample project in a folder called `HelloPbProject`. To choose another name for the project folder like `ProfilesDemo`, run the following command:
 
 ```python
-pb init pb-project -o MyFirstProject
+pb init pb-project -o ProfilesDemo
 ```
 
-The project folder contains three files with the below structure. These files are prefilled with some defaults that you need to modify.
+Your project folder will have the following structure. These files contain some default prefilled values that you need to modify.
 
 <img src="../assets/features/profiles-pb-structure.png" alt="Project structure" />
 
 ### Part 2: Setting up ID stitching
 
-4. In your project folder, go to the `pb_project.yaml` file. This file contains information like the project name, schema version, project entities, ID types, etc. Under `entities`, change the `id_stitcher` name from `models/domain_profile_id_stitcher` to `models/user_id_stitcher`. This is the name of the table created in the warehouse.
+4. Go to the `pb_project.yaml` file in your project folder. This file contains the project name, schema version, project entities, ID types, etc. Under `entities`, change the `id_stitcher` name from `models/domain_profile_id_stitcher` to `models/user_id_stitcher` - this is the name of the table created in the warehouse.
 
-In the `pb_project` YAML  file, `entities` and `id_types` play an important role. **All the features are computed at an entity level**. A user is one of the most common entity types; some other examples are organization/company, products, plans, etc. 
+In the `pb_project` YAML  file, the `entities` and `id_types` fields play an essential role. **All the features are computed at an entity level**. A user is one of the most common entity types; other examples are organization/company, products, plans, etc. 
 
-Also, an entity can have multiple identifiers like email, phone number, user ID, etc. All these identifiers are listed under `id_types`.
+Also, an entity can have multiple identifiers like email, phone number, user ID, etc. These identifiers are listed under `id_types`.
 
 <img src="../assets/features/profiles-entities-idtypes.png" alt="Entities and ID types" />
+<br /><br />
 
-In the above example, both the `id_types` fields are the same. In the first instance, we tie `id_types` to `entities` and in the second instance, we define them.
+In the above example, both the `id_types` fields are the same. In the first instance, `id_types` is tied to `entities`, and the second instance contains the identifier definitions.
 
-5. Check the `inputs.yaml` file as shown below (some lines are hidden). It outlines how to obtain the values for the model from the various tables. Rename the `identifies` table by replacing `rudder_events_production.web.identifies` with `profiles_sample.ecommerce.identifies`. Similarly, rename the `tracks` table by replacing `rudder_events_production.web.tracks` with `profiles_sample.ecommerce.tracks`.
+5. Check the `inputs.yaml` file shown below (some lines are hidden). It outlines how to obtain the values for the model from the various tables. Rename the `identifies` table by replacing `rudder_events_production.web.identifies` with `profiles_sample.ecommerce.identifies`. Similarly, rename the `tracks` table by replacing `rudder_events_production.web.tracks` with `profiles_sample.ecommerce.tracks`.
 
 <div class="infoBlock">
 <code class="inline-code">identifies</code> and <code class="inline-code">tracks</code> are the test tables in the dataset that you set up in <strong>Step 2</strong>.
 </div>
 
-<div class="warningBlock">
+<div class="infoBlock">
 Leave the rest of the file unchanged. However, you can add any new identifier for ID stitching or any new tables to the project, as required.
 </div>
 
 <img src="../assets/features/profiles-inputs-yaml.png" alt="Inputs yaml file" />
 
-6. Next, go to the `profiles.yaml` file where the models are defined. You will find two models here - `id_stitcher` and `feature_table_model`. For ID stitching, retain only the first model (`model_type: id_stitcher`) and **comment out the second model** (`model_type: feature_table_model`). Also, change the `name` field from `domain_profile_id_stitcher` to `user_id_stitcher`, as in **Step 4**. 
+6. Next, go to the `profiles.yaml` file where the models are defined. You will find two models here - `id_stitcher` and `feature_table_model`. For ID stitching, retain the first model (`model_type: id_stitcher`) and **comment out the entire second model** (`model_type: feature_table_model`). Also, change the model's `name` from `domain_profile_id_stitcher` to `user_id_stitcher`, as in **Step 4**. 
 
-<div class="infoBlock">
-In the <code class="inline-code">name</code> field, it is important to use the same entity name set in <strong>Step 4</strong>. In doing so, you link the ID stitcher in the <code class="inline-code">pb_project.yaml</code> file to the model spec in <code class="inline-code">profiles.yaml</code>.
+<div class="warningBlock">
+In the <code class="inline-code">name</code> field, it is important to use the same entity name set in <strong>Step 4</strong>. This links the ID stitcher in the <code class="inline-code">pb_project.yaml</code> file to the model spec in <code class="inline-code">profiles.yaml</code>.
 </div>
 
-7. At this point, the ID stitching is complete. Go to the terminal and run the following command.
+7. At this point, the ID stitching is complete. Go to your terminal and run the following command.
 
 ```python
 pb run
 ```
 
-The execution should take about one to two minutes. Once completed, two things happen:
+The execution should take a couple of minutes. Once completed, two things happen:
 
 - A SQL file gets written in the `output/dev/seq_no` folder.
 - This SQL is run on the warehouse and a table gets created. Also, the table name is shown in the terminal. An example output is shown below: 
@@ -155,16 +148,16 @@ The execution should take about one to two minutes. Once completed, two things h
 
 In the above example, the **table name** is `Material_user_id_stitcher_27c35415_6`, where:
 - `Material` is a common prefix.
-- `user_id_stitcher` is the name defined in Steps 4 and 6.
-- `27c35415_6` is a suffix generated by the Profile Builder tool. Ignore this suffix for now.
+- `user_id_stitcher` is the name defined in **Step 4** and **Step 6**.
+- `27c35415_6` is a suffix generated by the Profile Builder tool. You can ignore this suffix for now.
 
-8. Head over to your warehouse using the credentials defined in [Step 2](#part-1-setup) to see the actual table. Run the following query after replacing <table_name> with the table name from your CLI output:
+8. Go to the warehouse using the credentials defined in [Step 2](#part-1-setup) to see the actual table. Run the following query after replacing <table_name> with the table name from your CLI output:
 
 ```sql
 SELECT * FROM PROFILES_SAMPLE.ECOMMERCE_OUTPUT.<table_name> ORDER BY main_id, other_id ASC
 ```
 
-You will get the following result:
+You will see the following result:
 
 <img src="../assets/features/snowflake-table-query.png" alt="Snowflake table highlighting ID stitching" />
 
@@ -172,9 +165,11 @@ You can see that five distinct **MAIN_ID** are created, each representing an act
 
 ### Part 3: Creating feature tables
 
-In this section, you will define the features mentioned in the [use case](#use-case) to create a feature table. For this, you need to modify the `feature_table_model` model in the `profiles.yaml` file of your project folder.
+9. To create a feature table, you need to modify the feature table model (`model_type: feature_table_model`) in `profiles.yaml`. Uncomment the lines you commented out in <Link to="#part-2-setting-up-id-stitching">Step 6</Link>. Then, modify the `name` from `domain_profile` to `user_profile`. Similar to `user_id_stitcher`, this is the name of the output table that is created in the warehouse. Also, delete all the information present in the `vars` key as you will <Link to="#feature-definitions">write your own features</Link> for the model instead.
 
-9. Uncomment the lines you commented out in <Link to="#part-2-setting-up-id-stitching">Step 6</Link>. Then, modify the `name` from `domain_profile` to `user_profile`. Similar to `user_id_stitcher`, this is the name of the output table that will be created in the warehouse. Also, delete all the information present in the `vars` key as you will <Link to="#feature-definitions">write your own features</Link> for the model instead.
+<div class="infoBlock">
+You will define the features mentioned in the <Link to="#use-case">use case</Link>. The <Link to="#feature-definitions">Feature definitions</Link> section contains details on each feature definition and the associated logic. 
+</div>
 
 Once you define all the features, the `profiles.yaml` file should look something like this:
 
@@ -281,26 +276,26 @@ models:
         - avg_session_length_in_sec_last_7_days
 ```
 
+10. Go to your terminal and run the following command:
+
+```python
+pb run
+```
+
+In a few minutes, you will see a similar output as <Link to="#part-2-setting-up-id-stitching">Step 7</Link>. However, you will get two SQL files this time - one for the ID stitcher and feature table respectively. You will see also two tables created in the warehouse.
+
 <div class="infoBlock">
-You will write each feature in the <code class="inline-code">entityvar</code> field. It can be considered as a declarative form of SQL to define the model features.
+The two SQL files are created in a new folder and are present for debugging purposes. You can check the queries to understand what is happening behind the scenes.
 </div>
 
-10. Run the command `pb run` from your terminal. In a few minutes, you should be able to see a similar output as <Link to="#part-2-setting-up-id-stitching">Step 7</Link>. However, you will get two SQL files this time - one for the ID stitcher and feature table respectively. 
-
-<div class="infoBlock">
-These files are created in a new folder and are present for debugging purposes. You can check the queries to understand what is happening behind the scenes.
-</div>
-
-You should now see two tables created in your warehouse. The CLI output will look something like the following:
+The CLI output will look something like the following:
 
 ```
 2023/01/27 21:10:39 Material Material_user_id_stitcher_27c35415_7 ran in 20.173565021s
 2023/01/27 21:11:11 Material Material_user_profile_ac394282_7 ran in 26.993571473s
 ```
 
-This output confirms successful completion of the job. You can now verify the tables in your warehouse.
-
-Each `pb run` command creates a new table of all the available models with a hash suffix. Also, the Profile Builder tool creates a snapshot of the latest run with just the names given for the models - `user_id_stitcher` and `user_profile` in this case. This ensures that the names are more predictable for using them in any downstream application without worrying about the latest created table suffix. 
+This output confirms successful completion of the job. You can now verify the tables in the  warehouse.
 
 The feature table output is shown below:
 
@@ -308,9 +303,17 @@ The feature table output is shown below:
 
 In the above image, you can see that 5 rows are created - one per `main_id`. For each row, all the five features are created with their values computed and filled in. There is one more column `valid_at` indicating when the feature was computed.
 
+### How it works
+
+The `pb run` command creates a new table of all the available models. Also, the Profile Builder creates a snapshot of the latest run with just the names given for the models - `user_id_stitcher` and `user_profile` in this case. This ensures that the names are more predictable for using them in any downstream application.
+
 ## Feature definitions
 
-You can write each feature in the `entityvar` field as shown:
+<div class="infoBlock">
+You will write each feature in the <code class="inline-code">entityvar</code> field. It can be considered as a declarative form of SQL to define the model features.
+</div>
+
+You can define the features in `profiles.yaml` as follows:
 
 - `n_active_days_total`: This is a count of the distinct active days (when the user visited the app). The presence of a `tracks` event is a good indicator for this as every user visit triggers some events from the customer. This feature is defined as follows:
 
