@@ -527,7 +527,7 @@ export const postNavList = [
     title: "Freshdesk",
     link: "/sources/extract/freshdesk/",
     content: [],
-  }, 
+  },
   {
     key: "freshdesk-v2",
     title: "Freshdesk V2",
@@ -983,7 +983,7 @@ export const postNavList = [
     title: "FactorsAI",
     link: "/destinations/streaming-destinations/factors/",
     content: []
-}, 
+},
   {
     key: "firebase",
     title: "Firebase",
@@ -1151,13 +1151,13 @@ export const postNavList = [
     content: []
 },
 {
-    key: "hubspot-cloud-mode", 
+    key: "hubspot-cloud-mode",
     title: "Cloud Mode",
     link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/",
     content: []
 },
 {
-    key: "hubspot-device-mode", 
+    key: "hubspot-device-mode",
     title: "Device Mode",
     link: "/destinations/streaming-destinations/hubspot/hubspot-device-mode/",
     content: []
@@ -1779,6 +1779,12 @@ export const postNavList = [
     key: "confluent-cloud",
     title: "Confluent Cloud",
     link: "/destinations/streaming-destinations/confluent-cloud/",
+    content: [],
+  },
+  {
+    key: "courier",
+    title: "Courier",
+    link: "/destinations/streaming-destinations/courier/",
     content: [],
   },
   {

@@ -473,7 +473,7 @@ export const jsonData = [
                 title: "Bing Ads",
                 link: "/sources/extract/bing-ads/",
                 content: []
-            }, 
+            },
             {
                 title: "Chargebee",
                 link: "/sources/extract/chargebee/",
@@ -1429,6 +1429,10 @@ export const jsonData = [
             }, {
                 title: "CleverTap",
                 link: "/destinations/streaming-destinations/clevertap/",
+                content: []
+            }, {
+                title: "Courier",
+                link: "/destinations/streaming-destinations/courier/",
                 content: []
             }, {
                 title: "Customer.io",
