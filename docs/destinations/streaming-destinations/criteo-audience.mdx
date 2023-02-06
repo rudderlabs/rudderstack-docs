@@ -34,6 +34,10 @@ To successfully configure Criteo Audience as a destination, you need to configur
 
 RudderStack supports <a href="https://developers.criteo.com/marketing-solutions/docs/contact-list#adding-and-removing-users-in-an-audience">adding and removing users in an audience list</a>.
 
+<div class="infoBlock">
+You must add this <code class="inline-code">https://app.rudderstack.com/auth/destination/criteo_audience/callback</code> redirect URL in your Application Details to send your events to Criteo Audience successfully.
+</div>
+
 The following code snippet shows a sample `audienceList` call:
 
 ```json
@@ -60,6 +64,5 @@ In the above snippet, you can pass the `identifierType` as:
 - `gum`: Criteo GUM cookie identifier
 
 Refer to the [Criteo documentation](https://developers.criteo.com/marketing-solutions/docs/contact-list#adding-and-removing-users-in-an-audience) for more information on the identifier types.
-
 
 Criteo's API implements some [rate limits](https://developers.criteo.com/marketing-solutions/docs/rate-limits) to limit the number of requests you're able to perform on any API endpoint per minute.
