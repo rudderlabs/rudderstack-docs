@@ -1913,6 +1913,11 @@ export const jsonData = [
                 content: [],
             },
             {
+                title: "Templates",
+                link: "/features/transformations/templates",
+                content: [],
+            },
+            {
                 title: "FAQ",
                 link: "/features/transformations/faq",
                 content: [],
