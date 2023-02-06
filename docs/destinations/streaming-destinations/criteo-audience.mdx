@@ -27,8 +27,8 @@ Once you have confirmed that the source platform supports sending events to Crit
 To successfully configure Criteo Audience as a destination, you need to configure the following settings:
 
 - **Create Account**: Click **Create Account** > **Connect with Criteo Audience** and enter your login credentials for Criteo Audeince.
-- **Audience Id**: Enter the audience ID of the audience to which you want to sync the data. Refer to the [Criteo Audience](https://developers.criteo.com/marketing-solutions/docs/audience#creating-a-new-audience) documentation for more information on obtaining the audience ID.
-- **Audience Type**: 
+- **Audience Id**: Enter the ID of the audience for which you want to sync the data. Refer to the [Criteo Audience](https://developers.criteo.com/marketing-solutions/docs/audience#creating-a-new-audience) documentation for more information on obtaining the audience ID.
+- **Audience Type**: Enter the type of audience for which you want to add or remove the users.
 
 ## `audienceList` event structure
 
@@ -53,11 +53,13 @@ The following code snippet shows a sample `audienceList` call:
 }
 ```
 
-In the above snippet, the `identifierType` can be:
+In the above snippet, you can pass the `identifierType` as:
 - `email`: Email Address
-- `madid`: Mobile Ad Identifier)
+- `madid`: Mobile Ad Identifier
 - `identityLink`: LiveRamp Identity Link
-- `gum`: Criteo GUM cookie identifier. `gumCallerId` is a required field.
+- `gum`: Criteo GUM cookie identifier
+
+Refer to the [Criteo documentation](https://developers.criteo.com/marketing-solutions/docs/contact-list#adding-and-removing-users-in-an-audience) for more information on the identifier types.
 
 
 Criteo's API implements some [rate limits](https://developers.criteo.com/marketing-solutions/docs/rate-limits) to limit the number of requests you're able to perform on any API endpoint per minute.
