@@ -43,24 +43,34 @@ For more information on obtaining the server hostname, port, and the cluster's H
 
 * **Personal Access Token**: Enter your Databricks access token. For more information on generating the access token, refer to the <Link to="#generating-the-databricks-access-token">Generating the Databricks access token</Link> section below.
 
-* **Enable delta tables creation in an external location**: Enable this setting to specify the external location to create the delta tables. By default, RudderStack creates the delta tables at a default storage location for the non-external Apache Hive tables. When enabled, it lets you specify the external location to create delta tables.
+* **Enable delta tables creation in an external location**: Enable this setting to specify the external location to create the delta tables. By default, RudderStack creates the delta tables at a default storage location for the non-external Apache Hive tables. You can specify the external location in the **External delta table location** setting. Note that **this feature is currently in beta**. 
 
 <div class="infoBlock">
-The delta tables can be accessed at <code class="inline-code">&#123; externalLocation &#125;/&#123;schema&#125;/&#123;table&#125;</code>.
+If you <strong>haven't</strong> configured a <a href="https://docs.databricks.com/data-governance/unity-catalog/index.html">Unity Catalog</a>, you can access the delta tables at: <code class="inline-code">&#123; path_to_table &#125;/&#123;schema&#125;/&#123;table&#125;</code>.
+<br /><br />
+If you <strong>have</strong> configured a Unity Catalog, follow these steps:
+<ol>
+  <li>Create an external location by following this <a href="https://docs.databricks.com/data-governance/unity-catalog/manage-external-locations-and-credentials.html#manage-external-locations">Databricks documentation</a>. Your location will look something like: <code class="inline-code">s3://&#123; bucket_path &#125;/&#123; external_location &#125;</code>.</li>
+  <li>Specify the absolute location in the <strong>External delta table location</strong> setting. It will look something like: <code class="inline-code">s3://&#123; bucket_path &#125;/&#123; external_location &#125;/&#123; path_to_table &#125;/&#123; schema &#125;/&#123;table&#125;</code>. </li>
+</ol>
 </div>
 
+* **Catalog**: If you have enabled the <a href="https://docs.databricks.com/data-governance/unity-catalog/index.html">Unity Catalog</a> feature, enter your catalog name where the data assets are organized. For more information on creating a Unity Catalog, refer to the <a href="https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html">Databricks documenation</a>.
+
 <div class="warningBlock">
-This feature is currently in beta.
+If you do not specify the catalog name, RudderStack uses the default catalog configured for your workspace.
 </div>
 
 * **Namespace**: Enter the the name of the schema where RudderStack will create the tables. If you don't specify a namespace in the dashboard settings, RudderStack will set it to the source name, by default.
 * **Sync Frequency**: Specify how often RudderStack should sync the data to your Delta Lake instance.
 * **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the Delta Lake instance.
 * **Exclude Window**: This optional setting lets you specify the time window (in UTC) when RudderStack will **skip** the data sync.
-* **Object Storage Configuration**: RudderStack currently supports the following platforms for storing the staging files:
-  - <Link to="/destinations/streaming-destinations/amazon-s3/#connection-settings">Amazon S3 bucket storage settings</Link>
-  - <Link to="/destinations/streaming-destinations/microsoft-azure-blob-storage#setting-up-azure-blob-storage">Azure Blob Storage settings</Link>
-  - <Link to="/destinations/streaming-destinations/google-cloud-storage#setting-up-google-cloud-storage">Google Cloud Storage bucket settings</Link>
+* **Object Storage Configuration**: Use this setting to specify your object storage.
+  - **Use RudderStack managed object storage**: Enable this setting to use RudderStack-managed buckets for object storage. Note that this option is applicable only for RudderStack-hosted data planes. For <Link to="/get-started/rudderstack-open-source/data-plane-setup/">self-hosted data planes</Link>, you need to specify your own object storage configuration settings.
+  - **Choose your storage provider**: If **Use RudderStack managed object storage** is disabled, you can select any one of the following platforms for storing your staging files:
+    - <Link to="/destinations/streaming-destinations/amazon-s3/#connection-settings">Amazon S3 bucket storage settings</Link>
+    - <Link to="/destinations/streaming-destinations/microsoft-azure-blob-storage#setting-up-azure-blob-storage">Azure Blob Storage settings</Link>
+    - <Link to="/destinations/streaming-destinations/google-cloud-storage#setting-up-google-cloud-storage">Google Cloud Storage bucket settings</Link>
 
 <div class="infoBlock">
 If you select S3 as your storage provider, RudderStack provides the option to specify your IAM role ARN or the AWS access key ID/secret access key by enabling the <strong>Use STS Tokens to copy staging files</strong> setting. For more information, refer to the <Link to="#case-2-use-sts-token-to-copy-staging-files-is-enabled-in-the-dashboard">Amazon S3 storage bucket settings</Link> section below.
