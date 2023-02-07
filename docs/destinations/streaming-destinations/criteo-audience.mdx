@@ -3,7 +3,7 @@ title: "Criteo Audience"
 description: Send your event data from RudderStack to Criteo Audience.
 ---
 
-[Criteo](https://www.criteo.com/) is an online display advertising platform and its [Audience API](https://developers.criteo.com/marketing-solutions/docs/audiences) lets you manage your contact lists by creating, deleting, and updating audience data, which is used for your advertising campaigns.
+[Criteo](https://www.criteo.com/) is an online display advertising platform. Its [Audience API](https://developers.criteo.com/marketing-solutions/docs/audiences) lets you manage your contact lists by creating, deleting, and updating audience data, which you can use for your advertising campaigns.
 
 Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/Criteo Audience_audience">GitHub repository</a>.
 
@@ -25,9 +25,9 @@ Once you have confirmed that the source platform supports sending events to Crit
 
 To successfully configure Criteo Audience as a destination, you need to configure the following settings:
 
-- **Create Account**: Click **Create Account** > **Connect with Criteo Audience** and enter your login credentials for Criteo Audeince.
-- **Audience Id**: Enter the ID of the audience for which you want to sync the data. Refer to the [Criteo Audience](https://developers.criteo.com/marketing-solutions/docs/audience#creating-a-new-audience) documentation for more information on obtaining the audience ID.
-- **Audience Type**: Select the type of audience from the dropdown for which you want to add or remove the users. If you select `gum`, then **Gum Caller Id** is a required field. Refer to the [Criteo documentation](https://developers.criteo.com/marketing-solutions/docs/contact-list#adding-and-removing-users-in-an-audience) for more information on different audience types.
+- **Create Account**: Click **Create Account** > **Connect with Criteo Audience** and enter your login credentials for Criteo Audience.
+- **Audience Id**: Enter the audience ID for which you want to sync the data. Refer to the [Criteo Audience documentation](https://developers.criteo.com/marketing-solutions/docs/audience#creating-a-new-audience) for more information on obtaining the audience ID.
+- **Audience Type**: Select the audience type from the dropdown for which you want to add or remove the users. If you select `gum`, then **Gum Caller Id** is a required field. Refer to the [Criteo documentation](https://developers.criteo.com/marketing-solutions/docs/contact-list#adding-and-removing-users-in-an-audience) for more information on different audience types.
 
 ## `audienceList` event structure
 
@@ -71,4 +71,6 @@ The following code snippet shows a sample `audienceList` call for `madid` audien
 }
 ```
 
-Criteo's API implements [rate limits](https://developers.criteo.com/marketing-solutions/docs/rate-limits) to limit the number of requests you're able to perform on any API endpoint per minute.
+<div class="warningBlock">
+Criteo's API implements <a href="https://developers.criteo.com/marketing-solutions/docs/rate-limits">rate limits</a> to limit the number of requests you're able to make on any API endpoint per minute.
+</div>
