@@ -1,0 +1,119 @@
+---
+title: "Lemnisk Cloud Mode"
+description: Send events to Lemnisk using RudderStack cloud mode.
+---
+
+RudderStack lets you send your event data to Lemnisk via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>. Find the open source code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/lemnisk">GitHub repository</a>.
+
+RudderStack supports the following Lemnisk platforms:
+
+## DIAPI
+
+When you choose to send events to Lemnisk via the server-side cloud mode, RudderStack uses Lemnisk's [HTTP API](https://lemnisk.gitbook.io/lemnisk-platform-documentation/sources/http-api) to send your website or app data.
+
+### Track
+
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record the user actions along with any properties associated with them.
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Product Reviewed", {
+  review_id: "12345",
+  product_id: "123",
+  rating: 3.0,
+  review_body: "Average product, expected much more."
+})
+```
+
+#### Property mappings
+
+The following table lists the mappings between the RudderStack and Lemnisk properties:
+
+| RudderStack property   | Lemnisk property  | Data type |
+| :-------------| :-----------------| :-----------------| 
+|  `userId` <br/> `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `userId` | String |
+| `properties` | `properties` | Object |
+| `event`  | `eventname` | String |
+| `config.srcid` | `srcId` | String |
+| `config.diapiWriteKey`  | `writekey` | String |
+
+## Pixel Listener
+
+When you choose to send events to Lemnisk via the web cloud mode, RudderStack uses Lemnisk's [JavaScript SDK](https://lemnisk.gitbook.io/lemnisk-platform-documentation/sources/javascript-sdk) to send data from your website.
+
+### Identify
+
+You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
+
+A sample `identify` call is shown below:
+
+```javascript
+rudderanalytics.identify("hashed_user_id", {
+  name: "Alex Keener",
+  email: "alex@example.com",
+})
+```
+
+#### Property mappings
+
+The following table lists the mappings between the RudderStack and Lemnisk properties:
+
+| RudderStack property   | Lemnisk property  |  Data type |
+| :-------------| :-----------------| :-----------------| 
+|  `userId` <br/> `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `userId` <br/> `id` | String |
+| `context` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `context` | Object |
+| `traits` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `customerProperties` | Object |
+| `messageId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `messageId` | String |
+
+### Track
+
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record the user actions along with any properties associated with them. 
+
+A sample `track` call is shown below:
+
+```javascript
+rudderanalytics.track("Product Reviewed", {
+  review_id: "12345",
+  product_id: "123",
+  rating: 3.0,
+  review_body: "Average product, expected much more."
+})
+```
+
+#### Property mappings
+
+The following table lists the mappings between the RudderStack and Lemnisk properties:
+
+| RudderStack property   | Lemnisk property  |  Data type |
+| :-------------| :-----------------| :-----------------| 
+|  `userId` <br/> `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `userId` <br/> `id` | String |
+| `event` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `event` | String |
+| `properties`   | `properties` | Object |
+| `timestamp` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `originalTimestamp` | String |
+| `messageId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `messageId` | String |
+| `context` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `context` | Object |
+| `properties`   | `properties` | Object |
+
+### Page
+
+The <Link to="/event-spec/standard-events/page/">`page`</Link> call lets you record when a user views a page of your website, along with any optional properties about the page.
+
+A sample `page` call is shown below:
+
+```javascript
+rudderanalytics.page("Home")
+```
+
+#### Property mappings
+
+The following table lists the mappings between the RudderStack and Lemnisk properties:
+
+| RudderStack property   | Lemnisk property  | Data type |
+| :-------------| :-----------------| :-----------------| 
+|  `userId` <br/> `anonymousId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `userId` <br/> `id` | String |
+| `name` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `name` | String |
+| `timestamp` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `originalTimestamp` | String |
+| `messageId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `messageId` | String |
+| `context` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span> | `context` | Object |
+| `properties`   | `properties` | Object |

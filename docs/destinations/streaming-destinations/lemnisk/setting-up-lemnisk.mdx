@@ -1,0 +1,54 @@
+---
+title: "Setting up Lemnisk"
+description: Set up Lemnisk as a destination in RudderStack.
+aliases: ["Lemnisk destination"]
+---
+
+RudderStack supports sending events to Lemnisk via the following <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link>:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     |        Supported       |               |               |
+| **Cloud mode**      |        Supported       |  Supported   |   Supported            |
+
+Once you have confirmed that the source platform supports sending events to Lemnisk, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Lemnisk Marketing Automation**.
+2. Assign a name to your destination and click **Continue**.
+
+## Connection settings
+
+To send events to Lemnisk via the <Link to="/destinations/rudderstack-connection-modes/#cloud-mode">cloud mode</Link>, you need to configure the following settings:
+
+- **Cloud Mode**: Select one of the below options from the dropdown and enter the relevant details:
+
+    #### Web Cloud Mode
+    - **Write Key**: Enter the unique write key of your Lemnisk data source.
+    - **Region URL**: Enter the Lemnisk region URL.
+
+    #### Server-side Cloud Mode
+    - **X-API-Key**: Enter the Lemnisk X-API-Key.
+    - **X-API-PassKey**: Enter the Lemnisk X-API-PassKey.
+    - **Write Key**: Enter the unique write key of your Lemnisk data source.
+    - **Source ID**: Enter the Lemnisk Source ID.
+    - **Region URL**: Enter the Lemnisk region URL.
+
+    <div class="infoBlock">
+    Contact your Lemnisk customer success manager to obtain any of the above details.
+    </div>
+
+    #### None of the above (Select this if you want to use Device Mode only)
+    - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Lemnisk. For more information on this setting, refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide.
+    - **OneTrust Cookie Categories**: This setting lets you associate the <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Lemnisk.
+
+    The below settings are visible only when a JavaScript source is connected to Lemnisk: 
+    - **Client ID**: Enter the unique ID generated for your Lemnisk account. Contact your Lemnisk customer success manager to obtain the client ID.
+    - **Use device mode to send events:** Make sure this option is enabled if you want to send events using the <Link to="/destinations/rudderstack-connection-modes/#device-mode">device mode</Link>.
+    - **Write Key**: Enter the unique write key of your Lemnisk data source.
+
+
+## FAQ
+
+### How do I verify if the events are passing to Lemnisk correctly?
+
+You can verify the events coming via Rudderstack in the <Link to="/dashboard-guides/live-events/">Live Events</Link> tab. In Lemnisk, go to **Sources** and click on a particular source. If the integration is successful, you can see the events under the **Live Events** section. Make sure that the event payload is correct.
