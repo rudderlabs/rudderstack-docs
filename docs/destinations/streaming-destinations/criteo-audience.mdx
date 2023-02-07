@@ -14,7 +14,7 @@ RudderStack supports sending event data to Criteo Audience via the following <a 
 | Connection Mode | Web       | Mobile | Server |
 | :------------------ | :------------ | :--------- | :--------- |
 | **Device mode**     | - | -          | -          |
-| **Cloud mode**      | **Supported**   | **Supported**  |  -  |
+| **Cloud mode**      |  -  | -  |  **Supported**  |
 
 Once you have confirmed that the source platform supports sending events to Criteo Audience, follow these steps:
 
@@ -27,37 +27,48 @@ To successfully configure Criteo Audience as a destination, you need to configur
 
 - **Create Account**: Click **Create Account** > **Connect with Criteo Audience** and enter your login credentials for Criteo Audeince.
 - **Audience Id**: Enter the ID of the audience for which you want to sync the data. Refer to the [Criteo Audience](https://developers.criteo.com/marketing-solutions/docs/audience#creating-a-new-audience) documentation for more information on obtaining the audience ID.
-- **Audience Type**: Enter the type of audience by which you want to add or remove the users.
+- **Audience Type**: Select the type of audience from the dropdown for which you want to add or remove the users. If you select `gum`, then **Gum Caller Id** is a required field. Refer to the [Criteo documentation](https://developers.criteo.com/marketing-solutions/docs/contact-list#adding-and-removing-users-in-an-audience) for more information on different audience types.
 
 ## `audienceList` event structure
 
 RudderStack supports <a href="https://developers.criteo.com/marketing-solutions/docs/contact-list#adding-and-removing-users-in-an-audience">adding and removing users in an audience list</a>.
 
-The following code snippet shows a sample `audienceList` call:
+The following code snippet shows a sample `audienceList` call for `email` audience type:
 
 ```json
 {
-  "data": {
-    "type": "ContactlistAmendment",
-    "attributes": {
-      "operation": "add" / "remove",
-      "identifierType": "email",
-      "identifiers": [
-        "example1@gmail.com"
-      ],
-      "gumCallerId": "",
-      "internalIdentifier": "false"
+  "type": "audiencelist",
+  "properties": {
+    "listData": {
+      "add": [{
+          "email": 'alex@example.com'
+        },
+        {
+          "email": 'john@example.com'
+        }
+      ]
     }
   }
 }
 ```
 
-In the above snippet, you can pass the `identifierType` as:
-- `email`: Email Address
-- `madid`: Mobile Ad Identifier
-- `identityLink`: LiveRamp Identity Link
-- `gum`: Criteo GUM cookie identifier
+The following code snippet shows a sample `audienceList` call for `madid` audience type:
 
-Refer to the [Criteo documentation](https://developers.criteo.com/marketing-solutions/docs/contact-list#adding-and-removing-users-in-an-audience) for more information on these identifier types.
+```json
+{
+  "type": "audiencelist",
+  "properties": {
+    "listData": {
+      "add": [{
+          "madid": "sample_madid"
+        },
+        {
+          "madid": "sample_madid_1"
+        }
+      ]
+    }
+  }
+}
+```
 
 Criteo's API implements [rate limits](https://developers.criteo.com/marketing-solutions/docs/rate-limits) to limit the number of requests you're able to perform on any API endpoint per minute.
