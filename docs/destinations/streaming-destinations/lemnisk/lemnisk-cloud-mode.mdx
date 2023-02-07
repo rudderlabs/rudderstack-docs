@@ -9,7 +9,7 @@ RudderStack supports the following Lemnisk platforms:
 
 ## DIAPI
 
-When you choose to send events to Lemnisk via the server-side cloud mode, Lemnisk' [HTTP API](https://lemnisk.gitbook.io/lemnisk-platform-documentation/sources/http-api) is used to send your website or app data.
+When you choose to send events to Lemnisk via the server-side cloud mode, RudderStack uses Lemnisk's [HTTP API](https://lemnisk.gitbook.io/lemnisk-platform-documentation/sources/http-api) to send your website or app data.
 
 ### Track
 
@@ -38,12 +38,11 @@ The following table lists the mappings between the RudderStack and Lemnisk prope
 | `config.srcid` | `srcId` | String |
 | `config.diapiWriteKey`  | `writekey` | String |
 
-
 ## Pixel Listener
 
-When you choose to send events to Lemnisk via the web cloud mode, Lemnisk' [JavaScript SDK](https://lemnisk.gitbook.io/lemnisk-platform-documentation/sources/javascript-sdk) is used to send data from your website.
+When you choose to send events to Lemnisk via the web cloud mode, RudderStack uses Lemnisk's [JavaScript SDK](https://lemnisk.gitbook.io/lemnisk-platform-documentation/sources/javascript-sdk) to send data from your website.
 
-## Identify
+### Identify
 
 You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
@@ -67,7 +66,7 @@ The following table lists the mappings between the RudderStack and Lemnisk prope
 | `traits` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `customerProperties` | Object |
 | `messageId` <br/> <span style="color: #4D4DFF;font-size:12px;">Required</span>| `messageId` | String |
 
-## Track
+### Track
 
 The <Link to="/event-spec/standard-events/track/">`track`</Link> call lets you record the user actions along with any properties associated with them. 
 
