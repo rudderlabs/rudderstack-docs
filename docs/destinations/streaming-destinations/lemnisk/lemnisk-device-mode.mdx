@@ -9,7 +9,7 @@ RudderStack lets you send your event data to Lemnisk via the <Link to="/destinat
 
 You can use the <Link to="/event-spec/standard-events/identify">`identify`</Link> call to identify a user and associate them to their actions. It also lets you record any traits about them like their name, email, etc.
 
-When you send an `identify` event via Rudderstack, Lemnisk's [`identify`](https://lemnisk.gitbook.io/lemnisk-platform-documentation/events/identify) event is triggered. Lemnisk needs a unique user ID to associate an event with a user. By default, Lemnisk uses a cookie to identify the user. Optionally, a unique user ID can be passed in the first parameter.
+When you send an `identify` event via Rudderstack, Lemnisk's [`identify`](https://lemnisk.gitbook.io/lemnisk-platform-documentation/events/identify) event is triggered. Lemnisk needs a unique user ID to associate an event with a user. By default, it uses a cookie to identify the user. Optionally, you can also pass a unique user ID in the first parameter of the `identify` call.
 
 A sample `identify` call is shown below:
 
