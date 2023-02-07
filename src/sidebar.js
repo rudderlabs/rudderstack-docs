@@ -813,6 +813,11 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/criteo/",
                 content: []
             },
+              {
+                title: "Criteo Audience",
+                link: "/destinations/streaming-destinations/criteo-audience/",
+                content: []
+            },
             {
                 title: "DCM Floodlight",
                 link: "/destinations/streaming-destinations/dcm-floodlight/",
