@@ -45,15 +45,9 @@ You will create a simple Profiles project with the following capabilities:
 These are some basic features to demonstrate how you can use Profiles. You can add many more features with complex logic to explore its full capabilities.
 </div>
 
-### Part 1: Setup
+### Prerequisites
 
-1. Install the **Profile Builder (pb)** tool by running the following command:
-
-```python
-pip3 install profiles-rudderstack
-```
-
-To install the PIP3 Python package manager, run the following commands:
+To install the **Profile Builder (pb)** tool, you need the PIP3 Python package manager. Run the following commands:
 
 - Install Homebrew:
 
@@ -67,6 +61,14 @@ To install the PIP3 Python package manager, run the following commands:
 brew install python3
 ```
 
+### Part 1: Setup
+
+1. Install the **Profile Builder (pb)** tool by running the following command:
+
+```python
+pip3 install profiles-rudderstack
+```
+
 2. Next, you need to set up a connection profile to connect to the RudderStack warehouse having the test dataset for this use case. Go to your terminal, run `pb init profile`, and follow the prompts. A sample profile for a Snowflake account is as follows:
 
 ```
@@ -77,11 +79,15 @@ Enter warehouse: wh_guide
 Enter dbname: profiles_sample
 Enter schema: ecommerce_output
 Enter user: rudder_profiles
-Enter password: pb360_b3ta!
+Enter password: <password>  // We will share the password with you separately.
 Enter role: rudder_profiles_role
 Append to /Users/<user_name>/.pb/siteconfig.yaml? Specify 'yes' to confirm, anything else to deny.
 yes
 ```
+
+<div class="warningBlock">
+We will share the password with you separately.
+</div>
 
 <div class="infoBlock">
 <ul>
@@ -196,29 +202,29 @@ models:
       entity_key: user
       vars:
         - entityvar:
-            name: n_active_days_total # Alias for the temp fature
+            name: n_active_days_total # Alias for the temp feature
             select: count(distinct(date(timestamp))) # The sql function to first convert timestamp to date, then count distinct dates
             from: inputs/rsTracks # Refering to the tracks table defined in inputs.yaml file
-            description: This is an optional field, describing the feature. It gets stored as feature metadata
+            description: Number of days since the user first visited the app.
 
         - entityvar:
-            name: orders_completed_in_past_365_days # Alias for the temp fature
+            name: orders_completed_in_past_365_days # Alias for the temp feature
             select: count( * ) # The sql function to count all rows from tracks table where event_type = 'order_completed' (see below); If there's an order_id field, you can also use count(distinct order_id) to prevent any duplicate records related to same order
             from: inputs/rsTracks # Refering to the tracks table defined in inputs.yaml file
             where: event = 'order_completed' and datediff(day, date(timestamp), current_date()) <= 365
-            description: This is an optional field, describing the feature. It gets stored as feature metadata
+            description: Number of orders completed in the past 365 days.
 
         - entityvar:
-            name: first_seen_tracks # Alias for the temp fature
+            name: first_seen_tracks # Alias for the temp feature
             select: min(timestamp) # The sql function to get oldest timestamp from tracks table
             from: inputs/rsTracks # Refering to the tracks table defined in inputs.yaml file
-            description: This is an optional field, describing the feature.
+            description: First seen timestamp from tracks table.
 
         - entityvar: # The prev block is repeated with identifies table as source
             name: first_seen_identifies
             select: min(timestamp)
             from: inputs/rsIdentifies
-            description: First seen timestamp from identifies table; This is optional field, only for documentation
+            description: First seen timestamp from identifies table.
 
         - entityvar: # Once min timestamps from both tracks and identifies is defined, we pick the earliest timestamp of both here
             # The prev two are temp features used to derive this feature. 
@@ -323,7 +329,7 @@ vars:
 		name: n_active_days_total # Alias for the temp feature
         select: count(distinct(date(timestamp))) # SQL function to first convert timestamp to date, then count the distinct dates
 		from: inputs/rsTracks # Refering to the tracks table defined in the inputs.yaml file
-		description: Optional field describing the feature. It gets stored as feature metadata.
+		description: Number of days since the user first visited the app.
 features:
   # This block is required to declare that the feature needs to be stored in feature table. 
   # Often, we may want entityvars that are temp features, which are not required later (see below). 
@@ -340,7 +346,7 @@ vars:
         select: count( * ) # The SQL function to count all rows from tracks table where event_type = 'order_completed' (see below); If there's an order_id field, you can also use count(distinct order_id) to prevent any duplicate records related to same order
 		from: inputs/rsTracks # Refering to the tracks table defined in inputs.yaml file
         where: event = 'order_completed' and datediff(day, date(timestamp), current_date()) <= 365
-		description: Optional field describing the feature.
+		description: Number of orders completed in the past 365 days.
 features:
 	- orders_completed_in_past_365_days
 ```
@@ -357,12 +363,12 @@ vars:
         name: first_seen_tracks # Alias for the temp feature
 	    select: min(timestamp) # The SQL function to get oldest timestamp from the tracks table
         from: inputs/rsTracks # Refering to the tracks table defined in inputs.yaml file
-		description: Optional field describing the feature.
+		description: First seen timestamp from tracks table.
   - entityvar: # The prev block is repeated with identifies table as source
         name: first_seen_identifies
 		select: min(timestamp)
         from: inputs/rsIdentifies
-		description: First seen timestamp from identifies table; This is an optional field.
+		description: First seen timestamp from identifies table
   - entityvar: # Once min timestamps from both tracks and identifies are defined, we pick the earliest timestamp of both here.
 	    # The prev two are temp features used to derive this feature. 
         # In the profiles.yaml file, we can also see an attribute called features; 
