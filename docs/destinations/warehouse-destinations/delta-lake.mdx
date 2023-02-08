@@ -43,7 +43,7 @@ For more information on obtaining the server hostname, port, and the cluster's H
 
 * **Personal Access Token**: Enter your Databricks access token. For more information on generating the access token, refer to the <Link to="#generating-the-databricks-access-token">Generating the Databricks access token</Link> section below.
 
-* **Enable delta tables creation in an external location**: Enable this setting to specify the external location to create the delta tables. By default, RudderStack creates the delta tables at a default storage location for the non-external Apache Hive tables. You can specify the external location in the **External delta table location** setting. Note that **this feature is currently in beta**. 
+* **Enable delta tables creation in an external location**: Enable this setting to specify the external location to create the delta tables. You can specify the external location in the **External delta table location** setting. Note that **this feature is currently in beta**. When disabled, RudderStack creates the delta tables at a default storage location for the non-external Apache Hive tables. 
 
 <div class="infoBlock">
 If you <strong>haven't</strong> configured a <a href="https://docs.databricks.com/data-governance/unity-catalog/index.html">Unity Catalog</a>, you can access the delta tables at: <code class="inline-code">&#123; path_to_table &#125;/&#123;schema&#125;/&#123;table&#125;</code>.
@@ -55,7 +55,7 @@ If you <strong>have</strong> configured a Unity Catalog, follow these steps:
 </ol>
 </div>
 
-* **Catalog**: If you have enabled the <a href="https://docs.databricks.com/data-governance/unity-catalog/index.html">Unity Catalog</a> feature, enter your catalog name where the data assets are organized. For more information on creating a Unity Catalog, refer to the <a href="https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html">Databricks documenation</a>.
+* **Catalog**: If you have configured a <a href="https://docs.databricks.com/data-governance/unity-catalog/index.html">Unity Catalog</a>, enter the catalog name where your data assets are organized. For more information on creating a Unity Catalog, refer to the <a href="https://docs.databricks.com/data-governance/unity-catalog/create-catalogs.html">Databricks documenation</a>.
 
 <div class="warningBlock">
 If you do not specify the catalog name, RudderStack uses the default catalog configured for your workspace.
