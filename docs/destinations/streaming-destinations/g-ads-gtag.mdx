@@ -35,6 +35,10 @@ To set up Google Ads as a destination, you need to configure the following setti
 
 - **Conversion ID**: Enter your Google Ads Conversion ID. Refer to the Google Ads <a href="https://support.google.com/tagmanager/answer/6105160?hl=en">support page</a> for more information on obtaining the Conversion ID.
 - **Mapping to trigger the Google Ads events for the respective events set here**: Use this setting to map custom event names to the standard Google Ads events.
+- **Track Conversions**: This setting is enabled by default and sends conversion events. However, you can disable it to prevent sending conversion events. When enabled, the following setting is visible:
+  - **Enable Conversion Events Filtering**: Enable this setting to enter a list of events you want to send as conversion events in the **Events to Track Conversions** setting. When disabled, RudderStack will send all the events as conversion events.
+- **Track Dynamic Remarketing**: Enable this setting to send dynamic remarketing events. When enabled, the following setting is visible:
+  - **Enable Dynamic Remarketing Events Filtering**: Enable this setting to enter a list of events you want to send as dynamic remarketing events in the **Events to Track Dynamic Remarketing** setting. When disabled, RudderStack will send all the events as dynamic remarketing events.
 - **Client-side Events Filtering**: This setting lets you specify which events should be blocked or allowed to flow through to Google Ads. Refer to the <Link to="/sources/sdks/event-filtering/">Client-side Events Filtering</Link> guide for more information.
 - **Configure Page Load Conversions**: For `page` call, you can configure the page load conversions for multiple instances. 
   - **Conversion Label**: Enter the conversion label from Google Ads. 
@@ -51,7 +55,6 @@ Disabling this setting can lead to less accurate conversion measurements.
 
 - **Disable Ad Personalization**: Enable this setting to programmatically disable ad personalization. Refer to the [Google Ads documentation](https://developers.google.com/analytics/devguides/collection/gtagjs/display-features#disable_advertising_personalization) for more information.
 - **Use device mode to send events**: As this is a web device mode-only destination, this setting is enabled by default and cannot be disabled.
-- **Dynamic Remarketing**: Enable this setting to allow RudderStack to leverage Google Ads' Dynamic Remarketing feature for event tracking. [Dynamic Remarketing](https://support.google.com/google-ads/answer/7305793) lets you tailor your ads based on your users' previous interactions with your website.
 - **OneTrust Cookie Categories**: This setting lets you associate <Link to="/sources/sdks/rudderstack-javascript-sdk/consent-managers/onetrust/">OneTrust</Link> cookie consent groups to Google Ads.
 
 ## Track
@@ -59,7 +62,7 @@ Disabling this setting can lead to less accurate conversion measurements.
 You can make a <Link to="/event-spec/standard-events/track/">`track`</Link> call with the conversion name to RudderStack for a **Click Event Conversion** which will, in turn, send this data to Google Ads.
 
 <div class="infoBlock">
-RudderStack maps <code class="inline-code">properties.currency</code>, <code class="inline-code">properties.order_id</code>, and <code class="inline-code">properties.revenue</code> to Google Ads' <code class="inline-code">currency</code>, <code class="inline-code">transaction_id</code>, and <code class="inline-code">value</code> fields respectively. Note that this is applicable only when the <strong>Dynamic Remarketing</strong> setting is disabled in the dashboard.
+RudderStack maps <code class="inline-code">properties.currency</code>, <code class="inline-code">properties.order_id</code>, and <code class="inline-code">properties.revenue</code> to Google Ads' <code class="inline-code">currency</code>, <code class="inline-code">transaction_id</code>, and <code class="inline-code">value</code> fields respectively. Note that this is applicable only when the <strong>Track Dynamic Remarketing</strong> setting is disabled in the dashboard.
 </div>
 
 A sample `track` call is as shown:
@@ -72,7 +75,7 @@ rudderanalytics.track('track conversion', {
 });
 ```
 
-A sample `track` call after enabling the **Dynamic Remarketing** option in the RudderStack dashboard is shown below:
+A sample `track` call after enabling the **Track Dynamic Remarketing** option in the RudderStack dashboard is shown below:
 
 ```javascript
 rudderanalytics.track('view_item', {
@@ -112,7 +115,7 @@ A sample `page` call is as shown below:
 rudderanalytics.page('page view');
 ```
 
-A sample `page` call for a custom event after enabling the **Dynamic Remarketing** option in RudderStack is shown below:
+A sample `page` call for a custom event after enabling the **Track Dynamic Remarketing** option in RudderStack is shown below:
 
 ```javascript
 rudderanalytics.page("custom_event", {
@@ -121,7 +124,7 @@ rudderanalytics.page("custom_event", {
 });
 ```
 
-As seen in the above snippet, enabling Dynamic Remarketing allows you to send custom parameters in the `page` call.
+As seen in the above snippet, enabling **Track Dynamic Remarketing** setting allows you to send custom parameters in the `page` call.
 
 ## FAQ
 
