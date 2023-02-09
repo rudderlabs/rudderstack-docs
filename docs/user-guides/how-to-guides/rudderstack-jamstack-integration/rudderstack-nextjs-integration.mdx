@@ -43,60 +43,79 @@ The RudderStack JavaScript source is required track the events from your Next.js
 
 To integrate RudderStack with your Next.js app and set up the tracking code, follow the steps below:
 
-1. In your Next.js project folder, go to the `pages` folder and create a new `_document.js` file with the following code:
+1. In your Next.js project folder, create a `rudderInitialize.js` file with the following code:
 
 ```javascript
-import Document, { Html, Head, Main, NextScript } from "next/document";
-
-export default class MyDocument extends Document {
-  render() {
-    return (
-      <Html>
-        <Head>
-          {/* Site Tag */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-              !function(){var e=window.rudderanalytics=window.rudderanalytics||[];e.methods=["load","page","track","identify","alias","group","ready","reset","getAnonymousId","setAnonymousId","getUserId","getUserTraits","getGroupId","getGroupTraits","startSession","endSession","getSessionId"],e.factory=function(t){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(t),e.push(r),e}};for(var t=0;t<e.methods.length;t++){var r=e.methods[t];e[r]=e.factory(r)}e.loadJS=function(e,t){var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a)},e.loadJS(),
-              e.load("<WRITE_KEY>","DATA_PLANE_URL"),
-              e.ready(() => {
-                  console.log("All set!")
-              })
-          }();
-          `
-            }}
-          />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
-  }
+export async function rudderInitialize() {
+  (function() {
+    var e = (window.rudderanalytics = window.rudderanalytics || []);
+    (e.methods = [
+      'load',
+      'page',
+      'track',
+      'identify',
+      'alias',
+      'group',
+      'ready',
+      'reset',
+      'getAnonymousId',
+      'setAnonymousId',
+      'getUserId',
+      'getUserTraits',
+      'getGroupId',
+      'getGroupTraits',
+      'startSession',
+      'endSession',
+    ]),
+    (e.factory = function(t) {
+      return function() {
+        e.push([t].concat(Array.prototype.slice.call(arguments)));
+      };
+    });
+    for (var t = 0; t < e.methods.length; t++) {
+      var r = e.methods[t];
+      e[r] = e.factory(r);
+    }
+    (e.loadJS = function(e, t) {
+      var r = document.createElement('script');
+      (r.type = 'text/javascript'),
+      (r.async = !0),
+      (r.src = 'https://cdn.rudderlabs.com/v1.1/rudder-analytics.min.js');
+      var a = document.getElementsByTagName('script')[0];
+      a.parentNode.insertBefore(r, a);
+    }),
+    e.loadJS(),
+      e.load('WRITE-KEY', 'DATAPLANE-URL'), // Replace 'WRITE-KEY' and 'DATAPLANE-URL'
+      e.page();
+  })();
 }
 ```
-
-<img src="../../../assets/user-guides/document-next-app.png" alt="New document Next.js" />
 
 <div class="infoBlock">
 If you are using an older version of the JavaScript SDK (v1), refer to the <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/version-migration-guide/">Version Migration Guide</Link> to migrate to v1.1.
 </div>
 
 2. Replace `<WRITE_KEY>` and `<DATA_PLANE_URL>` with your JavaScript source write key and the data plane URL obtained in the <Link to="#creating-a-javascript-source-in-rudderstack">Creating a JavaScript source in RudderStack</Link> section above. 
-3. In the same `pages` folder, open the `index.js` file and add the following code snippet:
+3. In the `pages` folder, open the `index.js` file and add the following code snippet:
 
 ```javascript
+import React from 'react';
+import { rudderInitialize } from '../rudderInitialize';
+
 export default function Home() {
+
+  React.useEffect(() => {
+    rudderInitialize();
+  }, []);
+
   const search = () => {
     window.rudderanalytics.page();
-    window.rudderanalytics.track("Track Event");
+    window.rudderanalytics.track("Track Event.");
   };
 ```
 
 <div class="infoBlock">
-
-Refer to the sample Next.js app in the [RudderStack Sample Applications](https://github.com/rudderlabs/rudder-analytics-next/tree/main/sample-next-app-npm) repository for more information.
+Refer to the sample Next.js app in the [RudderStack Sample Applications](https://github.com/rudderlabs/rudder-analytics-next/tree/main/sample-next-app) repository for more information.
 </div>
 
 ### Method 2: Installing and configuring the JavaScript SDK using NPM package in your Next.js app
