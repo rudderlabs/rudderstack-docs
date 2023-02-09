@@ -108,7 +108,7 @@ Your project folder will have the following structure. These files contain some 
 
 ### Part 2: Setting up ID stitching
 
-4. Go to the `pb_project.yaml` file in your project folder. This file contains the project name, schema version, project entities, ID types, etc. Under `entities`, change the `id_stitcher` name from `models/domain_profile_id_stitcher` to `models/user_id_stitcher` - this is the name of the table created in the warehouse.
+4. Go to the `pb_project.yaml` file in your project folder. This file contains the project name, schema version, project entities, ID types, etc. Under `entities`, change the `id_stitcher` name from `models/domain_profile_id_stitcher` to `models/<your_org_name>_user_id_stitcher` (ex: `models/rudderstack_user_id_stitcher`; In this guide, we used `models/user_id_stitcher`) - this is the name of the table created in the warehouse.
 
 In the `pb_project` YAML  file, the `entities` and `id_types` fields play an essential role. **All the features are computed at an entity level**. A user is one of the most common entity types; other examples are organization/company, products, plans, etc. 
 
@@ -131,13 +131,13 @@ Leave the rest of the file unchanged. However, you can add any new identifier fo
 
 <img src="../assets/features/profiles-inputs-yaml.png" alt="Inputs yaml file" />
 
-6. Next, go to the `profiles.yaml` file where the models are defined. You will find two models here - `id_stitcher` and `feature_table_model`. For ID stitching, retain the first model (`model_type: id_stitcher`) and **comment out the entire second model** (`model_type: feature_table_model`). Also, change the model's `name` from `domain_profile_id_stitcher` to `user_id_stitcher`, as in **Step 4**. 
+6. Next, go to the `profiles.yaml` file where the models are defined. You will find two models here - `id_stitcher` and `feature_table_model`. For ID stitching, retain the first model (`model_type: id_stitcher`) and **comment out the entire second model** (`model_type: feature_table_model`). Also, change the model's `name` from `domain_profile_id_stitcher` to `<your_org_name>_user_id_stitcher`, the same name used in **Step 4**. 
 
 <div class="warningBlock">
 In the <code class="inline-code">name</code> field, it is important to use the same entity name set in <strong>Step 4</strong>. This links the ID stitcher in the <code class="inline-code">pb_project.yaml</code> file to the model spec in <code class="inline-code">profiles.yaml</code>.
 </div>
 
-7. At this point, the ID stitching is complete. Go to your terminal and run the following command.
+7. Go to your terminal and run the following command.
 
 ```python
 pb run
@@ -169,9 +169,11 @@ You will see the following result:
 
 You can see that five distinct **MAIN_ID** are created, each representing an actual user. Also, **user4** and **user5** have the same **MAIN_ID** as they share the same email - highlighting successful ID stitching.
 
+At this point, the ID stitching is complete. 
+
 ### Part 3: Creating feature tables
 
-9. To create a feature table, you need to modify the feature table model (`model_type: feature_table_model`) in `profiles.yaml`. Uncomment the lines you commented out in **Step 6**. Then, modify the `name` from `domain_profile` to `user_profile`. Similar to `user_id_stitcher`, this is the name of the output table that is created in the warehouse. Also, delete all the information present in the `vars` key as you will <Link to="#feature-definitions">write your own features</Link> for the model instead, as mentioned in the <Link to="#use-case">use case</Link>.
+9. To create a feature table, you need to modify the feature table model (`model_type: feature_table_model`) in `profiles.yaml`. Uncomment the lines you commented out in **Step 6**. Then, modify the `name` from `domain_profile` to `<your_org_name>_user_profile` (in this doc, we used `user_profile` without the prefix ). Similar to `user_id_stitcher`, this is the name of the output table that is created in the warehouse. Also, delete all the information present in the `vars` key as you will <Link to="#feature-definitions">write your own features</Link> for the model instead, as mentioned in the <Link to="#use-case">use case</Link>.
 
 <div class="infoBlock">
 The <Link to="#feature-definitions">Feature definitions</Link> section contains details on each feature definition and the associated logic.
@@ -311,7 +313,7 @@ In the above image, you can see that 5 rows are created - one per `main_id`. For
 
 ### How it works
 
-The `pb run` command creates a new table of all the available models. Also, the Profile Builder creates a snapshot of the latest run with just the names given for the models - `user_id_stitcher` and `user_profile` in this case. This ensures that the names are more predictable for using them in any downstream application.
+The `pb run` command creates a new table of all the available models. Also, the Profile Builder creates a snapshot of the latest run with just the names given for the models - `user_id_stitcher` and `user_profile` in this case (or `<your_org_name>_user_id_stitcher` and `<your_org_name>_user_profile` based on the org_name prefix given). This ensures that the names are more predictable for using them in any downstream application.
 
 ## Feature definitions
 
