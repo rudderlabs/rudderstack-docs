@@ -279,8 +279,9 @@ You can use the <strong>Map your events with Facebook Standard Events</strong> s
 
 Note that:
 
+- For the `Purchase` standard event, `properties.revenue` is a required field.
 - For the <code class="inline-code">Products Searched</code> event, the <code class="inline-code">query</code> property must be a string.
-- You need to specify `currency` in the `Order Completed` event. If not specified, RudderStack will set the default value to `USD`.
+- If you do not specify the `properties.currency` field in the `Order Completed` event, RudderStack sets its value to `USD` by default.
 - If you map an event with the `ViewContent` standard event using the RudderStack dashboard setting and don't send the `products` array in the `message.properties` object, as shown:
 
   ```javascript
