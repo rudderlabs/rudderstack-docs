@@ -5,6 +5,13 @@ description: Create unified customer profiles with RudderStack Profiles.
 
 This guide walks you through RudderStack **Profiles**. It lets you build a unified customer profile from all the cross-platform data in your warehouse.
 
+<GhBadge
+  label={'Stability'}
+  message={'Beta'}
+  color={'blueviolet'}
+  logo={'github'}
+/>
+
 ## Introduction
 
 Companies gather user data across various digital touchpoints like websites, mobile apps, enterprise systems like CRMs, marketing platforms, etc. Users are also identified with multiple identifiers across their product journey, like their email ID, phone number, device ID, anonymous ID, account usernames, and more. In addition, they might have multiple identifiers as they often change their devices and use work and personal emails together.
@@ -16,15 +23,6 @@ Customer 360 is best represented as a table with one row per user, with multiple
 </div>
 
 ## 10-step guide to using Profiles
-
-This section is divided into four parts:
-
-- [Use case](#use-case)
-- [Setup](#part-1-setup)
-- [Setting up ID stitching](#part-2-setting-up-id-stitching)
-- [Create customer 360 feature tables](#part-3-creating-feature-tables)
-
-### Use case
 
 To understand how Profiles works, you will implement a use case by leveraging a sample dataset based on [RudderStack's ecommerce tracking plan](https://www.rudderstack.com/docs/event-spec/ecommerce-events-spec/). This data is available in Snowflake, which you can access by following the steps in this guide. 
 
@@ -45,31 +43,25 @@ You will create a simple Profiles project with the following capabilities:
 These are some basic features to demonstrate how you can use Profiles. You can add many more features with complex logic to explore its full capabilities.
 </div>
 
-### Prerequisites
+The 10 steps are divided into the following sections:
 
-To install the **Profile Builder (pb)** tool, you need the PIP3 Python package manager. Run the following commands:
+- [Setup](#part-1-setup)
+- [Setting up ID stitching](#part-2-setting-up-id-stitching)
+- [Create customer 360 feature tables](#part-3-creating-feature-tables)
 
-- Install Homebrew:
+## Part 1: Setup
 
-```curl
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)""
-```
+### 1: Install Profile Builder tool
 
-- Install Python 3:
-
-```
-brew install python3
-```
-
-### Part 1: Setup
-
-1. Install the **Profile Builder (pb)** tool by running the following command:
+Install the **Profile Builder (pb)** tool by running the following command:
 
 ```python
 pip3 install profiles-rudderstack
 ```
 
-2. Next, you need to set up a connection profile to connect to the RudderStack warehouse having the test dataset for this use case. Go to your terminal, run `pb init profile`, and follow the prompts. A sample profile for a Snowflake account is as follows:
+### 2. Set up a connection profile
+
+Next, you need to set up a connection profile to connect to the RudderStack warehouse having the test dataset for this use case. Go to your terminal, run `pb init profile`, and follow the prompts. A sample profile for a Snowflake account is as follows:
 
 ```
 Enter profile_name: test
@@ -96,7 +88,15 @@ We will share the password with you separately.
 </ul>
 </div>
 
-3. Run `pb init pb-project`. This command creates a sample project in a folder called `HelloPbProject`. To choose another name for the project folder like `ProfilesDemo`, run the following command:
+### 3. Create a sample project 
+
+Running the following command **automatically** creates a folder called `HelloPbProject` and a sample project in it:
+
+```python
+pb init pb-project
+```
+
+To choose another name for the project folder like `ProfilesDemo`, run the following command:
 
 ```python
 pb init pb-project -o ProfilesDemo
@@ -106,9 +106,11 @@ Your project folder will have the following structure. These files contain some 
 
 <img src="../assets/features/profiles-pb-structure.png" alt="Project structure" />
 
-### Part 2: Setting up ID stitching
+## Part 2: Setting up ID stitching
 
-4. Go to the `pb_project.yaml` file in your project folder. This file contains the project name, schema version, project entities, ID types, etc. Under `entities`, change the `id_stitcher` name from `models/domain_profile_id_stitcher` to `models/user_id_stitcher` - this is the name of the table created in the warehouse.
+### 4. Modify project entities
+
+Go to the `pb_project.yaml` file in your project folder. This file contains the project name, schema version, project entities, ID types, etc. Under `entities`, change the `id_stitcher` name from `models/domain_profile_id_stitcher` to `models/<your_org_name>_user_id_stitcher` (ex: `models/rudderstack_user_id_stitcher`; In this guide, we used `models/user_id_stitcher`) - this is the name of the table created in the warehouse.
 
 In the `pb_project` YAML  file, the `entities` and `id_types` fields play an essential role. **All the features are computed at an entity level**. A user is one of the most common entity types; other examples are organization/company, products, plans, etc. 
 
@@ -119,10 +121,12 @@ Also, an entity can have multiple identifiers like email, phone number, user ID,
 
 In the above example, both the `id_types` fields are the same. In the first instance, `id_types` is tied to `entities`, and the second instance contains the identifier definitions.
 
-5. Check the `inputs.yaml` file shown below (some lines are hidden). It outlines how to obtain the values for the model from the various tables. Rename the `identifies` table by replacing `rudder_events_production.web.identifies` with `profiles_sample.ecommerce.identifies`. Similarly, rename the `tracks` table by replacing `rudder_events_production.web.tracks` with `profiles_sample.ecommerce.tracks`.
+### 5. Connect to your input tables
+
+Check the `inputs.yaml` file shown below (some lines are hidden). It outlines how to obtain the values for the model from the various tables. Rename the `identifies` table by replacing `rudder_events_production.web.identifies` with `profiles_sample.ecommerce.identifies`. Similarly, rename the `tracks` table by replacing `rudder_events_production.web.tracks` with `profiles_sample.ecommerce.tracks`.
 
 <div class="infoBlock">
-<code class="inline-code">identifies</code> and <code class="inline-code">tracks</code> are the test tables in the dataset that you set up in <strong>Step 2</strong>.
+<code class="inline-code">identifies</code> and <code class="inline-code">tracks</code> are the test tables in the dataset that you set up in <Link to="#2-set-up-a-connection-profile">Step 2</Link>.
 </div>
 
 <div class="infoBlock">
@@ -131,19 +135,27 @@ Leave the rest of the file unchanged. However, you can add any new identifier fo
 
 <img src="../assets/features/profiles-inputs-yaml.png" alt="Inputs yaml file" />
 
-6. Next, go to the `profiles.yaml` file where the models are defined. You will find two models here - `id_stitcher` and `feature_table_model`. For ID stitching, retain the first model (`model_type: id_stitcher`) and **comment out the entire second model** (`model_type: feature_table_model`). Also, change the model's `name` from `domain_profile_id_stitcher` to `user_id_stitcher`, as in **Step 4**. 
+<br />
+
+### 6. Label ID stitcher table
+
+Next, go to the `profiles.yaml` file where the models are defined. You will find two models here - `id_stitcher` and `feature_table_model`. 
+
+For ID stitching, retain the first model (`model_type: id_stitcher`) and **comment out the entire second model** (`model_type: feature_table_model`). Also, change the model's `name` from `domain_profile_id_stitcher` to `<your_org_name>_user_id_stitcher` - the same name used in [Step 4](#4-modify-project-entities). 
 
 <div class="warningBlock">
 In the <code class="inline-code">name</code> field, it is important to use the same entity name set in <strong>Step 4</strong>. This links the ID stitcher in the <code class="inline-code">pb_project.yaml</code> file to the model spec in <code class="inline-code">profiles.yaml</code>.
 </div>
 
-7. At this point, the ID stitching is complete. Go to your terminal and run the following command.
+### 7. Generate ID stitcher table
+
+Go to your terminal and run the following command:
 
 ```python
 pb run
 ```
 
-The execution should take a couple of minutes. Once completed, two things happen:
+The execution takes a couple of minutes. Once completed, two things happen:
 
 - A SQL file gets written in the `output/dev/seq_no` folder.
 - This SQL is run on the warehouse and a table gets created. Also, the table name is shown in the terminal. An example output is shown below: 
@@ -154,10 +166,12 @@ The execution should take a couple of minutes. Once completed, two things happen
 
 In the above example, the **table name** is `Material_user_id_stitcher_27c35415_6`, where:
 - `Material` is a common prefix.
-- `user_id_stitcher` is the name defined in **Step 4** and **Step 6**.
+- `user_id_stitcher` is the name defined in [Step 4](#4-modify-project-entities) and [Step 6](#6-label-the-id-stitcher).
 - `27c35415_6` is a suffix generated by the Profile Builder tool. You can ignore this suffix for now.
 
-8. Go to the warehouse using the credentials defined in **Step 2** to see the actual table. Run the following query after replacing <table_name> with the table name from your CLI output:
+### 8. Verify ID stitcher results
+
+Go to the warehouse using the credentials defined in [Step 2](#2-set-up-a-connection-profile) to see the actual table. Run the following query after replacing <table_name> with the table name from your CLI output:
 
 ```sql
 SELECT * FROM PROFILES_SAMPLE.ECOMMERCE_OUTPUT.<table_name> ORDER BY main_id, other_id ASC
@@ -169,9 +183,17 @@ You will see the following result:
 
 You can see that five distinct **MAIN_ID** are created, each representing an actual user. Also, **user4** and **user5** have the same **MAIN_ID** as they share the same email - highlighting successful ID stitching.
 
-### Part 3: Creating feature tables
+At this point, the ID stitching is complete.
 
-9. To create a feature table, you need to modify the feature table model (`model_type: feature_table_model`) in `profiles.yaml`. Uncomment the lines you commented out in **Step 6**. Then, modify the `name` from `domain_profile` to `user_profile`. Similar to `user_id_stitcher`, this is the name of the output table that is created in the warehouse. Also, delete all the information present in the `vars` key as you will <Link to="#feature-definitions">write your own features</Link> for the model instead, as mentioned in the <Link to="#use-case">use case</Link>.
+## Part 3: Creating feature tables
+
+### 9. Define features
+
+To create a feature table, you need to modify the feature table model (`model_type: feature_table_model`) in `profiles.yaml`. 
+
+Uncomment the lines you commented out in [Step 6](#6-label-the-id-stitcher). Then, modify the `name` from `domain_profile` to `<your_org_name>_user_profile` (in this doc, we used `user_profile` without the prefix ). Similar to `user_id_stitcher`, this is the name of the output table that is created in the warehouse. 
+
+Also, delete all the information present in the `vars` key as you will <Link to="#feature-definitions">write your own features</Link> for the model instead, as mentioned in the <Link to="#use-case">use case</Link>.
 
 <div class="infoBlock">
 The <Link to="#feature-definitions">Feature definitions</Link> section contains details on each feature definition and the associated logic.
@@ -282,13 +304,15 @@ models:
         - avg_session_length_in_sec_last_7_days
 ```
 
-10. Go to your terminal and run the following command:
+### 10. Generate and verify feature table
+
+Go to your terminal and run the following command:
 
 ```python
 pb run
 ```
 
-In a few minutes, you will see a similar output as **Step 7**. However, you will get two SQL files this time - one for the ID stitcher and the other for the feature table. You will also see two tables created in the warehouse.
+In a few minutes, you will see a similar output as [Step 7](#7-generate-id-stitcher-table). However, you will get two SQL files this time - one for the ID stitcher and the other for the feature table. You will also see two tables created in the warehouse.
 
 <div class="infoBlock">
 The two SQL files are created in a new folder and are present for debugging purposes. You can check the queries to understand what is happening behind the scenes.
@@ -311,7 +335,7 @@ In the above image, you can see that 5 rows are created - one per `main_id`. For
 
 ### How it works
 
-The `pb run` command creates a new table of all the available models. Also, the Profile Builder creates a snapshot of the latest run with just the names given for the models - `user_id_stitcher` and `user_profile` in this case. This ensures that the names are more predictable for using them in any downstream application.
+The `pb run` command creates a new table of all the available models. Also, the Profile Builder creates a snapshot of the latest run with just the names given for the models - `user_id_stitcher` and `user_profile` in this case (or `<your_org_name>_user_id_stitcher` and `<your_org_name>_user_profile` based on the org_name prefix given). This ensures that the names are more predictable for using them in any downstream application.
 
 ## Feature definitions
 
