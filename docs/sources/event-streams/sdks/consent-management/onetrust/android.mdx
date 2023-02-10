@@ -4,3 +4,125 @@ description: Integrate the RudderStack Android SDK with OneTrust.
 aliases: ["OneTrust Android SDK"]
 ---
 
+The <Link to="https://www.rudderstack.com/docs/sources/event-streams/sdks/rudderstack-android-sdk/">RudderStack Android SDK</Link> lets you specify the user's consent during initialization.
+
+## Overview
+
+The consent management is designed to be a filter for the event destinations and the natively added factories. Since the SDK initializes the native integration factories during the startup, the user's consent to the cookie categories must be captured by then.
+
+<div class="warningBlock">
+You can add only one consent filter to the Android SDK.
+</div>
+
+For filtering, RudderStack uses the `getConsentStatusForGroupId` method from the OneTrust SDK.
+
+## SDK setup
+
+This setup assumes the Android SDK and the OneTrust SDK is already added to your application.
+
+1. Add OneTrust Consent Filter to your `build.gradle` (module level).
+
+## Usage
+
+The following snippet shows a sample application file to help with the initialization:
+
+```kotlin
+class CustomApplication : Application() {
+    companion object {
+        const val DATA_PLANE_URL = "data_plane_url"
+        const val WRITE_KEY = "write_key"
+    }
+
+    var _rudderClient: RudderClient? = null;
+    val rudderClient
+        get() = _rudderClient
+
+    private val oneTrustEventListener = object : OTEventListener() {
+        override fun onShowBanner(p0: OTUIDisplayReason?) {
+        }
+
+        override fun onHideBanner() {
+
+        }
+
+        override fun onBannerClickedAcceptAll() {
+            createRudderClientWithOneTrust()
+        }
+
+        override fun onBannerClickedRejectAll() {
+            createRudderClientWithOneTrust()
+        }
+
+        override fun onShowPreferenceCenter(p0: OTUIDisplayReason?) {
+        }
+
+        override fun onHidePreferenceCenter() {
+        }
+
+        override fun onPreferenceCenterAcceptAll() {
+            createRudderClientWithOneTrust()
+        }
+
+        override fun onPreferenceCenterRejectAll() {
+            createRudderClientWithOneTrust()
+        }
+
+        override fun onPreferenceCenterConfirmChoices() {
+            createRudderClientWithOneTrust()
+        }
+
+        override fun onShowVendorList() {}
+
+        override fun onHideVendorList() {}
+
+        override fun onVendorConfirmChoices() {
+        }
+
+        override fun allSDKViewsDismissed(p0: String?) {}
+
+        override fun onVendorListVendorConsentChanged(p0: String?, p1: Int) {
+        }
+
+        override fun onVendorListVendorLegitimateInterestChanged(p0: String?, p1: Int) {}
+
+        override fun onPreferenceCenterPurposeConsentChanged(p0: String?, p1: Int) {
+        }
+
+        override fun onPreferenceCenterPurposeLegitimateInterestChanged(p0: String?, p1: Int) {}
+
+    }
+    internal val otPublishersHeadlessSDK by lazy { OTPublishersHeadlessSDK(this) }
+
+    override fun onCreate() {
+        super.onCreate()
+        setupOneTrust()
+    }
+
+    internal fun setupOneTrust() {
+			// set up one trust, 
+      // uncomment the following line and pass the credentials
+			// otPublishersHeadlessSDK.startSDK()
+        otPublishersHeadlessSDK.addEventListener(oneTrustEventListener)
+    }
+
+    private fun createRudderClientWithOneTrust() {
+        _rudderClient = RudderClient.getInstance(
+            this,
+            WRITE_KEY,
+            RudderConfig.Builder()
+                .withDataPlaneUrl(DATA_PLANE_URL)
+                .withLogLevel(RudderLogger.RudderLogLevel.VERBOSE)
+                .withControlPlaneUrl("https://api.dev.rudderlabs.com")
+                .withTrackLifecycleEvents(true)
+                .withRecordScreenViews(false)
+                .withConsentFilter(RudderOneTrustConsentFilter(otPublishersHeadlessSDK))
+                .build()
+            )
+    }
+
+
+    private val otSdkParams
+        get() = OTSdkParams.SdkParamsBuilder.newInstance()
+            .build()
+}
+```
