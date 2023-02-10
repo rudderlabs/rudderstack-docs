@@ -5,6 +5,13 @@ description: Create unified customer profiles with RudderStack Profiles.
 
 This guide walks you through RudderStack **Profiles**. It lets you build a unified customer profile from all the cross-platform data in your warehouse.
 
+<GhBadge
+  label={'Stability'}
+  message={'Beta'}
+  color={'blueviolet'}
+  logo={'github'}
+/>
+
 ## Introduction
 
 Companies gather user data across various digital touchpoints like websites, mobile apps, enterprise systems like CRMs, marketing platforms, etc. Users are also identified with multiple identifiers across their product journey, like their email ID, phone number, device ID, anonymous ID, account usernames, and more. In addition, they might have multiple identifiers as they often change their devices and use work and personal emails together.
@@ -44,22 +51,6 @@ You will create a simple Profiles project with the following capabilities:
 <div class="infoBlock">
 These are some basic features to demonstrate how you can use Profiles. You can add many more features with complex logic to explore its full capabilities.
 </div>
-
-### Prerequisites
-
-To install the **Profile Builder (pb)** tool, you need the PIP3 Python package manager. Run the following commands:
-
-- Install Homebrew:
-
-```curl
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)""
-```
-
-- Install Python 3:
-
-```
-brew install python3
-```
 
 ### Part 1: Setup
 
@@ -137,13 +128,13 @@ Leave the rest of the file unchanged. However, you can add any new identifier fo
 In the <code class="inline-code">name</code> field, it is important to use the same entity name set in <strong>Step 4</strong>. This links the ID stitcher in the <code class="inline-code">pb_project.yaml</code> file to the model spec in <code class="inline-code">profiles.yaml</code>.
 </div>
 
-7. Go to your terminal and run the following command.
+7. Go to your terminal and run the following command:
 
 ```python
 pb run
 ```
 
-The execution should take a couple of minutes. Once completed, two things happen:
+The execution takes a couple of minutes. Once completed, two things happen:
 
 - A SQL file gets written in the `output/dev/seq_no` folder.
 - This SQL is run on the warehouse and a table gets created. Also, the table name is shown in the terminal. An example output is shown below: 
