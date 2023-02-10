@@ -167,7 +167,7 @@ export const jsonData = [
                             },
                             {
                                 title: "OneTrust Consent Manager",
-                                link: "/sources/event-streams/sdks/consent-management/onetrust/web/",
+                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/",
                                 content: [],
                             },
                             {
@@ -301,7 +301,7 @@ export const jsonData = [
                                 link: "/sources/event-streams/sdks/consent-management/onetrust/",
                                 content: [
                                     {
-                                        title: "Web",
+                                        title: "JavaScript",
                                         link: "/sources/event-streams/sdks/consent-management/onetrust/web/",
                                         content: []
                                     },

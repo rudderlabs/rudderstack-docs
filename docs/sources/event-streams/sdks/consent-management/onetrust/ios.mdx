@@ -1,6 +1,224 @@
 ---
-title: "OneTrust-iOS SDK Integration"
+title: "OneTrust Consent Management for RudderStack iOS SDK"
 description: Integrate the RudderStack iOS SDK with OneTrust.
 aliases: ["OneTrust iOS SDK"]
 ---
 
+The <Link to="https://www.rudderstack.com/docs/sources/event-streams/sdks/rudderstack-ios-sdk/">RudderStack iOS SDK</Link> lets you specify the user's consent during initialization.
+
+<div class="infoBlock">
+The RudderStack iOS SDK supports OneTrust consent management from version 1.9.0.
+</div>
+
+This guide lists the steps to:
+
+- Develop a consent interceptor for the iOS SDK.
+- Use the interceptor to initialize the SDK once the user gives their consent.
+
+## Developing a consent interceptor
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+        <ol>
+            <li>Create a <code class="inline-code">CustomConsentInterceptor.h</code> by extending <code class="inline-code">RSConsentInterceptor</code>, as shown:</li>
+            <br />
+<span>
+
+```objectivec
+#import <Foundation/Foundation.h>
+#import <Rudder/Rudder.h>
+NS_ASSUME_NONNULL_BEGIN
+@interface CustomConsentInterceptor : NSObject<RSConsentInterceptor>
+@end
+NS_ASSUME_NONNULL_END
+```
+</span>
+<li>Create a <code class="inline-code">CustomConsentInterceptor.m</code> file, as shown:</li>
+<br />
+
+<span>
+
+```objectivec
+#import "CustomConsentInterceptor.h"
+
+@implementation CustomConsentInterceptor
+
+- (nonnull RSMessage *)interceptWithServerConfig:(nonnull RSServerConfigSource *)serverConfig andMessage:(nonnull RSMessage *)message {
+    RSMessage *updatedMessage = message;
+    // Your code
+    return updatedMessage;
+}
+
+@end
+```
+</span>
+
+</ol>
+      </TabPanel>
+      <TabPanel>
+        <ol>
+            <li>Create a <code class="inline-code">CustomConsentInterceptor</code> file by extending <code class="inline-code">RSConsentInterceptor</code>, as shown:</li>
+            <br />
+
+<span>
+
+```swift
+@objc
+open class OneTrustInterceptor: NSObject, RSConsentInterceptor {
+    @objc
+    public override init() {
+        super.init()
+    }
+
+    public func intercept(
+        withServerConfig serverConfig: RSServerConfigSource, andMessage message: RSMessage
+    ) -> RSMessage {
+        let updatedMessage = message
+        // Your code
+        return updatedMessage
+    }
+}
+```
+</span>
+</ol>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+## Registering interceptor with iOS SDK
+
+You can register `CustomConsentInterceptor` with the iOS SDK during its initialization, as shown:
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+        
+<span>
+
+```objectivec
+RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
+[builder withLoglevel:RSLogLevelDebug];
+[builder withDataPlaneUrl:DATA_PLANE_URL];
+[builder withConsentInterceptor:[[CustomConsentInterceptor alloc] init]];
+
+[RSClient getInstance:WRITE_KEY config:builder.build];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+
+<span>
+
+```swift
+let builder: RSConfigBuilder = RSConfigBuilder()
+    .withLoglevel(RSLogLevelDebug)
+    .withDataPlaneUrl(DATA_PLANE_URL)
+    .withConsentInterceptor(CustomConsentInterceptor())
+
+RSClient.getInstance(rudderConfig.WRITE_KEY, config: builder.build())
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+## Installing OneTrust consent
+
+1. Install `RudderOneTrust` by adding the following line to your `Podfile`:
+
+```ruby
+pod 'RudderOneTrust', '~> 1.0.0'
+```
+
+2. Import the SDK, as shown:
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+        
+<span>
+
+```objectivec
+@import RudderOneTrust;
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+
+<span>
+
+```swift
+import RudderOneTrust
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+3. Finally, add the imports to your `AppDelegate` file under the `didFinishLaunchingWithOptions` method, as shown:
+
+<Tabs>
+  <TabList>
+    <Tab>Objective-C</Tab>
+    <Tab>Swift</Tab>
+  </TabList>
+    <TabPanels>
+      <TabPanel>
+        
+<span>
+
+```objectivec
+[[OTPublishersHeadlessSDK shared] startSDKWithStorageLocation:STORAGE_LOCATION domainIdentifier:DOMAIN_IDENTIFIER languageCode:@"en" params:nil loadOffline:NO completionHandler:^(OTResponse *response) {
+    if (response.status) {
+        RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
+        [builder withLoglevel:RSLogLevelDebug];
+        [builder withDataPlaneUrl:DATA_PLANE_URL];
+        [builder withConsentInterceptor:[[OneTrustInterceptor alloc] init]];
+
+        [RSClient getInstance:rudderConfig.WRITE_KEY config:builder.build];
+    }
+}];
+```
+</span>
+      </TabPanel>
+      <TabPanel>
+
+<span>
+
+```swift
+OTPublishersHeadlessSDK.shared.startSDK(
+    storageLocation: STORAGE_LOCATION,
+    domainIdentifier: DOMAIN_IDENTIFIER,
+    languageCode: "en"
+) { response in
+    if response.status {
+        let builder: RSConfigBuilder = RSConfigBuilder()
+            .withLoglevel(RSLogLevelDebug)
+            .withDataPlaneUrl(DATA_PLANE_URL)
+            .withConsentInterceptor(OneTrustInterceptor())
+
+        RSClient.getInstance(rudderConfig.WRITE_KEY, config: builder.build())
+    }
+}
+```
+</span>
+      </TabPanel>
+    </TabPanels>
+</Tabs>
+
+<div class="warningBlock">
+Make sure you load the SDK only after initializing the OneTrust SDK successfully.
+</div>
