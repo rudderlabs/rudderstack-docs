@@ -40,6 +40,10 @@ SHOW ROLES;
 CREATE USER RUDDER PASSWORD = '<strong_unique_password>' DEFAULT_ROLE = 'RUDDER_ROLE';
 ```
 
+<div class="infoBlock">
+You can assign some other role to this user in the RudderStack dashboard settings later, as specified in the <Link to="#configuring-the-connection-credentials">Configuring the connection credentials</Link> section.
+</div>
+
 4. Verify if the user `RUDDER` is successfully created.
 
 ```sql
@@ -157,6 +161,7 @@ If you have chosen the <strong>Model</strong> option, skip the next steps and re
     - **Database**: Enter the name of the database in which your data resides.
     - **Warehouse**: Specify the name of your data warehouse.
     - **User**: Enter the name of the user that has the required read/write access to the above database.
+    - **Role**: Enter a role you want to assign to the above user. For syncing the data, you can use this role apart from the default role (`RUDDER_ROLE`) assigned in the <Link to="#step-1-creating-a-new-role-and-user-in-snowflake">Creating a new role and user</Link> section.
     - **Password**: Enter the password for the above user.
     - **Choose your Cloud**: Specify your cloud provider in this field.
 
