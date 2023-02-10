@@ -1,0 +1,39 @@
+---
+title: "Consent Management"
+description: Integrate RudderStack with various consent management platforms.
+aliases: ["Consent Management", ""]
+---
+
+Consent managers offer various cookie consent solutions allowing the customers to determine what personal data they want to share with a business. Data protection laws like GDPR, CCPA, etc., require the websites to get user consent for collecting their data through cookies.
+
+<div class="infoBlock">
+Currently, RudderStack only supports the <Link to="/sources/event-streams/sdks/consent-management/onetrust/">OneTrust consent manager</Link>. Support for other consent management tools is coming soon.
+</div>
+
+## FAQ
+
+### Can I integrate the RudderStack JavaScript SDK with any consent manager?
+
+If you are using a consent manager other than <Link to="/sources/event-streams/sdks/consent-management/onetrust/">OneTrust</Link>, you can configure the cookie categories to show on your website whenever a user visits.
+
+Next, you need to create an internal mapping between these cookie categories and the destinations configured in RudderStack. For example:
+
+- Analytical cookie: Amplitude, Google Analytics
+- Targeting cookie: Bing Ads, Google Ads
+- Marketing cookie: Braze, Mailchimp, Customer.io
+
+When the user provides consent, you should fetch the consent (via the API or SDK provided by your consent manager) and filter the destinations depending on the consent. Once you have the list of destinations for which the user has provided consent, you can load the JavaScript SDK only for those destinations.
+
+For example, if a user has provided consent for an analytical cookie, then you can load the JavaScript SDK as shown:
+
+```javascript
+rudderanalytics.load(WRITE_KEY,DATA_PLANE_URL,{
+   integrations: {
+       All: false,
+       "Amplitude": true,
+       "Google Analytics": true
+       // only provide the destinations the user has provide consent for
+   }
+   // pass other initialization options
+});
+```

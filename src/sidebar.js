@@ -167,7 +167,7 @@ export const jsonData = [
                             },
                             {
                                 title: "OneTrust Consent Manager",
-                                link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/onetrust-consent-manager/",
+                                link: "/sources/event-streams/sdks/consent-management/onetrust/web/",
                                 content: [],
                             },
                             {
@@ -292,8 +292,35 @@ export const jsonData = [
                         content: []
                     },
                     {
-                        title: "Client-side Event Filtering",
+                        title: "Consent Management",
                         sectionTitle: "Features",
+                        link: "/sources/event-streams/sdks/consent-management/",
+                        content: [
+                            {
+                                title: "OneTrust",
+                                link: "/sources/event-streams/sdks/consent-management/onetrust/",
+                                content: [
+                                    {
+                                        title: "Web",
+                                        link: "/sources/event-streams/sdks/consent-management/onetrust/web/",
+                                        content: []
+                                    },
+                                    {
+                                        title: "Android",
+                                        link: "/sources/event-streams/sdks/consent-management/onetrust/android/",
+                                        content: []
+                                    },
+                                    {
+                                        title: "iOS",
+                                        link: "/sources/event-streams/sdks/consent-management/onetrust/ios/",
+                                        content: []
+                                    },
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        title: "Client-side Event Filtering",
                         link: "/sources/event-streams/sdks/event-filtering/",
                         content: []
                     },
