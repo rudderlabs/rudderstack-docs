@@ -13,9 +13,7 @@ The <a href="https://www.okta.com/integrations/rudderstack/">Okta RudderStack ap
   color={'blueviolet'}
 />
 
-<div class="infoBlock">
 To manually configure and enable Okta SSO for your organization, refer to the <Link to="/user-guides/administrators-guide/okta-sso/manual-setup/">Manual Setup</Link> guide. 
-</div>
 
 ## Step 1: Add the RudderStack SSO SAML 2.0 app
 
@@ -51,7 +49,7 @@ Check the <strong>Do not display application icon to users</strong> and <strong>
 ## Step 3: Add the RudderStack SSO Bookmark app
 
 <div class="infoBlock">
-Your users will use this app to quickly access the RudderStack web app using the SSO functionality.
+Your users will use this app to quickly access the [RudderStack dashboard](https://app.rudderstack.com/) using the SSO functionality.
 </div>
 
 1. Go to the [RudderStack SSO integration page](https://www.okta.com/integrations/rudderstack/). Then, click **Add Integration**, as shown:
@@ -66,6 +64,6 @@ Do not check the <strong>Do not display application icon to users</strong> and <
 
 <img src="../../../assets/user-guides/rudderstack-okta-sso-5.png" alt="Application name and visibility" />
 
-3. Under **Sign on methods**, choose **Bookmark-only**. Set the **Login URL** to `https://app.rudderstack.com/sso?domain=<your_website>.com`, where `<your_website>` is your organizaiton's web domain. Retain the rest of the settings and click **Done**. 
+3. Under **Sign on methods**, choose **Bookmark-only**. Set the **Login URL** to `https://app.rudderstack.com/sso?domain=<your_website>.com`, where `<your_website>` is your organization's web domain. Retain the rest of the settings and click **Done**. 
 
 <img src="../../../assets/user-guides/rudderstack-okta-sso-6.png" alt="Bookmark sign on method and Login URL" />
