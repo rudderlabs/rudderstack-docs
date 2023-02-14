@@ -55,6 +55,13 @@ If AWS Glue is enabled, make sure you grant the following permissions to it:
 <li>glue:CreateDatabase</li>
 <li>glue:GetTables</li>
 </ul>
+<br />
+
+The following additional permissions are required to enable the <a href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-catalog-partitions.html">AWS Glue partitions</a>:
+<ul>
+<li>glue:BatchCreatePartition</li>
+<li>glue:GetPartition</li>
+</ul>
 </div>
 
 * **AWS Glue Region**: Enter your AWS Glue region. For example, for `N.Virginia`, it would be `us-east-1`.
