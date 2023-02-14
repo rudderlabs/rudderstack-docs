@@ -26,7 +26,7 @@ Once you have confirmed that the source platform supports sending events to Crit
 To successfully configure Criteo Audience as a destination, you need to configure the following settings:
 
 - **Create Account**: Click **Create Account** > **Connect with Criteo Audience** and enter your login credentials for Criteo Audience.
-- **Audience Id**: Enter the audience ID for which you want to sync the data. Refer to the [Criteo Audience documentation](https://developers.criteo.com/marketing-solutions/docs/audience#creating-a-new-audience) for more information on obtaining the audience ID.
+- **Audience Id**: Enter the audience ID for which you want to sync the data. Refer to the <a href="#faq">FAQ</a> section for more information on obtaining the audience ID.
 - **Audience Type**: Select the audience type from the dropdown for which you want to add or remove the users. If you select `gum`, then **Gum Caller Id** is a required field. Refer to the [Criteo documentation](https://developers.criteo.com/marketing-solutions/docs/contact-list#adding-and-removing-users-in-an-audience) for more information on different audience types.
 
 ## `audienceList` event structure
@@ -74,3 +74,13 @@ The following code snippet shows a sample `audienceList` call for `madid` audien
 <div class="warningBlock">
 Criteo's API implements <a href="https://developers.criteo.com/marketing-solutions/docs/rate-limits">rate limits</a> to limit the number of requests you're able to make on any API endpoint per minute.
 </div>
+
+## FAQ
+
+### How do I obtain my Criteo audience ID?
+
+1. Log in to your [Criteo marketing account](https://marketing.criteo.com/).
+2. In the left navigation bar, go to **Assets** > **Audiences**.
+3. You can find the relevant audience ID under the  **Audiences** tab, as shown:
+
+<img src="../../assets/event-stream-destinations/criteo-audience.png" alt="Criteo Audience" />
