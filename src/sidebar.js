@@ -515,8 +515,8 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Google Sheets",
-                link: "/sources/extract/google-sheets/",
+                title: "Google Sheets V2",
+                link: "/sources/extract/google-sheets-v2/",
                 content: []
             },
             {
