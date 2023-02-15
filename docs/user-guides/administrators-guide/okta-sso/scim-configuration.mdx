@@ -13,24 +13,24 @@ This guide lets you configure Okta's [SCIM provisioning](https://www.okta.com/bl
 
 ## Supported features
 
-Currently, RudderStack supports the followin provisioning features:
+Currently, RudderStack supports the following provisioning features:
 
 - **Push users**: You can create or link a user in RudderStack when assigning the app to a user in Okta.
 - **Update user attributes**: Okta updates a user's attributes in RudderStack when the app is assigned to them. Note that any future attribute changes made to the Okta user's profile will automatically overwrite the corresponding attribute value in RudderStack.
 
 <div class="infoBlock">
-Currently, you can update only the user's display name. Updating the email is not supported.
+Currently, you can only update the user's display name. Updating the email is not supported.
 </div>
 
 - **Deactivate/reactivate users**: This feature deactivates a user's RudderStack account when it is unassigned in Okta or their Okta account is deactivated. To reactivate the account, you can reassign the app to the user in Okta.
 
 <div class="infoBlock">
-When a user is deactivated through SCIM, RudderStack does not delete the user from its database; it only revokes their organization user role leading to them losing access to their workspace.
+When a user is deactivated through SCIM, RudderStack does not delete the user from its database; it only revokes their organization user role leading to the loss of their workspace access.
 </div>
 
 ## Requirements
 
-To configure the SCIM app, you need a <Link to="/dashboard-guides/personal-access-token/">personal access token</Link> with **administrative privileges**.
+To configure the SCIM app, you need a <Link to="/dashboard-guides/personal-access-token/">personal access token</Link> with **admin privileges**.
 
 Follow these steps to create a new personal access token:
 
@@ -39,7 +39,7 @@ Follow these steps to create a new personal access token:
 
 <img src="../../../assets/rudderstack-api/personal-access-token-1.png" alt="New personal access token in RudderStack dashboard" />
 
-3. Enter the token and from the **Role** dropdown, select **Admin**.
+3. Enter the token name and select **Admin** from the **Role** dropdown.
 
 <div class="infoBlock">
 Set an appropriate name for the token as it will be used for configuring SCIM.
