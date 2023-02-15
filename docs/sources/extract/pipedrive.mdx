@@ -4,13 +4,9 @@ description: Sync data from Pipedrive to your warehouse destination via RudderSt
 aliases: ["Pipedrive source"]
 ---
 
-[Pipedrive](https://www.pipedrive.com/) is a popular sales CRM and pipeline management tool that lets you manage your leads, track all your customer communications, automate administrative tasks, and do so much more. With Pipedrive, you can efficiently track and manage your sales funnel, and also integrate it with hundreds of popular apps like Slack, Mailchimp, and more.
+[Pipedrive](https://www.pipedrive.com/) is a popular sales CRM and pipeline management tool. It lets you manage your leads, track all your customer communications, and automate administrative tasks.
 
-This document guides you in setting up Pipedrive as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Pipedrive data, which can then be routed to your data warehouse destination supported by RudderStack.
-
-<div class="dangerBlock">
-This source will be deprecated soon. Refer to the <Link to="/sources/extract/pipedrive-v2/">Pipedrive V2</Link> guide for the latest documentation.
-</div>
+This document guides you in setting up Pipedrive as a source in RudderStack. Once configured, RudderStack automatically ingests your Pipedrive data and routes it to your specified data warehouse destination.
 
 <div class="warningBlock">
 All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
@@ -18,75 +14,79 @@ All the Cloud Extract sources support sending data only to a <Link to="/destinat
 
 ## Getting Started
 
-To add Pipedrive as a source in RudderStack, follow these steps:
+To set up Pipedrive as a source in RudderStack, follow these steps:
 
-- Log into your [RudderStack dashboard](https://app.rudderlabs.com/signup?type=freetrial).
-- From the left panel, select **Sources**. Then, click **Add Source**, as shown:
+1. Log into your [RudderStack dashboard](https://app.rudderstack.com/).
+2. Go to **Sources** > **New source** > **Cloud Extract** and select **Pipedrive** from the list of sources.
+3. Assign a name to your source and click **Continue**.
 
-<img src="../../assets/1 (4) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (3) (2) (3).png" alt="Add Source" />
+### Connection settings
 
-- Next, navigate to **Cloud Extract** within the **Sources** directory and select **Pipedrive**.
+To set up Pipedrive as a Cloud Extract source, configure the following settings:
 
-<img src="../../assets/screen-shot-2021-02-09-at-5.06.53-pm.png" alt="Select Pipedrive" />
+<img src="../../assets/cloud-extract-sources/pipedrive-connection-settings.png" alt="Pipedrive credentials" />
 
-- Assign a name to your source, and click **Next**.
+- **Start Date**: Select the date from when RudderStack ingests your Pipedrive data. RudderStack will **not replicate** any data before this date.
+- **API Token**: Enter your Pipedrive API token. Refer to the [Pipedrive documentation](https://pipedrive.readme.io/docs/how-to-find-the-api-token) for more information on obtaining the API token.
 
-<img src="../../assets/screen-shot-2021-02-09-at-5.07.17-pm.png" alt="Assign a name" />
+### Destination settings
 
-### Setting Up the Connection
+The following settings specify how RudderStack sends the data ingested from Pipedrive to the connected warehouse destination:
 
-- Under **Create new account**, fill in the relevant connection credentials.
-
-<img src="../../assets/screen-shot-2021-02-09-at-5.08.24-pm.png" alt="Create new account" />
-
-- The connection settings are:
-  - **Account Name** : Your Pipedrive account name goes here.
-  - **API Key** : Enter your Pipedrive API Key, which can be obtained by logging into your Pipedrive dashboard and navigating to **Settings** - **Personal preferences** - **API.**
+- **Table prefix**: RudderStack uses this prefix to create a table in your data warehouse and loads all your Pipedrive data into it.
+- **Schedule Settings**: RudderStack gives you three options to ingest the data from Pipedrive:
+    - **Basic**: Runs the syncs at the specified time interval. 
+    - **CRON**: Runs the syncs based on the user-defined CRON expression.
+    - **Manual**: You are required to run the syncs manually.
 
 <div class="infoBlock">
-
-For more information on obtaining your Pipedrive API key, refer to the <a href="https://support.pipedrive.com/en/article/how-can-i-find-my-personal-api-key">Pipedrive knowledge base</a>.
+For more information on the schedule types, refer to the <Link to="/sources/extract/common-settings/">Common Settings</Link> guide.
 </div>
+
+### Selecting the data to import
+
+You can choose the Pipedrive data you want to ingest by selecting the required resources:
+
+<img src="../../assets/cloud-extract-sources/pipedive-v2-resources.png" alt="Selecting the data to import" />
+
+The below table mentions the syncs supported by these resources from Pipedrive to your warehouse destination where `id` is a common primary key for all:  
+
+| Resource | Sync type | Pipedrive API endpoint |
+| :---| :--- | :--- |
+|`users`| Incremental | `/v1/users` |
+|`stages`| Incremental | `/v1/stages` |
+|`products`| Incremental | `/v1/products` |
+|`product_fields`| Full Refresh | `/v1/productFields` |
+|`pipelines`| Incremental | `/v1/pipelines` |
+|`persons`| Incremental | `/v1/persons` |
+|`person_fields`| Full Refresh | `/v1/personFields` |
+|`organizations`| Incremental | `/v1/organizations` |
+|`organization_fields`| Full Refresh | `/v1/organizationFields` |
+|`notes`| Incremental | `/v1/notes` |
+|`leads`| Full Refresh | `/v1/leads` |
+|`deals`| Incremental | `/v1/deals` |
+|`deal_fields`| Full Refresh | `/v1/dealFields` |
+|`activity_fields`| Full Refresh | `/v1/activityFields` |
+|`activities`| Incremental | `/v1/activities` |
+
+<div class="infoBlock">
+For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
+</div>
+
+Pipedrive is now configured as a source. RudderStack will start ingesting data from Bing Ads as per your specified schedule and frequency.
+
+You can further connect this source to your data warehouse by clicking on **Add Destination**, as shown:
+
+<img src="../../assets/cloud-extract-sources/add-destination.png" alt="Adding a destination" />
 
 <div class="successBlock">
-
-  If you have already connected RudderStack to your Pipedrive account, your
-  credentials should appear automatically under
-  **Use existing credentials**.
+Use the <strong>Use Existing Destination</strong> option if you have an already-configured data warehouse destination in RudderStack. To configure a data warehouse destination from scratch, select the <strong>Create New Destination</strong> button.
 </div>
 
-### Setting the Data Update Schedule
-
-- Next, you will be required to set the **Run Frequency** to schedule the data import from your Pipedrive account to RudderStack. You can also specify the time when you want this synchronization to start, by choosing the time under the **Sync Starting At** option, as shown:
-
-<img src="../../assets/screen-shot-2021-02-09-at-5.08.36-pm.png" alt="Run Frequency" />
-
-### Configuring the Source
-
-- In the next screen, select the data to import from Pipedrive. To import data from all the columns, click **Select All**. Then, click **Next** to complete the configuration.
-
-<img src="../../assets/screen-shot-2021-02-09-at-5.08.56-pm.png" alt="Select All" />
-
-That's it! Pipedrive is now successfully configured as a source on your RudderStack dashboard.
-
-RudderStack will start importing data from Pipedrive as per the specified frequency. You can further connect this source to your data warehouse by clicking on **Connect Destinations** or **Add Destination**, as shown:
-
-<img src="../../assets/screen-shot-2021-02-09-at-5.09.24-pm.png" alt="Add Destination" />
-
-<div class="successBlock">
-
-  Use the **Connect Destinations** option if you have already
-  configured a data warehouse destination in RudderStack. To configure a data
-  warehouse destination from scratch, click the
-  **Add Destination** button.
-</div>
-
-## FAQs
+## FAQ
 
 #### Is it possible to have multiple Cloud Extract sources writing to the same schema?
 
 Yes, it is.
 
-We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
-
-
+RudderStack implements a feature wherein it associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.

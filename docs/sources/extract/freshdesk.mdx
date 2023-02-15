@@ -8,10 +8,6 @@ aliases: ["Freshdesk source"]
 
 This document guides you in setting up Freshdesk as a source in RudderStack. Once configured, RudderStack automatically ingests your specified Freshdesk data, which can then be routed to your RudderStack-supported data warehouse destination.
 
-<div class="dangerBlock">
-This source will be deprecated soon. Refer to the <Link to="/sources/extract/freshdesk-v2/">Freshdesk V2</Link> guide for the latest documentation.
-</div>
-
 <div class="warningBlock">
 All the Cloud Extract sources support sending data only to a <Link to="/destinations/warehouse-destinations/">data warehouse destination</Link>.
 </div>
@@ -26,18 +22,14 @@ To set up Freshdesk as a source in RudderStack, follow these steps:
 
 ### Connection settings
 
-1. Click **Create Credentials from Scratch**. You will then see the following screen:
+To set up Freshdesk as a Cloud Extract source, you need to configure the following settings:
 
-<img src="../../assets/cloud-extract-sources/freshdesk-connection-settings.png" alt="Freshdesk credentials" />
+<img src="../../assets/cloud-extract-sources/freshdesk-connection-settings-4.png" alt="Freshdesk credentials" />
 
-2. Enter the following connection credentials to authenticate your Freshdesk account with RudderStack:
-  - **Account Name**: Enter your Freshdesk account name. This should be the email you used to sign up for Freshdesk.
-  - **Subdomain**: Enter your Freshdesk subdomain (portion of the URL before `.freshdesk.com/`)
-  - **API Key**: Enter your Freshdesk API key which can be obtained by logging into your Freshdesk account, clicking on your profile and navigating to the **Profile Settings**.
-
-<div class="successBlock">
-Refer to the <a href="#faq">FAQ</a> section for more information on obtaining the Freshdesk API key.
-</div>
+- **Domain**: Enter your Freshdesk domain from the URL (for example, `test.freshdesk.com`).
+- **API Key**: Enter your Freshdesk API key. Refer to the <Link to="#faq">FAQ</Link> section for more information on obtaining the API key.
+- **Requests per minute**: Enter the number of requests that Freshdesk can use per minute. The rate limit **does not allow** more than 50 requests per minute per app per Freshdesk account.
+- **Start Date**: Enter the date from which RudderStack should import your historical Freshdesk data.
 
 ### Destination settings
 
@@ -55,9 +47,49 @@ For more information on the schedule types, refer to the <Link to="/sources/extr
 
 ### Selecting the data to import
 
-Choose the Freshdesk data that you wish to ingest via RudderStack. You can either select all the data or choose specific Freshdesk data attributes as per your requirement.
+You can choose the Freshdesk data you want to ingest by selecting the required resources:
 
-<img src="../../assets/cloud-extract-sources/freshdesk-connection-settings-1.png" alt="Selecting the data to import" />
+<img src="../../assets/cloud-extract-sources/freshdesk-resources.png" alt="Selecting the data to import" />
+
+The below table mentions the syncs and API endpoints supported by these resources from Freshdesk to your warehouse destination:
+
+| Resource | Supported sync mode | Primary key | Freshdesk API endpoint |
+| :---| :---- | :---- | :---- | :---- |
+|	`time_entries`	| Full Refresh  | `id` | `/time_entries` |
+|	`tickets`	| Incremental | `id` | `/tickets` |
+|	`ticket_fields`	| Full Refresh  | `id` | `/ticket_fields` |
+|	`surveys`	| Full Refresh  | `id` | `/surveys` |
+|	`solution_folders`	| Full Refresh  | `id` | `/solutions/categories/[id]/folders` |
+|	`solution_categories`	| Full Refresh  | `id` | `/solutions/categories` |
+|	`solution_articles`	| Full Refresh  | `id` | `/solutions/folders/[id]/articles` |
+|	`sla_policies`	| Full Refresh  | `id` | `/sla_policies` |
+|	`settings`	| Full Refresh  | `primary_language` | `/settings/helpdesk` |
+|	`scenario_automations`	| Full Refresh  | `id` | `/scenario_automations` |
+|	`satisfaction_ratings`	| Incremental  | `id` | `/surveys/satisfaction_ratings` |
+|	`roles`	| Full Refresh  | `id` | `/roles` |
+|	`products`	| Full Refresh  | `id` | `/products` |
+|	`groups`	| Full Refresh  | `id` | `/groups` |
+|	`email_mailboxes`	| Full Refresh  | `id` | `/email/mailboxes` |
+|	`email_configs`	| Full Refresh  | `id` | `/email_configs` |
+|	`discussion_topics`	| Full Refresh  | `id` | `/discussions/forums/[id]/topics` |
+|	`discussion_forums`	| Full Refresh  | `id` | `/discussions/categories/[category_id]/forums` |
+|	`discussion_comments`	| Full Refresh  | `id` | `/discussions/topics/[id]/comments` |
+|	`discussion_categories`	| Full Refresh  | `id` | `/discussions/categories` |
+|	`conversations`	| Semi-Incremental | `id` | `/tickets/[id]/conversations` |
+|	`contacts`	| Incremental | `id` | `/contacts` |
+|	`companies`	| Full Refresh  | `id` | `/companies` |
+|	`canned_responses`	| Full Refresh  | `id` | `/canned_response_folders/[id]/responses` |
+|	`canned_response_folders`	| Full Refresh  | `id` | `/canned_response_folders` |
+|	`business_hours	`	| Full Refresh  | `id` | `/business_hours` |
+|	`agents	`	| Full Refresh  | `id` | `/agents` |
+
+<div class="infoBlock">
+For more information on the <strong>Full Refresh</strong>, <strong>Semi-Incremental</strong>, and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
+</div>
+
+<div class="warningBlock">
+Any resource that supports the <strong>Incremental</strong> sync mode also supports <strong>Full Refresh</strong>, by default. To sync your data using the <strong>Full Refresh</strong> mode in such cases, you need to <a href="mailto:support@rudderstack.com">contact the RudderStack team</a>.
+</div>
 
 Freshdesk is now configured as a source. RudderStack will start ingesting data from Freshdesk as per your specified schedule and frequency.
 
@@ -71,7 +103,7 @@ Use the <strong>Use Existing Destination</strong> option if you have an already-
 
 ## FAQ
 
-### Where do I find the Freshdesk API Key?
+### Where can I find the Freshdesk API Key?
 
 To get your Freshdesk API key, follow these steps:
 
@@ -85,6 +117,4 @@ To get your Freshdesk API key, follow these steps:
 
 Yes, it is.
 
-We have implemented a feature wherein RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
-
-
+RudderStack associates a table prefix for every Cloud Extract source writing to a warehouse schema. This way, multiple Cloud Extract sources can write to the same schema with different table prefixes.
