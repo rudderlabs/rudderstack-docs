@@ -676,6 +676,10 @@ export const jsonData = [
                 link: "/sources/reverse-etl/features/models/",
                 content: []
             }, {
+                title: "Audiences",
+                link: "/sources/reverse-etl/features/audiences/",
+                content: []
+            }, {
                 title: "Airflow Provider",
                 link: "/sources/reverse-etl/features/airflow-provider/",
                 content: []
@@ -818,7 +822,7 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/criteo/",
                 content: []
             },
-              {
+            {
                 title: "Criteo Audience",
                 link: "/destinations/streaming-destinations/criteo-audience/",
                 content: []
@@ -1381,7 +1385,7 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/segment/",
                 content: []
             },
-             {
+            {
                 title: "Lemnisk",
                 link: "/destinations/streaming-destinations/lemnisk/",
                 content: [
