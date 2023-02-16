@@ -1,6 +1,6 @@
 ---
 title: "Audiences"
-description: Build audiences on the warehouse sources and activate them in the downstream destinations
+description: Build audiences on the warehouse sources and activate them in the downstream destinations.
 ---
 
 **Audiences** are customer lists that satisfy a specific set of criteria out of all the users of a product. RudderStack's **Audiences** feature lets you create these target customer lists with easy-to-use filters on your warehouse tables. Once created, you can activate them in any RudderStack-supported destination connected to the warehouse. 
@@ -24,8 +24,8 @@ RudderStack provides much value by providing the audience-building capabilities 
 - Create and sync single audience to multiple downstream systems which is very time consuming to do manually.
 - Analyze the results of multichannel campaigns in a single place at the data warehouse. 
 - Trust the audience data as a single source of truth and have full control over the ecosystem.
-- Fastrack the process for Marketing teams who would otherwise need to work with SQL and warehouses or rely on Data engineers to help with querying and syncing audiences.
-- Stop worrying about keeping the audiences updated or debugging issues while building audiences in proprietary tools.
+- Fast track the process for marketing teams who would otherwise need to work with SQL and warehouses or rely on data engineers to help with querying and syncing audiences.
+- Save time from updating the audience each time or debugging issues while building audiences in proprietary tools.
 
 ## Create audience
 
@@ -47,8 +47,8 @@ Click **Save and Continue** to move to the next step.
 ### Audience setup
 
 - **Warehouse**: Select your warehouse database from the dropdown.
-- **Schema**: Select the desired schema from the dropdown.
-- **Table**: Select the desired table from the dropdown.
+- **Schema**: Select the database schema from the dropdown.
+- **Table**: Select the required table from the dropdown.
 
 Click **Save and Continue** to move to the next step.
 
@@ -76,5 +76,8 @@ Further, you can choose a destination, enter the destination-specific connection
 
 ## FAQ
 
-Custom SQL filter
-JSON object support
+### Can I create a filter on the JSON columns in my warehouse table?
+
+Yes, you can. To do so, select the **Custom SQL filter** option from the dropdown and enter a corresponding SQL query which includes the relevant filtering condition for the JSON column, as shown:
+
+<img src="../../../assets/warehouse-actions-sources/custom-sql-filter.png" alt="Custom SQL filter" />
