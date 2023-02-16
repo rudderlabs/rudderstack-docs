@@ -68,7 +68,7 @@ RudderStack lets you connect to your PostgreSQL database securely over an SSH co
 - **SSH Host**: Enter the IP address of your bastion host.
 - **SSH Port**: Enter the port for the above host.
 - **SSH User**: Enter the username you use to access the bastion host.
-- **SSH Public Key**: Copy the public key provided in this field and add it to the `authorizated_keys` file on your bastion host. RudderStack uses the private key corresponding to this public key to establish the connection successfully.
+- **SSH Public Key**: Copy the public key provided in this field and add it to the `authorized_keys` file on your bastion host. RudderStack uses the private key corresponding to this public key to establish the connection successfully.
 
 To enable the SSH connection for an existing PostgreSQL destination, navigate to the destination's **Configuration** tab, select **Edit configuration** and enable the **SSH connection** setting.
 
