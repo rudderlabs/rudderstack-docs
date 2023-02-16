@@ -28,22 +28,15 @@ To set up Mixpanel as a source in RudderStack, follow these steps:
 
 Enter the following connection settings to set up the Mixpanel source:
 
+<img src="../../assets/cloud-extract-sources/mixpanel-authentication.png" alt="Mixpanel connection settings" />
+
+- **Authentication**: Select either **Service Account** or **Project Secret** from the dropdown to give RudderStack the required permissions to access your Mixpanel account. Refer to the [Service Accounts](https://developer.mixpanel.com/reference/service-accounts) and [Project Secret](https://developer.mixpanel.com/reference/project-secret) documentation for more information on obtaining these details.
+
 <img src="../../assets/cloud-extract-sources/mixpanelv2-connection-settings.png" alt="Mixpanel connection settings" />
 
-The connection settings are described below:
-
-- **Project Token** : Enter your Mixpanel project token by going to your Mixpanel **Project Settings** > **Access Keys**.
-
-<div class="infoBlock">
-For more information on obtaining the Mixpanel project token, refer to the <a href="https://help.mixpanel.com/hc/en-us/articles/115004502806-Find-Project-Token-">Mixpanel support guide</a>.
-</div>
-
+- **Project ID** : Enter your Mixpanel project ID by going to **Project Settings** > **Overview** in your Mixpanel dashboard. Refer to the <a href="https://help.mixpanel.com/hc/en-us/articles/115004490503-Project-Settings#project-id">Mixpanel support guide</a> for more information.
 - **Attribution Window**: Specify the time period for attributing results to the ads and the lookback period during which the ads results are counted. By default, this value is set to **5 days**.
-- **Project Timezone**: Specify your Mixpanel project timezone by going to your Mixpanel **Project Settings** > **Project Details**.
-
-<div class="infoBlock">
-For more information on getting your Mixpanel project timezone, refer to the <a href="https://help.mixpanel.com/hc/en-us/articles/115004547203-Manage-Timezones-for-Projects-in-Mixpanel">Mixpanel support guide</a>.
-</div>
+- **Project Timezone**: Specify your Mixpanel project timezone by going to **Project Settings** > **Project Details** in your Mixpanel dashboard. For more information on getting your Mixpanel project timezone, refer to the <a href="https://help.mixpanel.com/hc/en-us/articles/115004547203-Manage-Timezones-for-Projects-in-Mixpanel">Mixpanel support guide</a>.
 
 - **Select Properties By Default**: Enable this setting to capture new event properties and engage records. If disabled, these properties will be ignored.
 - **Start Date**: Select the date from when RudderStack ingests your Mixpanel data.
@@ -75,9 +68,7 @@ The following settings specify how RudderStack sends the data ingested from Mixp
     - **CRON**: Runs the syncs based on the user-defined CRON expression.
     - **Manual**: You are required to run the syncs manually.
 
-<div class="infoBlock">
 For more information on the schedule types, refer to the <Link to="/sources/extract/common-settings/">Common Settings</Link> guide.
-</div>
 
 ### Selecting the data to import
 
@@ -87,15 +78,15 @@ You can choose the Mixpanel data you want to ingest by selecting the required re
 
 The below table mentions the syncs and API endpoints supported by these resources from Mixpanel to your warehouse destination:
 
-| Resource | Full Refresh sync | Incremental sync | Mixpanel API endpoint |
+| Resource  | Sync type | Mixpanel API endpoint |
 | :---| :---- | :---- | :---- |
-| `revenue` |  Yes | Yes | `/engage` |
-| `funnels` | Yes | Yes |  `/funnels` |
-| `export` | Yes | Yes |  `/export`|
-| `engage` | Yes | No |  `/engage` |
-| `cohorts` | Yes | Yes |  `/cohorts/list`|
-| `cohort_members` | Yes | No | `/engage` |
-| `annotations` | Yes | No |  `/annotations`|
+| `revenue` |  Incremental | `/engage` |
+| `funnels` |  Incremental |  `/funnels` |
+| `export` |  Incremental |  `/export`|
+| `engage` |  Incremental |  `/engage` |
+| `cohorts` |  Incremental |  `/cohorts/list`|
+| `cohort_members` |  Incremental | `/engage` |
+| `annotations` | Full Refresh |  `/annotations`|
 
 <div class="infoBlock">
 For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
