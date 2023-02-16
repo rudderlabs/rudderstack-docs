@@ -164,6 +164,8 @@ To configure Redshift as a destination in RudderStack, follow these steps:
 This feature is available only for the <a href="https://www.rudderstack.com/pricing/">Growth and Enterprise plan</a> users.
 </div>
 
+SSH tunneling is a method of transporting data over an encrypted SSH connection. You can use it to add encryption to your legacy applications as well as achieve compliance such as HIPAA, PCI-DSS, and other standards without having the need to modify the existing applications.
+
 RudderStack lets you connect to your Redshift database securely over an SSH connection. Enter the following details to do the same:
 
 <img src="../../assets/warehouse-destinations/ssh-connection.png" alt="Redshift edit configuration" />
@@ -174,9 +176,7 @@ RudderStack lets you connect to your Redshift database securely over an SSH conn
 - **SSH User**: Enter the user name of your Redshift database.
 - **SSH Public Key**: Copy the public key provided in this field and add it to the `authorizated_keys` file on your bastion host. Rudderstack will use the private key corresponding to this public key to establish the connection successully.
 
-You can also enable the SSH connection for an existing Amazon Redshift destination by navigating to the destination's **Configuration** tab, selecting **Edit configuration** and enabling the **SSH connection** setting, as shown:
-
-<img src="../../assets/warehouse-destinations/redshift-edit-configuration.png" alt="Redshift edit configuration" />
+You can also enable the SSH connection for an existing Amazon Redshift destination by navigating to the destination's **Configuration** tab, selecting **Edit configuration** and enabling the **SSH connection** setting.
 
 ### Sync settings
 
