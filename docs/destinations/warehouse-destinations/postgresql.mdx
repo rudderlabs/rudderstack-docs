@@ -51,6 +51,29 @@ To configure PostgreSQL as a destination in RudderStack, follow these steps:
 - **Password**: Enter the password you set for the above user.
 - **Port**: Enter the port number associated with your PostgreSQL instance.
 - **Namespace**: Enter the schema name where RudderStack will create all the tables. If you don't specify any namespace, RudderStack will set this to the source name, by default.
+
+### SSH connection
+
+<div class="infoBlock">
+This feature is available only for the <a href="https://www.rudderstack.com/pricing/">Growth and Enterprise plan</a> users.
+</div>
+
+SSH tunneling is a method of transferring data over an encrypted SSH connection. You can use it to add encryption to your legacy applications and achieve compliance with regulations like HIPAA, PCI-DSS, etc., without having to modify the existing applications.
+
+RudderStack lets you connect to your PostgreSQL database securely over an SSH connection by configuring these settings:
+
+<img src="../../assets/warehouse-destinations/ssh-connection.png" alt="Redshift edit configuration" />
+
+- **SSH Connection**: Enable this setting to use the SSH connection while connecting to your PostgreSQL database.
+- **SSH Host**: Enter the IP address of your bastion host.
+- **SSH Port**: Enter the port for the above host.
+- **SSH User**: Enter the username you use to access the bastion host.
+- **SSH Public Key**: Copy the public key provided in this field and add it to the `authorized_keys` file on your bastion host. RudderStack uses the private key corresponding to this public key to establish the connection successfully.
+
+To enable the SSH connection for an existing PostgreSQL destination, navigate to the destination's **Configuration** tab, select **Edit configuration** and enable the **SSH connection** setting.
+
+### Sync settings
+
 - **SSL Mode**: Choose the SSL mode through which RudderStack will connect to your PostgreSQL instance. RudderStack provides three options - **disable**, **require**, and **verify-ca**. For more information on these options, refer to the <Link to="#ssl-modes">SSL Modes</Link> section below.
 - **Sync Frequency**: Specify how often RudderStack should sync the data to your PostgreSQL database.
 - **Sync Starting At**: This optional setting lets you specify the particular time of the day (in UTC) when you want RudderStack to sync the data to the warehouse.
