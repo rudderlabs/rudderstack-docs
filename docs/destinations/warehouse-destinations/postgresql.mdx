@@ -60,7 +60,7 @@ This feature is available only for the <a href="https://www.rudderstack.com/pric
 
 SSH tunneling is a method of transferring data over an encrypted SSH connection. You can use it to add encryption to your legacy applications as well as achieve compliance such as HIPAA, PCI-DSS, and other standards without having the need to modify the existing applications.
 
-RudderStack lets you connect to your PostgreSQL database securely over an SSH connection. Enter the following details to do the same:
+RudderStack lets you connect to your PostgreSQL database securely over an SSH connection by configuring these settings:
 
 <img src="../../assets/warehouse-destinations/ssh-connection.png" alt="Redshift edit configuration" />
 
@@ -68,9 +68,9 @@ RudderStack lets you connect to your PostgreSQL database securely over an SSH co
 - **SSH Host**: Enter the IP address of your bastion host.
 - **SSH Port**: Enter the port for the above host.
 - **SSH User**: Enter the username you use to access the bastion host.
-- **SSH Public Key**: Copy the public key provided in this field and add it to the `authorizated_keys` file on your bastion host. Rudderstack will use the private key corresponding to this public key to establish the connection successully.
+- **SSH Public Key**: Copy the public key provided in this field and add it to the `authorizated_keys` file on your bastion host. RudderStack uses the private key corresponding to this public key to establish the connection successfully.
 
-You can also enable the SSH connection for an existing PostgreSQL destination by navigating to the destination's **Configuration** tab, selecting **Edit configuration** and enabling the **SSH connection** setting.
+To enable the SSH connection for an existing PostgreSQL destination, navigate to the destination's **Configuration** tab, select **Edit configuration** and enable the **SSH connection** setting.
 
 ### Sync settings
 
