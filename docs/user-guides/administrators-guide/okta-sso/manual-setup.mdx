@@ -7,7 +7,7 @@ aliases: ["Okta SSO", "Okta Single Sign-On"]
 This guide lists the steps to **manually** configure and enable Okta SSO for your organization.
 
 <div class="infoBlock">
-RudderStack does not support IdP-initiated authentication. To use Okta SSO for your organization, you need to log in through [this link](https://app.rudderstack.com/sso).
+RudderStack does not support IdP-initiated authentication. To use Okta SSO for your organization, you need to log in through <a href="https://app.rudderstack.com/sso">this link</a>.
 </div>
 
 <GhBadge
@@ -20,15 +20,12 @@ RudderStack does not support IdP-initiated authentication. To use Okta SSO for y
 ## Configuring the RudderStack SSO App
 
 1. Log into your Okta application as an **administrator**. Then, go to the **Applications** page in the dashboard.
-2. Click the **Create App Integration** button to integrate Okta with RudderStack, as shown:
-
-<img src="../../../assets/user-guides/okta-sso-1.png" alt="Create App Integration" />
-
+2. Click the **Create App Integration** button to integrate Okta with RudderStack.
 3. Select **SAML 2.0** sign-in method, as shown:
 
 <img src="../../../assets/user-guides/okta-sso-2.png" alt="SAML 2.0" />
 
-4. Under **General Settings**, set the **App name** to **RudderStack**, as shown. Then, click **Next**.
+4. Under **General Settings**, set the **App name** to **RudderStack**. Then, click **Next**.
 
 <img src="../../../assets/user-guides/okta-sso-3.png" alt="RudderStack as app name" />
 
@@ -81,4 +78,68 @@ Share this URL with the RudderStack team to enable SSO for your organization.
 
 <div class="infoBlock">
 The <strong>Identity Provider metadata</strong> URL ends with <code class="inline-code">/metadata</code>.
+</div>
+
+## SCIM configuration steps
+
+You can automatically grant RudderStack access to your users by configuring [SCIM provisioning](https://www.okta.com/blog/2017/01/what-is-scim/) in Okta.
+
+<div class="warningBlock">
+Before setting up the SCIM provisioning, make sure you first generate a <Link to="/dashboard-guides/personal-access-token/">personal access token</Link> with <Link to="/dashboard-guides/user-management/#admin">Admin</Link> role. Otherwise, your SCIM provisioning tasks will fail.
+</div>
+
+1. Log in to Okta as an administrator.
+2. In the sidebar, go to **Applications** > **Applications** and select your SSO app.
+3. Go to the **General** tab, click **Edit** and check the **Enable SCIM provisioning** option, as shown: 
+
+<img src="../../../assets/user-guides/scim-1.png" alt="Enable SCIM provisioning" />
+
+4. A new tab called **Provisioning** will now be visible in the app settings. Go to **Integration**, click **Edit** and enter the following details:
+
+| Setting | Value |
+| :------| :-------|
+| SCIM connector base URL | `https://api.rudderstack.com/scim/v2` |
+| Unique identifier field for users | `userName` |
+| Supported provisioning actions | Check the following settings: <br /><br /><ul><li>Push New Users</li><li>Push Profile Updates</li></ul> |
+| Authentication Mode | `HTTP Header` |
+
+<img src="../../../assets/user-guides/scim-2.png" alt="SCIM provisioning settings" />
+
+5. Under **HTTP Header**, paste your <Link to="/dashboard-guides/personal-access-token/">personal access token</Link> with the  <Link to="/dashboard-guides/user-management/#admin">Admin</Link> role.
+6. Click **Save**. Okta will send a test request to verify the configuration.
+7. Once the verification is complete, you will be able to see two new options, **To App** and **To Okta**, in the **Settings** sidebar, as shown:
+
+<img src="../../../assets/user-guides/scim-3.png" alt="Settings sidebar" />
+
+8. Go to the **To App** settings and click **Edit**. Then, enable the following **Provisioning to App** settings:
+
+<img src="../../../assets/user-guides/scim-4.png" alt="App provisioning settings" />
+
+9. Scroll down to the attribute mappings section and click **Show Unmapped Attributes**. 
+10. Unmap all the attributes one by one by clicking the **X** icon, **except** the following mandatory attributes:
+    - **Display name**
+    - **Email**
+
+<div class="infoBlock">
+When Okta sends a request to create a user, it assumes that the update has failed if the response does not contain the details of the mapped attributes. Hence, you must unmap all the attributes except <strong>Display name</strong> and <strong>Email</strong>.
+</div>
+
+11. For **Display name** and **Email**, click the edit icon and set the  **Apply on** field to **Create and update**.  
+
+<img src="../../../assets/user-guides/scim-5.png" alt="Display name and email configuration" />
+
+<div class="infoBlock">
+The <strong>Value</strong> fields for <strong>Display name</strong> and <strong>Email</strong> may vary depending on how you have set up your Okta app.
+</div>
+
+12. Click **Save** to finish the configuration.
+13. Go back to your app settings, click the **Sign On** tab and click **Edit**.
+14. Under **Credentials Details**, set **Application username format** to **Email**, as shown:
+
+<img src="../../../assets/user-guides/scim-6.png" alt="Sign on settings" />
+
+15. Finally, click **Save**.
+
+<div class="infoBlock">
+RudderStack currently does not support some SCIM features like importing users or groups, removing users, or snycing passwords. Refer to the <Link to="/user-guides/administrators-guide/okta-sso/scim-configuration#known-issues">Known issues</Link> section for more information.
 </div>
