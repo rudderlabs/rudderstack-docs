@@ -495,7 +495,7 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Google Ads (Adwords)",
+                title: "Google Ads",
                 link: "/sources/extract/google-adwords/",
                 content: []
             },
