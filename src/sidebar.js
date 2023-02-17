@@ -473,12 +473,7 @@ export const jsonData = [
                 title: "Bing Ads",
                 link: "/sources/extract/bing-ads/",
                 content: []
-            },
-            {
-                title: "Bing Ads V2",
-                link: "/sources/extract/bing-ads-v2/",
-                content: []
-            },
+            }, 
             {
                 title: "Chargebee",
                 link: "/sources/extract/chargebee/",
@@ -500,12 +495,7 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "Freshdesk V2",
-                link: "/sources/extract/freshdesk-v2/",
-                content: []
-            },
-            {
-                title: "Google Ads (Adwords)",
+                title: "Google Ads",
                 link: "/sources/extract/google-adwords/",
                 content: []
             },
@@ -522,11 +512,6 @@ export const jsonData = [
             {
                 title: "Google Search Console",
                 link: "/sources/extract/google-search-console/",
-                content: []
-            },
-            {
-                title: "Google Sheets",
-                link: "/sources/extract/google-sheets/",
                 content: []
             },
             {
@@ -570,28 +555,8 @@ export const jsonData = [
                 content: []
             },
             {
-                title: "NetSuite",
-                link: "/sources/extract/netsuite/",
-                content: []
-            },
-            {
-                title: "Pardot",
-                link: "/sources/extract/salesforce-pardot/",
-                content: []
-            },
-            {
                 title: "Pipedrive",
                 link: "/sources/extract/pipedrive/",
-                content: []
-            },
-            {
-                title: "Pipedrive V2",
-                link: "/sources/extract/pipedrive-v2/",
-                content: []
-            },
-            {
-                title: "QuickBooks",
-                link: "/sources/extract/quickbooks/",
                 content: []
             },
             {
