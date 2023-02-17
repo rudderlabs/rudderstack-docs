@@ -15,12 +15,12 @@ Check the [**GitHub codebase**](https://github.com/rudderlabs/rudder-sdk-.net) t
 
 ## SDK setup requirements
 
-To set up the RudderStack Java SDK, the following prerequisites must be met:
+To set up the RudderStack .NET SDK, the following prerequisites must be met:
 
 - You need to set up a [**RudderStack account**](https://app.rudderstack.com/signup).
-- Once signed up, <Link to="/dashboard-guides/sources/#adding-a-source">set up a Java source</Link> in the dashboard. You should be able to see a **Write Key** for this source, as shown below:
+- Once signed up, <Link to="/dashboard-guides/sources/#adding-a-source">set up a .NET source</Link> in the dashboard. You should be able to see a **Write Key** for this source, as shown below:
 
-<img src="../../../assets/event-stream-sources/dotnet-write-key-new.png" alt="Java source write key" />
+<img src="../../../assets/event-stream-sources/dotnet-write-key-new.png" alt=".NET source write key" />
 
 - You will also need a data plane URL. Refer to the <Link to="/resources/glossary/#data-plane-url">Glossary</Link> for more information on the data plane URL and where to find it.
 
@@ -29,11 +29,10 @@ To set up the RudderStack Java SDK, the following prerequisites must be met:
 You can use [**NuGet**](https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-powershell) to install the .NET SDK into your project.
 
 ```csharp
-Install-Package RudderAnalytics -Version <version>
+Install-Package RudderAnalytics -Version 2.0.0
 ```
 
 <div class="infoBlock">
-
 Our library depends on <a href="https://www.newtonsoft.com/json">Newton.JSON</a> library for JSON processing.
 </div>
 
@@ -49,6 +48,27 @@ RudderAnalytics.Initialize(
     new RudderConfig(dataPlaneUrl: DATA_PLANE_URL)
 );
 ```
+
+## Gzipping requests
+
+<div class="successBlock">
+The gzip compression feature is enabled in the .NET SDK by default from versions starting `2.0.0`.
+</div>
+
+The .NET SDK automatically gzips requests. However, you can disable this by setting the `gzip` parameter of `RudderConfig` to `false` while initializing the SDK, as shown:
+
+```csharp
+using RudderStack;
+
+RudderAnalytics.Initialize(
+    WRITE_KEY,
+    new RudderConfig(dataPlaneUrl: DATA_PLANE_URL, gzip: false)
+);
+```
+
+<div class="warningBlock">
+The <code class="inline-code">Gzip Compression</code> feature requires <a href="https://github.com/rudderlabs/rudder-server">rudder-server</a> <strong>version 1.4 or higher</strong>. Otherwise, your events might fail.
+</div>
 
 ## Sending events from RudderStack
 
