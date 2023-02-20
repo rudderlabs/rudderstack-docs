@@ -126,7 +126,7 @@ You can set these **optional** fields to specify the sources or destinations fro
 
 - Specify **only `sourceIds`** when setting the `regulationType` to `suppress`. If no `sourceIds` are specified, RudderStack will suppress data from all the sources present in the workspace associated with the access token.
 
-- Specify **only `destinationIds`** when setting the `regulationType` to `suppress_with_delete`. 
+- You must specify the **`destinationIds`** when the `regulationType` is set to `suppress_with_delete`. Otherwise, RudderStack throws an error.
 
 <div class="infoBlock">
 <ul>
