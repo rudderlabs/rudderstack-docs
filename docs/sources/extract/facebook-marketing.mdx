@@ -34,12 +34,12 @@ Your Facebook account and the related details will then automatically appear und
 
 2. Then, configure the following settings:
 
-- **Account ID**: Enter your Facebook Ads account ID used to pull the data from the Marketing API.
-- **Start Date**: Specify the date from which RudderStack replicates the data for all the incremental streams. RudderStack will **not** sync any historical data generated before this date.
+- **Account ID**: Enter the Facebook Ads account ID that RudderStack uses to pull the data from the Marketing API.
+- **Start Date**: Specify the date from which RudderStack should replicate the data for all the incremental streams. RudderStack will **not** sync any historical data generated before this date.
 - **End Date**: RudderStack syncs all the data generated between **Start Date** and this date. If you do not specify this date, RudderStack will sync all the latest available data.
 - **Include Deleted**: Enable this setting to include the data from all the deleted campaigns, ads, and ad sets.
 - **Fetch Thumbnail Images**: Enable this setting to fetch and store the thumbnail data for each [Ad Creative](https://developers.facebook.com/docs/marketing-api/creative/).
-- **Custom Insights**: This setting lets you add a list containing the entries for ad insights entries. You can specify the following configuration settings by clicking the **Add Item** button:
+- **Custom Insights**: This setting lets you add a list containing the ad insights entries. You can specify the following configuration settings by clicking the **Add Item** button:
 
 <img src="../../assets/cloud-extract-sources/fb-marketing-custom-insights.png" alt="Custom insights settings" />
 
@@ -82,16 +82,16 @@ The below table mentions the syncs supported by these resources from Facebook Ma
 
 | Resource | Sync type | Facebook Marketing API endpoint |
 | :---| :--- | :--- |
-| `activities` | Full Refresh, Incremental | [`ad_activity`](https://developers.facebook.com/docs/marketing-api/reference/ad-activity) |
+| `activities` | Incremental | [`ad_activity`](https://developers.facebook.com/docs/marketing-api/reference/ad-activity) |
 | `ad_account` |  Full Refresh |  |
 | `ad_creatives` | Full Refresh | [`ad-creative`](https://developers.facebook.com/docs/marketing-api/reference/ad-creative) |
-| `ad_sets` | Full Refresh, Incremental | [`ad-campaign`](https://developers.facebook.com/docs/marketing-api/reference/ad-campaign) |
-| `ads` |  Full Refresh, Incremental | [`ad-group`](https://developers.facebook.com/docs/marketing-api/reference/adgroup) |
-| `ads_insights` | Full Refresh, Incremental | [`insights`](https://developers.facebook.com/docs/marketing-api/reference/adgroup/insights/) |
-| `campaigns` | Full Refresh, Incremental |  [`campaigns`](https://developers.facebook.com/docs/marketing-api/reference/ad-account/campaigns/) |
-| `custom_conversions` | Full Refresh, Incremental | [`customconversions`](https://developers.facebook.com/docs/marketing-api/reference/custom-conversion) |
-| `images` | Full Refresh, Incremental | [`ad-image`](https://developers.facebook.com/docs/marketing-api/reference/ad-image) |
-| `videos` | Full Refresh, Incremental |  [`videos`](https://developers.facebook.com/docs/graph-api/reference/video/video_insights/) |
+| `ad_sets` | Incremental | [`ad-campaign`](https://developers.facebook.com/docs/marketing-api/reference/ad-campaign) |
+| `ads` |  Incremental | [`ad-group`](https://developers.facebook.com/docs/marketing-api/reference/adgroup) |
+| `ads_insights` | Incremental | [`insights`](https://developers.facebook.com/docs/marketing-api/reference/adgroup/insights/) |
+| `campaigns` | Incremental |  [`campaigns`](https://developers.facebook.com/docs/marketing-api/reference/ad-account/campaigns/) |
+| `custom_conversions` | Incremental | [`customconversions`](https://developers.facebook.com/docs/marketing-api/reference/custom-conversion) |
+| `images` | Incremental | [`ad-image`](https://developers.facebook.com/docs/marketing-api/reference/ad-image) |
+| `videos` | Incremental |  [`videos`](https://developers.facebook.com/docs/graph-api/reference/video/video_insights/) |
 
 <div class="infoBlock">
 For more information on the <strong>Full Refresh</strong> and <strong>Incremental</strong> sync modes, refer to the <Link to="/sources/extract/common-settings/#sync-modes">Common Settings</Link> guide.
