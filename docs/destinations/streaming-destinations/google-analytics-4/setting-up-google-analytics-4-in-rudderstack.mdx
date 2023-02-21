@@ -86,6 +86,13 @@ Google Analytics 4 has a limit on the number of unique properties per event name
   - If enabled, the user ID is set to the identified visitors and sent as explained in the [Cookies and user identification](https://developers.google.com/tag-platform/devguides/cookies#set_user_id) guide.
   - If disabled, `userId` is not sent and RudderStack only sends the user traits set as `user_properties` to Google Analytics. The user properties are set on the `gtag` client as explained in the [Set user properties](https://developers.google.com/analytics/devguides/collection/ga4/user-properties?technology=websites) guide.
 
+- **Add send_to parameter in gtag event call**: Enable this setting to send an event **only** to the specific Google Analytics 4 property whose **Measurement Id** you have specified above. When enabled, a sample event to Google Analytics 4 looks as shown:
+
+  ```javascript
+  gtag('event', 'view_video', { 'send_to': '<property_id>' }); // where <property_id> is the measurement id of the GA4 data stream.
+  ```
+  Refer to the [Google documentation](https://support.google.com/analytics/answer/9310895?hl=en&ref_topic=11192706#zippy=%2Cin-this-article) for more information on `send_to` parameter.
+
 ### Client-side events filtering
 
 This option is applicable only if you're sending events to Google Analytics 4 via web device mode. Refer to the <Link to="/sources/event-streams/sdks/event-filtering/">Client-side Event Filtering</Link> guide for more information on this feature.
