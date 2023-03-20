@@ -38,3 +38,56 @@ To get your Courier API Key, follow these steps:
 />
 
 4. Copy the key based on environment/scope you want to configure
+
+## Events
+
+Courier destination supports identify and track events.
+
+### Identify
+
+You can sync users from RudderStack to Courier using identify calls.
+
+A sample `identify` call is as shown:
+
+```javascript
+rudderanalytics.identify('janedoe', {
+  name: 'Jane Doe',
+  country: 'United States',
+  email: 'janedoe@example.com',
+})
+```
+
+User will be synced into Courier, which should be visible on Courier <a href="https://app.courier.com/users">Users</a> page or accessible via Courier APIs
+
+Future identify calls with the same userId will update the profile that was already created.
+
+<img
+  src='../../assets/event-stream-destinations/courier-rudderstack-user.png'
+  alt='Courier RudderStack user'
+/>
+
+### Track
+
+Track call lets you ingest events into Courier, which can be mapped to <a href="https://www.courier.com/features/automations/">Courier Automations</a>.
+
+```javascript
+rudderanalytics.track('Cart checkout', {
+  product: 'shoe-123',
+  // additional properties
+})
+```
+
+Events will appear on Courier Studio on the <a href="https://app.courier.com/channels/rudderstack">Rudderstack</a> integration page.
+
+For instance, below is the example of `Cart checkout` event mapped to `Send shipping details` automation.
+
+<img
+  src='../../assets/event-stream-destinations/courier-rudderstack-event.png'
+  alt='Courier RudderStack event'
+/>
+
+### Additional references
+
+<a href='https://www.courier.com/docs/external-integrations/rudderstack/'>
+  Courier RudderStack docs
+</a>
