@@ -83,6 +83,12 @@ RudderStack's web and mobile <Link to="/sources/event-streams/sdks/">SDKs</Link>
 
 Traits are bits of user information included in an `identify` call. Some example of traits include age, gender, or some specific details, e.g. if a user has a premium or a basic plan.
 
+Subsequent calls to the `identify` endpoint don't have to include all traits each time. You can just include the traits that have changed since the last `identify` call.
+
+<div class="infoBlock">
+    To unset a trait, you can pass it with an empty value.
+</div>
+
 RudderStack has some reserved traits that it handles in special ways. These are listed in the table below:
 
 <table>
@@ -288,5 +294,3 @@ rudderanalytics.identify("user-id", {
 ```
 
 In the above example, `{name: "username", gender: "male"}` are the traits stored in a cookie and passed along all the subsequent calls.
-
-
