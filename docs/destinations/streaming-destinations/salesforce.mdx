@@ -43,6 +43,9 @@ To configure Salesforce as a destination in RudderStack, you need to specify the
 <img src="../../assets/event-stream-destinations/salesforce-connection-settings.png" alt="Salesforce connection settings" />
 
 - **User Name**: Enter your Salesforce username in this field.
+
+<div class="warningBlock">The salesforce API does not support certain special characters in the username. For example, if you create a secondary user with the email <code class="inline-code">john.smith+rudder@domain.com</code>, Salesforce will set the username to that email address by default. In order to work with the Salesforce API you will need to remove the <code class="inline-code">+</code> sign from the username.</div>
+
 - **Password**: Enter the password associated with the Salesforce account.
 - **Security Token**: Enter your Salesforce security token.
 
@@ -115,6 +118,8 @@ For example, if you want to collect a custom trait in RudderStack named `newProp
 You can create or update any [Salesforce object](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_list.htm) using the `identify` event. To specify the object type, follow the schema below.
 
 RudderStack looks for the key `externalId` under `context` and determines the Salesforce object type by removing the part `Salesforce-` from the field `type`. Further, it makes a `PATCH` request if there is an `id` present in the request to update the record. Otherwise, a new record is created.
+
+<div class="warningBlock">You cannot send an <code class="inline-code">id</code> property when creating new records. This will cause an API failure. When creating new records only provide the <code class="inline-code">type: "Salesforce-Contact"</code> portion of the <code class="inline-code">externalId</code> object.</div>
 
 You can pass multiple object types in a single request and RudderStack will create that many requests to Salesforce.
 
@@ -215,3 +220,8 @@ You can find your security token under **Setup** > **Personal Setup** > **My Per
 ### How do I check the number of Salesforce API calls left for the day?
 
 To check the number of Salesforce API calls, go to **Setup** > **Administration Setup** > **Company Profile** > **Company Information**. You should then be able to see a field called **API Requests, Last 24 Hours**, which contains the number of API calls left for the day.
+
+
+### How to fix "No such column 'X' on sobject of type Y" errors
+
+If event delivery to Salesforce fails due to a provided field not existing, even though the field does exist, check the Field Level Security settings of that field in Salesforce. When the field is **not** marked as visible to the role your RudderStack Salesforce user is using, this error is thrown. To fix it, just make the field visible to the appropriate role.
