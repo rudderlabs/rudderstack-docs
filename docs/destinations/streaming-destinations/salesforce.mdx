@@ -119,7 +119,11 @@ You can create or update any [Salesforce object](https://developer.salesforce.co
 
 RudderStack looks for the key `externalId` under `context` and determines the Salesforce object type by removing the part `Salesforce-` from the field `type`. Further, it makes a `PATCH` request if there is an `id` present in the request to update the record. Otherwise, a new record is created.
 
-<div class="warningBlock">You cannot send an <code class="inline-code">id</code> property when creating new records. This will cause an API failure. When creating new records only provide the <code class="inline-code">type: "Salesforce-Contact"</code> portion of the <code class="inline-code">externalId</code> object.</div>
+<div class="warningBlock">
+You cannot send an <code class="inline-code">id</code> property when creating new records as it  will cause an API failure.
+
+When creating new records, only provide the <code class="inline-code">type: "Salesforce-Contact"</code> portion of the <code class="inline-code">externalId</code> object.
+</div>
 
 You can pass multiple object types in a single request and RudderStack will create that many requests to Salesforce.
 
