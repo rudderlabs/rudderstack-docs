@@ -44,7 +44,11 @@ To configure Salesforce as a destination in RudderStack, you need to specify the
 
 - **User Name**: Enter your Salesforce username in this field.
 
-<div class="warningBlock">The salesforce API does not support certain special characters in the username. For example, if you create a secondary user with the email <code class="inline-code">john.smith+rudder@domain.com</code>, Salesforce will set the username to that email address by default. In order to work with the Salesforce API you will need to remove the <code class="inline-code">+</code> sign from the username.</div>
+<div class="warningBlock">
+**The salesforce API does not support certain special characters in the username.**
+
+For example, if you create a secondary user with the email <code class="inline-code">john.smith+rudder@domain.com</code>, Salesforce sets the username to that email address by default. However, to work with the Salesforce API you will need to remove the <code class="inline-code">+</code> sign from the username.
+</div>
 
 - **Password**: Enter the password associated with the Salesforce account.
 - **Security Token**: Enter your Salesforce security token.
