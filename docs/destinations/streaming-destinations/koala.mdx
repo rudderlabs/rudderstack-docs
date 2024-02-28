@@ -1,0 +1,80 @@
+---
+title: "Koala"
+description: Send data from RudderStack to **Koala**.
+aliases: ["koala"]  // These alias values are used to optimize the page our search index, making it easier for users to find the integration in the docs.
+---
+
+[Koala](http://www.getkoala.com)- Koala is a customer intent platform. It is the best way to surface real-time intent signals and alert your sales team about prospects/customers showing buying intent.
+
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/v0/destinations/koala">GitHub repository</a>.
+</div>
+
+## Getting started
+
+RudderStack supports sending events to Koala via the following <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link>:
+
+| **Connection Mode** | **Web** | **Mobile** | **Server** |
+| :--- | :--- | :--- | :--- |
+| **Device mode** | - | - | - |
+| **Cloud mode** | **Supported**  | **Supported** | **Supported** |
+
+
+Once you have confirmed that the source platform supports sending events to Koala, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Koala**.
+2. Assign a name to your destination and click **Continue**.
+
+### Connection settings 
+
+To successfully set up Koala as a destination, you need to configure the following settings:
+
+- **Public Key**: The Koala workspace [Public key](https://getkoala.com/docs/integrations/rudderstack).
+
+## Identify
+
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update a Lead object in M.
+
+<div class="infoBlock">
+Koala requires you to include either user's <code class="inline-code">email</code> or Koala profile id (<code class="inline-code">ko_profile_id</code>) into the <code class="inline-code">identify</code> call as Koala uses one of this fields to associatie with a profile.
+</div>
+
+```javascript
+rudderanalytics.identify("1hKOmRA4GRlm", {
+  name: "John Doe",
+  email: "johndoe@email.com",
+  ko_profile_id: "12345"
+})
+```
+  
+### Property mappings
+  
+The following table lists the mappings between the RudderStack and Koala properties:
+
+| RudderStack trait | Koala field |
+| :------------------- | :---------------- |
+|      ko_profile_id   | profile_id        |
+|                      |                   |
+|                      |                   |
+
+  
+## Track
+  
+<Link to="/event-spec/standard-events/track/">`track`</Link> call
+<usage of the call>
+A sample `track` call is shown below:
+
+<div class="infoBlock">
+Koala requires you to include either user's <code class="inline-code">email</code> or Koala profile id (<code class="inline-code">ko_profile_id</code>) into the <code class="inline-code">identify</code> call as Koala uses one of this fields to associatie with a profile.
+</div>
+
+```javascript
+rudderanalytics.track("User signed up", {
+  plan: "Pro Annual",
+  firstName: "John",
+  lastName: "Doe",
+  ko_profile_id: "12345"
+  email: "johndoe@email.com"
+})
+```
+

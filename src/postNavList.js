@@ -128,12 +128,12 @@ export const postNavList = [
     content: [],
   },
   {
-     key: "supported-api",
-     title: "Supported API",
-     link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/",
-     content: [],
- },
- {
+    key: "supported-api",
+    title: "Supported API",
+    link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/supported-api/",
+    content: [],
+  },
+  {
     key: "data-storage-cookies",
     title: "Data Storage",
     link: "/sources/event-streams/sdks/rudderstack-javascript-sdk/data-storage-cookies/",
@@ -527,7 +527,7 @@ export const postNavList = [
     title: "Freshdesk",
     link: "/sources/extract/freshdesk/",
     content: [],
-  }, 
+  },
   {
     key: "freshdesk-v2",
     title: "Freshdesk V2",
@@ -564,7 +564,7 @@ export const postNavList = [
     link: "/sources/extract/google-search-console/",
     content: [],
   },
-    {
+  {
     key: "google-search-console-v2",
     title: "Google Search Console V2",
     link: "/sources/extract/google-search-console-v2/",
@@ -630,7 +630,7 @@ export const postNavList = [
     link: "/sources/extract/quickbooks/",
     content: [],
   },
-    {
+  {
     key: "recurly",
     title: "Recurly",
     link: "/sources/extract/recurly/",
@@ -983,7 +983,7 @@ export const postNavList = [
     title: "FactorsAI",
     link: "/destinations/streaming-destinations/factors/",
     content: []
-}, 
+  },
   {
     key: "firebase",
     title: "Firebase",
@@ -1037,17 +1037,17 @@ export const postNavList = [
     title: "Setting up June",
     link: "/destinations/streaming-destinations/june/setting-up-june-in-rudderstack/",
     content: []
-}, {
+  }, {
     key: "june-cloud-mode",
     title: "Cloud Mode",
     link: "/destinations/streaming-destinations/june/june-cloud-mode/",
     content: []
-}, {
+  }, {
     key: "june-device-mode",
     title: "Device Mode",
     link: "/destinations/streaming-destinations/june/june-device-mode/",
     content: []
-},
+  },
   {
     key: "inmoment",
     title: "InMoment (Wootric)",
@@ -1149,19 +1149,19 @@ export const postNavList = [
     title: "Setting up HubSpot",
     link: "/destinations/streaming-destinations/hubspot/setting-up-hubspot-in-rudderstack/",
     content: []
-},
-{
-    key: "hubspot-cloud-mode", 
+  },
+  {
+    key: "hubspot-cloud-mode",
     title: "Cloud Mode",
     link: "/destinations/streaming-destinations/hubspot/hubspot-cloud-mode/",
     content: []
-},
-{
-    key: "hubspot-device-mode", 
+  },
+  {
+    key: "hubspot-device-mode",
     title: "Device Mode",
     link: "/destinations/streaming-destinations/hubspot/hubspot-device-mode/",
     content: []
-},
+  },
   {
     key: "variance",
     title: "Variance",
@@ -1181,10 +1181,10 @@ export const postNavList = [
     content: [],
   },
   {
-  key: "zendesk-support",
-  title: "Zendesk Support",
-  link: "/sources/extract/zendesk-support/",
-  content: []
+    key: "zendesk-support",
+    title: "Zendesk Support",
+    link: "/sources/extract/zendesk-support/",
+    content: []
   },
   {
     key: "delighted",
@@ -1347,7 +1347,7 @@ export const postNavList = [
     link: "/destinations/streaming-destinations/autopilot/",
     content: [],
   },
-   {
+  {
     key: "awin",
     title: "Awin",
     link: "/destinations/streaming-destinations/awin/",
@@ -1419,7 +1419,7 @@ export const postNavList = [
     link: "/destinations/streaming-destinations/appcues/",
     content: [],
   },
-   {
+  {
     key: "attentive-tag",
     title: "Attentive Tag",
     link: "/destinations/streaming-destinations/attentive-tag/",
@@ -1443,7 +1443,7 @@ export const postNavList = [
     link: "/destinations/streaming-destinations/engage/",
     content: [],
   },
-   {
+  {
     key: "webengage",
     title: "WebEngage",
     link: "/destinations/streaming-destinations/webengage/",
@@ -1480,6 +1480,12 @@ export const postNavList = [
     content: [],
   },
   {
+    key: "Koala",
+    title: "Koala",
+    link: "/destinations/streaming-destinations/koala/",
+    content: [],
+  },
+  {
     key: "rockerbox",
     title: "Rockerbox",
     link: "/destinations/streaming-destinations/rockerbox/",
@@ -1494,14 +1500,14 @@ export const postNavList = [
   {
     key: "rockerbox-cloud-mode",
     title: "Cloud Mode",
-    link:"/destinations/streaming-destinations/rockerbox/rockerbox-cloud-mode/",
+    link: "/destinations/streaming-destinations/rockerbox/rockerbox-cloud-mode/",
     content: [],
   },
   {
     key: "rockerbox-device-mode",
     title: "Device Mode",
     link: "/destinations/streaming-destinations/rockerbox/rockerbox-device-mode/",
-     content: [],
+    content: [],
   },
   {
     key: "tvsquared",
@@ -1870,7 +1876,7 @@ export const postNavList = [
     title: "Canny",
     link: "/destinations/streaming-destinations/canny/",
     content: [],
-},
+  },
   {
     key: "splitio",
     title: "Split.io",
@@ -2254,7 +2260,7 @@ export const postNavList = [
     key: "ecommerce-events-spec",
     title: "E-commerce Events",
     link:
-    "/event-spec/ecommerce-events-spec/",
+      "/event-spec/ecommerce-events-spec/",
     content: [],
   },
   {
