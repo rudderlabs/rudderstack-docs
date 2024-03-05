@@ -33,7 +33,7 @@ To successfully set up Koala as a destination, you need to configure the followi
 
 ## Identify
 
-You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update a Lead object in M.
+You can use the <Link to="/event-spec/standard-events/identify/">`identify`</Link> call to create or update a Lead object in Koala.
 
 <div class="infoBlock">
 Koala requires you to include either user's <code class="inline-code">email</code> or Koala profile id (<code class="inline-code">ko_profile_id</code>) into the <code class="inline-code">identify</code> call as Koala uses one of this fields to associatie with a profile.
@@ -60,9 +60,7 @@ The following table lists the mappings between the RudderStack and Koala propert
   
 ## Track
   
-<Link to="/event-spec/standard-events/track/">`track`</Link> call
-<usage of the call>
-A sample `track` call is shown below:
+The <Link to="/event-spec/standard-events/track/">`track`</Link> call enables you to capture user actions and their related properties, such as `Account Created`, `Account Deleted`.
 
 <div class="infoBlock">
 Koala requires you to include either user's <code class="inline-code">email</code> or Koala profile id (<code class="inline-code">ko_profile_id</code>) into the <code class="inline-code">identify</code> call as Koala uses one of this fields to associatie with a profile.
