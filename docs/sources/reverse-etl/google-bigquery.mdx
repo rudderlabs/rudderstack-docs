@@ -89,9 +89,14 @@ create schema rudderstack_;
 <div class="warningBlock">
 
 The <code class="inline-code">rudderstack_</code> schema is used by RudderStack for storing the state of each data sync. <strong>This name should not be changed</strong>.
+
+The <code class="inline-code">rudderstack_</code> schema is created in your BigQuery's default region. If the GCP Cloud Storage bucket used as a staging bucket by RudderStack is in a different region you will need to adjust the above SQL statement to match that region. 
+
+For example, to create the schema in Europe's West 3 region run <code class="inline-code">create schema rudderstack_ OPTIONS (LOCATION = 'europe-west3');</code> instead.
+
 </div>
 
-2. Grant full access to the `rudderstack_` schema for the RudderStack service account you created above. Replace `<SERVICE_ACCOUNT_ID>` with the service account ID you specified in [Step 2: Creating a service account and attaching role to it](#step-2-creating-a-service-account-and-attaching-the-role-to-it).
+2. Grant full access to the `rudderstack_` schema for the RudderStack service account you created above. Replace `<SERVICE_ACCOUNT_ID>` with the service account ID you specified in [Step 2: Creating a service account and attaching role to it](#step-2-creating-a-service-account-and-attaching-the-role-to-it). The `<SERVICE_ACCOUNT_ID>` takes the form of `some-name@your-gcp-project.iam.gserviceaccount.com`. It can also be found in the `client_email` key of the service account credentials JSON file downloaded in [Step 3: Creating and downloading the JSON key](#step-3-creating-and-downloading-the-json-key).
 
 ```sql
 GRANT `roles/bigquery.dataOwner`
