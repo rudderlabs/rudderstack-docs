@@ -1,0 +1,81 @@
+---
+title: "Gainsight PX"
+description: Send your event data from RudderStack to Gainsight PX.
+---
+
+[Gainsight PX](https://www.gainsight.com/product-experience/) provides a personalized product experience platform to help companies acquire, retain, and grow customers by creating real-time, personalized engagements driven by product usage data. With Gainsight PX, companies can implement an effective product-led go-to-market strategy that will increase product adoption and customer lifetime value.
+
+RudderStack allows you to configure Gainsight PX as a destination to which you can send your event data seamlessly, for delivering personalized user experiences.
+
+## Getting started
+
+RudderStack supports sending event data to Gainsight PX via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
+
+| **Connection Mode** | **Web**       | **Mobile** | **Server** |
+| :------------------ | :------------ | :--------- | :--------- |
+| **Device Mode**     | **Supported** | **-**      | **-**      |
+| **Cloud Mode**      | **-**         | **-**      | **-**      |
+
+<div class="infoBlock">
+In a web device mode integration, that is, using <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk">JavaScript SDK</Link> as a source, the Gainsight PX native SDK is loaded from <code class="inline-code">https://web-sdk.aptrinsic.com</code> domain. Based on your website's content security policy, you might need to <Link to="/sources/event-streams/sdks/rudderstack-javascript-sdk/load-js-sdk/#allowlist-destination-domain">allowlist this domain</Link> to load the Gainsight PX SDK successfully.
+</div>
+
+Once you have ascertained that the platform is supported by Gainsight PX, please follow these steps:
+
+- Choose a source to which you would like to add Gainsight PX as a destination.
+- Select the destination as **Gainsight PX** to your source. Give your destination a name and then click **Next**.
+- On the **Connection Settings** page, fill all the fields with the relevant information and click **Next**.
+
+<div class="infoBlock">
+  To find your Gainsight PX key, log into Gainsight PX and navigate to Administration > Set Up > Products > Web App. If you have not already entered the URL for your web application, do that and click the Generate button. The Tag Key is the value to the right of the URL value. Use the “Copy” button to copy the value to your clipboard.
+</div>
+<img src="../../assets/gainsight-px-product-key.png" />
+
+## Identify
+
+To identify a user to Gainsight PX, you need to call the `identify` API. When you send an `identify` call, RudderStack will pass that user’s information to Gainsight PX with `userId` as the Gainsight PX user ID. The user traits that you pass are mapped to visitor metadata in Gainsight PX.
+
+A sample `identify` call is as shown:
+
+```javascript
+rudderanalytics.identify("f27291e8-67fb-4591-8e1d-6f395d470f76", {
+  first_name: "John",
+  last_name: "Does",
+  email: "jdoe@example.com"
+})
+```
+
+## Group
+
+You can use the `group` call to create or update an account in Gainsight PX. When you send a Group call, RudderStack sends the `groupId` to Gainsight PX as account ID. The group traits are mapped to account metadata in Gainsight PX.
+
+<div class="infoBlock">
+
+If you are using your Gainsight PX account data, the group calls (with fields <code class="inline-code">groupId</code> & <code class="inline-code">traits</code>) are required.
+
+</div>
+
+Here is a sample `group` call:
+
+```javascript
+rudderanalytics.group("7734cb11-ce11-4ff0-a992-d8fbc5eb3055", {
+    "name": "Company",
+    "industry": "Industry",
+    "employees": 123
+  }
+);
+```
+
+## Track
+
+The `track` call allows you to capture any action that the user might perform, along with the properties that are associated with that action. Each action is considered to be an event.
+
+Here is a sample `track` call:
+
+```javascript
+rudderanalytics.track("test track event", {
+  revenue: 30,
+  currency: "USD"
+})
+```
+
