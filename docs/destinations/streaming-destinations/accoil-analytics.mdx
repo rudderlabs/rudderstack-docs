@@ -1,0 +1,93 @@
+---
+title: "Accoil Analytics"
+description: Send data from RudderStack to **Accoil Analytics**.
+aliases: ["accoil","accoil analytics"]
+---
+
+[Accoil](https://www.accoil.com) is a product analytics platform built specifically for B2B go-to-market (GTM) teams, like product, sales, marketing, customer success, and support. It enables you to track feature adoption, monitor user journeys, and enhance activation and conversion rates. By sending your product event data to Accoil using Segment, you unlock actionable insights that drive informed decisions across your organization.
+
+For any questions or help with Accoil, <a href="https://help.accoil.com">contact the Accoil support team</a>.
+
+<div class="infoBlock">
+Find the open source transformer code for this destination in the <a href="https://github.com/rudderlabs/rudder-transformer/tree/master/src/cdk/v2/destinations/accoil_analytics">GitHub repository</a>.
+</div>
+
+## Getting started
+
+RudderStack supports sending events to Accoil via the following <Link to="/destinations/rudderstack-connection-modes/">connection modes</Link>:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+
+
+Once you have confirmed that the source platform supports sending events to Accoil, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add the source. Then, from the list of destinations, select **Accoil Analytics**.
+2. Assign a name to your destination and click **Continue**.
+
+### Connection settings 
+
+To successfully set up Accoil as a destination, you need to configure the following settings:
+
+- **API Key**: Navigate to your Accoil dashboard and find your API Key under **General Account Settings**. Copy this API Key and paste it here.
+
+## Identify
+
+Identify calls recognize individual users and their attributes.
+
+Example Call:
+   ```javascript
+   analytics.identify('userId123', {
+     email: 'user@example.com',
+     name: 'John Doe',
+     createdAt: '2023-05-12T08:00:00Z'  // ISO 8601 or Unix timestamp format
+   });
+   ```
+
+## Group
+
+Group calls link users to accounts and records account-level attributes.
+
+Example Call:
+   ```javascript
+   analytics.group('accountId123', {
+     name: 'Example Company',
+     createdAt: '2021-03-15T09:00:00Z',  // ISO 8601 or Unix timestamp format
+     mrr: 3000,
+     status: 'active'
+   });
+   ```
+
+## Track
+
+Track calls record specific user actions, like "Login" or "Purchase".
+
+Use the "Noun_Verb" format to name your events, for example, `Report Created` or `Purchase Completed`.
+
+Example Call:
+   ```javascript
+   analytics.track('Purchase Completed', {
+     item: 'Book',
+     price: 25.00
+   });
+   ```
+  
+## Page and screen
+
+Page and Screen calls convert navigation calls into Track events to monitor user interactions within your product.
+
+Example Calls:
+   ```javascript
+   analytics.page('Home Page');
+   analytics.screen('Dashboard');
+   ```
+
+## Key Notes
+
+- **Created At Date**: Ensure the `createdAt` field for users and accounts is in ISO 8601 or Unix timestamp format for accurate tenure tracking.
+- **Trait Handling**: Accoil stores traits sent with Identify and Group calls, but traits passed with Track calls are not stored. Only event names and counts are recorded.
+- **Event Aggregation**: Accoil simplifies event tracking by aggregating daily event counts.
+- **Page and Screen Calls**: These calls are automatically converted into Track events for easier monitoring of user navigation.
+
+This integration empowers your team to make data-driven decisions, improving your product and customer experiences. For further assistance, please [contact the Accoil support team](https://help.accoil.com).
