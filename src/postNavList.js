@@ -2683,6 +2683,12 @@ export const postNavList = [
     link: "/resources/community/",
     content: [],
   },
+  {
+    key: "userpilot",
+    title: "Userpilot",
+    link: "/destinations/streaming-destinations/userpilot/",
+    content: [],
+  },
 ];
 
 /* export const postNav = flattenDeep(jsonData);
