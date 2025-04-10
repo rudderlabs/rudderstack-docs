@@ -43,6 +43,20 @@ rudderanalytics.identify('72893628', {
 })
 ```
 
+To manage a contact's mailing list subscriptions, add a `mailingLists` property to match the expected [API format](https://loops.so/docs/api-reference/update-contact#param-mailing-lists):
+
+```javascript
+rudderanalytics.identify('72893628', {
+  email: 'janedoe@example.com',
+  name: 'Jane Doe',
+  country: 'United States',
+  mailinglists: {
+    clxf1nxlb000t0ml79ajwcsj0: true,
+    clxf2q43u00010mlh12q9ggx1: false,
+  }
+})
+```
+
 New contacts must have an `email` property, otherwise they will not be created in Loops.
 
 Existing contacts will be updated in Loops based on the provided `userId` property. If an existing contact in Loops doesn't have a `userId` property, Loops will attempt to match based on the provided `email` property. 
