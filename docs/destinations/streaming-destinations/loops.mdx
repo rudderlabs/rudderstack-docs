@@ -1,0 +1,75 @@
+---
+title: "Loops"
+description: Send data from RudderStack to Loops.
+aliases: ["Loops"]
+---
+
+[Loops](https://loops.so) is an email platform for SaaS companies for sending marketing and transactional emails from the same platform.
+
+RudderStack supports Loops as a destination where you can send your event data seamlessly.
+
+## Getting started
+
+To start sending events to Loops, follow these steps:
+
+1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Loops**.
+2. Assign a name to the destination and click **Continue**.
+
+### Connection settings
+
+To successfully configure Loops as a destination, you will need to add your Loops API key:
+
+1. Go to your [Loops API Settings page](https://app.loops.so/settings?page=api).
+2. Generate or use an existing API key.
+3. Copy the key and paste it in the **API Key** field in Rudderstack.
+
+## Events
+
+The Loops destination supports identify and track events.
+
+### Identify
+
+You can sync users from RudderStack to Loops as contacts using identify calls.
+
+Add a unique user identifier as the first parameter. Contact properties included in the identify call will be added to the contact record in Loops.
+
+A sample `identify` call is as shown:
+
+```javascript
+rudderanalytics.identify('72893628', {
+  email: 'janedoe@example.com',
+  name: 'Jane Doe',
+  country: 'United States',
+})
+```
+
+New contacts must have an `email` property, otherwise they will not be created in Loops.
+
+Existing contacts will be updated in Loops based on the provided `userId` property. If an existing contact in Loops doesn't have a `userId` property, Loops will attempt to match based on the provided `email` property. 
+
+### Track
+
+Track call lets you ingest events into Loops, which can be used to trigger <a href="https://loops.so/docs/loop-builder">loops</a>.
+
+If you omit an `email` value from your `track` calls, you must call `identify` first to identify the current user.
+
+Include [event properties](https://loops.so/docs/events/properties) in the track call, so you can use these inside your loops emails.
+
+The event name in your `track` call should match the name of the event in Loops, and the event properties should also match the properties in Loops. Set these up at [Settings > Events](https://app.loops.so/settings?page=events).
+
+A sample `track` call is as shown:
+
+```javascript
+rudderanalytics.track('signup', {
+  firstName: "Bob",
+  plan: "pro"
+})
+```
+
+You must include the `email` or `userId` property in track calls.
+
+Events will appear on the [Settings > Events](https://app.loops.so/settings?page=events) page in Loops.
+
+### Additional references
+
+If you have any questions please reach out to help@loops.so.

@@ -473,7 +473,7 @@ export const jsonData = [
                 title: "Bing Ads",
                 link: "/sources/extract/bing-ads/",
                 content: []
-            }, 
+            },
             {
                 title: "Chargebee",
                 link: "/sources/extract/chargebee/",
@@ -788,7 +788,7 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/criteo/",
                 content: []
             },
-              {
+            {
                 title: "Criteo Audience",
                 link: "/destinations/streaming-destinations/criteo-audience/",
                 content: []
@@ -1351,7 +1351,7 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/segment/",
                 content: []
             },
-             {
+            {
                 title: "Lemnisk",
                 link: "/destinations/streaming-destinations/lemnisk/",
                 content: [
@@ -1506,6 +1506,11 @@ export const jsonData = [
                 link: "/destinations/streaming-destinations/leanplum/",
                 content: []
             }, {
+                title: "Loops",
+                link: "/destinations/streaming-destinations/loops/",
+                content: []
+            },
+            {
                 title: "Mailchimp",
                 link: "/destinations/streaming-destinations/mailchimp/",
                 content: []
