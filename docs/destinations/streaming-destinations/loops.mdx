@@ -10,6 +10,13 @@ RudderStack supports Loops as a destination where you can send your event data s
 
 ## Getting started
 
+RudderStack supports sending event data to Loops via the following <a href="https://rudderstack.com/docs/rudderstack-cloud/rudderstack-connection-modes/">connection modes</a>:
+
+| **Connection Mode** | **Web**       | **Mobile**    | **Server**    |
+| :------------------ | :------------ | :------------ | :------------ |
+| **Device mode**     | -             | -             | -             |
+| **Cloud mode**      | **Supported** | **Supported** | **Supported** |
+
 To start sending events to Loops, follow these steps:
 
 1. From your [RudderStack dashboard](https://app.rudderstack.com/), add a source. Then, from the list of destinations, select **Loops**.
@@ -63,11 +70,13 @@ Existing contacts will be updated in Loops based on the provided `userId` proper
 
 ### Track
 
-Track call lets you ingest events into Loops, which can be used to trigger <a href="https://loops.so/docs/loop-builder">loops</a>.
+Track calls let you send events to Loops, which can be used to trigger <a href="https://loops.so/docs/loop-builder">loops</a>.
 
-If you omit an `email` value from your `track` calls, you must call `identify` first to identify the current user.
+<div class="infoBlock">
+If you omit both the `email` and `userId` value from your `track` calls, you must call `identify` first to identify the current user.
+</div>
 
-Include [event properties](https://loops.so/docs/events/properties) in the track call, so you can use these inside your loops emails.
+You can include [event properties](https://loops.so/docs/events/properties) in the track call, so they are available for use inside your loop emails.
 
 The event name in your `track` call should match the name of the event in Loops, and the event properties should also match the properties in Loops. Set these up at [Settings > Events](https://app.loops.so/settings?page=events).
 
@@ -80,9 +89,7 @@ rudderanalytics.track('signup', {
 })
 ```
 
-You must include the `email` or `userId` property in track calls.
-
-Any values in `context.traits` (for example, from a previous `identify` call) will be sent along to Loops and updated on the contact record.
+Any values in `context.traits` (for example, from a previous `identify` call) will be included in the call and updated on the contact record in Loops.
 
 Events will appear on the [Settings > Events](https://app.loops.so/settings?page=events) page in Loops.
 
