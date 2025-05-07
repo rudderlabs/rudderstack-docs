@@ -63,19 +63,22 @@ rudderanalytics.identify("1hKOmRA4GRlmr123", {
   email: "alex@example.com",
   name: "Alex Keener",
   country: "United States",
-  mailinglists: {
+  mailingLists: {
     clxf1nxlb000t0ml79ajwcsj0: true,
+    clxf2q43u00010mlh12q9ggx1: false,
   },
 })
 ```
 
-In the above example, the contact with the identifier `1hKOmRA4GRlmr123` is added to the mailing list with the ID `clxf1nxlb000t0ml79ajwcsj0`.
+In the above example, the contact with the identifier `1hKOmRA4GRlmr123` is added to the mailing list with the ID `clxf1nxlb000t0ml79ajwcsj0` and unsubscribed from the mailing list with the ID `clxf2q43u00010mlh12q9ggx1`.
 
 ## Track
 
 You can use the [`track`]({{< ref "event-spec/standard-events/track.md" >}}) event to send user actions to Loops, which in turn are used to trigger [loops](https://loops.so/docs/loop-builder).
 
-Your `track` events will appear on the [Settings > Events](https://app.loops.so/settings?page=events) page in the Loops dashboard.
+The event name should match the name of the event in Loops. Data sent in the properties object will be sent as [event properties](https://loops.so/docs/events/properties) to Loops, for use in your emails.
+
+Create events and define their expected properties in [Settings > Events](https://app.loops.so/settings?page=events) in your Loops dashboard.
 
 A sample `track` call sent to Loops is shown below:
 
@@ -89,10 +92,8 @@ rudderanalytics.track("Signup", {
 
 Note that:
 
-- If you omit both the `email` and `userId` fields from your `track` calls, you must identify the current user first by calling `identify`.
-- The `track` event name should match the name of the event in Loops. Also, the event properties must match the properties in Loops. You can set these up by going to [Settings > Events](https://app.loops.so/settings?page=events) in your Loops dashboard.
-- You can include [event properties](https://loops.so/docs/events/properties) in the `track` event so you can use them inside your loop emails.
-- RudderStack persists any values in `context.traits` from a previous `identify` call in the `track` event properties and updates the contact record in Loops accordingly.
+- You should identify the contact before sending a `track` event so that the event can be associated with a specific contact in Loops.
+- RudderStack persists any values in `context.traits` from your previous `identify` call in the `track` event properties and updates the contact record in Loops accordingly.
 
 ## FAQ
 
