@@ -109,7 +109,10 @@
     "cbuild": "gatsby clean && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "audit": "echo 'Run: yarn audit (preferred) or npm audit --force'",
+    "audit:fix": "echo 'Run: yarn audit --fix (preferred) or npm audit fix --force'",
+    "security:check": "echo 'Security audit: Use yarn audit or npm audit --force to check for vulnerabilities'"
   },
   "repository": {
     "type": "git",
